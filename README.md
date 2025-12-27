@@ -1,11 +1,11 @@
 # werkverzeichnis
-**werkverzeichnis** (German: "catalog of works"), or **wv** for short, provides human- and machine-readable data about classical compositions: catalog numbers, keys, instrumentation, movement structures, and attribution history.
+**werkverzeichnis** (German: "catalog of works") provides human- and machine-readable data about classical compositions: catalog numbers, keys, instrumentation, movement structures, and attribution history.
 
 The name evokes the well-known *Bach-Werke-Verzeichnis* (catalog of Bach's works), but the scope is broader. Classical music catalogs have accumulated over centuries for each composer — BWV for Bach, Köchel-Verzeichnis for Mozart, opus numbers for most Romantic composers, and dozens more. This project aims to bring all these disparate systems together under one simple, structured, queryable format.
 
 This project prioritizes:
 - **Structured data** — JSON files with consistent schemas
-- **Human-readable source files** — Plain text JSON files you can open in any text editor, inspect, and understand
+- **Human-readable source files** — Plain text JSON files (like [this one](compositions/27/c3084a.json)) you can open in any text editor, inspect, and understand
 - **Catalog precision and rigor** — Allow for multiple numbering systems per composer, with cross-references
 - **Temporal accuracy** — Attribution and catalog changes over time (reattributions, revised dates) are tracked
 - **Practical tooling** — We provide a powerful command-line interface in the Rust language for querying, validating, and managing the dataset
