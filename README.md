@@ -127,7 +127,7 @@ Each composition has a stable 8-character ID and lives in `compositions/{prefix}
 ```json
 {
 	"id": "fba99784",
-	"key": "f",  # terse format for storage; expands to "f minor" on output
+	"key": "f",  # stored in terse format; expands to "f minor" or "fis-Moll" on output
 	"form": "sonata",
 	"instrumentation": "piano",
 	"attribution": [
