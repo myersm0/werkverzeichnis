@@ -192,6 +192,17 @@ Catalog definitions specify parsing, sorting, and display rules:
 }
 ```
 
+## Data generation
+This dataset is compiled using AI large language models (LLMs) to process and structure information from public sources (catalogs, Wikipedia, musicological references). Manual curation at this scale would be an enormous undertaking — LLMs make it feasible.
+
+However, LLM output is notoriously subject to hallucination and requires careful verification. To that end, our workflow includes multiple review stages:
+1. **Structured extraction** — LLMs parse source material into our schema format
+2. **Cross-reference validation** — Catalog numbers, dates, and keys are checked against authoritative sources
+3. **Schema validation** — All entries must pass JSON schema and styleguide checks
+4. **Human review** — Spot checks and corrections
+
+This generation-and-review process is still evolving. The goal is accuracy above all else — because if the data isn't reliable, it isn't useful. But errors are inevitable in any project of this scope; corrections are welcome via pull request or issue.
+
 ## CLI tool
 The `wv` command-line tool provides:
 - **query** — Look up compositions by composer, catalog, range
