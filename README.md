@@ -1,14 +1,15 @@
 # werkverzeichnis
-**werkverzeichnis** (German: "catalog of works") provides machine-readable data about classical compositions: catalog numbers (BWV, K., Op., etc.), keys, instrumentation, movement structures, and attribution history.
+**werkverzeichnis** (German: "catalog of works"), or **wv** for short, provides human- and machine-readable data about classical compositions: catalog numbers (BWV, K., Op., etc.), keys, instrumentation, movement structures, and attribution history.
 
-Unlike encyclopedic sources, this project prioritizes:
+The name evokes the well-known *Bach-Werke-Verzeichnis* (catalog of Bach's works), but the scope is broader. Classical music catalogs have accumulated over centuries for each composer — BWV for Bach, Köchel-Verzeichnis for Mozart, opus numbers for most Romantic composers, and dozens more. This project aims to bring all these disparate systems together under one simple, structured, queryable format.
+
+This project prioritizes:
 - **Structured data** — JSON files with consistent schemas
-- **Catalog precision and rigor** — Multiple numbering systems per composer, with cross-references
-- **Temporal accuracy** — Attribution changes over time (reattributions, revised dates) are tracked
-- **Practical tooling** — A robust, performant command-line interface in the Rust language for querying, validating, and managing the dataset
+- **Human-readable source files** — Plain text JSON files you can open in any text editor, inspect, and understand
+- **Catalog precision and rigor** — Allow for multiple numbering systems per composer, with cross-references
+- **Temporal accuracy** — Attribution and catalog changes over time (reattributions, revised dates) are tracked
+- **Practical tooling** — We provide a powerful command-line interface in the Rust language for querying, validating, and managing the dataset
 - **Configurable output** — Display preferences (language, formatting) can be customized per user
-
-***Status note***: This project has been overhauled with a new schema, a revised set of design principles, and a new Rust langauge implementation for the CLI query interface and content management. The old conent may still be accessed at [werkverzeichnis-old](https://github.com/myersm0/werkverzeichnis-old) for now.
 
 ## Roadmap
 This project is still in an early stage of development. By the end of 2025 the following are expected to be complete:
