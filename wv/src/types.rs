@@ -119,6 +119,9 @@ pub struct Xref {
 pub struct Collection {
 	pub id: String,
 	pub title: HashMap<String, String>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub composer: Option<String>,
+	#[serde(default, skip_serializing_if = "Vec::is_empty")]
 	pub attribution: Vec<AttributionEntry>,
 	pub scheme: String,
 	#[serde(skip_serializing_if = "Option::is_none")]

@@ -1,6 +1,6 @@
 use std::path::{Path, PathBuf};
 
-use crate::catalog::{load_catalog_def, matches_group, sort_numbers};
+use crate::catalog::{load_catalog_def, matches_group, sort_key, sort_numbers};
 use crate::index::Index;
 use crate::parse::{load_composition, path_for_id};
 use crate::types::Composition;
@@ -185,25 +185,17 @@ impl<'a> QueryBuilder<'a> {
 		}
 
 		if let (Some(start), Some(end)) = (&self.query.range_start, &self.query.range_end) {
-			let start_idx = keys.iter().position(|k| {
-				if let Some(ref d) = defn {
-					matches_group(k, start, Some(d)) || k == start
-				} else {
-					k == start
-				}
-			});
-			let end_idx = keys.iter().rposition(|k| {
-				if let Some(ref d) = defn {
-					matches_group(k, end, Some(d)) || k == end
-				} else {
-					k == end
-				}
-			});
+			if let Some(ref d) = defn {
+				let start_key = sort_key(start, d);
+				let end_key = sort_key(end, d);
 
-			if let (Some(s), Some(e)) = (start_idx, end_idx) {
-				if s <= e {
-					keys = keys[s..=e].to_vec();
-				}
+				keys.retain(|k| {
+					let k_key = sort_key(k, d);
+					k_key >= start_key && k_key <= end_key
+				});
+			} else {
+				// No catalog definition - fall back to string comparison
+				keys.retain(|k| k >= start && k <= end);
 			}
 		}
 

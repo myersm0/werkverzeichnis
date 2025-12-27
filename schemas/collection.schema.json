@@ -3,7 +3,7 @@
 	"$id": "https://github.com/myersm0/werkverzeichnis/schemas/collection.schema.json",
 	"title": "Collection",
 	"type": "object",
-	"required": ["id", "title", "attribution", "scheme", "compositions"],
+	"required": ["id", "title", "scheme", "compositions"],
 	"properties": {
 		"id": {
 			"type": "string",
@@ -15,9 +15,13 @@
 			"description": "Multilingual title dict",
 			"additionalProperties": {"type": "string"}
 		},
+		"composer": {
+			"type": "string",
+			"description": "Composer slug (simple case)"
+		},
 		"attribution": {
 			"type": "array",
-			"description": "Shared attribution for all compositions in collection. Same structure as composition attribution.",
+			"description": "Shared attribution for all compositions in collection (complex case)",
 			"items": {
 				"type": "object",
 				"properties": {
@@ -36,8 +40,7 @@
 						"pattern": "^\\d{4}(-\\d{2})?(-\\d{2})?$"
 					}
 				}
-			},
-			"minItems": 1
+			}
 		},
 		"scheme": {
 			"type": "string",

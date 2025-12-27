@@ -96,11 +96,23 @@ pub fn merge_attribution_with_collections<P: AsRef<Path>>(
 	merge_attribution(&expanded)
 }
 
+pub fn collection_path_from_id<P: AsRef<Path>>(collections_dir: P, id: &str) -> std::path::PathBuf {
+	let collections_dir = collections_dir.as_ref();
+	
+	// ID format: "composer-name" -> collections/composer/name.json
+	if let Some((composer, name)) = id.split_once('-') {
+		collections_dir.join(composer).join(format!("{}.json", name))
+	} else {
+		// Fallback: flat structure
+		collections_dir.join(format!("{}.json", id))
+	}
+}
+
 fn load_collection_attribution<P: AsRef<Path>>(
 	collections_dir: P,
 	collection_id: &str,
 ) -> Option<AttributionEntry> {
-	let path = collections_dir.as_ref().join(format!("{}.json", collection_id));
+	let path = collection_path_from_id(&collections_dir, collection_id);
 	let collection = load_collection(&path).ok()?;
 	merge_collection_attribution(&collection)
 }

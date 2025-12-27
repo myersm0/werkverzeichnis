@@ -3,10 +3,10 @@ use std::path::{Path, PathBuf};
 
 use clap::{Parser, Subcommand};
 use werkverzeichnis::{
-	add_composition, build_index, generate_id, load_catalog_def, load_collection, load_composer,
-	load_composition, merge_attribution_with_collections, scaffold_composition, sort_key,
-	sort_numbers, validate_all, validate_file, write_composer_index, write_edition_indexes,
-	write_index,
+	add_composition, build_index, collection_path_from_id, generate_id, load_catalog_def,
+	load_collection, load_composer, load_composition, merge_attribution_with_collections,
+	scaffold_composition, sort_key, sort_numbers, validate_all, validate_file,
+	write_composer_index, write_edition_indexes, write_index,
 };
 
 #[derive(Parser)]
@@ -299,9 +299,15 @@ fn cmd_index(data_dir: Option<PathBuf>) {
 	println!("Found {} compositions", total_compositions);
 	println!("Found {} catalog entries", total_catalog_entries);
 
-	let index_path = data_dir.join("index.json");
-	let composer_path = data_dir.join("composer-index.json");
-	let editions_dir = data_dir.join("indexes").join("editions");
+	let indexes_dir = data_dir.join(".indexes");
+	if let Err(e) = std::fs::create_dir_all(&indexes_dir) {
+		eprintln!("Error creating .indexes directory: {}", e);
+		std::process::exit(1);
+	}
+
+	let index_path = indexes_dir.join("index.json");
+	let composer_path = indexes_dir.join("composer-index.json");
+	let editions_dir = indexes_dir.join("editions");
 
 	if let Err(e) = write_index(&index, &index_path) {
 		eprintln!("Error writing index: {}", e);
@@ -337,6 +343,14 @@ fn cmd_query(
 	data_dir: Option<PathBuf>,
 ) {
 	let data_dir = find_data_dir(data_dir.as_ref());
+
+	// Require explicit scheme for range/group queries
+	if (range.is_some() || group.is_some()) && scheme.is_none() {
+		eprintln!("Error: --range and --group require a catalog scheme");
+		eprintln!("Usage: wv query <composer> <scheme> [--range START-END]");
+		std::process::exit(1);
+	}
+
 	let index = build_index(&data_dir);
 
 	let mut builder = index.query().composer(composer).data_dir(&data_dir);
@@ -451,7 +465,8 @@ fn cmd_id() {
 
 fn cmd_collection(id: &str, data_dir: Option<PathBuf>) {
 	let data_dir = find_data_dir(data_dir.as_ref());
-	let path = data_dir.join("collections").join(format!("{}.json", id));
+	let collections_dir = data_dir.join("collections");
+	let path = collection_path_from_id(&collections_dir, id);
 
 	let collection = match load_collection(&path) {
 		Ok(c) => c,
