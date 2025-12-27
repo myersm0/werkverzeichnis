@@ -123,7 +123,7 @@ werkverzeichnis/
 
 ## Data model
 ### Compositions
-Each composition has a stable 8-character ID and lives in `compositions/{prefix}/{suffix}.json`. For example, Beethoven's first piano sonata:
+Each composition has a stable 8-character ID and lives in `compositions/{prefix}/{suffix}.json`. For example, Beethoven's first piano sonata (opus 2, number 1):
 ```json
 {
 	"id": "fba99784",
