@@ -1,0 +1,20 @@
+# rust build artifacts
+wv/target/
+
+# generated index files
+.indexes/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# editor artifacts
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# local dev
+.env
+*.local
