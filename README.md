@@ -36,7 +36,7 @@ alias wv="$(pwd)/target/release/wv"
 ```
 
 Here are some common query patterns:
-```bash
+```
 $ wv query beethoven op 2
 op:2/1  fba99784
 op:2/2  edfa8309
