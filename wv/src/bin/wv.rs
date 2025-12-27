@@ -114,6 +114,18 @@ enum Commands {
 	/// List compositions in a collection
 	Collection {
 		id: String,
+		#[arg(long, help = "Verify all members exist in index")]
+		verify: bool,
+		#[arg(long, help = "Show full composition details")]
+		hydrate: bool,
+		#[arg(long, value_name = "PATH")]
+		data_dir: Option<PathBuf>,
+	},
+
+	/// Find collections containing a composition
+	Collections {
+		#[arg(help = "Composition ID or catalog number (e.g., bwv:812)")]
+		query: String,
 		#[arg(long, value_name = "PATH")]
 		data_dir: Option<PathBuf>,
 	},
@@ -141,7 +153,10 @@ fn main() {
 		Commands::Add { path, force, data_dir } => cmd_add(&path, force, data_dir),
 		Commands::New { form, composer, data_dir } => cmd_new(&form, &composer, data_dir),
 		Commands::Id => cmd_id(),
-		Commands::Collection { id, data_dir } => cmd_collection(&id, data_dir),
+		Commands::Collection { id, verify, hydrate, data_dir } => {
+			cmd_collection(&id, verify, hydrate, data_dir)
+		}
+		Commands::Collections { query, data_dir } => cmd_collections(&query, data_dir),
 	}
 }
 
@@ -463,7 +478,7 @@ fn cmd_id() {
 	println!("{}", generate_id());
 }
 
-fn cmd_collection(id: &str, data_dir: Option<PathBuf>) {
+fn cmd_collection(id: &str, verify: bool, hydrate: bool, data_dir: Option<PathBuf>) {
 	let data_dir = find_data_dir(data_dir.as_ref());
 	let collections_dir = data_dir.join("collections");
 	let path = collection_path_from_id(&collections_dir, id);
@@ -485,7 +500,114 @@ fn cmd_collection(id: &str, data_dir: Option<PathBuf>) {
 	println!("Scheme: {}", collection.scheme);
 	println!();
 
+	let index = if verify || hydrate {
+		Some(build_index(&data_dir))
+	} else {
+		None
+	};
+
+	let composer = collection.composer.as_deref().unwrap_or_else(|| {
+		id.split_once('-').map(|(c, _)| c).unwrap_or(id)
+	});
+
+	let mut missing = Vec::new();
+
 	for (i, num) in collection.compositions.iter().enumerate() {
-		println!("  {}. {}:{}", i + 1, collection.scheme, num);
+		if verify || hydrate {
+			let idx = index.as_ref().unwrap();
+			let found = idx
+				.query()
+				.composer(composer)
+				.scheme(&collection.scheme)
+				.number(num)
+				.fetch_one();
+
+			if let Some(comp_id) = found {
+				if hydrate {
+					let comp_path = data_dir
+						.join("compositions")
+						.join(&comp_id[..2])
+						.join(format!("{}.json", &comp_id[2..]));
+
+					if let Ok(comp) = load_composition(&comp_path) {
+						println!("{}. {}:{} [{}]", i + 1, collection.scheme, num, comp_id);
+						println!("   Form: {}", comp.form);
+						if let Some(key) = &comp.key {
+							println!("   Key: {}", key);
+						}
+					} else {
+						println!("{}. {}:{} [{}] (file not found)", i + 1, collection.scheme, num, comp_id);
+					}
+				} else {
+					println!("  {}. {}:{} ✓", i + 1, collection.scheme, num);
+				}
+			} else {
+				missing.push(num.clone());
+				println!("  {}. {}:{} ✗ NOT FOUND", i + 1, collection.scheme, num);
+			}
+		} else {
+			println!("  {}. {}:{}", i + 1, collection.scheme, num);
+		}
+	}
+
+	if verify && !missing.is_empty() {
+		eprintln!();
+		eprintln!("Missing {} composition(s)", missing.len());
+		std::process::exit(1);
+	}
+}
+
+fn cmd_collections(query: &str, data_dir: Option<PathBuf>) {
+	let data_dir = find_data_dir(data_dir.as_ref());
+	let collections_dir = data_dir.join("collections");
+
+	// Parse query: either composition ID or scheme:number
+	let (scheme, number) = if let Some((s, n)) = query.split_once(':') {
+		(Some(s), Some(n))
+	} else {
+		(None, None)
+	};
+
+	let mut found = Vec::new();
+
+	// Scan all collection files
+	if let Ok(composer_dirs) = std::fs::read_dir(&collections_dir) {
+		for composer_entry in composer_dirs.flatten() {
+			if !composer_entry.path().is_dir() {
+				continue;
+			}
+
+			if let Ok(coll_files) = std::fs::read_dir(composer_entry.path()) {
+				for file_entry in coll_files.flatten() {
+					let path = file_entry.path();
+					if path.extension().map_or(true, |e| e != "json") {
+						continue;
+					}
+
+					if let Ok(coll) = load_collection(&path) {
+						let matches = if let (Some(s), Some(n)) = (scheme, number) {
+							coll.scheme == s && coll.compositions.contains(&n.to_string())
+						} else {
+							// Query is a composition ID - need to check index
+							// For now, just check if any composition matches by ID
+							false // TODO: implement ID lookup
+						};
+
+						if matches {
+							found.push(coll.id.clone());
+						}
+					}
+				}
+			}
+		}
+	}
+
+	if found.is_empty() {
+		println!("No collections found containing '{}'", query);
+	} else {
+		println!("Collections containing '{}':", query);
+		for id in found {
+			println!("  {}", id);
+		}
 	}
 }
