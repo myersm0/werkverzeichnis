@@ -36,27 +36,29 @@ alias wv="$(pwd)/target/release/wv"
 
 Here are some common query patterns:
 ```bash
-$ wv query bach bwv 812
-bwv:812    2e0c3f46
+$ wv query beethoven op 2/1
+op:2/1  fba99784
 
-# Prettier output with the -p flag
-$ wv query bach bwv 812 -p
-Suite in D minor, BWV 812
+# Prettier output with the -p flag:
+$ wv query beethoven op 2/1 -p
+Sonata in f minor, op. 2 no. 1
 
-# Pretty output sorted over a range of catalog numbers
-$ wv query bach bwv --range 812-814 -p
-Wie schön leuchtet der Morgenstern, BWV 1
-Ach Gott, vom Himmel sieh darein, BWV 2
-Ach Gott, wie manches Herzeleid, BWV 3
+# Pretty output sorted over a range of catalog numbers:
+$ wv query beethoven op --range 2-11 -p
+Sonata in f minor, op. 2 no. 1
+Sonata in A major, op. 2 no. 2
+Sonata in C major, op. 2 no. 3
+Sonata in E♭ major, op. 7
+Sonata in c minor, op. 10 no. 1
+Sonata in F major, op. 10 no. 2
+Sonata in D major, op. 10 no. 3
 
-# Show movements for a piece
-$ wv query bach bwv 1 -m
-1. Wie schön leuchtet der Morgenstern
-2. Du wahrer Gottes und Marien Sohn
-3. Erfüllet, ihr himmlischen göttlichen Flammen
-4. Ein irdscher Glanz, ein leiblich Licht
-5. Unser Mund und Ton der Saiten
-6. Wie bin ich doch so herzlich froh
+# Show movements for a piece:
+$ wv query beethoven op 2/1 -m
+1. Allegro
+2. Adagio
+3. Menuetto and Trio (Allegretto)
+4. Prestissimo
 ```
 
 ## Configuration
