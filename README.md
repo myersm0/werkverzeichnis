@@ -123,29 +123,31 @@ werkverzeichnis/
 
 ## Data model
 ### Compositions
-Each composition has a stable 8-character ID and lives in `compositions/{prefix}/{suffix}.json`:
+Each composition has a stable 8-character ID and lives in `compositions/{prefix}/{suffix}.json`. For example, Beethoven's first piano sonata:
 ```json
 {
-  "id": "2e0c3f46",
-  "form": "suite",
-  "key": "D minor",
-  "attribution": [
-    {
-      "composer": "bach",
-      "catalog": [{"scheme": "bwv", "number": "812"}],
-      "dates": {"composed": 1722}
-    }
-  ],
-  "movements": [
-    {"title": "Allemande"},
-    {"title": "Courante"},
-    {"title": "Sarabande"}
+	"id": "fba99784",
+	"key": "f",  # terse format for storage; expands to "f minor" on output
+	"form": "sonata",
+	"instrumentation": "piano",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1795, "published": 1796},
+			"catalog": [{"scheme": "op", "number": "2/1"}]
+		}
+	],
+	"movements": [
+		{"title": "Allegro"},
+		{"title": "Adagio", "key": "F"},
+		{"title": "Menuetto and Trio (Allegretto)"},
+		{"title": "Prestissimo"}
   ]
 }
 ```
 
 ### Attribution over time
-The `since` field tracks when attribution information became accepted:
+Attribution entries are sorted in reverse-chronological order, with the newest entry at the top. The optional `since` field tracks when attribution information became accepted:
 ```json
 {
   "attribution": [
@@ -179,7 +181,7 @@ Ordered groupings like "French Suites" or "Well-Tempered Clavier, Book 1":
 ```
 
 ### Catalog schemes
-Catalog definitions specify parsing, sorting, and display rules:
+Catalog definitions specify parsing, sorting, and display rules. For example, here's a simplified definition for BWV:
 ```json
 {
   "id": "bwv",
@@ -192,6 +194,8 @@ Catalog definitions specify parsing, sorting, and display rules:
   ]
 }
 ```
+
+(The actual definition is more complex, to allow for records like "BWV Anh. III 135".)
 
 ## Data generation
 This dataset is compiled using AI large language models (LLMs) to process and structure information from public sources (catalogs, Wikipedia, musicological references). Manual curation at this scale would be an enormous undertaking — LLMs make it feasible.
