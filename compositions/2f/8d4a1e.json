@@ -1,0 +1,24 @@
+{
+	"id": "2f8d4a1e",
+	"attribution": [
+		{
+			"cf": "bach-wtc-1",
+			"catalog": [{"scheme": "bwv", "number": "847"}]
+		}
+	],
+	"form": "prelude and fugue",
+	"instrumentation": "keyboard",
+	"key": "c",
+	"movements": [
+		{
+			"title": "Prelude"
+		},
+		{
+			"title": "Fugue"
+		}
+	],
+	"xref": {
+		"oo": "9781",
+		"wp": "BWV_847"
+	}
+}

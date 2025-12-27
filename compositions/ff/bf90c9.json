@@ -1,0 +1,29 @@
+{
+	"id": "ffbf90c9",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"composed": 1789},
+			"catalog": [{"scheme": "k", "number": "570"}]
+		}
+	],
+	"key": "Bb",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Adagio",
+			"key": "Eb"
+		},
+		{
+			"title": "Allegretto"
+		}
+	],
+	"xref": {
+		"oo": "23455",
+		"wp": "Piano_Sonata_No._17_(Mozart)"
+	}
+}

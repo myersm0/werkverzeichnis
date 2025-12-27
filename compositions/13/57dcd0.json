@@ -1,0 +1,29 @@
+{
+	"id": "1357dcd0",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"composed": 1777},
+			"catalog": [{"scheme": "k", "number": "309"}]
+		}
+	],
+	"key": "C",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro con spirito"
+		},
+		{
+			"title": "Andante un poco adagio",
+			"key": "F"
+		},
+		{
+			"title": "Rondo (allegretto grazioso)"
+		}
+	],
+	"xref": {
+		"oo": "23712",
+		"wp": "Piano_Sonata_No._7_(Mozart)"
+	}
+}

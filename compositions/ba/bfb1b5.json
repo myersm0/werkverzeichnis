@@ -1,0 +1,29 @@
+{
+	"id": "babfb1b5",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1801, "published": 1802},
+			"catalog": [{"scheme": "op", "number": "27/2"}]
+		}
+	],
+	"key": "c#",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Adagio sostenuto"
+		},
+		{
+			"title": "Allegretto",
+			"key": "Db"
+		},
+		{
+			"title": "Presto agitato"
+		}
+	],
+	"xref": {
+		"oo": "16375",
+		"wp": "Piano_Sonata_No._14_(Beethoven)"
+	}
+}

@@ -1,0 +1,51 @@
+{
+	"id": "f0ad25e5",
+	"title": {
+		"de": "Ach Gott, vom Himmel sieh darein"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1724, "premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "2"}]
+		}
+	],
+	"form": "chorale cantata",
+	"key": "d",
+	"instrumentation": "soprano, alto, tenor, bass, choir, 2 oboes, 4 trombones, 2 violins, viola, continuo",
+	"notes": "Composed for the Second Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Ach Gott, vom Himmel sieh darein (Chorale fantasia)",
+			"type": "chorale fantasia"
+		},
+		{
+			"title": "Sie lehren eitel falsche List",
+			"type": "recitative"
+		},
+		{
+			"title": "Tilg, o Gott, die Lehren",
+			"type": "aria",
+			"key": "Bb",
+			"instrumentation": "alto"
+		},
+		{
+			"title": "Die Armen sind verstört",
+			"type": "recitative",
+			"instrumentation": "bass"
+		},
+		{
+			"title": "Durchs Feuer wird das Silber rein",
+			"type": "aria",
+			"key": "g",
+			"instrumentation": "tenor"
+		},
+		{
+			"title": "Das wollst du, Gott, bewahren rein",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_2"
+	}
+}

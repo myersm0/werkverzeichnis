@@ -1,0 +1,39 @@
+{
+	"id": "307e3f49",
+	"attribution": [
+		{
+			"cf": "bach-french-suites",
+			"catalog": [{"scheme": "bwv", "number": "815"}]
+		}
+	],
+	"form": "suite",
+	"key": "Eb",
+	"instrumentation": "keyboard",
+	"movements": [
+		{
+			"title": "Allemande"
+		},
+		{
+			"title": "Courante"
+		},
+		{
+			"title": "Sarabande"
+		},
+		{
+			"title": "Gavotte"
+		},
+		{
+			"title": "Air"
+		},
+		{
+			"title": "Menuet"
+		},
+		{
+			"title": "Gigue"
+		}
+	],
+	"xref": {
+		"oo": "9438",
+		"wp": "BWV_815"
+	}
+}

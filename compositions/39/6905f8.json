@@ -1,0 +1,29 @@
+{
+	"id": "396905f8",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"composed": 1775},
+			"catalog": [{"scheme": "k", "number": "284"}]
+		}
+	],
+	"key": "D",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Rondeau en polonaise, Andante",
+			"key": "A"
+		},
+		{
+			"title": "Andante"
+		}
+	],
+	"xref": {
+		"oo": "23585",
+		"wp": "Piano_Sonata_No._5_(Mozart)"
+	}
+}

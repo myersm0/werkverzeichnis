@@ -1,0 +1,24 @@
+{
+	"id": "f7e2c9a4",
+	"attribution": [
+		{
+			"cf": "bach-wtc-2",
+			"catalog": [{"scheme": "bwv", "number": "880"}]
+		}
+	],
+	"form": "prelude and fugue",
+	"instrumentation": "keyboard",
+	"key": "F",
+	"movements": [
+		{
+			"title": "Prelude"
+		},
+		{
+			"title": "Fugue"
+		}
+	],
+	"xref": {
+		"oo": "9318",
+		"wp": "BWV_880"
+	}
+}

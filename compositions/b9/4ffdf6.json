@@ -1,0 +1,29 @@
+{
+	"id": "b94ffdf6",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1802, "published": 1803},
+			"catalog": [{"scheme": "op", "number": "31/1"}]
+		}
+	],
+	"key": "G",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro vivace"
+		},
+		{
+			"title": "Adagio grazioso",
+			"key": "C"
+		},
+		{
+			"title": "Rondo, allegretto"
+		}
+	],
+	"xref": {
+		"oo": "16455",
+		"wp": "Piano_Sonata_No._16_(Beethoven)"
+	}
+}

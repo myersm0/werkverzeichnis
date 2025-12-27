@@ -1,0 +1,32 @@
+{
+	"id": "7023f148",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1795, "published": 1796},
+			"catalog": [{"scheme": "op", "number": "2/3"}]
+		}
+	],
+	"key": "C",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro con brio"
+		},
+		{
+			"title": "Adagio",
+			"key": "E"
+		},
+		{
+			"title": "Scherzo: Allegro"
+		},
+		{
+			"title": "Allegro assai"
+		}
+	],
+	"xref": {
+		"oo": "16171",
+		"wp": "Piano_Sonata_No._3_(Beethoven)"
+	}
+}

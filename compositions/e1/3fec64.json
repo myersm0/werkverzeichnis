@@ -1,0 +1,30 @@
+{
+	"id": "e13fec64",
+	"attribution": [
+		{
+			"cf": "bach-six-solo",
+			"catalog": [{"scheme": "bwv", "number": "1003"}]
+		}
+	],
+	"form": "sonata",
+	"key": "a",
+	"instrumentation": "solo violin",
+	"movements": [
+		{
+			"title": "Grave"
+		},
+		{
+			"title": "Fuga"
+		},
+		{
+			"title": "Andante"
+		},
+		{
+			"title": "Allegro"
+		}
+	],
+	"xref": {
+		"oo": "10107",
+		"wp": "BWV_1003"
+	}
+}

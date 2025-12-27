@@ -1,0 +1,39 @@
+{
+	"id": "9175dd49",
+	"attribution": [
+		{
+			"cf": "bach-six-solo",
+			"catalog": [{"scheme": "bwv", "number": "1006"}]
+		}
+	],
+	"form": "suite",
+	"instrumentation": "solo violin",
+	"key": "E",
+	"movements": [
+		{
+			"title": "Preludio"
+		},
+		{
+			"title": "Loure"
+		},
+		{
+			"title": "Gavotte en rondeau"
+		},
+		{
+			"title": "Menuet I"
+		},
+		{
+			"title": "Menuet II"
+		},
+		{
+			"title": "Bourrée"
+		},
+		{
+			"title": "Gigue"
+		}
+	],
+	"xref": {
+		"oo": "9221",
+		"wp": "BWV_1006"
+	}
+}

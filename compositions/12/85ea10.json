@@ -1,0 +1,68 @@
+{
+	"id": "1285ea10",
+	"title": {
+		"de": "Wer Dank opfert, der preiset mich"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1726},
+			"catalog": [{"scheme": "bwv", "number": "17"}]
+		}
+	],
+	"form": "sacred cantata",
+	"key": "A",
+	"instrumentation": "S, A, T, B, choir (SATB), 2 oboes, 2 violins, viola, continuo",
+	"notes": "Composed for the fourteenth Sunday after Trinity.",
+	"sections": [
+		{
+			"title": "Part I",
+			"movements": [
+				{
+					"title": "Wer Dank opfert, der preiset mich",
+					"type": "chorus",
+					"key": "A"
+				},
+				{
+					"title": "Es muss die ganze Welt ein stummer Zeuge werden",
+					"type": "recitative",
+					"soloists": "alto"
+				},
+				{
+					"title": "Herr, deine Güte reicht, so weit der Himmel ist",
+					"type": "aria",
+					"soloists": "soprano",
+					"key": "E"
+				}
+			]
+		},
+		{
+			"title": "Part II",
+			"movements": [
+				{
+					"title": "Einer aber unter ihnen, da er sahe",
+					"type": "recitative",
+					"soloists": "tenor"
+				},
+				{
+					"title": "Welch Übermaß der Güte",
+					"type": "aria",
+					"soloists": "tenor",
+					"key": "D"
+				},
+				{
+					"title": "Sieh meinen Willen an",
+					"type": "recitative",
+					"soloists": "bass"
+				},
+				{
+					"title": "Wie sich ein Vater erbarmet",
+					"type": "chorale"
+				}
+			]
+		}
+	],
+	"xref": {
+		"wp": "BWV_17"
+	}
+}

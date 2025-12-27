@@ -1,0 +1,24 @@
+{
+	"id": "f3e7a5c9",
+	"attribution": [
+		{
+			"cf": "bach-wtc-2",
+			"catalog": [{"scheme": "bwv", "number": "889"}]
+		}
+	],
+	"form": "prelude and fugue",
+	"instrumentation": "keyboard",
+	"key": "a",
+	"movements": [
+		{
+			"title": "Prelude"
+		},
+		{
+			"title": "Fugue"
+		}
+	],
+	"xref": {
+		"oo": "9318",
+		"wp": "BWV_889"
+	}
+}

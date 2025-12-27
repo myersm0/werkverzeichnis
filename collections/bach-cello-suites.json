@@ -1,0 +1,17 @@
+{
+	"id": "bach-cello-suites",
+	"title": {
+		"de": "Suiten für Violoncello solo",
+		"en": "Cello Suites"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {
+				"composed": 1723
+			}
+		}
+	],
+	"scheme": "bwv",
+	"compositions": ["1007", "1008", "1009", "1010", "1011", "1012"]
+}

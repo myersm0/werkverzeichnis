@@ -1,0 +1,29 @@
+{
+	"id": "a7a495c0",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1798, "published": 1798},
+			"catalog": [{"scheme": "op", "number": "10/2"}]
+		}
+	],
+	"key": "F",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Allegretto",
+			"key": "f"
+		},
+		{
+			"title": "Presto"
+		}
+	],
+	"xref": {
+		"oo": "16439",
+		"wp": "Piano_Sonata_No._6_(Beethoven)"
+	}
+}

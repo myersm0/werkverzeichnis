@@ -1,0 +1,42 @@
+{
+	"id": "8ac93369",
+	"attribution": [
+		{
+			"cf": "bach-six-solo",
+			"catalog": [{"scheme": "bwv", "number": "1002"}]
+		}
+	],
+	"form": "suite",
+	"key": "b",
+	"instrumentation": "solo violin",
+	"movements": [
+		{
+			"title": "Allemanda"
+		},
+		{
+			"title": "Double"
+		},
+		{
+			"title": "Corrente"
+		},
+		{
+			"title": "Double (Presto)"
+		},
+		{
+			"title": "Sarabande"
+		},
+		{
+			"title": "Double"
+		},
+		{
+			"title": "Tempo di Borea"
+		},
+		{
+			"title": "Double"
+		}
+	],
+	"xref": {
+		"oo": "9613",
+		"wp": "BWV_1002"
+	}
+}

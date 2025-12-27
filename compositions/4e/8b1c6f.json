@@ -1,0 +1,39 @@
+{
+	"id": "4e8b1c6f",
+	"attribution": [
+		{
+			"cf": "bach-cello-suites",
+			"catalog": [{"scheme": "bwv", "number": "1008"}]
+		}
+	],
+	"form": "suite",
+	"instrumentation": "cello",
+	"key": "d",
+	"movements": [
+		{
+			"title": "Prelude"
+		},
+		{
+			"title": "Allemande"
+		},
+		{
+			"title": "Courante"
+		},
+		{
+			"title": "Sarabande"
+		},
+		{
+			"title": "Minuet I"
+		},
+		{
+			"title": "Minuet II"
+		},
+		{
+			"title": "Gigue"
+		}
+	],
+	"xref": {
+		"oo": "10226",
+		"wp": "BWV_1008"
+	}
+}

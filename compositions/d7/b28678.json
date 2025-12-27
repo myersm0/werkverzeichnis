@@ -1,0 +1,32 @@
+{
+	"id": "d7b28678",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1798},
+			"catalog": [{"scheme": "op", "number": "10/3"}]
+		}
+	],
+	"key": "D",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Presto"
+		},
+		{
+			"title": "Largo e mesto",
+			"key": "d"
+		},
+		{
+			"title": "Menuetto: Allegro"
+		},
+		{
+			"title": "Rondo: Allegro"
+		}
+	],
+	"xref": {
+		"oo": "16480",
+		"wp": "Piano_Sonata_No._7_(Beethoven)"
+	}
+}

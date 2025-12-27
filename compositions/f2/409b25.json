@@ -1,0 +1,58 @@
+{
+	"id": "f2409b25",
+	"title": {
+		"de": "Meine Seel erhebt den Herren"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "10"}]
+		}
+	],
+	"form": "chorale cantata",
+	"key": "g",
+	"instrumentation": "soprano, alto, tenor, bass, choir, trumpet, 2 oboes, 2 violins, viola, continuo",
+	"notes": "Composed for the Feast of the Visitation.",
+	"movements": [
+		{
+			"title": "Meine Seel erhebt den Herren",
+			"type": "chorale fantasia"
+		},
+		{
+			"title": "Herr, der du stark und mächtig bist",
+			"type": "aria",
+			"key": "Bb",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Des Höchsten Güt und Treu",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Gewaltige stößt Gott vom Stuhl",
+			"type": "aria",
+			"key": "F",
+			"soloists": "bass"
+		},
+		{
+			"title": "Er denket der Barmherzigkeit",
+			"type": "duet, chorale",
+			"key": "d",
+			"soloists": "alto, tenor"
+		},
+		{
+			"title": "Was Gott den Vätern alter Zeiten",
+			"type": "recitative accompagnato",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Lob und Preis sei Gott dem Vater",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_10"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"id": "9b5e2c7f",
+	"attribution": [
+		{
+			"cf": "bach-six-partitas",
+			"catalog": [{"scheme": "bwv", "number": "827"}]
+		}
+	],
+	"form": "partita",
+	"instrumentation": "keyboard",
+	"key": "a",
+	"movements": [
+		{
+			"title": "Fantasia"
+		},
+		{
+			"title": "Allemande"
+		},
+		{
+			"title": "Corrente"
+		},
+		{
+			"title": "Sarabande"
+		},
+		{
+			"title": "Burlesca"
+		},
+		{
+			"title": "Scherzo"
+		},
+		{
+			"title": "Gigue"
+		}
+	],
+	"xref": {
+		"oo": "9582",
+		"wp": "BWV_827"
+	}
+}

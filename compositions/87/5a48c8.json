@@ -1,0 +1,53 @@
+{
+	"id": "875a48c8",
+	"title": {
+		"de": "Gott der Herr ist Sonn und Schild"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1725, "premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "79"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 horns, timpani, 2 transverse flutes, 2 oboes, 2 violins, viola, continuo",
+	"notes": "Composed for Reformation Day. Later reworked material for BWV 236 and BWV 234.",
+	"movements": [
+		{
+			"title": "Gott, der Herr, ist Sonn und Schild",
+			"type": "chorus",
+			"key": "G"
+		},
+		{
+			"title": "Gott ist unser Sonn und Schild",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "D"
+		},
+		{
+			"title": "Nun danket alle Gott",
+			"type": "chorale",
+			"key": "G"
+		},
+		{
+			"title": "Gottlob! Wir wissen den rechten Weg zur Seligkeit",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Gott, ach Gott, verlaß die Deinen nimmermehr",
+			"type": "aria duetto",
+			"soloists": "soprano, bass",
+			"key": "b"
+		},
+		{
+			"title": "Erhalt uns in der Wahrheit",
+			"type": "chorale",
+			"key": "G"
+		}
+	],
+	"xref": {
+		"wp": "BWV_79"
+	}
+}

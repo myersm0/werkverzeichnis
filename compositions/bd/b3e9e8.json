@@ -1,0 +1,29 @@
+{
+	"id": "bdb3e9e8",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"published": 1784},
+			"catalog": [{"scheme": "k", "number": "332"}]
+		}
+	],
+	"key": "F",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Adagio",
+			"key": "Bb"
+		},
+		{
+			"title": "Allegro assai"
+		}
+	],
+	"xref": {
+		"oo": "23239",
+		"wp": "Piano_Sonata_No._12_(Mozart)"
+	}
+}

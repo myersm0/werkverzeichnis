@@ -1,0 +1,64 @@
+{
+	"id": "haydn",
+	"name": {
+		"full": "Franz Joseph Haydn",
+		"sort": "Haydn, Joseph"
+	},
+	"born": "1732-03-31",
+	"died": "1809-05-31",
+	"nationality": "Austrian",
+	"catalogs": {
+		"hob": {
+			"name": "Hoboken-Verzeichnis",
+			"description": "Catalog compiled by Anthony van Hoboken, published 1957-1978. Uses Roman numeral categories followed by work number.",
+			"canonical_format": "Hob. {number}",
+			"pattern": "^([IVX]+):(\\d+)([a-z])?$",
+			"sort_keys": [
+				{"group": 1, "type": "roman"},
+				{"group": 2, "type": "int"},
+				{"group": 3, "type": "str"}
+			],
+			"categories": {
+				"I": "symphonies",
+				"II": "divertimenti for four or more instruments",
+				"III": "string quartets",
+				"IV": "divertimenti for three instruments",
+				"V": "string trios",
+				"VI": "duos for strings",
+				"VII": "concertos for violin and for organ",
+				"VIIa": "violin concertos",
+				"VIIb": "cello concertos",
+				"VIII": "marches and dances",
+				"IX": "dances for orchestra",
+				"X": "pieces for musical clock",
+				"XI": "divertimenti and cassations for wind instruments",
+				"XII": "minuets and German dances for orchestra",
+				"XIII": "vocal works with chorus",
+				"XIV": "keyboard works with ensemble",
+				"XV": "keyboard trios",
+				"XVI": "keyboard sonatas",
+				"XVII": "keyboard works",
+				"XVIII": "keyboard concertos",
+				"XIX": "pieces for musical clock (additional)",
+				"XX": "sacred vocal works",
+				"XXI": "oratorios",
+				"XXII": "masses",
+				"XXIII": "smaller sacred works",
+				"XXIV": "cantatas and choruses with orchestra",
+				"XXV": "songs",
+				"XXVI": "canons",
+				"XXVII": "operas",
+				"XXVIII": "marionette operas",
+				"XXIX": "incidental music",
+				"XXX": "arrangements of folk songs",
+				"XXXI": "canons",
+				"XXXII": "notturni for the King of Naples"
+			},
+			"aliases": ["h", "h."]
+		}
+	},
+	"xref": {
+		"oo": "208",
+		"wd": "Q7349"
+	}
+}

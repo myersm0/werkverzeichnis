@@ -1,0 +1,24 @@
+{
+	"id": "6d1c8f5a",
+	"attribution": [
+		{
+			"cf": "bach-wtc-2",
+			"catalog": [{"scheme": "bwv", "number": "876"}]
+		}
+	],
+	"form": "prelude and fugue",
+	"instrumentation": "keyboard",
+	"key": "Eb",
+	"movements": [
+		{
+			"title": "Prelude"
+		},
+		{
+			"title": "Fugue"
+		}
+	],
+	"xref": {
+		"oo": "9318",
+		"wp": "BWV_876"
+	}
+}

@@ -1,0 +1,29 @@
+{
+	"id": "2f25c5de",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1804},
+			"catalog": [{"scheme": "op", "number": "53"}]
+		}
+	],
+	"key": "C",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro con brio"
+		},
+		{
+			"title": "Introduzione: Adagio molto",
+			"key": "F"
+		},
+		{
+			"title": "Rondo. Allegretto moderato — Prestissimo"
+		}
+	],
+	"xref": {
+		"oo": "16184",
+		"wp": "Piano_Sonata_No._21_(Beethoven)"
+	}
+}

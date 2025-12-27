@@ -1,0 +1,46 @@
+{
+	"id": "0da864df",
+	"title": {
+		"de": "Bleib bei uns, denn es will Abend werden"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "6"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "SATB soloists, SATB choir, 2 oboes, oboe da caccia, violoncello piccolo, 2 violins, viola, continuo",
+	"notes": "",
+	"movements": [
+		{
+			"title": "Bleib bei uns, denn es will Abend werden",
+			"type": "chorus"
+		},
+		{
+			"title": "Hochgelobter Gottessohn",
+			"type": "aria"
+		},
+		{
+			"title": "Ach bleib bei uns, Herr Jesu Christ",
+			"type": "chorale"
+		},
+		{
+			"title": "Es hat die Dunkelheit an vielen Orten",
+			"type": "recitative"
+		},
+		{
+			"title": "Jesu, laß uns auf dich sehen",
+			"type": "aria"
+		},
+		{
+			"title": "Beweis dein Macht, Herr Jesu Christ",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"oo": "9590",
+		"wp": "BWV_6"
+	}
+}

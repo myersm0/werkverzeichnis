@@ -1,0 +1,39 @@
+{
+	"id": "8b4e6c1d",
+	"attribution": [
+		{
+			"cf": "bach-english-suites",
+			"catalog": [{"scheme": "bwv", "number": "807"}]
+		}
+	],
+	"form": "suite",
+	"instrumentation": "keyboard",
+	"key": "a",
+	"movements": [
+		{
+			"title": "Prelude"
+		},
+		{
+			"title": "Allemande"
+		},
+		{
+			"title": "Courante"
+		},
+		{
+			"title": "Sarabande"
+		},
+		{
+			"title": "Bourrée I"
+		},
+		{
+			"title": "Bourrée II"
+		},
+		{
+			"title": "Gigue"
+		}
+	],
+	"xref": {
+		"oo": "9976",
+		"wp": "BWV_807"
+	}
+}

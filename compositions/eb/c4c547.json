@@ -1,0 +1,29 @@
+{
+	"id": "ebc4c547",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"published": 1788},
+			"catalog": [{"scheme": "k", "number": "545"}]
+		}
+	],
+	"key": "C",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Andante",
+			"key": "G"
+		},
+		{
+			"title": "Rondo: Allegretto"
+		}
+	],
+	"xref": {
+		"oo": "23559",
+		"wp": "Piano_Sonata_No._16_(Mozart)"
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"id": "ab1226ab",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1801},
+			"catalog": [{"scheme": "op", "number": "26"}]
+		}
+	],
+	"key": "Ab",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Andante con variazioni"
+		},
+		{
+			"title": "Scherzo: Allegro molto"
+		},
+		{
+			"title": "Marcia funebre sulla morte d'un eroe",
+			"key": "ab"
+		},
+		{
+			"title": "Allegro"
+		}
+	],
+	"xref": {
+		"oo": "16224",
+		"wp": "Piano_Sonata_No._12_(Beethoven)"
+	}
+}

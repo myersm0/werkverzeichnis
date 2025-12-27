@@ -1,0 +1,29 @@
+{
+	"id": "98526a9d",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"composed": 1774},
+			"catalog": [{"scheme": "k", "number": "283"}]
+		}
+	],
+	"key": "G",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Andante",
+			"key": "C"
+		},
+		{
+			"title": "Presto"
+		}
+	],
+	"xref": {
+		"oo": "23392",
+		"wp": "Piano_Sonata_No._5_(Mozart)"
+	}
+}

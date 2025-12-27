@@ -1,0 +1,17 @@
+{
+	"id": "bach-english-suites",
+	"title": {
+		"de": "Englische Suiten",
+		"en": "English Suites"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {
+				"composed": 1720
+			}
+		}
+	],
+	"scheme": "bwv",
+	"compositions": ["806", "807", "808", "809", "810", "811"]
+}

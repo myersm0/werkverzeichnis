@@ -1,0 +1,28 @@
+{
+	"id": "mozart",
+	"name": {
+		"full": "Wolfgang Amadeus Mozart",
+		"sort": "Mozart, Wolfgang Amadeus"
+	},
+	"born": "1756-01-27",
+	"died": "1791-12-05",
+	"nationality": "Austrian",
+	"catalogs": {
+		"k": {
+			"name": "Köchel-Verzeichnis",
+			"description": "Standard Mozart catalog. Current numbers reflect K⁹ (2024). Historical number changes tracked in changelog.jsonl.",
+			"canonical_format": "K. {number}",
+			"pattern": "^(\\d+)([a-z])?$",
+			"sort_keys": [
+				{"group": 1, "type": "int"},
+				{"group": 2, "type": "str"}
+			],
+			"aliases": ["kv", "köchel"],
+			"editions": {
+				"1": {"year": 1862, "editor": "Ludwig von Köchel"},
+				"6": {"year": 1964, "editor": "Giegling, Weinmann, Sievers"},
+				"9": {"year": 2024, "editor": "Neal Zaslaw"}
+			}
+		}
+	}
+}

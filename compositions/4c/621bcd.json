@@ -1,0 +1,26 @@
+{
+	"id": "4c621bcd",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1822, "published": 1822},
+			"catalog": [{"scheme": "op", "number": "111"}]
+		}
+	],
+	"key": "c",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Maestoso – Allegro con brio ed appassionato"
+		},
+		{
+			"title": "Arietta: Adagio molto semplice e cantabile",
+			"key": "C"
+		}
+	],
+	"xref": {
+		"oo": "16421",
+		"wp": "Piano_Sonata_No._32_(Beethoven)"
+	}
+}

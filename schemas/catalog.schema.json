@@ -1,0 +1,73 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://github.com/myersm0/werkverzeichnis/schemas/catalog.schema.json",
+	"title": "Catalog",
+	"type": "object",
+	"required": ["id", "name", "canonical_format", "pattern", "sort_keys"],
+	"properties": {
+		"id": {
+			"type": "string",
+			"pattern": "^[a-z0-9-]+$",
+			"description": "Identifier used as scheme in catalog_numbers"
+		},
+		"name": {
+			"type": "string",
+			"description": "Full name of the catalog"
+		},
+		"description": {
+			"type": "string"
+		},
+		"canonical_format": {
+			"type": "string",
+			"description": "Display format with {number} placeholder"
+		},
+		"pattern": {
+			"type": "string",
+			"description": "Regex pattern for parsing numbers. Use capture groups for sortable components."
+		},
+		"sort_keys": {
+			"type": "array",
+			"description": "How to sort based on captured groups",
+			"items": {
+				"type": "object",
+				"required": ["group", "type"],
+				"properties": {
+					"group": {
+						"type": "integer",
+						"description": "Regex capture group number (1-indexed)"
+					},
+					"type": {
+						"type": "string",
+						"enum": ["int", "str", "roman"],
+						"description": "How to interpret the captured value for sorting"
+					},
+					"none_last": {
+						"type": "boolean",
+						"default": false,
+						"description": "If true, missing/null values sort last instead of first"
+					}
+				}
+			}
+		},
+		"group_by": {
+			"type": "array",
+			"items": {"type": "integer"},
+			"description": "Capture groups that define a work group (for 'show me all of op 2')"
+		},
+		"examples": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"number": {"type": "string"},
+					"display": {"type": "string"}
+				}
+			}
+		},
+		"aliases": {
+			"type": "array",
+			"items": {"type": "string"},
+			"description": "Alternative identifiers that resolve to this catalog"
+		}
+	}
+}

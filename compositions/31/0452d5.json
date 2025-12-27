@@ -1,0 +1,28 @@
+{
+	"id": "310452d5",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"composed": 1775},
+			"catalog": [{"scheme": "k", "number": "282"}]
+		}
+	],
+	"key": "Eb",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Adagio"
+		},
+		{
+			"title": "Menuetto I and II"
+		},
+		{
+			"title": "Allegro"
+		}
+	],
+	"xref": {
+		"oo": "23647",
+		"wp": "Piano_Sonata_No._4_(Mozart)"
+	}
+}

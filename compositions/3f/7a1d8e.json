@@ -1,0 +1,25 @@
+{
+	"id": "3f7a1d8e",
+	"attribution": [
+		{
+			"cf": "bach-wtc-1",
+			"catalog": [{"scheme": "bwv", "number": "853"}]
+		}
+	],
+	"form": "prelude and fugue",
+	"instrumentation": "keyboard",
+	"key": "eb",
+	"note": "The fugue was originally written in D-sharp minor, but is traditionally transposed in print to E-flat minor",
+	"movements": [
+		{
+			"title": "Prelude"
+		},
+		{
+			"title": "Fugue"
+		}
+	],
+	"xref": {
+		"oo": "9781",
+		"wp": "BWV_853"
+	}
+}

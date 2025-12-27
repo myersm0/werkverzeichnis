@@ -1,0 +1,32 @@
+{
+	"id": "d8c81fe0",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1796, "published": 1796},
+			"catalog": [{"scheme": "op", "number": "7"}]
+		}
+	],
+	"key": "Eb",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro molto e con brio"
+		},
+		{
+			"title": "Largo, con gran espressione",
+			"key": "C"
+		},
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Rondo: Poco allegretto e grazioso"
+		}
+	],
+	"xref": {
+		"oo": "16447",
+		"wp": "Piano_Sonata_No._4_(Beethoven)"
+	}
+}

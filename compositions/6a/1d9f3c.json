@@ -1,0 +1,39 @@
+{
+	"id": "6a1d9f3c",
+	"attribution": [
+		{
+			"cf": "bach-six-partitas",
+			"catalog": [{"scheme": "bwv", "number": "828"}]
+		}
+	],
+	"form": "partita",
+	"instrumentation": "keyboard",
+	"key": "D",
+	"movements": [
+		{
+			"title": "Ouvertüre"
+		},
+		{
+			"title": "Allemande"
+		},
+		{
+			"title": "Courante"
+		},
+		{
+			"title": "Aria"
+		},
+		{
+			"title": "Sarabande"
+		},
+		{
+			"title": "Menuet"
+		},
+		{
+			"title": "Gigue"
+		}
+	],
+	"xref": {
+		"oo": "10090",
+		"wp": "BWV_828"
+	}
+}

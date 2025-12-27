@@ -1,0 +1,24 @@
+{
+	"id": "9a3c7e2b",
+	"attribution": [
+		{
+			"cf": "bach-wtc-1",
+			"catalog": [{"scheme": "bwv", "number": "856"}]
+		}
+	],
+	"form": "prelude and fugue",
+	"instrumentation": "keyboard",
+	"key": "F",
+	"movements": [
+		{
+			"title": "Prelude"
+		},
+		{
+			"title": "Fugue"
+		}
+	],
+	"xref": {
+		"oo": "9781",
+		"wp": "BWV_856"
+	}
+}

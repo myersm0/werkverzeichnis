@@ -1,0 +1,50 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://github.com/myersm0/werkverzeichnis/schemas/changelog-entry.schema.json",
+	"title": "Changelog Entry",
+	"description": "Single line in changelog.jsonl. Captures historical changes to catalog numbers.",
+	"type": "object",
+	"required": ["date", "id", "field", "new"],
+	"properties": {
+		"date": {
+			"type": "string",
+			"description": "ISO date (YYYY-MM-DD) or just year (YYYY) for historical entries"
+		},
+		"id": {
+			"type": "string",
+			"pattern": "^[a-f0-9]{8}$",
+			"description": "Composition ID"
+		},
+		"field": {
+			"type": "string",
+			"description": "Field that changed, e.g. 'catalog.k'"
+		},
+		"old": {
+			"oneOf": [
+				{"type": "null"},
+				{
+					"type": "object",
+					"required": ["edition", "number"],
+					"properties": {
+						"edition": {"type": "string"},
+						"number": {"type": "string"}
+					}
+				}
+			],
+			"description": "Previous catalog entry (null if newly cataloged)"
+		},
+		"new": {
+			"type": "object",
+			"required": ["edition", "number"],
+			"properties": {
+				"edition": {"type": "string"},
+				"number": {"type": "string"}
+			},
+			"description": "New catalog entry"
+		},
+		"source": {
+			"type": "string",
+			"description": "Citation or explanation for the change"
+		}
+	}
+}

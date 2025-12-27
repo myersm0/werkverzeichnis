@@ -1,0 +1,58 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://github.com/yourname/werkverzeichnis/schemas/composer.schema.json",
+	"title": "Composer",
+	"type": "object",
+	"required": ["id", "name"],
+	"properties": {
+		"id": {
+			"type": "string",
+			"pattern": "^[a-z]+(-[a-z]+)?$",
+			"description": "Slug identifier; bare surname for most famous family member, surname-suffix for others"
+		},
+		"name": {
+			"type": "object",
+			"required": ["full", "sort"],
+			"properties": {
+				"full": {"type": "string"},
+				"sort": {"type": "string", "description": "Last, First format"}
+			}
+		},
+		"born": {
+			"type": ["string", "null"],
+			"format": "date"
+		},
+		"died": {
+			"type": ["string", "null"],
+			"format": "date"
+		},
+		"nationality": {
+			"type": ["string", "null"]
+		},
+		"catalogs": {
+			"type": "object",
+			"description": "Catalog schemes for this composer, keyed by short identifier",
+			"additionalProperties": {
+				"type": "object",
+				"required": ["name", "canonical_format"],
+				"properties": {
+					"name": {"type": "string"},
+					"canonical_format": {"type": "string"},
+					"description": {"type": "string"},
+					"primary": {"type": "boolean"}
+				}
+			}
+		},
+		"xref": {
+			"type": "object",
+			"description": "External reference IDs",
+			"properties": {
+				"wd": {"type": "string", "description": "Wikidata QID"},
+				"viaf": {"type": "string", "description": "VIAF ID"},
+				"imslp": {"type": "string", "description": "IMSLP composer page"},
+				"oo": {"type": "string", "description": "OpenOpus composer ID"},
+				"mb": {"type": "string", "description": "MusicBrainz artist MBID"}
+			}
+		}
+	}
+}

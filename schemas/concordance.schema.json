@@ -1,0 +1,22 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://github.com/myersm0/werkverzeichnis/schemas/concordance.schema.json",
+	"title": "Concordance",
+	"description": "Maps historical/superseded catalog numbers to current ones. Generated from changelog.jsonl.",
+	"type": "object",
+	"additionalProperties": {
+		"type": "object",
+		"required": ["current", "id"],
+		"properties": {
+			"current": {
+				"type": "string",
+				"description": "Current catalog number"
+			},
+			"id": {
+				"type": "string",
+				"pattern": "^[a-f0-9]{8}$",
+				"description": "Composition ID"
+			}
+		}
+	}
+}

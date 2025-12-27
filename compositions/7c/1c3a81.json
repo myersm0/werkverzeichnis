@@ -1,0 +1,39 @@
+{
+	"id": "7c1c3a81",
+	"attribution": [
+		{
+			"cf": "bach-french-suites",
+			"catalog": [{"scheme": "bwv", "number": "814"}]
+		}
+	],
+	"form": "suite",
+	"key": "b",
+	"instrumentation": "keyboard",
+	"movements": [
+		{
+			"title": "Allemande"
+		},
+		{
+			"title": "Courante"
+		},
+		{
+			"title": "Sarabande"
+		},
+		{
+			"title": "Gavotte (Angloise)"
+		},
+		{
+			"title": "Menuet"
+		},
+		{
+			"title": "Trio"
+		},
+		{
+			"title": "Gigue"
+		}
+	],
+	"xref": {
+		"oo": "9264",
+		"wp": "BWV_814"
+	}
+}

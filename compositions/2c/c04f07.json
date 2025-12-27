@@ -1,0 +1,49 @@
+{
+	"id": "2cc04f07",
+	"title": {
+		"de": "Am Abend aber desselbigen Sabbats"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "42"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "SATB soloists, SATB choir, 2 oboes, bassoon, strings, continuo",
+	"movements": [
+		{
+			"title": "Sinfonia",
+			"type": "sinfonia"
+		},
+		{
+			"title": "Am Abend aber desselbigen Sabbats",
+			"type": "recitative"
+		},
+		{
+			"title": "Wo zwei und drei versammlet sind",
+			"type": "aria"
+		},
+		{
+			"title": "Verzage nicht, o Häuflein klein",
+			"type": "duet"
+		},
+		{
+			"title": "Man kann hiervon ein schön Exempel sehen",
+			"type": "recitative"
+		},
+		{
+			"title": "Jesus ist ein Schild der Seinen",
+			"type": "aria"
+		},
+		{
+			"title": "Verleih uns Frieden gnädiglich",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"oo": "9147",
+		"wp": "BWV_42"
+	}
+}

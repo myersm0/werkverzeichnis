@@ -1,0 +1,39 @@
+{
+	"id": "e658ec88",
+	"attribution": [
+		{
+			"cf": "bach-french-suites",
+			"catalog": [{"scheme": "bwv", "number": "813"}]
+		}
+	],
+	"form": "suite",
+	"key": "c",
+	"instrumentation": "keyboard",
+	"movements": [
+		{
+			"title": "Allemande"
+		},
+		{
+			"title": "Courante"
+		},
+		{
+			"title": "Sarabande"
+		},
+		{
+			"title": "Air"
+		},
+		{
+			"title": "Menuet"
+		},
+		{
+			"title": "Menuet – Trio (in BWV 813a)"
+		},
+		{
+			"title": "Gigue"
+		}
+	],
+	"xref": {
+		"oo": "10154",
+		"wp": "BWV_813"
+	}
+}

@@ -1,0 +1,30 @@
+{
+	"id": "c78ae7f5",
+	"attribution": [
+		{
+			"cf": "bach-six-solo",
+			"catalog": [{"scheme": "bwv", "number": "1001"}]
+		}
+	],
+	"form": "sonata",
+	"key": "g",
+	"instrumentation": "solo violin",
+	"movements": [
+		{
+			"title": "Adagio"
+		},
+		{
+			"title": "Fuga (Allegro)"
+		},
+		{
+			"title": "Siciliana"
+		},
+		{
+			"title": "Presto"
+		}
+	],
+	"xref": {
+		"oo": "9764",
+		"wp": "BWV_1001"
+	}
+}

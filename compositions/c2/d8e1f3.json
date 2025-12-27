@@ -1,0 +1,33 @@
+{
+	"id": "c2d8e1f3",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"composed": 1788},
+			"catalog": [{"scheme": "k", "number": "550"}]
+		}
+	],
+	"key": "g",
+	"instrumentation": "orchestra",
+	"form": "symphony",
+	"notes": "Two versions exist; revised version adds clarinets.",
+	"movements": [
+		{
+			"title": "Molto allegro"
+		},
+		{
+			"title": "Andante",
+			"key": "Eb"
+		},
+		{
+			"title": "Menuetto: Allegretto – Trio"
+		},
+		{
+			"title": "Finale: Allegro assai"
+		}
+	],
+	"xref": {
+		"oo": "23611",
+		"wp": "Symphony_No._40_(Mozart)"
+	}
+}

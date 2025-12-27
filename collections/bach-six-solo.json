@@ -1,0 +1,18 @@
+{
+	"id": "bach-six-solo",
+	"title": {
+		"de": "Sonaten und Partiten für Violine solo",
+		"en": "Sonatas and Partitas for Solo Violin"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {
+				"composed": 1720,
+				"published": 1802
+			}
+		}
+	],
+	"scheme": "bwv",
+	"compositions": ["1001", "1002", "1003", "1004", "1005", "1006"]
+}

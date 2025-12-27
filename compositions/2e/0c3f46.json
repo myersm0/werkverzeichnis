@@ -1,0 +1,36 @@
+{
+	"id": "2e0c3f46",
+	"attribution": [
+		{
+			"cf": "bach-french-suites",
+			"catalog": [{"scheme": "bwv", "number": "812"}]
+		}
+	],
+	"form": "suite",
+	"key": "d",
+	"instrumentation": "keyboard",
+	"movements": [
+		{
+			"title": "Allemande"
+		},
+		{
+			"title": "Courante"
+		},
+		{
+			"title": "Sarabande"
+		},
+		{
+			"title": "Menuet I"
+		},
+		{
+			"title": "Menuet II"
+		},
+		{
+			"title": "Gigue"
+		}
+	],
+	"xref": {
+		"oo": "10213",
+		"wp": "BWV_812"
+	}
+}

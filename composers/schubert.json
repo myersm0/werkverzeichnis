@@ -1,0 +1,31 @@
+{
+	"id": "schubert",
+	"name": {
+		"full": "Franz Schubert",
+		"sort": "Schubert, Franz"
+	},
+	"born": "1797-01-31",
+	"died": "1828-11-19",
+	"nationality": "Austrian",
+	"catalogs": {
+		"d": {
+			"name": "Deutsch-Verzeichnis",
+			"description": "Thematic catalog by Otto Erich Deutsch, first published 1951.",
+			"canonical_format": "D. {number}",
+			"pattern": "^(\\d+)([a-z])?$",
+			"sort_keys": [
+				{"group": 1, "type": "int"},
+				{"group": 2, "type": "str"}
+			],
+			"primary": true
+		},
+		"op": {
+			"name": "Opus",
+			"canonical_format": "Op. {number}"
+		}
+	},
+	"xref": {
+		"oo": "183",
+		"wd": "Q7312"
+	}
+}

@@ -1,0 +1,38 @@
+{
+	"id": "bach",
+	"name": {
+		"full": "Johann Sebastian Bach",
+		"sort": "Bach, Johann Sebastian"
+	},
+	"born": "1685-03-31",
+	"died": "1750-07-28",
+	"nationality": "German",
+	"catalogs": {
+		"bwv": {
+			"name": "Bach-Werke-Verzeichnis",
+			"description": "Thematic catalog by Wolfgang Schmieder. First edition 1950, second 1990, third 2022. Numbers 1-1126 in main catalog; Anh. (Anhang) for doubtful/spurious; App. A-D for lost works and special cases.",
+			"canonical_format": "BWV {number}",
+			"pattern": "^(Anh\\.\\s*|App\\.\\s*([A-D])\\s*)?(\\d+)(?:\\.(\\d+))?([a-z]|R)?$",
+			"sort_keys": [
+				{"group": 1, "type": "str"},
+				{"group": 2, "type": "str"},
+				{"group": 3, "type": "int"},
+				{"group": 4, "type": "int"},
+				{"group": 5, "type": "str"}
+			],
+			"examples": [
+				{"number": "812", "display": "BWV 812"},
+				{"number": "1009a", "display": "BWV 1009a"},
+				{"number": "1080.1", "display": "BWV 1080.1"},
+				{"number": "1060R", "display": "BWV 1060R"},
+				{"number": "Anh. 116", "display": "BWV Anh. 116"},
+				{"number": "App. A 4", "display": "BWV App. A 4"}
+			],
+			"primary": true
+		}
+	},
+	"xref": {
+		"oo": "87",
+		"wd": "Q1339"
+	}
+}

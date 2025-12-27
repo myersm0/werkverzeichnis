@@ -1,0 +1,29 @@
+{
+	"id": "77c6816c",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1798, "published": 1799},
+			"catalog": [{"scheme": "op", "number": "13"}]
+		}
+	],
+	"key": "c",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Grave – Allegro di molto e con brio"
+		},
+		{
+			"title": "Adagio cantabile",
+			"key": "Ab"
+		},
+		{
+			"title": "Rondo: Allegro"
+		}
+	],
+	"xref": {
+		"oo": "16222",
+		"wp": "Piano_Sonata_No._8_(Beethoven)"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"id": "8e3b1d6a",
+	"attribution": [
+		{
+			"cf": "bach-six-partitas",
+			"catalog": [{"scheme": "bwv", "number": "830"}]
+		}
+	],
+	"form": "partita",
+	"instrumentation": "keyboard",
+	"key": "e",
+	"movements": [
+		{
+			"title": "Toccata"
+		},
+		{
+			"title": "Allemanda"
+		},
+		{
+			"title": "Corrente"
+		},
+		{
+			"title": "Air"
+		},
+		{
+			"title": "Sarabande"
+		},
+		{
+			"title": "Tempo di Gavotta"
+		},
+		{
+			"title": "Gigue"
+		}
+	],
+	"xref": {
+		"oo": "9836",
+		"wp": "BWV_830"
+	}
+}

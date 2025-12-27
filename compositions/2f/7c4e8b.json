@@ -1,0 +1,39 @@
+{
+	"id": "2f7c4e8b",
+	"attribution": [
+		{
+			"cf": "bach-six-partitas",
+			"catalog": [{"scheme": "bwv", "number": "829"}]
+		}
+	],
+	"form": "partita",
+	"instrumentation": "keyboard",
+	"key": "G",
+	"movements": [
+		{
+			"title": "Praeambulum"
+		},
+		{
+			"title": "Allemande"
+		},
+		{
+			"title": "Corrente"
+		},
+		{
+			"title": "Sarabande"
+		},
+		{
+			"title": "Tempo di Minuetta"
+		},
+		{
+			"title": "Passepied"
+		},
+		{
+			"title": "Gigue"
+		}
+	],
+	"xref": {
+		"oo": "9090",
+		"wp": "BWV_829"
+	}
+}

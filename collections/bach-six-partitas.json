@@ -1,0 +1,18 @@
+{
+	"id": "bach-six-partitas",
+	"title": {
+		"de": "Partiten",
+		"en": "Partitas"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {
+				"published": 1731
+			}
+		}
+	],
+	"scheme": "bwv",
+	"description": "Clavier-Übung I",
+	"compositions": ["825", "826", "827", "828", "829", "830"]
+}

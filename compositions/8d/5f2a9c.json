@@ -1,0 +1,39 @@
+{
+	"id": "8d5f2a9c",
+	"attribution": [
+		{
+			"cf": "bach-cello-suites",
+			"catalog": [{"scheme": "bwv", "number": "1012"}]
+		}
+	],
+	"form": "suite",
+	"instrumentation": "cello",
+	"key": "D",
+	"movements": [
+		{
+			"title": "Prelude"
+		},
+		{
+			"title": "Allemande"
+		},
+		{
+			"title": "Courante"
+		},
+		{
+			"title": "Sarabande"
+		},
+		{
+			"title": "Gavotte I"
+		},
+		{
+			"title": "Gavotte II"
+		},
+		{
+			"title": "Gigue"
+		}
+	],
+	"xref": {
+		"oo": "9964",
+		"wp": "BWV_1012"
+	}
+}

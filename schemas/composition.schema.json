@@ -1,0 +1,178 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://github.com/myersm0/werkverzeichnis/schemas/composition.schema.json",
+	"title": "Composition",
+	"type": "object",
+	"required": ["id", "form", "attribution"],
+	"properties": {
+		"id": {
+			"type": "string",
+			"pattern": "^[a-f0-9]{8}$",
+			"description": "8-character random hex ID"
+		},
+		"title": {
+			"type": "object",
+			"description": "Omit for generic forms (sonata, symphony, etc.) where title = form. For titled works: original language, add English if commonly translated.",
+			"additionalProperties": {"type": "string"},
+			"minProperties": 1
+		},
+		"form": {
+			"type": "string",
+			"description": "Musical form (sonata, symphony, cantata, suite, opera, etc.)"
+		},
+		"key": {
+			"type": "string",
+			"description": "Compact key format. Uppercase = major (C, F#, Eb), lowercase = minor (c, f#, eb). Modal: d.dor, e.phr. Omit for atonal.",
+			"pattern": "^([A-Ga-g][#b]?(\\.dor|\\.phr|\\.lyd|\\.mix|\\.loc)?)$"
+		},
+		"instrumentation": {
+			"type": "string",
+			"description": "Performing forces (piano, orchestra, string quartet, etc.)"
+		},
+		"attribution": {
+			"type": "array",
+			"description": "Reverse chronological. First = current. Merge semantics: first non-null wins per field, catalogs concatenate.",
+			"items": {"$ref": "#/$defs/attributionEntry"},
+			"minItems": 1
+		},
+		"movements": {
+			"$ref": "#/$defs/movementList"
+		},
+		"sections": {
+			"$ref": "#/$defs/sectionList"
+		},
+		"xref": {
+			"type": "object",
+			"description": "External reference IDs. URLs constructed at runtime.",
+			"properties": {
+				"oo": {"type": "string", "description": "OpenOpus work ID"},
+				"mb": {"type": "string", "description": "MusicBrainz work MBID"},
+				"imslp": {"type": "string", "description": "IMSLP page name"},
+				"wp": {"type": "string", "description": "Wikipedia article name"},
+				"wd": {"type": "string", "description": "Wikidata QID"},
+				"viaf": {"type": "string", "description": "VIAF ID"}
+			}
+		}
+	},
+	"$defs": {
+		"attributionEntry": {
+			"type": "object",
+			"description": "Attribution snapshot. Merge with later entries to derive state.",
+			"properties": {
+				"composer": {
+					"type": "string",
+					"description": "Composer slug, references composers/{slug}.json"
+				},
+				"cf": {
+					"type": "string",
+					"description": "Collection ID to inherit attribution from"
+				},
+				"dates": {
+					"type": "object",
+					"description": "All dates are integers (years).",
+					"properties": {
+						"composed": {
+							"type": "integer",
+							"description": "Year of composition (completion if multi-year)"
+						},
+						"published": {
+							"type": "integer",
+							"description": "Year of first publication"
+						},
+						"premiered": {
+							"type": "integer",
+							"description": "Year of first performance"
+						},
+						"revised": {
+							"type": "integer",
+							"description": "Year of significant revision"
+						}
+					}
+				},
+				"certainty": {
+					"type": "string",
+					"enum": ["certain", "probable", "doubtful", "spurious"],
+					"description": "Attribution certainty level"
+				},
+				"catalog": {
+					"type": "array",
+					"description": "Catalog entries. Reverse chronological per scheme. First per scheme = current.",
+					"items": {"$ref": "#/$defs/catalogEntry"}
+				},
+				"since": {
+					"type": "string",
+					"pattern": "^\\d{4}(-\\d{2})?(-\\d{2})?$",
+					"description": "When this attribution was established. Variable precision: YYYY, YYYY-MM, or YYYY-MM-DD."
+				}
+			}
+		},
+		"catalogEntry": {
+			"type": "object",
+			"required": ["scheme", "number"],
+			"properties": {
+				"scheme": {
+					"type": "string",
+					"description": "Catalog scheme ID (k, bwv, hob, d, op, etc.)"
+				},
+				"number": {
+					"type": "string",
+					"description": "Catalog number"
+				},
+				"edition": {
+					"type": "string",
+					"description": "For versioned catalogs (k1, k6, k9). Omit for non-versioned."
+				},
+				"since": {
+					"type": "string",
+					"pattern": "^\\d{4}(-\\d{2})?(-\\d{2})?$",
+					"description": "When this catalog assignment was made."
+				}
+			}
+		},
+		"movementList": {
+			"type": "array",
+			"description": "List of movements. Array position = movement number.",
+			"items": {"$ref": "#/$defs/movementItem"}
+		},
+		"movementItem": {
+			"type": "object",
+			"description": "A movement or compound movement with sections.",
+			"properties": {
+				"title": {"type": "string"},
+				"key": {
+					"type": "string",
+					"description": "Omit if same as parent work"
+				},
+				"type": {
+					"type": "string",
+					"description": "Musical type: aria, recitative, chorus, chorale, arioso, etc."
+				},
+				"soloists": {
+					"type": "string",
+					"description": "Voice parts and/or dramatic roles"
+				},
+				"sections": {
+					"type": "array",
+					"description": "Subsections of compound movement",
+					"items": {"$ref": "#/$defs/sectionItem"}
+				}
+			}
+		},
+		"sectionList": {
+			"type": "array",
+			"description": "Structural sections (parts, acts, books).",
+			"items": {"$ref": "#/$defs/sectionItem"}
+		},
+		"sectionItem": {
+			"type": "object",
+			"properties": {
+				"title": {"type": "string"},
+				"key": {"type": "string"},
+				"type": {"type": "string"},
+				"soloists": {"type": "string"},
+				"movements": {"$ref": "#/$defs/movementList"},
+				"sections": {"$ref": "#/$defs/sectionList"}
+			}
+		}
+	}
+}

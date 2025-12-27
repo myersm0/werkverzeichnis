@@ -1,0 +1,25 @@
+{
+	"id": "fa0e129a",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1804},
+			"catalog": [{"scheme": "op", "number": "54"}]
+		}
+	],
+	"key": "F",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "In tempo d'un Menuetto"
+		},
+		{
+			"title": "Allegretto – Più allegro"
+		}
+	],
+	"xref": {
+		"oo": "16141",
+		"wp": "Piano_Sonata_No._22_(Beethoven)"
+	}
+}

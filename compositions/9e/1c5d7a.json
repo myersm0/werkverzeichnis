@@ -1,0 +1,39 @@
+{
+	"id": "9e1c5d7a",
+	"attribution": [
+		{
+			"cf": "bach-english-suites",
+			"catalog": [{"scheme": "bwv", "number": "810"}]
+		}
+	],
+	"form": "suite",
+	"instrumentation": "keyboard",
+	"key": "e",
+	"movements": [
+		{
+			"title": "Prelude"
+		},
+		{
+			"title": "Allemande"
+		},
+		{
+			"title": "Courante"
+		},
+		{
+			"title": "Sarabande"
+		},
+		{
+			"title": "Passepied I"
+		},
+		{
+			"title": "Passepied II"
+		},
+		{
+			"title": "Gigue"
+		}
+	],
+	"xref": {
+		"oo": "9739",
+		"wp": "BWV_810"
+	}
+}

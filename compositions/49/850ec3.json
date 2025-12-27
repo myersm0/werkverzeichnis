@@ -1,0 +1,30 @@
+{
+	"id": "49850ec3",
+	"attribution": [
+		{
+			"cf": "bach-six-solo",
+			"catalog": [{"scheme": "bwv", "number": "1005"}]
+		}
+	],
+	"form": "sonata",
+	"key": "C",
+	"instrumentation": "solo violin",
+	"movements": [
+		{
+			"title": "Adagio"
+		},
+		{
+			"title": "Fuga"
+		},
+		{
+			"title": "Largo"
+		},
+		{
+			"title": "Allegro assai"
+		}
+	],
+	"xref": {
+		"oo": "10229",
+		"wp": "BWV_1005"
+	}
+}

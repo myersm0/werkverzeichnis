@@ -1,0 +1,28 @@
+{
+	"id": "f8a1b2c3",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"composed": 1783, "published": 1784},
+			"catalog": [{"scheme": "k", "number": "331"}]
+		}
+	],
+	"key": "A",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Tema con variazioni: Andante grazioso"
+		},
+		{
+			"title": "Menuetto"
+		},
+		{
+			"title": "Alla Turca: Allegretto"
+		}
+	],
+	"xref": {
+		"oo": "23512",
+		"wp": "Piano_Sonata_No._11_(Mozart)"
+	}
+}

@@ -1,0 +1,46 @@
+{
+	"id": "20463eb0",
+	"title": {
+		"de": "Schauet doch und sehet, ob irgendein Schmerz sei"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "46"}]
+		}
+	],
+	"form": "sacred cantata",
+	"key": "C",
+	"instrumentation": "SATB soloists, SATB choir, 2 oboes, taille (oboe da caccia), 2 violins, viola, continuo",
+	"notes": "",
+	"movements": [
+		{
+			"title": "Schauet doch und sehet, ob irgendein Schmerz sei",
+			"type": "chorus"
+		},
+		{
+			"title": "So beklagt sich die gekränkte Liebe",
+			"type": "recitative"
+		},
+		{
+			"title": "Dein Exempel kann mich schrecken",
+			"type": "aria"
+		},
+		{
+			"title": "Doch Jesus will auch bei der Strafe",
+			"type": "recitative"
+		},
+		{
+			"title": "Jesus macht es wieder gut",
+			"type": "aria"
+		},
+		{
+			"title": "Ertöt uns durch dein Güte",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_46"
+	}
+}

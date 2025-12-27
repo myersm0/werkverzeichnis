@@ -1,0 +1,32 @@
+{
+	"id": "bb3fdf23",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1800, "published": 1802},
+			"catalog": [{"scheme": "op", "number": "22"}]
+		}
+	],
+	"key": "Bb",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro con brio"
+		},
+		{
+			"title": "Adagio con molto espressione",
+			"key": "Eb"
+		},
+		{
+			"title": "Menuetto"
+		},
+		{
+			"title": "Rondo: Allegretto"
+		}
+	],
+	"xref": {
+		"oo": "16278",
+		"wp": "Piano_Sonata_No._11_(Beethoven)"
+	}
+}

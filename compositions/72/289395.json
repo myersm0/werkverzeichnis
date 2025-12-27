@@ -1,0 +1,56 @@
+{
+	"id": "72289395",
+	"title": {
+		"de": "Wo soll ich fliehen hin"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "5"}]
+		}
+	],
+	"form": "chorale cantata",
+	"key": "g",
+	"instrumentation": "soprano, alto, tenor, bass, choir, tromba da tirarsi, 2 oboes, 2 violins, viola, continuo",
+	"movements": [
+		{
+			"title": "Wo soll ich fliehen hin",
+			"type": "chorus"
+		},
+		{
+			"title": "Der Sünden Wust hat mich nicht nur befleckt",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Ergieße dich reichlich, du göttliche Quelle",
+			"type": "aria",
+			"key": "Eb",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Mein treuer Heiland tröstet mich",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Verstumme, Höllenheer",
+			"type": "aria",
+			"key": "Bb",
+			"soloists": "bass"
+		},
+		{
+			"title": "Ich bin ja nur das kleinste Teil der Welt",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Führ auch mein Herz und Sinn",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_5"
+	}
+}

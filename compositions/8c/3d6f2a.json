@@ -1,0 +1,570 @@
+{
+	"id": "8c3d6f2a",
+	"title": {
+		"de": "Matthäus-Passion",
+		"en": "St. Matthew Passion"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1727, "premiered": 1727},
+			"catalog": [{"scheme": "bwv", "number": "244"}]
+		}
+	],
+	"form": "sacred oratorio",
+	"instrumentation": "soprano, alto, tenor, bass, choir I (SATB), choir II (SATB), 2 flutes dolce, 2 transverse flutes, oboe, 2 oboes d'amore, 2 oboes da caccia, 2 violins, viola, viola da gamba, continuo",
+	"notes": "First performed April 11, 1727 in Leipzig. Revised in late 1740s. Later performances: March 30, 1736; March 23, 1742; possibly April 12, 1743 (with revisions to recitatives).",
+	"sections": [
+		{
+			"title": "Part I",
+			"movements": [
+				{
+					"title": "Kommt, ihr Töchter, helft mir klagen",
+					"type": "chorus"
+				},
+				{
+					"title": "Da Jesus diese Rede vollendet hatte",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist), bass (Jesus)"
+				},
+				{
+					"title": "Herzliebster Jesu, was hast du verbrochen",
+					"type": "chorale"
+				},
+				{
+					"sections": [
+						{
+							"title": "Da versammleten sich die Hohenpriester und Schriftgelehrten",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist)"
+						},
+						{
+							"title": "Ja nicht auf das Fest",
+							"type": "chorus"
+						},
+						{
+							"title": "Da nun Jesus war zu Bethanien",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist)"
+						},
+						{
+							"title": "Wozu dienet dieser Unrat?",
+							"type": "chorus"
+						},
+						{
+							"title": "Da das Jesus merkete, sprach er zu ihnen",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Jesus)"
+						}
+					]
+				},
+				{
+					"title": "Du lieber Heiland du",
+					"type": "recitative",
+					"soloists": "alto"
+				},
+				{
+					"title": "Buß und Reu",
+					"type": "aria",
+					"soloists": "alto"
+				},
+				{
+					"title": "Da ging hin der Zwölfen einer mit Namen Judas Ischarioth",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist), bass (Judas)"
+				},
+				{
+					"title": "Blute nur, du liebes Herz!",
+					"type": "aria",
+					"soloists": "soprano"
+				},
+				{
+					"sections": [
+						{
+							"title": "Aber am ersten Tage der süßen Brot",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist)"
+						},
+						{
+							"title": "Wo willst du, daß wir dir bereiten das Osterlamm zu essen?",
+							"type": "chorus"
+						},
+						{
+							"title": "Er sprach: Gehet hin in die Stadt",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Jesus)"
+						},
+						{
+							"title": "Und sie wurden sehr betrübt",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist)"
+						},
+						{
+							"title": "Herr, bin ich's?",
+							"type": "chorus"
+						}
+					]
+				},
+				{
+					"title": "Ich bin's, ich sollte büßen",
+					"type": "chorale"
+				},
+				{
+					"title": "Er antwortete und sprach",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist), bass (Jesus), bass (Judas)"
+				},
+				{
+					"title": "Wiewohl mein Herz in Tränen schwimmt",
+					"type": "recitative",
+					"soloists": "soprano"
+				},
+				{
+					"title": "Ich will dir mein Herze schenken",
+					"type": "aria",
+					"soloists": "soprano"
+				},
+				{
+					"title": "Und da sie den Lobgesang gesprochen hatten",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist), bass (Jesus)"
+				},
+				{
+					"title": "Erkenne mich, mein Hüter",
+					"type": "chorale"
+				},
+				{
+					"title": "Petrus aber antwortete und sprach zu ihm",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist), bass (Peter), bass (Jesus)"
+				},
+				{
+					"title": "Ich will hier bei dir stehen",
+					"type": "chorale"
+				},
+				{
+					"title": "Da kam Jesus mit ihnen zu einem Hofe, der hieß Gethsemane",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist), bass (Jesus)"
+				},
+				{
+					"title": "O Schmerz! Hier zittert das gequälte Herz",
+					"type": "recitative",
+					"soloists": "tenor, choir II"
+				},
+				{
+					"title": "Ich will bei meinem Jesu wachen",
+					"type": "aria",
+					"soloists": "tenor, choir II"
+				},
+				{
+					"title": "Und ging hin ein wenig, fiel nieder auf sein Angesicht und betete",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist), bass (Jesus)"
+				},
+				{
+					"title": "Der Heiland fällt vor seinem Vater nieder",
+					"type": "recitative",
+					"soloists": "bass"
+				},
+				{
+					"title": "Gerne will ich mich bequemen, Kreuz und Becher anzunehmen",
+					"type": "aria",
+					"soloists": "bass"
+				},
+				{
+					"title": "Und er kam zu seinen Jüngern und fand sie schlafend",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist), bass (Jesus)"
+				},
+				{
+					"title": "Was mein Gott will, das g'scheh allzeit",
+					"type": "chorale"
+				},
+				{
+					"title": "Und er kam und fand sie aber schlafend",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist), bass (Jesus), bass (Judas)"
+				},
+				{
+					"sections": [
+						{
+							"title": "So ist mein Jesus nun gefangen",
+							"type": "aria",
+							"soloists": "soprano, alto, choir II"
+						},
+						{
+							"title": "Sind Blitze, sind Donner in Wolken verschwunden?",
+							"type": "chorus"
+						}
+					]
+				},
+				{
+					"title": "Und siehe, einer aus denen, die mit Jesu waren, reckete die Hand aus",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist), bass (Jesus)"
+				},
+				{
+					"title": "O Mensch, bewein dein Sünde groß",
+					"type": "chorale"
+				}
+			]
+		},
+		{
+			"title": "Part II",
+			"movements": [
+				{
+					"title": "Ach, nun ist mein Jesus hin!",
+					"type": "aria",
+					"soloists": "alto, choir II"
+				},
+				{
+					"title": "Die aber Jesum gegriffen hatten, führeten ihn zu dem Hohenpriester Kaiphas",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist)"
+				},
+				{
+					"title": "Mir hat die Welt trüglich gericht't",
+					"type": "chorale"
+				},
+				{
+					"title": "Und wiewohl viel falsche Zeugen herzutraten, funden sie doch keins.",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist), tenor (witnesses), bass (high priest)"
+				},
+				{
+					"title": "Mein Jesus schweigt zu falschen Lügen stille",
+					"type": "recitative",
+					"soloists": "tenor"
+				},
+				{
+					"title": "Geduld, Geduld! Wenn mich falsche Zungen stechen",
+					"type": "aria",
+					"soloists": "tenor"
+				},
+				{
+					"sections": [
+						{
+							"title": "Und der Hohenpriester antwortete",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (high priest), bass (Jesus)"
+						},
+						{
+							"title": "Er ist des Todes schuldig!",
+							"type": "chorus"
+						},
+						{
+							"title": "Da speieten sie in sein Angesicht und schlugen ihn mit Fäusten",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist)"
+						},
+						{
+							"title": "Weissage uns, Christe, wer ists, der dich schlug?",
+							"type": "chorus"
+						}
+					]
+				},
+				{
+					"title": "Wer hat dich so geschlagen",
+					"type": "chorale"
+				},
+				{
+					"sections": [
+						{
+							"title": "Petrus aber saß draußen im Palast; und es trat zu ihm eine Magd",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), soprano (maid), bass (Peter), soprano (maid II)"
+						},
+						{
+							"title": "Wahrlich, du bist auch einer von denen; denn deine Sprache verrät dich.",
+							"type": "chorus"
+						},
+						{
+							"title": "Da hub er an sich zu verfluchen und zu schwören",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Peter)"
+						}
+					]
+				},
+				{
+					"title": "Erbarme dich, mein Gott, um meiner Zähren Willen!",
+					"type": "aria",
+					"soloists": "alto"
+				},
+				{
+					"title": "Bin ich gleich von dir gewichen",
+					"type": "chorale"
+				},
+				{
+					"sections": [
+						{
+							"title": "Des Morgens aber hielten alle Hohepriester und die Ältesten des Volks einen Rat",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Judas)"
+						},
+						{
+							"title": "Was gehet uns das an? Da siehe du zu!",
+							"type": "chorus"
+						},
+						{
+							"title": "Und er warf die Silberlinge in den Tempel",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (high priests)"
+						}
+					]
+				},
+				{
+					"title": "Gebt mir meinen Jesum wieder!",
+					"type": "aria",
+					"soloists": "bass"
+				},
+				{
+					"title": "Sie hielten aber einen Rat und kauften einen Töpfersacker",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist), bass (Pilate), bass (Jesus)"
+				},
+				{
+					"title": "Befiehl du deine Wege",
+					"type": "chorale"
+				},
+				{
+					"sections": [
+						{
+							"title": "Auf das Fest aber hatte der Landpfleger Gewohnheit, dem Volk einen Gefangenen loszugeben",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Pilate), soprano (Pilate's wife)"
+						},
+						{
+							"title": "Barrabam!",
+							"type": "chorus"
+						},
+						{
+							"title": "Laß ihn kreuzigen!",
+							"type": "chorus"
+						}
+					]
+				},
+				{
+					"title": "Wie wunderbarlich ist doch diese Strafe!",
+					"type": "chorale"
+				},
+				{
+					"title": "Der Landpfleger sagte",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist), bass (Pilate)"
+				},
+				{
+					"title": "Er hat uns allen wohlgetan",
+					"type": "recitative",
+					"soloists": "soprano"
+				},
+				{
+					"title": "Aus Liebe will mein Heiland sterben",
+					"type": "aria",
+					"soloists": "soprano"
+				},
+				{
+					"sections": [
+						{
+							"title": "Sie schrieen aber noch mehr und sprachen",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist)"
+						},
+						{
+							"title": "Laß ihn kreuzigen!",
+							"type": "chorus"
+						},
+						{
+							"title": "Da aber Pilatus sahe, daß er nichts schaffete",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Pilate)"
+						},
+						{
+							"title": "Sein Blut komme über uns und unsre Kinder.",
+							"type": "chorus"
+						},
+						{
+							"title": "Da gab er ihnen Barrabam los",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist)"
+						}
+					]
+				},
+				{
+					"title": "Erbarm es, Gott! Hier steht der Heiland angebunden.",
+					"type": "recitative",
+					"soloists": "alto"
+				},
+				{
+					"title": "Können Tränen meiner Wangen",
+					"type": "aria",
+					"soloists": "alto"
+				},
+				{
+					"sections": [
+						{
+							"title": "Da nahmen die Kriegsknechte des Landpflegers Jesum zu sich",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist)"
+						},
+						{
+							"title": "Gegrüßet seist du, Jüdenkönig!",
+							"type": "chorus"
+						},
+						{
+							"title": "Und speieten ihn an und nahmen das Rohr und schlugen damit sein Haupt.",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist)"
+						}
+					]
+				},
+				{
+					"title": "O Haupt, voll Blut und Wunden",
+					"type": "chorale"
+				},
+				{
+					"title": "Und da sie ihn verspottet hatten, zogen sie ihm den Mantel aus",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist)"
+				},
+				{
+					"title": "Ja, freilich will in uns das Fleisch und Blut zum Kreuz gezwungen sein",
+					"type": "recitative",
+					"soloists": "bass"
+				},
+				{
+					"title": "Komm, süßes Kreuz, so will ich sagen",
+					"type": "aria",
+					"soloists": "bass"
+				},
+				{
+					"sections": [
+						{
+							"title": "Und da sie an die Stätte kamen mit Namen Golgatha",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist)"
+						},
+						{
+							"title": "Der du den Tempel Gottes zerbrichst",
+							"type": "chorus"
+						},
+						{
+							"title": "Desgleichen auch die Hohenpriester spotteten sein",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist)"
+						},
+						{
+							"title": "Andern hat er geholfen und kann ihm selber nicht helfen.",
+							"type": "chorus"
+						},
+						{
+							"title": "Desgleichen schmäheten ihn auch die Mörder, die mit ihm gekreuziget waren",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist)"
+						}
+					]
+				},
+				{
+					"title": "Ach Golgatha, unselges Golgatha!",
+					"type": "recitative",
+					"soloists": "alto"
+				},
+				{
+					"title": "Sehet, Jesus hat die Hand uns zu fassen ausgespannt, kommt!",
+					"type": "aria",
+					"soloists": "alto, choir II"
+				},
+				{
+					"sections": [
+						{
+							"title": "Und von der sechsten Stunde an war eine Finsternis über das ganze Land",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Jesus)"
+						},
+						{
+							"title": "Der rufet dem Elias!",
+							"type": "chorus"
+						},
+						{
+							"title": "Und bald lief einer unter ihnen, nahm einen Schwamm",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist)"
+						},
+						{
+							"title": "Halt! Laß sehen, ob Elias komme und ihm helfe.",
+							"type": "chorus"
+						},
+						{
+							"title": "Aber Jesus schriee abermal laut und verschied.",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist)"
+						}
+					]
+				},
+				{
+					"title": "Wenn ich einmal soll scheiden",
+					"type": "chorale"
+				},
+				{
+					"sections": [
+						{
+							"title": "Und siehe da, der Vorhang im Tempel zerriß in zwei Stück",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist)"
+						},
+						{
+							"title": "Wahrlich, dieser ist Gottes Sohn gewesen.",
+							"type": "chorus"
+						},
+						{
+							"title": "Und es waren viel Weiber da, die von ferne zusahen",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist)"
+						}
+					]
+				},
+				{
+					"title": "Am Abend, da es kühle war",
+					"type": "recitative",
+					"soloists": "bass"
+				},
+				{
+					"title": "Mache dich, mein Herze, rein",
+					"type": "aria",
+					"soloists": "bass"
+				},
+				{
+					"sections": [
+						{
+							"title": "Und Joseph nahm den Leib und wickelte ihn in ein rein Leinwand",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist)"
+						},
+						{
+							"title": "Herr, wir haben gedacht, daß dieser Verführer sprach",
+							"type": "chorus"
+						},
+						{
+							"title": "Pilatus sprach zu ihnen",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Pilate)"
+						}
+					]
+				},
+				{
+					"title": "Nun ist der Herr zur Ruh gebracht.",
+					"type": "recitative",
+					"soloists": "bass, tenor, alto, soprano, choir II"
+				},
+				{
+					"title": "Wir setzen uns mit Tränen nieder",
+					"type": "chorus"
+				}
+			]
+		}
+	],
+	"xref": {
+		"oo": "9848",
+		"wp": "BWV_244"
+	}
+}

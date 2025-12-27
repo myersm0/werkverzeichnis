@@ -1,0 +1,29 @@
+{
+	"id": "d02810fa",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1820, "published": 1821},
+			"catalog": [{"scheme": "op", "number": "109"}]
+		}
+	],
+	"key": "E",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Vivace ma non troppo – Adagio espressivo"
+		},
+		{
+			"title": "Prestissimo",
+			"key": "e"
+		},
+		{
+			"title": "Gesangvoll, mit innigster Empfindung (Andante molto cantabile ed espressivo)"
+		}
+	],
+	"xref": {
+		"oo": "16293",
+		"wp": "Piano_Sonata_No._30_(Beethoven)"
+	}
+}

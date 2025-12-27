@@ -1,0 +1,46 @@
+{
+	"id": "2c3b36ef",
+	"title": {
+		"de": "Gottlob! nun geht das Jahr zu Ende"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "28"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "SATB soloists, SATB choir, 2 oboes, taille (oboe da caccia), strings, and continuo",
+	"movements": [
+		{
+			"title": "Gottlob! nun geht das Jahr zu Ende",
+			"type": "aria"
+		},
+		{
+			"title": "Nun lob, mein Seel, den Herren",
+			"type": "chorale"
+		},
+		{
+			"title": "So spricht der Herr",
+			"type": "recitative"
+		},
+		{
+			"title": "Gott ist ein Quell",
+			"type": "recitative"
+		},
+		{
+			"title": "Gott hat uns im heurigen Jahre gesegnet",
+			"type": "duet"
+		},
+		{
+			"title": "Alleluja! Gelobt sei Gott",
+			"type": "chorale"
+		}
+	],
+	"notes": "Composed for the Sunday after Christmas",
+	"xref": {
+		"oo": "9200",
+		"wp": "BWV_28"
+	}
+}

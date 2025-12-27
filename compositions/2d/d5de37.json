@@ -1,0 +1,49 @@
+{
+	"id": "2dd5de37",
+	"title": {
+		"de": "Sie werden euch in den Bann tun"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "44"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "SATB soloists, SATB choir, 2 oboes, 2 violins, viola, and basso continuo",
+	"movements": [
+		{
+			"title": "Sie werden euch in den Bann tun",
+			"type": "duet"
+		},
+		{
+			"title": "Es kömmt aber die Zeit",
+			"type": "chorus"
+		},
+		{
+			"title": "Christen müssen auf der Erden",
+			"type": "aria"
+		},
+		{
+			"title": "Ach Gott, wie manches Herzeleid",
+			"type": "chorale"
+		},
+		{
+			"title": "Es sucht der Antichrist",
+			"type": "recitative"
+		},
+		{
+			"title": "Es ist und bleibt der Christen Trost",
+			"type": "aria"
+		},
+		{
+			"title": "So sei nun, Seele, deine",
+			"type": "chorale"
+		}
+	],
+	"notes": "Composed for the Sunday after Ascension.",
+	"xref": {
+		"wp": "BWV_44"
+	}
+}

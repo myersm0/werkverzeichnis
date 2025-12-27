@@ -1,0 +1,33 @@
+{
+	"id": "cb6335d6",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1816, "published": 1817},
+			"catalog": [{"scheme": "op", "number": "101"}]
+		}
+	],
+	"key": "A",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Etwas lebhaft und mit der innigsten Empfindung (Allegretto ma non troppo)"
+		},
+		{
+			"title": "Lebhaft, marschmäßig (Vivace alla marcia)",
+			"key": "F"
+		},
+		{
+			"title": "Langsam und sehnsuchtsvoll (Adagio ma non troppo, con affetto)",
+			"key": "a"
+		},
+		{
+			"title": "Geschwind, doch nicht zu sehr und mit Entschlossenheit (Allegro)"
+		}
+	],
+	"xref": {
+		"oo": "16335",
+		"wp": "Piano_Sonata_No._28_(Beethoven)"
+	}
+}

@@ -1,0 +1,73 @@
+{
+	"id": "042dc700",
+	"title": {
+		"de": "Angenehmes Wiederau"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1737},
+			"catalog": [{"scheme": "bwv", "number": "30.1"}]
+		}
+	],
+	"form": "secular cantata",
+	"instrumentation": "SATB soloists, SATB choir, 3 trumpets, timpani, 2 oboes, strings, continuo",
+	"movements": [
+		{
+			"title": "Angenehmes Wiederau",
+			"type": "chorus"
+		},
+		{
+			"title": "So ziehen wir",
+			"type": "recitative"
+		},
+		{
+			"title": "Willkommen im Heil, willkommen in Freuden",
+			"type": "aria"
+		},
+		{
+			"title": "Da heute dir, gepriesner Hennicke",
+			"type": "recitative"
+		},
+		{
+			"title": "Was die Seele kann ergötzen",
+			"type": "aria"
+		},
+		{
+			"title": "Und wie ich jederzeit bedacht",
+			"type": "recitative"
+		},
+		{
+			"title": "Ich will dich halten",
+			"type": "aria"
+		},
+		{
+			"title": "Und obwohl sonst der Unbestand",
+			"type": "recitative"
+		},
+		{
+			"title": "Eilt, ihr Stunden, wie ihr wollt",
+			"type": "aria"
+		},
+		{
+			"title": "So recht! ihr seid mir werte Gäste",
+			"type": "recitative"
+		},
+		{
+			"title": "So, wie ich die Tropfen zolle",
+			"type": "aria"
+		},
+		{
+			"title": "Drum, angenehmes Wiederau",
+			"type": "recitative"
+		},
+		{
+			"title": "Angenehmes Wiederau",
+			"type": "chorus"
+		}
+	],
+	"xref": {
+		"oo": "10241",
+		"wp": "BWV_30.1"
+	}
+}

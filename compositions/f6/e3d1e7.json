@@ -1,0 +1,32 @@
+{
+	"id": "f6e3d1e7",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1801},
+			"catalog": [{"scheme": "op", "number": "27/1"}]
+		}
+	],
+	"key": "Eb",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Andante – Allegro"
+		},
+		{
+			"title": "Allegro molto e vivace"
+		},
+		{
+			"title": "Adagio con espressione",
+			"key": "Ab"
+		},
+		{
+			"title": "Allegro vivace"
+		}
+	],
+	"xref": {
+		"oo": "16349",
+		"wp": "Piano_Sonata_No._13_(Beethoven)"
+	}
+}

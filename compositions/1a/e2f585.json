@@ -1,0 +1,29 @@
+{
+	"id": "1ae2f585",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1821, "published": 1822},
+			"catalog": [{"scheme": "op", "number": "110"}]
+		}
+	],
+	"key": "Ab",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Moderato cantabile molto espressivo"
+		},
+		{
+			"title": "Allegro molto",
+			"key": "f"
+		},
+		{
+			"title": "Adagio ma non troppo – Fuga: Allegro ma non troppo"
+		}
+	],
+	"xref": {
+		"oo": "16165",
+		"wp": "Piano_Sonata_No._31_(Beethoven)"
+	}
+}

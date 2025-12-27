@@ -1,0 +1,39 @@
+{
+	"id": "5d7f3a9e",
+	"attribution": [
+		{
+			"cf": "bach-english-suites",
+			"catalog": [{"scheme": "bwv", "number": "808"}]
+		}
+	],
+	"form": "suite",
+	"instrumentation": "keyboard",
+	"key": "g",
+	"movements": [
+		{
+			"title": "Prelude"
+		},
+		{
+			"title": "Allemande"
+		},
+		{
+			"title": "Courante"
+		},
+		{
+			"title": "Sarabande"
+		},
+		{
+			"title": "Gavotte I"
+		},
+		{
+			"title": "Gavotte II"
+		},
+		{
+			"title": "Gigue"
+		}
+	],
+	"xref": {
+		"oo": "10089",
+		"wp": "BWV_808"
+	}
+}

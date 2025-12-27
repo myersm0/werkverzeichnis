@@ -1,0 +1,39 @@
+{
+	"id": "6cec7946",
+	"attribution": [
+		{
+			"cf": "bach-french-suites",
+			"catalog": [{"scheme": "bwv", "number": "816"}]
+		}
+	],
+	"form": "suite",
+	"key": "G",
+	"instrumentation": "keyboard",
+	"movements": [
+		{
+			"title": "Allemande"
+		},
+		{
+			"title": "Courante"
+		},
+		{
+			"title": "Sarabande"
+		},
+		{
+			"title": "Gavotte"
+		},
+		{
+			"title": "Bourrée"
+		},
+		{
+			"title": "Loure"
+		},
+		{
+			"title": "Gigue"
+		}
+	],
+	"xref": {
+		"oo": "10022",
+		"wp": "BWV_816"
+	}
+}

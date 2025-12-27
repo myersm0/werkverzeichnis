@@ -1,0 +1,29 @@
+{
+	"id": "a5919ace",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"composed": 1783, "published": 1784},
+			"catalog": [{"scheme": "k", "number": "333"}]
+		}
+	],
+	"key": "Bb",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Andante cantabile",
+			"key": "Eb"
+		},
+		{
+			"title": "Allegretto grazioso"
+		}
+	],
+	"xref": {
+		"oo": "23443",
+		"wp": "Piano_Sonata_No._13_(Mozart)"
+	}
+}

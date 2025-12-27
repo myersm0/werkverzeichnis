@@ -1,0 +1,51 @@
+{
+	"id": "27c3084a",
+	"title": {
+		"de": "Wie schön leuchtet der Morgenstern"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1725, "premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "1"}]
+		}
+	],
+	"form": "church cantata",
+	"key": "F",
+	"instrumentation": "soprano, tenor, bass soloists, SATB choir, 2 horns, 2 oboes da caccia, 2 solo violins, 2 violins, viola, continuo",
+	"notes": "Composed for the Annunciation feast.",
+	"movements": [
+		{
+			"title": "Wie schön leuchtet der Morgenstern",
+			"type": "chorale fantasia"
+		},
+		{
+			"title": "Du wahrer Gottes und Marien Sohn",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Erfüllet, ihr himmlischen göttlichen Flammen",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Ein irdscher Glanz, ein leiblich Licht",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Unser Mund und Ton der Saiten",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Wie bin ich doch so herzlich froh",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"oo": "9408",
+		"wp": "BWV_1"
+	}
+}

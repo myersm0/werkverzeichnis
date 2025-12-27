@@ -1,0 +1,29 @@
+{
+	"id": "2b0e8a7a",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1802},
+			"catalog": [{"scheme": "op", "number": "31/2"}]
+		}
+	],
+	"key": "d",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Largo – Allegro"
+		},
+		{
+			"title": "Adagio",
+			"key": "Bb"
+		},
+		{
+			"title": "Allegretto"
+		}
+	],
+	"xref": {
+		"oo": "16482",
+		"wp": "Piano_Sonatas_No._17_(Beethoven)"
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"id": "58aaa2c1",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"composed": 1774},
+			"catalog": [
+				{"scheme": "k", "edition": "9", "number": "281"},
+				{"scheme": "k", "edition": "6", "number": "189f"},
+				{"scheme": "k", "edition": "1", "number": "281"}
+			]
+		}
+	],
+	"key": "Bb",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Andante amoroso",
+			"key": "Eb"
+		},
+		{
+			"title": "Rondo (allegro)"
+		}
+	],
+	"xref": {
+		"oo": "23555",
+		"wp": "Piano_Sonata_No._3_(Mozart)"
+	}
+}

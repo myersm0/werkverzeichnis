@@ -1,0 +1,30 @@
+{
+	"id": "c8028482",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"composed": 1774},
+			"catalog": [{"scheme": "k", "number": "280"}]
+		}
+	],
+	"key": "F",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro assai"
+		},
+		{
+			"title": "Adagio",
+			"key": "f"
+		},
+		{
+			"title": "Presto"
+		}
+	],
+	"xref": {
+		"mb": "52912ca4-855d-451d-9abb-d3e3a353e6d2",
+		"oo": "23489",
+		"wp": "Piano_Sonata_No._2_(Mozart)"
+	}
+}

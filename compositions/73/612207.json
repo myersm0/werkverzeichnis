@@ -1,0 +1,33 @@
+{
+	"id": "73612207",
+	"attribution": [
+		{
+			"cf": "bach-six-solo",
+			"catalog": [{"scheme": "bwv", "number": "1004"}]
+		}
+	],
+	"form": "suite",
+	"key": "d",
+	"instrumentation": "solo violin",
+	"movements": [
+		{
+			"title": "Allemanda"
+		},
+		{
+			"title": "Corrente"
+		},
+		{
+			"title": "Sarabanda"
+		},
+		{
+			"title": "Giga"
+		},
+		{
+			"title": "Ciaccona"
+		}
+	],
+	"xref": {
+		"oo": "9379",
+		"wp": "BWV_1004"
+	}
+}

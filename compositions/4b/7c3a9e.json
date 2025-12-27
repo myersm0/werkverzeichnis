@@ -1,0 +1,24 @@
+{
+	"id": "4b7c3a9e",
+	"attribution": [
+		{
+			"cf": "bach-wtc-1",
+			"catalog": [{"scheme": "bwv", "number": "860"}]
+		}
+	],
+	"form": "prelude and fugue",
+	"instrumentation": "keyboard",
+	"key": "G",
+	"movements": [
+		{
+			"title": "Prelude"
+		},
+		{
+			"title": "Fugue"
+		}
+	],
+	"xref": {
+		"oo": "9781",
+		"wp": "BWV_860"
+	}
+}

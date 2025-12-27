@@ -1,0 +1,52 @@
+{
+	"id": "ecf032ce",
+	"title": {
+		"de": "Christ lag in Todes Banden"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1707, "published": 1851},
+			"catalog": [{"scheme": "bwv", "number": "4"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "SATB soloists, SATB choir, 2 violins, 2 violas, continuo",
+	"movements": [
+		{
+			"title": "Sinfonia",
+			"type": "sinfonia"
+		},
+		{
+			"title": "Christ lag in Todes Banden",
+			"type": "chorus"
+		},
+		{
+			"title": "Den Tod niemand zwingen kunnt",
+			"type": "duet"
+		},
+		{
+			"title": "Jesus Christus, Gottes Sohn",
+			"type": "aria"
+		},
+		{
+			"title": "Es war ein wunderlicher Krieg",
+			"type": "aria"
+		},
+		{
+			"title": "Hier ist das rechte Osterlamm",
+			"type": "aria"
+		},
+		{
+			"title": "So feiern wir das hohe Fest",
+			"type": "duet"
+		},
+		{
+			"title": "Choral: Wir essen und leben wohl",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_4"
+	}
+}

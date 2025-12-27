@@ -1,0 +1,60 @@
+{
+	"id": "7f543a7d",
+	"title": {
+		"de": "Weinen, Klagen, Sorgen, Zagen"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1714},
+			"catalog": [{"scheme": "bwv", "number": "12"}]
+		}
+	],
+	"form": "sacred cantata",
+	"key": "f",
+	"instrumentation": "SSATB, choir, 2 oboes, bassoon, strings, continuo",
+	"notes": "Composed for the third Sunday after Easter",
+	"movements": [
+		{
+			"title": "Sinfonia",
+			"type": "sinfonia"
+		},
+		{
+			"title": "Weinen, Klagen, Sorgen, Zagen",
+			"type": "chorus"
+		},
+		{
+			"title": "Wir müssen durch viel Trübsal in das Reich Gottes eingehen",
+			"type": "recitative",
+			"soloists": "alto",
+			"key": "c"
+		},
+		{
+			"title": "Kreuz und Kronen sind verbunden",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "c"
+		},
+		{
+			"title": "Ich folge Christo nach",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "Eb"
+		},
+		{
+			"title": "Sei getreu, alle Pein",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "g"
+		},
+		{
+			"title": "Was Gott tut, das ist wohlgetan",
+			"type": "chorale",
+			"key": "Bb"
+		}
+	],
+	"xref": {
+		"oo": "9364",
+		"wp": "BWV_12"
+	}
+}

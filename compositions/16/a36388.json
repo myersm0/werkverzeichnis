@@ -1,0 +1,25 @@
+{
+	"id": "16a36388",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1809},
+			"catalog": [{"scheme": "op", "number": "78"}]
+		}
+	],
+	"key": "F#",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Adagio cantabile – Allegro ma non troppo"
+		},
+		{
+			"title": "Allegro vivace"
+		}
+	],
+	"xref": {
+		"oo": "16158",
+		"wp": "Piano_Sonata_No._24_(Beethoven)"
+	}
+}

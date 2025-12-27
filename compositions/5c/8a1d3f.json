@@ -1,0 +1,24 @@
+{
+	"id": "5c8a1d3f",
+	"attribution": [
+		{
+			"cf": "bach-wtc-1",
+			"catalog": [{"scheme": "bwv", "number": "864"}]
+		}
+	],
+	"form": "prelude and fugue",
+	"instrumentation": "keyboard",
+	"key": "A",
+	"movements": [
+		{
+			"title": "Prelude"
+		},
+		{
+			"title": "Fugue"
+		}
+	],
+	"xref": {
+		"oo": "9781",
+		"wp": "BWV_864"
+	}
+}

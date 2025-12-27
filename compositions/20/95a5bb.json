@@ -1,0 +1,32 @@
+{
+	"id": "2095a5bb",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1802},
+			"catalog": [{"scheme": "op", "number": "31/3"}]
+		}
+	],
+	"key": "Eb",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Scherzo: Allegretto vivace",
+			"key": "Ab"
+		},
+		{
+			"title": "Menuetto: Moderato e grazioso"
+		},
+		{
+			"title": "Presto con fuoco"
+		}
+	],
+	"xref": {
+		"oo": "16426",
+		"wp": "Piano_Sonata_No._18_(Beethoven)"
+	}
+}

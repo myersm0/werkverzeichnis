@@ -1,0 +1,46 @@
+{
+	"id": "3d757c53",
+	"title": {
+		"de": "Liebster Gott, wenn werd ich sterben"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "8.1"}]
+		}
+	],
+	"form": "chorale cantata",
+	"key": "E",
+	"instrumentation": "soprano, alto, tenor, bass, choir, horn, transverse flute, 2 oboes d'amore, 2 violins, viola, continuo",
+	"notes": "Composed for the 16th Sunday after Trinity; first performed 24 September 1724 in Leipzig; based on hymn by Caspar Neumann and melody by Daniel Vetter; Bach transposed it to D major in the late 1740s (BWV 8.2 version).",
+	"movements": [
+		{
+			"title": "Liebster Gott, wenn werd ich sterben? (chorale fantasia)",
+			"type": "chorale"
+		},
+		{
+			"title": "Was willst du dich, mein Geist, entsetzen?",
+			"type": "aria"
+		},
+		{
+			"title": "Zwar fühlt mein schwaches Herz",
+			"type": "recitative"
+		},
+		{
+			"title": "Doch weichet, ihr tollen, vergeblichen Sorgen!",
+			"type": "aria"
+		},
+		{
+			"title": "Behalte nur, o Welt, das Meine!",
+			"type": "recitative"
+		},
+		{
+			"title": "Herrscher über Tod und Leben",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_8.1"
+	}
+}

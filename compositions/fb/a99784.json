@@ -1,0 +1,32 @@
+{
+	"id": "fba99784",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1795, "published": 1796},
+			"catalog": [{"scheme": "op", "number": "2/1"}]
+		}
+	],
+	"key": "f",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Adagio",
+		"key": "F"
+		},
+		{
+			"title": "Menuetto and Trio (Allegretto)"
+		},
+		{
+			"title": "Prestissimo"
+		}
+	],
+	"xref": {
+		"oo": "16342",
+		"wp": "Piano_Sonata_No._1_(Beethoven)"
+	}
+}

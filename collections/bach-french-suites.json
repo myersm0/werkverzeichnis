@@ -1,0 +1,17 @@
+{
+	"id": "bach-french-suites",
+	"title": {
+		"de": "Französische Suiten",
+		"en": "French Suites"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {
+				"composed": 1725
+			}
+		}
+	],
+	"scheme": "bwv",
+	"compositions": ["812", "813", "814", "815", "816", "817"]
+}

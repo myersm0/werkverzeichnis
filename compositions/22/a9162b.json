@@ -1,0 +1,43 @@
+{
+	"id": "22a9162b",
+	"title": {
+		"de": "Gleichwie der Regen und Schnee vom Himmel fällt"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1713},
+			"catalog": [{"scheme": "bwv", "number": "18"}]
+		}
+	],
+	"form": "sacred cantata",
+	"key": "g",
+	"instrumentation": "SATB soloists, SATB choir, 2 violins, 2 violas, continuo",
+	"notes": "Weimar period; later revised/expanded for Leipzig performances.",
+	"movements": [
+		{
+			"title": "Sinfonia",
+			"type": "sinfonia"
+		},
+		{
+			"title": "Gleichwie der Regen und Schnee vom Himmel fällt",
+			"type": "recitative"
+		},
+		{
+			"title": "Mein Gott, hier wird mein Herze sein",
+			"type": "recitative"
+		},
+		{
+			"title": "Mein Seelenschatz ist Gottes Wort",
+			"type": "aria"
+		},
+		{
+			"title": "Ich bitt, o Herr, aus Herzensgrund",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"oo": "9230",
+		"wp": "BWV_18"
+	}
+}

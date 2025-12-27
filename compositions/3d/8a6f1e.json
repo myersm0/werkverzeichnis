@@ -1,0 +1,36 @@
+{
+	"id": "3d8a6f1e",
+	"attribution": [
+		{
+			"cf": "bach-six-partitas",
+			"catalog": [{"scheme": "bwv", "number": "826"}]
+		}
+	],
+	"form": "partita",
+	"instrumentation": "keyboard",
+	"key": "c",
+	"movements": [
+		{
+			"title": "Sinfonia (Grave adagio - Andante"
+		},
+		{
+			"title": "Allemande"
+		},
+		{
+			"title": "Courante"
+		},
+		{
+			"title": "Sarabande"
+		},
+		{
+			"title": "Rondeaux"
+		},
+		{
+			"title": "Capriccio"
+		}
+	],
+	"xref": {
+		"oo": "9715",
+		"wp": "BWV_826"
+	}
+}

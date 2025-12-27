@@ -1,0 +1,51 @@
+{
+	"id": "09d47c38",
+	"title": {
+		"de": "Ach Gott, wie manches Herzeleid"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "3"}]
+		}
+	],
+	"form": "chorale cantata",
+	"key": "A",
+	"instrumentation": "soprano, alto, tenor, bass, choir, trombone, horn, 2 oboes d'amore, 2 violins, viola, continuo",
+	"notes": "Composed for the second Sunday after Epiphany",
+	"movements": [
+		{
+			"title": "Ach Gott, wie manches Herzeleid",
+			"type": "chorus"
+		},
+		{
+			"title": "Wie schwerlich läßt sich Fleisch und Blut",
+			"type": "recitative and chorale"
+		},
+		{
+			"title": "Empfind ich Höllenangst und Pein",
+			"type": "aria",
+			"key": "f#",
+			"soloists": "bass"
+		},
+		{
+			"title": "Es mag mir Leib und Geist verschmachten",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Wenn Sorgen auf mich dringen",
+			"type": "aria duetto",
+			"key": "E",
+			"soloists": "soprano, alto"
+		},
+		{
+			"title": "Erhalt mein Herz im Glauben rein",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_3"
+	}
+}

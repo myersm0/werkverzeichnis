@@ -1,0 +1,26 @@
+{
+	"id": "a1c8d3e7",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1814},
+			"catalog": [{"scheme": "op", "number": "90"}]
+		}
+	],
+	"key": "e",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Mit Lebhaftigkeit und durchaus mit Empfindung und Ausdruck"
+		},
+		{
+			"title": "Nicht zu geschwind und sehr singbar vorgetragen",
+			"key": "E"
+		}
+	],
+	"xref": {
+		"oo": "16288",
+		"wp": "Piano_Sonata_No._27_(Beethoven)"
+	}
+}

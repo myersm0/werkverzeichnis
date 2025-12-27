@@ -1,0 +1,26 @@
+{
+	"id": "1c30d80e",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1797, "published": 1805},
+			"catalog": [{"scheme": "op", "number": "49/1"}]
+		}
+	],
+	"key": "g",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Andante"
+		},
+		{
+			"title": "Rondo: Allegro",
+			"key": "G"
+		}
+	],
+	"xref": {
+		"oo": "16363",
+		"wp": "Piano_Sonatas_Nos._19_and_20_(Beethoven)"
+	}
+}

@@ -1,0 +1,42 @@
+{
+	"id": "18a9af86",
+	"attribution": [
+		{
+			"cf": "bach-french-suites",
+			"catalog": [{"scheme": "bwv", "number": "817"}]
+		}
+	],
+	"form": "suite",
+	"key": "E",
+	"instrumentation": "keyboard",
+	"movements": [
+		{
+			"title": "Allemande"
+		},
+		{
+			"title": "Courante"
+		},
+		{
+			"title": "Sarabande"
+		},
+		{
+			"title": "Gavotte"
+		},
+		{
+			"title": "Polonaise"
+		},
+		{
+			"title": "Bourrée"
+		},
+		{
+			"title": "Menuet"
+		},
+		{
+			"title": "Gigue"
+		}
+	],
+	"xref": {
+		"oo": "9811",
+		"wp": "BWV_817"
+	}
+}

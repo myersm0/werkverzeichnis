@@ -1,0 +1,377 @@
+{
+	"id": "4f9e2b7a",
+	"title": {
+		"de": "Johannes-Passion",
+		"en": "St. John Passion"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "245"}]
+		}
+	],
+	"form": "passion",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 transverse flutes, 2 oboes, oboe d'amore, 2 oboes da caccia, 2 violins, 2 violas d'amore, viola, viola da gamba, lute, organ or harpsichord, continuo (+ violoncello, violone, bassoon)",
+	"sections": [
+		{
+			"title": "Part I",
+			"movements": [
+				{
+					"title": "Herr, unser Herrscher, dessen Ruhm in allen Landen herrlich ist",
+					"type": "chorus"
+				},
+				{
+					"sections": [
+						{
+							"title": "Jesus ging mit seinen Jüngern über den Bach Kidron",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Jesus)"
+						},
+						{
+							"title": "Jesum von Nazareth",
+							"type": "chorus"
+						},
+						{
+							"title": "Jesus spricht zu ihnen",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Jesus)"
+						},
+						{
+							"title": "Jesum von Nazareth",
+							"type": "chorus"
+						},
+						{
+							"title": "Jesus antwortete: Ich hab's euch gesagt, daß ich's sei",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Jesus)"
+						}
+					]
+				},
+				{
+					"title": "O große Lieb', o Lieb' ohn' alle Maße",
+					"type": "chorale"
+				},
+				{
+					"title": "Auf daß das Wort erfüllet würde",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist), bass (Jesus)"
+				},
+				{
+					"title": "Dein Will' gescheh', Herr Gott, zugleich",
+					"type": "chorale"
+				},
+				{
+					"title": "Die Schar aber und der Oberhauptmann",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist)"
+				},
+				{
+					"title": "Von den Stricken meiner Sünden",
+					"type": "aria",
+					"soloists": "alto"
+				},
+				{
+					"title": "Simon Petrus aber folgete Jesu nach",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist)"
+				},
+				{
+					"title": "Ich folge dir gleichfalls mit freudigen Schritten",
+					"type": "aria",
+					"soloists": "soprano"
+				},
+				{
+					"title": "Derselbige Jünger war dem Hohenpriester bekannt",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist), soprano (maid), bass (Peter), bass (Jesus), bass (servant)"
+				},
+				{
+					"title": "Wer hat dich so geschlagen",
+					"type": "chorale"
+				},
+				{
+					"sections": [
+						{
+							"title": "Und Hannas sandte ihn gebunden zu dem Hohenpriester Kaiphas",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist)"
+						},
+						{
+							"title": "Bist du nicht seiner Jünger einer?",
+							"type": "chorus"
+						},
+						{
+							"title": "Er leugnete aber",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Peter), bass (servant)"
+						}
+					]
+				},
+				{
+					"title": "Ach, mein Sinn",
+					"type": "aria",
+					"soloists": "tenor"
+				},
+				{
+					"title": "Petrus, der nicht denkt zurück",
+					"type": "chorale"
+				}
+			]
+		},
+		{
+			"title": "Part II",
+			"movements": [
+				{
+					"title": "Christus, der uns selig macht",
+					"type": "chorale"
+				},
+				{
+					"sections": [
+						{
+							"title": "Da führeten sie Jesum von Kaiphas vor das Richthaus",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Pilate)"
+						},
+						{
+							"title": "Wäre dieser nicht ein Übeltäter, wir hätten dir ihn nicht überantwortet.",
+							"type": "chorus"
+						},
+						{
+							"title": "Da sprach Pilatus zu ihnen",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Pilate)"
+						},
+						{
+							"title": "Wir dürfen niemand töten.",
+							"type": "chorus"
+						},
+						{
+							"title": "Auf daß erfüllet würde das Wort Jesu",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Pilate), bass (Jesus)"
+						}
+					]
+				},
+				{
+					"title": "Ach großer König, groß zu allen Zeiten",
+					"type": "chorale"
+				},
+				{
+					"sections": [
+						{
+							"title": "Da sprach Pilatus zu ihm",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Pilate), bass (Jesus)"
+						},
+						{
+							"title": "Nicht diesen, sondern Barrabam!",
+							"type": "chorus"
+						},
+						{
+							"title": "Barrabas aber war ein Mörder.",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Pilate), bass (Jesus)"
+						}
+					]
+				},
+				{
+					"title": "Betrachte, meine Seel', mit ängstlichem Vergnügen",
+					"type": "arioso",
+					"soloists": "bass"
+				},
+				{
+					"title": "Erwäge, wie sein blutgefärbter Rücken",
+					"type": "aria",
+					"soloists": "tenor"
+				},
+				{
+					"sections": [
+						{
+							"title": "Und die Kriegsknechte flochten eine Krone von Dornen",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist)"
+						},
+						{
+							"title": "Sei gegrüßet, lieber Judenkönig!",
+							"type": "chorus"
+						},
+						{
+							"title": "Und gaben ihm Backenstreiche.",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Pilate)"
+						},
+						{
+							"title": "Kreuzige, kreuzige!",
+							"type": "chorus"
+						},
+						{
+							"title": "Pilatus sprach zu ihnen",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Pilate)"
+						},
+						{
+							"title": "Wir haben ein Gesetz, und nach dem Gesetz soll er sterben",
+							"type": "chorus"
+						},
+						{
+							"title": "Da Pilatus das Wort hörete, fürchtet' er sich noch mehr",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Pilate), bass (Jesus)"
+						}
+					]
+				},
+				{
+					"title": "Durch dein Gefängnis, Gottes Sohn, muß uns die Freiheit kommen",
+					"type": "chorale"
+				},
+				{
+					"sections": [
+						{
+							"title": "Die Juden aber schrieen",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist)"
+						},
+						{
+							"title": "Lässest du diesen los, so bist du des Kaisers Freund nicht",
+							"type": "chorus"
+						},
+						{
+							"title": "Da Pilatus das Wort hörete, führete er Jesum heraus",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Pilate)"
+						},
+						{
+							"title": "Weg, weg mit dem, kreuzige ihn!",
+							"type": "chorus"
+						},
+						{
+							"title": "Spricht Pilatus zu ihnen",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Pilate)"
+						},
+						{
+							"title": "Wir haben keinen König denn den Kaiser.",
+							"type": "chorus"
+						},
+						{
+							"title": "Da überantwortete er ihn daß er gekreuziget würde.",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist)"
+						}
+					]
+				},
+				{
+					"title": "Eilt, ihr angefochtnen Seelen",
+					"type": "aria",
+					"soloists": "bass"
+				},
+				{
+					"sections": [
+						{
+							"title": "Allda kreuzigten sie ihn",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist)"
+						},
+						{
+							"title": "Schreibe nicht: der Juden König",
+							"type": "chorus"
+						},
+						{
+							"title": "Pilatus antwortet'",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Pilate)"
+						}
+					]
+				},
+				{
+					"title": "In meines Herzens Grunde",
+					"type": "chorale"
+				},
+				{
+					"sections": [
+						{
+							"title": "Die Kriegsknechte aber, da sie Jesum gekreuziget hatten, nahmen seine Kleider",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist)"
+						},
+						{
+							"title": "Lasset uns den nicht zerteilen, sondern darum losen, wes er sein soll.",
+							"type": "chorus"
+						},
+						{
+							"title": "Auf daß erfüllet würde die Schrift",
+							"type": "recitative",
+							"soloists": "tenor (Evangelist), bass (Jesus)"
+						}
+					]
+				},
+				{
+					"title": "Er nahm alles wohl in acht",
+					"type": "chorale"
+				},
+				{
+					"title": "Und von Stund' an nahm sie der Jünger zu sich.",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist), bass (Jesus)"
+				},
+				{
+					"title": "Es ist vollbracht!",
+					"type": "aria",
+					"soloists": "alto"
+				},
+				{
+					"title": "Und neiget' das Haupt und verschied.",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist)"
+				},
+				{
+					"title": "Mein teurer Heiland, laß dich fragen",
+					"type": "aria",
+					"soloists": "bass"
+				},
+				{
+					"title": "Und siehe da, der Vorhang im Tempel zerriß in zwei Stück",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist)"
+				},
+				{
+					"title": "Mein Herz, in dem die ganze Welt bei Jesu Leiden gleichfalls leidet",
+					"type": "arioso",
+					"soloists": "tenor"
+				},
+				{
+					"title": "Zerfließe, mein Herze, in Fluten der Zähren",
+					"type": "aria",
+					"soloists": "soprano"
+				},
+				{
+					"title": "Die Juden aber, dieweil es der Rüsttag war",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist)"
+				},
+				{
+					"title": "O hilf, Christe, Gottes Sohn",
+					"type": "chorale"
+				},
+				{
+					"title": "Darnach bat Pilatum Joseph von Arimathia",
+					"type": "recitative",
+					"soloists": "tenor (Evangelist)"
+				},
+				{
+					"title": "Ruht wohl, ihr heiligen Gebeine",
+					"type": "chorus"
+				},
+				{
+					"title": "Ach Herr, lass dein' lieb' Engelein",
+					"type": "chorale"
+				}
+			]
+		}
+	],
+	"xref": {
+		"oo": "9651",
+		"wp": "BWV_245"
+	}
+}

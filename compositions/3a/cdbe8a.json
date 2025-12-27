@@ -1,0 +1,29 @@
+{
+	"id": "3acdbe8a",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {"composed": 1805, "published": 1807},
+			"catalog": [{"scheme": "op", "number": "57"}]
+		}
+	],
+	"key": "f",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro assai"
+		},
+		{
+			"title": "Andante con moto",
+			"key": "Db"
+		},
+		{
+			"title": "Allegro ma non troppo"
+		}
+	],
+	"xref": {
+		"oo": "16419",
+		"wp": "Piano_Sonata_No._23_(Beethoven)"
+	}
+}
