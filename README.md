@@ -23,7 +23,7 @@ This project is still in an early stage of development. By the end of 2025 the f
 - [ ] Schubert complete piano sonatas
 
 ## Quick start
-A future version will provide compiled binaries so that you don't have to build it yourself and don't even to have Rust installed on your system. But for now:
+A future version will provide compiled binaries so that you don't have to build it yourself and don't even need to have Rust installed on your system. But for now:
 ```bash
 # Clone the repository
 git clone https://github.com/myersm0/werkverzeichnis
@@ -42,14 +42,14 @@ op:2/1  fba99784
 op:2/2  edfa8309
 op:2/3  7023f148
 
-# Prettier output with the -p flag:
-$ wv query beethoven op 2 -p
+# Nicer output with the --pretty flag:
+$ wv query beethoven op 2 --pretty
 Sonata in f minor, op. 2 no. 1
 Sonata in A major, op. 2 no. 2
 Sonata in C major, op. 2 no. 3
 
-# Pretty output sorted over a range of opus numbers:
-$ wv query beethoven op --range 2-11 -p
+# Output sorted over a range of opus numbers:
+$ wv query beethoven op --range 2-11 --pretty
 Sonata in f minor, op. 2 no. 1
 Sonata in A major, op. 2 no. 2
 Sonata in C major, op. 2 no. 3
@@ -59,7 +59,7 @@ Sonata in F major, op. 10 no. 2
 Sonata in D major, op. 10 no. 3
 
 # Show movements for a piece:
-$ wv query beethoven op 2/1 -m
+$ wv query beethoven op 2/1 --movements
 1. Allegro
 2. Adagio
 3. Menuetto and Trio (Allegretto)
