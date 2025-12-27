@@ -15,6 +15,11 @@
 			"description": "Multilingual title dict",
 			"additionalProperties": {"type": "string"}
 		},
+		"expansion_pattern": {
+			"type": "object",
+			"description": "Multilingual pattern for generating titles. Variables: {form}, {key}, {num}, {catalog}, {instrumentation}",
+			"additionalProperties": {"type": "string"}
+		},
 		"composer": {
 			"type": "string",
 			"description": "Composer slug (simple case)"

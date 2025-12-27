@@ -4,6 +4,10 @@
 		"de": "Partiten",
 		"en": "Partitas"
 	},
+	"expansion_pattern": {
+		"de": "Partita Nr. {num} in {key}",
+		"en": "Partita no. {num} in {key}"
+	},
 	"attribution": [
 		{
 			"composer": "bach",

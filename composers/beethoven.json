@@ -4,13 +4,14 @@
 		"full": "Ludwig van Beethoven",
 		"sort": "Beethoven, Ludwig van"
 	},
+	"default_scheme": "op",
 	"born": "1770-12-17",
 	"died": "1827-03-26",
 	"nationality": "Austrian",
 	"catalogs": {
 		"op": {
 			"name": "Opus",
-			"canonical_format": "Op. {number}",
+			"canonical_format": "op. {number}",
 			"primary": true
 		},
 		"woo": {
@@ -18,9 +19,5 @@
 			"canonical_format": "WoO {number}",
 			"description": "Works without opus number, cataloged by Georg Kinsky and Hans Halm, 1955"
 		}
-	},
-	"xref": {
-		"oo": "145",
-		"wd": "Q255"
 	}
 }

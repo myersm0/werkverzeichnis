@@ -4,6 +4,10 @@
 		"de": "Englische Suiten",
 		"en": "English Suites"
 	},
+	"expansion_pattern": {
+		"de": "Englishe Suite nr. {num} in {key}",
+		"en": "English Suite no. {num} in {key}"
+	},
 	"attribution": [
 		{
 			"composer": "bach",

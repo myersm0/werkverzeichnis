@@ -1,0 +1,28 @@
+# werkverzeichnis Configuration
+# Place at ~/.config/wv/config.toml
+
+# Path to data repository (optional if running from repo directory)
+# data_dir = "/path/to/werkverzeichnis"
+
+[display]
+# Language for titles and keys: en, de, etc.
+language = "en"
+
+# Key symbols: "unicode" (♯ ♭) or "ascii" (# b)
+key_symbols = "unicode"
+
+[display.patterns]
+# Default title patterns when no explicit title exists
+generic = "{form} in {key}"
+with_number = "{form} no. {num} in {key}"
+
+# Max characters for instrumentation in expanded titles
+instrumentation_max_chars = 40
+
+# Custom key overrides (optional)
+# Format: code = "expanded form"
+[display.keys]
+# Example overrides:
+# "C" = "C Major"
+# "c" = "C Minor"
+# "F#" = "F-sharp Major"

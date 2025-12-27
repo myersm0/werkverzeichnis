@@ -4,6 +4,10 @@
 		"de": "Suiten für Violoncello solo",
 		"en": "Cello Suites"
 	},
+	"expansion_pattern": {
+		"de": "Suite für Violoncello solo {num} in {key}",
+		"en": "Cello Suite no. {num} in {key}"
+	},
 	"attribution": [
 		{
 			"composer": "bach",

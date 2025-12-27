@@ -4,6 +4,7 @@
 		"full": "Franz Schubert",
 		"sort": "Schubert, Franz"
 	},
+	"default_scheme": "d",
 	"born": "1797-01-31",
 	"died": "1828-11-19",
 	"nationality": "Austrian",
@@ -21,11 +22,7 @@
 		},
 		"op": {
 			"name": "Opus",
-			"canonical_format": "Op. {number}"
+			"canonical_format": "op. {number}"
 		}
-	},
-	"xref": {
-		"oo": "183",
-		"wd": "Q7312"
 	}
 }

@@ -120,6 +120,8 @@ pub struct Collection {
 	pub id: String,
 	pub title: HashMap<String, String>,
 	#[serde(skip_serializing_if = "Option::is_none")]
+	pub expansion_pattern: Option<HashMap<String, String>>,
+	#[serde(skip_serializing_if = "Option::is_none")]
 	pub composer: Option<String>,
 	#[serde(default, skip_serializing_if = "Vec::is_empty")]
 	pub attribution: Vec<AttributionEntry>,
@@ -133,6 +135,8 @@ pub struct Collection {
 pub struct Composer {
 	pub id: String,
 	pub name: ComposerName,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub default_scheme: Option<String>,
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub born: Option<String>,
 	#[serde(skip_serializing_if = "Option::is_none")]

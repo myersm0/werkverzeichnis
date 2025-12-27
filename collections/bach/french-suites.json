@@ -4,6 +4,10 @@
 		"de": "Französische Suiten",
 		"en": "French Suites"
 	},
+	"expansion_pattern": {
+		"de": "Französische Suite Nr. {num} in {key}",
+		"en": "French Suite no. {num} in {key}"
+	},
 	"attribution": [
 		{
 			"composer": "bach",
