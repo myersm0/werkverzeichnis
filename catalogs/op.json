@@ -1,0 +1,22 @@
+{
+	"id": "op",
+	"name": "Opus number",
+	"description": "Standard opus numbering used by most composers from the Classical period onward. Supports sub-numbers (Op. 2/1), letter suffixes (Op. 81a), and posthumous works (Op. posth. 66).",
+	"canonical_format": "Op. {number}",
+	"pattern": "^(posth[./]?\\s*)?(\\d+)([a-z])?(?:/(\\d+))?$",
+	"sort_keys": [
+		{"group": 1, "type": "str"},
+		{"group": 2, "type": "int"},
+		{"group": 3, "type": "str"},
+		{"group": 4, "type": "int"}
+	],
+	"group_by": [1, 2, 3],
+	"examples": [
+		{"number": "2", "display": "Op. 2"},
+		{"number": "2/1", "display": "Op. 2 No. 1"},
+		{"number": "19a/3", "display": "Op. 19a No. 3"},
+		{"number": "81a", "display": "Op. 81a"},
+		{"number": "posth. 82", "display": "Op. posth. 82"},
+		{"number": "posth/82", "display": "Op. posth. 82"}
+	]
+}

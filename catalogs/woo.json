@@ -1,0 +1,18 @@
+{
+	"id": "woo",
+	"name": "Werk ohne Opuszahl",
+	"description": "Work without opus number. Used primarily for Beethoven but applicable to other composers. Supports sub-numbers and letter suffixes.",
+	"canonical_format": "WoO {number}",
+	"pattern": "^(\\d+)([a-z])?(?:/(\\d+))?$",
+	"sort_keys": [
+		{"group": 1, "type": "int"},
+		{"group": 2, "type": "str"},
+		{"group": 3, "type": "int"}
+	],
+	"group_by": [1, 2],
+	"examples": [
+		{"number": "32", "display": "WoO 32"},
+		{"number": "32/1", "display": "WoO 32 No. 1"},
+		{"number": "59a", "display": "WoO 59a"}
+	]
+}
