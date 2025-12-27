@@ -15,7 +15,7 @@ This project prioritizes:
 This project is still in an early stage of development. By the end of 2025 the following are expected to be complete:
 - [x] Bach keyboard suite collections (six keyboard partitas, French & English suites)
 - [x] Bach solo string suites (cello suites, sonatas and partitas for solo violin)
-- [x] Bach Well-Tempered Clavier I & II, Golberg Variations
+- [x] Bach Well-Tempered Clavier I & II, Goldberg Variations
 - [ ] Bach complete cantatas, masses, passions
 - [x] Beethoven: the 32 piano sonatas
 - [x] Mozart: the 19 piano sonatas
