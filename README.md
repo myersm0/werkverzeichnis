@@ -36,14 +36,18 @@ alias wv="$(pwd)/target/release/wv"
 
 Here are some common query patterns:
 ```bash
-$ wv query beethoven op 2/1
+$ wv query beethoven op 2
 op:2/1  fba99784
+op:2/2  edfa8309
+op:2/3  7023f148
 
 # Prettier output with the -p flag:
-$ wv query beethoven op 2/1 -p
+$ wv query beethoven op 2 -p
 Sonata in f minor, op. 2 no. 1
+Sonata in A major, op. 2 no. 2
+Sonata in C major, op. 2 no. 3
 
-# Pretty output sorted over a range of catalog numbers:
+# Pretty output sorted over a range of opus numbers:
 $ wv query beethoven op --range 2-11 -p
 Sonata in f minor, op. 2 no. 1
 Sonata in A major, op. 2 no. 2
