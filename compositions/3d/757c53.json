@@ -17,27 +17,27 @@
 	"movements": [
 		{
 			"title": "Liebster Gott, wenn werd ich sterben? (chorale fantasia)",
-			"type": "chorale"
+			"form": "chorale"
 		},
 		{
 			"title": "Was willst du dich, mein Geist, entsetzen?",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "Zwar fühlt mein schwaches Herz",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Doch weichet, ihr tollen, vergeblichen Sorgen!",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "Behalte nur, o Welt, das Meine!",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Herrscher über Tod und Leben",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

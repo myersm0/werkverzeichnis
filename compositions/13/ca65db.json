@@ -17,35 +17,35 @@
 	"movements": [
 		{
 			"title": "Sinfonia",
-			"type": "sinfonia"
+			"form": "sinfonia"
 		},
 		{
 			"title": "Wir danken dir, Gott, wir danken dir",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Halleluja, Stärk und Macht",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "Gottlob! es geht uns wohl",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Gedenk an uns mit deiner Liebe",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "Vergiß es ferner nicht, mit deiner Hand",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Halleluja, Stärk und Macht",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "Sei Lob und Preis mit Ehren",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

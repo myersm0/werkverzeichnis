@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Gott, der Herr, ist Sonn und Schild",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "G"
 		},
 		{
 			"title": "Gott ist unser Sonn und Schild",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "D"
 		},
 		{
 			"title": "Nun danket alle Gott",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "G"
 		},
 		{
 			"title": "Gottlob! Wir wissen den rechten Weg zur Seligkeit",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Gott, ach Gott, verlaß die Deinen nimmermehr",
-			"type": "aria duetto",
+			"form": "aria duetto",
 			"soloists": "soprano, bass",
 			"key": "b"
 		},
 		{
 			"title": "Erhalt uns in der Wahrheit",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "G"
 		}
 	],

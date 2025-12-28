@@ -15,35 +15,35 @@
 	"movements": [
 		{
 			"title": "Sinfonia",
-			"type": "sinfonia"
+			"form": "sinfonia"
 		},
 		{
 			"title": "Christ lag in Todes Banden",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Den Tod niemand zwingen kunnt",
-			"type": "duet"
+			"form": "duet"
 		},
 		{
 			"title": "Jesus Christus, Gottes Sohn",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "Es war ein wunderlicher Krieg",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "Hier ist das rechte Osterlamm",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "So feiern wir das hohe Fest",
-			"type": "duet"
+			"form": "duet"
 		},
 		{
 			"title": "Choral: Wir essen und leben wohl",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

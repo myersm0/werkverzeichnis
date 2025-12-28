@@ -17,31 +17,31 @@
 	"movements": [
 		{
 			"title": "Wie schön leuchtet der Morgenstern",
-			"type": "chorale fantasia"
+			"form": "chorale fantasia"
 		},
 		{
 			"title": "Du wahrer Gottes und Marien Sohn",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Erfüllet, ihr himmlischen göttlichen Flammen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Ein irdscher Glanz, ein leiblich Licht",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Unser Mund und Ton der Saiten",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Wie bin ich doch so herzlich froh",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

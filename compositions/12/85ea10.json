@@ -20,17 +20,17 @@
 			"movements": [
 				{
 					"title": "Wer Dank opfert, der preiset mich",
-					"type": "chorus",
+					"form": "chorus",
 					"key": "A"
 				},
 				{
 					"title": "Es muss die ganze Welt ein stummer Zeuge werden",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "alto"
 				},
 				{
 					"title": "Herr, deine Güte reicht, so weit der Himmel ist",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "soprano",
 					"key": "E"
 				}
@@ -41,23 +41,23 @@
 			"movements": [
 				{
 					"title": "Einer aber unter ihnen, da er sahe",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "tenor"
 				},
 				{
 					"title": "Welch Übermaß der Güte",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "tenor",
 					"key": "D"
 				},
 				{
 					"title": "Sieh meinen Willen an",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "bass"
 				},
 				{
 					"title": "Wie sich ein Vater erbarmet",
-					"type": "chorale"
+					"form": "chorale"
 				}
 			]
 		}

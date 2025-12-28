@@ -16,31 +16,31 @@
 	"movements": [
 		{
 			"title": "Christ unser Herr zum Jordan kam",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Merkt und hört, ihr Menschenkinder",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "Dies hat Gott klar mit Worten",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Des Vaters Stimme ließ sich hören",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "Als Jesus dort nach seinen Leiden",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Menschen, glaubt doch dieser Gnade",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "Das Aug allein das Wasser sieht",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

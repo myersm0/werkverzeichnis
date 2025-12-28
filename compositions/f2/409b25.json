@@ -17,39 +17,39 @@
 	"movements": [
 		{
 			"title": "Meine Seel erhebt den Herren",
-			"type": "chorale fantasia"
+			"form": "chorale fantasia"
 		},
 		{
 			"title": "Herr, der du stark und mächtig bist",
-			"type": "aria",
+			"form": "aria",
 			"key": "Bb",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Des Höchsten Güt und Treu",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Gewaltige stößt Gott vom Stuhl",
-			"type": "aria",
+			"form": "aria",
 			"key": "F",
 			"soloists": "bass"
 		},
 		{
 			"title": "Er denket der Barmherzigkeit",
-			"type": "duet, chorale",
+			"form": "duet, chorale",
 			"key": "d",
 			"soloists": "alto, tenor"
 		},
 		{
 			"title": "Was Gott den Vätern alter Zeiten",
-			"type": "recitative accompagnato",
+			"form": "recitative accompagnato",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Lob und Preis sei Gott dem Vater",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

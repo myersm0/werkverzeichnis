@@ -17,23 +17,23 @@
 	"movements": [
 		{
 			"title": "Sinfonia",
-			"type": "sinfonia"
+			"form": "sinfonia"
 		},
 		{
 			"title": "Gleichwie der Regen und Schnee vom Himmel fällt",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Mein Gott, hier wird mein Herze sein",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Mein Seelenschatz ist Gottes Wort",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "Ich bitt, o Herr, aus Herzensgrund",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

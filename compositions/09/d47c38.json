@@ -17,32 +17,32 @@
 	"movements": [
 		{
 			"title": "Ach Gott, wie manches Herzeleid",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Wie schwerlich läßt sich Fleisch und Blut",
-			"type": "recitative and chorale"
+			"form": "recitative and chorale"
 		},
 		{
 			"title": "Empfind ich Höllenangst und Pein",
-			"type": "aria",
+			"form": "aria",
 			"key": "f#",
 			"soloists": "bass"
 		},
 		{
 			"title": "Es mag mir Leib und Geist verschmachten",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Wenn Sorgen auf mich dringen",
-			"type": "aria duetto",
+			"form": "aria duetto",
 			"key": "E",
 			"soloists": "soprano, alto"
 		},
 		{
 			"title": "Erhalt mein Herz im Glauben rein",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

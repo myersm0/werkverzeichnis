@@ -17,39 +17,39 @@
 	"movements": [
 		{
 			"title": "Sinfonia",
-			"type": "sinfonia"
+			"form": "sinfonia"
 		},
 		{
 			"title": "Weinen, Klagen, Sorgen, Zagen",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Wir müssen durch viel Trübsal in das Reich Gottes eingehen",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto",
 			"key": "c"
 		},
 		{
 			"title": "Kreuz und Kronen sind verbunden",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "c"
 		},
 		{
 			"title": "Ich folge Christo nach",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "Eb"
 		},
 		{
 			"title": "Sei getreu, alle Pein",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "g"
 		},
 		{
 			"title": "Was Gott tut, das ist wohlgetan",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "Bb"
 		}
 	],

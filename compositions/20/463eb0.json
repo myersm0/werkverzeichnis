@@ -17,27 +17,27 @@
 	"movements": [
 		{
 			"title": "Schauet doch und sehet, ob irgendein Schmerz sei",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "So beklagt sich die gekränkte Liebe",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Dein Exempel kann mich schrecken",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "Doch Jesus will auch bei der Strafe",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Jesus macht es wieder gut",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "Ertöt uns durch dein Güte",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

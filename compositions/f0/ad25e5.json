@@ -17,32 +17,32 @@
 	"movements": [
 		{
 			"title": "Ach Gott, vom Himmel sieh darein (Chorale fantasia)",
-			"type": "chorale fantasia"
+			"form": "chorale fantasia"
 		},
 		{
 			"title": "Sie lehren eitel falsche List",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Tilg, o Gott, die Lehren",
-			"type": "aria",
+			"form": "aria",
 			"key": "Bb",
 			"instrumentation": "alto"
 		},
 		{
 			"title": "Die Armen sind verstört",
-			"type": "recitative",
+			"form": "recitative",
 			"instrumentation": "bass"
 		},
 		{
 			"title": "Durchs Feuer wird das Silber rein",
-			"type": "aria",
+			"form": "aria",
 			"key": "g",
 			"instrumentation": "tenor"
 		},
 		{
 			"title": "Das wollst du, Gott, bewahren rein",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

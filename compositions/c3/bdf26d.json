@@ -17,38 +17,38 @@
 	"movements": [
 		{
 			"title": "Es ist das Heil uns kommen her",
-			"type": "chorale fantasia"
+			"form": "chorale fantasia"
 		},
 		{
 			"title": "Gott gab uns ein Gesetz",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Wir waren schon zu tief gesunken",
-			"type": "aria",
+			"form": "aria",
 			"key": "e",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Doch mußte das Gesetz erfüllet werden",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Herr, du siehst statt guter Werke",
-			"type": "duet aria",
+			"form": "duet aria",
 			"key": "A",
 			"soloists": "soprano, alto"
 		},
 		{
 			"title": "Wenn wir die Sünd aus dem Gesetz erkennen",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Ob sichs anließ, als wollt er nicht",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

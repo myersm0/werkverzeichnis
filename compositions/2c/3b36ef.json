@@ -15,27 +15,27 @@
 	"movements": [
 		{
 			"title": "Gottlob! nun geht das Jahr zu Ende",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "Nun lob, mein Seel, den Herren",
-			"type": "chorale"
+			"form": "chorale"
 		},
 		{
 			"title": "So spricht der Herr",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Gott ist ein Quell",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Gott hat uns im heurigen Jahre gesegnet",
-			"type": "duet"
+			"form": "duet"
 		},
 		{
 			"title": "Alleluja! Gelobt sei Gott",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"notes": "Composed for the Sunday after Christmas",

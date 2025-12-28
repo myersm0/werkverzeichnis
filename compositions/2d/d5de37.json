@@ -15,31 +15,31 @@
 	"movements": [
 		{
 			"title": "Sie werden euch in den Bann tun",
-			"type": "duet"
+			"form": "duet"
 		},
 		{
 			"title": "Es kömmt aber die Zeit",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Christen müssen auf der Erden",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "Ach Gott, wie manches Herzeleid",
-			"type": "chorale"
+			"form": "chorale"
 		},
 		{
 			"title": "Es sucht der Antichrist",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Es ist und bleibt der Christen Trost",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "So sei nun, Seele, deine",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"notes": "Composed for the Sunday after Ascension.",

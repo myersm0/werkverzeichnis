@@ -16,38 +16,38 @@
 	"movements": [
 		{
 			"title": "Wo soll ich fliehen hin",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Der Sünden Wust hat mich nicht nur befleckt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Ergieße dich reichlich, du göttliche Quelle",
-			"type": "aria",
+			"form": "aria",
 			"key": "Eb",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Mein treuer Heiland tröstet mich",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Verstumme, Höllenheer",
-			"type": "aria",
+			"form": "aria",
 			"key": "Bb",
 			"soloists": "bass"
 		},
 		{
 			"title": "Ich bin ja nur das kleinste Teil der Welt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Führ auch mein Herz und Sinn",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

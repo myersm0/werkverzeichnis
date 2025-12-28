@@ -15,31 +15,31 @@
 	"movements": [
 		{
 			"title": "Sinfonia",
-			"type": "sinfonia"
+			"form": "sinfonia"
 		},
 		{
 			"title": "Am Abend aber desselbigen Sabbats",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Wo zwei und drei versammlet sind",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "Verzage nicht, o Häuflein klein",
-			"type": "duet"
+			"form": "duet"
 		},
 		{
 			"title": "Man kann hiervon ein schön Exempel sehen",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Jesus ist ein Schild der Seinen",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "Verleih uns Frieden gnädiglich",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

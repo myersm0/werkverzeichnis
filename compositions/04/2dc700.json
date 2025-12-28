@@ -15,55 +15,55 @@
 	"movements": [
 		{
 			"title": "Angenehmes Wiederau",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "So ziehen wir",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Willkommen im Heil, willkommen in Freuden",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "Da heute dir, gepriesner Hennicke",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Was die Seele kann ergötzen",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "Und wie ich jederzeit bedacht",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Ich will dich halten",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "Und obwohl sonst der Unbestand",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Eilt, ihr Stunden, wie ihr wollt",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "So recht! ihr seid mir werte Gäste",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "So, wie ich die Tropfen zolle",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "Drum, angenehmes Wiederau",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Angenehmes Wiederau",
-			"type": "chorus"
+			"form": "chorus"
 		}
 	],
 	"xref": {
