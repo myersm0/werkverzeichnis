@@ -11,7 +11,7 @@ pub mod validate;
 
 pub use add::{add_composition, generate_id, scaffold_composition, AddError, AddResult};
 pub use catalog::{load_catalog_def, matches_group, sort_key, sort_numbers, sort_numbers_by_scheme};
-pub use config::{resolve_data_dir, Config, DisplayConfig, KeySymbols, PatternConfig};
+pub use config::{resolve_data_dir, resolve_editor, Config, DisplayConfig, KeySymbols, PatternConfig};
 pub use display::{expand_key, expand_title, format_catalog, format_form, truncate_instrumentation, ExpansionContext};
 pub use index::{build_index, write_composer_index, write_edition_indexes, write_index, Index};
 pub use merge::{

@@ -1,13 +1,14 @@
 use std::io::{self, BufRead};
 use std::path::{Path, PathBuf};
+use std::process::Command;
 
 use clap::{Parser, Subcommand};
 use werkverzeichnis::{
 	add_composition, build_index, collection_path_from_id, expand_title, format_catalog,
 	generate_id, load_catalog_def, load_collection, load_composer, load_composition,
-	merge_attribution_with_collections, resolve_data_dir, scaffold_composition, sort_key,
-	sort_numbers, validate_all, validate_file, write_composer_index, write_edition_indexes,
-	write_index, Config, ExpansionContext,
+	merge_attribution_with_collections, resolve_data_dir, resolve_editor, scaffold_composition,
+	sort_key, sort_numbers, validate_all, validate_file, write_composer_index,
+	write_edition_indexes, write_index, Config, ExpansionContext,
 };
 
 #[derive(Parser)]
@@ -68,17 +69,18 @@ enum Commands {
 		data_dir: Option<PathBuf>,
 	},
 
-	/// Query the index
-	Query {
-		composer: String,
+	/// Get compositions by ID or catalog number
+	Get {
+		#[arg(help = "Composer slug, or composition ID(s)")]
+		target: Option<String>,
+		#[arg(help = "Catalog scheme (e.g., bwv, op)")]
 		scheme: Option<String>,
+		#[arg(help = "Catalog number or range (e.g., 812, 2-10)")]
 		number: Option<String>,
 		#[arg(long)]
 		edition: Option<String>,
 		#[arg(long, help = "Filter to a group (e.g., op 2 includes 2, 2/1, 2/2)")]
 		group: Option<String>,
-		#[arg(long, value_name = "START-END", help = "Filter to range (e.g., 2-10)")]
-		range: Option<String>,
 		#[arg(long)]
 		sorted: bool,
 		#[arg(short, long, help = "Terse output (scheme:number and ID only)")]
@@ -87,8 +89,18 @@ enum Commands {
 		movements: bool,
 		#[arg(long, help = "Full JSON output")]
 		json: bool,
-		#[arg(short, long, help = "Quiet mode (suppress 'No results' messages)")]
+		#[arg(short, long, help = "Quiet mode (suppress messages)")]
 		quiet: bool,
+		#[arg(short, long, help = "Open in editor")]
+		edit: bool,
+		#[arg(long, help = "Read IDs from stdin")]
+		stdin: bool,
+		#[arg(long, value_name = "PATH")]
+		data_dir: Option<PathBuf>,
+	},
+
+	/// Format JSON input as pretty output
+	Format {
 		#[arg(long, value_name = "PATH")]
 		data_dir: Option<PathBuf>,
 	},
@@ -157,9 +169,10 @@ fn main() {
 		}
 		Commands::Merge { path, data_dir } => cmd_merge(&path, data_dir),
 		Commands::Index { data_dir } => cmd_index(data_dir),
-		Commands::Query { composer, scheme, number, edition, group, range, sorted, terse, movements, json, quiet, data_dir } => {
-			cmd_query(&composer, scheme.as_deref(), number.as_deref(), edition.as_deref(), group.as_deref(), range.as_deref(), sorted, terse, movements, json, quiet, data_dir)
+		Commands::Get { target, scheme, number, edition, group, sorted, terse, movements, json, quiet, edit, stdin, data_dir } => {
+			cmd_get(target.as_deref(), scheme.as_deref(), number.as_deref(), edition.as_deref(), group.as_deref(), sorted, terse, movements, json, quiet, edit, stdin, data_dir)
 		}
+		Commands::Format { data_dir } => cmd_format(data_dir),
 		Commands::Validate { path, data_dir } => cmd_validate(path.as_deref(), data_dir),
 		Commands::Add { path, force, data_dir } => cmd_add(&path, force, data_dir),
 		Commands::New { form, composer, data_dir } => cmd_new(&form, &composer, data_dir),
@@ -358,27 +371,111 @@ fn cmd_index(data_dir: Option<PathBuf>) {
 	println!("Done.");
 }
 
-fn cmd_query(
-	composer: &str,
+fn is_composition_id(s: &str) -> bool {
+	s.len() == 8 && s.chars().all(|c| c.is_ascii_hexdigit())
+}
+
+fn id_to_path(data_dir: &Path, id: &str) -> PathBuf {
+	data_dir
+		.join("compositions")
+		.join(&id[..2])
+		.join(format!("{}.json", &id[2..]))
+}
+
+fn cmd_get(
+	target: Option<&str>,
 	scheme: Option<&str>,
 	number: Option<&str>,
 	edition: Option<&str>,
 	group: Option<&str>,
-	range: Option<&str>,
 	sorted: bool,
 	terse: bool,
 	movements: bool,
 	json: bool,
 	quiet: bool,
+	edit: bool,
+	stdin: bool,
 	data_dir: Option<PathBuf>,
 ) {
 	let config = Config::load();
 	let data_dir = resolve_data_dir(data_dir.as_ref(), &config);
 
-	// Require explicit scheme for range/group queries
+	// Collect IDs from stdin if requested
+	if stdin {
+		let ids: Vec<String> = io::stdin()
+			.lock()
+			.lines()
+			.filter_map(|l| l.ok())
+			.map(|l| l.trim().to_string())
+			.filter(|l| !l.is_empty())
+			.collect();
+
+		if ids.is_empty() {
+			if !quiet {
+				eprintln!("No IDs provided.");
+			}
+			return;
+		}
+
+		output_by_ids(&ids, &data_dir, &config, terse, movements, json, edit);
+		return;
+	}
+
+	// Must have a target
+	let target = match target {
+		Some(t) => t,
+		None => {
+			eprintln!("Usage: wv get <composer> [scheme] [number]");
+			eprintln!("       wv get <id> [id...]");
+			eprintln!("       wv get --stdin");
+			std::process::exit(1);
+		}
+	};
+
+	// Check if target is an ID (or multiple IDs via positional args)
+	if is_composition_id(target) {
+		// Collect any additional IDs from scheme/number positions
+		let mut ids = vec![target.to_string()];
+		if let Some(s) = scheme {
+			if is_composition_id(s) {
+				ids.push(s.to_string());
+			}
+		}
+		if let Some(n) = number {
+			if is_composition_id(n) {
+				ids.push(n.to_string());
+			}
+		}
+
+		output_by_ids(&ids, &data_dir, &config, terse, movements, json, edit);
+		return;
+	}
+
+	// Otherwise, target is a composer
+	let composer = target;
+
+	// Check for implicit range in number (e.g., "2-10")
+	let (number, range) = if let Some(n) = number {
+		if let Some((start, end)) = n.split_once('-') {
+			// Make sure both sides look like numbers (not just a hyphenated number)
+			let start_valid = start.chars().next().map_or(false, |c| c.is_ascii_digit());
+			let end_valid = end.chars().next().map_or(false, |c| c.is_ascii_digit());
+			if start_valid && end_valid {
+				(None, Some((start, end)))
+			} else {
+				(Some(n), None)
+			}
+		} else {
+			(Some(n), None)
+		}
+	} else {
+		(None, None)
+	};
+
+	// Require scheme for range/group queries
 	if (range.is_some() || group.is_some()) && scheme.is_none() {
-		eprintln!("Error: --range and --group require a catalog scheme");
-		eprintln!("Usage: wv query <composer> <scheme> [--range START-END]");
+		eprintln!("Error: range and group queries require a catalog scheme");
+		eprintln!("Usage: wv get <composer> <scheme> <range>");
 		std::process::exit(1);
 	}
 
@@ -402,13 +499,8 @@ fn cmd_query(
 		builder = builder.group(g);
 	}
 
-	if let Some(r) = range {
-		if let Some((start, end)) = r.split_once('-') {
-			builder = builder.range(start.trim(), end.trim());
-		} else {
-			eprintln!("Invalid range format. Use START-END (e.g., 2-10)");
-			std::process::exit(1);
-		}
+	if let Some((start, end)) = range {
+		builder = builder.range(start.trim(), end.trim());
 	}
 
 	if sorted || group.is_some() || range.is_some() {
@@ -424,6 +516,16 @@ fn cmd_query(
 		return;
 	}
 
+	// Handle --edit
+	if edit {
+		let paths: Vec<PathBuf> = results
+			.iter()
+			.map(|r| id_to_path(&data_dir, &r.id))
+			.collect();
+		open_in_editor(&config, &paths);
+		return;
+	}
+
 	let catalog_defn = scheme.and_then(|s| load_catalog_def(&data_dir, s, Some(composer)));
 	let multi = results.len() > 1;
 
@@ -431,11 +533,7 @@ fn cmd_query(
 		let mut output: Vec<serde_json::Value> = Vec::new();
 
 		for r in &results {
-			let comp_path = data_dir
-				.join("compositions")
-				.join(&r.id[..2])
-				.join(format!("{}.json", &r.id[2..]));
-
+			let comp_path = id_to_path(&data_dir, &r.id);
 			if let Ok(comp) = load_composition(&comp_path) {
 				output.push(serde_json::to_value(&comp).unwrap_or(serde_json::Value::Null));
 			}
@@ -448,13 +546,9 @@ fn cmd_query(
 		}
 	} else if movements {
 		for r in &results {
-			let comp_path = data_dir
-				.join("compositions")
-				.join(&r.id[..2])
-				.join(format!("{}.json", &r.id[2..]));
+			let comp_path = id_to_path(&data_dir, &r.id);
 
 			if let Ok(comp) = load_composition(&comp_path) {
-				// Print header for multi-work queries
 				if multi {
 					let header = match (&r.number, scheme) {
 						(Some(n), Some(s)) => format_catalog(s, n, catalog_defn.as_ref()),
@@ -498,10 +592,7 @@ fn cmd_query(
 	} else {
 		// Default: pretty output
 		for r in results {
-			let comp_path = data_dir
-				.join("compositions")
-				.join(&r.id[..2])
-				.join(format!("{}.json", &r.id[2..]));
+			let comp_path = id_to_path(&data_dir, &r.id);
 
 			if let Ok(comp) = load_composition(&comp_path) {
 				let ctx = ExpansionContext {
@@ -530,6 +621,200 @@ fn cmd_query(
 				}
 			}
 		}
+	}
+}
+
+fn output_by_ids(
+	ids: &[String],
+	data_dir: &Path,
+	config: &Config,
+	terse: bool,
+	movements: bool,
+	json: bool,
+	edit: bool,
+) {
+	if edit {
+		let paths: Vec<PathBuf> = ids.iter().map(|id| id_to_path(data_dir, id)).collect();
+		open_in_editor(config, &paths);
+		return;
+	}
+
+	let multi = ids.len() > 1;
+
+	if json {
+		let mut output: Vec<serde_json::Value> = Vec::new();
+		for id in ids {
+			let comp_path = id_to_path(data_dir, id);
+			if let Ok(comp) = load_composition(&comp_path) {
+				output.push(serde_json::to_value(&comp).unwrap_or(serde_json::Value::Null));
+			}
+		}
+		if output.len() == 1 {
+			println!("{}", serde_json::to_string_pretty(&output[0]).unwrap());
+		} else {
+			println!("{}", serde_json::to_string_pretty(&output).unwrap());
+		}
+	} else if movements {
+		for id in ids {
+			let comp_path = id_to_path(data_dir, id);
+			if let Ok(comp) = load_composition(&comp_path) {
+				if multi {
+					let header = format_id_header(&comp, id, data_dir);
+					println!("{}:", header);
+				}
+
+				if let Some(mvmts) = &comp.movements {
+					for (i, mvmt) in mvmts.iter().enumerate() {
+						let mvmt_title = mvmt.title.as_deref()
+							.or(mvmt.form.as_deref())
+							.unwrap_or("?");
+						let prefix = if multi { "  " } else { "" };
+						println!("{}{}. {}", prefix, i + 1, mvmt_title);
+					}
+				} else if let Some(sects) = &comp.sections {
+					for (i, sect) in sects.iter().enumerate() {
+						let sect_title = sect.title.as_deref()
+							.or(sect.form.as_deref())
+							.unwrap_or("?");
+						let prefix = if multi { "  " } else { "" };
+						println!("{}{}. {}", prefix, i + 1, sect_title);
+					}
+				}
+
+				if multi {
+					println!();
+				}
+			}
+		}
+	} else if terse {
+		for id in ids {
+			let comp_path = id_to_path(data_dir, id);
+			if let Ok(comp) = load_composition(&comp_path) {
+				if let Some(cat) = first_catalog_entry(&comp) {
+					println!("{}:{}\t{}", cat.scheme, cat.number, id);
+				} else {
+					println!("{}", id);
+				}
+			} else {
+				println!("{}", id);
+			}
+		}
+	} else {
+		// Default: pretty output (same format as catalog-based queries)
+		for id in ids {
+			let comp_path = id_to_path(data_dir, id);
+			if let Ok(comp) = load_composition(&comp_path) {
+				let ctx = ExpansionContext {
+					composition: &comp,
+					collection: None,
+					position_in_collection: None,
+					config: &config.display,
+				};
+				let title = expand_title(&ctx);
+
+				if let Some(cat) = first_catalog_entry(&comp) {
+					let catalog_defn = load_catalog_def(
+						data_dir,
+						&cat.scheme,
+						comp.attribution.first().and_then(|a| a.composer.as_deref()),
+					);
+					let formatted = format_catalog(&cat.scheme, &cat.number, catalog_defn.as_ref());
+					println!("{}, {}", title, formatted);
+				} else {
+					println!("{} [{}]", title, id);
+				}
+			} else {
+				eprintln!("Not found: {}", id);
+			}
+		}
+	}
+}
+
+fn first_catalog_entry(comp: &werkverzeichnis::Composition) -> Option<&werkverzeichnis::CatalogEntry> {
+	comp.attribution
+		.first()
+		.and_then(|a| a.catalog.as_ref())
+		.and_then(|c| c.first())
+}
+
+fn format_id_header(comp: &werkverzeichnis::Composition, id: &str, data_dir: &Path) -> String {
+	if let Some(cat) = first_catalog_entry(comp) {
+		let catalog_defn = load_catalog_def(
+			data_dir,
+			&cat.scheme,
+			comp.attribution.first().and_then(|a| a.composer.as_deref()),
+		);
+		format_catalog(&cat.scheme, &cat.number, catalog_defn.as_ref())
+	} else {
+		id.to_string()
+	}
+}
+
+fn open_in_editor(config: &Config, paths: &[PathBuf]) {
+	let editor = resolve_editor(config);
+	let path_strs: Vec<&str> = paths.iter().filter_map(|p| p.to_str()).collect();
+
+	let status = Command::new(&editor)
+		.args(&path_strs)
+		.status();
+
+	match status {
+		Ok(s) if !s.success() => {
+			eprintln!("Editor exited with status: {}", s);
+		}
+		Err(e) => {
+			eprintln!("Failed to open editor '{}': {}", editor, e);
+			std::process::exit(1);
+		}
+		_ => {}
+	}
+}
+
+fn cmd_format(data_dir: Option<PathBuf>) {
+	let config = Config::load();
+	let data_dir = resolve_data_dir(data_dir.as_ref(), &config);
+
+	let input: String = io::stdin()
+		.lock()
+		.lines()
+		.filter_map(|l| l.ok())
+		.collect::<Vec<_>>()
+		.join("\n");
+
+	if input.trim().is_empty() {
+		return;
+	}
+
+	// Try parsing as array first, then as single object
+	let compositions: Vec<werkverzeichnis::Composition> = 
+		if let Ok(arr) = serde_json::from_str::<Vec<werkverzeichnis::Composition>>(&input) {
+			arr
+		} else if let Ok(comp) = serde_json::from_str::<werkverzeichnis::Composition>(&input) {
+			vec![comp]
+		} else {
+			eprintln!("Error: Invalid JSON input");
+			std::process::exit(1);
+		};
+
+	for comp in &compositions {
+		let ctx = ExpansionContext {
+			composition: comp,
+			collection: None,
+			position_in_collection: None,
+			config: &config.display,
+		};
+		let title = expand_title(&ctx);
+
+		// Try to get catalog info from first attribution
+		if let Some(attr) = comp.attribution.first() {
+			if let Some(cat) = attr.catalog.as_ref().and_then(|c| c.first()) {
+				let catalog_defn = load_catalog_def(&data_dir, &cat.scheme, attr.composer.as_deref());
+				let formatted = format_catalog(&cat.scheme, &cat.number, catalog_defn.as_ref());
+				println!("{}, {}", title, formatted);
+				continue;
+			}
+		}
+		println!("{} [{}]", title, comp.id);
 	}
 }
 

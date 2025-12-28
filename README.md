@@ -8,7 +8,7 @@ This project prioritizes:
 - **Human-readable source files** — Plain text JSON files (like [this one](compositions/27/c3084a.json)) you can open in any text editor, inspect, and understand
 - **Catalog precision and rigor** — Allow for multiple numbering systems per composer, with cross-references
 - **Temporal accuracy** — Attribution and catalog changes over time (reattributions, revised dates) are tracked
-- **Practical tooling** — We provide a powerful command-line interface in the Rust language for querying, validating, and managing the dataset
+- **Practical tooling** — We provide a powerful command-line interface in the Rust language for retrieval, validating, and managing the dataset
 - **Configurable output** — Display preferences (language, formatting) can be customized per user
 
 ## Roadmap
@@ -35,21 +35,27 @@ cargo build --release
 alias wv="$(pwd)/target/release/wv"
 ```
 
-Here are some common query patterns:
+Here are some common retrieval patterns:
 ```
-$ wv query beethoven op 2
+$ wv get beethoven op 2
 Sonata in f minor, op. 2 no. 1
 Sonata in A major, op. 2 no. 2
 Sonata in C major, op. 2 no. 3
 
 # Or use the --terse flag to get just the catalog and id numbers:
-$ wv query beethoven op 2 --terse
+$ wv get beethoven op 2 --terse
 op:2/1  fba99784
 op:2/2  edfa8309
 op:2/3  7023f148
 
-# Output sorted over a range of opus numbers:
-$ wv query beethoven op --range 2-11
+# Output results as JSON (not shown here for brevity):
+$ wv get beethoven op 2 --json
+
+# Open the matching JSON file(s) in a text editor (customize this in your config.toml):
+$ wv get beethoven op 2 --edit
+
+# Get results from a range of opus numbers:
+$ wv get beethoven op 2-11
 Sonata in f minor, op. 2 no. 1
 Sonata in A major, op. 2 no. 2
 Sonata in C major, op. 2 no. 3
@@ -59,21 +65,22 @@ Sonata in F major, op. 10 no. 2
 Sonata in D major, op. 10 no. 3
 
 # Show movements for a piece:
-$ wv query beethoven op 2/1 --movements
+$ wv get beethoven op 2/1 --movements
 1. Allegro
 2. Adagio
 3. Menuetto and Trio (Allegretto)
 4. Prestissimo
+
 ```
 
 For more complex queries, you can use the `--json` flag to extract raw JSON data, which can be piped to [`jq`](https://jqlang.github.io/jq/) for filtering and transformation:
 ```
 # Get the date composed for op. 2 no. 1:
-$ wv query beethoven op 2/1 --json | jq '.attribution[0].dates.composed'
+$ wv get beethoven op 2/1 --json | jq '.attribution[0].dates.composed'
 1795
 
 # Get the IDs of Beethoven works composed before 1800 (output not shown):
-$ wv query beethoven op --range 1-20 --json | jq '.[] | select(.attribution[0].dates.composed < 1800)' | jq '.id'
+$ wv get beethoven op 1-20 --json | jq '.[] | select(.attribution[0].dates.composed < 1800)' | jq '.id'
 ```
 
 ## Configuration
@@ -137,7 +144,7 @@ Each composition has a stable 8-character ID and lives in `compositions/{prefix}
 ```json
 {
 	"id": "fba99784",
-	"key": "f",  # stored in terse format; expands to "f minor" or "fis-Moll" on output
+	"key": "f",  # stored in terse format; expands to "f minor" or "f-Moll" on output
 	"form": "sonata",
 	"instrumentation": "piano",
 	"attribution": [
@@ -220,7 +227,7 @@ This generation-and-review process is still evolving. The goal is accuracy above
 
 ## CLI tool
 The `wv` command-line tool provides:
-- **query** — Look up compositions by composer, catalog, range
+- **get** — Look up compositions by composer, catalog, range
 - **collection** — List and verify collections
 - **validate** — Check files against schemas
 - **index** — Build search indexes

@@ -8,6 +8,7 @@ use serde::Deserialize;
 #[serde(default)]
 pub struct Config {
 	pub data_dir: Option<PathBuf>,
+	pub editor: Option<String>,
 	pub display: DisplayConfig,
 }
 
@@ -39,6 +40,7 @@ impl Default for Config {
 	fn default() -> Self {
 		Self {
 			data_dir: None,
+			editor: None,
 			display: DisplayConfig::default(),
 		}
 	}
@@ -130,4 +132,19 @@ pub fn resolve_data_dir(
 	}
 
 	current
+}
+
+pub fn resolve_editor(config: &Config) -> String {
+	// 1. Config file
+	if let Some(editor) = &config.editor {
+		return editor.clone();
+	}
+
+	// 2. Environment variable
+	if let Ok(editor) = std::env::var("EDITOR") {
+		return editor;
+	}
+
+	// 3. Fallback
+	"vi".into()
 }

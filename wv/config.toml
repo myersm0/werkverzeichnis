@@ -1,8 +1,11 @@
-# werkverzeichnis Configuration
+# Werkverzeichnis Configuration
 # Place at ~/.config/wv/config.toml
 
 # Path to data repository (optional if running from repo directory)
 # data_dir = "/path/to/werkverzeichnis"
+
+# Editor for --edit flag (defaults to $EDITOR, then vi)
+editor = "vim"
 
 [display]
 # Language for titles and keys: en, de, etc.
