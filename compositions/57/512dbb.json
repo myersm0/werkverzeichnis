@@ -4,7 +4,11 @@
 		{
 			"composer": "mozart",
 			"dates": {"composed": 1774},
-			"catalog": [{"scheme": "k", "number": "279"}]
+			"catalog": [
+				{"scheme": "k", "edition": "9", "number": "279", "since": "2024"},
+				{"scheme": "k", "edition": "6", "number": "189d", "since": "1964"},
+				{"scheme": "k", "edition": "1", "number": "279", "since": "1862"}
+			]
 		}
 	],
 	"key": "C",

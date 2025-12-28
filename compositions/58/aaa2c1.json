@@ -5,9 +5,9 @@
 			"composer": "mozart",
 			"dates": {"composed": 1774},
 			"catalog": [
-				{"scheme": "k", "edition": "9", "number": "281"},
-				{"scheme": "k", "edition": "6", "number": "189f"},
-				{"scheme": "k", "edition": "1", "number": "281"}
+				{"scheme": "k", "edition": "9", "number": "281", "since": "2024"},
+				{"scheme": "k", "edition": "6", "number": "189f", "since": "1964"},
+				{"scheme": "k", "edition": "1", "number": "281", "since": "1862"}
 			]
 		}
 	],

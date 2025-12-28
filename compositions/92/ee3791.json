@@ -4,7 +4,7 @@
 		{
 			"composer": "mozart",
 			"dates": {"composed": 1789},
-			"catalog": [{"scheme": "k", "number": "576"}]
+			"catalog": [{"scheme": "k", "edition": "1", "number": "576", "since": "1862"}]
 		}
 	],
 	"key": "D",

@@ -35,6 +35,7 @@ cargo build --release
 alias wv="$(pwd)/target/release/wv"
 ```
 
+### Basic usage
 Here are some common retrieval patterns:
 ```
 $ wv get beethoven op 2
@@ -73,14 +74,21 @@ $ wv get beethoven op 2/1 --movements
 
 ```
 
-For more complex queries, you can use the `--json` flag to extract raw JSON data, which can be piped to [`jq`](https://jqlang.github.io/jq/) for filtering and transformation:
-```
-# Get the date composed for op. 2 no. 1:
-$ wv get beethoven op 2/1 --json | jq '.attribution[0].dates.composed'
-1795
+### Attribution and catalog history
+Catalog numbers can change over time, but a key advantage of our scheme is that we provide a stable ID for each composition and a way of resolving catalog changes. For example, Mozart's famous "Alla Turca" sonata is K. 331 in the original 1862 Köchel catalog, then it changed to  K. 300i in the 1964 sixth edition, and most recently in 2024 it changed back to K. 331 for the 9th Köchel edition. Both numbers are commonly used today.
 
-# Get the IDs of Beethoven works composed before 1800 (output not shown):
-$ wv get beethoven op 1-20 --json | jq '.[] | select(.attribution[0].dates.composed < 1800)' | jq '.id'
+```
+# By default, `wv get` will assume the latest catalog numbering:
+$ wv get mozart k 331
+Sonata in A major, K. 331
+
+# Equivalent to the above, but explicitly reference the 9th Köchel edition:
+$ wv get mozart k 331 --edition 9
+Sonata in A major, K. 331
+
+# Or reference the 6th edition instead:
+$ wv get mozart k 300i --edition 6
+Sonata in A major, K. 300i
 ```
 
 ## Configuration

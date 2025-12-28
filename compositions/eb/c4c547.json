@@ -4,7 +4,7 @@
 		{
 			"composer": "mozart",
 			"dates": {"published": 1788},
-			"catalog": [{"scheme": "k", "number": "545"}]
+			"catalog": [{"scheme": "k", "edition": "1", "number": "545", "since": "1862"}]
 		}
 	],
 	"key": "C",
