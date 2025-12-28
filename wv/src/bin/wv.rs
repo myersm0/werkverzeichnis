@@ -81,10 +81,14 @@ enum Commands {
 		range: Option<String>,
 		#[arg(long)]
 		sorted: bool,
-		#[arg(short, long, help = "Pretty output with expanded titles")]
-		pretty: bool,
+		#[arg(short, long, help = "Terse output (scheme:number and ID only)")]
+		terse: bool,
 		#[arg(short, long, help = "Show movement structure")]
 		movements: bool,
+		#[arg(long, help = "Full JSON output")]
+		json: bool,
+		#[arg(short, long, help = "Quiet mode (suppress 'No results' messages)")]
+		quiet: bool,
 		#[arg(long, value_name = "PATH")]
 		data_dir: Option<PathBuf>,
 	},
@@ -123,8 +127,8 @@ enum Commands {
 		verify: bool,
 		#[arg(long, help = "Show full composition details")]
 		hydrate: bool,
-		#[arg(short, long, help = "Pretty output with expanded titles")]
-		pretty: bool,
+		#[arg(short, long, help = "Terse output (scheme:number only)")]
+		terse: bool,
 		#[arg(long, value_name = "PATH")]
 		data_dir: Option<PathBuf>,
 	},
@@ -153,15 +157,15 @@ fn main() {
 		}
 		Commands::Merge { path, data_dir } => cmd_merge(&path, data_dir),
 		Commands::Index { data_dir } => cmd_index(data_dir),
-		Commands::Query { composer, scheme, number, edition, group, range, sorted, pretty, movements, data_dir } => {
-			cmd_query(&composer, scheme.as_deref(), number.as_deref(), edition.as_deref(), group.as_deref(), range.as_deref(), sorted, pretty, movements, data_dir)
+		Commands::Query { composer, scheme, number, edition, group, range, sorted, terse, movements, json, quiet, data_dir } => {
+			cmd_query(&composer, scheme.as_deref(), number.as_deref(), edition.as_deref(), group.as_deref(), range.as_deref(), sorted, terse, movements, json, quiet, data_dir)
 		}
 		Commands::Validate { path, data_dir } => cmd_validate(path.as_deref(), data_dir),
 		Commands::Add { path, force, data_dir } => cmd_add(&path, force, data_dir),
 		Commands::New { form, composer, data_dir } => cmd_new(&form, &composer, data_dir),
 		Commands::Id => cmd_id(),
-		Commands::Collection { id, verify, hydrate, pretty, data_dir } => {
-			cmd_collection(&id, verify, hydrate, pretty, data_dir)
+		Commands::Collection { id, verify, hydrate, terse, data_dir } => {
+			cmd_collection(&id, verify, hydrate, terse, data_dir)
 		}
 		Commands::Collections { query, data_dir } => cmd_collections(&query, data_dir),
 	}
@@ -362,8 +366,10 @@ fn cmd_query(
 	group: Option<&str>,
 	range: Option<&str>,
 	sorted: bool,
-	pretty: bool,
+	terse: bool,
 	movements: bool,
+	json: bool,
+	quiet: bool,
 	data_dir: Option<PathBuf>,
 ) {
 	let config = Config::load();
@@ -412,35 +418,85 @@ fn cmd_query(
 	let results = builder.fetch();
 
 	if results.is_empty() {
-		println!("No results found.");
-	} else if movements {
-		for r in results {
+		if !quiet {
+			eprintln!("No results found.");
+		}
+		return;
+	}
+
+	let catalog_defn = scheme.and_then(|s| load_catalog_def(&data_dir, s, Some(composer)));
+	let multi = results.len() > 1;
+
+	if json {
+		let mut output: Vec<serde_json::Value> = Vec::new();
+
+		for r in &results {
 			let comp_path = data_dir
 				.join("compositions")
 				.join(&r.id[..2])
 				.join(format!("{}.json", &r.id[2..]));
 
 			if let Ok(comp) = load_composition(&comp_path) {
+				output.push(serde_json::to_value(&comp).unwrap_or(serde_json::Value::Null));
+			}
+		}
+
+		if output.len() == 1 {
+			println!("{}", serde_json::to_string_pretty(&output[0]).unwrap());
+		} else {
+			println!("{}", serde_json::to_string_pretty(&output).unwrap());
+		}
+	} else if movements {
+		for r in &results {
+			let comp_path = data_dir
+				.join("compositions")
+				.join(&r.id[..2])
+				.join(format!("{}.json", &r.id[2..]));
+
+			if let Ok(comp) = load_composition(&comp_path) {
+				// Print header for multi-work queries
+				if multi {
+					let header = match (&r.number, scheme) {
+						(Some(n), Some(s)) => format_catalog(s, n, catalog_defn.as_ref()),
+						(Some(n), None) => n.clone(),
+						(None, _) => r.id.clone(),
+					};
+					println!("{}:", header);
+				}
+
 				if let Some(mvmts) = &comp.movements {
 					for (i, mvmt) in mvmts.iter().enumerate() {
 						let mvmt_title = mvmt.title.as_deref()
-							.or(mvmt.movement_type.as_deref())
+							.or(mvmt.form.as_deref())
 							.unwrap_or("?");
-						println!("{}. {}", i + 1, mvmt_title);
+						let prefix = if multi { "  " } else { "" };
+						println!("{}{}. {}", prefix, i + 1, mvmt_title);
 					}
 				} else if let Some(sects) = &comp.sections {
 					for (i, sect) in sects.iter().enumerate() {
 						let sect_title = sect.title.as_deref()
-							.or(sect.section_type.as_deref())
+							.or(sect.form.as_deref())
 							.unwrap_or("?");
-						println!("{}. {}", i + 1, sect_title);
+						let prefix = if multi { "  " } else { "" };
+						println!("{}{}. {}", prefix, i + 1, sect_title);
 					}
+				}
+
+				if multi {
+					println!();
 				}
 			}
 		}
-	} else if pretty {
-		let catalog_defn = scheme.and_then(|s| load_catalog_def(&data_dir, s, Some(composer)));
-
+	} else if terse {
+		for r in results {
+			match (&r.number, scheme) {
+				(Some(n), Some(s)) => println!("{}:{}\t{}", s, n, r.id),
+				(Some(n), None) => println!("{}\t{}", n, r.id),
+				(None, _) => println!("{}", r.id),
+			}
+		}
+	} else {
+		// Default: pretty output
 		for r in results {
 			let comp_path = data_dir
 				.join("compositions")
@@ -472,14 +528,6 @@ fn cmd_query(
 					(Some(n), None) => println!("{}", n),
 					(None, _) => println!("{}", r.id),
 				}
-			}
-		}
-	} else {
-		for r in results {
-			match (&r.number, scheme) {
-				(Some(n), Some(s)) => println!("{}:{}\t{}", s, n, r.id),
-				(Some(n), None) => println!("{}\t{}", n, r.id),
-				(None, _) => println!("{}", r.id),
 			}
 		}
 	}
@@ -550,7 +598,7 @@ fn cmd_id() {
 	println!("{}", generate_id());
 }
 
-fn cmd_collection(id: &str, verify: bool, hydrate: bool, pretty: bool, data_dir: Option<PathBuf>) {
+fn cmd_collection(id: &str, verify: bool, hydrate: bool, terse: bool, data_dir: Option<PathBuf>) {
 	let config = Config::load();
 	let data_dir = resolve_data_dir(data_dir.as_ref(), &config);
 	let collections_dir = data_dir.join("collections");
@@ -564,21 +612,7 @@ fn cmd_collection(id: &str, verify: bool, hydrate: bool, pretty: bool, data_dir:
 		}
 	};
 
-	let coll_title = collection
-		.title
-		.get(&config.display.language)
-		.or_else(|| collection.title.get("en"))
-		.or_else(|| collection.title.values().next());
-
-	// Only show header for non-pretty output
-	if !pretty {
-		if let Some(t) = coll_title {
-			println!("{}", t);
-			println!();
-		}
-	}
-
-	let index = if verify || hydrate || pretty {
+	let index = if verify || hydrate || !terse {
 		Some(build_index(&data_dir))
 	} else {
 		None
@@ -588,7 +622,7 @@ fn cmd_collection(id: &str, verify: bool, hydrate: bool, pretty: bool, data_dir:
 		id.split_once('-').map(|(c, _)| c).unwrap_or(id)
 	});
 
-	let catalog_defn = if pretty {
+	let catalog_defn = if !terse {
 		load_catalog_def(&data_dir, &collection.scheme, Some(composer))
 	} else {
 		None
@@ -599,7 +633,7 @@ fn cmd_collection(id: &str, verify: bool, hydrate: bool, pretty: bool, data_dir:
 	for (i, num) in collection.compositions.iter().enumerate() {
 		let position = i + 1;
 
-		if verify || hydrate || pretty {
+		if verify || hydrate {
 			let idx = index.as_ref().unwrap();
 			let found = idx
 				.query()
@@ -614,21 +648,7 @@ fn cmd_collection(id: &str, verify: bool, hydrate: bool, pretty: bool, data_dir:
 					.join(&comp_id[..2])
 					.join(format!("{}.json", &comp_id[2..]));
 
-				if pretty {
-					let formatted_cat = format_catalog(&collection.scheme, num, catalog_defn.as_ref());
-					if let Ok(comp) = load_composition(&comp_path) {
-						let ctx = ExpansionContext {
-							composition: &comp,
-							collection: Some(&collection),
-							position_in_collection: Some(position),
-							config: &config.display,
-						};
-						let title = expand_title(&ctx);
-						println!("{}, {}", title, formatted_cat);
-					} else {
-						println!("{}", formatted_cat);
-					}
-				} else if hydrate {
+				if hydrate {
 					if let Ok(comp) = load_composition(&comp_path) {
 						println!("{}:{} [{}]", collection.scheme, num, comp_id);
 						println!("  Form: {}", comp.form);
@@ -646,8 +666,41 @@ fn cmd_collection(id: &str, verify: bool, hydrate: bool, pretty: bool, data_dir:
 				missing.push(num.clone());
 				println!("{}:{} ✗ NOT FOUND", collection.scheme, num);
 			}
-		} else {
+		} else if terse {
 			println!("{}:{}", collection.scheme, num);
+		} else {
+			// Default: pretty output
+			let idx = index.as_ref().unwrap();
+			let found = idx
+				.query()
+				.composer(composer)
+				.scheme(&collection.scheme)
+				.number(num)
+				.fetch_one();
+
+			if let Some(comp_id) = found {
+				let comp_path = data_dir
+					.join("compositions")
+					.join(&comp_id[..2])
+					.join(format!("{}.json", &comp_id[2..]));
+
+				let formatted_cat = format_catalog(&collection.scheme, num, catalog_defn.as_ref());
+				if let Ok(comp) = load_composition(&comp_path) {
+					let ctx = ExpansionContext {
+						composition: &comp,
+						collection: Some(&collection),
+						position_in_collection: Some(position),
+						config: &config.display,
+					};
+					let title = expand_title(&ctx);
+					println!("{}, {}", title, formatted_cat);
+				} else {
+					println!("{}", formatted_cat);
+				}
+			} else {
+				let formatted_cat = format_catalog(&collection.scheme, num, catalog_defn.as_ref());
+				println!("{} (not found)", formatted_cat);
+			}
 		}
 	}
 

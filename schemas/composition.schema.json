@@ -89,10 +89,10 @@
 						}
 					}
 				},
-				"certainty": {
+				"status": {
 					"type": "string",
 					"enum": ["certain", "probable", "doubtful", "spurious"],
-					"description": "Attribution certainty level"
+					"description": "Attribution status"
 				},
 				"catalog": {
 					"type": "array",
@@ -103,6 +103,10 @@
 					"type": "string",
 					"pattern": "^\\d{4}(-\\d{2})?(-\\d{2})?$",
 					"description": "When this attribution was established. Variable precision: YYYY, YYYY-MM, or YYYY-MM-DD."
+				},
+				"note": {
+					"type": "string",
+					"description": "Explanation or citation for this attribution"
 				}
 			}
 		},
@@ -143,9 +147,9 @@
 					"type": "string",
 					"description": "Omit if same as parent work"
 				},
-				"type": {
+				"form": {
 					"type": "string",
-					"description": "Musical type: aria, recitative, chorus, chorale, arioso, etc."
+					"description": "Musical form: aria, recitative, chorus, chorale, arioso, fugue, etc."
 				},
 				"soloists": {
 					"type": "string",
@@ -168,7 +172,7 @@
 			"properties": {
 				"title": {"type": "string"},
 				"key": {"type": "string"},
-				"type": {"type": "string"},
+				"form": {"type": "string"},
 				"soloists": {"type": "string"},
 				"movements": {"$ref": "#/$defs/movementList"},
 				"sections": {"$ref": "#/$defs/sectionList"}

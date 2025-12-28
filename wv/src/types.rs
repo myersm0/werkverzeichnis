@@ -75,8 +75,8 @@ pub struct Movement {
 	pub title: Option<String>,
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub key: Option<String>,
-	#[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-	pub movement_type: Option<String>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub form: Option<String>,
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub soloists: Option<String>,
 	#[serde(skip_serializing_if = "Option::is_none")]
@@ -89,8 +89,8 @@ pub struct Section {
 	pub title: Option<String>,
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub key: Option<String>,
-	#[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-	pub section_type: Option<String>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub form: Option<String>,
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub soloists: Option<String>,
 	#[serde(skip_serializing_if = "Option::is_none")]

@@ -38,18 +38,18 @@ alias wv="$(pwd)/target/release/wv"
 Here are some common query patterns:
 ```
 $ wv query beethoven op 2
-op:2/1  fba99784
-op:2/2  edfa8309
-op:2/3  7023f148
-
-# Nicer output with the --pretty flag:
-$ wv query beethoven op 2 --pretty
 Sonata in f minor, op. 2 no. 1
 Sonata in A major, op. 2 no. 2
 Sonata in C major, op. 2 no. 3
 
+# Or use the --terse flag to get just the catalog and id numbers:
+$ wv query beethoven op 2 --terse
+op:2/1  fba99784
+op:2/2  edfa8309
+op:2/3  7023f148
+
 # Output sorted over a range of opus numbers:
-$ wv query beethoven op --range 2-11 --pretty
+$ wv query beethoven op --range 2-11
 Sonata in f minor, op. 2 no. 1
 Sonata in A major, op. 2 no. 2
 Sonata in C major, op. 2 no. 3
@@ -64,6 +64,16 @@ $ wv query beethoven op 2/1 --movements
 2. Adagio
 3. Menuetto and Trio (Allegretto)
 4. Prestissimo
+```
+
+For more complex queries, you can use the `--json` flag to extract raw JSON data, which can be piped to [`jq`](https://jqlang.github.io/jq/) for filtering and transformation:
+```
+# Get the date composed for op. 2 no. 1:
+$ wv query beethoven op 2/1 --json | jq '.attribution[0].dates.composed'
+1795
+
+# Get the IDs of Beethoven works composed before 1800 (output not shown):
+$ wv query beethoven op --range 1-20 --json | jq '.[] | select(.attribution[0].dates.composed < 1800)' | jq '.id'
 ```
 
 ## Configuration
