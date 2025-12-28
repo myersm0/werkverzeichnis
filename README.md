@@ -74,8 +74,8 @@ $ wv get beethoven op 2/1 --movements
 
 ```
 
-### Attribution and catalog history
-Catalog numbers can change over time, but a key advantage of our project is that we provide a stable ID for each composition and a way of disambiguating catalogue references. For example, Mozart's famous "Alla Turca" sonata is numbered K. 331 in the original 1862 Köchel catalog, then it changed to  K. 300i in the 1964 sixth edition, and most recently in 2024 it changed back to K. 331 for the ninth edition. Both numbers are commonly used today.
+### Attribution and catalog disambiguation
+A key feature of our project is that we provide a stable ID for each composition and a way of disambiguating catalogue references. For example, Mozart's famous "Alla Turca" sonata is numbered K. 331 in the original 1862 Köchel catalog, then it changed to  K. 300i in the 1964 sixth edition, and most recently in 2024 it changed back to K. 331 for the ninth edition. Both numbers are commonly used today.
 
 ```
 # By default, `wv get` will operate with respect to the *latest* catalog numbering:
@@ -91,7 +91,22 @@ $ wv get mozart k 300i --edition 6
 Sonata in A major, K. 300i
 ```
 
-All three calls above resolve to the same composition ID in our system.
+All three calls above resolve to the same composition ID in our system. 
+
+Alternatively if you search for the older catalog number _without_ specifying which edition you mean to use, you will still get the desired result but along with a warning:
+```
+$ wv get mozart k 300i
+warning: K 300i is superseded (current: 331)
+Sonata in A major, K. 300i
+```
+
+Or set the `--strict` flag to prohibit this behavior:
+```
+$ wv get mozart k 300i --strict
+No results found.
+```
+
+Note: when retrieving a _range_ of catalog numbers, `--strict` is on by default to prevent returning potenially duplicated results.
 
 ## Configuration
 The CLI can be customized to match your preferences. Create a config file at `~/.config/wv/config.toml`:

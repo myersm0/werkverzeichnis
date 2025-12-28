@@ -9,6 +9,8 @@ use crate::types::Composition;
 pub struct QueryResult {
 	pub id: String,
 	pub number: Option<String>,
+	pub superseded: bool,
+	pub current_number: Option<String>,
 }
 
 #[derive(Debug, Clone, Default)]
@@ -21,6 +23,7 @@ pub struct Query {
 	range_start: Option<String>,
 	range_end: Option<String>,
 	sorted: bool,
+	strict: bool,
 	data_dir: Option<PathBuf>,
 }
 
@@ -80,6 +83,11 @@ impl<'a> QueryBuilder<'a> {
 		self
 	}
 
+	pub fn strict(mut self, s: bool) -> Self {
+		self.query.strict = s;
+		self
+	}
+
 	pub fn data_dir(mut self, dir: &Path) -> Self {
 		self.query.data_dir = Some(dir.to_path_buf());
 		self
@@ -99,23 +107,29 @@ impl<'a> QueryBuilder<'a> {
 				.get(number)
 				.cloned()
 		} else {
-			self.index
-				.catalog
-				.get(composer)?
-				.get(scheme)?
-				.get(number)
-				.cloned()
+			let scheme_index = self.index.catalog.get(composer)?.get(scheme)?;
+
+			// Check current first
+			if let Some(id) = scheme_index.current.get(number) {
+				return Some(id.clone());
+			}
+
+			// Fallback to superseded if not strict
+			if !self.query.strict {
+				if let Some(id) = scheme_index.superseded.get(number) {
+					return Some(id.clone());
+				}
+			}
+
+			None
 		}
 	}
 
 	pub fn fetch(&self) -> Vec<QueryResult> {
 		match (&self.query.composer, &self.query.scheme, &self.query.number) {
 			(Some(composer), Some(scheme), Some(number)) => {
-				if let Some(id) = self.fetch_one() {
-					vec![QueryResult {
-						id,
-						number: Some(number.clone()),
-					}]
+				if let Some(result) = self.fetch_one_with_info() {
+					vec![result]
 				} else {
 					// No exact match - try group matching
 					let mut query = self.query.clone();
@@ -141,6 +155,59 @@ impl<'a> QueryBuilder<'a> {
 		}
 	}
 
+	fn fetch_one_with_info(&self) -> Option<QueryResult> {
+		let composer = self.query.composer.as_ref()?;
+		let scheme = self.query.scheme.as_ref()?;
+		let number = self.query.number.as_ref()?;
+
+		if let Some(edition) = &self.query.edition {
+			let key = format!("{}-{}", composer, scheme);
+			let id = self.index
+				.editions
+				.get(&key)?
+				.get(edition)?
+				.get(number)?
+				.clone();
+			return Some(QueryResult {
+				id,
+				number: Some(number.clone()),
+				superseded: false,
+				current_number: None,
+			});
+		}
+
+		let scheme_index = self.index.catalog.get(composer)?.get(scheme)?;
+
+		// Check current first
+		if let Some(id) = scheme_index.current.get(number) {
+			return Some(QueryResult {
+				id: id.clone(),
+				number: Some(number.clone()),
+				superseded: false,
+				current_number: None,
+			});
+		}
+
+		// Fallback to superseded if not strict
+		if !self.query.strict {
+			if let Some(id) = scheme_index.superseded.get(number) {
+				// Find the current number for this id
+				let current_num = scheme_index.current.iter()
+					.find(|(_, v)| *v == id)
+					.map(|(k, _)| k.clone());
+
+				return Some(QueryResult {
+					id: id.clone(),
+					number: Some(number.clone()),
+					superseded: true,
+					current_number: current_num,
+				});
+			}
+		}
+
+		None
+	}
+
 	fn fetch_by_composer(&self, composer: &str) -> Vec<QueryResult> {
 		self.index
 			.by_composer
@@ -150,6 +217,8 @@ impl<'a> QueryBuilder<'a> {
 					.map(|id| QueryResult {
 						id: id.clone(),
 						number: None,
+						superseded: false,
+						current_number: None,
 					})
 					.collect()
 			})
@@ -157,20 +226,38 @@ impl<'a> QueryBuilder<'a> {
 	}
 
 	fn fetch_by_scheme(&self, composer: &str, scheme: &str) -> Vec<QueryResult> {
-		let numbers = if let Some(edition) = &self.query.edition {
+		// For ranges and groups, only search current (never superseded)
+		let is_range_or_group = self.query.range_start.is_some() || self.query.group.is_some();
+
+		let numbers: Vec<(String, String, bool)> = if let Some(edition) = &self.query.edition {
 			let key = format!("{}-{}", composer, scheme);
 			match self.index.editions.get(&key).and_then(|e| e.get(edition)) {
-				Some(n) => n,
+				Some(n) => n.iter().map(|(k, v)| (k.clone(), v.clone(), false)).collect(),
 				None => return vec![],
 			}
 		} else {
 			match self.index.catalog.get(composer).and_then(|s| s.get(scheme)) {
-				Some(n) => n,
+				Some(scheme_index) => {
+					let mut entries: Vec<(String, String, bool)> = scheme_index.current
+						.iter()
+						.map(|(k, v)| (k.clone(), v.clone(), false))
+						.collect();
+
+					// Include superseded only for single-number lookups (not ranges/groups)
+					// and only if not strict
+					if !is_range_or_group && !self.query.strict {
+						for (k, v) in &scheme_index.superseded {
+							entries.push((k.clone(), v.clone(), true));
+						}
+					}
+
+					entries
+				}
 				None => return vec![],
 			}
 		};
 
-		let mut keys: Vec<String> = numbers.keys().cloned().collect();
+		let mut keys: Vec<String> = numbers.iter().map(|(k, _, _)| k.clone()).collect();
 
 		let defn = self.query.data_dir.as_ref().and_then(|d| load_catalog_def(d, scheme, Some(composer)));
 
@@ -199,10 +286,29 @@ impl<'a> QueryBuilder<'a> {
 			}
 		}
 
+		let scheme_index = self.index.catalog.get(composer).and_then(|s| s.get(scheme));
+
 		keys.into_iter()
-			.map(|k| {
-				let id = numbers.get(&k).unwrap().clone();
-				QueryResult { id, number: Some(k) }
+			.filter_map(|k| {
+				let entry = numbers.iter().find(|(num, _, _)| num == &k)?;
+				let (_, id, is_superseded) = entry;
+
+				let current_num = if *is_superseded {
+					scheme_index.and_then(|si| {
+						si.current.iter()
+							.find(|(_, v)| *v == id)
+							.map(|(k, _)| k.clone())
+					})
+				} else {
+					None
+				};
+
+				Some(QueryResult {
+					id: id.clone(),
+					number: Some(k),
+					superseded: *is_superseded,
+					current_number: current_num,
+				})
 			})
 			.collect()
 	}
@@ -237,6 +343,7 @@ impl<'a> QueryBuilder<'a> {
 #[cfg(test)]
 mod tests {
 	use super::*;
+	use crate::index::SchemeIndex;
 
 	fn make_test_index() -> Index {
 		let mut index = Index::default();
@@ -244,29 +351,17 @@ mod tests {
 		index.by_composer.insert("bach".into(), vec!["id1".into(), "id2".into()]);
 		index.by_composer.insert("mozart".into(), vec!["id3".into()]);
 
-		index
-			.catalog
-			.entry("bach".into())
-			.or_default()
-			.entry("bwv".into())
-			.or_default()
-			.insert("846".into(), "id1".into());
+		// Bach BWV entries (no superseded)
+		let mut bach_bwv = SchemeIndex::default();
+		bach_bwv.current.insert("846".into(), "id1".into());
+		bach_bwv.current.insert("847".into(), "id2".into());
+		index.catalog.entry("bach".into()).or_default().insert("bwv".into(), bach_bwv);
 
-		index
-			.catalog
-			.entry("bach".into())
-			.or_default()
-			.entry("bwv".into())
-			.or_default()
-			.insert("847".into(), "id2".into());
-
-		index
-			.catalog
-			.entry("mozart".into())
-			.or_default()
-			.entry("k".into())
-			.or_default()
-			.insert("332".into(), "id3".into());
+		// Mozart K entries with current and superseded
+		let mut mozart_k = SchemeIndex::default();
+		mozart_k.current.insert("332".into(), "id3".into());
+		mozart_k.superseded.insert("300k".into(), "id3".into());
+		index.catalog.entry("mozart".into()).or_default().insert("k".into(), mozart_k);
 
 		let key = "mozart-k".to_string();
 		index
@@ -289,7 +384,7 @@ mod tests {
 	}
 
 	#[test]
-	fn test_fetch_one() {
+	fn test_fetch_one_current() {
 		let index = make_test_index();
 
 		let id = index
@@ -300,6 +395,35 @@ mod tests {
 			.fetch_one();
 
 		assert_eq!(id, Some("id1".into()));
+	}
+
+	#[test]
+	fn test_fetch_one_superseded_fallback() {
+		let index = make_test_index();
+
+		let id = index
+			.query()
+			.composer("mozart")
+			.scheme("k")
+			.number("300k")
+			.fetch_one();
+
+		assert_eq!(id, Some("id3".into()));
+	}
+
+	#[test]
+	fn test_fetch_one_superseded_strict() {
+		let index = make_test_index();
+
+		let id = index
+			.query()
+			.composer("mozart")
+			.scheme("k")
+			.number("300k")
+			.strict(true)
+			.fetch_one();
+
+		assert_eq!(id, None);
 	}
 
 	#[test]
@@ -326,14 +450,15 @@ mod tests {
 	}
 
 	#[test]
-	fn test_fetch_by_scheme() {
+	fn test_fetch_by_scheme_current_only() {
 		let index = make_test_index();
 
-		let results = index.query().composer("bach").scheme("bwv").fetch();
+		// Without strict, but ranges/groups only search current
+		let results = index.query().composer("mozart").scheme("k").fetch();
 
-		assert_eq!(results.len(), 2);
-		assert!(results.iter().any(|r| r.number == Some("846".into())));
-		assert!(results.iter().any(|r| r.number == Some("847".into())));
+		// Should include 332 (current) and 300k (superseded for single lookup)
+		// but ranges would only include current
+		assert!(results.iter().any(|r| r.number == Some("332".into())));
 	}
 
 	#[test]
@@ -349,6 +474,22 @@ mod tests {
 			.fetch_one();
 
 		assert_eq!(id, Some("id3".into()));
+	}
+
+	#[test]
+	fn test_superseded_has_current_number() {
+		let index = make_test_index();
+
+		let results = index
+			.query()
+			.composer("mozart")
+			.scheme("k")
+			.number("300k")
+			.fetch();
+
+		assert_eq!(results.len(), 1);
+		assert!(results[0].superseded);
+		assert_eq!(results[0].current_number, Some("332".into()));
 	}
 
 	#[test]

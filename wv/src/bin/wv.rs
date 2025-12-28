@@ -95,6 +95,8 @@ enum Commands {
 		edit: bool,
 		#[arg(long, help = "Read IDs from stdin")]
 		stdin: bool,
+		#[arg(long, help = "Only match current catalog numbers (no superseded)")]
+		strict: bool,
 		#[arg(long, value_name = "PATH")]
 		data_dir: Option<PathBuf>,
 	},
@@ -169,8 +171,8 @@ fn main() {
 		}
 		Commands::Merge { path, data_dir } => cmd_merge(&path, data_dir),
 		Commands::Index { data_dir } => cmd_index(data_dir),
-		Commands::Get { target, scheme, number, edition, group, sorted, terse, movements, json, quiet, edit, stdin, data_dir } => {
-			cmd_get(target.as_deref(), scheme.as_deref(), number.as_deref(), edition.as_deref(), group.as_deref(), sorted, terse, movements, json, quiet, edit, stdin, data_dir)
+		Commands::Get { target, scheme, number, edition, group, sorted, terse, movements, json, quiet, edit, stdin, strict, data_dir } => {
+			cmd_get(target.as_deref(), scheme.as_deref(), number.as_deref(), edition.as_deref(), group.as_deref(), sorted, terse, movements, json, quiet, edit, stdin, strict, data_dir)
 		}
 		Commands::Format { data_dir } => cmd_format(data_dir),
 		Commands::Validate { path, data_dir } => cmd_validate(path.as_deref(), data_dir),
@@ -330,8 +332,8 @@ fn cmd_index(data_dir: Option<PathBuf>) {
 	}
 
 	for schemes in index.catalog.values() {
-		for numbers in schemes.values() {
-			total_catalog_entries += numbers.len();
+		for scheme_index in schemes.values() {
+			total_catalog_entries += scheme_index.current.len() + scheme_index.superseded.len();
 		}
 	}
 
@@ -395,6 +397,7 @@ fn cmd_get(
 	quiet: bool,
 	edit: bool,
 	stdin: bool,
+	strict: bool,
 	data_dir: Option<PathBuf>,
 ) {
 	let config = Config::load();
@@ -507,6 +510,8 @@ fn cmd_get(
 		builder = builder.sorted(&data_dir);
 	}
 
+	builder = builder.strict(strict);
+
 	let results = builder.fetch();
 
 	if results.is_empty() {
@@ -514,6 +519,21 @@ fn cmd_get(
 			eprintln!("No results found.");
 		}
 		return;
+	}
+
+	// Emit warnings for superseded results
+	if !quiet {
+		for r in &results {
+			if r.superseded {
+				if let (Some(num), Some(current)) = (&r.number, &r.current_number) {
+					let scheme_upper = scheme.map(|s| s.to_uppercase()).unwrap_or_default();
+					eprintln!(
+						"warning: {} {} is superseded (current: {})",
+						scheme_upper, num, current
+					);
+				}
+			}
+		}
 	}
 
 	// Handle --edit
