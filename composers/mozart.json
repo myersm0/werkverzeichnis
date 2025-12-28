@@ -12,10 +12,13 @@
 			"name": "Köchel-Verzeichnis",
 			"description": "Standard Mozart catalog. Current numbers reflect K⁹ (2024). Historical number changes tracked in changelog.jsonl.",
 			"canonical_format": "K. {number}",
-			"pattern": "^(\\d+)([a-z])?$",
+			"pattern": "^(Anh\\.\\s*([A-C])\\s*)?(\\d+)(?:\\.(\\d+))?([a-z])?$",
 			"sort_keys": [
-				{"group": 1, "type": "int"},
-				{"group": 2, "type": "str"}
+				{"group": 1, "type": "str"},
+				{"group": 2, "type": "str"},
+				{"group": 3, "type": "int"},
+				{"group": 4, "type": "int"},
+				{"group": 5, "type": "str"}
 			],
 			"aliases": ["kv", "köchel"],
 			"editions": {
