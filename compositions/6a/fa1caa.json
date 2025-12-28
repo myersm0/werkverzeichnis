@@ -1,0 +1,28 @@
+{
+	"id": "6afa1caa",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"composed": 1764, "published": 1765},
+			"catalog": [{"scheme": "k", "edition": "1", "number": "13", "since": "1862"}]
+		}
+	],
+	"key": "F",
+	"form": "sonata",
+	"instrumentation": "keyboard, violin (or flute), cello ad libitum",
+	"note": "In Neue Mozart-Ausgabe, classified as a piano trio",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Andante"
+		},
+		{
+			"title": "Menuetto I and II"
+		},
+		{
+			"title": "Allegretto"
+		}
+	]
+}

@@ -1,0 +1,19 @@
+{
+	"id": "13d6977e",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"composed": 1775},
+			"catalog": [{"scheme": "k", "edition": "1", "number": "212", "since": "1862"}]
+		}
+	],
+	"key": "Bb",
+	"form": "church sonata",
+	"instrumentation": "2 violins, organ, cello and bass",
+	"movements": [
+		{
+			"title": "Allegro",
+			"key": "Bb"
+		}
+	]
+}

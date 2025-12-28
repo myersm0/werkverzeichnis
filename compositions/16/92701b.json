@@ -1,0 +1,46 @@
+{
+	"id": "1692701b",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"composed": 1781, "published": 1781},
+			"catalog": [
+				{"scheme": "k", "edition": "9", "number": "379", "since": "2024"},
+				{"scheme": "k", "edition": "6", "number": "373a", "since": "1964"},
+				{"scheme": "k", "edition": "1", "number": "379", "since": "1862"}
+			]
+		}
+	],
+	"key": "G",
+	"form": "sonata",
+	"instrumentation": "violin and piano",
+	"movements": [
+		{
+			"title": "Adagio – Allegro"
+		},
+		{
+			"title": "Theme: Andantino cantabile, with variations",
+			"sections": [
+				{
+					"title": "Variation 1"
+				},
+				{
+					"title": "Variation 2"
+				},
+				{
+					"title": "Variation 3"
+				},
+				{
+					"title": "Variation 4",
+					"key": "g"
+				},
+				{
+					"title": "Variation 5: Adagio"
+				},
+				{
+					"title": "Allegretto (Thema da capo – Coda)"
+				}
+			]
+		}
+	]
+}

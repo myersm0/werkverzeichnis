@@ -1,0 +1,22 @@
+{
+	"id": "19774bf8",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"composed": 1776},
+			"catalog": [
+				{"scheme": "k", "edition": "9", "number": "224", "since": "2024"},
+				{"scheme": "k", "edition": "6", "number": "241a", "since": "1964"},
+				{"scheme": "k", "edition": "1", "number": "224", "since": "1862"}
+			]
+		}
+	],
+	"key": "F",
+	"form": "church sonata",
+	"instrumentation": "2 violins, organ, cello and bass",
+	"movements": [
+		{
+			"title": "Allegro con spirito"
+		}
+	]
+}

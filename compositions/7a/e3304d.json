@@ -1,0 +1,29 @@
+{
+	"id": "7ae3304d",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"composed": 1781},
+			"catalog": [
+				{"scheme": "k", "edition": "9", "number": "376", "since": "2024"},
+				{"scheme": "k", "edition": "6", "number": "374d", "since": "1964"},
+				{"scheme": "k", "edition": "1", "number": "376", "since": "1862"}
+			]
+		}
+	],
+	"key": "F",
+	"form": "sonata",
+	"instrumentation": "violin and piano",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Andante",
+			"key": "Bb"
+		},
+		{
+			"title": "Rondò: Allegretto grazioso"
+		}
+	]
+}

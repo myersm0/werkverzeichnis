@@ -1,0 +1,28 @@
+{
+	"id": "52e7f1a7",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"composed": 1763, "published": 1764},
+			"catalog": [{"scheme": "k", "edition": "1", "number": "8", "since": "1862"}]
+		}
+	],
+	"key": "Bb",
+	"form": "sonata",
+	"instrumentation": "keyboard and violin",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Andante grazioso",
+			"key": "F"
+		},
+		{
+			"title": "Menuet I and II"
+		},
+		{
+			"title": "Allegretto"
+		}
+	]
+}

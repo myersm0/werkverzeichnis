@@ -1,0 +1,27 @@
+{
+	"id": "c3be0f62",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"composed": 1787, "published": 1788},
+			"catalog": [{"scheme": "k", "edition": "1", "number": "521", "since": "1862"}]
+		}
+	],
+	"key": "C",
+	"form": "sonata",
+	"instrumentation": "piano four-hands",
+	"movements": [
+		{
+			"title": "Allegro",
+			"key": "C"
+		},
+		{
+			"title": "Andante",
+			"key": "F"
+		},
+		{
+			"title": "Allegretto",
+			"key": "C"
+		}
+	]
+}

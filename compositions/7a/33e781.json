@@ -1,0 +1,28 @@
+{
+	"id": "7a33e781",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"composed": 1764, "published": 1765},
+			"catalog": [{"scheme": "k", "edition": "1", "number": "14", "since": "1862"}]
+		}
+	],
+	"key": "C",
+	"form": "sonata",
+	"instrumentation": "keyboard, violin (or flute), cello ad libitum",
+	"note": "In Neue Mozart-Ausgabe, classified as a piano trio",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Menuetto I and Menuetto II en Carillon"
+		},
+		{
+			"title": "Allegretto"
+		}
+	]
+}

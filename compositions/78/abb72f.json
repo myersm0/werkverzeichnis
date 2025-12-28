@@ -1,0 +1,25 @@
+{
+	"id": "78abb72f",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"composed": 1778, "published": 1778},
+			"catalog": [
+				{"scheme": "k", "edition": "9", "number": "302", "since": "2024"},
+				{"scheme": "k", "edition": "6", "number": "293b", "since": "1964"},
+				{"scheme": "k", "edition": "1", "number": "302", "since": "1862"}
+			]
+		}
+	],
+	"key": "Eb",
+	"form": "sonata",
+	"instrumentation": "violin and piano",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Andante grazioso"
+		}
+	]
+}

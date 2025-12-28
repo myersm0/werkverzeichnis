@@ -1,0 +1,22 @@
+{
+	"id": "5153fd61",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"composed": 1777},
+			"catalog": [
+				{"scheme": "k", "edition": "9", "number": "278", "since": "2024"},
+				{"scheme": "k", "edition": "6", "number": "271e", "since": "1964"},
+				{"scheme": "k", "edition": "1", "number": "278", "since": "1862"}
+			]
+		}
+	],
+	"key": "C",
+	"form": "church sonata",
+	"instrumentation": "2 violins, cello, bass, 2 oboes, 2 trumpets, timpani, organ",
+	"movements": [
+		{
+			"title": "Allegro"
+		}
+	]
+}

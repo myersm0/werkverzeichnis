@@ -1,0 +1,24 @@
+{
+	"id": "8fab2df2",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"composed": 1766},
+			"catalog": [{"scheme": "k", "edition": "1", "number": "27", "since": "1862"}]
+		}
+	],
+	"key": "G",
+	"form": "sonata",
+	"instrumentation": "keyboard and violin",
+	"movements": [
+		{
+			"title": "Adagio poco andante"
+		},
+		{
+			"title": "Allegro"
+		}
+	],
+	"xref": {
+		"wp": "Violin_Sonatas,_KV_26–31_(Mozart)"
+	}
+}

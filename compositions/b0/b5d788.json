@@ -1,0 +1,22 @@
+{
+	"id": "b0b5d788",
+	"attribution": [
+		{
+			"composer": "mozart",
+			"dates": {"composed": 1764, "published": 1765},
+			"catalog": [{"scheme": "k", "edition": "1", "number": "15", "since": "1862"}]
+		}
+	],
+	"key": "Bb",
+	"form": "sonata",
+	"instrumentation": "keyboard, violin (or flute), cello ad libitum",
+	"note": "In Neue Mozart-Ausgabe, classified as a piano trio",
+	"movements": [
+		{
+			"title": "Andante maestoso"
+		},
+		{
+			"title": "Allegro grazioso"
+		}
+	]
+}
