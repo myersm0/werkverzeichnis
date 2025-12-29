@@ -1,0 +1,42 @@
+{
+	"id": "telemann",
+	"name": {
+		"full": "Georg Philipp Telemann",
+		"sort": "Telemann, Georg Philipp"
+	},
+	"born": "1681-03-14",
+	"died": "1767-06-25",
+	"nationality": "German",
+	"catalogs": {
+		"twv": {
+			"name": "Telemann-Werke-Verzeichnis",
+			"description": "Thematic-systematic catalog of instrumental works by Martin Ruhnke (Bärenreiter, 1984–1999). Organized by genre (1–55), with key and sequential number.",
+			"canonical_format": "TWV {number}",
+			"pattern": "^(\\d{1,2}):([A-Ha-h](?:is|es|s)?)?(\\d+)$",
+			"sort_keys": [
+				{"group": 1, "type": "int"},
+				{"group": 2, "type": "str"},
+				{"group": 3, "type": "int"}
+			],
+			"examples": [
+				{"number": "51:D9", "display": "TWV 51:D9"},
+				{"number": "55:g4", "display": "TWV 55:g4"},
+				{"number": "51:Es1", "display": "TWV 51:Es1"},
+				{"number": "43:B3", "display": "TWV 43:B3"},
+				{"number": "40:14", "display": "TWV 40:14"}
+			],
+			"primary": true
+		},
+		"tvwv": {
+			"name": "Telemann-Vokalwerke-Verzeichnis",
+			"description": "Catalog of vocal works by Werner Menke (1982). Sacred works (1–15), secular works (20–25).",
+			"canonical_format": "TVWV {number}",
+			"pattern": "^(\\d{1,2}):(\\d+)([a-z])?$",
+			"sort_keys": [
+				{"group": 1, "type": "int"},
+				{"group": 2, "type": "int"},
+				{"group": 3, "type": "str"}
+			]
+		}
+	}
+}
