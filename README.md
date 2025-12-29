@@ -1,13 +1,13 @@
 # werkverzeichnis
 **werkverzeichnis** (German: "catalog of works") provides human- and machine-readable data about classical compositions: catalog numbers, keys, instrumentation, movement structures, and attribution history.
 
-The name evokes the well-known *Bach-Werke-Verzeichnis* (catalog of Bach's works), but the scope is broader. Classical music catalogs have accumulated over centuries for each composer — BWV for Bach, Köchel-Verzeichnis for Mozart, opus numbers for most Romantic composers, and dozens more. This project aims to bring all these disparate systems together under one simple, structured, queryable format.
+The name comes from the well-known *Bach-Werke-Verzeichnis* (catalog of Bach's works), but the scope is broader. Catalogs have accumulated over centuries for each composer — BWV for Bach, Köchel-Verzeichnis for Mozart, opus numbers for most Romantic composers, and dozens more. This project aims to bring all these disparate systems together under one simple, structured, queryable format.
 
 This project prioritizes:
 - **Structured data** — JSON files with consistent schemas
 - **Human-readable source files** — Plain text JSON files (like [this one](compositions/27/c3084a.json)) you can open in any text editor, inspect, and understand
-- **Catalog precision and rigor** — Allow for multiple numbering systems per composer, with cross-references
-- **Temporal accuracy** — Attribution and catalog changes over time (reattributions, revised dates) are tracked
+- **Catalog precision and rigor** — Allow disambiguation of multiple numbering systems per composer
+- **Temporal accuracy** — Track attribution and catalog changes over time (reattributions, revised dates)
 - **Practical tooling** — We provide a powerful command-line interface in the Rust language for retrieval, validating, and managing the dataset
 - **Configurable output** — Display preferences (language, formatting) can be customized per user
 
@@ -16,7 +16,7 @@ This project is still in an early stage of development. By the end of 2025 the f
 - [x] Bach keyboard suite collections (six keyboard partitas, French & English suites)
 - [x] Bach solo string suites (cello suites, sonatas and partitas for solo violin)
 - [x] Bach Well-Tempered Clavier I & II, Goldberg Variations
-- [ ] Bach complete cantatas, masses, passions
+- [ ] Bach complete cantatas
 - [x] Beethoven: the 32 piano sonatas
 - [x] Mozart: the 19 piano sonatas
 - [ ] Haydn complete piano sonatas
@@ -240,15 +240,15 @@ Catalog definitions specify parsing, sorting, and display rules. For example, he
 (The actual definition is more complex, to allow for records like "BWV Anh. III 135".)
 
 ## Data generation
-This dataset is compiled using AI large language models (LLMs) to process and structure information from public sources (catalogs, Wikipedia, musicological references). Manual curation at this scale would be an enormous undertaking — LLMs make it feasible.
+This dataset is compiled using AI large language models (LLMs) to process and structure information from public sources (catalogs, Wikipedia, musicological references). Manual curation at this scale would be an enormous undertaking, so it is largely an automated process.
 
-However, LLM output is notoriously subject to hallucination and requires careful verification. To that end, our workflow includes multiple review stages:
+However, LLMs are notoriously subject to hallucination, so their outputs require careful review. To that end, our workflow includes multiple stages:
 1. **Structured extraction** — LLMs parse source material into our schema format
-2. **Cross-reference validation** — Catalog numbers, dates, and keys are checked against authoritative sources
+2. **Cross-reference validation** — Catalog numbers, dates, and keys are checked against sources
 3. **Schema validation** — All entries must pass JSON schema and styleguide checks
 4. **Human review** — Spot checks and corrections
 
-This generation-and-review process is still evolving. The goal is accuracy above all else — because if the data isn't reliable, it isn't useful. But errors are inevitable in any project of this scope; corrections are welcome via pull request or issue.
+This generation-and-review process is still evolving. But it must also be accurate above all else — because if the data isn't reliable, it isn't useful. Still, despite our best efforts, errors are inevitable in any project of this scope, so corrections are welcome via pull request or issue.
 
 ## CLI tool
 The `wv` command-line tool provides:
