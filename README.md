@@ -19,8 +19,17 @@ This project is still in an early stage of development. By the end of 2025 the f
 - [ ] Bach complete cantatas
 - [x] Beethoven: the 32 piano sonatas
 - [x] Mozart: the 19 piano sonatas
-- [ ] Haydn complete piano sonatas
+- [x] Haydn complete symphonies
 - [x] Schubert complete piano sonatas
+
+Goals for the first quarter of 2026:
+- [ ] local NLP routines for automated accuracy checks and updates
+- [ ] MongoDb server for apps to connect
+- [ ] Bach complete works
+- [ ] Beethoven complete works
+- [ ] Haydn complete works
+- [ ] Mozart complete works
+- [ ] Schubert complete works
 
 ## Quick start
 A future version will provide compiled binaries so that you don't have to build it yourself and don't even need to have Rust installed on your system. But for now:
@@ -239,10 +248,12 @@ Catalog definitions specify parsing, sorting, and display rules. For example, he
 
 (The actual definition is more complex, to allow for records like "BWV Anh. III 135".)
 
-## Data generation
-This dataset is compiled using AI large language models (LLMs) to process and structure information from public sources (catalogs, Wikipedia, musicological references). Specifically, I select reference texts myself, and then use an efficient voice-driven workflow for coordinating several independent `claude-haiku-4-5` instances to do a multi-stage generation and review based on those materials. Any questionable or conflicting results are flagged for human review. Generated materials are then validated against our schema and styleguide before acceptance into the database. This has resulted in the best balance of human labor, LLM cost (typically less than one cent per composition), and accuracy of the final product.
+## Data generation and maintenance
+This dataset is compiled using AI large language models (LLMs) to process and structure information from public sources (Wikipedia, musicological references). Specifically, I select reference texts myself, and then use an efficient voice-driven workflow for coordinating several independent `claude-haiku-4-5` instances to do a multi-stage generation and review based on those materials. Any questionable or conflicting results are flagged for human review. Generated materials are then validated against our schema and styleguide before acceptance into the database. This has resulted in the best balance of human labor, LLM cost (often less than one cent per composition), and accuracy of the final product.
 
-This generation-and-review process is still evolving. We aim to maintain a very high standard of accuracy and quality — because if the data isn't reliable, it isn't useful. Still, despite our best efforts, errors are inevitable in any project of this scope, so corrections are welcome via pull request or issue.
+We aim to maintain a very high standard of accuracy and quality — because if the data isn't reliable, it isn't useful. Still, despite our best efforts, errors are inevitable in any project of this scope, so corrections are welcome via pull request or issue.
+
+On top of that, we're developing a framework for local inference using on-device neural nets and classical natural language processing (NLP) techniques, to do periodic automated reviews of the dataset and for assimilation of new or updated content from the web.
 
 ## CLI tool
 The `wv` command-line tool provides:
