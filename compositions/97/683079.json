@@ -1,0 +1,38 @@
+{
+	"id": "97683079",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1817
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "568.2"
+				},
+				{
+					"scheme": "op",
+					"number": "posth. 122"
+				}
+			]
+		}
+	],
+	"key": "Eb",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro moderato"
+		},
+		{
+			"title": "Andante molto"
+		},
+		{
+			"title": "Menuetto. Allegro – Trio"
+		},
+		{
+			"title": "Allegro moderato"
+		}
+	]
+}

@@ -1,0 +1,21 @@
+{
+	"id": "4ddfad13",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1811
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "1c"
+				}
+			]
+		}
+	],
+	"key": "F",
+	"form": "sonata",
+	"note": "fragment",
+	"instrumentation": "piano four-hands"
+}

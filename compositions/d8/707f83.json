@@ -1,0 +1,20 @@
+{
+	"id": "d8707f83",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1812
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "28"
+				}
+			]
+		}
+	],
+	"key": "Bb",
+	"form": "sonata movement",
+	"instrumentation": "piano trio"
+}

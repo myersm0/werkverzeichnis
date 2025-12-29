@@ -1,0 +1,18 @@
+{
+	"id": "161bffab",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1811
+			},
+			"catalog": [
+				{"scheme": "d", "number": "2e"},
+				{"scheme": "d", "number": "993"}
+			]
+		}
+	],
+	"key": "c",
+	"form": "fantasy",
+	"instrumentation": "piano"
+}

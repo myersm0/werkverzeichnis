@@ -1,0 +1,32 @@
+{
+	"id": "72787abd",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1815
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "157"
+				}
+			]
+		}
+	],
+	"key": "E",
+	"form": "sonata",
+	"note": "unfinished -- only the first three movements extant",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro ma non troppo"
+		},
+		{
+			"title": "Andante"
+		},
+		{
+			"title": "Menuetto. Allegro vivace – Trio"
+		}
+	]
+}

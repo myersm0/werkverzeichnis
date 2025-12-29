@@ -1,0 +1,36 @@
+{
+	"id": "2a112b8e",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1817,
+				"published": 1839
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "537"
+				},
+				{
+					"scheme": "op",
+					"number": "posth. 164"
+				}
+			]
+		}
+	],
+	"key": "a",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro ma non troppo"
+		},
+		{
+			"title": "Allegretto quasi andantino"
+		},
+		{
+			"title": "Allegro vivace"
+		}
+	]
+}

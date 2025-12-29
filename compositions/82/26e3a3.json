@@ -1,0 +1,20 @@
+{
+	"id": "8226e3a3",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1813
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "48"
+				}
+			]
+		}
+	],
+	"key": "c",
+	"form": "fantasy",
+	"instrumentation": "piano four-hands"
+}

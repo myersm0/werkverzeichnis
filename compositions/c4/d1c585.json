@@ -1,0 +1,26 @@
+{
+	"id": "c4d1c585",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "968"
+				}
+			]
+		}
+	],
+	"form": "sonatine",
+	"instrumentation": "piano four-hands",
+	"movements": [
+		{
+			"title": "Allegro moderato",
+			"key": "C"
+		},
+		{
+			"title": "Andante",
+			"key": "a"
+		}
+	]
+}

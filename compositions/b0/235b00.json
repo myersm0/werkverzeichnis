@@ -1,0 +1,33 @@
+{
+	"id": "b0235b00",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "664"
+				},
+				{
+					"scheme": "op",
+					"number": "posth. 120"
+				}
+			]
+		}
+	],
+	"key": "A",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro moderato"
+		},
+		{
+			"title": "Andante"
+		},
+		{
+			"title": "Allegro"
+		}
+	]
+}

@@ -1,0 +1,30 @@
+{
+	"id": "1cae0f05",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1816
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "459A"
+				}
+			]
+		}
+	],
+	"form": "piano pieces",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Adagio"
+		},
+		{
+			"title": "Scherzo. Allegro – Trio. Più tardo"
+		},
+		{
+			"title": "Allegro patetico"
+		}
+	]
+}

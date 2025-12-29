@@ -1,0 +1,38 @@
+{
+	"id": "c238f019",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1817
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "575"
+				},
+				{
+					"scheme": "op",
+					"number": "posth. 147"
+				}
+			]
+		}
+	],
+	"key": "B",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro, ma non troppo"
+		},
+		{
+			"title": "Andante"
+		},
+		{
+			"title": "Scherzo. Allegretto – Trio"
+		},
+		{
+			"title": "Allegro giusto"
+		}
+	]
+}

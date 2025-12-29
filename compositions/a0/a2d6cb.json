@@ -1,0 +1,33 @@
+{
+	"id": "a0a2d6cb",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1824
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "821"
+				}
+			]
+		}
+	],
+	"key": "a",
+	"form": "sonata",
+	"instrumentation": "arpeggione and piano",
+	"movements": [
+		{
+			"title": "Allegro moderato"
+		},
+		{
+			"title": "Adagio",
+			"key": "E"
+		},
+		{
+			"title": "Allegretto",
+			"key": "A"
+		}
+	]
+}

@@ -1,0 +1,21 @@
+{
+	"id": "4b9e6f4d",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "408"
+				},
+				{
+					"scheme": "op",
+					"number": "137/3"
+				}
+			]
+		}
+	],
+	"key": "g",
+	"form": "sonatina",
+	"instrumentation": "violin and piano"
+}

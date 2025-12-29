@@ -1,0 +1,24 @@
+{
+	"id": "5618a36c",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1828
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "940"
+				},
+				{
+					"scheme": "op",
+					"number": "103"
+				}
+			]
+		}
+	],
+	"key": "f",
+	"form": "fantasy",
+	"instrumentation": "piano four-hands"
+}

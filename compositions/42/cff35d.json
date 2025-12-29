@@ -1,0 +1,20 @@
+{
+	"id": "42cff35d",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1811
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "9"
+				}
+			]
+		}
+	],
+	"key": "g",
+	"form": "fantasy",
+	"instrumentation": "piano four-hands"
+}

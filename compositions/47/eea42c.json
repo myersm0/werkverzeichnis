@@ -1,0 +1,20 @@
+{
+	"id": "47eea42c",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1818
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "608"
+				}
+			]
+		}
+	],
+	"key": "D",
+	"form": "rondo",
+	"instrumentation": "piano four-hands"
+}

@@ -1,0 +1,38 @@
+{
+	"id": "87a913a4",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1826
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "894"
+				},
+				{
+					"scheme": "op",
+					"number": "78"
+				}
+			]
+		}
+	],
+	"key": "G",
+	"form": "sonata, fantasy",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Molto moderato e cantabile"
+		},
+		{
+			"title": "Andante"
+		},
+		{
+			"title": "Menuetto. Allegro moderato – Trio"
+		},
+		{
+			"title": "Allegretto"
+		}
+	]
+}

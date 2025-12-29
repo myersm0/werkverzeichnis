@@ -1,0 +1,24 @@
+{
+	"id": "8e19a8d6",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1824
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "812"
+				},
+				{
+					"scheme": "op",
+					"number": "posth. 140"
+				}
+			]
+		}
+	],
+	"key": "C",
+	"form": "sonata",
+	"instrumentation": "piano four-hands"
+}

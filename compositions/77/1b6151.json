@@ -1,0 +1,34 @@
+{
+	"id": "771b6151",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1828
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "958"
+				}
+			]
+		}
+	],
+	"key": "c",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Adagio"
+		},
+		{
+			"title": "Menuetto. Allegro – Trio"
+		},
+		{
+			"title": "Allegro"
+		}
+	]
+}

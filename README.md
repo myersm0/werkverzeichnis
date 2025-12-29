@@ -20,7 +20,7 @@ This project is still in an early stage of development. By the end of 2025 the f
 - [x] Beethoven: the 32 piano sonatas
 - [x] Mozart: the 19 piano sonatas
 - [ ] Haydn complete piano sonatas
-- [ ] Schubert complete piano sonatas
+- [x] Schubert complete piano sonatas
 
 ## Quick start
 A future version will provide compiled binaries so that you don't have to build it yourself and don't even need to have Rust installed on your system. But for now:

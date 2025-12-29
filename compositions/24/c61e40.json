@@ -1,0 +1,27 @@
+{
+	"id": "24c61e40",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1828
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "947"
+				},
+				{
+					"scheme": "op",
+					"number": "posth. 144"
+				}
+			]
+		}
+	],
+	"key": "a",
+	"form": "allegro",
+	"instrumentation": "piano four-hands",
+	"title": {
+		"de": "Lebensstürme"
+	}
+}

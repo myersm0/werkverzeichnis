@@ -1,0 +1,21 @@
+{
+	"id": "ca828284",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "574"
+				},
+				{
+					"scheme": "op",
+					"number": "162"
+				}
+			]
+		}
+	],
+	"key": "A",
+	"form": "sonata",
+	"instrumentation": "violin and piano"
+}

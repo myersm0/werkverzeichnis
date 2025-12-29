@@ -1,0 +1,38 @@
+{
+	"id": "5c41b43f",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1825
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "845"
+				},
+				{
+					"scheme": "op",
+					"number": "42"
+				}
+			]
+		}
+	],
+	"key": "a",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Moderato"
+		},
+		{
+			"title": "Andante poco mosso"
+		},
+		{
+			"title": "Scherzo. Allegro vivace – Trio. Un poco più lento"
+		},
+		{
+			"title": "Rondo. Allegro vivace"
+		}
+	]
+}

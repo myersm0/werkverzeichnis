@@ -1,0 +1,37 @@
+{
+	"id": "2b2232cc",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1817
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "571"
+				}
+			]
+		}
+	],
+	"key": "f#",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"note": "unfinished -- first movement is fragmentary, remaining movements are speculative",
+	"movements": [
+		{
+			"title": "Allegro moderato"
+		},
+		{
+			"title": "Andante",
+			"key": "A"
+		},
+		{
+			"title": "Scherzo. Allegro vivace – Trio",
+			"key": "D"
+		},
+		{
+			"title": "Allegro"
+		}
+	]
+}

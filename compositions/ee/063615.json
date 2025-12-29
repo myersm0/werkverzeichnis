@@ -1,0 +1,36 @@
+{
+	"id": "ee063615",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1817
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "566"
+				}
+			]
+		}
+	],
+	"key": "e",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"notes": "first three movements extant; Rondo in E (D 506) is thought to be the fourth movement",
+	"movements": [
+		{
+			"title": "Moderato"
+		},
+		{
+			"title": "Allegretto"
+		},
+		{
+			"title": "Scherzo. Allegro vivace – Trio"
+		},
+		{
+			"title": "Rondo. Allegretto",
+			"key": "E"
+		}
+	]
+}

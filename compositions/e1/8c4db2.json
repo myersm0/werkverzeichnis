@@ -1,0 +1,34 @@
+{
+	"id": "e18c4db2",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1828
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "960"
+				}
+			]
+		}
+	],
+	"key": "Bb",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Molto moderato"
+		},
+		{
+			"title": "Andante sostenuto"
+		},
+		{
+			"title": "Scherzo: Allegro vivace e con delicatezza – Trio"
+		},
+		{
+			"title": "Allegro, ma non troppo"
+		}
+	]
+}

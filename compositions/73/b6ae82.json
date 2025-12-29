@@ -1,0 +1,35 @@
+{
+	"id": "73b6ae82",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1815
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "279"
+				}
+			]
+		}
+	],
+	"key": "C",
+	"form": "sonata",
+	"note": "unfinished -- first three movements extant; Allegretto in C (D 346) fragment is probably the fourth movement",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro moderato"
+		},
+		{
+			"title": "Andante"
+		},
+		{
+			"title": "Menuetto. Allegro vivace – Trio"
+		},
+		{
+			"title": "Allegretto"
+		}
+	]
+}

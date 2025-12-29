@@ -1,0 +1,38 @@
+{
+	"id": "896a1053",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1825
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "850"
+				},
+				{
+					"scheme": "op",
+					"number": "53"
+				}
+			]
+		}
+	],
+	"key": "D",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Con moto"
+		},
+		{
+			"title": "Scherzo. Allegro vivace – Trio"
+		},
+		{
+			"title": "Rondo. Allegro moderato"
+		}
+	]
+}

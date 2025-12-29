@@ -1,0 +1,33 @@
+{
+	"id": "a5d7efc2",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1817
+			},
+			"catalog": [
+				{"scheme": "d", "number": "568.1"},
+				{"scheme": "d", "number": "567"}
+			]
+		}
+	],
+	"key": "Db",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro moderato"
+		},
+		{
+			"title": "Andante molto"
+		},
+		{
+			"title": "Scherzo. Allegro moderato – Trio"
+		},
+		{
+			"title": "Allegretto",
+			"status": "fragment"
+		}
+	]
+}

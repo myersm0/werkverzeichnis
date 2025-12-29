@@ -1,0 +1,35 @@
+{
+	"id": "be205511",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1823
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "784"
+				},
+				{
+					"scheme": "op",
+					"number": "posth. 143"
+				}
+			]
+		}
+	],
+	"key": "a",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro giusto"
+		},
+		{
+			"title": "Andante"
+		},
+		{
+			"title": "Allegro vivace"
+		}
+	]
+}

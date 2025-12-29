@@ -1,0 +1,36 @@
+{
+	"id": "76481ac6",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1818
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "625"
+				}
+			]
+		}
+	],
+	"key": "f",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"note": "unfinished; Adagio is speculative",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Adagio",
+			"key": "Db"
+		},
+		{
+			"title": "Scherzo. Allegretto – Trio"
+		},
+		{
+			"title": "Allegro"
+		}
+	]
+}

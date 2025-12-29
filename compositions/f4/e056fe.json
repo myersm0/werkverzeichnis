@@ -1,0 +1,34 @@
+{
+	"id": "f4e056fe",
+	"attribution": [
+		{
+			"composer": "schubert",
+			"dates": {
+				"composed": 1828
+			},
+			"catalog": [
+				{
+					"scheme": "d",
+					"number": "959"
+				}
+			]
+		}
+	],
+	"key": "A",
+	"form": "sonata",
+	"instrumentation": "piano",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Andantino"
+		},
+		{
+			"title": "Scherzo. Allegro vivace – Trio. Un poco più lento"
+		},
+		{
+			"title": "Rondo. Allegretto"
+		}
+	]
+}
