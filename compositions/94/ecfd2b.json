@@ -16,31 +16,31 @@
 	"movements": [
 		{
 			"title": "Sinfonia",
-			"type": "instrumental"
+			"form": "instrumental"
 		},
 		{
 			"title": "Falsche Welt, dir trau ich nicht",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Immerhin, immerhin, wenn ich gleich verstoßen bin",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Gott ist getreu",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Ich halt es mit dem lieben Gott",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano"
 		},
 		{
 			"title": "In dich hab ich gehoffet, Herr",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

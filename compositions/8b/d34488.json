@@ -16,27 +16,27 @@
 	"movements": [
 		{
 			"title": "Ihr Menschen, rühmet Gottes Liebe",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Gelobet sei der Herr Gott Israel",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Gottes Wort, das trüget nicht",
-			"type": "duet aria",
+			"form": "duet aria",
 			"soloists": "soprano, alto"
 		},
 		{
 			"title": "Des Weibes Samen kam",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Sei Lob und Preis mit Ehren",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

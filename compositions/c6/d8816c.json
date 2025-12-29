@@ -19,26 +19,26 @@
 			"movements": [
 				{
 					"title": "Dem Gerechten muss das Licht immer wieder aufgehen",
-					"type": "chorus"
+					"form": "chorus"
 				},
 				{
 					"title": "Dem Freudenlicht gerechter Frommen",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "bass"
 				},
 				{
 					"title": "Rühmet Gottes Güt und Treu",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "bass"
 				},
 				{
 					"title": "Wohlan, so knüpfet denn ein Band",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "soprano"
 				},
 				{
 					"title": "Wir kommen, deine Heiligkeit",
-					"type": "chorus"
+					"form": "chorus"
 				}
 			]
 		},
@@ -47,7 +47,7 @@
 			"movements": [
 				{
 					"title": "Nun danket all und bringet Ehr",
-					"type": "chorale"
+					"form": "chorale"
 				}
 			]
 		}

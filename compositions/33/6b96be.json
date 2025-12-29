@@ -15,41 +15,41 @@
 	"movements": [
 		{
 			"title": "Sinfonia",
-			"type": "instrumental",
+			"form": "instrumental",
 			"key": "b"
 		},
 		{
 			"title": "Nach dir, Herr, verlanget mich",
-			"type": "chorus",
+			"form": "chorus",
 			"text_source": "Psalm 25:1–2",
 			"key": "b"
 		},
 		{
 			"title": "Doch bin und bleibe ich vergnügt",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "b"
 		},
 		{
 			"title": "Leite mich in deiner Wahrheit",
-			"type": "chorus",
+			"form": "chorus",
 			"text_source": "Psalm 25:5"
 		},
 		{
 			"title": "Zedern müssen von den Winden",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto, tenor, bass",
 			"key": "D"
 		},
 		{
 			"title": "Meine Augen sehen stets zu dem Herrn",
-			"type": "chorus",
+			"form": "chorus",
 			"text_source": "Psalm 25:15",
 			"key": "D"
 		},
 		{
 			"title": "Meine Tage in dem Leide",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "b"
 		}
 	],

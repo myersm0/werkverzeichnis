@@ -18,42 +18,41 @@
 	"movements": [
 		{
 			"title": "Sinfonia",
-			"type": "instrumental concerto"
+			"form": "instrumental concerto"
 		},
 		{
 			"title": "Uns ist ein Kind geboren",
-			"type": "chorus",
-			"form": "double fugue"
+			"form": "chorus"
 		},
 		{
 			"title": "Dein Geburtstag ist erschienen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "e"
 		},
 		{
 			"title": "Ich will den Namen Gottes loben",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Jesu, dir sei Dank",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Immanuel",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Jesu, dir sei Preis",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "d"
 		},
 		{
 			"title": "Alleluia",
-			"type": "chorus"
+			"form": "chorus"
 		}
 	],
 	"xref": {

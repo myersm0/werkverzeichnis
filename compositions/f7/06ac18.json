@@ -15,47 +15,47 @@
 	"movements": [
 		{
 			"title": "Sinfonia",
-			"type": "sinfonia",
+			"form": "sinfonia",
 			"key": "D"
 		},
 		{
 			"title": "Wir danken dir, Gott, wir danken dir",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "D"
 		},
 		{
 			"title": "Halleluja, Stärk und Macht",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "A"
 		},
 		{
 			"title": "Gottlob! es geht uns wohl!",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass",
 			"key": "f#"
 		},
 		{
 			"title": "Gedenk an uns mit deiner Liebe",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "b"
 		},
 		{
 			"title": "Vergiß es ferner nicht mit deiner Hand",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto, SATB",
 			"key": "D"
 		},
 		{
 			"title": "Halleluja, Stärk und Macht",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "D"
 		},
 		{
 			"title": "Sei Lob und Preis mit Ehren",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "D"
 		}
 	],

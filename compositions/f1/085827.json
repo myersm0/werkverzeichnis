@@ -16,26 +16,26 @@
 	"movements": [
 		{
 			"title": "Herr, wie du willt, so schicks mit mir",
-			"type": "chorus and recitative"
+			"form": "chorus and recitative"
 		},
 		{
 			"title": "Ach senke doch den Geist der Freuden",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Ach, unser Wille bleibt verkehrt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Herr, so du willt",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		},
 		{
 			"title": "Das ist des Vaters Wille",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

@@ -15,52 +15,52 @@
 	"movements": [
 		{
 			"title": "Ich habe in Gottes Herz und Sinn",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "b"
 		},
 		{
 			"title": "Es kann mir fehlen nimmermehr!",
-			"type": "chorale and recitative",
+			"form": "chorale and recitative",
 			"soloists": "bass",
 			"key": "c"
 		},
 		{
 			"title": "Seht, seht! wie reißt, wie bricht, wie fällt",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "b"
 		},
 		{
 			"title": "Zudem ist Weisheit und Verstand",
-			"type": "chorale",
+			"form": "chorale",
 			"soloists": "alto",
 			"key": "f#"
 		},
 		{
 			"title": "Wir wollen uns nicht länger zagen",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Das Brausen von den rauhen Winden",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "D"
 		},
 		{
 			"title": "Ei nun, mein Gott, so fall ich dir",
-			"type": "chorale and recitative",
+			"form": "chorale and recitative",
 			"soloists": "soprano, alto, tenor, bass"
 		},
 		{
 			"title": "Meinem Hirten bleib ich treu",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "D"
 		},
 		{
 			"title": "Soll ich denn auch des Todes Weg",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "b"
 		}
 	],

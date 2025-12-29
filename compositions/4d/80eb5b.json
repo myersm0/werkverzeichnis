@@ -16,32 +16,32 @@
 	"movements": [
 		{
 			"title": "Was soll ich aus dir machen, Ephraim",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		},
 		{
 			"title": "Ja, freilich sollte Gott",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Ein unbarmherziges Gerichte",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Wohlan! mein Herze legt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Gerechter Gott, ach, rechnest du",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Mir mangelt zwar sehr viel",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

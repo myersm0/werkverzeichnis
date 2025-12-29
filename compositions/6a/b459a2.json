@@ -15,29 +15,29 @@
 	"movements": [
 		{
 			"title": "O Ewigkeit, du Donnerwort / Herr, ich warte auf dein Heil",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"soloists": "alto, tenor",
 			"key": "D"
 		},
 		{
 			"title": "O schwerer Gang zum letzten Kampf und Streite! / Mein Beistand ist schon da",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto, tenor"
 		},
 		{
 			"title": "Mein letztes Lager will mich schrecken / Mich wird des Heilands Hand bedecken",
-			"type": "aria duetto",
+			"form": "aria duetto",
 			"soloists": "alto, tenor",
 			"key": "b"
 		},
 		{
 			"title": "Der Tod bleibt doch der menschlichen Natur verhaßt / Selig sind die Toten",
-			"type": "recitative and chorale",
+			"form": "recitative and chorale",
 			"soloists": "alto, bass"
 		},
 		{
 			"title": "Es ist genug",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "A"
 		}
 	],

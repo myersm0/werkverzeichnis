@@ -16,42 +16,42 @@
 	"movements": [
 		{
 			"title": "Selig ist der Mann",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		},
 		{
 			"title": "Ach! dieser süße Trost",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Ich wünschte mir den Tod, den Tod",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Ich reiche dir die Hand",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano, bass"
 		},
 		{
 			"title": "Ja, ja, ich kann die Feinde schlagen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		},
 		{
 			"title": "In meinem Schoß liegt Ruh und Leben",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano, bass"
 		},
 		{
 			"title": "Ich ende behende mein irdisches Leben",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Richte dich, Liebste, nach meinem Gefallen und gläube",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

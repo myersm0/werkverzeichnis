@@ -16,35 +16,35 @@
 	"movements": [
 		{
 			"title": "Bereitet die Wege, bereitet die Bahn",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "A"
 		},
 		{
 			"title": "Willst du dich Gottes Kind und Christi Bruder nennen",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Wer bist du? Frage dein Gewissen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "E"
 		},
 		{
 			"title": "Ich will, mein Gott, dir frei heraus bekennen",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Christi Glieder, ach bedenket",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "b"
 		},
 		{
 			"title": "Ertöt uns durch deine Güte",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

@@ -16,29 +16,29 @@
 	"movements": [
 		{
 			"title": "Ich bin vergnügt mit meinem Glücke",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "e"
 		},
 		{
 			"title": "Gott ist mir ja nichts schuldig",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Ich esse mit Freuden mein weniges Brot",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "G"
 		},
 		{
 			"title": "Im Schweiße meines Angesichts",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Ich leb indes in dir vergnüget",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "e"
 		}
 	],

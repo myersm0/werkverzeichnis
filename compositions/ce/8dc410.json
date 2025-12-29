@@ -20,27 +20,27 @@
 	"movements": [
 		{
 			"title": "Ich weiß, daß mein Erlöser lebt",
-			"type": "aria",
+			"form": "aria",
 			"key": "C"
 		},
 		{
 			"title": "Er lebt und ist von Todten auferstanden!",
-			"type": "recitative",
+			"form": "recitative",
 			"key": "C"
 		},
 		{
 			"title": "Gott Lob, Gott Lob",
-			"type": "aria",
+			"form": "aria",
 			"key": "C"
 		},
 		{
 			"title": "So biet' ich allen Teufeln Trutz!",
-			"type": "recitative",
+			"form": "recitative",
 			"key": "C"
 		},
 		{
 			"title": "Nun, ich halte mich bereit",
-			"type": "aria",
+			"form": "aria",
 			"key": "C"
 		}
 	],

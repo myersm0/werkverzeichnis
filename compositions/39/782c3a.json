@@ -16,46 +16,46 @@
 	"movements": [
 		{
 			"title": "Sonata",
-			"type": "instrumental"
+			"form": "instrumental"
 		},
 		{
 			"title": "Der Himmel lacht! Die Erde jubilieret",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Erwünschter Tag!",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Fürst des Lebens, starker Streiter",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		},
 		{
 			"title": "So stehe dann, du gottergebne Seele",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Adam muss in uns verwesen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "G"
 		},
 		{
 			"title": "Weil dann das Haupt sein Glied",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Letzte Stunde, brich herein",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano"
 		},
 		{
 			"title": "So fahr ich hin zu Jesu Christ",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

@@ -19,34 +19,34 @@
 			"movements": [
 				{
 					"title": "Herz und Mund und Tat und Leben",
-					"type": "chorus",
+					"form": "chorus",
 					"key": "C"
 				},
 				{
 					"title": "Gebenedeiter Mund!",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "tenor"
 				},
 				{
 					"title": "Schäme dich, o Seele nicht",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "alto",
 					"key": "a"
 				},
 				{
 					"title": "Verstockung kann Gewaltige verblenden",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "bass"
 				},
 				{
 					"title": "Bereite dir, Jesu, noch itzo die Bahn",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "soprano",
 					"key": "d"
 				},
 				{
 					"title": "Wohl mir, daß ich Jesum habe",
-					"type": "chorale",
+					"form": "chorale",
 					"key": "G"
 				}
 			]
@@ -56,25 +56,25 @@
 			"movements": [
 				{
 					"title": "Hilf, Jesu, hilf, daß ich auch dich bekenne",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "tenor",
 					"key": "F"
 				},
 				{
 					"title": "Der höchsten Allmacht Wunderhand",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "alto",
 					"key": "C"
 				},
 				{
 					"title": "Ich will von Jesu Wundern singen",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "bass",
 					"key": "C"
 				},
 				{
 					"title": "Jesus bleibet meine Freude",
-					"type": "chorale",
+					"form": "chorale",
 					"key": "G"
 				}
 			]

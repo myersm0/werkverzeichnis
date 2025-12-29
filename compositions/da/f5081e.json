@@ -19,36 +19,36 @@
 			"movements": [
 				{
 					"title": "Laß, Fürstin, laß noch einen Strahl",
-					"type": "chorus"
+					"form": "chorus"
 				},
 				{
 					"title": "Dein Sachsen, dein bestürztes Meißen",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "soprano"
 				},
 				{
 					"title": "Verstummt, verstummt, ihr holden Saiten!",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "soprano"
 				},
 				{
 					"title": "Der Glocken bebendes Getön",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "alto"
 				},
 				{
 					"title": "Wie starb die Heldin so vergnügt!",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "alto"
 				},
 				{
 					"title": "Ihr Leben ließ die Kunst zu sterben",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "tenor"
 				},
 				{
 					"title": "An dir, du Fürbild großer Frauen",
-					"type": "chorus"
+					"form": "chorus"
 				}
 			]
 		},
@@ -57,17 +57,17 @@
 			"movements": [
 				{
 					"title": "Der Ewigkeit saphirnes Haus",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "tenor"
 				},
 				{
 					"title": "Was Wunder ists? Du bist es wert",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "bass"
 				},
 				{
 					"title": "Doch, Königin! du stirbest nicht",
-					"type": "chorus"
+					"form": "chorus"
 				}
 			]
 		}

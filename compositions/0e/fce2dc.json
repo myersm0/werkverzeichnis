@@ -16,29 +16,29 @@
 	"movements": [
 		{
 			"title": "Also hat Gott die Welt geliebt",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "d"
 		},
 		{
 			"title": "Mein gläubiges Herze",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "F"
 		},
 		{
 			"title": "Ich bin mit Petro nicht vermessen",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Du bist geboren mir zugute",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "C"
 		},
 		{
 			"title": "Wer an ihn gläubet, der wird nicht gerichtet",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "a"
 		}
 	],

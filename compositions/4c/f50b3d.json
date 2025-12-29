@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Ach wie flüchtig, ach wie nichtig",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "a"
 		},
 		{
 			"title": "So schnell ein rauschend Wasser schießt",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "C"
 		},
 		{
 			"title": "Die Freude wird zur Traurigkeit",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "An irdische Schätze das Herze zu hängen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		},
 		{
 			"title": "Die höchste Herrlichkeit und Pracht",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano",
 			"key": "e"
 		},
 		{
 			"title": "Ach wie flüchtig, ach wie nichtig",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "a"
 		}
 	],

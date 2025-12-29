@@ -16,35 +16,35 @@
 	"movements": [
 		{
 			"title": "Nun komm, der Heiden Heiland",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "a"
 		},
 		{
 			"title": "Der Heiland ist gekommen",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor",
 			"key": "C"
 		},
 		{
 			"title": "Komm, Jesu, komm zu deiner Kirche",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "C"
 		},
 		{
 			"title": "Siehe, ich stehe vor der Tür",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Öffne dich, mein ganzes Herze",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "G"
 		},
 		{
 			"title": "Amen, Amen, komm du schöne Freudenkrone",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "G"
 		}
 	],

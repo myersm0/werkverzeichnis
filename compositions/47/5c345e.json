@@ -16,44 +16,44 @@
 	"movements": [
 		{
 			"title": "Darzu ist erschienen der Sohn Gottes",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "F"
 		},
 		{
 			"title": "Das Wort ward Fleisch",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Die Sünd macht Leid",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "g"
 		},
 		{
 			"title": "Höllische Schlange, wird dir nicht bange?",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "d"
 		},
 		{
 			"title": "Die Schlange, so im Paradies",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Schüttle deinen Kopf und sprich",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "d"
 		},
 		{
 			"title": "Christenkinder, freuet euch!",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "F"
 		},
 		{
 			"title": "Jesu, nimm dich deiner Glieder",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "f"
 		}
 	],

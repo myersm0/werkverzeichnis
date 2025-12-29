@@ -15,46 +15,46 @@
 	"movements": [
 		{
 			"title": "Mein Herze schwimmt im Blut",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano",
 			"key": "c"
 		},
 		{
 			"title": "Stumme Seufzer, stille Klagen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "c"
 		},
 		{
 			"title": "Doch Gott muss mir genädig sein",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Tief gebückt und voller Reue",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "Eb"
 		},
 		{
 			"title": "Auf diese Schmerzensreu",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Ich, dein betrübtes Kind",
-			"type": "chorale",
+			"form": "chorale",
 			"soloists": "soprano",
 			"key": "F"
 		},
 		{
 			"title": "Ich lege mich in diese Wunden",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Wie freudig ist mein Herz",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "Bb"
 		}

@@ -16,36 +16,36 @@
 	"movements": [
 		{
 			"title": "Christen, ätzet diesen Tag",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Oh, selger Tag! o ungemeines Heute",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Gott, du hast es wohl gefüget",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano, bass"
 		},
 		{
 			"title": "So kehret sich nun heut",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Ruft und fleht den Himmel an",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto, tenor"
 		},
 		{
 			"title": "Verdoppelt euch demnach",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Höchster, schau in Gnaden an",
-			"type": "chorus"
+			"form": "chorus"
 		}
 	],
 	"xref": {

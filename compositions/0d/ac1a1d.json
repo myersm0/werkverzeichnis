@@ -16,46 +16,46 @@
 	"movements": [
 		{
 			"title": "Sonatina",
-			"type": "instrumental",
+			"form": "instrumental",
 			"key": "Eb"
 		},
 		{
 			"title": "Gottes Zeit ist die allerbeste Zeit",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "Eb"
 		},
 		{
 			"title": "Ach, Herr, lehre uns bedenken",
-			"type": "arioso",
+			"form": "arioso",
 			"soloists": "tenor",
 			"key": "c"
 		},
 		{
 			"title": "Bestelle dein Haus",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "c"
 		},
 		{
 			"title": "Es ist der alte Bund / Ja, komm, Herr Jesu, komm!",
-			"type": "chorus and solo",
+			"form": "chorus and solo",
 			"key": "f"
 		},
 		{
 			"title": "In deine Hände befehl ich meinen Geist",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "bb"
 		},
 		{
 			"title": "Heute wirst du mit mir im Paradies sein",
-			"type": "arioso and chorale",
+			"form": "arioso and chorale",
 			"soloists": "bass, alto",
 			"key": "c"
 		},
 		{
 			"title": "Glorie, Lob, Ehr und Herrlichkeit",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "Eb"
 		}
 	],

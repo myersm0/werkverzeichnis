@@ -20,23 +20,23 @@
 	"movements": [
 		{
 			"title": "Meine Seele rühmt und preist",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "Denn seh' ich mich und auch mein Leben an",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Gott hat sich hoch gesetzet",
-			"type": "aria"
+			"form": "aria"
 		},
 		{
 			"title": "O wass vor grosse Dinge treff ich an allen Orten an",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Deine Güte, dein Erbarmen",
-			"type": "aria"
+			"form": "aria"
 		}
 	],
 	"xref": {

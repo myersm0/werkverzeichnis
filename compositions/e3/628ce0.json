@@ -16,35 +16,35 @@
 	"movements": [
 		{
 			"title": "Es ist euch gut, daß ich hingehe",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "A"
 		},
 		{
 			"title": "Mich kann kein Zweifel stören",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "f#"
 		},
 		{
 			"title": "Dein Geist wird mich also regieren",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Wenn aber jener, der Geist der Wahrheit kommen wird",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "D"
 		},
 		{
 			"title": "Was mein Herz von dir begehrt",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "b"
 		},
 		{
 			"title": "Dein Geist, den Gott von Himmel gibt",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "b"
 		}
 	],

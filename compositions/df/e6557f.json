@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Was Gott tut, das ist wohlgetan",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "G"
 		},
 		{
 			"title": "Sein Wort der Wahrheit stehet fest",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Erschüttre dich nur nicht, verzagte Seele",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "b"
 		},
 		{
 			"title": "Nun, der von Ewigkeit geschloß'ne Bund",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Wenn des Kreuzes Bitterkeiten",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano, alto",
 			"key": "b"
 		},
 		{
 			"title": "Was Gott tut, das ist wohlgetan",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "G"
 		}
 	],

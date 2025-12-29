@@ -16,41 +16,41 @@
 	"movements": [
 		{
 			"title": "Wer mich liebet, der wird mein Wort halten",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Komm, komm, mein Herze steht dir offen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Die Wohnung ist bereit",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Ich gehe hin und komme wieder zu euch",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		},
 		{
 			"title": "Kommt, eilet, stimmet Sait und Lieder",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Es ist nichts Verdammliches an denen",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Nichts kann mich erretten",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Kein Menschenkind hier auf der Erd",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

@@ -16,35 +16,35 @@
 	"movements": [
 		{
 			"title": "Ich elender Mensch, wer wird mich erlösen",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "O Schmerz, o Elend, so mich trifft",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Solls ja so sein",
-			"type": "chorale"
+			"form": "chorale"
 		},
 		{
 			"title": "Ach, lege das Sodom der sündlichen Glieder",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Hier aber tut des Heilands Hand",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Vergibt mir Jesus meine Sünden",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Herr Jesu Christ, einiger Trost",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

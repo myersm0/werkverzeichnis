@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Herr Christ, der einge Gottessohn",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "F"
 		},
 		{
 			"title": "O Wunderkraft der Liebe",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Ach, ziehe die Seele mit Seilen der Liebe",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "C"
 		},
 		{
 			"title": "Ach, führe mich, o Gott, zum rechten Wege",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Bald zur Rechten, bald zur Linken",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "d"
 		},
 		{
 			"title": "Ertöt uns durch dein Güte",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "F"
 		}
 	],

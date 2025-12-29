@@ -19,22 +19,22 @@
 			"movements": [
 				{
 					"title": "Sinfonia",
-					"type": "sinfonia"
+					"form": "sinfonia"
 				},
 				{
 					"title": "Geist und Seele wird verwirret",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "alto",
 					"key": "a"
 				},
 				{
 					"title": "Ich wundre mich",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "alto"
 				},
 				{
 					"title": "Gott hat alles wohlgemacht",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "alto",
 					"key": "F"
 				}
@@ -45,16 +45,16 @@
 			"movements": [
 				{
 					"title": "Sinfonia",
-					"type": "sinfonia"
+					"form": "sinfonia"
 				},
 				{
 					"title": "Ach, starker Gott",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "alto"
 				},
 				{
 					"title": "Ich wünsche nur bei Gott zu leben",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "alto",
 					"key": "C"
 				}

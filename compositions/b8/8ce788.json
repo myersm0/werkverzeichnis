@@ -15,22 +15,22 @@
 	"movements": [
 		{
 			"title": "Der Friede sei mit dir",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Welt, ade, ich bin dein müde",
-			"type": "aria and chorale",
+			"form": "aria and chorale",
 			"soloists": "bass, soprano"
 		},
 		{
 			"title": "Nun, Herr, regiere meinen Sinn",
-			"type": "recitative and arioso",
+			"form": "recitative and arioso",
 			"soloists": "bass"
 		},
 		{
 			"title": "Hier ist das rechte Osterlamm",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

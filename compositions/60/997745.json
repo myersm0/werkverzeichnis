@@ -16,35 +16,35 @@
 	"movements": [
 		{
 			"title": "Tue Rechnung! Donnerwort",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "b"
 		},
 		{
 			"title": "Es ist nur fremdes Gut",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Kapital und Interessen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "f#"
 		},
 		{
 			"title": "Jedoch, erschrocknes Herz, leb und verzage nicht",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Herz, zerreiß des Mammons Kette",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano, alto",
 			"key": "e"
 		},
 		{
 			"title": "Stärk mich mit deinem Freudengeist",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "b"
 		}
 	],

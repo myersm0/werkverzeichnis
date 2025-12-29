@@ -15,16 +15,16 @@
 	"movements": [
 		{
 			"title": "Widerstehe doch der Sünde",
-			"type": "aria",
+			"form": "aria",
 			"key": "Eb"
 		},
 		{
 			"title": "Die Art verruchter Sünden",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Wer Sünde tut, der ist vom Teufel",
-			"type": "aria",
+			"form": "aria",
 			"key": "Eb"
 		}
 	],

@@ -16,35 +16,35 @@
 	"movements": [
 		{
 			"title": "Erwünschtes Freudenlicht",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor",
 			"key": "G"
 		},
 		{
 			"title": "Gesegnete Christen, glückselige Herde",
-			"type": "duet aria",
+			"form": "duet aria",
 			"soloists": "soprano, alto",
 			"key": "G"
 		},
 		{
 			"title": "So freuet euch, ihr auserwählten Seelen",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Glück und Segen sind bereit",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "b"
 		},
 		{
 			"title": "Herr, ich hoff je, du werdest die",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "D"
 		},
 		{
 			"title": "Guter Hirte, Trost der Deinen",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "G"
 		}
 	],

@@ -16,27 +16,27 @@
 	"movements": [
 		{
 			"title": "Süßer Trost, mein Jesus kömmt",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Erfreue dich, mein Herz",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "In Jesu Demut kann ich Trost",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Du teurer Gottessohn",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Heut schleußt er wieder auf die Tür",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

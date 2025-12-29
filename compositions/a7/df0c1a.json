@@ -16,31 +16,31 @@
 	"movements": [
 		{
 			"title": "Sehet, wir gehn hinauf gen Jerusalem / Komm, schaue doch, mein Sinn",
-			"type": "arioso and recitative",
+			"form": "arioso and recitative",
 			"key": "c",
 			"soloists": "bass, alto"
 		},
 		{
 			"title": "Ich folge dir nach / Ich will hier bei dir stehen",
-			"type": "aria and chorale",
+			"form": "aria and chorale",
 			"key": "Eb",
 			"soloists": "alto, soprano"
 		},
 		{
 			"title": "Nun will ich mich, mein Jesu",
-			"type": "recitative",
+			"form": "recitative",
 			"key": "Bb",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Es ist vollbracht",
-			"type": "aria",
+			"form": "aria",
 			"key": "Bb",
 			"soloists": "bass"
 		},
 		{
 			"title": "Jesu, deine Passion ist mir lauter Freude",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "Eb"
 		}
 	],

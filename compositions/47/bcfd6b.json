@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Mit Fried und Freud ich fahr dahin",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "e"
 		},
 		{
 			"title": "Ich will auch mit gebrochnen Augen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "b"
 		},
 		{
 			"title": "O Wunder, daß ein Herz",
-			"type": "recitative and chorale",
+			"form": "recitative and chorale",
 			"soloists": "bass"
 		},
 		{
 			"title": "Ein unbegreiflich Licht",
-			"type": "aria duetto",
+			"form": "aria duetto",
 			"soloists": "tenor, bass",
 			"key": "G"
 		},
 		{
 			"title": "O unerschöpfter Schatz der Güte",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Er ist das Heil und selig Licht",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "e"
 		}
 	],

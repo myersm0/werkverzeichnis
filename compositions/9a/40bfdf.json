@@ -16,31 +16,31 @@
 	"movements": [
 		{
 			"title": "Ach Gott, wie manches Herzeleid",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"soloists": "soprano, bass",
 			"key": "C"
 		},
 		{
 			"title": "Verfolgt dich gleich die arge Welt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass",
 			"key": "a"
 		},
 		{
 			"title": "Ich bin vergnügt in meinem Leiden",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "d"
 		},
 		{
 			"title": "Kann es die Welt nicht lassen",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano",
 			"key": "F"
 		},
 		{
 			"title": "Ich hab für mir ein schwere Reis",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"soloists": "soprano, bass",
 			"key": "C"
 		}

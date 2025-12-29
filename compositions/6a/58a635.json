@@ -16,30 +16,30 @@
 	"movements": [
 		{
 			"title": "Lobe den Herren, den mächtigen König der Ehren",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "C"
 		},
 		{
 			"title": "Lobe den Herren, der alles so herrlich regieret",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "G"
 		},
 		{
 			"title": "Lobe den Herren, der künstlich und fein dich bereitet",
-			"type": "aria duet",
+			"form": "aria duet",
 			"soloists": "soprano, bass",
 			"key": "e"
 		},
 		{
 			"title": "Lobe den Herren, der deinen Stand sichtbar gesegnet",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "a"
 		},
 		{
 			"title": "Lobe den Herren, was in mir ist, lobe den Namen",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "C"
 		}
 	],

@@ -16,35 +16,35 @@
 	"movements": [
 		{
 			"title": "Ihr Tore zu Zion",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Der Hüter Israels entschläft noch schlummert nicht",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Gott, wir danken deiner Güte",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano"
 		},
 		{
 			"title": "O Leipziger Jerusalem",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Sende, Herr, den Segen ein",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
-			"type": "recitative",
+			"form": "recitative",
 			"note": "lost"
 		},
 		{
 			"title": "Ihr Tore zu Zion",
-			"type": "chorus"
+			"form": "chorus"
 		}
 	],
 	"xref": {

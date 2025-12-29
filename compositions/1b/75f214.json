@@ -16,36 +16,36 @@
 	"movements": [
 		{
 			"title": "Wer nur den lieben Gott läßt walten",
-			"type": "chorale fantasia"
+			"form": "chorale fantasia"
 		},
 		{
 			"title": "Was helfen uns die schweren Sorgen?",
-			"type": "recitative and chorale",
+			"form": "recitative and chorale",
 			"soloists": "bass"
 		},
 		{
 			"title": "Man halte nur ein wenig stille",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Er kennt die rechten Freudenstunden",
-			"type": "duet aria",
+			"form": "duet aria",
 			"soloists": "soprano, alto"
 		},
 		{
 			"title": "Denk nicht in deiner Drangsalhitze",
-			"type": "recitative and chorale",
+			"form": "recitative and chorale",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Ich will auf den Herren schaun",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Sing, bet und geh auf Gottes Wegen",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

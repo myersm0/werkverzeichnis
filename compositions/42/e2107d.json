@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Christum wir sollen loben schon",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "e"
 		},
 		{
 			"title": "O du von Gott erhöhte Kreatur",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "b"
 		},
 		{
 			"title": "Der Gnade unermesslich's Wesen",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Johannis freudenvolles Springen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "C"
 		},
 		{
 			"title": "Doch wie erblickt es dich in deiner Krippe",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Lob, Ehr und Danke sei dir gesagt",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "e"
 		}
 	],

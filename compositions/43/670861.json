@@ -16,40 +16,40 @@
 	"movements": [
 		{
 			"title": "Jesu, der du meine Seele",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "g"
 		},
 		{
 			"title": "Wir eilen mit schwachen, doch emsigen Schritten",
-			"type": "aria duet",
+			"form": "aria duet",
 			"soloists": "soprano, alto",
 			"key": "Bb"
 		},
 		{
 			"title": "Ach! ich bin ein Kind der Sünden",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Das Blut, so meine Schuld durchstreicht",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "g"
 		},
 		{
 			"title": "Die Wunden, Nägel, Kron und Grab",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Nur du wirst mein Gewissen stillen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "c"
 		},
 		{
 			"title": "Herr, ich glaube, hilf mir Schwachen",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "g"
 		}
 	],

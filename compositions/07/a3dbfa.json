@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Allein zu dir, Herr Jesu Christ",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "a"
 		},
 		{
 			"title": "Mein Gott und Richter",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Wie furchtsam wankten meine Schritte",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "C"
 		},
 		{
 			"title": "Mein Gott, verwirf mich nicht",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Gott, der du die Liebe heißt",
-			"type": "duet",
+			"form": "duet",
 			"soloists": "tenor, bass",
 			"key": "e"
 		},
 		{
 			"title": "Ehr sei Gott in dem höchsten Thron",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "a"
 		}
 	],

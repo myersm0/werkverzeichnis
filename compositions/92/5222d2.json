@@ -16,31 +16,31 @@
 	"movements": [
 		{
 			"title": "Sinfonia",
-			"type": "instrumental"
+			"form": "instrumental"
 		},
 		{
 			"title": "Ich habe meine Zuversicht",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Gott meint es gut mit jedermann",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Unerforschlich ist die Weise",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Die Macht der Welt verlieret sich",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Auf meinen lieben Gott",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

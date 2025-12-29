@@ -15,28 +15,28 @@
 	"movements": [
 		{
 			"title": "Sinfonia",
-			"type": "instrumental"
+			"form": "instrumental"
 		},
 		{
 			"title": "Der Herr denket an uns und segnet uns",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "C"
 		},
 		{
 			"title": "Er segnet, die den Herrn fürchten",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "a"
 		},
 		{
 			"title": "Der Herr segne euch",
-			"type": "duet aria",
+			"form": "duet aria",
 			"soloists": "tenor, bass",
 			"key": "C"
 		},
 		{
 			"title": "Ihr seid die Gesegneten des Herrn",
-			"type": "chorus"
+			"form": "chorus"
 		}
 	],
 	"xref": {

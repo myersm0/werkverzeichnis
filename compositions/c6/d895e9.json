@@ -18,34 +18,34 @@
 			"movements": [
 				{
 					"title": "Sinfonia",
-					"type": "sinfonia",
+					"form": "sinfonia",
 					"key": "c"
 				},
 				{
 					"title": "Ich hatte viel Bekümmernis in meinem Herzen",
-					"type": "chorus",
+					"form": "chorus",
 					"key": "c"
 				},
 				{
 					"title": "Seufzer, Tränen, Kummer, Not",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "soprano",
 					"key": "c"
 				},
 				{
 					"title": "Wie hast du dich, mein Gott",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "tenor"
 				},
 				{
 					"title": "Bäche von gesalznen Zähren",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "tenor",
 					"key": "f"
 				},
 				{
 					"title": "Was betrübst du dich, meine Seele",
-					"type": "chorus",
+					"form": "chorus",
 					"key": "f"
 				}
 			]
@@ -55,30 +55,30 @@
 			"movements": [
 				{
 					"title": "Ach Jesu, meine Ruh",
-					"type": "recitative dialogus",
+					"form": "recitative dialogus",
 					"soloists": "soprano, bass",
 					"key": "Eb"
 				},
 				{
 					"title": "Komm, mein Jesu, und erquicke / Ja, ich komme und erquicke",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "soprano, bass",
 					"key": "Eb"
 				},
 				{
 					"title": "Sei nun wieder zufrieden, meine Seele",
-					"type": "chorus and chorale",
+					"form": "chorus and chorale",
 					"key": "g"
 				},
 				{
 					"title": "Erfreue dich, Seele, erfreue dich, Herze",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "tenor",
 					"key": "F"
 				},
 				{
 					"title": "Das Lamm, das erwürget ist",
-					"type": "chorus",
+					"form": "chorus",
 					"key": "C"
 				}
 			]

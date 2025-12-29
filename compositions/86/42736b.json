@@ -16,29 +16,29 @@
 	"movements": [
 		{
 			"title": "Herr Jesu Christ, wahr' Mensch und Gott",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "F"
 		},
 		{
 			"title": "Wenn alles sich zur letzten Zeit entsetzet",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Die Seele ruht in Jesu Händen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "c"
 		},
 		{
 			"title": "Wenn einstens die Posaunen schallen / Fürwahr, fürwahr, euch sage ich",
-			"type": "recitative and aria",
+			"form": "recitative and aria",
 			"soloists": "bass",
 			"key": "C"
 		},
 		{
 			"title": "Ach, Herr, vergib all unsre Schuld",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "F"
 		}
 	],

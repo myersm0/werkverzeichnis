@@ -16,35 +16,35 @@
 	"movements": [
 		{
 			"title": "Wer da gläubet und getauft wird",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "A"
 		},
 		{
 			"title": "Der Glaube ist das Pfand der Liebe",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "A"
 		},
 		{
 			"title": "Herr Gott Vater, mein starker Held",
-			"type": "chorale",
+			"form": "chorale",
 			"soloists": "soprano, alto",
 			"key": "D"
 		},
 		{
 			"title": "Ihr Sterblichen, verlanget ihr",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Der Glaube schafft der Seele Flügel",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "b"
 		},
 		{
 			"title": "Den Glauben mir verleihe",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "A"
 		}
 	],

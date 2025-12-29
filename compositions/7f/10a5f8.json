@@ -16,25 +16,25 @@
 	"movements": [
 		{
 			"title": "Ich habe genung",
-			"type": "aria",
+			"form": "aria",
 			"key": "c"
 		},
 		{
 			"title": "Ich habe genung",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Schlummert ein, ihr matten Augen",
-			"type": "aria",
+			"form": "aria",
 			"key": "Eb"
 		},
 		{
 			"title": "Mein Gott! wenn kömmt das schöne: Nun!",
-			"type": "recitative"
+			"form": "recitative"
 		},
 		{
 			"title": "Ich freue mich auf meinen Tod",
-			"type": "aria",
+			"form": "aria",
 			"key": "c"
 		}
 	],

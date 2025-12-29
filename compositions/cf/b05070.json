@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Schauet doch und sehet, ob irgend ein Schmerz sei",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "d"
 		},
 		{
 			"title": "So klage du, zerstörte Gottesstadt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Dein Wetter zog sich auf von weiten",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "Bb"
 		},
 		{
 			"title": "Doch bildet euch, o Sünder, ja nicht ein",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Doch Jesus will auch bei der Strafe",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "g"
 		},
 		{
 			"title": "O großer Gott von Macht",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "g"
 		}
 	],

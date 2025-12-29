@@ -16,36 +16,36 @@
 	"movements": [
 		{
 			"title": "Wo gehest du hin",
-			"type": "arioso",
+			"form": "arioso",
 			"soloists": "bass",
 			"key": "Bb"
 		},
 		{
 			"title": "Ich will an den Himmel denken",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "g"
 		},
 		{
 			"title": "Ich bitte dich, Herr Jesu Christ",
-			"type": "chorale",
+			"form": "chorale",
 			"soloists": "soprano",
 			"key": "c"
 		},
 		{
 			"title": "Gleichwie die Regenwasser bald verfließen",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Man nehme sich in acht",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "Bb"
 		},
 		{
 			"title": "Wer weiß, wie nahe mir mein Ende",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "g"
 		}
 	],

@@ -16,41 +16,41 @@
 	"movements": [
 		{
 			"title": "Wachet auf, ruft uns die Stimme",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "Eb"
 		},
 		{
 			"title": "Er kommt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor",
 			"key": "c"
 		},
 		{
 			"title": "Wann kommst du, mein Heil?",
-			"type": "duet",
+			"form": "duet",
 			"soloists": "soprano, bass",
 			"key": "c"
 		},
 		{
 			"title": "Zion hört die Wächter singen",
-			"type": "chorale",
+			"form": "chorale",
 			"soloists": "tenor",
 			"key": "Eb"
 		},
 		{
 			"title": "So geh herein zu mir",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Mein Freund ist mein!",
-			"type": "duet",
+			"form": "duet",
 			"soloists": "soprano, bass",
 			"key": "Bb"
 		},
 		{
 			"title": "Gloria sei dir gesungen",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "Eb"
 		}
 	],

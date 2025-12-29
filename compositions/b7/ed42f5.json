@@ -16,21 +16,21 @@
 	"movements": [
 		{
 			"title": "Wer mich liebet, der wird mein Wort halten",
-			"type": "duet",
+			"form": "duet",
 			"soloists": "soprano, bass"
 		},
 		{
 			"title": "O was sind das vor Ehren",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Komm, Heiliger Geist, Herre Gott",
-			"type": "chorale"
+			"form": "chorale"
 		},
 		{
 			"title": "Die Welt mit allen Königreichen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		}
 	],

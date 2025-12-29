@@ -19,18 +19,18 @@
 			"movements": [
 				{
 					"title": "Siehe, ich will viel Fischer aussenden / Und darnach will ich viel Jäger aussenden",
-					"type": "basso solo",
+					"form": "basso solo",
 					"soloists": "bass",
 					"key": "D"
 				},
 				{
 					"title": "Wie leichtlich könnte doch der Höchste uns entbehren",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "tenor"
 				},
 				{
 					"title": "Nein, Gott ist allezeit geflissen",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "tenor",
 					"key": "e"
 				}
@@ -41,24 +41,24 @@
 			"movements": [
 				{
 					"title": "Jesus sprach zu Simon: Fürchte dich nicht",
-					"type": "arioso",
+					"form": "arioso",
 					"soloists": "tenor, bass",
 					"key": "G"
 				},
 				{
 					"title": "Beruft Gott selbst, so muss der Segen",
-					"type": "duet aria",
+					"form": "duet aria",
 					"soloists": "soprano, alto",
 					"key": "A"
 				},
 				{
 					"title": "Was kann dich denn in deinem Wandel schrecken",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "soprano"
 				},
 				{
 					"title": "Sing, bet und geh auf Gottes Wegen",
-					"type": "chorale",
+					"form": "chorale",
 					"key": "b"
 				}
 			]

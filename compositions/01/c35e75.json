@@ -18,31 +18,31 @@
 	"movements": [
 		{
 			"title": "Sinfonia",
-			"type": "instrumental"
+			"form": "instrumental"
 		},
 		{
 			"title": "Ich steh mit einem Fuß im Grabe",
-			"type": "chorale and aria",
+			"form": "chorale and aria",
 			"soloists": "soprano, tenor"
 		},
 		{
 			"title": "Mein Angst und Not",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Herr, was du willt, soll mir gefallen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Und willst du, dass ich nicht soll kranken",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Herr, wie du willt, so schicks mit mir",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

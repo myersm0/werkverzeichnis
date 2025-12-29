@@ -16,33 +16,33 @@
 	"movements": [
 		{
 			"title": "Es ist ein trotzig und verzagt Ding",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "c"
 		},
 		{
 			"title": "Ich meine, recht verzagt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Dein sonst hell beliebter Schein",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano"
 		},
 		{
 			"title": "So wundre dich, o Meister, nicht",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Ermuntert euch, furchtsam und schüchterne Sinne",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "Eb"
 		},
 		{
 			"title": "Auf daß wir also allzugleich",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

@@ -16,31 +16,31 @@
 	"movements": [
 		{
 			"title": "Siehe zu, daß deine Gottesfurcht nicht Heuchelei sei",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Das heutge Christentum ist leider schlecht bestellt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Falscher Heuchler Ebenbild",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Wer so von innen wie von außen ist",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Liebster Gott, erbarme dich",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Ich armer Mensch, ich armer Sünder",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

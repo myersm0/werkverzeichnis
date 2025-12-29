@@ -15,35 +15,35 @@
 	"movements": [
 		{
 			"title": "Erschallet, ihr Lieder",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "C"
 		},
 		{
 			"title": "Wer mich liebet, der wird mein Wort halten",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Heiligste Dreieinigkeit",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "C"
 		},
 		{
 			"title": "O Seelenparadies",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "a"
 		},
 		{
 			"title": "Komm, laß mich nicht länger warten",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano, alto",
 			"key": "F"
 		},
 		{
 			"title": "Von Gott kömmt mir ein Freudenschein",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "F"
 		}
 	],

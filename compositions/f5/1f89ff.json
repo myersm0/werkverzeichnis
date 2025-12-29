@@ -16,32 +16,32 @@
 	"movements": [
 		{
 			"title": "Ach! ich sehe, itzt, da ich zur Hochzeit gehe",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		},
 		{
 			"title": "O großes Hochzeitfest",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Jesu, Brunnquell aller Gnaden",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Mein Jesu, laß mich nicht",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "In meinem Gott bin ich erfreut",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto, tenor"
 		},
 		{
 			"title": "Ach, ich habe schon erblicket",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

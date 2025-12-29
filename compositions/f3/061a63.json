@@ -16,45 +16,45 @@
 	"movements": [
 		{
 			"title": "Schau, lieber Gott, wie meine Feind",
-			"type": "chorale"
+			"form": "chorale"
 		},
 		{
 			"title": "Mein liebster Gott, ach laß dichs doch erbarmen",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Fürchte dich nicht",
-			"type": "arioso",
+			"form": "arioso",
 			"soloists": "bass"
 		},
 		{
 			"title": "Du sprichst zwar, lieber Gott",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Und ob gleich alle Teufel",
-			"type": "chorale"
+			"form": "chorale"
 		},
 		{
 			"title": "Stürmt nur, stürmt, ihr Trübsalswetter",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Getrost! Mein Herz",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Soll ich meinen Lebenslauf",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Drum will ich, weil ich lebe noch",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

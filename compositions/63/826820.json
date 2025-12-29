@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Es ist nichts Gesundes an meinem Leibe",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "a"
 		},
 		{
 			"title": "Die ganze Welt ist nur ein Hospital",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Ach, wo hol ich Armer Rat?",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "d"
 		},
 		{
 			"title": "O Jesu, lieber Meister",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Öffne meinen schlechten Liedern",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "C"
 		},
 		{
 			"title": "Ich will alle meine Tage",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "C"
 		}
 	],

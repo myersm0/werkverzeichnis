@@ -19,35 +19,35 @@
 		},
 		{
 			"title": "Himmelskönig, sei willkommen",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Siehe, ich komme, im Buch ist von mir geschrieben",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Starkes Lieben",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		},
 		{
 			"title": "Leget euch dem Heiland unter",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Jesu, laß durch Wohl und Weh",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Jesu, deine Passion ist mir lauter Freude",
-			"type": "chorale"
+			"form": "chorale"
 		},
 		{
 			"title": "So lasset uns gehen in Salem der Freuden",
-			"type": "chorus"
+			"form": "chorus"
 		}
 	],
 	"xref": {

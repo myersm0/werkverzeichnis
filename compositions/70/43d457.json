@@ -16,31 +16,31 @@
 	"movements": [
 		{
 			"title": "Bringet dem Herrn Ehre seines Namens",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Ich eile, die Lehren des Lebens zu hören",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "So wie der Hirsch nach frischem Wasser schreit",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Mund und Herze steht dir offen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Bleib auch, mein Gott, in mir",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Amen zu aller Stund",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

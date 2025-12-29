@@ -19,23 +19,23 @@
 			"movements": [
 				{
 					"title": "Schwingt freudig euch empor",
-					"type": "chorus",
+					"form": "chorus",
 					"key": "D"
 				},
 				{
 					"title": "Nun komm, der Heiden Heiland",
-					"type": "choral",
+					"form": "choral",
 					"key": "f#"
 				},
 				{
 					"title": "Die Liebe zieht mit sanften Schritten",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "tenor",
 					"key": "b"
 				},
 				{
 					"title": "Zwingt die Saiten in Cythara",
-					"type": "chorale",
+					"form": "chorale",
 					"key": "D"
 				}
 			]
@@ -45,25 +45,25 @@
 			"movements": [
 				{
 					"title": "Willkommen, werter Schatz!",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "bass",
 					"key": "D"
 				},
 				{
 					"title": "Der du bist dem Vater gleich",
-					"type": "choral",
+					"form": "choral",
 					"soloists": "tenor",
 					"key": "b"
 				},
 				{
 					"title": "Auch mit gedämpften, schwachen Stimmen",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "soprano",
 					"key": "G"
 				},
 				{
 					"title": "Lob sei Gott dem Vater ton",
-					"type": "chorale",
+					"form": "chorale",
 					"key": "b"
 				}
 			]

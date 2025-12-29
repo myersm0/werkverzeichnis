@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Erhalt uns, Herr, bei deinem Wort",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "a"
 		},
 		{
 			"title": "Sende deine Macht von oben",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "e"
 		},
 		{
 			"title": "Der Menschen Gunst und Macht wird wenig nützen / Gott Heiliger Geist, du Tröster wert",
-			"type": "recitative and chorale",
+			"form": "recitative and chorale",
 			"soloists": "alto, tenor"
 		},
 		{
 			"title": "Stürze zu Boden, schwülstige Stolze!",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "C"
 		},
 		{
 			"title": "So wird dein Wort und Wahrheit offenbar",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Verleih uns Frieden gnädiglich / Gib unsern Fürsten und all'r Obrigkeit",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "a"
 		}
 	],

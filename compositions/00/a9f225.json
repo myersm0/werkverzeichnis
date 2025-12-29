@@ -16,47 +16,47 @@
 	"movements": [
 		{
 			"title": "Herr Jesu Christ, du höchstes Gut",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "b"
 		},
 		{
 			"title": "Erbarm dich mein in solcher Last",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "f#",
 			"soloists": "alto"
 		},
 		{
 			"title": "Fürwahr, wenn mir das kömmet ein",
-			"type": "aria",
+			"form": "aria",
 			"key": "A",
 			"soloists": "bass"
 		},
 		{
 			"title": "Jedoch dein heilsam Wort, das macht",
-			"type": "chorale and recitative",
+			"form": "chorale and recitative",
 			"key": "e",
 			"soloists": "bass"
 		},
 		{
 			"title": "Jesus nimmt die Sünder an",
-			"type": "aria",
+			"form": "aria",
 			"key": "D",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Der Heiland nimmt die Sünder an",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Ach Herr, mein Gott, vergib mirs doch",
-			"type": "aria",
+			"form": "aria",
 			"key": "e",
 			"soloists": "soprano, alto"
 		},
 		{
 			"title": "Stärk mich mit deinem Freudengeist",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "b"
 		}
 	],

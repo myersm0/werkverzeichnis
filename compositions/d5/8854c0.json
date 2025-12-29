@@ -16,27 +16,27 @@
 	"movements": [
 		{
 			"title": "Leichtgesinnte Flattergeister",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		},
 		{
 			"title": "O unglückselger Stand verkehrter Seelen",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Der schädlichen Dornen unendliche Zahl",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Von diesen wird die Kraft erstickt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Laß, Höchster, uns zu allen Zeiten",
-			"type": "chorus"
+			"form": "chorus"
 		}
 	],
 	"xref": {

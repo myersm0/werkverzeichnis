@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Ach Herr, mich armen Sünder",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "a"
 		},
 		{
 			"title": "Ach heile mich, du Arzt der Seelen",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Tröste mir, Jesu, meine Gemüte",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "C"
 		},
 		{
 			"title": "Ich bin von Seufzen müde",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Weicht, all ihr Übeltäter",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "a"
 		},
 		{
 			"title": "Ehr sei ins Himmels Throne",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "e"
 		}
 	],

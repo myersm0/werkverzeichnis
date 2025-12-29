@@ -19,39 +19,39 @@
 			"movements": [
 				{
 					"title": "Die Elenden sollen essen",
-					"type": "chorus",
+					"form": "chorus",
 					"key": "e"
 				},
 				{
 					"title": "Was hilft des Purpurs Majestät",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "bass"
 				},
 				{
 					"title": "Mein Jesus soll mein alles sein",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "tenor",
 					"key": "G"
 				},
 				{
 					"title": "Gott stürzet und erhöhet",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "tenor"
 				},
 				{
 					"title": "Ich nehme mein Leiden mit Freuden auf mich",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "soprano",
 					"key": "a"
 				},
 				{
 					"title": "Indes schenkt Gott ein gut Gewissen",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "soprano"
 				},
 				{
 					"title": "Was Gott tut, das ist wohlgetan",
-					"type": "chorale",
+					"form": "chorale",
 					"key": "G"
 				}
 			]
@@ -61,39 +61,39 @@
 			"movements": [
 				{
 					"title": "Sinfonia",
-					"type": "sinfonia",
+					"form": "sinfonia",
 					"key": "G"
 				},
 				{
 					"title": "Nur eines kränkt",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "alto"
 				},
 				{
 					"title": "Jesus macht mich geistlich reich",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "alto",
 					"key": "e"
 				},
 				{
 					"title": "Wer nur in Jesu bleibt",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "bass"
 				},
 				{
 					"title": "Mein Herze glaubt und liebt",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "bass",
 					"key": "C"
 				},
 				{
 					"title": "O Armut, der kein Reichtum gleicht",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "tenor"
 				},
 				{
 					"title": "Was Gott tut, das ist wohlgetan",
-					"type": "chorale",
+					"form": "chorale",
 					"key": "G"
 				}
 			]

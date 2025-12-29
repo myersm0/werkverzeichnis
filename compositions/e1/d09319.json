@@ -16,32 +16,32 @@
 	"movements": [
 		{
 			"title": "Ein Herz, das seinen Jesum lebend weiß",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto, tenor"
 		},
 		{
 			"title": "Auf, Gläubige, singet die lieblichen Lieder",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Wohl dir, Gott hat an dich gedacht",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto, tenor"
 		},
 		{
 			"title": "Wir danken und preisen dein brünstiges Lieben",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto, tenor"
 		},
 		{
 			"title": "Doch würke selbst den Dank in unserm Munde",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto, tenor"
 		},
 		{
 			"title": "Erschallet, ihr Himmel, erfreuet dich, Erde",
-			"type": "chorus"
+			"form": "chorus"
 		}
 	],
 	"xref": {

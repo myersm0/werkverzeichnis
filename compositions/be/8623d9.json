@@ -21,26 +21,26 @@
 			"movements": [
 				{
 					"title": "Gott ist unsre Zuversicht",
-					"type": "chorus"
+					"form": "chorus"
 				},
 				{
 					"title": "Gott ist und bleibt der beste Sorger",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "bass"
 				},
 				{
 					"title": "Schläfert allen Sorgenkummer",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "alto"
 				},
 				{
 					"title": "Drum folget Gott und seinem Triebe",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "bass"
 				},
 				{
 					"title": "Du süße Lieb, schenk uns deine Gunst",
-					"type": "chorale"
+					"form": "chorale"
 				}
 			]
 		},
@@ -49,27 +49,27 @@
 			"movements": [
 				{
 					"title": "O du angenehmes Paar",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "bass"
 				},
 				{
 					"title": "So wie es Gott mit dir",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "soprano"
 				},
 				{
 					"title": "Vergnügen und Lust",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "soprano"
 				},
 				{
 					"title": "Und dieser frohe Lebenslauf",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "bass"
 				},
 				{
 					"title": "So wandelt froh auf Gottes Wegen",
-					"type": "chorale"
+					"form": "chorale"
 				}
 			]
 		}

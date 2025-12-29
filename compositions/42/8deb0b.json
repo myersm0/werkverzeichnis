@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Ich freue mich in dir",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "D"
 		},
 		{
 			"title": "Getrost! es faßt ein heil'ger Leib",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "A"
 		},
 		{
 			"title": "Ein Adam mag sich voller Schrecken",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Wie lieblich klingt es in den Ohren",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "b"
 		},
 		{
 			"title": "Wohlan, des Todes Furcht und Schmerz",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Wohlan, so will ich mich",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "D"
 		}
 	],

@@ -16,16 +16,16 @@
 	"movements": [
 		{
 			"title": "Nun danket alle Gott",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Der ewig reiche Gott",
-			"type": "aria duetto",
+			"form": "aria duetto",
 			"soloists": "soprano, bass"
 		},
 		{
 			"title": "Lob, Ehr und Preis sei Gott",
-			"type": "chorus"
+			"form": "chorus"
 		}
 	],
 	"xref": {

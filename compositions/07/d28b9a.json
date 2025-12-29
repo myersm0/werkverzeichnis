@@ -16,27 +16,27 @@
 	"movements": [
 		{
 			"title": "Erfreute Zeit im neuen Bunde",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Herr, nun lässest du deinen Diener in Friede fahren, wie du gesaget hast – Was uns als Menschen schrecklich scheint",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		},
 		{
 			"title": "Eile, Herz, voll Freudigkeit",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Ja, merkt dein Glaube noch viel Finsternis",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Es ist das Heil und selig Licht",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

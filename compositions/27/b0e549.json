@@ -16,40 +16,40 @@
 	"movements": [
 		{
 			"title": "Bisher habt ihr nichts gebeten in meinem Namen",
-			"type": "arioso",
+			"form": "arioso",
 			"soloists": "bass",
 			"key": "d"
 		},
 		{
 			"title": "O Wort, das Geist und Seel erschreckt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Dein Geist wird mich also regieren",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "g"
 		},
 		{
 			"title": "Wenn unsre Schuld bis an den Himmel steigt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "In der Welt habt ihr Angst",
-			"type": "arioso",
+			"form": "arioso",
 			"soloists": "bass"
 		},
 		{
 			"title": "Ich will leiden, ich will schweigen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "Bb"
 		},
 		{
 			"title": "Muß ich sein betrübet?",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "d"
 		}
 	],

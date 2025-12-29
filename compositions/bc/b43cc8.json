@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Ein ungefärbt Gemüte",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "F"
 		},
 		{
 			"title": "Die Redlichkeit ist eine von den Gottesgaben",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Alles nun, das ihr wollet",
-			"type": "tutti",
+			"form": "tutti",
 			"key": "g"
 		},
 		{
 			"title": "Die Heuchelei ist eine Brut",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Treu und Wahrheit sei der Grund",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "a"
 		},
 		{
 			"title": "O Gott, du frommer Gott",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "F"
 		}
 	],

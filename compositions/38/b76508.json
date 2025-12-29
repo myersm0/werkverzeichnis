@@ -16,39 +16,39 @@
 	"movements": [
 		{
 			"title": "Man singet mit Freuden vom Sieg",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "D"
 		},
 		{
 			"title": "Kraft und Stärke sei gesungen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		},
 		{
 			"title": "Ich fürchte mich",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Gottes Engel weichen nie",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "A"
 		},
 		{
 			"title": "Ich danke dir",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Seid wachsam, ihr heiligen Wächter",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto, tenor",
 			"key": "G"
 		},
 		{
 			"title": "Ach Herr, lass dein lieb Engelein",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "C"
 		}
 	],

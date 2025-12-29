@@ -18,18 +18,18 @@
 			"movements": [
 				{
 					"title": "Brich dem Hungrigen dein Brot",
-					"type": "chorus",
+					"form": "chorus",
 					"key": "g"
 				},
 				{
 					"title": "Der reiche Gott",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "bass",
 					"key": "Bb"
 				},
 				{
 					"title": "Seinem Schöpfer noch auf Erden",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "alto",
 					"key": "d"
 				}
@@ -40,25 +40,25 @@
 			"movements": [
 				{
 					"title": "Wohlzutun und mitzuteilen vergesset nicht",
-					"type": "solo",
+					"form": "solo",
 					"soloists": "bass",
 					"key": "d"
 				},
 				{
 					"title": "Höchster, was ich habe",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "soprano",
 					"key": "Bb"
 				},
 				{
 					"title": "Wie soll ich dir, o Herr",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "alto",
 					"key": "Eb"
 				},
 				{
 					"title": "Selig sind, die aus Erbarmen",
-					"type": "chorale",
+					"form": "chorale",
 					"key": "Bb"
 				}
 			]

@@ -16,16 +16,16 @@
 	"movements": [
 		{
 			"title": "Gloria in excelsis Deo",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Gloria Patri et Filio et Spiritui sancto",
-			"type": "duet",
+			"form": "duet",
 			"soloists": "soprano, tenor"
 		},
 		{
 			"title": "Sicut erat in principio",
-			"type": "chorus"
+			"form": "chorus"
 		}
 	],
 	"xref": {

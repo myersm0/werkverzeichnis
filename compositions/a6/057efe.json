@@ -15,26 +15,26 @@
 	"movements": [
 		{
 			"title": "Gelobet sei der Herr, mein Gott",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Gelobet sei der Herr, mein Gott, mein Heil",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		},
 		{
 			"title": "Gelobet sei der Herr, mein Gott, mein Trost",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Gelobet sei der Herr, mein Gott, der ewig lebet",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Dem wir das Heilig jetzt",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

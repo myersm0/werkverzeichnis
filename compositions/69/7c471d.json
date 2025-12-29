@@ -16,31 +16,31 @@
 	"movements": [
 		{
 			"title": "Ich glaube, lieber Herr, hilf meinem Unglauben",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Des Herren Hand ist ja noch nicht verkürzt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Wie zweifelhaftig ist mein Hoffen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "O fasse dich, du zweifelhafter Mut",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Der Heiland kennet ja die Seinen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Wer hofft in Gott und dem vertraut",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

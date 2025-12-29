@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Gottlob! nun geht das Jahr zu Ende",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "a"
 		},
 		{
 			"title": "Nun lob, mein Seel, den Herren",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "C"
 		},
 		{
 			"title": "So spricht der Herr",
-			"type": "recitative / arioso",
+			"form": "recitative / arioso",
 			"soloists": "bass"
 		},
 		{
 			"title": "Gott ist ein Quell",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Gott hat uns im heurigen Jahre gesegnet",
-			"type": "duet",
+			"form": "duet",
 			"soloists": "alto, tenor",
 			"key": "C"
 		},
 		{
 			"title": "All solch dein Güt wir preisen",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "a"
 		}
 	],

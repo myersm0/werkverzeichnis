@@ -16,35 +16,35 @@
 	"movements": [
 		{
 			"title": "Was mein Gott will, das g'scheh allzeit",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "a"
 		},
 		{
 			"title": "Entsetze dich, mein Herze, nicht",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "a"
 		},
 		{
 			"title": "O Törichter! der sich von Gott entzieht",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto",
 			"key": "b"
 		},
 		{
 			"title": "So geh ich mit beherzten Schritten",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto, tenor",
 			"key": "G"
 		},
 		{
 			"title": "Drum wenn der Tod zuletzt den Geist",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Noch eins, Herr, will ich bitten dich",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "a"
 		}
 	],

@@ -19,34 +19,34 @@
 			"movements": [
 				{
 					"title": "Freue dich, erlöste Schar",
-					"type": "chorus",
+					"form": "chorus",
 					"key": "D"
 				},
 				{
 					"title": "Wir haben Rast",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "bass"
 				},
 				{
 					"title": "Gelobet sei Gott, gelobet sein Name",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "bass",
 					"key": "G"
 				},
 				{
 					"title": "Der Herold kömmt und meldt den König an",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "alto"
 				},
 				{
 					"title": "Kommt, ihr angefochtnen Sünder",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "alto",
 					"key": "A"
 				},
 				{
 					"title": "Eine Stimme lässt sich hören",
-					"type": "chorale",
+					"form": "chorale",
 					"key": "A"
 				}
 			]
@@ -56,35 +56,35 @@
 			"movements": [
 				{
 					"title": "So bist du denn, mein Heil, bedacht",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "bass",
 					"key": "e"
 				},
 				{
 					"title": "Ich will nun hassen",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "bass",
 					"key": "b"
 				},
 				{
 					"title": "Und obwohl sonst der Unbestand",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "soprano"
 				},
 				{
 					"title": "Eilt, ihr Stunden, kommt herbei",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "soprano",
 					"key": "e"
 				},
 				{
 					"title": "Geduld, der angenehme Tag",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "tenor"
 				},
 				{
 					"title": "Freue dich, geheilgte Schar",
-					"type": "chorus",
+					"form": "chorus",
 					"key": "D"
 				}
 			]

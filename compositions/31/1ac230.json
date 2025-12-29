@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Alles nur nach Gottes Willen",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "a"
 		},
 		{
 			"title": "O selger Christ, der allzeit seinen Willen",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Mit allem, was ich hab und bin",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "d"
 		},
 		{
 			"title": "So glaube nun",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Mein Jesus will es tun, er will dein Kreuz versüßen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "C"
 		},
 		{
 			"title": "Was mein Gott will, das g'scheh allzeit",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "a"
 		}
 	],

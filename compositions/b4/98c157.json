@@ -19,17 +19,17 @@
 			"movements": [
 				{
 					"title": "Es wartet alles auf dich",
-					"type": "chorus",
+					"form": "chorus",
 					"key": "g"
 				},
 				{
 					"title": "Was Kreaturen hält, das große Rund der Welt",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "bass"
 				},
 				{
 					"title": "Du, Herr, du krönst allein das Jahr",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "alto",
 					"key": "Bb"
 				}
@@ -40,24 +40,24 @@
 			"movements": [
 				{
 					"title": "Darum sollt ihr nicht sorgen",
-					"type": "basso solo",
+					"form": "basso solo",
 					"soloists": "bass",
 					"key": "g"
 				},
 				{
 					"title": "Gott versorget alles Leben",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "soprano",
 					"key": "Eb"
 				},
 				{
 					"title": "Halt ich nur fest an ihm",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "soprano"
 				},
 				{
 					"title": "Gott hat die Erde zugericht",
-					"type": "chorale",
+					"form": "chorale",
 					"key": "g"
 				}
 			]

@@ -16,41 +16,41 @@
 	"movements": [
 		{
 			"title": "Was frag ich nach der Welt",
-			"type": "chorale"
+			"form": "chorale"
 		},
 		{
 			"title": "Die Welt ist wie ein Rauch und Schatten",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		},
 		{
 			"title": "Die Welt sucht Ehr und Ruhm",
-			"type": "recitative and chorale",
+			"form": "recitative and chorale",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Betörte Welt, betörte Welt!",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Die Welt bekümmert sich",
-			"type": "recitative and chorale",
+			"form": "recitative and chorale",
 			"soloists": "bass"
 		},
 		{
 			"title": "Die Welt kann ihre Lust und Freud",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Es halt es mit der blinden Welt",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Was frag ich nach der Welt!",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

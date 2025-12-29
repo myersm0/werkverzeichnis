@@ -16,30 +16,30 @@
 	"movements": [
 		{
 			"title": "Vergnügte Ruh, beliebte Seelenlust",
-			"type": "aria",
+			"form": "aria",
 			"key": "D",
 			"soloists": "alto"
 		},
 		{
 			"title": "Die Welt, das Sündenhaus",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Wie jammern mich doch die verkehrten Herzen",
-			"type": "aria",
+			"form": "aria",
 			"key": "f#",
 			"soloists": "alto"
 		},
 		{
 			"title": "Wer sollte sich demnach wohl hier zu leben wünschen",
-			"type": "recitative",
+			"form": "recitative",
 			"key": "D",
 			"soloists": "alto"
 		},
 		{
 			"title": "Mir ekelt mehr zu leben",
-			"type": "aria",
+			"form": "aria",
 			"key": "D",
 			"soloists": "alto"
 		}

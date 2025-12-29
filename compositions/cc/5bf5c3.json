@@ -16,28 +16,28 @@
 	"movements": [
 		{
 			"title": "O ewiges Feuer, o Ursprung der Liebe",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "D"
 		},
 		{
 			"title": "Herr, unsre Herzen halten dir",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Wohl euch, ihr auserwählten Seelen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "A"
 		},
 		{
 			"title": "Erwählt sich Gott die heilgen Hütten",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Friede über Israel",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "D"
 		}
 	],

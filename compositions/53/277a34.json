@@ -16,35 +16,35 @@
 	"movements": [
 		{
 			"title": "Nun komm, der Heiden Heiland",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"soloists": "soprano, alto, tenor, bass",
 			"key": "b"
 		},
 		{
 			"title": "Bewundert, o Menschen, dies große Geheimnis",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "G"
 		},
 		{
 			"title": "So geht aus Gottes Herrlichkeit und Thron",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Streite, siege, starker Held!",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "D"
 		},
 		{
 			"title": "Wir ehren diese Herrlichkeit",
-			"type": "recitative duet",
+			"form": "recitative duet",
 			"soloists": "soprano, alto"
 		},
 		{
 			"title": "Lob sei Gott dem Vater ton",
-			"type": "chorale",
+			"form": "chorale",
 			"soloists": "soprano, alto, tenor, bass",
 			"key": "b"
 		}

@@ -16,38 +16,38 @@
 	"movements": [
 		{
 			"title": "Halt im Gedächtnis Jesum Christ",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "A"
 		},
 		{
 			"title": "Mein Jesus ist erstanden",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "E"
 		},
 		{
 			"title": "Mein Jesu, heißest du des Todes Gift",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Erschienen ist der herrlich Tag",
-			"type": "chorale"
+			"form": "chorale"
 		},
 		{
 			"title": "Doch scheinet fast",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Friede sei mit euch",
-			"type": "aria e coro",
+			"form": "aria e coro",
 			"soloists": "bass",
 			"key": "A"
 		},
 		{
 			"title": "Du Friedefürst, Herr Jesu Christ",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

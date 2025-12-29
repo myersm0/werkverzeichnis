@@ -21,30 +21,30 @@
 		},
 		{
 			"title": "Jesus ist ein guter Hirt",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "g"
 		},
 		{
 			"title": "Der Herr ist mein getreuer Hirt",
-			"type": "chorale",
+			"form": "chorale",
 			"soloists": "soprano",
 			"key": "Bb"
 		},
 		{
 			"title": "Wenn die Mietlinge schlafen",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Seht, was die Liebe tut",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "Eb"
 		},
 		{
 			"title": "Ist Gott mein Schutz und treuer Hirt",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "c"
 		}
 	],

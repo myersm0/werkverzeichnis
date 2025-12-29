@@ -15,27 +15,27 @@
 	"movements": [
 		{
 			"title": "Mein Gott, wie lang, ach lange?",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Du mußt glauben, du mußt hoffen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto, tenor"
 		},
 		{
 			"title": "So sei, o Seele, sei zufrieden",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Wirf, mein Herze, wirf dich noch",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Ob sich's anließ, als wollt er nicht",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

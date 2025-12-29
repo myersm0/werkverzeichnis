@@ -16,28 +16,28 @@
 	"movements": [
 		{
 			"title": "Der Herr ist mein getreuer Hirt",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "G"
 		},
 		{
 			"title": "Zum reinen Wasser er mich weist",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Und ob ich wandelt im finstern Tal",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Du bereitest für mir einen Tisch",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano, tenor",
 			"key": "D"
 		},
 		{
 			"title": "Gutes und die Barmherzigkeit",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "G"
 		}
 	],

@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Liebster Immanuel, Herzog der Frommen",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "b"
 		},
 		{
 			"title": "Die Himmelssüßigkeit, der Auserwählten Lust",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Auch die harte Kreuzesreise",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "f#"
 		},
 		{
 			"title": "Kein Höllenfeind kann mich verschlingen",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Laß, o Welt, mich aus Verachtung",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "D"
 		},
 		{
 			"title": "Drum fahrt nur immer hin, ihr Eitelkeiten",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "b"
 		}
 	],

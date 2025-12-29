@@ -16,7 +16,7 @@
 	"movements": [
 		{
 			"title": "Ich ruf zu dir, Herr Jesu Christ",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Ich bitt noch mehr, o Herre Gott",
@@ -32,7 +32,7 @@
 		},
 		{
 			"title": "Ich lieg im Streit und widerstreb",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

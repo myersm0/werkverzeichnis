@@ -21,34 +21,34 @@
 	"movements": [
 		{
 			"title": "Erfreut euch, ihr Herzen",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "D"
 		},
 		{
 			"title": "Es bricht das Grab und damit unsre Not",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Lasset dem Höchsten ein Danklied erschallen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "D"
 		},
 		{
 			"title": "Bei Jesu Leben freudig sein",
-			"type": "duet recitative",
+			"form": "duet recitative",
 			"soloists": "alto, tenor"
 		},
 		{
 			"title": "Ich furchte zwar/nicht des Grabes Finsternissen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto, tenor",
 			"key": "A"
 		},
 		{
 			"title": "Alleluja",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "f#"
 		}
 	],

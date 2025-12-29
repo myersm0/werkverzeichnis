@@ -16,32 +16,32 @@
 	"movements": [
 		{
 			"title": "Ihr, die ihr euch von Christo nennet",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Wir hören zwar, was selbst die Liebe spricht",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Nur durch Lieb und durch Erbarmen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Ach, schmelze doch durch deinen Liebesstrahl",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Händen, die sich nicht verschließen",
-			"type": "duet",
+			"form": "duet",
 			"soloists": "soprano, bass"
 		},
 		{
 			"title": "Ertöt uns durch dein Güte",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

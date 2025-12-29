@@ -16,32 +16,32 @@
 	"movements": [
 		{
 			"title": "Ihr werdet weinen und heulen",
-			"type": "chorus and arioso",
+			"form": "chorus and arioso",
 			"soloists": "bass"
 		},
 		{
 			"title": "Wer sollte nicht in Klagen untergehn",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Kein Arzt ist außer dir zu finden",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Du wirst mich nach der Angst auch wiederum erquicken",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Erholet euch, betrübte Sinnen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Ich hab dich einen Augenblick",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

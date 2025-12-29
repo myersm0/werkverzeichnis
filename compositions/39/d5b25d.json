@@ -16,26 +16,26 @@
 	"movements": [
 		{
 			"title": "Was Gott tut, das ist wohlgetan",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Ach Gott! wenn wirst du mich einmal",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Hört, ihr Augen, auf zu weinen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Gott hat ein Herz, das des Erbarmens Überfluß",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Meinen Jesum laß ich nicht",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		}
 	],

@@ -18,26 +18,26 @@
 		},
 		{
 			"title": "Jauchzet, ihr erfreuten Stimmen",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Auf, du geliebte Lindenstadt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Heil und Segen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Nun, Herr, so weihe selbst das Regiment",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Nun hilf uns, Herr, den Dienern dein",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

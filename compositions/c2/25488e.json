@@ -16,35 +16,35 @@
 	"movements": [
 		{
 			"title": "Meinen Jesum laß ich nicht",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "E"
 		},
 		{
 			"title": "Solange sich ein Tropfen Blut",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Und wenn der harte Todesschlag",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "f#"
 		},
 		{
 			"title": "Doch ach! welch schweres Ungemach",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass",
 			"key": "A"
 		},
 		{
 			"title": "Entziehe dich eilends, mein Herze, der Welt",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano, alto",
 			"key": "A"
 		},
 		{
 			"title": "Jesum laß ich nicht von mir",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "E"
 		}
 	],

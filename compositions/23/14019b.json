@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Komm, du süße Todesstunde",
-			"type": "aria",
+			"form": "aria",
 			"vocal": "alto",
 			"key": "C"
 		},
 		{
 			"title": "Welt, deine Lust ist Last",
-			"type": "recitative",
+			"form": "recitative",
 			"vocal": "tenor"
 		},
 		{
 			"title": "Mein Verlangen ist, den Heiland zu umfangen",
-			"type": "aria",
+			"form": "aria",
 			"vocal": "tenor",
 			"key": "a"
 		},
 		{
 			"title": "Der Schluß ist schon gemacht",
-			"type": "recitative",
+			"form": "recitative",
 			"vocal": "alto"
 		},
 		{
 			"title": "Wenn es meines Gottes Wille",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "C"
 		},
 		{
 			"title": "Der Leib zwar in der Erden",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "a"
 		}
 	],

@@ -15,45 +15,45 @@
 	"movements": [
 		{
 			"title": "Sei Lob und Ehr dem höchsten Gut",
-			"type": "chorale"
+			"form": "chorale"
 		},
 		{
 			"title": "Es danken dir die Himmelsheer",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Was unser Gott geschaffen hat",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Ich rief dem Herrn in meiner Not",
-			"type": "chorale"
+			"form": "chorale"
 		},
 		{
 			"title": "Der Herr ist noch und nimmer nicht",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Wenn Trost und Hülf ermangeln muss",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		},
 		{
 			"title": "Ich will dich all mein Leben lang",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Ihr, die ihr Christi Namen nennt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "So kommet vor sein Angesicht",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

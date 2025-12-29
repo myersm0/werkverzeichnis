@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Gelobet seist du, Jesu Christ",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "G"
 		},
 		{
 			"title": "Der Glanz der höchsten Herrlichkeit",
-			"type": "recitative and chorale",
+			"form": "recitative and chorale",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Gott, dem der Erden Kreis zu klein",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "C"
 		},
 		{
 			"title": "O Christenheit! Wohlan",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Die Armut, so Gott auf sich nimmt",
-			"type": "aria duetto",
+			"form": "aria duetto",
 			"soloists": "soprano, alto",
 			"key": "e"
 		},
 		{
 			"title": "Das hat er alles uns getan",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "G"
 		}
 	],

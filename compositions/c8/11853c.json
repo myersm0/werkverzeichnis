@@ -16,35 +16,35 @@
 	"movements": [
 		{
 			"title": "O heilges Geist- und Wasserbad",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "G"
 		},
 		{
 			"title": "Die sündige Geburt verdammter Adamserben",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Jesu, der aus großer Liebe",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "e"
 		},
 		{
 			"title": "Ich habe ja, mein Seelenbräutigam",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Jesu, meines Todes Tod",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "G"
 		},
 		{
 			"title": "Sein Wort, sein Tauf, sein Nachtmahl",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

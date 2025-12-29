@@ -15,36 +15,36 @@
 	"movements": [
 		{
 			"title": "Was Gott tut, das ist wohlgetan",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "G"
 		},
 		{
 			"title": "Er wird mich nicht betrügen",
-			"type": "aria duetto",
+			"form": "aria duetto",
 			"soloists": "alto, tenor",
 			"key": "D"
 		},
 		{
 			"title": "Er wird mich wohl bedenken",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "b"
 		},
 		{
 			"title": "Er ist mein Licht, mein Leben",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "G"
 		},
 		{
 			"title": "Muß ich den Kelch gleich schmecken",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "e"
 		},
 		{
 			"title": "Dabei will ich verbleiben",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "G"
 		}
 	],

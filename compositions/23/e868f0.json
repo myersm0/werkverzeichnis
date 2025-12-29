@@ -16,39 +16,39 @@
 	"movements": [
 		{
 			"title": "Sie werden aus Saba alle kommen",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "C"
 		},
 		{
 			"title": "Die Kön'ge aus Saba kamen dar",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "a"
 		},
 		{
 			"title": "Was dort Jesaias vorhergesehn",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Gold aus Ophir ist zu schlecht",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "e"
 		},
 		{
 			"title": "Verschmähe nicht, du, meiner Seele Licht",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Nimm mich dir zu eigen hin",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "C"
 		},
 		{
 			"title": "Ei nun, mein Gott, so fall ich dir",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "a"
 		}
 	],

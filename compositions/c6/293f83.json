@@ -16,42 +16,42 @@
 	"movements": [
 		{
 			"title": "Nimm von uns, Herr, du treuer Gott",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "d"
 		},
 		{
 			"title": "Handle nicht nach deinen Rechten",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "g"
 		},
 		{
 			"title": "Ach! Herr Gott, durch die Treue dein",
-			"type": "chorale and recitative",
+			"form": "chorale and recitative",
 			"soloists": "soprano",
 			"key": "g"
 		},
 		{
 			"title": "Warum willst du so zornig sein?",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "a"
 		},
 		{
 			"title": "Die Sünd hat uns verderbet sehr",
-			"type": "chorale and recitative",
+			"form": "chorale and recitative",
 			"soloists": "tenor",
 			"key": "d"
 		},
 		{
 			"title": "Gedenk an Jesu bittern Tod",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano, alto",
 			"key": "d"
 		},
 		{
 			"title": "Leit uns mit deiner rechten Hand",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "d"
 		}
 	],

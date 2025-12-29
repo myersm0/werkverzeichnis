@@ -16,31 +16,31 @@
 	"movements": [
 		{
 			"title": "Ich will den Kreuzstab gerne tragen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "g"
 		},
 		{
 			"title": "Mein Wandel auf der Welt / ist einer Schiffahrt gleich",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass",
 			"key": "Bb"
 		},
 		{
 			"title": "Endlich, endlich wird mein Joch / wieder von mir weichen müssen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "Bb"
 		},
 		{
 			"title": "Ich stehe fertig und bereit",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass",
 			"key": "g"
 		},
 		{
 			"title": "Komm, o Tod, du Schlafes Bruder",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "c"
 		}
 	],

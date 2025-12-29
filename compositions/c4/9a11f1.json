@@ -15,27 +15,27 @@
 	"movements": [
 		{
 			"title": "Ich lebe, mein Herze, zu deinem Ergötzen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor, soprano"
 		},
 		{
 			"title": "Nun fordre, Moses, wie du willt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Merke, mein Herze, beständig nur dies",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		},
 		{
 			"title": "Mein Jesus lebt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Drum wir auch billig fröhlich sein",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

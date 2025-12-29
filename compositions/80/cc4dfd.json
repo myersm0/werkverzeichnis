@@ -16,36 +16,36 @@
 	"movements": [
 		{
 			"title": "Sinfonia",
-			"type": "instrumental"
+			"form": "instrumental"
 		},
 		{
 			"title": "Gott soll allein mein Herze haben",
-			"type": "arioso",
+			"form": "arioso",
 			"soloists": "alto"
 		},
 		{
 			"title": "Gott soll allein mein Herze haben",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Was ist die Liebe Gottes",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Stirb in mir, Welt, und alle deine Liebe",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Doch meint es auch dabei",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Du süße Liebe, schenk uns deine Gunst",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

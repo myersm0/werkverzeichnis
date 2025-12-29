@@ -15,31 +15,31 @@
 	"movements": [
 		{
 			"title": "Sinfonia",
-			"type": "instrumental"
+			"form": "instrumental"
 		},
 		{
 			"title": "Tritt auf die Glaubensbahn",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		},
 		{
 			"title": "Der Heiland ist gesetzt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Stein, der über alle Schätze",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Es ärgre sich die kluge Welt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Wie soll ich dich, Liebster der Seelen, umfassen?",
-			"type": "duet",
+			"form": "duet",
 			"soloists": "soprano, bass"
 		}
 	],

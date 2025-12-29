@@ -16,35 +16,35 @@
 	"movements": [
 		{
 			"title": "Gott, wie dein Name, so ist auch dein Ruhm",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "D"
 		},
 		{
 			"title": "Herr, so weit die Wolken gehn",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "A"
 		},
 		{
 			"title": "Du süßer Jesus-Name du",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Jesus soll mein erstes Wort",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "D"
 		},
 		{
 			"title": "Und da du, Herr, gesagt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass",
 			"key": "A"
 		},
 		{
 			"title": "Laß uns das Jahr vollbringen",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "b"
 		}
 	],

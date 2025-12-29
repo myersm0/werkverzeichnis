@@ -16,31 +16,31 @@
 	"movements": [
 		{
 			"title": "Herr, gehe nicht ins Gericht mit deinem Knecht",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Mein Gott, verwirf mich nicht",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Wie zittern und wanken der Sünder Gedanken",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Wohl aber dem, der seinen Bürgen weiß",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Kann ich nur Jesum mir zum Freunde machen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Nun, ich weiß, du wirst mir stillen, mein Gewissen, das mich plagt",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

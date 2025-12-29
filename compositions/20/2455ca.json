@@ -19,39 +19,39 @@
 			"movements": [
 				{
 					"title": "Die Himmel erzählen die Ehre Gottes",
-					"type": "chorus",
+					"form": "chorus",
 					"key": "C"
 				},
 				{
 					"title": "So lässt sich Gott nicht unbezeuget!",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "tenor"
 				},
 				{
 					"title": "Hört, ihr Völker, Gottes Stimme",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "soprano",
 					"key": "G"
 				},
 				{
 					"title": "Wer aber hört",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "bass"
 				},
 				{
 					"title": "Fahr hin, abgöttische Zunft!",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "bass",
 					"key": "C"
 				},
 				{
 					"title": "Du hast uns, Herr, von allen Straßen",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "alto"
 				},
 				{
 					"title": "Es woll uns Gott genädig sein",
-					"type": "chorale",
+					"form": "chorale",
 					"key": "e"
 				}
 			]
@@ -61,38 +61,38 @@
 			"movements": [
 				{
 					"title": "Sinfonia",
-					"type": "sinfonia"
+					"form": "sinfonia"
 				},
 				{
 					"title": "Gott segne noch die treue Schar",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "bass"
 				},
 				{
 					"title": "Hasse nur, hasse mich recht",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "tenor",
 					"key": "a"
 				},
 				{
 					"title": "Ich fühle schon im Geist",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "alto"
 				},
 				{
 					"title": "Liebt, ihr Christen, in der Tat!",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "alto",
 					"key": "e"
 				},
 				{
 					"title": "So soll die Christenheit",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "tenor"
 				},
 				{
 					"title": "Es danke, Gott, und lobe dich",
-					"type": "chorale",
+					"form": "chorale",
 					"key": "e"
 				}
 			]

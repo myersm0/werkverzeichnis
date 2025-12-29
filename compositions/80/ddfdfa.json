@@ -16,27 +16,27 @@
 	"movements": [
 		{
 			"title": "Ich armer Mensch, ich Sündenknecht",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Ich habe wider Gott gehandelt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Erbarme dich! Laß die Tränen dich erweichen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Erbarme dich! Jedoch nun tröst ich mich",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Bin ich gleich von dir gewichen, stell ich mich doch wieder ein",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

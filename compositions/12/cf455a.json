@@ -15,23 +15,23 @@
 	"movements": [
 		{
 			"title": "Du wahrer Gott und Davids Sohn",
-			"type": "aria duetto",
+			"form": "aria duetto",
 			"soloists": "soprano, alto",
 			"key": "b"
 		},
 		{
 			"title": "Ach! gehe nicht vorüber",
-			"type": "recitative and chorale",
+			"form": "recitative and chorale",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Aller Augen warten, Herr",
-			"type": "chorus with duet",
+			"form": "chorus with duet",
 			"key": "D"
 		},
 		{
 			"title": "Christe, du Lamm Gottes",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "f#"
 		}
 	],

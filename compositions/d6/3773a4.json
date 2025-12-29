@@ -16,27 +16,27 @@
 	"movements": [
 		{
 			"title": "Es reißet euch ein schrecklich Ende",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Des Höchsten Güte wird von Tag zu Tage neu",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "So löschet im Eifer der rächende Richter",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		},
 		{
 			"title": "Doch Gottes Auge sieht auf uns",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Leit uns mit deiner rechten Hand",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

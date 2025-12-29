@@ -16,29 +16,29 @@
 	"movements": [
 		{
 			"title": "Wer sich selbst erhöhet, der soll erniedriget werden",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "g"
 		},
 		{
 			"title": "Wer ein wahrer Christ will heißen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "d"
 		},
 		{
 			"title": "Der Mensch ist Kot, Stank, Asch und Erde",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Jesu, beuge doch mein Herze",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "Eb"
 		},
 		{
 			"title": "Der zeitlichen Ehrn will ich gern entbehrn",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "c"
 		}
 	],

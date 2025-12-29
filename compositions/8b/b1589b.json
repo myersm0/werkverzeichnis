@@ -16,29 +16,29 @@
 	"movements": [
 		{
 			"title": "Sie werden euch in den Bann tun",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Ich fürchte nicht des Todes Schrecken",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "e"
 		},
 		{
 			"title": "Ich bin bereit, mein Blut und armes Leben",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Höchster Tröster, heilger Geist",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "C"
 		},
 		{
 			"title": "Du bist ein Geist, der lehret",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

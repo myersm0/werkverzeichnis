@@ -16,36 +16,36 @@
 	"movements": [
 		{
 			"title": "Liebster Jesu, mein Verlangen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "e"
 		},
 		{
 			"title": "Was ist's, daß du mich gesuchet",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass",
 			"key": "b"
 		},
 		{
 			"title": "Hier, in meines Vaters Stätte",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "G"
 		},
 		{
 			"title": "Ach! heiliger und großer Gott",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano, bass"
 		},
 		{
 			"title": "Nun verschwinden alle Plagen",
-			"type": "aria duet",
+			"form": "aria duet",
 			"soloists": "soprano, bass",
 			"key": "D"
 		},
 		{
 			"title": "Mein Gott, öffne mir die Pforten",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "G"
 		}
 	],

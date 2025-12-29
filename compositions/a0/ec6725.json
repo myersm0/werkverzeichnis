@@ -15,31 +15,31 @@
 	"movements": [
 		{
 			"title": "Jauchzet Gott in allen Landen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "C"
 		},
 		{
 			"title": "Wir beten zu dem Tempel an",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano",
 			"key": "a"
 		},
 		{
 			"title": "Höchster, mache deine Güte",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "a"
 		},
 		{
 			"title": "Sei Lob und Preis mit Ehren",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"soloists": "soprano",
 			"key": "C"
 		},
 		{
 			"title": "Alleluja",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"soloists": "soprano",
 			"key": "C"
 		}

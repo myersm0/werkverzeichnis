@@ -15,41 +15,41 @@
 	"movements": [
 		{
 			"title": "Lobe den Herrn, meine Seele",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "Bb"
 		},
 		{
 			"title": "Du Friedefürst, Herr Jesu Christ",
-			"type": "chorale",
+			"form": "chorale",
 			"soloists": "soprano",
 			"key": "Bb"
 		},
 		{
 			"title": "Wohl dem, des Hülfe der Gott Jakob ist",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Tausendfaches Unglück, Schrecken",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "c"
 		},
 		{
 			"title": "Der Herr ist König ewiglich",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "Bb"
 		},
 		{
 			"title": "Jesu, Retter deiner Herde",
-			"type": "aria with instrumental chorale",
+			"form": "aria with instrumental chorale",
 			"soloists": "tenor",
 			"key": "g"
 		},
 		{
 			"title": "Gedenk, Herr Jesu, an dein Amt",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "Bb"
 		}
 	],

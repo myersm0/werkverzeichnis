@@ -15,29 +15,29 @@
 	"movements": [
 		{
 			"title": "Aus der Tiefen rufe ich, Herr, zu dir",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "g"
 		},
 		{
 			"title": "So du willst, Herr, Sünde zurechnen",
-			"type": "arioso e chorale",
+			"form": "arioso e chorale",
 			"soloists": "bass, soprano",
 			"key": "g"
 		},
 		{
 			"title": "Ich harre des Herrn, meine Seele harret",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "Eb"
 		},
 		{
 			"title": "Meine Seele wartet auf den Herrn von einer Morgenwache",
-			"type": "aria e chorale",
+			"form": "aria e chorale",
 			"soloists": "tenor, alto",
 			"key": "c"
 		},
 		{
 			"title": "Israel hoffe auf den Herrn; denn bei dem Herrn",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "g"
 		}
 	],

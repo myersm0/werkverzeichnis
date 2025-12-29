@@ -16,41 +16,41 @@
 	"movements": [
 		{
 			"title": "Mein liebster Jesus ist verloren",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Wo treff ich meinen Jesum an",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Jesu, mein Hort und Erretter",
-			"type": "chorale"
+			"form": "chorale"
 		},
 		{
 			"title": "Jesu, laß dich finden",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Wisset ihr nicht, daß ich sein muß",
-			"type": "arioso",
+			"form": "arioso",
 			"soloists": "bass"
 		},
 		{
 			"title": "Dies ist die Stimme meines Freundes",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Wohl mir, Jesus ist gefunden",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto, tenor"
 		},
 		{
 			"title": "Meinen Jesum laß ich nicht",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

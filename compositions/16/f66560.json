@@ -16,42 +16,42 @@
 	"movements": [
 		{
 			"title": "Was willst du dich betrüben",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "b"
 		},
 		{
 			"title": "Denn Gott verlässet keinen",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass",
 			"key": "f#"
 		},
 		{
 			"title": "Auf ihn magst du es wagen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "A"
 		},
 		{
 			"title": "Wenn auch gleich aus der Höllen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "e"
 		},
 		{
 			"title": "Er richts zu seinen Ehren",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "b"
 		},
 		{
 			"title": "Drum ich mich ihm ergebe",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "D"
 		},
 		{
 			"title": "Herr, gib, daß ich dein Ehre",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "b"
 		}
 	],

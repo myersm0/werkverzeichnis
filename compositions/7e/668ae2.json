@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Mache dich, mein Geist, bereit",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "d"
 		},
 		{
 			"title": "Ach schläfrige Seele, wie? ruhest du noch?",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "e"
 		},
 		{
 			"title": "Gott, so vor deine Seele wacht",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Bete aber auch dabei",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "b"
 		},
 		{
 			"title": "Er sehnet sich nach unserm Schreien",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Drum so laßt uns immerdar",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "G"
 		}
 	],

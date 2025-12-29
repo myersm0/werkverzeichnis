@@ -16,35 +16,35 @@
 	"movements": [
 		{
 			"title": "Barmherziges Herze der ewigen Liebe",
-			"type": "duet",
+			"form": "duet",
 			"soloists": "soprano, tenor",
 			"key": "f#"
 		},
 		{
 			"title": "Ihr Herzen, die ihr euch in Stein und Fels verkehret",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Sei bemüht in dieser Zeit",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "A"
 		},
 		{
 			"title": "Die Eigenliebe schmeichelt sich",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Das ist der Christen Kunst",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "bb"
 		},
 		{
 			"title": "Ich ruf zu dir, Herr Jesus Christ",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "f#"
 		}
 	],

@@ -16,37 +16,37 @@
 	"movements": [
 		{
 			"title": "Er rufet seinen Schafen mit Namen",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Komm, leite mich",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Wo find ich dich?",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Es dünket mich, ich seh dich kommen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Sie vernahmen aber nicht",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto, bass"
 		},
 		{
 			"title": "Öffnet euch, ihr beiden Ohren",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		},
 		{
 			"title": "Nun, werter Geist, ich folg dir",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

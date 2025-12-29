@@ -16,37 +16,37 @@
 	"movements": [
 		{
 			"title": "Warum betrübst du dich, mein Herz",
-			"type": "chorale and recitative",
+			"form": "chorale and recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Ich bin veracht",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Er kann und will dich lassen nicht",
-			"type": "chorale and recitative",
+			"form": "chorale and recitative",
 			"soloists": "soprano, alto"
 		},
 		{
 			"title": "Ach süßer Trost",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Auf Gott steht meine Zuversicht",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		},
 		{
 			"title": "Ei nun! So will ich auch recht sanfte ruhn",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Weil du mein Gott und Vater bist",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

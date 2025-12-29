@@ -16,29 +16,29 @@
 	"movements": [
 		{
 			"title": "Auf Christi Himmelfahrt allein",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "G"
 		},
 		{
 			"title": "Ich bin bereit, komm, hole mich",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Auf, auf, mit hellem Schall",
-			"type": "aria and recitative",
+			"form": "aria and recitative",
 			"soloists": "bass",
 			"key": "D"
 		},
 		{
 			"title": "Sein Allmacht zu ergründen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto, tenor",
 			"key": "b"
 		},
 		{
 			"title": "Alsdenn so wirst du mich",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "G"
 		}
 	],

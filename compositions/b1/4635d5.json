@@ -16,37 +16,37 @@
 	"movements": [
 		{
 			"title": "Jesus schläft, was soll ich hoffen?",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Herr! warum trittest du so ferne?",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Die schäumenden Wellen von Belials Bächen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Ihr Kleingläubigen, warum seid ihr so furchtsam?",
-			"type": "arioso",
+			"form": "arioso",
 			"soloists": "bass"
 		},
 		{
 			"title": "Schweig, aufgetürmtes Meer!",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		},
 		{
 			"title": "Wohl mir, mein Jesus spricht ein Wort",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Unter deinen Schirmen",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

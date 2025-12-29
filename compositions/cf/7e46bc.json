@@ -19,21 +19,21 @@
 			"movements": [
 				{
 					"title": "Herr, deine Augen sehen nach dem Glauben",
-					"type": "chorus"
+					"form": "chorus"
 				},
 				{
 					"title": "Wo ist das Ebenbild, das Gott uns eingepräget",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "bass"
 				},
 				{
 					"title": "Weh der Seele, die den Schaden nicht mehr kennt",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "alto"
 				},
 				{
 					"title": "Verachtest du den Reichtum seiner Gnade",
-					"type": "arioso",
+					"form": "arioso",
 					"soloists": "bass"
 				}
 			]
@@ -43,17 +43,17 @@
 			"movements": [
 				{
 					"title": "Erschrecke doch, du allzu sichre Seele",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "tenor"
 				},
 				{
 					"title": "Beim Warten ist Gefahr",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "alto"
 				},
 				{
 					"title": "Heut lebst du, heut bekehre dich",
-					"type": "chorale"
+					"form": "chorale"
 				}
 			]
 		}

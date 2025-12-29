@@ -16,41 +16,41 @@
 	"movements": [
 		{
 			"title": "Unser Mund sei voll Lachens",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "D"
 		},
 		{
 			"title": "Ihr Gedanken und ihr Sinnen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "b"
 		},
 		{
 			"title": "Dir, Herr, ist niemand gleich",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Ach Herr! was ist ein Menschenkind",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "f#"
 		},
 		{
 			"title": "Ehre sei Gott in der Höhe",
-			"type": "duet",
+			"form": "duet",
 			"soloists": "soprano, tenor",
 			"key": "A"
 		},
 		{
 			"title": "Wacht auf, ihr Adern und ihr Glieder",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "D"
 		},
 		{
 			"title": "Alleluja! Gelobt sei Gott",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "b"
 		}
 	],

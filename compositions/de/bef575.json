@@ -16,40 +16,40 @@
 	"movements": [
 		{
 			"title": "Sie werden euch in den Bann tun",
-			"type": "duet",
+			"form": "duet",
 			"soloists": "tenor, bass",
 			"key": "g"
 		},
 		{
 			"title": "Es kömmt aber die Zeit",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "g"
 		},
 		{
 			"title": "Christen müssen auf der Erden",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "c"
 		},
 		{
 			"title": "Ach Gott, wie manches Herzeleid",
-			"type": "chorale",
+			"form": "chorale",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Es sucht der Antichrist",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Es ist und bleibt der Christen Trost",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "Bb"
 		},
 		{
 			"title": "So sei nun, Seele, deine",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "Bb"
 		}
 	],

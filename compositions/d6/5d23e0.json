@@ -16,40 +16,40 @@
 	"movements": [
 		{
 			"title": "Wo Gott der Herr nicht bei uns hält",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "a"
 		},
 		{
 			"title": "Was Menschenkraft und -witz anfäht",
-			"type": "chorale and recitative",
+			"form": "chorale and recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Gleichwie die wilden Meereswellen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "G"
 		},
 		{
 			"title": "Sie stellen uns wie Ketzern nach",
-			"type": "chorale",
+			"form": "chorale",
 			"soloists": "tenor",
 			"key": "b"
 		},
 		{
 			"title": "Aufsperren sie den Rachen weit",
-			"type": "chorale and recitative",
+			"form": "chorale and recitative",
 			"key": "b"
 		},
 		{
 			"title": "Schweig, schweig nur, taumelnde Vernunft!",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "e"
 		},
 		{
 			"title": "Die Feind sind all in deiner Hand",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "a"
 		}
 	],

@@ -16,35 +16,35 @@
 	"movements": [
 		{
 			"title": "Du sollt Gott, deinen Herren, lieben",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "C"
 		},
 		{
 			"title": "So muß es sein!",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Mein Gott, ich liebe dich von Herzen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano",
 			"key": "a"
 		},
 		{
 			"title": "Gib mir dabei, mein Gott! ein Samariterherz",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor",
 			"key": "d"
 		},
 		{
 			"title": "Ach, es bleibt in meiner Liebe",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "g"
 		},
 		{
 			"title": "Ach Gott, von Himmel sieh darein",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "g"
 		}
 	],

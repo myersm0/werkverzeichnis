@@ -16,36 +16,36 @@
 	"movements": [
 		{
 			"title": "Wahrlich, wahrlich, ich sage euch",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "E"
 		},
 		{
 			"title": "Ich will doch wohl Rosen brechen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "A"
 		},
 		{
 			"title": "Und was der ewig gütig Gott",
-			"type": "chorale",
+			"form": "chorale",
 			"soloists": "soprano",
 			"key": "f#"
 		},
 		{
 			"title": "Gott macht es nicht gleichwie die Welt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Gott hilft gewiß",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "E"
 		},
 		{
 			"title": "Die Hoffnung wart' der rechten Zeit",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

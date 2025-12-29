@@ -16,26 +16,26 @@
 	"movements": [
 		{
 			"title": "Sinfonia",
-			"type": "instrumental"
+			"form": "instrumental"
 		},
 		{
 			"title": "Ich liebe den Höchsten von ganzem Gemüte",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "O Liebe, welcher keine gleich",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Greifet zu, faßt das Heil",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		},
 		{
 			"title": "Herzlich lieb hab ich dich, o Herr",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

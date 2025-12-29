@@ -16,40 +16,40 @@
 	"movements": [
 		{
 			"title": "Sinfonia",
-			"type": "instrumental",
+			"form": "instrumental",
 			"key": "D"
 		},
 		{
 			"title": "Am Abend aber desselbigen Sabbats",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Wo zwei und drei versammlet sind",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "G"
 		},
 		{
 			"title": "Verzage nicht, o Häuflein klein",
-			"type": "duet",
+			"form": "duet",
 			"soloists": "soprano, tenor",
 			"key": "b"
 		},
 		{
 			"title": "Man kann hiervon ein schön Exempel sehen",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Jesus ist ein Schild der Seinen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "A"
 		},
 		{
 			"title": "Verleih uns Frieden gnädiglich",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "f#"
 		}
 	],

@@ -22,31 +22,31 @@
 	"movements": [
 		{
 			"title": "Lobe den Herrn, meine Seele",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Wie groß ist Gottes Güte doch",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Meine Seele, auf, erzähle",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Der Herr hat große Ding an uns getan",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Mein Erlöser und Erhalter",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		},
 		{
 			"title": "Es danke, Gott, und lobe dich",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

@@ -19,36 +19,36 @@
 			"movements": [
 				{
 					"title": "Wachet! betet! betet! wachet!",
-					"type": "chorus"
+					"form": "chorus"
 				},
 				{
 					"title": "Erschrecket, ihr verstockten Sünder",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "bass"
 				},
 				{
 					"title": "Wenn kömmt der Tag, an dem wir ziehen",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "alto"
 				},
 				{
 					"title": "Auch bei dem himmlischen Verlangen",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "tenor"
 				},
 				{
 					"title": "Laßt der Spötter Zungen schmähen",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "soprano"
 				},
 				{
 					"title": "Jedoch bei dem unartigen Geschlechte",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "tenor"
 				},
 				{
 					"title": "Freu dich sehr, o meine Seele",
-					"type": "chorale"
+					"form": "chorale"
 				}
 			]
 		},
@@ -57,22 +57,22 @@
 			"movements": [
 				{
 					"title": "Hebt euer Haupt empor",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "tenor"
 				},
 				{
 					"title": "Ach, soll nicht dieser große Tag",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "bass"
 				},
 				{
 					"title": "Seligster Erquickungstag",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "bass"
 				},
 				{
 					"title": "Nicht nach Welt, nach Himmel nicht",
-					"type": "chorale"
+					"form": "chorale"
 				}
 			]
 		}

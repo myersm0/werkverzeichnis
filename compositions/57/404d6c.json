@@ -15,49 +15,49 @@
 	"movements": [
 		{
 			"title": "Preise, Jerusalem, den Herrn",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "C"
 		},
 		{
 			"title": "Gesegnet Land, glückselge Stadt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Wohl dir, du Volk der Linden",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "G"
 		},
 		{
 			"title": "So herrlich stehst du, liebe Stadt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Die Obrigkeit ist Gottes Gabe",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "g"
 		},
 		{
 			"title": "Nun! wir erkennen es und bringen dir",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Der Herr hat Guts an uns getan",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "C"
 		},
 		{
 			"title": "Zuletzt! Da du uns, Herr, zu deinem Volk gesetzt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Hilf deinem Volk, Herr Jesu Christ",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

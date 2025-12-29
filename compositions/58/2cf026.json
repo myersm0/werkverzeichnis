@@ -16,40 +16,40 @@
 	"movements": [
 		{
 			"title": "Ach, lieben Christen, seid getrost",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "g"
 		},
 		{
 			"title": "Wo wird diesem Jammertale",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "d"
 		},
 		{
 			"title": "O Sünder, trage mit Geduld",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Kein Frucht das Weizenkörnlein bringt",
-			"type": "chorale",
+			"form": "chorale",
 			"soloists": "soprano",
 			"key": "g"
 		},
 		{
 			"title": "Du machst, o Tod, mir nun nicht ferner bange",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "Bb"
 		},
 		{
 			"title": "Indes bedenke deine Seele",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Wir wachen oder schlafen ein",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "g"
 		}
 	],

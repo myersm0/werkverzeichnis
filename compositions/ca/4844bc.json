@@ -19,31 +19,31 @@
 			"movements": [
 				{
 					"title": "Ärgre dich, o Seele, nicht",
-					"type": "chorus"
+					"form": "chorus"
 				},
 				{
 					"title": "Die Knechtsgestalt, die Not, der Mangel",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "bass"
 				},
 				{
 					"title": "Bist du, der mir helfen soll",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "bass"
 				},
 				{
 					"title": "Ach, daß ein Christ so sehr",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "tenor"
 				},
 				{
 					"title": "Mein Heiland läßt sich merken",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "tenor"
 				},
 				{
 					"title": "Ob sichs anließ, als wollt er nicht",
-					"type": "chorale"
+					"form": "chorale"
 				}
 			]
 		},
@@ -52,27 +52,27 @@
 			"movements": [
 				{
 					"title": "Es ist die Welt die große Wüstenei",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "tenor"
 				},
 				{
 					"title": "Die Armen will der Herr umarmen",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "soprano"
 				},
 				{
 					"title": "Nun mag die Welt mit ihrer Lust vergehen",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "alto"
 				},
 				{
 					"title": "Laß, Seele, kein Leiden",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "soprano, alto"
 				},
 				{
 					"title": "Die Hoffnung wart' der rechten Zeit",
-					"type": "chorale"
+					"form": "chorale"
 				}
 			]
 		}

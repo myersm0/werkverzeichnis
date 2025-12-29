@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Herr Gott, dich loben alle wir",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "C"
 		},
 		{
 			"title": "Ihr heller Glanz und hohe Weisheit zeigt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Der alte Drache brennt vor Neid",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "C"
 		},
 		{
 			"title": "Wohl aber uns, daß Tag und Nacht",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano, tenor"
 		},
 		{
 			"title": "Laß, o Fürst der Cherubinen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "G"
 		},
 		{
 			"title": "Darum wir billig loben dich",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "C"
 		}
 	],

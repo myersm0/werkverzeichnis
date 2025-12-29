@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Aus tiefer Not schrei ich zu dir",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "e.phr"
 		},
 		{
 			"title": "In Jesu Gnade wird allein",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Ich höre mitten in den Leiden",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "a"
 		},
 		{
 			"title": "Ach! Daß mein Glaube noch so schwach",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Wenn meine Trübsal als mit Ketten",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano, alto, bass",
 			"key": "d"
 		},
 		{
 			"title": "Ob bei uns ist der Sünden viel",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "e.phr"
 		}
 	],

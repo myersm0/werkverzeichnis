@@ -16,30 +16,30 @@
 	"movements": [
 		{
 			"title": "Nimm, was dein ist, und gehe hin",
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
 			"title": "Murre nicht, lieber Christ",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto"
 		},
 		{
 			"title": "Was Gott tut, das ist wohlgetan",
-			"type": "chorale"
+			"form": "chorale"
 		},
 		{
 			"title": "Wo die Genügsamkeit regiert",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Genügsamkeit ist ein Schatz in diesem Leben",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Was mein Gott will, das g'scheh allzeit",
-			"type": "chorale"
+			"form": "chorale"
 		}
 	],
 	"xref": {

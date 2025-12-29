@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Du Friedefürst, Herr Jesu Christ",
-			"type": "chorale fantasia",
+			"form": "chorale fantasia",
 			"key": "A"
 		},
 		{
 			"title": "Ach, unaussprechlich ist die Not",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "f#"
 		},
 		{
 			"title": "Gedenke doch, o Jesu",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Ach, wir bekennen unsre Schuld",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "soprano, tenor, bass",
 			"key": "E"
 		},
 		{
 			"title": "Ach, laß uns durch die scharfen Ruten",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
 			"title": "Erleucht auch unser Sinn und Herz",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "A"
 		}
 	],

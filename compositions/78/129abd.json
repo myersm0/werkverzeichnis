@@ -25,18 +25,18 @@
 	"instrumentation": "alto, tenor, bass, choir (SATB), 2 oboes, 2 violins, viola, basso continuo",
 	"movements": [
 		{
-			"type": "chorus"
+			"form": "chorus"
 		},
 		{
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor"
 		},
 		{
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "alto"
 		},
 		{
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass"
 		}
 	],

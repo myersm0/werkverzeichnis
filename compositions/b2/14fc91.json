@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Erforsche mich, Gott, und erfahre mein Herz",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "A"
 		},
 		{
 			"title": "Ach, daß der Fluch, so dort die Erde schlägt",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Es kömmt ein Tag",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "f#"
 		},
 		{
 			"title": "Die Himmel selber sind nicht rein",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass"
 		},
 		{
 			"title": "Uns treffen zwar der Sünden Flecken",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor, bass",
 			"key": "b"
 		},
 		{
 			"title": "Dein Blut, der edle Saft",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "b"
 		}
 	],

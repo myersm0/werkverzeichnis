@@ -16,40 +16,40 @@
 	"movements": [
 		{
 			"title": "Gott ist mein König",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "C"
 		},
 		{
 			"title": "Ich bin nun achtzig Jahr",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor, soprano",
 			"key": "e"
 		},
 		{
 			"title": "Dein Alter sei wie deine Jugend",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "a"
 		},
 		{
 			"title": "Tag und Nacht ist dein",
-			"type": "arioso",
+			"form": "arioso",
 			"soloists": "bass",
 			"key": "F"
 		},
 		{
 			"title": "Durch mächtige Kraft",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "C"
 		},
 		{
 			"title": "Du wollest dem Feinde nicht geben",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "c"
 		},
 		{
 			"title": "Das neue Regiment auf jeglichen Wegen",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "C"
 		}
 	],

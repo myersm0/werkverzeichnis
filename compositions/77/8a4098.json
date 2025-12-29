@@ -16,35 +16,35 @@
 	"movements": [
 		{
 			"title": "Du Hirte Israel, höre",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "G"
 		},
 		{
 			"title": "Der höchste Hirte sorgt vor mich",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Verbirgt mein Hirte sich zu lange",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "tenor",
 			"key": "b"
 		},
 		{
 			"title": "Ja, dieses Wort ist meiner Seelen Speise",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "bass",
 			"key": "D"
 		},
 		{
 			"title": "Beglückte Herde, Jesu Schafe",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "D"
 		},
 		{
 			"title": "Der Herr ist mein getreuer Hirt",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "A"
 		}
 	],

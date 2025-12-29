@@ -19,17 +19,17 @@
 			"movements": [
 				{
 					"title": "Es ist dir gesagt, Mensch, was gut ist",
-					"type": "chorus",
+					"form": "chorus",
 					"key": "E"
 				},
 				{
 					"title": "Der Höchste läßt mich seinen Willen wissen",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "tenor"
 				},
 				{
 					"title": "Weiß ich Gottes Rechte",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "tenor",
 					"key": "c#"
 				}
@@ -40,24 +40,24 @@
 			"movements": [
 				{
 					"title": "Es werden viele zu mir sagen an jenem Tage",
-					"type": "arioso",
+					"form": "arioso",
 					"soloists": "bass",
 					"key": "A"
 				},
 				{
 					"title": "Wer Gott bekennt aus wahrem Herzensgrund",
-					"type": "aria",
+					"form": "aria",
 					"soloists": "alto",
 					"key": "f#"
 				},
 				{
 					"title": "So wird denn Herz und Mund selbst von mir Richter sein",
-					"type": "recitative",
+					"form": "recitative",
 					"soloists": "alto"
 				},
 				{
 					"title": "Gib, daß ich tu mit Fleiß",
-					"type": "chorale",
+					"form": "chorale",
 					"key": "E"
 				}
 			]

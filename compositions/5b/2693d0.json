@@ -16,34 +16,34 @@
 	"movements": [
 		{
 			"title": "Wer weiß, wie nahe mir mein Ende?",
-			"type": "chorus",
+			"form": "chorus",
 			"key": "c"
 		},
 		{
 			"title": "Mein Leben hat kein ander Ziel",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "tenor"
 		},
 		{
 			"title": "Willkommen! will ich sagen",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "alto",
 			"key": "Eb"
 		},
 		{
 			"title": "Ach, wer doch schon im Himmel wär",
-			"type": "recitative",
+			"form": "recitative",
 			"soloists": "soprano"
 		},
 		{
 			"title": "Gute Nacht, du Weltgetümmel",
-			"type": "aria",
+			"form": "aria",
 			"soloists": "bass",
 			"key": "g"
 		},
 		{
 			"title": "Welt, ade! ich bin dein müde",
-			"type": "chorale",
+			"form": "chorale",
 			"key": "Bb"
 		}
 	],
