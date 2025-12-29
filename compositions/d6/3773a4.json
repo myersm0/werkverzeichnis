@@ -1,0 +1,45 @@
+{
+	"id": "d63773a4",
+	"title": {
+		"de": "Es reißet euch ein schrecklich Ende"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "90"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "alto, tenor, bass, four-part choir, trumpet, 2 violins, viola, basso continuo",
+	"notes": "Composed for the 25th Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Es reißet euch ein schrecklich Ende",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Des Höchsten Güte wird von Tag zu Tage neu",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "So löschet im Eifer der rächende Richter",
+			"type": "aria",
+			"soloists": "bass"
+		},
+		{
+			"title": "Doch Gottes Auge sieht auf uns",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Leit uns mit deiner rechten Hand",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_90"
+	}
+}

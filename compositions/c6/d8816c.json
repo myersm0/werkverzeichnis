@@ -1,0 +1,58 @@
+{
+	"id": "c6d8816c",
+	"title": {
+		"de": "Dem Gerechten muß das Licht"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {},
+			"catalog": [{"scheme": "bwv", "number": "195"}]
+		}
+	],
+	"form": "wedding cantata",
+	"instrumentation": "soprano, bass, choir (SATB), 3 trumpets, timpani, 2 horns, 2 flutes, 2 oboes, 2 oboes d'amore, 2 violins, viola, violone, basso continuo",
+	"notes": "Only incomplete scores from later performances in the 1740s have survived.",
+	"sections": [
+		{
+			"title": "Part I",
+			"movements": [
+				{
+					"title": "Dem Gerechten muss das Licht immer wieder aufgehen",
+					"type": "chorus"
+				},
+				{
+					"title": "Dem Freudenlicht gerechter Frommen",
+					"type": "recitative",
+					"soloists": "bass"
+				},
+				{
+					"title": "Rühmet Gottes Güt und Treu",
+					"type": "aria",
+					"soloists": "bass"
+				},
+				{
+					"title": "Wohlan, so knüpfet denn ein Band",
+					"type": "recitative",
+					"soloists": "soprano"
+				},
+				{
+					"title": "Wir kommen, deine Heiligkeit",
+					"type": "chorus"
+				}
+			]
+		},
+		{
+			"title": "Part II",
+			"movements": [
+				{
+					"title": "Nun danket all und bringet Ehr",
+					"type": "chorale"
+				}
+			]
+		}
+	],
+	"xref": {
+		"wp": "BWV_195"
+	}
+}

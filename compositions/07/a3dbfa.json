@@ -1,0 +1,53 @@
+{
+	"id": "07a3dbfa",
+	"title": {
+		"de": "Allein zu dir, Herr Jesu Christ"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1724, "premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "33"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "alto, tenor, bass, choir (SATB), 2 oboes, 2 violins, viola, continuo",
+	"notes": "Composed for the thirteenth Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Allein zu dir, Herr Jesu Christ",
+			"type": "chorale fantasia",
+			"key": "a"
+		},
+		{
+			"title": "Mein Gott und Richter",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Wie furchtsam wankten meine Schritte",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "C"
+		},
+		{
+			"title": "Mein Gott, verwirf mich nicht",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Gott, der du die Liebe heißt",
+			"type": "duet",
+			"soloists": "tenor, bass",
+			"key": "e"
+		},
+		{
+			"title": "Ehr sei Gott in dem höchsten Thron",
+			"type": "chorale",
+			"key": "a"
+		}
+	],
+	"xref": {
+		"wp": "BWV_33"
+	}
+}

@@ -1,0 +1,62 @@
+{
+	"id": "9ccc2efc",
+	"title": {
+		"de": "Sei Lob und Ehr dem höchsten Gut"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1731},
+			"catalog": [{"scheme": "bwv", "number": "117"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "alto, tenor, bass, four-part choir, 2 flutes, 2 oboes, 2 oboes d'amore, 2 violins, viola, basso continuo",
+	"movements": [
+		{
+			"title": "Sei Lob und Ehr dem höchsten Gut",
+			"type": "chorale"
+		},
+		{
+			"title": "Es danken dir die Himmelsheer",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Was unser Gott geschaffen hat",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Ich rief dem Herrn in meiner Not",
+			"type": "chorale"
+		},
+		{
+			"title": "Der Herr ist noch und nimmer nicht",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Wenn Trost und Hülf ermangeln muss",
+			"type": "aria",
+			"soloists": "bass"
+		},
+		{
+			"title": "Ich will dich all mein Leben lang",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Ihr, die ihr Christi Namen nennt",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "So kommet vor sein Angesicht",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_117"
+	}
+}

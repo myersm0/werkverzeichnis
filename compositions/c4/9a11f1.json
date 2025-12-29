@@ -1,0 +1,44 @@
+{
+	"id": "c49a11f1",
+	"title": {
+		"de": "Ich lebe, mein Herze, zu deinem Ergötzen"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1729},
+			"catalog": [{"scheme": "bwv", "number": "145"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, tenor, bass, four-part choir, trumpet, flauto traverso, 2 oboe d'amore, 2 violins, viola, basso continuo",
+	"movements": [
+		{
+			"title": "Ich lebe, mein Herze, zu deinem Ergötzen",
+			"type": "aria",
+			"soloists": "tenor, soprano"
+		},
+		{
+			"title": "Nun fordre, Moses, wie du willt",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Merke, mein Herze, beständig nur dies",
+			"type": "aria",
+			"soloists": "bass"
+		},
+		{
+			"title": "Mein Jesus lebt",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Drum wir auch billig fröhlich sein",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_145"
+	}
+}

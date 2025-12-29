@@ -1,0 +1,62 @@
+{
+	"id": "4b9fa3b2",
+	"title": {
+		"de": "Uns ist ein Kind geboren"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"status": "doubtful",
+			"catalog": [
+				{"scheme": "bwv", "number": "Anh. II 23"},
+				{"scheme": "bwv", "number": "142"}
+			]
+		}
+	],
+	"form": "Christmas cantata",
+	"instrumentation": "3 vocal soloists (alto, tenor, bass), 4-part choir, 2 alto recorders, 2 oboes, 2 violins, viola, continuo",
+	"movements": [
+		{
+			"title": "Sinfonia",
+			"type": "instrumental concerto"
+		},
+		{
+			"title": "Uns ist ein Kind geboren",
+			"type": "chorus",
+			"form": "double fugue"
+		},
+		{
+			"title": "Dein Geburtstag ist erschienen",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "e"
+		},
+		{
+			"title": "Ich will den Namen Gottes loben",
+			"type": "chorus"
+		},
+		{
+			"title": "Jesu, dir sei Dank",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Immanuel",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Jesu, dir sei Preis",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "d"
+		},
+		{
+			"title": "Alleluia",
+			"type": "chorus"
+		}
+	],
+	"xref": {
+		"wp": "BWV_142"
+	}
+}

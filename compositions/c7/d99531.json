@@ -1,0 +1,53 @@
+{
+	"id": "c7d99531",
+	"title": {
+		"de": "Ich elender Mensch, wer wird mich erlösen"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1723, "premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "48"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "alto, tenor, choir (SATB), trumpet, 2 oboes, 2 violins, viola, basso continuo",
+	"notes": "Composed for the 19th Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Ich elender Mensch, wer wird mich erlösen",
+			"type": "chorus"
+		},
+		{
+			"title": "O Schmerz, o Elend, so mich trifft",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Solls ja so sein",
+			"type": "chorale"
+		},
+		{
+			"title": "Ach, lege das Sodom der sündlichen Glieder",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Hier aber tut des Heilands Hand",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Vergibt mir Jesus meine Sünden",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Herr Jesu Christ, einiger Trost",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_48"
+	}
+}

@@ -1,0 +1,53 @@
+{
+	"id": "94490f1b",
+	"title": {
+		"de": "Herr Gott, dich loben alle wir"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "130"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 3 trumpets, timpani, flauto traverso, 3 oboes, 2 violins, viola, continuo",
+	"notes": "Composed for the Feast of Archangel Michael (Michaelis). A revised version (BWV 130.2) was performed between 1732 and 1735.",
+	"movements": [
+		{
+			"title": "Herr Gott, dich loben alle wir",
+			"type": "chorale fantasia",
+			"key": "C"
+		},
+		{
+			"title": "Ihr heller Glanz und hohe Weisheit zeigt",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Der alte Drache brennt vor Neid",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "C"
+		},
+		{
+			"title": "Wohl aber uns, daß Tag und Nacht",
+			"type": "recitative",
+			"soloists": "soprano, tenor"
+		},
+		{
+			"title": "Laß, o Fürst der Cherubinen",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "G"
+		},
+		{
+			"title": "Darum wir billig loben dich",
+			"type": "chorale",
+			"key": "C"
+		}
+	],
+	"xref": {
+		"wp": "BWV_130"
+	}
+}

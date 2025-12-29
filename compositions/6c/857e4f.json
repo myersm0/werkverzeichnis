@@ -1,0 +1,55 @@
+{
+	"id": "6c857e4f",
+	"title": {
+		"de": "Wo gehest du hin?"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1724, "premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "166"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), oboe, 2 violins, viola, basso continuo",
+	"notes": "Composed for Cantate Sunday, the fourth Sunday after Easter.",
+	"movements": [
+		{
+			"title": "Wo gehest du hin",
+			"type": "arioso",
+			"soloists": "bass",
+			"key": "Bb"
+		},
+		{
+			"title": "Ich will an den Himmel denken",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "g"
+		},
+		{
+			"title": "Ich bitte dich, Herr Jesu Christ",
+			"type": "chorale",
+			"soloists": "soprano",
+			"key": "c"
+		},
+		{
+			"title": "Gleichwie die Regenwasser bald verfließen",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Man nehme sich in acht",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "Bb"
+		},
+		{
+			"title": "Wer weiß, wie nahe mir mein Ende",
+			"type": "chorale",
+			"key": "g"
+		}
+	],
+	"xref": {
+		"wp": "BWV_166"
+	}
+}

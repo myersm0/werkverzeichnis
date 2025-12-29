@@ -1,0 +1,55 @@
+{
+	"id": "de4b4918",
+	"title": {
+		"de": "Singet dem Herrn ein neues Lied"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "190"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "alto, tenor, bass soloists, SATB choir, 3 trumpets, timpani, 3 oboes, oboe d'amore, 2 violins, viola, continuo",
+	"notes": "Composed for New Year's Day.",
+	"movements": [
+		{
+			"title": "Singet dem Herrn ein neues Lied",
+			"type": "chorus"
+		},
+		{
+			"title": "Herr Gott, dich loben wir",
+			"type": "chorale and recitative",
+			"soloists": "alto, tenor, bass"
+		},
+		{
+			"title": "Lobe, Zion, deinen Gott",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Es wünsche sich die Welt",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Jesus soll mein alles sein",
+			"type": "aria",
+			"soloists": "tenor, bass",
+			"instruments": "oboe d'amore"
+		},
+		{
+			"title": "Nun, Jesus gebe",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Laß uns das Jahr vollbringen",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_190"
+	}
+}

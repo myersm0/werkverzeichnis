@@ -1,0 +1,54 @@
+{
+	"id": "b59a79b7",
+	"title": {
+		"de": "Ich bin ein guter Hirt"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1725, "premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "85"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB in final chorale), 2 oboes, bassoon, 2 violins, viola, cello piccolo, basso continuo",
+	"notes": "Composed for the second Sunday after Easter.",
+	"movements": [
+		{
+			"title": "Ich bin ein guter Hirt",
+			"soloists": "bass",
+			"key": "c"
+		},
+		{
+			"title": "Jesus ist ein guter Hirt",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "g"
+		},
+		{
+			"title": "Der Herr ist mein getreuer Hirt",
+			"type": "chorale",
+			"soloists": "soprano",
+			"key": "Bb"
+		},
+		{
+			"title": "Wenn die Mietlinge schlafen",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Seht, was die Liebe tut",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "Eb"
+		},
+		{
+			"title": "Ist Gott mein Schutz und treuer Hirt",
+			"type": "chorale",
+			"key": "c"
+		}
+	],
+	"xref": {
+		"wp": "BWV_85"
+	}
+}

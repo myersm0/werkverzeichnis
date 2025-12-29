@@ -1,0 +1,54 @@
+{
+	"id": "26fc8189",
+	"title": {
+		"de": "Christen, ätzet diesen Tag"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1715, "premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "63"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 4 trumpets, timpani, 3 oboes, bassoon, 2 violins, viola, continuo",
+	"notes": "Cantata for the First Day of Christmas.",
+	"movements": [
+		{
+			"title": "Christen, ätzet diesen Tag",
+			"type": "chorus"
+		},
+		{
+			"title": "Oh, selger Tag! o ungemeines Heute",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Gott, du hast es wohl gefüget",
+			"type": "aria",
+			"soloists": "soprano, bass"
+		},
+		{
+			"title": "So kehret sich nun heut",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Ruft und fleht den Himmel an",
+			"type": "aria",
+			"soloists": "alto, tenor"
+		},
+		{
+			"title": "Verdoppelt euch demnach",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Höchster, schau in Gnaden an",
+			"type": "chorus"
+		}
+	],
+	"xref": {
+		"wp": "BWV_63"
+	}
+}

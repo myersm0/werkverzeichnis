@@ -1,0 +1,54 @@
+{
+	"id": "929bc056",
+	"title": {
+		"de": "Erwünschtes Freudenlicht"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1724, "premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "184"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, choir (SATB), 2 flutes, 2 violins, viola, continuo",
+	"notes": "Composed for Whit Tuesday (third day of Pentecost).",
+	"movements": [
+		{
+			"title": "Erwünschtes Freudenlicht",
+			"type": "recitative",
+			"soloists": "tenor",
+			"key": "G"
+		},
+		{
+			"title": "Gesegnete Christen, glückselige Herde",
+			"type": "duet aria",
+			"soloists": "soprano, alto",
+			"key": "G"
+		},
+		{
+			"title": "So freuet euch, ihr auserwählten Seelen",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Glück und Segen sind bereit",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "b"
+		},
+		{
+			"title": "Herr, ich hoff je, du werdest die",
+			"type": "chorale",
+			"key": "D"
+		},
+		{
+			"title": "Guter Hirte, Trost der Deinen",
+			"type": "chorus",
+			"key": "G"
+		}
+	],
+	"xref": {
+		"wp": "BWV_184"
+	}
+}

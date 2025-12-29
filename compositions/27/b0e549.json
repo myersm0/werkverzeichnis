@@ -1,0 +1,59 @@
+{
+	"id": "27b0e549",
+	"title": {
+		"de": "Bisher habt ihr nichts gebeten in meinem Namen"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1725, "premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "87"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "alto, tenor, bass, SATB choir (closing chorale only), 2 oboes, 2 oboes da caccia, 2 violins, viola, continuo",
+	"notes": "Composed for Rogate, the fifth Sunday after Easter.",
+	"movements": [
+		{
+			"title": "Bisher habt ihr nichts gebeten in meinem Namen",
+			"type": "arioso",
+			"soloists": "bass",
+			"key": "d"
+		},
+		{
+			"title": "O Wort, das Geist und Seel erschreckt",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Dein Geist wird mich also regieren",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "g"
+		},
+		{
+			"title": "Wenn unsre Schuld bis an den Himmel steigt",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "In der Welt habt ihr Angst",
+			"type": "arioso",
+			"soloists": "bass"
+		},
+		{
+			"title": "Ich will leiden, ich will schweigen",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "Bb"
+		},
+		{
+			"title": "Muß ich sein betrübet?",
+			"type": "chorale",
+			"key": "d"
+		}
+	],
+	"xref": {
+		"wp": "BWV_87"
+	}
+}

@@ -1,0 +1,59 @@
+{
+	"id": "3d28001a",
+	"title": {
+		"de": "Was frag ich nach der Welt"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "94"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), flauto traverso, 2 oboes, 2 violins, viola, organ, continuo",
+	"notes": "Composed for the Ninth Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Was frag ich nach der Welt",
+			"type": "chorale"
+		},
+		{
+			"title": "Die Welt ist wie ein Rauch und Schatten",
+			"type": "aria",
+			"soloists": "bass"
+		},
+		{
+			"title": "Die Welt sucht Ehr und Ruhm",
+			"type": "recitative and chorale",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Betörte Welt, betörte Welt!",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Die Welt bekümmert sich",
+			"type": "recitative and chorale",
+			"soloists": "bass"
+		},
+		{
+			"title": "Die Welt kann ihre Lust und Freud",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Es halt es mit der blinden Welt",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Was frag ich nach der Welt!",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_94"
+	}
+}

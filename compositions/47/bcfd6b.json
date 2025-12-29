@@ -1,0 +1,53 @@
+{
+	"id": "47bcfd6b",
+	"title": {
+		"de": "Mit Fried und Freud ich fahr dahin"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1725},
+			"catalog": [{"scheme": "bwv", "number": "125"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), horn, flauto traverso, oboe, oboe d'amore, 2 violins, viola, continuo",
+	"notes": "Composed for the feast of the Purification of Mary (Candlemas).",
+	"movements": [
+		{
+			"title": "Mit Fried und Freud ich fahr dahin",
+			"type": "chorale fantasia",
+			"key": "e"
+		},
+		{
+			"title": "Ich will auch mit gebrochnen Augen",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "b"
+		},
+		{
+			"title": "O Wunder, daß ein Herz",
+			"type": "recitative and chorale",
+			"soloists": "bass"
+		},
+		{
+			"title": "Ein unbegreiflich Licht",
+			"type": "aria duetto",
+			"soloists": "tenor, bass",
+			"key": "G"
+		},
+		{
+			"title": "O unerschöpfter Schatz der Güte",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Er ist das Heil und selig Licht",
+			"type": "chorale",
+			"key": "e"
+		}
+	],
+	"xref": {
+		"wp": "BWV_125"
+	}
+}

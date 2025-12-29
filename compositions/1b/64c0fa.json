@@ -1,0 +1,60 @@
+{
+	"id": "1b64c0fa",
+	"title": {
+		"de": "Wachet auf, ruft uns die Stimme"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1731},
+			"catalog": [{"scheme": "bwv", "number": "140"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, tenor, bass, choir (SATB), horn, 2 oboes, taille, violino piccolo, 2 violins, viola, continuo",
+	"notes": "Composed for the 27th Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Wachet auf, ruft uns die Stimme",
+			"type": "chorale fantasia",
+			"key": "Eb"
+		},
+		{
+			"title": "Er kommt",
+			"type": "recitative",
+			"soloists": "tenor",
+			"key": "c"
+		},
+		{
+			"title": "Wann kommst du, mein Heil?",
+			"type": "duet",
+			"soloists": "soprano, bass",
+			"key": "c"
+		},
+		{
+			"title": "Zion hört die Wächter singen",
+			"type": "chorale",
+			"soloists": "tenor",
+			"key": "Eb"
+		},
+		{
+			"title": "So geh herein zu mir",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Mein Freund ist mein!",
+			"type": "duet",
+			"soloists": "soprano, bass",
+			"key": "Bb"
+		},
+		{
+			"title": "Gloria sei dir gesungen",
+			"type": "chorale",
+			"key": "Eb"
+		}
+	],
+	"xref": {
+		"wp": "BWV_140"
+	}
+}

@@ -1,0 +1,53 @@
+{
+	"id": "c7671062",
+	"title": {
+		"de": "Erhöhtes Fleisch und Blut"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1724},
+			"catalog": [
+				{"scheme": "bwv", "number": "173.2"},
+				{"scheme": "bwv", "number": "173"}
+			]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 flauto traverso, 2 violins, viola, basso continuo",
+	"notes": "Composed for Pentecost Monday.",
+	"movements": [
+		{
+			"title": "Erhöhtes Fleisch und Blut",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Ein geheiligtes Gemüte",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Gott will, o ihr Menschenkinder",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "So hat Gott die Welt geliebt",
+			"type": "aria",
+			"soloists": "soprano, bass"
+		},
+		{
+			"title": "Unendlichster, den man doch Vater nennt",
+			"type": "aria",
+			"soloists": "soprano, tenor"
+		},
+		{
+			"title": "Rühre, Höchster, unsern Geist",
+			"type": "chorus"
+		}
+	],
+	"xref": {
+		"wp": "BWV_173"
+	}
+}

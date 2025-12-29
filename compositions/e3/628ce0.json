@@ -1,0 +1,54 @@
+{
+	"id": "e3628ce0",
+	"title": {
+		"de": "Es ist euch gut, daß ich hingehe"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1725, "premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "108"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "alto, tenor, bass, choir (SATB), 2 oboes d'amore, 2 violins, viola, continuo",
+	"notes": "Composed for Cantate Sunday, the fourth Sunday after Easter.",
+	"movements": [
+		{
+			"title": "Es ist euch gut, daß ich hingehe",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "A"
+		},
+		{
+			"title": "Mich kann kein Zweifel stören",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "f#"
+		},
+		{
+			"title": "Dein Geist wird mich also regieren",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Wenn aber jener, der Geist der Wahrheit kommen wird",
+			"type": "chorus",
+			"key": "D"
+		},
+		{
+			"title": "Was mein Herz von dir begehrt",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "b"
+		},
+		{
+			"title": "Dein Geist, den Gott von Himmel gibt",
+			"type": "chorale",
+			"key": "b"
+		}
+	],
+	"xref": {
+		"wp": "BWV_108"
+	}
+}

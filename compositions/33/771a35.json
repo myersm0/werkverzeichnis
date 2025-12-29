@@ -1,0 +1,44 @@
+{
+	"id": "33771a35",
+	"title": {
+		"de": "Ich liebe den Höchsten von ganzem Gemüte"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1729},
+			"catalog": [{"scheme": "bwv", "number": "174"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "alto, tenor, bass, choir (SATB in chorale only), 2 corni da caccia, 2 oboes, taille, 3 solo violins, 3 solo violas, 3 solo cellos, basso continuo",
+	"notes": "Composed for the second day of Pentecost.",
+	"movements": [
+		{
+			"title": "Sinfonia",
+			"type": "instrumental"
+		},
+		{
+			"title": "Ich liebe den Höchsten von ganzem Gemüte",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "O Liebe, welcher keine gleich",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Greifet zu, faßt das Heil",
+			"type": "aria",
+			"soloists": "bass"
+		},
+		{
+			"title": "Herzlich lieb hab ich dich, o Herr",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_174"
+	}
+}

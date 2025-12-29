@@ -1,0 +1,70 @@
+{
+	"id": "fac29ac3",
+	"title": {
+		"de": "Brich dem Hungrigen dein Brot"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1726},
+			"catalog": [{"scheme": "bwv", "number": "39"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, bass, choir (SATB), 2 alto recorders, 2 oboes, 2 violins, viola, violoncello, continuo",
+	"sections": [
+		{
+			"title": "Part I",
+			"movements": [
+				{
+					"title": "Brich dem Hungrigen dein Brot",
+					"type": "chorus",
+					"key": "g"
+				},
+				{
+					"title": "Der reiche Gott",
+					"type": "recitative",
+					"soloists": "bass",
+					"key": "Bb"
+				},
+				{
+					"title": "Seinem Schöpfer noch auf Erden",
+					"type": "aria",
+					"soloists": "alto",
+					"key": "d"
+				}
+			]
+		},
+		{
+			"title": "Part II",
+			"movements": [
+				{
+					"title": "Wohlzutun und mitzuteilen vergesset nicht",
+					"type": "solo",
+					"soloists": "bass",
+					"key": "d"
+				},
+				{
+					"title": "Höchster, was ich habe",
+					"type": "aria",
+					"soloists": "soprano",
+					"key": "Bb"
+				},
+				{
+					"title": "Wie soll ich dir, o Herr",
+					"type": "recitative",
+					"soloists": "alto",
+					"key": "Eb"
+				},
+				{
+					"title": "Selig sind, die aus Erbarmen",
+					"type": "chorale",
+					"key": "Bb"
+				}
+			]
+		}
+	],
+	"xref": {
+		"wp": "BWV_39"
+	}
+}

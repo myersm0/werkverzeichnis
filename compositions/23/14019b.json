@@ -1,0 +1,53 @@
+{
+	"id": "2314019b",
+	"title": {
+		"de": "Komm, du süße Todesstunde"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1716},
+			"catalog": [{"scheme": "bwv", "number": "161"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "alto, tenor, SATB choir, 2 recorders, 2 violins, viola, organ, basso continuo",
+	"notes": "Composed for the sixteenth Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Komm, du süße Todesstunde",
+			"type": "aria",
+			"vocal": "alto",
+			"key": "C"
+		},
+		{
+			"title": "Welt, deine Lust ist Last",
+			"type": "recitative",
+			"vocal": "tenor"
+		},
+		{
+			"title": "Mein Verlangen ist, den Heiland zu umfangen",
+			"type": "aria",
+			"vocal": "tenor",
+			"key": "a"
+		},
+		{
+			"title": "Der Schluß ist schon gemacht",
+			"type": "recitative",
+			"vocal": "alto"
+		},
+		{
+			"title": "Wenn es meines Gottes Wille",
+			"type": "chorus",
+			"key": "C"
+		},
+		{
+			"title": "Der Leib zwar in der Erden",
+			"type": "chorale",
+			"key": "a"
+		}
+	],
+	"xref": {
+		"wp": "BWV_161"
+	}
+}

@@ -1,0 +1,54 @@
+{
+	"id": "3db889b0",
+	"title": {
+		"de": "Du sollt Gott, deinen Herren, lieben"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "77"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), tromba da tirarsi, 2 oboes, 2 violins, viola, continuo",
+	"notes": "Composed for the thirteenth Sunday after Trinity in Bach's first year as Thomaskantor in Leipzig. Text by Johann Oswald Knauer based on the parable of the Good Samaritan. Closing chorale text probably by Johann Christoph Friedrich Bach.",
+	"movements": [
+		{
+			"title": "Du sollt Gott, deinen Herren, lieben",
+			"type": "chorus",
+			"key": "C"
+		},
+		{
+			"title": "So muß es sein!",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Mein Gott, ich liebe dich von Herzen",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "a"
+		},
+		{
+			"title": "Gib mir dabei, mein Gott! ein Samariterherz",
+			"type": "recitative",
+			"soloists": "tenor",
+			"key": "d"
+		},
+		{
+			"title": "Ach, es bleibt in meiner Liebe",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "g"
+		},
+		{
+			"title": "Ach Gott, von Himmel sieh darein",
+			"type": "chorale",
+			"key": "g"
+		}
+	],
+	"xref": {
+		"wp": "BWV_77"
+	}
+}

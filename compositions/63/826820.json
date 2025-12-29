@@ -1,0 +1,53 @@
+{
+	"id": "63826820",
+	"title": {
+		"de": "Es ist nichts Gesundes an meinem Leibe"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "25"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, tenor, bass, choir (SATB), cornetto, 3 trombones, 3 recorders, 2 oboes, 2 violins, viola, basso continuo",
+	"notes": "Composed for the 14th Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Es ist nichts Gesundes an meinem Leibe",
+			"type": "chorus",
+			"key": "a"
+		},
+		{
+			"title": "Die ganze Welt ist nur ein Hospital",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Ach, wo hol ich Armer Rat?",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "d"
+		},
+		{
+			"title": "O Jesu, lieber Meister",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Öffne meinen schlechten Liedern",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "C"
+		},
+		{
+			"title": "Ich will alle meine Tage",
+			"type": "chorale",
+			"key": "C"
+		}
+	],
+	"xref": {
+		"wp": "BWV_25"
+	}
+}

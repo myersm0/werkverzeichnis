@@ -1,0 +1,41 @@
+{
+	"id": "12cf455a",
+	"title": {
+		"de": "Du wahrer Gott und Davids Sohn"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1723, "premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "23"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 oboes d'amore, 2 oboes, cornett, 3 trombones, 2 violins, viola, continuo",
+	"movements": [
+		{
+			"title": "Du wahrer Gott und Davids Sohn",
+			"type": "aria duetto",
+			"soloists": "soprano, alto",
+			"key": "b"
+		},
+		{
+			"title": "Ach! gehe nicht vorüber",
+			"type": "recitative and chorale",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Aller Augen warten, Herr",
+			"type": "chorus with duet",
+			"key": "D"
+		},
+		{
+			"title": "Christe, du Lamm Gottes",
+			"type": "chorale",
+			"key": "f#"
+		}
+	],
+	"xref": {
+		"wp": "BWV_23"
+	}
+}

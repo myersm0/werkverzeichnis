@@ -1,0 +1,41 @@
+{
+	"id": "5d57f4e7",
+	"title": {
+		"de": "Ich ruf zu dir, Herr Jesu Christ"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1732},
+			"catalog": [{"scheme": "bwv", "number": "177"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, choir (SATB), 2 oboes, 2 oboes da caccia, 2 violins, obbligato violin, viola, obbligato bassoon, basso continuo",
+	"notes": "Composed for the fourth Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Ich ruf zu dir, Herr Jesu Christ",
+			"type": "chorus"
+		},
+		{
+			"title": "Ich bitt noch mehr, o Herre Gott",
+			"soloists": "alto"
+		},
+		{
+			"title": "Verleih, daß ich aus Herzensgrund",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Laß mich kein Lust noch Furcht von dir",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Ich lieg im Streit und widerstreb",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_177"
+	}
+}

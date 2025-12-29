@@ -1,0 +1,53 @@
+{
+	"id": "cfb05070",
+	"title": {
+		"de": "Schauet doch und sehet, ob irgend ein Schmerz sei"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "46"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "alto, tenor, bass, choir (SATB), corno da tirarsi, 2 recorders, 2 oboes da caccia, 2 violins, viola, continuo",
+	"notes": "Composed for the tenth Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Schauet doch und sehet, ob irgend ein Schmerz sei",
+			"type": "chorus",
+			"key": "d"
+		},
+		{
+			"title": "So klage du, zerstörte Gottesstadt",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Dein Wetter zog sich auf von weiten",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "Bb"
+		},
+		{
+			"title": "Doch bildet euch, o Sünder, ja nicht ein",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Doch Jesus will auch bei der Strafe",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "g"
+		},
+		{
+			"title": "O großer Gott von Macht",
+			"type": "chorale",
+			"key": "g"
+		}
+	],
+	"xref": {
+		"wp": "BWV_46"
+	}
+}

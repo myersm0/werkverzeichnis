@@ -1,0 +1,45 @@
+{
+	"id": "8bd34488",
+	"title": {
+		"de": "Ihr Menschen, rühmet Gottes Liebe"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "167"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB in final movement), clarino, oboe da caccia, oboe, 2 violins, viola, basso continuo",
+	"notes": "Composed for the Feast of St. John the Baptist.",
+	"movements": [
+		{
+			"title": "Ihr Menschen, rühmet Gottes Liebe",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Gelobet sei der Herr Gott Israel",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Gottes Wort, das trüget nicht",
+			"type": "duet aria",
+			"soloists": "soprano, alto"
+		},
+		{
+			"title": "Des Weibes Samen kam",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Sei Lob und Preis mit Ehren",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_167"
+	}
+}

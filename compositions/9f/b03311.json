@@ -1,0 +1,53 @@
+{
+	"id": "9fb03311",
+	"title": {
+		"de": "Gelobet seist du, Jesu Christ"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1724, "premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "91"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 horns, timpani, 3 oboes, 2 violins, viola, continuo",
+	"notes": "Composed for Christmas Day.",
+	"movements": [
+		{
+			"title": "Gelobet seist du, Jesu Christ",
+			"type": "chorale fantasia",
+			"key": "G"
+		},
+		{
+			"title": "Der Glanz der höchsten Herrlichkeit",
+			"type": "recitative and chorale",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Gott, dem der Erden Kreis zu klein",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "C"
+		},
+		{
+			"title": "O Christenheit! Wohlan",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Die Armut, so Gott auf sich nimmt",
+			"type": "aria duetto",
+			"soloists": "soprano, alto",
+			"key": "e"
+		},
+		{
+			"title": "Das hat er alles uns getan",
+			"type": "chorale",
+			"key": "G"
+		}
+	],
+	"xref": {
+		"wp": "BWV_91"
+	}
+}

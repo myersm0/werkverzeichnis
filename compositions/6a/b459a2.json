@@ -1,0 +1,47 @@
+{
+	"id": "6ab459a2",
+	"title": {
+		"de": "O Ewigkeit, du Donnerwort"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "60"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "alto, tenor, bass, choir (SATB in final movement), horn, 2 oboes d'amore, 2 violins, viola, continuo",
+	"movements": [
+		{
+			"title": "O Ewigkeit, du Donnerwort / Herr, ich warte auf dein Heil",
+			"type": "chorale fantasia",
+			"soloists": "alto, tenor",
+			"key": "D"
+		},
+		{
+			"title": "O schwerer Gang zum letzten Kampf und Streite! / Mein Beistand ist schon da",
+			"type": "recitative",
+			"soloists": "alto, tenor"
+		},
+		{
+			"title": "Mein letztes Lager will mich schrecken / Mich wird des Heilands Hand bedecken",
+			"type": "aria duetto",
+			"soloists": "alto, tenor",
+			"key": "b"
+		},
+		{
+			"title": "Der Tod bleibt doch der menschlichen Natur verhaßt / Selig sind die Toten",
+			"type": "recitative and chorale",
+			"soloists": "alto, bass"
+		},
+		{
+			"title": "Es ist genug",
+			"type": "chorale",
+			"key": "A"
+		}
+	],
+	"xref": {
+		"wp": "BWV_60"
+	}
+}

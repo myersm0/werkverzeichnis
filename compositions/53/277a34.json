@@ -1,0 +1,55 @@
+{
+	"id": "53277a34",
+	"title": {
+		"de": "Nun komm, der Heiden Heiland"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1724, "premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "62"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), horn, 2 oboes, 2 violins, viola, basso continuo",
+	"notes": "Composed for the first Sunday in Advent.",
+	"movements": [
+		{
+			"title": "Nun komm, der Heiden Heiland",
+			"type": "chorale fantasia",
+			"soloists": "soprano, alto, tenor, bass",
+			"key": "b"
+		},
+		{
+			"title": "Bewundert, o Menschen, dies große Geheimnis",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "G"
+		},
+		{
+			"title": "So geht aus Gottes Herrlichkeit und Thron",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Streite, siege, starker Held!",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "D"
+		},
+		{
+			"title": "Wir ehren diese Herrlichkeit",
+			"type": "recitative duet",
+			"soloists": "soprano, alto"
+		},
+		{
+			"title": "Lob sei Gott dem Vater ton",
+			"type": "chorale",
+			"soloists": "soprano, alto, tenor, bass",
+			"key": "b"
+		}
+	],
+	"xref": {
+		"wp": "BWV_62"
+	}
+}

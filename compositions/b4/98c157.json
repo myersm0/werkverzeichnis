@@ -1,0 +1,69 @@
+{
+	"id": "b498c157",
+	"title": {
+		"de": "Es wartet alles auf dich"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1726},
+			"catalog": [{"scheme": "bwv", "number": "187"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, bass, choir (SATB), 2 oboes, 2 violins, viola, continuo",
+	"notes": "Composed for the seventh Sunday after Trinity.",
+	"sections": [
+		{
+			"title": "Part I",
+			"movements": [
+				{
+					"title": "Es wartet alles auf dich",
+					"type": "chorus",
+					"key": "g"
+				},
+				{
+					"title": "Was Kreaturen hält, das große Rund der Welt",
+					"type": "recitative",
+					"soloists": "bass"
+				},
+				{
+					"title": "Du, Herr, du krönst allein das Jahr",
+					"type": "aria",
+					"soloists": "alto",
+					"key": "Bb"
+				}
+			]
+		},
+		{
+			"title": "Part II",
+			"movements": [
+				{
+					"title": "Darum sollt ihr nicht sorgen",
+					"type": "basso solo",
+					"soloists": "bass",
+					"key": "g"
+				},
+				{
+					"title": "Gott versorget alles Leben",
+					"type": "aria",
+					"soloists": "soprano",
+					"key": "Eb"
+				},
+				{
+					"title": "Halt ich nur fest an ihm",
+					"type": "recitative",
+					"soloists": "soprano"
+				},
+				{
+					"title": "Gott hat die Erde zugericht",
+					"type": "chorale",
+					"key": "g"
+				}
+			]
+		}
+	],
+	"xref": {
+		"wp": "BWV_187"
+	}
+}

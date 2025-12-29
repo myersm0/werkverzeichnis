@@ -1,0 +1,48 @@
+{
+	"id": "8642736b",
+	"title": {
+		"de": "Herr Jesu Christ, wahr' Mensch und Gott"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1725, "premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "127"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, tenor, bass, choir (SATB), trumpet, 2 recorders, 2 oboes, 2 violins, viola, continuo",
+	"notes": "Composed for the Sunday Estomihi (the Sunday before Lent).",
+	"movements": [
+		{
+			"title": "Herr Jesu Christ, wahr' Mensch und Gott",
+			"type": "chorale fantasia",
+			"key": "F"
+		},
+		{
+			"title": "Wenn alles sich zur letzten Zeit entsetzet",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Die Seele ruht in Jesu Händen",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "c"
+		},
+		{
+			"title": "Wenn einstens die Posaunen schallen / Fürwahr, fürwahr, euch sage ich",
+			"type": "recitative and aria",
+			"soloists": "bass",
+			"key": "C"
+		},
+		{
+			"title": "Ach, Herr, vergib all unsre Schuld",
+			"type": "chorale",
+			"key": "F"
+		}
+	],
+	"xref": {
+		"wp": "BWV_127"
+	}
+}

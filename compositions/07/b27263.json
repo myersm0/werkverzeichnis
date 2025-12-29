@@ -1,0 +1,91 @@
+{
+	"id": "07b27263",
+	"title": {
+		"de": "Gott fähret auf mit Jauchzen"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1726},
+			"catalog": [{"scheme": "bwv", "number": "43"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 3 trumpets, timpani, 2 oboes, 2 violins, viola, continuo",
+	"notes": "Composed for the Feast of the Ascension.",
+	"sections": [
+		{
+			"title": "Part I",
+			"movements": [
+				{
+					"title": "Gott fähret auf mit Jauchzen",
+					"type": "chorus",
+					"key": "C"
+				},
+				{
+					"title": "Es will der Höchste sich ein Siegsgepräng bereiten",
+					"type": "recitative",
+					"soloists": "tenor"
+				},
+				{
+					"title": "Ja tausendmal tausend begleiten den Wagen",
+					"type": "aria",
+					"soloists": "tenor",
+					"key": "G"
+				},
+				{
+					"title": "Und der Herr, nachdem er mit ihnen geredet hatte",
+					"type": "recitative",
+					"soloists": "soprano"
+				},
+				{
+					"title": "Mein Jesus hat nunmehr",
+					"type": "aria",
+					"soloists": "soprano",
+					"key": "e"
+				}
+			]
+		},
+		{
+			"title": "Part II",
+			"movements": [
+				{
+					"title": "Es kommt der Helden Held",
+					"type": "recitative",
+					"soloists": "bass",
+					"key": "C"
+				},
+				{
+					"title": "Er ists, der ganz allein",
+					"type": "aria",
+					"soloists": "bass",
+					"key": "C"
+				},
+				{
+					"title": "Der Vater hat ihm ja",
+					"type": "recitative",
+					"soloists": "alto"
+				},
+				{
+					"title": "Ich sehe schon im Geist",
+					"type": "aria",
+					"soloists": "alto",
+					"key": "a"
+				},
+				{
+					"title": "Er will mir neben sich",
+					"type": "recitative",
+					"soloists": "soprano"
+				},
+				{
+					"title": "Du Lebensfürst, Herr Jesu Christ",
+					"type": "chorale",
+					"key": "G"
+				}
+			]
+		}
+	],
+	"xref": {
+		"wp": "BWV_43"
+	}
+}

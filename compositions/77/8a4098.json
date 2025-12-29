@@ -1,0 +1,54 @@
+{
+	"id": "778a4098",
+	"title": {
+		"de": "Du Hirte Israel, höre"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1724, "premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "104"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 oboes, 2 oboes d'amore, taille, 2 violins, viola, continuo",
+	"notes": "Composed for the second Sunday after Easter.",
+	"movements": [
+		{
+			"title": "Du Hirte Israel, höre",
+			"type": "chorus",
+			"key": "G"
+		},
+		{
+			"title": "Der höchste Hirte sorgt vor mich",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Verbirgt mein Hirte sich zu lange",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "b"
+		},
+		{
+			"title": "Ja, dieses Wort ist meiner Seelen Speise",
+			"type": "recitative",
+			"soloists": "bass",
+			"key": "D"
+		},
+		{
+			"title": "Beglückte Herde, Jesu Schafe",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "D"
+		},
+		{
+			"title": "Der Herr ist mein getreuer Hirt",
+			"type": "chorale",
+			"key": "A"
+		}
+	],
+	"xref": {
+		"wp": "BWV_104"
+	}
+}

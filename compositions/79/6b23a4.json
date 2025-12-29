@@ -1,0 +1,53 @@
+{
+	"id": "796b23a4",
+	"title": {
+		"de": "Liebster Immanuel, Herzog der Frommen"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1725, "premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "123"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 traversos, 2 oboes d'amore, 2 violins, viola, continuo",
+	"notes": "Composed for Epiphany.",
+	"movements": [
+		{
+			"title": "Liebster Immanuel, Herzog der Frommen",
+			"type": "chorale fantasia",
+			"key": "b"
+		},
+		{
+			"title": "Die Himmelssüßigkeit, der Auserwählten Lust",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Auch die harte Kreuzesreise",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "f#"
+		},
+		{
+			"title": "Kein Höllenfeind kann mich verschlingen",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Laß, o Welt, mich aus Verachtung",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "D"
+		},
+		{
+			"title": "Drum fahrt nur immer hin, ihr Eitelkeiten",
+			"type": "chorale",
+			"key": "b"
+		}
+	],
+	"xref": {
+		"wp": "BWV_123"
+	}
+}

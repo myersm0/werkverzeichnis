@@ -1,0 +1,44 @@
+{
+	"id": "d666dac2",
+	"title": {
+		"de": "Mein Gott, wie lang, ach lange?"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1716},
+			"catalog": [{"scheme": "bwv", "number": "155"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir, bassoon obbligato, 2 violins, viola, basso continuo",
+	"movements": [
+		{
+			"title": "Mein Gott, wie lang, ach lange?",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Du mußt glauben, du mußt hoffen",
+			"type": "aria",
+			"soloists": "alto, tenor"
+		},
+		{
+			"title": "So sei, o Seele, sei zufrieden",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Wirf, mein Herze, wirf dich noch",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Ob sich's anließ, als wollt er nicht",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_155"
+	}
+}

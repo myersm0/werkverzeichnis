@@ -1,0 +1,69 @@
+{
+	"id": "9f58173b",
+	"title": {
+		"de": "Es ist dir gesagt, Mensch, was gut ist"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1726},
+			"catalog": [{"scheme": "bwv", "number": "45"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "alto, tenor, bass, choir (SATB), 2 flauti traversi, 2 oboes, 2 violins, viola, basso continuo",
+	"notes": "Composed for the eighth Sunday after Trinity.",
+	"sections": [
+		{
+			"title": "Part I",
+			"movements": [
+				{
+					"title": "Es ist dir gesagt, Mensch, was gut ist",
+					"type": "chorus",
+					"key": "E"
+				},
+				{
+					"title": "Der Höchste läßt mich seinen Willen wissen",
+					"type": "recitative",
+					"soloists": "tenor"
+				},
+				{
+					"title": "Weiß ich Gottes Rechte",
+					"type": "aria",
+					"soloists": "tenor",
+					"key": "c#"
+				}
+			]
+		},
+		{
+			"title": "Part II",
+			"movements": [
+				{
+					"title": "Es werden viele zu mir sagen an jenem Tage",
+					"type": "arioso",
+					"soloists": "bass",
+					"key": "A"
+				},
+				{
+					"title": "Wer Gott bekennt aus wahrem Herzensgrund",
+					"type": "aria",
+					"soloists": "alto",
+					"key": "f#"
+				},
+				{
+					"title": "So wird denn Herz und Mund selbst von mir Richter sein",
+					"type": "recitative",
+					"soloists": "alto"
+				},
+				{
+					"title": "Gib, daß ich tu mit Fleiß",
+					"type": "chorale",
+					"key": "E"
+				}
+			]
+		}
+	],
+	"xref": {
+		"wp": "BWV_45"
+	}
+}

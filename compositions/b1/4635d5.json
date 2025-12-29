@@ -1,0 +1,55 @@
+{
+	"id": "b14635d5",
+	"title": {
+		"de": "Jesus schläft, was soll ich hoffen?"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1724, "premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "81"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "alto, tenor, bass soloists, four-part choir, 2 oboes d'amore, 2 recorders, 2 violins, viola, basso continuo",
+	"notes": "Composed for the fourth Sunday after Epiphany.",
+	"movements": [
+		{
+			"title": "Jesus schläft, was soll ich hoffen?",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Herr! warum trittest du so ferne?",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Die schäumenden Wellen von Belials Bächen",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Ihr Kleingläubigen, warum seid ihr so furchtsam?",
+			"type": "arioso",
+			"soloists": "bass"
+		},
+		{
+			"title": "Schweig, aufgetürmtes Meer!",
+			"type": "aria",
+			"soloists": "bass"
+		},
+		{
+			"title": "Wohl mir, mein Jesus spricht ein Wort",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Unter deinen Schirmen",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_81"
+	}
+}

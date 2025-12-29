@@ -1,0 +1,48 @@
+{
+	"id": "85c78fce",
+	"title": {
+		"de": "Wer sich selbst erhöhet, der soll erniedriget werden"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1726, "premiered": 1726},
+			"catalog": [{"scheme": "bwv", "number": "47"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, bass, choir (SATB), 2 oboes, 2 violins, viola, organ obbligato, basso continuo",
+	"notes": "Composed for the 17th Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Wer sich selbst erhöhet, der soll erniedriget werden",
+			"type": "chorus",
+			"key": "g"
+		},
+		{
+			"title": "Wer ein wahrer Christ will heißen",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "d"
+		},
+		{
+			"title": "Der Mensch ist Kot, Stank, Asch und Erde",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Jesu, beuge doch mein Herze",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "Eb"
+		},
+		{
+			"title": "Der zeitlichen Ehrn will ich gern entbehrn",
+			"type": "chorale",
+			"key": "c"
+		}
+	],
+	"xref": {
+		"wp": "BWV_47"
+	}
+}

@@ -1,0 +1,45 @@
+{
+	"id": "64667cba",
+	"title": {
+		"de": "Der Herr denket an uns"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {},
+			"catalog": [{"scheme": "bwv", "number": "196"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, tenor, bass, choir (SATB), 2 violins, viola, cello, violone, continuo",
+	"movements": [
+		{
+			"title": "Sinfonia",
+			"type": "instrumental"
+		},
+		{
+			"title": "Der Herr denket an uns und segnet uns",
+			"type": "chorus",
+			"key": "C"
+		},
+		{
+			"title": "Er segnet, die den Herrn fürchten",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "a"
+		},
+		{
+			"title": "Der Herr segne euch",
+			"type": "duet aria",
+			"soloists": "tenor, bass",
+			"key": "C"
+		},
+		{
+			"title": "Ihr seid die Gesegneten des Herrn",
+			"type": "chorus"
+		}
+	],
+	"xref": {
+		"wp": "BWV_196"
+	}
+}

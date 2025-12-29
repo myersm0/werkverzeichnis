@@ -1,0 +1,49 @@
+{
+	"id": "2ae56f15",
+	"title": {
+		"de": "Tritt auf die Glaubensbahn"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1714},
+			"catalog": [{"scheme": "bwv", "number": "152"}]
+		}
+	],
+	"form": "dialogue cantata",
+	"instrumentation": "soprano, bass, recorder, oboe, viola d'amore, viola da gamba, continuo",
+	"movements": [
+		{
+			"title": "Sinfonia",
+			"type": "instrumental"
+		},
+		{
+			"title": "Tritt auf die Glaubensbahn",
+			"type": "aria",
+			"soloists": "bass"
+		},
+		{
+			"title": "Der Heiland ist gesetzt",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Stein, der über alle Schätze",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Es ärgre sich die kluge Welt",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Wie soll ich dich, Liebster der Seelen, umfassen?",
+			"type": "duet",
+			"soloists": "soprano, bass"
+		}
+	],
+	"xref": {
+		"wp": "BWV_152"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"id": "b88ce788",
+	"title": {
+		"de": "Der Friede sei mit dir"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {},
+			"catalog": [{"scheme": "bwv", "number": "158"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, bass, choir (SATB), oboe, violin, basso continuo",
+	"movements": [
+		{
+			"title": "Der Friede sei mit dir",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Welt, ade, ich bin dein müde",
+			"type": "aria and chorale",
+			"soloists": "bass, soprano"
+		},
+		{
+			"title": "Nun, Herr, regiere meinen Sinn",
+			"type": "recitative and arioso",
+			"soloists": "bass"
+		},
+		{
+			"title": "Hier ist das rechte Osterlamm",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_158"
+	}
+}

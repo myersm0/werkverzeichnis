@@ -1,0 +1,49 @@
+{
+	"id": "7043d457",
+	"title": {
+		"de": "Bringet dem Herrn Ehre seines Namens"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1725},
+			"catalog": [{"scheme": "bwv", "number": "148"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "alto, tenor, choir (SATB), trumpet, 3 oboes, 2 violins, viola, basso continuo",
+	"notes": "Composed for the 17th Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Bringet dem Herrn Ehre seines Namens",
+			"type": "chorus"
+		},
+		{
+			"title": "Ich eile, die Lehren des Lebens zu hören",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "So wie der Hirsch nach frischem Wasser schreit",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Mund und Herze steht dir offen",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Bleib auch, mein Gott, in mir",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Amen zu aller Stund",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_148"
+	}
+}

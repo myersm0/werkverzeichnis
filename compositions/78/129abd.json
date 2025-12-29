@@ -1,0 +1,46 @@
+{
+	"id": "78129abd",
+	"title": {
+		"de": "Das ist je gewißlich wahr"
+	},
+	"attribution": [
+		{
+			"composer": "telemann",
+			"dates": {"composed": 1720},
+			"catalog": [{"scheme": "twv", "number": "1:183"}],
+			"since": "1990"
+		},
+		{
+			"composer": "bach",
+			"status": "spurious",
+			"catalog": [{"scheme": "bwv", "number": "Anh. III 141"}],
+			"note": "spurious attribution; moved to BWV Anhang III in 1990s second edition"
+		},
+		{
+			"composer": "bach",
+			"catalog": [{"scheme": "bwv", "number": "141"}]
+		}
+	],
+	"form": "cantata",
+	"instrumentation": "alto, tenor, bass, choir (SATB), 2 oboes, 2 violins, viola, basso continuo",
+	"movements": [
+		{
+			"type": "chorus"
+		},
+		{
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"type": "aria",
+			"soloists": "bass"
+		}
+	],
+	"xref": {
+		"wp": "BWV_141"
+	}
+}

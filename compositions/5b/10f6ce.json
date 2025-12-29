@@ -1,0 +1,49 @@
+{
+	"id": "5b10f6ce",
+	"title": {
+		"de": "Jesus nahm zu sich die Zwölfe"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1723, "premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "22"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "alto, tenor, bass, choir (SATB), oboe, 2 violins, viola, continuo",
+	"movements": [
+		{
+			"title": "Jesus nahm zu sich die Zwölfe",
+			"type": "arioso",
+			"soloists": "tenor, bass",
+			"key": "g"
+		},
+		{
+			"title": "Mein Jesu, ziehe mich nach dir",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "c"
+		},
+		{
+			"title": "Mein Jesu, ziehe mich, so werd ich laufen",
+			"type": "recitative",
+			"soloists": "bass",
+			"key": "Eb"
+		},
+		{
+			"title": "Mein alles in allem, mein ewiges Gut",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "Bb"
+		},
+		{
+			"title": "Ertöte uns durch dein Güte",
+			"type": "chorale",
+			"key": "Bb"
+		}
+	],
+	"xref": {
+		"wp": "BWV_22"
+	}
+}

@@ -1,0 +1,53 @@
+{
+	"id": "77add530",
+	"title": {
+		"de": "Wohl dem, der sich auf seinen Gott"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "139"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 oboes d'amore, 2 violins, viola, continuo",
+	"notes": "Composed for the 23rd Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Wohl dem, der sich auf seinen Gott",
+			"type": "chorale fantasia",
+			"key": "E"
+		},
+		{
+			"title": "Gott ist mein Freund; was hilft das Toben",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "A"
+		},
+		{
+			"title": "Der Heiland sendet ja die Seinen",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Das Unglück schlägt auf allen Seiten",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "f#"
+		},
+		{
+			"title": "Ja, trag ich gleich den größten Feind in mir",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Dahero Trotz der Höllen Heer!",
+			"type": "chorale",
+			"key": "E"
+		}
+	],
+	"xref": {
+		"wp": "BWV_139"
+	}
+}

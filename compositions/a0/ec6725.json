@@ -1,0 +1,50 @@
+{
+	"id": "a0ec6725",
+	"title": {
+		"de": "Jauchzet Gott in allen Landen"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1730},
+			"catalog": [{"scheme": "bwv", "number": "51"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, trumpet, 2 violins, viola, continuo",
+	"movements": [
+		{
+			"title": "Jauchzet Gott in allen Landen",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "C"
+		},
+		{
+			"title": "Wir beten zu dem Tempel an",
+			"type": "recitative",
+			"soloists": "soprano",
+			"key": "a"
+		},
+		{
+			"title": "Höchster, mache deine Güte",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "a"
+		},
+		{
+			"title": "Sei Lob und Preis mit Ehren",
+			"type": "chorale fantasia",
+			"soloists": "soprano",
+			"key": "C"
+		},
+		{
+			"title": "Alleluja",
+			"type": "chorale fantasia",
+			"soloists": "soprano",
+			"key": "C"
+		}
+	],
+	"xref": {
+		"wp": "BWV_51"
+	}
+}

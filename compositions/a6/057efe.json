@@ -1,0 +1,43 @@
+{
+	"id": "a6057efe",
+	"title": {
+		"de": "Gelobet sei der Herr, mein Gott"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1727},
+			"catalog": [{"scheme": "bwv", "number": "129"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, bass, choir (SATB), 3 trumpets, timpani, flauto traverso, 2 oboes, oboe d'amore, 2 violins, viola, basso continuo",
+	"movements": [
+		{
+			"title": "Gelobet sei der Herr, mein Gott",
+			"type": "chorus"
+		},
+		{
+			"title": "Gelobet sei der Herr, mein Gott, mein Heil",
+			"type": "aria",
+			"soloists": "bass"
+		},
+		{
+			"title": "Gelobet sei der Herr, mein Gott, mein Trost",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Gelobet sei der Herr, mein Gott, der ewig lebet",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Dem wir das Heilig jetzt",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_129"
+	}
+}

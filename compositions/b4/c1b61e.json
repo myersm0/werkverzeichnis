@@ -1,0 +1,53 @@
+{
+	"id": "b4c1b61e",
+	"title": {
+		"de": "Du Friedefürst, Herr Jesu Christ"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "116"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), natural horn, 2 oboes d'amore, 2 violins, viola, continuo",
+	"notes": "Composed for the 25th Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Du Friedefürst, Herr Jesu Christ",
+			"type": "chorale fantasia",
+			"key": "A"
+		},
+		{
+			"title": "Ach, unaussprechlich ist die Not",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "f#"
+		},
+		{
+			"title": "Gedenke doch, o Jesu",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Ach, wir bekennen unsre Schuld",
+			"type": "aria",
+			"soloists": "soprano, tenor, bass",
+			"key": "E"
+		},
+		{
+			"title": "Ach, laß uns durch die scharfen Ruten",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Erleucht auch unser Sinn und Herz",
+			"type": "chorale",
+			"key": "A"
+		}
+	],
+	"xref": {
+		"wp": "BWV_116"
+	}
+}

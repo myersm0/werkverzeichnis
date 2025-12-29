@@ -1,0 +1,65 @@
+{
+	"id": "f706ac18",
+	"title": {
+		"de": "Wir danken dir, Gott, wir danken dir"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1731, "premiered": 1731},
+			"catalog": [{"scheme": "bwv", "number": "29"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 3 trumpets, timpani, 2 oboes, 2 violins, viola, organ obbligato, basso continuo",
+	"movements": [
+		{
+			"title": "Sinfonia",
+			"type": "sinfonia",
+			"key": "D"
+		},
+		{
+			"title": "Wir danken dir, Gott, wir danken dir",
+			"type": "chorus",
+			"key": "D"
+		},
+		{
+			"title": "Halleluja, Stärk und Macht",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "A"
+		},
+		{
+			"title": "Gottlob! es geht uns wohl!",
+			"type": "recitative",
+			"soloists": "bass",
+			"key": "f#"
+		},
+		{
+			"title": "Gedenk an uns mit deiner Liebe",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "b"
+		},
+		{
+			"title": "Vergiß es ferner nicht mit deiner Hand",
+			"type": "recitative",
+			"soloists": "alto, SATB",
+			"key": "D"
+		},
+		{
+			"title": "Halleluja, Stärk und Macht",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "D"
+		},
+		{
+			"title": "Sei Lob und Preis mit Ehren",
+			"type": "chorale",
+			"key": "D"
+		}
+	],
+	"xref": {
+		"wp": "BWV_29"
+	}
+}

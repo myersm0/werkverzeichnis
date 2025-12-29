@@ -1,0 +1,64 @@
+{
+	"id": "cf7e46bc",
+	"title": {
+		"de": "Herr, deine Augen sehen nach dem Glauben"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1726},
+			"catalog": [{"scheme": "bwv", "number": "102"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "alto, tenor, bass, choir (SATB), flauto traverso, 2 oboes, 2 violins, viola, basso continuo",
+	"notes": "Composed for the tenth Sunday after Trinity.",
+	"sections": [
+		{
+			"title": "Part I",
+			"movements": [
+				{
+					"title": "Herr, deine Augen sehen nach dem Glauben",
+					"type": "chorus"
+				},
+				{
+					"title": "Wo ist das Ebenbild, das Gott uns eingepräget",
+					"type": "recitative",
+					"soloists": "bass"
+				},
+				{
+					"title": "Weh der Seele, die den Schaden nicht mehr kennt",
+					"type": "aria",
+					"soloists": "alto"
+				},
+				{
+					"title": "Verachtest du den Reichtum seiner Gnade",
+					"type": "arioso",
+					"soloists": "bass"
+				}
+			]
+		},
+		{
+			"title": "Part II",
+			"movements": [
+				{
+					"title": "Erschrecke doch, du allzu sichre Seele",
+					"type": "aria",
+					"soloists": "tenor"
+				},
+				{
+					"title": "Beim Warten ist Gefahr",
+					"type": "recitative",
+					"soloists": "alto"
+				},
+				{
+					"title": "Heut lebst du, heut bekehre dich",
+					"type": "chorale"
+				}
+			]
+		}
+	],
+	"xref": {
+		"wp": "BWV_102"
+	}
+}

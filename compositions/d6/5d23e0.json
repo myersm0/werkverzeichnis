@@ -1,0 +1,59 @@
+{
+	"id": "d65d23e0",
+	"title": {
+		"de": "Wo Gott der Herr nicht bei uns hält"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "178"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), horn, 2 oboes, 2 oboes d'amore, 2 violins, viola, continuo",
+	"notes": "Composed for the eighth Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Wo Gott der Herr nicht bei uns hält",
+			"type": "chorale fantasia",
+			"key": "a"
+		},
+		{
+			"title": "Was Menschenkraft und -witz anfäht",
+			"type": "chorale and recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Gleichwie die wilden Meereswellen",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "G"
+		},
+		{
+			"title": "Sie stellen uns wie Ketzern nach",
+			"type": "chorale",
+			"soloists": "tenor",
+			"key": "b"
+		},
+		{
+			"title": "Aufsperren sie den Rachen weit",
+			"type": "chorale and recitative",
+			"key": "b"
+		},
+		{
+			"title": "Schweig, schweig nur, taumelnde Vernunft!",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "e"
+		},
+		{
+			"title": "Die Feind sind all in deiner Hand",
+			"type": "chorale",
+			"key": "a"
+		}
+	],
+	"xref": {
+		"wp": "BWV_178"
+	}
+}

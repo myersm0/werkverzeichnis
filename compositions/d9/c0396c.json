@@ -1,0 +1,64 @@
+{
+	"id": "d9c0396c",
+	"title": {
+		"de": "Ein feste Burg ist unser Gott"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1723, "published": 1821},
+			"catalog": [{"scheme": "bwv", "number": "80"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 3 oboes, 2 oboes d'amore, oboe da caccia, 2 violins, viola, cello, continuo",
+	"notes": "Reworked from BWV 80a (Weimar version). Later Leipzig version (80.3) features extended chorale fantasia as opening movement.",
+	"movements": [
+		{
+			"title": "Ein feste Burg ist unser Gott",
+			"type": "chorale fantasia",
+			"key": "D"
+		},
+		{
+			"title": "Alles, was von Gott geboren / Mit unser Macht ist nichts getan",
+			"type": "aria and chorale",
+			"key": "D",
+			"soloists": "bass, soprano"
+		},
+		{
+			"title": "Erwäge doch, Kind Gottes",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Komm in mein Herzenshaus",
+			"type": "aria",
+			"key": "b",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Und wenn die Welt voll Teufel wär",
+			"type": "chorale",
+			"key": "D"
+		},
+		{
+			"title": "So stehe dann bei Christi blutgefärbter Fahne",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Wie selig sind doch die, die Gott im Munde tragen",
+			"type": "aria duetto",
+			"key": "G",
+			"soloists": "alto, tenor"
+		},
+		{
+			"title": "Das Wort sie sollen lassen stahn",
+			"type": "chorale",
+			"key": "D"
+		}
+	],
+	"xref": {
+		"wp": "BWV_80"
+	}
+}

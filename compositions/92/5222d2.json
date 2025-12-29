@@ -1,0 +1,49 @@
+{
+	"id": "925222d2",
+	"title": {
+		"de": "Ich habe meine Zuversicht"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1728},
+			"catalog": [{"scheme": "bwv", "number": "188"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 oboes, taille, 2 violins, viola, organ, basso continuo",
+	"notes": "Composed for the 21st Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Sinfonia",
+			"type": "instrumental"
+		},
+		{
+			"title": "Ich habe meine Zuversicht",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Gott meint es gut mit jedermann",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Unerforschlich ist die Weise",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Die Macht der Welt verlieret sich",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Auf meinen lieben Gott",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_188"
+	}
+}

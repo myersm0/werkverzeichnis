@@ -1,0 +1,53 @@
+{
+	"id": "c811853c",
+	"title": {
+		"de": "O heilges Geist- und Wasserbad"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1715},
+			"catalog": [{"scheme": "bwv", "number": "165"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 violins, viola, bassoon, cello, continuo",
+	"notes": "Composed for Trinity Sunday in Weimar.",
+	"movements": [
+		{
+			"title": "O heilges Geist- und Wasserbad",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "G"
+		},
+		{
+			"title": "Die sündige Geburt verdammter Adamserben",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Jesu, der aus großer Liebe",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "e"
+		},
+		{
+			"title": "Ich habe ja, mein Seelenbräutigam",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Jesu, meines Todes Tod",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "G"
+		},
+		{
+			"title": "Sein Wort, sein Tauf, sein Nachtmahl",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_165"
+	}
+}

@@ -1,0 +1,54 @@
+{
+	"id": "1b75f214",
+	"title": {
+		"de": "Wer nur den lieben Gott läßt walten"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1724, "premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "93"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 oboes, 2 violins, viola, viola da gamba, basso continuo",
+	"notes": "Composed for the fifth Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Wer nur den lieben Gott läßt walten",
+			"type": "chorale fantasia"
+		},
+		{
+			"title": "Was helfen uns die schweren Sorgen?",
+			"type": "recitative and chorale",
+			"soloists": "bass"
+		},
+		{
+			"title": "Man halte nur ein wenig stille",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Er kennt die rechten Freudenstunden",
+			"type": "duet aria",
+			"soloists": "soprano, alto"
+		},
+		{
+			"title": "Denk nicht in deiner Drangsalhitze",
+			"type": "recitative and chorale",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Ich will auf den Herren schaun",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Sing, bet und geh auf Gottes Wegen",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_93"
+	}
+}

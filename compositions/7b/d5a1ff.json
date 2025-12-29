@@ -1,0 +1,54 @@
+{
+	"id": "7bd5a1ff",
+	"title": {
+		"de": "Das neugeborne Kindelein"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "122"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 3 recorders, 2 oboes, taille, 2 violins, viola, basso continuo",
+	"notes": "Composed for the Sunday after Christmas.",
+	"movements": [
+		{
+			"title": "Das neugeborne Kindelein",
+			"type": "chorale fantasia",
+			"key": "g"
+		},
+		{
+			"title": "O Menschen, die ihr täglich sündigt",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "c"
+		},
+		{
+			"title": "Die Engel, welche sich zuvor",
+			"type": "recitative",
+			"soloists": "soprano",
+			"key": "g"
+		},
+		{
+			"title": "Ist Gott versöhnt und unser Freund",
+			"type": "aria and chorale",
+			"soloists": "soprano, tenor, alto",
+			"key": "d"
+		},
+		{
+			"title": "Dies ist ein Tag, den selbst der Herr gemacht",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Es bringt das rechte Jubeljahr",
+			"type": "chorale",
+			"key": "g"
+		}
+	],
+	"xref": {
+		"wp": "BWV_122"
+	}
+}

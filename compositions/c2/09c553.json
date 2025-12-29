@@ -1,0 +1,60 @@
+{
+	"id": "c209c553",
+	"title": {
+		"de": "Unser Mund sei voll Lachens"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "110"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 3 trumpets, timpani, 2 flauti traversi, 3 oboes, oboe d'amore, oboe da caccia, 2 violins, viola, bassoon, continuo",
+	"notes": "Christmas cantata composed for Christmas Day.",
+	"movements": [
+		{
+			"title": "Unser Mund sei voll Lachens",
+			"type": "chorus",
+			"key": "D"
+		},
+		{
+			"title": "Ihr Gedanken und ihr Sinnen",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "b"
+		},
+		{
+			"title": "Dir, Herr, ist niemand gleich",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Ach Herr! was ist ein Menschenkind",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "f#"
+		},
+		{
+			"title": "Ehre sei Gott in der Höhe",
+			"type": "duet",
+			"soloists": "soprano, tenor",
+			"key": "A"
+		},
+		{
+			"title": "Wacht auf, ihr Adern und ihr Glieder",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "D"
+		},
+		{
+			"title": "Alleluja! Gelobt sei Gott",
+			"type": "chorale",
+			"key": "b"
+		}
+	],
+	"xref": {
+		"wp": "BWV_110"
+	}
+}

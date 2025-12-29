@@ -1,0 +1,66 @@
+{
+	"id": "00a9f225",
+	"title": {
+		"de": "Herr Jesu Christ, du höchstes Gut"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "113"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 oboes d'amore, flauto traverso, 2 violins, viola, continuo",
+	"notes": "Composed for the eleventh Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Herr Jesu Christ, du höchstes Gut",
+			"type": "chorale fantasia",
+			"key": "b"
+		},
+		{
+			"title": "Erbarm dich mein in solcher Last",
+			"type": "chorale",
+			"key": "f#",
+			"soloists": "alto"
+		},
+		{
+			"title": "Fürwahr, wenn mir das kömmet ein",
+			"type": "aria",
+			"key": "A",
+			"soloists": "bass"
+		},
+		{
+			"title": "Jedoch dein heilsam Wort, das macht",
+			"type": "chorale and recitative",
+			"key": "e",
+			"soloists": "bass"
+		},
+		{
+			"title": "Jesus nimmt die Sünder an",
+			"type": "aria",
+			"key": "D",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Der Heiland nimmt die Sünder an",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Ach Herr, mein Gott, vergib mirs doch",
+			"type": "aria",
+			"key": "e",
+			"soloists": "soprano, alto"
+		},
+		{
+			"title": "Stärk mich mit deinem Freudengeist",
+			"type": "chorale",
+			"key": "b"
+		}
+	],
+	"xref": {
+		"wp": "BWV_113"
+	}
+}

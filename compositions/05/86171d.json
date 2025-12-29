@@ -1,0 +1,86 @@
+{
+	"id": "0586171d",
+	"title": {
+		"de": "Herz und Mund und Tat und Leben"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1723},
+			"catalog": [{"scheme": "bwv", "number": "147"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), trumpet, 2 oboes, oboe d'amore, oboe da caccia, 2 violins, viola, continuo (including bassoon)",
+	"notes": "Composed for the Marian feast of the Visitation (2 July). Based on Bach's earlier cantata BWV 147a from Weimar (1716), expanded from six to ten movements.",
+	"sections": [
+		{
+			"title": "Part I",
+			"movements": [
+				{
+					"title": "Herz und Mund und Tat und Leben",
+					"type": "chorus",
+					"key": "C"
+				},
+				{
+					"title": "Gebenedeiter Mund!",
+					"type": "recitative",
+					"soloists": "tenor"
+				},
+				{
+					"title": "Schäme dich, o Seele nicht",
+					"type": "aria",
+					"soloists": "alto",
+					"key": "a"
+				},
+				{
+					"title": "Verstockung kann Gewaltige verblenden",
+					"type": "recitative",
+					"soloists": "bass"
+				},
+				{
+					"title": "Bereite dir, Jesu, noch itzo die Bahn",
+					"type": "aria",
+					"soloists": "soprano",
+					"key": "d"
+				},
+				{
+					"title": "Wohl mir, daß ich Jesum habe",
+					"type": "chorale",
+					"key": "G"
+				}
+			]
+		},
+		{
+			"title": "Part II",
+			"movements": [
+				{
+					"title": "Hilf, Jesu, hilf, daß ich auch dich bekenne",
+					"type": "aria",
+					"soloists": "tenor",
+					"key": "F"
+				},
+				{
+					"title": "Der höchsten Allmacht Wunderhand",
+					"type": "recitative",
+					"soloists": "alto",
+					"key": "C"
+				},
+				{
+					"title": "Ich will von Jesu Wundern singen",
+					"type": "aria",
+					"soloists": "bass",
+					"key": "C"
+				},
+				{
+					"title": "Jesus bleibet meine Freude",
+					"type": "chorale",
+					"key": "G"
+				}
+			]
+		}
+	],
+	"xref": {
+		"wp": "BWV_147"
+	}
+}

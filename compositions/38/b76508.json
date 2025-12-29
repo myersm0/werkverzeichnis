@@ -1,0 +1,58 @@
+{
+	"id": "38b76508",
+	"title": {
+		"de": "Man singet mit Freuden vom Sieg"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1729},
+			"catalog": [{"scheme": "bwv", "number": "149"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 3 trumpets, timpani, 3 oboes, bassoon, 2 violins, viola, violone, basso continuo",
+	"notes": "Composed for Michaelmas.",
+	"movements": [
+		{
+			"title": "Man singet mit Freuden vom Sieg",
+			"type": "chorus",
+			"key": "D"
+		},
+		{
+			"title": "Kraft und Stärke sei gesungen",
+			"type": "aria",
+			"soloists": "bass"
+		},
+		{
+			"title": "Ich fürchte mich",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Gottes Engel weichen nie",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "A"
+		},
+		{
+			"title": "Ich danke dir",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Seid wachsam, ihr heiligen Wächter",
+			"type": "aria",
+			"soloists": "alto, tenor",
+			"key": "G"
+		},
+		{
+			"title": "Ach Herr, lass dein lieb Engelein",
+			"type": "chorale",
+			"key": "C"
+		}
+	],
+	"xref": {
+		"wp": "BWV_149"
+	}
+}

@@ -1,0 +1,94 @@
+{
+	"id": "ba55fe20",
+	"title": {
+		"de": "Höchsterwünschtes Freudenfest"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "194"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, tenor, bass, choir (SATB), 3 oboes, bassoon, 2 violins, viola, continuo",
+	"sections": [
+		{
+			"title": "Part I",
+			"movements": [
+				{
+					"title": "Höchsterwünschtes Freudenfest",
+					"type": "chorus",
+					"key": "Bb"
+				},
+				{
+					"title": "Unendlich großer Gott, ach wende dich",
+					"type": "recitative",
+					"soloists": "bass"
+				},
+				{
+					"title": "Was des Höchsten Glanz erfüllt",
+					"type": "aria",
+					"soloists": "bass",
+					"key": "Bb"
+				},
+				{
+					"title": "Wie könnte dir, du höchstes Angesicht",
+					"type": "recitative",
+					"soloists": "soprano"
+				},
+				{
+					"title": "Hilf, Gott, dass es uns gelingt",
+					"type": "aria",
+					"soloists": "soprano",
+					"key": "Eb"
+				},
+				{
+					"title": "Heilger Geist ins Himmels Throne",
+					"type": "chorale",
+					"key": "Bb"
+				}
+			]
+		},
+		{
+			"title": "Part II",
+			"movements": [
+				{
+					"title": "Ihr Heiligen, erfreuet euch",
+					"type": "recitative",
+					"soloists": "tenor"
+				},
+				{
+					"title": "Des Höchsten Gegenwart allein",
+					"type": "aria",
+					"soloists": "tenor",
+					"key": "g"
+				},
+				{
+					"title": "Kann wohl ein Mensch zu Gott im Himmel steigen",
+					"type": "recitative duetto",
+					"soloists": "soprano, bass"
+				},
+				{
+					"title": "O wie wohl ist uns geschehn",
+					"type": "aria duetto",
+					"soloists": "soprano, bass",
+					"key": "F"
+				},
+				{
+					"title": "Wohlan demnach, du heilige Gemeine",
+					"type": "recitative",
+					"soloists": "bass"
+				},
+				{
+					"title": "Sprich Ja zu meinen Taten",
+					"type": "chorale",
+					"key": "Bb"
+				}
+			]
+		}
+	],
+	"xref": {
+		"wp": "BWV_194"
+	}
+}

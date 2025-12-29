@@ -1,0 +1,63 @@
+{
+	"id": "475c345e",
+	"title": {
+		"de": "Darzu ist erschienen der Sohn Gottes"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1723, "premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "40"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "alto, tenor, bass, choir (SATB), 2 horns, 2 oboes, 2 violins, viola, continuo",
+	"notes": "Composed for the Second Day of Christmas.",
+	"movements": [
+		{
+			"title": "Darzu ist erschienen der Sohn Gottes",
+			"type": "chorus",
+			"key": "F"
+		},
+		{
+			"title": "Das Wort ward Fleisch",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Die Sünd macht Leid",
+			"type": "chorale",
+			"key": "g"
+		},
+		{
+			"title": "Höllische Schlange, wird dir nicht bange?",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "d"
+		},
+		{
+			"title": "Die Schlange, so im Paradies",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Schüttle deinen Kopf und sprich",
+			"type": "chorale",
+			"key": "d"
+		},
+		{
+			"title": "Christenkinder, freuet euch!",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "F"
+		},
+		{
+			"title": "Jesu, nimm dich deiner Glieder",
+			"type": "chorale",
+			"key": "f"
+		}
+	],
+	"xref": {
+		"wp": "BWV_40"
+	}
+}

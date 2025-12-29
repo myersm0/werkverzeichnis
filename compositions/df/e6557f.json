@@ -1,0 +1,53 @@
+{
+	"id": "dfe6557f",
+	"title": {
+		"de": "Was Gott tut, das ist wohlgetan"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "99"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), horn, flauto traverso, oboe d'amore, 2 violins, viola, violone, basso continuo",
+	"notes": "Composed for the 15th Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Was Gott tut, das ist wohlgetan",
+			"type": "chorale fantasia",
+			"key": "G"
+		},
+		{
+			"title": "Sein Wort der Wahrheit stehet fest",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Erschüttre dich nur nicht, verzagte Seele",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "b"
+		},
+		{
+			"title": "Nun, der von Ewigkeit geschloß'ne Bund",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Wenn des Kreuzes Bitterkeiten",
+			"type": "aria",
+			"soloists": "soprano, alto",
+			"key": "b"
+		},
+		{
+			"title": "Was Gott tut, das ist wohlgetan",
+			"type": "chorale",
+			"key": "G"
+		}
+	],
+	"xref": {
+		"wp": "BWV_99"
+	}
+}

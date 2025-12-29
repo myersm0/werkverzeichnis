@@ -1,0 +1,50 @@
+{
+	"id": "9b6ed591",
+	"title": {
+		"de": "Ihr, die ihr euch von Christo nennet"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "164"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 flauto traverso, 2 oboes, 2 violins, viola, basso continuo",
+	"notes": "Composed for the 13th Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Ihr, die ihr euch von Christo nennet",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Wir hören zwar, was selbst die Liebe spricht",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Nur durch Lieb und durch Erbarmen",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Ach, schmelze doch durch deinen Liebesstrahl",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Händen, die sich nicht verschließen",
+			"type": "duet",
+			"soloists": "soprano, bass"
+		},
+		{
+			"title": "Ertöt uns durch dein Güte",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_164"
+	}
+}

@@ -1,0 +1,50 @@
+{
+	"id": "53556bcd",
+	"title": {
+		"de": "Ich will den Kreuzstab gerne tragen"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1726},
+			"catalog": [{"scheme": "bwv", "number": "56"}]
+		}
+	],
+	"form": "solo cantata",
+	"instrumentation": "bass soloist, SATB choir (final movement), 2 oboes, taille, 2 violins, viola, cello, continuo",
+	"notes": "Composed for the 19th Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Ich will den Kreuzstab gerne tragen",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "g"
+		},
+		{
+			"title": "Mein Wandel auf der Welt / ist einer Schiffahrt gleich",
+			"type": "recitative",
+			"soloists": "bass",
+			"key": "Bb"
+		},
+		{
+			"title": "Endlich, endlich wird mein Joch / wieder von mir weichen müssen",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "Bb"
+		},
+		{
+			"title": "Ich stehe fertig und bereit",
+			"type": "recitative",
+			"soloists": "bass",
+			"key": "g"
+		},
+		{
+			"title": "Komm, o Tod, du Schlafes Bruder",
+			"type": "chorale",
+			"key": "c"
+		}
+	],
+	"xref": {
+		"wp": "BWV_56"
+	}
+}

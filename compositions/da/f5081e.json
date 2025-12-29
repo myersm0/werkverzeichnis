@@ -1,0 +1,78 @@
+{
+	"id": "daf5081e",
+	"title": {
+		"de": "Laß, Fürstin, laß noch einen Strahl"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1727},
+			"catalog": [{"scheme": "bwv", "number": "198"}]
+		}
+	],
+	"form": "secular cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 flutes, 2 oboes d'amore, 2 violins, viola, 2 violas da gamba, 2 lutes, basso continuo",
+	"notes": "Funeral ode",
+	"sections": [
+		{
+			"title": "First part",
+			"movements": [
+				{
+					"title": "Laß, Fürstin, laß noch einen Strahl",
+					"type": "chorus"
+				},
+				{
+					"title": "Dein Sachsen, dein bestürztes Meißen",
+					"type": "recitative",
+					"soloists": "soprano"
+				},
+				{
+					"title": "Verstummt, verstummt, ihr holden Saiten!",
+					"type": "aria",
+					"soloists": "soprano"
+				},
+				{
+					"title": "Der Glocken bebendes Getön",
+					"type": "recitative",
+					"soloists": "alto"
+				},
+				{
+					"title": "Wie starb die Heldin so vergnügt!",
+					"type": "aria",
+					"soloists": "alto"
+				},
+				{
+					"title": "Ihr Leben ließ die Kunst zu sterben",
+					"type": "recitative",
+					"soloists": "tenor"
+				},
+				{
+					"title": "An dir, du Fürbild großer Frauen",
+					"type": "chorus"
+				}
+			]
+		},
+		{
+			"title": "Second part",
+			"movements": [
+				{
+					"title": "Der Ewigkeit saphirnes Haus",
+					"type": "aria",
+					"soloists": "tenor"
+				},
+				{
+					"title": "Was Wunder ists? Du bist es wert",
+					"type": "recitative",
+					"soloists": "bass"
+				},
+				{
+					"title": "Doch, Königin! du stirbest nicht",
+					"type": "chorus"
+				}
+			]
+		}
+	],
+	"xref": {
+		"wp": "BWV_198"
+	}
+}

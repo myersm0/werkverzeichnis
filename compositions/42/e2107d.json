@@ -1,0 +1,53 @@
+{
+	"id": "42e2107d",
+	"title": {
+		"de": "Christum wir sollen loben schon"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1724, "premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "121"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), cornett, 3 trombones, oboe d'amore, 2 violins, viola, basso continuo",
+	"notes": "Composed for the second day of Christmas.",
+	"movements": [
+		{
+			"title": "Christum wir sollen loben schon",
+			"type": "chorale fantasia",
+			"key": "e"
+		},
+		{
+			"title": "O du von Gott erhöhte Kreatur",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "b"
+		},
+		{
+			"title": "Der Gnade unermesslich's Wesen",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Johannis freudenvolles Springen",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "C"
+		},
+		{
+			"title": "Doch wie erblickt es dich in deiner Krippe",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Lob, Ehr und Danke sei dir gesagt",
+			"type": "chorale",
+			"key": "e"
+		}
+	],
+	"xref": {
+		"wp": "BWV_121"
+	}
+}

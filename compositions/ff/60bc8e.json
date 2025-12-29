@@ -1,0 +1,53 @@
+{
+	"id": "ff60bc8e",
+	"title": {
+		"de": "Erschallet, ihr Lieder, erklinget, ihr Saiten!"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1714, "premiered": 1714},
+			"catalog": [{"scheme": "bwv", "number": "172"}]
+		}
+	],
+	"form": "church cantata",
+	"notes": "Composed for Pentecost Sunday in Weimar.",
+	"movements": [
+		{
+			"title": "Erschallet, ihr Lieder",
+			"type": "chorus",
+			"key": "C"
+		},
+		{
+			"title": "Wer mich liebet, der wird mein Wort halten",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Heiligste Dreieinigkeit",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "C"
+		},
+		{
+			"title": "O Seelenparadies",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "a"
+		},
+		{
+			"title": "Komm, laß mich nicht länger warten",
+			"type": "aria",
+			"soloists": "soprano, alto",
+			"key": "F"
+		},
+		{
+			"title": "Von Gott kömmt mir ein Freudenschein",
+			"type": "chorale",
+			"key": "F"
+		}
+	],
+	"xref": {
+		"wp": "BWV_172"
+	}
+}

@@ -1,0 +1,47 @@
+{
+	"id": "ef4a7643",
+	"title": {
+		"de": "Der Herr ist mein getreuer Hirt"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1731, "premiered": 1731},
+			"catalog": [{"scheme": "bwv", "number": "112"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 horns, 2 oboes d'amore, 2 violins, viola, continuo",
+	"notes": "Composed for the second Sunday after Easter.",
+	"movements": [
+		{
+			"title": "Der Herr ist mein getreuer Hirt",
+			"type": "chorale fantasia",
+			"key": "G"
+		},
+		{
+			"title": "Zum reinen Wasser er mich weist",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Und ob ich wandelt im finstern Tal",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Du bereitest für mir einen Tisch",
+			"type": "aria",
+			"soloists": "soprano, tenor",
+			"key": "D"
+		},
+		{
+			"title": "Gutes und die Barmherzigkeit",
+			"type": "chorale",
+			"key": "G"
+		}
+	],
+	"xref": {
+		"wp": "BWV_112"
+	}
+}

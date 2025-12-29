@@ -1,0 +1,54 @@
+{
+	"id": "9586221c",
+	"title": {
+		"de": "Was Gott tut, das ist wohlgetan"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1734},
+			"catalog": [{"scheme": "bwv", "number": "100"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 horns, timpani, flauto traverso, oboe d'amore, 2 violins, viola, cello, violone, basso continuo",
+	"movements": [
+		{
+			"title": "Was Gott tut, das ist wohlgetan",
+			"type": "chorale fantasia",
+			"key": "G"
+		},
+		{
+			"title": "Er wird mich nicht betrügen",
+			"type": "aria duetto",
+			"soloists": "alto, tenor",
+			"key": "D"
+		},
+		{
+			"title": "Er wird mich wohl bedenken",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "b"
+		},
+		{
+			"title": "Er ist mein Licht, mein Leben",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "G"
+		},
+		{
+			"title": "Muß ich den Kelch gleich schmecken",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "e"
+		},
+		{
+			"title": "Dabei will ich verbleiben",
+			"type": "chorale",
+			"key": "G"
+		}
+	],
+	"xref": {
+		"wp": "BWV_100"
+	}
+}

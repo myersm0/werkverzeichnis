@@ -1,0 +1,50 @@
+{
+	"id": "5979088f",
+	"title": {
+		"de": "Vergnügte Ruh, beliebte Seelenlust"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1726},
+			"catalog": [{"scheme": "bwv", "number": "170"}]
+		}
+	],
+	"form": "solo cantata",
+	"instrumentation": "alto, oboe d'amore, 2 violins, viola, obbligato organ, basso continuo",
+	"notes": "Composed for the sixth Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Vergnügte Ruh, beliebte Seelenlust",
+			"type": "aria",
+			"key": "D",
+			"soloists": "alto"
+		},
+		{
+			"title": "Die Welt, das Sündenhaus",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Wie jammern mich doch die verkehrten Herzen",
+			"type": "aria",
+			"key": "f#",
+			"soloists": "alto"
+		},
+		{
+			"title": "Wer sollte sich demnach wohl hier zu leben wünschen",
+			"type": "recitative",
+			"key": "D",
+			"soloists": "alto"
+		},
+		{
+			"title": "Mir ekelt mehr zu leben",
+			"type": "aria",
+			"key": "D",
+			"soloists": "alto"
+		}
+	],
+	"xref": {
+		"wp": "BWV_170"
+	}
+}

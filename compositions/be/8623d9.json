@@ -1,0 +1,80 @@
+{
+	"id": "be8623d9",
+	"title": {
+		"de": "Gott ist unsre Zuversicht"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1737},
+			"catalog": [
+				{"scheme": "bwv", "number": "197.2"},
+				{"scheme": "bwv", "number": "197"}
+			]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, bass, choir (SATB), 3 trumpets, timpani, 2 oboes, 2 oboes d'amore, bassoon, 2 violins, viola, basso continuo",
+	"sections": [
+		{
+			"title": "Part I",
+			"movements": [
+				{
+					"title": "Gott ist unsre Zuversicht",
+					"type": "chorus"
+				},
+				{
+					"title": "Gott ist und bleibt der beste Sorger",
+					"type": "recitative",
+					"soloists": "bass"
+				},
+				{
+					"title": "Schläfert allen Sorgenkummer",
+					"type": "aria",
+					"soloists": "alto"
+				},
+				{
+					"title": "Drum folget Gott und seinem Triebe",
+					"type": "recitative",
+					"soloists": "bass"
+				},
+				{
+					"title": "Du süße Lieb, schenk uns deine Gunst",
+					"type": "chorale"
+				}
+			]
+		},
+		{
+			"title": "Part II",
+			"movements": [
+				{
+					"title": "O du angenehmes Paar",
+					"type": "aria",
+					"soloists": "bass"
+				},
+				{
+					"title": "So wie es Gott mit dir",
+					"type": "recitative",
+					"soloists": "soprano"
+				},
+				{
+					"title": "Vergnügen und Lust",
+					"type": "aria",
+					"soloists": "soprano"
+				},
+				{
+					"title": "Und dieser frohe Lebenslauf",
+					"type": "recitative",
+					"soloists": "bass"
+				},
+				{
+					"title": "So wandelt froh auf Gottes Wegen",
+					"type": "chorale"
+				}
+			]
+		}
+	],
+	"xref": {
+		"wp": "BWV_197"
+	}
+}

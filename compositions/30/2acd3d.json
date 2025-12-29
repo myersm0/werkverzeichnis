@@ -1,0 +1,57 @@
+{
+	"id": "302acd3d",
+	"title": {
+		"de": "Sehet, welch eine Liebe hat uns der Vater erzeiget"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "64"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, bass soloists, four-part choir, zink, 3 trombones, oboe d'amore, 2 violins, viola, basso continuo",
+	"notes": "Composed for the third day of Christmas (Feast of John the Evangelist).",
+	"movements": [
+		{
+			"title": "Sehet, welch eine Liebe hat uns der Vater erzeiget",
+			"type": "chorus"
+		},
+		{
+			"title": "Das hat er alles uns getan",
+			"type": "chorale"
+		},
+		{
+			"title": "Geh, Welt! behalte nur das Deine",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Was frag ich nach der Welt",
+			"type": "chorale"
+		},
+		{
+			"title": "Was die Welt in sich hält",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Der Himmel bleibet mir gewiß",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Von der Welt verlang ich nichts",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Gute Nacht, o Wesen",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_64"
+	}
+}

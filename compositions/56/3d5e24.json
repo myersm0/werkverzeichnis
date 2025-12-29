@@ -1,0 +1,54 @@
+{
+	"id": "563d5e24",
+	"title": {
+		"de": "Wahrlich, wahrlich, ich sage euch"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "86"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "alto, tenor, bass, choir (SATB), 2 oboes d'amore, 2 violins, viola, continuo",
+	"notes": "Composed for Rogate, the fifth Sunday after Easter.",
+	"movements": [
+		{
+			"title": "Wahrlich, wahrlich, ich sage euch",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "E"
+		},
+		{
+			"title": "Ich will doch wohl Rosen brechen",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "A"
+		},
+		{
+			"title": "Und was der ewig gütig Gott",
+			"type": "chorale",
+			"soloists": "soprano",
+			"key": "f#"
+		},
+		{
+			"title": "Gott macht es nicht gleichwie die Welt",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Gott hilft gewiß",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "E"
+		},
+		{
+			"title": "Die Hoffnung wart' der rechten Zeit",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_86"
+	}
+}

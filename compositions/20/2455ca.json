@@ -1,0 +1,104 @@
+{
+	"id": "202455ca",
+	"title": {
+		"de": "Die Himmel erzählen die Ehre Gottes"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "76"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), trumpet, 2 oboes, oboe d'amore, 2 violins, viola, viola da gamba, continuo",
+	"notes": "Composed for the second Sunday after Trinity. Two-part structure, to be performed before and after the sermon.",
+	"sections": [
+		{
+			"title": "Part I",
+			"movements": [
+				{
+					"title": "Die Himmel erzählen die Ehre Gottes",
+					"type": "chorus",
+					"key": "C"
+				},
+				{
+					"title": "So lässt sich Gott nicht unbezeuget!",
+					"type": "recitative",
+					"soloists": "tenor"
+				},
+				{
+					"title": "Hört, ihr Völker, Gottes Stimme",
+					"type": "aria",
+					"soloists": "soprano",
+					"key": "G"
+				},
+				{
+					"title": "Wer aber hört",
+					"type": "recitative",
+					"soloists": "bass"
+				},
+				{
+					"title": "Fahr hin, abgöttische Zunft!",
+					"type": "aria",
+					"soloists": "bass",
+					"key": "C"
+				},
+				{
+					"title": "Du hast uns, Herr, von allen Straßen",
+					"type": "recitative",
+					"soloists": "alto"
+				},
+				{
+					"title": "Es woll uns Gott genädig sein",
+					"type": "chorale",
+					"key": "e"
+				}
+			]
+		},
+		{
+			"title": "Part II",
+			"movements": [
+				{
+					"title": "Sinfonia",
+					"type": "sinfonia"
+				},
+				{
+					"title": "Gott segne noch die treue Schar",
+					"type": "recitative",
+					"soloists": "bass"
+				},
+				{
+					"title": "Hasse nur, hasse mich recht",
+					"type": "aria",
+					"soloists": "tenor",
+					"key": "a"
+				},
+				{
+					"title": "Ich fühle schon im Geist",
+					"type": "recitative",
+					"soloists": "alto"
+				},
+				{
+					"title": "Liebt, ihr Christen, in der Tat!",
+					"type": "aria",
+					"soloists": "alto",
+					"key": "e"
+				},
+				{
+					"title": "So soll die Christenheit",
+					"type": "recitative",
+					"soloists": "tenor"
+				},
+				{
+					"title": "Es danke, Gott, und lobe dich",
+					"type": "chorale",
+					"key": "e"
+				}
+			]
+		}
+	],
+	"xref": {
+		"wp": "BWV_76"
+	}
+}

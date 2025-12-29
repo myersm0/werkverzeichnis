@@ -1,0 +1,63 @@
+{
+	"id": "01f24a57",
+	"title": {
+		"de": "In allen meinen Taten"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1734},
+			"catalog": [{"scheme": "bwv", "number": "97"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 oboes, bassoon, 2 violins, viola, basso continuo",
+	"movements": [
+		{
+			"title": "In allen meinen Taten",
+			"type": "chorus"
+		},
+		{
+			"title": "Nichts ist es spät und frühe",
+			"type": "aria",
+			"soloists": "bass"
+		},
+		{
+			"title": "Es kann mir nichts geschehen",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Ich traue seiner Gnaden",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Er wolle meiner Sünden",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Leg ich mich späte nieder",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Hat er es denn beschlossen",
+			"type": "duet aria",
+			"soloists": "soprano, bass"
+		},
+		{
+			"title": "Ich hab mich ihm ergeben",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "So sei nun, Seele, deine",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_97"
+	}
+}

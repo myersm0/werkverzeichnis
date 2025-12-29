@@ -1,0 +1,47 @@
+{
+	"id": "8efe9465",
+	"title": {
+		"de": "Aus der Tiefen rufe ich, Herr, zu dir"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1708},
+			"catalog": [{"scheme": "bwv", "number": "131"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), oboe, bassoon, violin, 2 violas, continuo",
+	"movements": [
+		{
+			"title": "Aus der Tiefen rufe ich, Herr, zu dir",
+			"type": "chorus",
+			"key": "g"
+		},
+		{
+			"title": "So du willst, Herr, Sünde zurechnen",
+			"type": "arioso e chorale",
+			"soloists": "bass, soprano",
+			"key": "g"
+		},
+		{
+			"title": "Ich harre des Herrn, meine Seele harret",
+			"type": "chorus",
+			"key": "Eb"
+		},
+		{
+			"title": "Meine Seele wartet auf den Herrn von einer Morgenwache",
+			"type": "aria e chorale",
+			"soloists": "tenor, alto",
+			"key": "c"
+		},
+		{
+			"title": "Israel hoffe auf den Herrn; denn bei dem Herrn",
+			"type": "chorus",
+			"key": "g"
+		}
+	],
+	"xref": {
+		"wp": "BWV_131"
+	}
+}

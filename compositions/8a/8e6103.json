@@ -1,0 +1,54 @@
+{
+	"id": "8a8e6103",
+	"title": {
+		"de": "Barmherziges Herze der ewigen Liebe"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1714},
+			"catalog": [{"scheme": "bwv", "number": "185"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, oboe, 2 violins, viola, continuo (including bassoon)",
+	"notes": "Composed for the fourth Sunday after Trinity in Weimar.",
+	"movements": [
+		{
+			"title": "Barmherziges Herze der ewigen Liebe",
+			"type": "duet",
+			"soloists": "soprano, tenor",
+			"key": "f#"
+		},
+		{
+			"title": "Ihr Herzen, die ihr euch in Stein und Fels verkehret",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Sei bemüht in dieser Zeit",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "A"
+		},
+		{
+			"title": "Die Eigenliebe schmeichelt sich",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Das ist der Christen Kunst",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "bb"
+		},
+		{
+			"title": "Ich ruf zu dir, Herr Jesus Christ",
+			"type": "chorale",
+			"key": "f#"
+		}
+	],
+	"xref": {
+		"wp": "BWV_185"
+	}
+}

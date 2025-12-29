@@ -1,0 +1,53 @@
+{
+	"id": "3fc93a9d",
+	"title": {
+		"de": "Ihr Tore zu Zion"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1727, "premiered": 1727},
+			"catalog": [{"scheme": "bwv", "number": "193"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, 2 oboes, 2 violins, viola",
+	"notes": "Composed for Ratswechsel (inauguration of new town council). Music survives in incomplete state; tenor and bass vocal parts are lost.",
+	"movements": [
+		{
+			"title": "Ihr Tore zu Zion",
+			"type": "chorus"
+		},
+		{
+			"title": "Der Hüter Israels entschläft noch schlummert nicht",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Gott, wir danken deiner Güte",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "O Leipziger Jerusalem",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Sende, Herr, den Segen ein",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"type": "recitative",
+			"note": "lost"
+		},
+		{
+			"title": "Ihr Tore zu Zion",
+			"type": "chorus"
+		}
+	],
+	"xref": {
+		"wp": "BWV_193"
+	}
+}

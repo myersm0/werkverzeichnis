@@ -1,0 +1,54 @@
+{
+	"id": "c225488e",
+	"title": {
+		"de": "Meinen Jesum laß ich nicht"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1725, "premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "124"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), horn, oboe d'amore, 2 violins, viola, continuo",
+	"notes": "Composed for the first Sunday after Epiphany.",
+	"movements": [
+		{
+			"title": "Meinen Jesum laß ich nicht",
+			"type": "chorale fantasia",
+			"key": "E"
+		},
+		{
+			"title": "Solange sich ein Tropfen Blut",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Und wenn der harte Todesschlag",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "f#"
+		},
+		{
+			"title": "Doch ach! welch schweres Ungemach",
+			"type": "recitative",
+			"soloists": "bass",
+			"key": "A"
+		},
+		{
+			"title": "Entziehe dich eilends, mein Herze, der Welt",
+			"type": "aria",
+			"soloists": "soprano, alto",
+			"key": "A"
+		},
+		{
+			"title": "Jesum laß ich nicht von mir",
+			"type": "chorale",
+			"key": "E"
+		}
+	],
+	"xref": {
+		"wp": "BWV_124"
+	}
+}

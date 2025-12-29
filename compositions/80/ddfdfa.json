@@ -1,0 +1,45 @@
+{
+	"id": "80ddfdfa",
+	"title": {
+		"de": "Ich armer Mensch, ich Sündenknecht"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1726},
+			"catalog": [{"scheme": "bwv", "number": "55"}]
+		}
+	],
+	"form": "solo cantata",
+	"instrumentation": "tenor, flauto traverso, oboe d'amore, 2 violins, viola, basso continuo, 4-part choir (final movement only)",
+	"notes": "Composed for the 22nd Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Ich armer Mensch, ich Sündenknecht",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Ich habe wider Gott gehandelt",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Erbarme dich! Laß die Tränen dich erweichen",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Erbarme dich! Jedoch nun tröst ich mich",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Bin ich gleich von dir gewichen, stell ich mich doch wieder ein",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_55"
+	}
+}

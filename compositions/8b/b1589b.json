@@ -1,0 +1,47 @@
+{
+	"id": "8bb1589b",
+	"title": {
+		"de": "Sie werden euch in den Bann tun"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "183"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, SATB choir, 2 oboes d'amore, 2 oboes da caccia, 2 violins, viola, violoncello piccolo, continuo",
+	"notes": "Composed for Exaudi, the Sunday after Ascension.",
+	"movements": [
+		{
+			"title": "Sie werden euch in den Bann tun",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Ich fürchte nicht des Todes Schrecken",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "e"
+		},
+		{
+			"title": "Ich bin bereit, mein Blut und armes Leben",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Höchster Tröster, heilger Geist",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "C"
+		},
+		{
+			"title": "Du bist ein Geist, der lehret",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_183"
+	}
+}

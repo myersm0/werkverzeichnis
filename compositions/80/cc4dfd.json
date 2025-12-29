@@ -1,0 +1,54 @@
+{
+	"id": "80cc4dfd",
+	"title": {
+		"de": "Gott soll allein mein Herze haben"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1726},
+			"catalog": [{"scheme": "bwv", "number": "169"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "alto, choir (SATB, closing chorale only), 2 oboes, taille, 2 violins, viola, organ obbligato, basso continuo",
+	"notes": "Composed for the 18th Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Sinfonia",
+			"type": "instrumental"
+		},
+		{
+			"title": "Gott soll allein mein Herze haben",
+			"type": "arioso",
+			"soloists": "alto"
+		},
+		{
+			"title": "Gott soll allein mein Herze haben",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Was ist die Liebe Gottes",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Stirb in mir, Welt, und alle deine Liebe",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Doch meint es auch dabei",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Du süße Liebe, schenk uns deine Gunst",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_169"
+	}
+}

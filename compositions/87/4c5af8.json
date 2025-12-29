@@ -1,0 +1,67 @@
+{
+	"id": "874c5af8",
+	"title": {
+		"de": "Geist und Seele wird verwirret"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1726, "premiered": 1726},
+			"catalog": [{"scheme": "bwv", "number": "35"}]
+		}
+	],
+	"form": "solo cantata",
+	"instrumentation": "alto, 2 oboes, taille, obbligato solo organ, 2 violins, viola, basso continuo",
+	"notes": "Composed for the twelfth Sunday after Trinity.",
+	"sections": [
+		{
+			"title": "Part I",
+			"movements": [
+				{
+					"title": "Sinfonia",
+					"type": "sinfonia"
+				},
+				{
+					"title": "Geist und Seele wird verwirret",
+					"type": "aria",
+					"soloists": "alto",
+					"key": "a"
+				},
+				{
+					"title": "Ich wundre mich",
+					"type": "recitative",
+					"soloists": "alto"
+				},
+				{
+					"title": "Gott hat alles wohlgemacht",
+					"type": "aria",
+					"soloists": "alto",
+					"key": "F"
+				}
+			]
+		},
+		{
+			"title": "Part II",
+			"movements": [
+				{
+					"title": "Sinfonia",
+					"type": "sinfonia"
+				},
+				{
+					"title": "Ach, starker Gott",
+					"type": "recitative",
+					"soloists": "alto"
+				},
+				{
+					"title": "Ich wünsche nur bei Gott zu leben",
+					"type": "aria",
+					"soloists": "alto",
+					"key": "C"
+				}
+			]
+		}
+	],
+	"xref": {
+		"wp": "BWV_35"
+	}
+}

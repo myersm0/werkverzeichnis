@@ -1,0 +1,65 @@
+{
+	"id": "b29cd71d",
+	"title": {
+		"de": "Mein Herze schwimmt im Blut"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1713, "premiered": 1714},
+			"catalog": [{"scheme": "bwv", "number": "199"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, oboe, 2 violins, viola, violone, bassoon, continuo",
+	"movements": [
+		{
+			"title": "Mein Herze schwimmt im Blut",
+			"type": "recitative",
+			"soloists": "soprano",
+			"key": "c"
+		},
+		{
+			"title": "Stumme Seufzer, stille Klagen",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "c"
+		},
+		{
+			"title": "Doch Gott muss mir genädig sein",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Tief gebückt und voller Reue",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "Eb"
+		},
+		{
+			"title": "Auf diese Schmerzensreu",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Ich, dein betrübtes Kind",
+			"type": "chorale",
+			"soloists": "soprano",
+			"key": "F"
+		},
+		{
+			"title": "Ich lege mich in diese Wunden",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Wie freudig ist mein Herz",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "Bb"
+		}
+	],
+	"xref": {
+		"wp": "BWV_199"
+	}
+}

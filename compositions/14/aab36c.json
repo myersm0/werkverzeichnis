@@ -1,0 +1,56 @@
+{
+	"id": "14aab36c",
+	"title": {
+		"de": "Himmelskönig, sei willkommen"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1714},
+			"catalog": [{"scheme": "bwv", "number": "182"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "alto, tenor, bass, four-part choir, recorder, 2 violins, 2 violas, basso continuo",
+	"notes": "Composed for Palm Sunday.",
+	"movements": [
+		{
+			"title": "Sonata"
+		},
+		{
+			"title": "Himmelskönig, sei willkommen",
+			"type": "chorus"
+		},
+		{
+			"title": "Siehe, ich komme, im Buch ist von mir geschrieben",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Starkes Lieben",
+			"type": "aria",
+			"soloists": "bass"
+		},
+		{
+			"title": "Leget euch dem Heiland unter",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Jesu, laß durch Wohl und Weh",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Jesu, deine Passion ist mir lauter Freude",
+			"type": "chorale"
+		},
+		{
+			"title": "So lasset uns gehen in Salem der Freuden",
+			"type": "chorus"
+		}
+	],
+	"xref": {
+		"wp": "BWV_182"
+	}
+}

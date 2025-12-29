@@ -1,0 +1,34 @@
+{
+	"id": "3ca954ff",
+	"title": {
+		"la": "Gloria in excelsis Deo"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1742},
+			"catalog": [{"scheme": "bwv", "number": "191"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, tenor, five-part choir (with dual soprano part), 3 trumpets, timpani, 2 flauto traverso, 2 oboes, 2 violins, viola, basso continuo",
+	"notes": "Composed for a Christmas celebration by the University of Leipzig.",
+	"movements": [
+		{
+			"title": "Gloria in excelsis Deo",
+			"type": "chorus"
+		},
+		{
+			"title": "Gloria Patri et Filio et Spiritui sancto",
+			"type": "duet",
+			"soloists": "soprano, tenor"
+		},
+		{
+			"title": "Sicut erat in principio",
+			"type": "chorus"
+		}
+	],
+	"xref": {
+		"wp": "BWV_191"
+	}
+}

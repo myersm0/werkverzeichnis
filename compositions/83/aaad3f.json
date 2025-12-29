@@ -1,0 +1,58 @@
+{
+	"id": "83aaad3f",
+	"title": {
+		"de": "Erfreut euch, ihr Herzen"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {
+				"premiered": 1724
+			},
+			"catalog": [
+				{"scheme": "bwv", "number": "66.2"},
+				{"scheme": "bwv", "number": "66"}
+			]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), trumpet, 2 oboes, bassoon, 2 violins, viola, continuo",
+	"notes": "Composed for the Second Day of Easter in Leipzig. Based on the earlier congratulatory cantata Der Himmel dacht auf Anhalts Ruhm und Glück, BWV 66.1.",
+	"movements": [
+		{
+			"title": "Erfreut euch, ihr Herzen",
+			"type": "chorus",
+			"key": "D"
+		},
+		{
+			"title": "Es bricht das Grab und damit unsre Not",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Lasset dem Höchsten ein Danklied erschallen",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "D"
+		},
+		{
+			"title": "Bei Jesu Leben freudig sein",
+			"type": "duet recitative",
+			"soloists": "alto, tenor"
+		},
+		{
+			"title": "Ich furchte zwar/nicht des Grabes Finsternissen",
+			"type": "aria",
+			"soloists": "alto, tenor",
+			"key": "A"
+		},
+		{
+			"title": "Alleluja",
+			"type": "chorale",
+			"key": "f#"
+		}
+	],
+	"xref": {
+		"wp": "BWV_66"
+	}
+}

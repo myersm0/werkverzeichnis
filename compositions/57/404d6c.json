@@ -1,0 +1,66 @@
+{
+	"id": "57404d6c",
+	"title": {
+		"de": "Preise, Jerusalem, den Herrn"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1723, "premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "119"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 4 trumpets, timpani, 2 recorders, 3 oboes, 2 oboes da caccia, 2 violins, viola, basso continuo",
+	"movements": [
+		{
+			"title": "Preise, Jerusalem, den Herrn",
+			"type": "chorus",
+			"key": "C"
+		},
+		{
+			"title": "Gesegnet Land, glückselge Stadt",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Wohl dir, du Volk der Linden",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "G"
+		},
+		{
+			"title": "So herrlich stehst du, liebe Stadt",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Die Obrigkeit ist Gottes Gabe",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "g"
+		},
+		{
+			"title": "Nun! wir erkennen es und bringen dir",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Der Herr hat Guts an uns getan",
+			"type": "chorus",
+			"key": "C"
+		},
+		{
+			"title": "Zuletzt! Da du uns, Herr, zu deinem Volk gesetzt",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Hilf deinem Volk, Herr Jesu Christ",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_119"
+	}
+}

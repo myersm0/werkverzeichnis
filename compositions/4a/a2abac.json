@@ -1,0 +1,55 @@
+{
+	"id": "4aa2abac",
+	"title": {
+		"de": "Liebster Jesu, mein Verlangen"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1726},
+			"catalog": [{"scheme": "bwv", "number": "32"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, bass, choir (SATB in final movement), oboe, 2 violins, viola, continuo",
+	"notes": "Composed for the first Sunday after Epiphany.",
+	"movements": [
+		{
+			"title": "Liebster Jesu, mein Verlangen",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "e"
+		},
+		{
+			"title": "Was ist's, daß du mich gesuchet",
+			"type": "recitative",
+			"soloists": "bass",
+			"key": "b"
+		},
+		{
+			"title": "Hier, in meines Vaters Stätte",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "G"
+		},
+		{
+			"title": "Ach! heiliger und großer Gott",
+			"type": "recitative",
+			"soloists": "soprano, bass"
+		},
+		{
+			"title": "Nun verschwinden alle Plagen",
+			"type": "aria duet",
+			"soloists": "soprano, bass",
+			"key": "D"
+		},
+		{
+			"title": "Mein Gott, öffne mir die Pforten",
+			"type": "chorale",
+			"key": "G"
+		}
+	],
+	"xref": {
+		"wp": "BWV_32"
+	}
+}

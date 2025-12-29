@@ -1,0 +1,50 @@
+{
+	"id": "2917c4bc",
+	"title": {
+		"de": "Ihr werdet weinen und heulen"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1725, "premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "103"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "alto, tenor, bass, choir (SATB), trumpet, flauto piccolo, 2 oboes d'amore, 2 violins, viola, continuo",
+	"notes": "Composed for the third Sunday after Easter (Jubilate).",
+	"movements": [
+		{
+			"title": "Ihr werdet weinen und heulen",
+			"type": "chorus and arioso",
+			"soloists": "bass"
+		},
+		{
+			"title": "Wer sollte nicht in Klagen untergehn",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Kein Arzt ist außer dir zu finden",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Du wirst mich nach der Angst auch wiederum erquicken",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Erholet euch, betrübte Sinnen",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Ich hab dich einen Augenblick",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_103"
+	}
+}

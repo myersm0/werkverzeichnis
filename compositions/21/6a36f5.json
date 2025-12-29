@@ -1,0 +1,75 @@
+{
+	"id": "216a36f5",
+	"title": {
+		"de": "Schwingt freudig euch empor"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1731, "premiered": 1731},
+			"catalog": [{"scheme": "bwv", "number": "36"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 oboes d'amore, 2 violins, viola, basso continuo",
+	"notes": "Composed for the first Sunday in Advent.",
+	"sections": [
+		{
+			"title": "Part I",
+			"movements": [
+				{
+					"title": "Schwingt freudig euch empor",
+					"type": "chorus",
+					"key": "D"
+				},
+				{
+					"title": "Nun komm, der Heiden Heiland",
+					"type": "choral",
+					"key": "f#"
+				},
+				{
+					"title": "Die Liebe zieht mit sanften Schritten",
+					"type": "aria",
+					"soloists": "tenor",
+					"key": "b"
+				},
+				{
+					"title": "Zwingt die Saiten in Cythara",
+					"type": "chorale",
+					"key": "D"
+				}
+			]
+		},
+		{
+			"title": "Part II",
+			"movements": [
+				{
+					"title": "Willkommen, werter Schatz!",
+					"type": "aria",
+					"soloists": "bass",
+					"key": "D"
+				},
+				{
+					"title": "Der du bist dem Vater gleich",
+					"type": "choral",
+					"soloists": "tenor",
+					"key": "b"
+				},
+				{
+					"title": "Auch mit gedämpften, schwachen Stimmen",
+					"type": "aria",
+					"soloists": "soprano",
+					"key": "G"
+				},
+				{
+					"title": "Lob sei Gott dem Vater ton",
+					"type": "chorale",
+					"key": "b"
+				}
+			]
+		}
+	],
+	"xref": {
+		"wp": "BWV_36"
+	}
+}

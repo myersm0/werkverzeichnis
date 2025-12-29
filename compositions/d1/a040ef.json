@@ -1,0 +1,54 @@
+{
+	"id": "d1a040ef",
+	"title": {
+		"de": "Wer da gläubet und getauft wird"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "37"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 oboes d'amore, 2 violins, viola, basso continuo",
+	"notes": "Composed for the feast of the Ascension of Jesus.",
+	"movements": [
+		{
+			"title": "Wer da gläubet und getauft wird",
+			"type": "chorus",
+			"key": "A"
+		},
+		{
+			"title": "Der Glaube ist das Pfand der Liebe",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "A"
+		},
+		{
+			"title": "Herr Gott Vater, mein starker Held",
+			"type": "chorale",
+			"soloists": "soprano, alto",
+			"key": "D"
+		},
+		{
+			"title": "Ihr Sterblichen, verlanget ihr",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Der Glaube schafft der Seele Flügel",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "b"
+		},
+		{
+			"title": "Den Glauben mir verleihe",
+			"type": "chorale",
+			"key": "A"
+		}
+	],
+	"xref": {
+		"wp": "BWV_37"
+	}
+}

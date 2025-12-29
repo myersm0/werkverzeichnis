@@ -1,0 +1,50 @@
+{
+	"id": "4d80eb5b",
+	"title": {
+		"de": "Was soll ich aus dir machen, Ephraim"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "89"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, bass, SATB choir, horn, 2 oboes, 2 violins, viola, basso continuo",
+	"notes": "Composed for the 22nd Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Was soll ich aus dir machen, Ephraim",
+			"type": "aria",
+			"soloists": "bass"
+		},
+		{
+			"title": "Ja, freilich sollte Gott",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Ein unbarmherziges Gerichte",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Wohlan! mein Herze legt",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Gerechter Gott, ach, rechnest du",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Mir mangelt zwar sehr viel",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_89"
+	}
+}

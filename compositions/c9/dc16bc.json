@@ -1,0 +1,46 @@
+{
+	"id": "c9dc16bc",
+	"title": {
+		"de": "Gott, man lobet dich in der Stille"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1729},
+			"catalog": [{"scheme": "bwv", "number": "120.1"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 3 trumpets, timpani, 2 oboes d'amore, 2 violins, viola, continuo",
+	"movements": [
+		{
+			"title": "Gott, man lobet dich in der Stille"
+		},
+		{
+			"title": "Jauchzet, ihr erfreuten Stimmen",
+			"type": "chorus"
+		},
+		{
+			"title": "Auf, du geliebte Lindenstadt",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Heil und Segen",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Nun, Herr, so weihe selbst das Regiment",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Nun hilf uns, Herr, den Dienern dein",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_120"
+	}
+}

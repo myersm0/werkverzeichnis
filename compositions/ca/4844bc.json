@@ -1,0 +1,83 @@
+{
+	"id": "ca4844bc",
+	"title": {
+		"de": "Ärgre dich, o Seele, nicht"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1716},
+			"catalog": [{"scheme": "bwv", "number": "186"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 oboes, taille, 2 violins, viola, continuo, bassoon",
+	"notes": "Originally composed in Weimar for Advent (BWV 186a), expanded and revised for Leipzig performance on the seventh Sunday after Trinity.",
+	"sections": [
+		{
+			"title": "Part I",
+			"movements": [
+				{
+					"title": "Ärgre dich, o Seele, nicht",
+					"type": "chorus"
+				},
+				{
+					"title": "Die Knechtsgestalt, die Not, der Mangel",
+					"type": "recitative",
+					"soloists": "bass"
+				},
+				{
+					"title": "Bist du, der mir helfen soll",
+					"type": "aria",
+					"soloists": "bass"
+				},
+				{
+					"title": "Ach, daß ein Christ so sehr",
+					"type": "recitative",
+					"soloists": "tenor"
+				},
+				{
+					"title": "Mein Heiland läßt sich merken",
+					"type": "aria",
+					"soloists": "tenor"
+				},
+				{
+					"title": "Ob sichs anließ, als wollt er nicht",
+					"type": "chorale"
+				}
+			]
+		},
+		{
+			"title": "Part II",
+			"movements": [
+				{
+					"title": "Es ist die Welt die große Wüstenei",
+					"type": "recitative",
+					"soloists": "tenor"
+				},
+				{
+					"title": "Die Armen will der Herr umarmen",
+					"type": "aria",
+					"soloists": "soprano"
+				},
+				{
+					"title": "Nun mag die Welt mit ihrer Lust vergehen",
+					"type": "recitative",
+					"soloists": "alto"
+				},
+				{
+					"title": "Laß, Seele, kein Leiden",
+					"type": "aria",
+					"soloists": "soprano, alto"
+				},
+				{
+					"title": "Die Hoffnung wart' der rechten Zeit",
+					"type": "chorale"
+				}
+			]
+		}
+	],
+	"xref": {
+		"wp": "BWV_186"
+	}
+}

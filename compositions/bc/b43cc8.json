@@ -1,0 +1,53 @@
+{
+	"id": "bcb43cc8",
+	"title": {
+		"de": "Ein ungefärbt Gemüte"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "24"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "alto, tenor, bass, choir (SATB), clarino, 2 oboes, 2 oboes d'amore, 2 violins, viola, basso continuo",
+	"notes": "Composed for the fourth Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Ein ungefärbt Gemüte",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "F"
+		},
+		{
+			"title": "Die Redlichkeit ist eine von den Gottesgaben",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Alles nun, das ihr wollet",
+			"type": "tutti",
+			"key": "g"
+		},
+		{
+			"title": "Die Heuchelei ist eine Brut",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Treu und Wahrheit sei der Grund",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "a"
+		},
+		{
+			"title": "O Gott, du frommer Gott",
+			"type": "chorale",
+			"key": "F"
+		}
+	],
+	"xref": {
+		"wp": "BWV_24"
+	}
+}

@@ -1,0 +1,48 @@
+{
+	"id": "4c63aecb",
+	"title": {
+		"de": "Ich lasse dich nicht, du segnest mich denn"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1727, "premiered": 1727},
+			"catalog": [{"scheme": "bwv", "number": "157"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "tenor, bass, SATB choir, flauto traverso, oboe, oboe d'amore, 2 violins, violetta, continuo",
+	"movements": [
+		{
+			"title": "Ich lasse dich nicht, du segnest mich denn",
+			"type": "duet aria",
+			"soloists": "tenor, bass",
+			"key": "b"
+		},
+		{
+			"title": "Ich halte meinen Jesum feste",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "f#"
+		},
+		{
+			"title": "Mein lieber Jesu du",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Ja, ja, ich halte Jesum feste",
+			"type": "aria and recitative",
+			"soloists": "bass",
+			"key": "D"
+		},
+		{
+			"title": "Meinen Jesum lass ich nicht",
+			"type": "chorale",
+			"key": "D"
+		}
+	],
+	"xref": {
+		"wp": "BWV_157"
+	}
+}

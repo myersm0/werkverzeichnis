@@ -1,0 +1,51 @@
+{
+	"id": "01c35e75",
+	"title": {
+		"de": "Ich steh mit einem Fuß im Grabe"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {
+				"premiered": 1729
+			},
+			"catalog": [{"scheme": "bwv", "number": "156"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), oboe, 2 violins, viola, basso continuo",
+	"notes": "Composed for the third Sunday after Epiphany.",
+	"movements": [
+		{
+			"title": "Sinfonia",
+			"type": "instrumental"
+		},
+		{
+			"title": "Ich steh mit einem Fuß im Grabe",
+			"type": "chorale and aria",
+			"soloists": "soprano, tenor"
+		},
+		{
+			"title": "Mein Angst und Not",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Herr, was du willt, soll mir gefallen",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Und willst du, dass ich nicht soll kranken",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Herr, wie du willt, so schicks mit mir",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV 156"
+	}
+}

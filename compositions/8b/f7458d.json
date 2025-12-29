@@ -1,0 +1,45 @@
+{
+	"id": "8bf7458d",
+	"title": {
+		"de": "Meine Seele rühmt und preist"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "189"
+				}
+			]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "tenor, 2 recorders, oboe, violin, basso continuo",
+	"note": "Attributed to Bach and Melchior Hoffmann",
+	"movements": [
+		{
+			"title": "Meine Seele rühmt und preist",
+			"type": "aria"
+		},
+		{
+			"title": "Denn seh' ich mich und auch mein Leben an",
+			"type": "recitative"
+		},
+		{
+			"title": "Gott hat sich hoch gesetzet",
+			"type": "aria"
+		},
+		{
+			"title": "O wass vor grosse Dinge treff ich an allen Orten an",
+			"type": "recitative"
+		},
+		{
+			"title": "Deine Güte, dein Erbarmen",
+			"type": "aria"
+		}
+	],
+	"xref": {
+		"wp": "BWV_189"
+	}
+}

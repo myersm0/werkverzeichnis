@@ -1,0 +1,59 @@
+{
+	"id": "bc60bfc6",
+	"title": {
+		"de": "Lobe den Herrn, meine Seele"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"status": "doubtful",
+			"catalog": [{"scheme": "bwv","number": "143"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, tenor, bass, choir (SATB), 3 corni da caccia, timpani, bassoon, 2 violins, viola, continuo",
+	"movements": [
+		{
+			"title": "Lobe den Herrn, meine Seele",
+			"type": "chorus",
+			"key": "Bb"
+		},
+		{
+			"title": "Du Friedefürst, Herr Jesu Christ",
+			"type": "chorale",
+			"soloists": "soprano",
+			"key": "Bb"
+		},
+		{
+			"title": "Wohl dem, des Hülfe der Gott Jakob ist",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Tausendfaches Unglück, Schrecken",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "c"
+		},
+		{
+			"title": "Der Herr ist König ewiglich",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "Bb"
+		},
+		{
+			"title": "Jesu, Retter deiner Herde",
+			"type": "aria with instrumental chorale",
+			"soloists": "tenor",
+			"key": "g"
+		},
+		{
+			"title": "Gedenk, Herr Jesu, an dein Amt",
+			"type": "chorale fantasia",
+			"key": "Bb"
+		}
+	],
+	"xref": {
+		"wp": "BWV_143"
+	}
+}

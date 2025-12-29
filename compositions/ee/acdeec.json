@@ -1,0 +1,55 @@
+{
+	"id": "eeacdeec",
+	"title": {
+		"de": "Er rufet seinen Schafen mit Namen"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "175"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "alto, tenor, bass, choir (SATB in closing chorale), 2 trumpets, 3 recorders, 2 violins, viola, violoncello piccolo, basso continuo",
+	"notes": "Composed for the third day of Pentecost.",
+	"movements": [
+		{
+			"title": "Er rufet seinen Schafen mit Namen",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Komm, leite mich",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Wo find ich dich?",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Es dünket mich, ich seh dich kommen",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Sie vernahmen aber nicht",
+			"type": "recitative",
+			"soloists": "alto, bass"
+		},
+		{
+			"title": "Öffnet euch, ihr beiden Ohren",
+			"type": "aria",
+			"soloists": "bass"
+		},
+		{
+			"title": "Nun, werter Geist, ich folg dir",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_175"
+	}
+}

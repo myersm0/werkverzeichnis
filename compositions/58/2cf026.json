@@ -1,0 +1,59 @@
+{
+	"id": "582cf026",
+	"title": {
+		"de": "Ach, lieben Christen, seid getrost"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "114"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), horn, flauto traverso, 2 oboes, 2 violins, viola, continuo",
+	"notes": "Composed for the 17th Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Ach, lieben Christen, seid getrost",
+			"type": "chorus",
+			"key": "g"
+		},
+		{
+			"title": "Wo wird diesem Jammertale",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "d"
+		},
+		{
+			"title": "O Sünder, trage mit Geduld",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Kein Frucht das Weizenkörnlein bringt",
+			"type": "chorale",
+			"soloists": "soprano",
+			"key": "g"
+		},
+		{
+			"title": "Du machst, o Tod, mir nun nicht ferner bange",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "Bb"
+		},
+		{
+			"title": "Indes bedenke deine Seele",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Wir wachen oder schlafen ein",
+			"type": "chorus",
+			"key": "g"
+		}
+	],
+	"xref": {
+		"wp": "BWV_114"
+	}
+}

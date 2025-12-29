@@ -1,0 +1,64 @@
+{
+	"id": "39782c3a",
+	"title": {
+		"de": "Der Himmel lacht! Die Erde jubilieret"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1715, "premiered": 1715},
+			"catalog": [{"scheme": "bwv", "number": "31"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, tenor, bass, choir (SSATB), 3 trumpets, timpani, 3 oboes, taille, bassoon, 2 violins, 2 violas, 2 cellos, basso continuo",
+	"notes": "Composed for the first day of Easter.",
+	"movements": [
+		{
+			"title": "Sonata",
+			"type": "instrumental"
+		},
+		{
+			"title": "Der Himmel lacht! Die Erde jubilieret",
+			"type": "chorus"
+		},
+		{
+			"title": "Erwünschter Tag!",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Fürst des Lebens, starker Streiter",
+			"type": "aria",
+			"soloists": "bass"
+		},
+		{
+			"title": "So stehe dann, du gottergebne Seele",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Adam muss in uns verwesen",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "G"
+		},
+		{
+			"title": "Weil dann das Haupt sein Glied",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Letzte Stunde, brich herein",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "So fahr ich hin zu Jesu Christ",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_31"
+	}
+}

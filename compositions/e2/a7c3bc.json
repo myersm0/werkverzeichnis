@@ -1,0 +1,59 @@
+{
+	"id": "e2a7c3bc",
+	"title": {
+		"de": "Wer mich liebet, der wird mein Wort halten"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1725, "premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "74"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 3 trumpets, timpani, 2 oboes, oboe da caccia, 2 violins, viola, basso continuo",
+	"notes": "Composed for Pentecost (Whit Sunday).",
+	"movements": [
+		{
+			"title": "Wer mich liebet, der wird mein Wort halten",
+			"type": "chorus"
+		},
+		{
+			"title": "Komm, komm, mein Herze steht dir offen",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Die Wohnung ist bereit",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Ich gehe hin und komme wieder zu euch",
+			"type": "aria",
+			"soloists": "bass"
+		},
+		{
+			"title": "Kommt, eilet, stimmet Sait und Lieder",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Es ist nichts Verdammliches an denen",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Nichts kann mich erretten",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Kein Menschenkind hier auf der Erd",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_74"
+	}
+}

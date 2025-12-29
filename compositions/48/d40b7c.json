@@ -1,0 +1,55 @@
+{
+	"id": "48d40b7c",
+	"title": {
+		"de": "Lobe den Herrn, meine Seele"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {
+				"composed": 1723,
+				"revised": 1748
+			},
+			"catalog": [
+				{"scheme": "bwv", "number": "69.2"},
+				{"scheme": "bwv", "number": "69"}
+			]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 3 trumpets, timpani, 3 oboes, oboe d'amore, bassoon, 2 violins, viola, basso continuo",
+	"notes": "Originally composed in 1723 (BWV 69a). Reworked in 1748 for the inauguration of a town council, with changes to recitatives and chorale.",
+	"movements": [
+		{
+			"title": "Lobe den Herrn, meine Seele",
+			"type": "chorus"
+		},
+		{
+			"title": "Wie groß ist Gottes Güte doch",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Meine Seele, auf, erzähle",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Der Herr hat große Ding an uns getan",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Mein Erlöser und Erhalter",
+			"type": "aria",
+			"soloists": "bass"
+		},
+		{
+			"title": "Es danke, Gott, und lobe dich",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_69"
+	}
+}

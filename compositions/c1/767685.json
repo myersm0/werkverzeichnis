@@ -1,0 +1,59 @@
+{
+	"id": "c1767685",
+	"title": {
+		"de": "Ich geh und suche mit Verlangen"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1726},
+			"catalog": [{"scheme": "bwv", "number": "49"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, bass, oboe d'amore, 2 violins, viola, violoncello piccolo, organ, basso continuo",
+	"notes": "Composed for the twentieth Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Sinfonia",
+			"type": "instrumental"
+		},
+		{
+			"title": "Ich geh und suche mit Verlangen",
+			"type": "aria",
+			"soloists": "bass"
+		},
+		{
+			"title": "Mein Mahl ist zubereit'",
+			"type": "recitative",
+			"soloists": "soprano, bass"
+		},
+		{
+			"title": "Ich bin herrlich, ich bin schön",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Mein Glaube hat mich selbst so angezogen",
+			"type": "recitative",
+			"soloists": "soprano, bass"
+		},
+		{
+			"sections": [
+				{
+					"title": "Dich hab ich je und je geliebet",
+					"type": "aria",
+					"soloists": "bass"
+				},
+				{
+					"title": "Wie bin ich doch so herzlich froh",
+					"type": "chorale",
+					"soloists": "soprano"
+				}
+			]
+		}
+	],
+	"xref": {
+		"wp": "BWV_49"
+	}
+}

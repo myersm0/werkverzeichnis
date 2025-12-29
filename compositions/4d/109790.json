@@ -1,0 +1,58 @@
+{
+	"id": "4d109790",
+	"title": {
+		"de": "Wir müssen durch viel Trübsal"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1727},
+			"catalog": [{"scheme": "bwv", "number": "146"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), flauto traverso, 2 oboes d'amore, taille, 2 violins, viola, organ, basso continuo",
+	"notes": "Composed for the third Sunday after Easter.",
+	"movements": [
+		{
+			"title": "Sinfonia",
+			"type": "instrumental"
+		},
+		{
+			"title": "Wir müssen durch viel Trübsal in das Reich Gottes eingehen",
+			"type": "chorus"
+		},
+		{
+			"title": "Ich will nach dem Himmel zu",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Ach! wer doch schon im Himmel wär!",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Ich säe meine Zähren",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Ich bin bereit, mein Kreuz geduldig zu ertragen",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Wie will ich mich freuen, wie will ich mich laben",
+			"type": "aria",
+			"soloists": "tenor, bass"
+		},
+		{
+			"title": "Denn wer selig dahin fähret*",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_146"
+	}
+}

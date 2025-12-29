@@ -1,0 +1,70 @@
+{
+	"id": "9cad5e1c",
+	"title": {
+		"de": "Ich habe in Gottes Herz und Sinn"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "92"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 oboes d'amore, 2 violins, viola, continuo",
+	"movements": [
+		{
+			"title": "Ich habe in Gottes Herz und Sinn",
+			"type": "chorale fantasia",
+			"key": "b"
+		},
+		{
+			"title": "Es kann mir fehlen nimmermehr!",
+			"type": "chorale and recitative",
+			"soloists": "bass",
+			"key": "c"
+		},
+		{
+			"title": "Seht, seht! wie reißt, wie bricht, wie fällt",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "b"
+		},
+		{
+			"title": "Zudem ist Weisheit und Verstand",
+			"type": "chorale",
+			"soloists": "alto",
+			"key": "f#"
+		},
+		{
+			"title": "Wir wollen uns nicht länger zagen",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Das Brausen von den rauhen Winden",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "D"
+		},
+		{
+			"title": "Ei nun, mein Gott, so fall ich dir",
+			"type": "chorale and recitative",
+			"soloists": "soprano, alto, tenor, bass"
+		},
+		{
+			"title": "Meinem Hirten bleib ich treu",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "D"
+		},
+		{
+			"title": "Soll ich denn auch des Todes Weg",
+			"type": "chorale",
+			"key": "b"
+		}
+	],
+	"xref": {
+		"wp": "BWV_92"
+	}
+}

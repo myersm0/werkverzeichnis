@@ -1,0 +1,96 @@
+{
+	"id": "f8098bd9",
+	"title": {
+		"de": "Freue dich, erlöste Schar"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1738},
+			"catalog": [{"scheme": "bwv", "number": "30"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 traversos, 2 oboes, oboe d'amore, 2 violins, viola, basso continuo",
+	"notes": "Composed for the Feast of John the Baptist. Based on secular cantata Angenehmes Wiederau (BWV 30.1).",
+	"sections": [
+		{
+			"title": "Part I",
+			"movements": [
+				{
+					"title": "Freue dich, erlöste Schar",
+					"type": "chorus",
+					"key": "D"
+				},
+				{
+					"title": "Wir haben Rast",
+					"type": "recitative",
+					"soloists": "bass"
+				},
+				{
+					"title": "Gelobet sei Gott, gelobet sein Name",
+					"type": "aria",
+					"soloists": "bass",
+					"key": "G"
+				},
+				{
+					"title": "Der Herold kömmt und meldt den König an",
+					"type": "recitative",
+					"soloists": "alto"
+				},
+				{
+					"title": "Kommt, ihr angefochtnen Sünder",
+					"type": "aria",
+					"soloists": "alto",
+					"key": "A"
+				},
+				{
+					"title": "Eine Stimme lässt sich hören",
+					"type": "chorale",
+					"key": "A"
+				}
+			]
+		},
+		{
+			"title": "Part II",
+			"movements": [
+				{
+					"title": "So bist du denn, mein Heil, bedacht",
+					"type": "recitative",
+					"soloists": "bass",
+					"key": "e"
+				},
+				{
+					"title": "Ich will nun hassen",
+					"type": "aria",
+					"soloists": "bass",
+					"key": "b"
+				},
+				{
+					"title": "Und obwohl sonst der Unbestand",
+					"type": "recitative",
+					"soloists": "soprano"
+				},
+				{
+					"title": "Eilt, ihr Stunden, kommt herbei",
+					"type": "aria",
+					"soloists": "soprano",
+					"key": "e"
+				},
+				{
+					"title": "Geduld, der angenehme Tag",
+					"type": "recitative",
+					"soloists": "tenor"
+				},
+				{
+					"title": "Freue dich, geheilgte Schar",
+					"type": "chorus",
+					"key": "D"
+				}
+			]
+		}
+	],
+	"xref": {
+		"wp": "BWV_30"
+	}
+}

@@ -1,0 +1,59 @@
+{
+	"id": "43670861",
+	"title": {
+		"de": "Jesu, der du meine Seele"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1724, "premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "78"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), horn, flauto traverso, 2 oboes, 2 violins, viola, violone, basso continuo",
+	"notes": "Composed for the 14th Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Jesu, der du meine Seele",
+			"type": "chorus",
+			"key": "g"
+		},
+		{
+			"title": "Wir eilen mit schwachen, doch emsigen Schritten",
+			"type": "aria duet",
+			"soloists": "soprano, alto",
+			"key": "Bb"
+		},
+		{
+			"title": "Ach! ich bin ein Kind der Sünden",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Das Blut, so meine Schuld durchstreicht",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "g"
+		},
+		{
+			"title": "Die Wunden, Nägel, Kron und Grab",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Nur du wirst mein Gewissen stillen",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "c"
+		},
+		{
+			"title": "Herr, ich glaube, hilf mir Schwachen",
+			"type": "chorale",
+			"key": "g"
+		}
+	],
+	"xref": {
+		"wp": "BWV_78"
+	}
+}

@@ -1,0 +1,50 @@
+{
+	"id": "ce8dc410",
+	"title": {
+		"de": "Ich weiß, daß mein Erlöser lebt"
+	},
+	"attribution": [
+		{
+			"composer": "telemann",
+			"dates": {"composed": 1725},
+			"catalog": [{"scheme": "twv", "number": "1:877", "of": "telemann"}]
+		},
+		{
+			"composer": "bach",
+			"status": "spurious",
+			"catalog": [{"scheme": "bwv", "number": "160"}]
+		}
+	],
+	"form": "solo cantata",
+	"instrumentation": "tenor, violin, bassoon, basso continuo",
+	"movements": [
+		{
+			"title": "Ich weiß, daß mein Erlöser lebt",
+			"type": "aria",
+			"key": "C"
+		},
+		{
+			"title": "Er lebt und ist von Todten auferstanden!",
+			"type": "recitative",
+			"key": "C"
+		},
+		{
+			"title": "Gott Lob, Gott Lob",
+			"type": "aria",
+			"key": "C"
+		},
+		{
+			"title": "So biet' ich allen Teufeln Trutz!",
+			"type": "recitative",
+			"key": "C"
+		},
+		{
+			"title": "Nun, ich halte mich bereit",
+			"type": "aria",
+			"key": "C"
+		}
+	],
+	"xref": {
+		"wp": "BWV_160"
+	}
+}

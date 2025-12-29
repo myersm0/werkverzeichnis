@@ -1,0 +1,49 @@
+{
+	"id": "a47b6a3f",
+	"title": {
+		"de": "Siehe zu, daß deine Gottesfurcht nicht Heuchelei sei"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "179"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, tenor, bass, choir (SATB), 2 oboes da caccia, 2 violins, viola, basso continuo",
+	"notes": "Composed for the eleventh Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Siehe zu, daß deine Gottesfurcht nicht Heuchelei sei",
+			"type": "chorus"
+		},
+		{
+			"title": "Das heutge Christentum ist leider schlecht bestellt",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Falscher Heuchler Ebenbild",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Wer so von innen wie von außen ist",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Liebster Gott, erbarme dich",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Ich armer Mensch, ich armer Sünder",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_179"
+	}
+}

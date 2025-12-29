@@ -1,0 +1,53 @@
+{
+	"id": "7e668ae2",
+	"title": {
+		"de": "Mache dich, mein Geist, bereit"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1724, "premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "115"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), horn, flauto traverso, oboe d'amore, 2 violins, viola, violoncello piccolo, basso continuo",
+	"notes": "Composed for the 22nd Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Mache dich, mein Geist, bereit",
+			"type": "chorale fantasia",
+			"key": "d"
+		},
+		{
+			"title": "Ach schläfrige Seele, wie? ruhest du noch?",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "e"
+		},
+		{
+			"title": "Gott, so vor deine Seele wacht",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Bete aber auch dabei",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "b"
+		},
+		{
+			"title": "Er sehnet sich nach unserm Schreien",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Drum so laßt uns immerdar",
+			"type": "chorale",
+			"key": "G"
+		}
+	],
+	"xref": {
+		"wp": "BWV_115"
+	}
+}

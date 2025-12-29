@@ -1,0 +1,65 @@
+{
+	"id": "0dac1a1d",
+	"title": {
+		"de": "Gottes Zeit ist die allerbeste Zeit"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1708},
+			"catalog": [{"scheme": "bwv", "number": "106"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 alto recorders, 2 violas da gamba, continuo",
+	"notes": "Also known as Actus tragicus",
+	"movements": [
+		{
+			"title": "Sonatina",
+			"type": "instrumental",
+			"key": "Eb"
+		},
+		{
+			"title": "Gottes Zeit ist die allerbeste Zeit",
+			"type": "chorus",
+			"key": "Eb"
+		},
+		{
+			"title": "Ach, Herr, lehre uns bedenken",
+			"type": "arioso",
+			"soloists": "tenor",
+			"key": "c"
+		},
+		{
+			"title": "Bestelle dein Haus",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "c"
+		},
+		{
+			"title": "Es ist der alte Bund / Ja, komm, Herr Jesu, komm!",
+			"type": "chorus and solo",
+			"key": "f"
+		},
+		{
+			"title": "In deine Hände befehl ich meinen Geist",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "bb"
+		},
+		{
+			"title": "Heute wirst du mit mir im Paradies sein",
+			"type": "arioso and chorale",
+			"soloists": "bass, alto",
+			"key": "c"
+		},
+		{
+			"title": "Glorie, Lob, Ehr und Herrlichkeit",
+			"type": "chorus",
+			"key": "Eb"
+		}
+	],
+	"xref": {
+		"wp": "BWV_106"
+	}
+}

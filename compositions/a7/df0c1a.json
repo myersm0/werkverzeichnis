@@ -1,0 +1,50 @@
+{
+	"id": "a7df0c1a",
+	"title": {
+		"de": "Sehet, wir gehn hinauf gen Jerusalem"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1729},
+			"catalog": [{"scheme": "bwv", "number": "159"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB in final movement), oboe, 2 violins, viola, continuo",
+	"notes": "Composed for the Sunday Estomihi, the last Sunday before Lent.",
+	"movements": [
+		{
+			"title": "Sehet, wir gehn hinauf gen Jerusalem / Komm, schaue doch, mein Sinn",
+			"type": "arioso and recitative",
+			"key": "c",
+			"soloists": "bass, alto"
+		},
+		{
+			"title": "Ich folge dir nach / Ich will hier bei dir stehen",
+			"type": "aria and chorale",
+			"key": "Eb",
+			"soloists": "alto, soprano"
+		},
+		{
+			"title": "Nun will ich mich, mein Jesu",
+			"type": "recitative",
+			"key": "Bb",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Es ist vollbracht",
+			"type": "aria",
+			"key": "Bb",
+			"soloists": "bass"
+		},
+		{
+			"title": "Jesu, deine Passion ist mir lauter Freude",
+			"type": "chorale",
+			"key": "Eb"
+		}
+	],
+	"xref": {
+		"wp": "BWV_159"
+	}
+}

@@ -1,0 +1,55 @@
+{
+	"id": "f5fdf59a",
+	"title": {
+		"de": "Christus, der ist mein Leben"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1723, "premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "95"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, tenor, bass, choir (SATB), horn, 2 oboes d'amore, 2 violins, viola, violoncello piccolo, basso continuo",
+	"notes": "Composed for the 16th Sunday after Trinity in Bach's first year at Leipzig.",
+	"movements": [
+		{
+			"title": "Christus, der ist mein Leben / Mit Freuden, ja mit Herzenslust / Mit Fried und Freud ich fahr dahin",
+			"type": "chorale and recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Nun, falsche Welt",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Valet will ich dir geben",
+			"type": "chorale",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Ach könnte mir doch bald so wohl geschehn",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Ach, schlage doch bald, selge Stunde",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Denn ich weiß dies",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Weil du vom Tod erstanden bist",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_95"
+	}
+}

@@ -1,0 +1,54 @@
+{
+	"id": "d09c3f7d",
+	"title": {
+		"de": "Gott, wie dein Name, so ist auch dein Ruhm"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1729},
+			"catalog": [{"scheme": "bwv", "number": "171"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 3 trumpets, timpani, 2 oboes, 2 violins, viola, continuo",
+	"notes": "Composed for New Year's Day (Feast of the Circumcision of Christ).",
+	"movements": [
+		{
+			"title": "Gott, wie dein Name, so ist auch dein Ruhm",
+			"type": "chorus",
+			"key": "D"
+		},
+		{
+			"title": "Herr, so weit die Wolken gehn",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "A"
+		},
+		{
+			"title": "Du süßer Jesus-Name du",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Jesus soll mein erstes Wort",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "D"
+		},
+		{
+			"title": "Und da du, Herr, gesagt",
+			"type": "recitative",
+			"soloists": "bass",
+			"key": "A"
+		},
+		{
+			"title": "Laß uns das Jahr vollbringen",
+			"type": "chorale",
+			"key": "b"
+		}
+	],
+	"xref": {
+		"wp": "BWV_171"
+	}
+}

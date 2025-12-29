@@ -1,0 +1,54 @@
+{
+	"id": "a9d5bf5b",
+	"title": {
+		"de": "Was mein Gott will, das g'scheh allzeit"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1725, "premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "111"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 oboes, 2 violins, viola, basso continuo",
+	"notes": "Composed for the third Sunday after Epiphany.",
+	"movements": [
+		{
+			"title": "Was mein Gott will, das g'scheh allzeit",
+			"type": "chorale fantasia",
+			"key": "a"
+		},
+		{
+			"title": "Entsetze dich, mein Herze, nicht",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "a"
+		},
+		{
+			"title": "O Törichter! der sich von Gott entzieht",
+			"type": "recitative",
+			"soloists": "alto",
+			"key": "b"
+		},
+		{
+			"title": "So geh ich mit beherzten Schritten",
+			"type": "aria",
+			"soloists": "alto, tenor",
+			"key": "G"
+		},
+		{
+			"title": "Drum wenn der Tod zuletzt den Geist",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Noch eins, Herr, will ich bitten dich",
+			"type": "chorale",
+			"key": "a"
+		}
+	],
+	"xref": {
+		"wp": "BWV_111"
+	}
+}

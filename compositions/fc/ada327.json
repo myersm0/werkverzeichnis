@@ -1,0 +1,45 @@
+{
+	"id": "fcada327",
+	"title": {
+		"de": "Süßer Trost, mein Jesus kömmt"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "151"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), flute, oboe d'amore, 2 violins, viola, basso continuo",
+	"notes": "Composed for the third day of Christmas.",
+	"movements": [
+		{
+			"title": "Süßer Trost, mein Jesus kömmt",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Erfreue dich, mein Herz",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "In Jesu Demut kann ich Trost",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Du teurer Gottessohn",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Heut schleußt er wieder auf die Tür",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_151"
+	}
+}

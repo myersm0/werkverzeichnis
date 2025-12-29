@@ -1,0 +1,34 @@
+{
+	"id": "af874a06",
+	"title": {
+		"de": "Widerstehe doch der Sünde"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1714, "premiered": 1714},
+			"catalog": [{"scheme": "bwv", "number": "54"}]
+		}
+	],
+	"form": "solo cantata",
+	"instrumentation": "alto, 2 violins, 2 violas, continuo",
+	"movements": [
+		{
+			"title": "Widerstehe doch der Sünde",
+			"type": "aria",
+			"key": "Eb"
+		},
+		{
+			"title": "Die Art verruchter Sünden",
+			"type": "recitative"
+		},
+		{
+			"title": "Wer Sünde tut, der ist vom Teufel",
+			"type": "aria",
+			"key": "Eb"
+		}
+	],
+	"xref": {
+		"wp": "BWV_54"
+	}
+}

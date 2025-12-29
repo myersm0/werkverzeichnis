@@ -1,0 +1,53 @@
+{
+	"id": "5b2693d0",
+	"title": {
+		"de": "Wer weiß, wie nahe mir mein Ende?"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1726},
+			"catalog": [{"scheme": "bwv", "number": "27"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), horn, 3 oboes, oboe da caccia, organ, 2 violins, viola, basso continuo",
+	"notes": "Composed for the 16th Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Wer weiß, wie nahe mir mein Ende?",
+			"type": "chorus",
+			"key": "c"
+		},
+		{
+			"title": "Mein Leben hat kein ander Ziel",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Willkommen! will ich sagen",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "Eb"
+		},
+		{
+			"title": "Ach, wer doch schon im Himmel wär",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Gute Nacht, du Weltgetümmel",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "g"
+		},
+		{
+			"title": "Welt, ade! ich bin dein müde",
+			"type": "chorale",
+			"key": "Bb"
+		}
+	],
+	"xref": {
+		"wp": "BWV_27"
+	}
+}

@@ -1,0 +1,59 @@
+{
+	"id": "6eaa0600",
+	"title": {
+		"de": "Gott ist mein König"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1708},
+			"catalog": [{"scheme": "bwv", "number": "71"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 3 trumpets, timpani, 2 recorders, 2 oboes, bassoon, organ obbligato, 2 violins, viola, violoncello, viola da gamba, continuo",
+	"notes": "Composed for the inauguration of a new town council.",
+	"movements": [
+		{
+			"title": "Gott ist mein König",
+			"type": "chorus",
+			"key": "C"
+		},
+		{
+			"title": "Ich bin nun achtzig Jahr",
+			"type": "aria",
+			"soloists": "tenor, soprano",
+			"key": "e"
+		},
+		{
+			"title": "Dein Alter sei wie deine Jugend",
+			"type": "chorus",
+			"key": "a"
+		},
+		{
+			"title": "Tag und Nacht ist dein",
+			"type": "arioso",
+			"soloists": "bass",
+			"key": "F"
+		},
+		{
+			"title": "Durch mächtige Kraft",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "C"
+		},
+		{
+			"title": "Du wollest dem Feinde nicht geben",
+			"type": "chorus",
+			"key": "c"
+		},
+		{
+			"title": "Das neue Regiment auf jeglichen Wegen",
+			"type": "chorus",
+			"key": "C"
+		}
+	],
+	"xref": {
+		"wp": "BWV_71"
+	}
+}

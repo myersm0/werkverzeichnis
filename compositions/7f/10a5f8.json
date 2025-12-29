@@ -1,0 +1,44 @@
+{
+	"id": "7f10a5f8",
+	"title": {
+		"de": "Ich habe genung"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1727, "premiered": 1727},
+			"catalog": [{"scheme": "bwv", "number": "82"}]
+		}
+	],
+	"form": "solo cantata",
+	"instrumentation": "bass, oboe, 2 violins, viola, continuo",
+	"notes": "Composed for the Feast of the Purification of Mary.",
+	"movements": [
+		{
+			"title": "Ich habe genung",
+			"type": "aria",
+			"key": "c"
+		},
+		{
+			"title": "Ich habe genung",
+			"type": "recitative"
+		},
+		{
+			"title": "Schlummert ein, ihr matten Augen",
+			"type": "aria",
+			"key": "Eb"
+		},
+		{
+			"title": "Mein Gott! wenn kömmt das schöne: Nun!",
+			"type": "recitative"
+		},
+		{
+			"title": "Ich freue mich auf meinen Tod",
+			"type": "aria",
+			"key": "c"
+		}
+	],
+	"xref": {
+		"wp": "BWV_82"
+	}
+}

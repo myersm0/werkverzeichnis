@@ -1,0 +1,58 @@
+{
+	"id": "23e868f0",
+	"title": {
+		"de": "Sie werden aus Saba alle kommen"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1724, "premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "65"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "tenor, bass, choir (SATB), 2 horns, 2 recorders, 2 oboes da caccia, 2 violins, viola, continuo",
+	"notes": "Composed for Epiphany.",
+	"movements": [
+		{
+			"title": "Sie werden aus Saba alle kommen",
+			"type": "chorus",
+			"key": "C"
+		},
+		{
+			"title": "Die Kön'ge aus Saba kamen dar",
+			"type": "chorale",
+			"key": "a"
+		},
+		{
+			"title": "Was dort Jesaias vorhergesehn",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Gold aus Ophir ist zu schlecht",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "e"
+		},
+		{
+			"title": "Verschmähe nicht, du, meiner Seele Licht",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Nimm mich dir zu eigen hin",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "C"
+		},
+		{
+			"title": "Ei nun, mein Gott, so fall ich dir",
+			"type": "chorale",
+			"key": "a"
+		}
+	],
+	"xref": {
+		"wp": "BWV_65"
+	}
+}

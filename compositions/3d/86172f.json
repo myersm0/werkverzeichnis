@@ -1,0 +1,54 @@
+{
+	"id": "3d86172f",
+	"title": {
+		"de": "Nun komm, der Heiden Heiland"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1714, "premiered": 1714},
+			"catalog": [{"scheme": "bwv", "number": "61"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, tenor, bass, 2 violins, 2 violas, cello, bassoon, continuo",
+	"notes": "Composed for the first Sunday in Advent.",
+	"movements": [
+		{
+			"title": "Nun komm, der Heiden Heiland",
+			"type": "chorale fantasia",
+			"key": "a"
+		},
+		{
+			"title": "Der Heiland ist gekommen",
+			"type": "recitative",
+			"soloists": "tenor",
+			"key": "C"
+		},
+		{
+			"title": "Komm, Jesu, komm zu deiner Kirche",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "C"
+		},
+		{
+			"title": "Siehe, ich stehe vor der Tür",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Öffne dich, mein ganzes Herze",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "G"
+		},
+		{
+			"title": "Amen, Amen, komm du schöne Freudenkrone",
+			"type": "chorale",
+			"key": "G"
+		}
+	],
+	"xref": {
+		"wp": "BWV_61"
+	}
+}

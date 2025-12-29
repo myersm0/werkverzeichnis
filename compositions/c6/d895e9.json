@@ -1,0 +1,90 @@
+{
+	"id": "c6d895e9",
+	"title": {
+		"de": "Ich hatte viel Bekümmernis"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1713},
+			"catalog": [{"scheme": "bwv", "number": "21"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, tenor, bass, choir (SATB), 3 trumpets, timpani, oboe, 2 violins, viola, bassoon, organ, continuo",
+	"sections": [
+		{
+			"title": "Part I",
+			"movements": [
+				{
+					"title": "Sinfonia",
+					"type": "sinfonia",
+					"key": "c"
+				},
+				{
+					"title": "Ich hatte viel Bekümmernis in meinem Herzen",
+					"type": "chorus",
+					"key": "c"
+				},
+				{
+					"title": "Seufzer, Tränen, Kummer, Not",
+					"type": "aria",
+					"soloists": "soprano",
+					"key": "c"
+				},
+				{
+					"title": "Wie hast du dich, mein Gott",
+					"type": "recitative",
+					"soloists": "tenor"
+				},
+				{
+					"title": "Bäche von gesalznen Zähren",
+					"type": "aria",
+					"soloists": "tenor",
+					"key": "f"
+				},
+				{
+					"title": "Was betrübst du dich, meine Seele",
+					"type": "chorus",
+					"key": "f"
+				}
+			]
+		},
+		{
+			"title": "Part II",
+			"movements": [
+				{
+					"title": "Ach Jesu, meine Ruh",
+					"type": "recitative dialogus",
+					"soloists": "soprano, bass",
+					"key": "Eb"
+				},
+				{
+					"title": "Komm, mein Jesu, und erquicke / Ja, ich komme und erquicke",
+					"type": "aria",
+					"soloists": "soprano, bass",
+					"key": "Eb"
+				},
+				{
+					"title": "Sei nun wieder zufrieden, meine Seele",
+					"type": "chorus and chorale",
+					"key": "g"
+				},
+				{
+					"title": "Erfreue dich, Seele, erfreue dich, Herze",
+					"type": "aria",
+					"soloists": "tenor",
+					"key": "F"
+				},
+				{
+					"title": "Das Lamm, das erwürget ist",
+					"type": "chorus",
+					"key": "C"
+				}
+			]
+		}
+	],
+	"xref": {
+		"wp": "BWV_21"
+	}
+}

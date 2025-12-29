@@ -1,0 +1,48 @@
+{
+	"id": "57d74f93",
+	"title": {
+		"de": "Nimm, was dein ist, und gehe hin"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "144"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, tenor, choir (SATB), 2 oboes, oboe d'amore, 2 violins, viola, basso continuo",
+	"notes": "Composed for the Sunday Septuagesimae, the third Sunday before Lent.",
+	"movements": [
+		{
+			"title": "Nimm, was dein ist, und gehe hin",
+			"type": "chorus"
+		},
+		{
+			"title": "Murre nicht, lieber Christ",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Was Gott tut, das ist wohlgetan",
+			"type": "chorale"
+		},
+		{
+			"title": "Wo die Genügsamkeit regiert",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Genügsamkeit ist ein Schatz in diesem Leben",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Was mein Gott will, das g'scheh allzeit",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_144"
+	}
+}

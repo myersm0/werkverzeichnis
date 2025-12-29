@@ -1,0 +1,57 @@
+{
+	"id": "ccd03f05",
+	"title": {
+		"de": "Schmücke dich, o liebe Seele"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "180"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 recorders, flauto traverso, 2 oboes, 2 violins, viola, violoncello piccolo, continuo",
+	"note": "Composed for the 20th Sunday after Trinity",
+	"movements": [
+		{
+			"title": "Schmücke dich, o liebe Seele",
+			"type": "chorale fantasia",
+			"key": "F"
+		},
+		{
+			"title": "Ermuntre dich, dein Heiland klopft",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "C"
+		},
+		{
+			"title": "Wie teuer sind des heilgen Mahles Gaben! – Ach, wie hungert mein Gemüte",
+			"type": "recitative and chorale",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Mein Herz fühlt in sich Furcht und Freude",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Lebens Sonne, Licht der Sinnen",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Herr, laß an mir dein treues Lieben",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Jesu, wahres Brot des Lebens",
+			"type": "chorale",
+			"key": "F"
+		}
+	],
+	"xref": {
+		"wp": "BWV_180"
+	}
+}

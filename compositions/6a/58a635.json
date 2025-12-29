@@ -1,0 +1,49 @@
+{
+	"id": "6a58a635",
+	"title": {
+		"de": "Lobe den Herren, den mächtigen König der Ehren"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "137"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 3 trumpets, timpani, 2 oboes, 2 violins, viola, continuo",
+	"notes": "Composed for the twelfth Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Lobe den Herren, den mächtigen König der Ehren",
+			"type": "chorus",
+			"key": "C"
+		},
+		{
+			"title": "Lobe den Herren, der alles so herrlich regieret",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "G"
+		},
+		{
+			"title": "Lobe den Herren, der künstlich und fein dich bereitet",
+			"type": "aria duet",
+			"soloists": "soprano, bass",
+			"key": "e"
+		},
+		{
+			"title": "Lobe den Herren, der deinen Stand sichtbar gesegnet",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "a"
+		},
+		{
+			"title": "Lobe den Herren, was in mir ist, lobe den Namen",
+			"type": "chorale",
+			"key": "C"
+		}
+	],
+	"xref": {
+		"wp": "BWV_137"
+	}
+}

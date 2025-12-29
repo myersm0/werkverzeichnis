@@ -1,0 +1,53 @@
+{
+	"id": "3c8f64e7",
+	"title": {
+		"de": "Gottlob! nun geht das Jahr zu Ende"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "28"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), cornetto, 3 trombones, 2 oboes, taille, 2 violins, viola, continuo",
+	"notes": "Composed for the Sunday after Christmas.",
+	"movements": [
+		{
+			"title": "Gottlob! nun geht das Jahr zu Ende",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "a"
+		},
+		{
+			"title": "Nun lob, mein Seel, den Herren",
+			"type": "chorale",
+			"key": "C"
+		},
+		{
+			"title": "So spricht der Herr",
+			"type": "recitative / arioso",
+			"soloists": "bass"
+		},
+		{
+			"title": "Gott ist ein Quell",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Gott hat uns im heurigen Jahre gesegnet",
+			"type": "duet",
+			"soloists": "alto, tenor",
+			"key": "C"
+		},
+		{
+			"title": "All solch dein Güt wir preisen",
+			"type": "chorale",
+			"key": "a"
+		}
+	],
+	"xref": {
+		"wp": "BWV_28"
+	}
+}

@@ -1,0 +1,49 @@
+{
+	"id": "94ecfd2b",
+	"title": {
+		"de": "Falsche Welt, dir trau ich nicht"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1726, "premiered": 1726},
+			"catalog": [{"scheme": "bwv", "number": "52"}]
+		}
+	],
+	"form": "solo cantata",
+	"instrumentation": "soprano, 2 horns, 3 oboes, bassoon, 2 violins, viola, basso continuo, 4-part choir (final movement)",
+	"notes": "Composed for the 23rd Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Sinfonia",
+			"type": "instrumental"
+		},
+		{
+			"title": "Falsche Welt, dir trau ich nicht",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Immerhin, immerhin, wenn ich gleich verstoßen bin",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Gott ist getreu",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Ich halt es mit dem lieben Gott",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "In dich hab ich gehoffet, Herr",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_52"
+	}
+}

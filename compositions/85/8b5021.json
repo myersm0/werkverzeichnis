@@ -1,0 +1,53 @@
+{
+	"id": "858b5021",
+	"title": {
+		"de": "Erhalt uns, Herr, bei deinem Wort"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1725, "premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "126"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), trumpet, 2 oboes, 2 violins, viola, continuo",
+	"notes": "Composed for the Sunday Sexagesimae, the second Sunday before Lent. Based on Martin Luther's hymn of the same name (1542).",
+	"movements": [
+		{
+			"title": "Erhalt uns, Herr, bei deinem Wort",
+			"type": "chorale fantasia",
+			"key": "a"
+		},
+		{
+			"title": "Sende deine Macht von oben",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "e"
+		},
+		{
+			"title": "Der Menschen Gunst und Macht wird wenig nützen / Gott Heiliger Geist, du Tröster wert",
+			"type": "recitative and chorale",
+			"soloists": "alto, tenor"
+		},
+		{
+			"title": "Stürze zu Boden, schwülstige Stolze!",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "C"
+		},
+		{
+			"title": "So wird dein Wort und Wahrheit offenbar",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Verleih uns Frieden gnädiglich / Gib unsern Fürsten und all'r Obrigkeit",
+			"type": "chorale",
+			"key": "a"
+		}
+	],
+	"xref": {
+		"wp": "BWV_126"
+	}
+}

@@ -1,0 +1,53 @@
+{
+	"id": "b214fc91",
+	"title": {
+		"de": "Erforsche mich, Gott, und erfahre mein Herz"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1723, "premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "136"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "alto, tenor, bass, choir (SATB), horn, 2 oboes (one d'amore), 2 violins, viola, continuo",
+	"notes": "Composed for the eighth Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Erforsche mich, Gott, und erfahre mein Herz",
+			"type": "chorus",
+			"key": "A"
+		},
+		{
+			"title": "Ach, daß der Fluch, so dort die Erde schlägt",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Es kömmt ein Tag",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "f#"
+		},
+		{
+			"title": "Die Himmel selber sind nicht rein",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Uns treffen zwar der Sünden Flecken",
+			"type": "aria",
+			"soloists": "tenor, bass",
+			"key": "b"
+		},
+		{
+			"title": "Dein Blut, der edle Saft",
+			"type": "chorale",
+			"key": "b"
+		}
+	],
+	"xref": {
+		"wp": "BWV_136"
+	}
+}

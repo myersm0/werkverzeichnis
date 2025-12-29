@@ -1,0 +1,53 @@
+{
+	"id": "32486110",
+	"title": {
+		"de": "Aus tiefer Not schrei ich zu dir"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1724, "premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "38"}]
+		}
+	],
+	"form": "chorale cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 4 trombones, 2 oboes, 2 violins, viola, continuo",
+	"notes": "Composed for the 21st Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Aus tiefer Not schrei ich zu dir",
+			"type": "chorale fantasia",
+			"key": "e.phr"
+		},
+		{
+			"title": "In Jesu Gnade wird allein",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Ich höre mitten in den Leiden",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "a"
+		},
+		{
+			"title": "Ach! Daß mein Glaube noch so schwach",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Wenn meine Trübsal als mit Ketten",
+			"type": "aria",
+			"soloists": "soprano, alto, bass",
+			"key": "d"
+		},
+		{
+			"title": "Ob bei uns ist der Sünden viel",
+			"type": "chorale",
+			"key": "e.phr"
+		}
+	],
+	"xref": {
+		"wp": "BWV_38"
+	}
+}

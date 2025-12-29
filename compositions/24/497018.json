@@ -1,0 +1,51 @@
+{
+	"id": "24497018",
+	"title": {
+		"de": "Es ist ein trotzig und verzagt Ding"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "176"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, bass, choir (SATB), 2 oboes, oboe da caccia, 2 violins, viola, continuo",
+	"notes": "Composed for Trinity Sunday.",
+	"movements": [
+		{
+			"title": "Es ist ein trotzig und verzagt Ding",
+			"type": "chorus",
+			"key": "c"
+		},
+		{
+			"title": "Ich meine, recht verzagt",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Dein sonst hell beliebter Schein",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "So wundre dich, o Meister, nicht",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Ermuntert euch, furchtsam und schüchterne Sinne",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "Eb"
+		},
+		{
+			"title": "Auf daß wir also allzugleich",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_176"
+	}
+}

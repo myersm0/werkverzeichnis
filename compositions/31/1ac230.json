@@ -1,0 +1,53 @@
+{
+	"id": "311ac230",
+	"title": {
+		"de": "Alles nur nach Gottes Willen"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1726, "premiered": 1726},
+			"catalog": [{"scheme": "bwv", "number": "72"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, alto, bass, choir (SATB), 2 oboes, 2 violins, 2 obbligato violins, viola, continuo",
+	"notes": "Composed for the third Sunday after Epiphany. The opening chorus was later used for the Gloria of the Missa in G minor, BWV 235.",
+	"movements": [
+		{
+			"title": "Alles nur nach Gottes Willen",
+			"type": "chorus",
+			"key": "a"
+		},
+		{
+			"title": "O selger Christ, der allzeit seinen Willen",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Mit allem, was ich hab und bin",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "d"
+		},
+		{
+			"title": "So glaube nun",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Mein Jesus will es tun, er will dein Kreuz versüßen",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "C"
+		},
+		{
+			"title": "Was mein Gott will, das g'scheh allzeit",
+			"type": "chorale",
+			"key": "a"
+		}
+	],
+	"xref": {
+		"wp": "BWV_72"
+	}
+}

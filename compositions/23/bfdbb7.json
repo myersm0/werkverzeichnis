@@ -1,0 +1,53 @@
+{
+	"id": "23bfdbb7",
+	"title": {
+		"de": "Bereitet die Wege, bereitet die Bahn"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1715, "premiered": 1715},
+			"catalog": [{"scheme": "bwv", "number": "132"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, oboe, 2 violins, viola, cello, basso continuo",
+	"notes": "Composed for the fourth Sunday of Advent. Music of the final chorale is lost.",
+	"movements": [
+		{
+			"title": "Bereitet die Wege, bereitet die Bahn",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "A"
+		},
+		{
+			"title": "Willst du dich Gottes Kind und Christi Bruder nennen",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Wer bist du? Frage dein Gewissen",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "E"
+		},
+		{
+			"title": "Ich will, mein Gott, dir frei heraus bekennen",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Christi Glieder, ach bedenket",
+			"type": "aria",
+			"soloists": "alto",
+			"key": "b"
+		},
+		{
+			"title": "Ertöt uns durch deine Güte",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_132"
+	}
+}

@@ -1,0 +1,48 @@
+{
+	"id": "0efce2dc",
+	"title": {
+		"de": "Also hat Gott die Welt geliebt"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1725, "premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "68"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, bass, choir (SATB), horn, cornett, 3 trombones, 2 oboes, taille, 2 violins, 2 violas, violoncello piccolo, basso continuo",
+	"notes": "Composed for Pentecost Monday. Two arias derived from the Hunting Cantata.",
+	"movements": [
+		{
+			"title": "Also hat Gott die Welt geliebt",
+			"type": "chorale fantasia",
+			"key": "d"
+		},
+		{
+			"title": "Mein gläubiges Herze",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "F"
+		},
+		{
+			"title": "Ich bin mit Petro nicht vermessen",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Du bist geboren mir zugute",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "C"
+		},
+		{
+			"title": "Wer an ihn gläubet, der wird nicht gerichtet",
+			"type": "chorus",
+			"key": "a"
+		}
+	],
+	"xref": {
+		"wp": "BWV_68"
+	}
+}

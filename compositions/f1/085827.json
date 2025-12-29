@@ -1,0 +1,44 @@
+{
+	"id": "f1085827",
+	"title": {
+		"de": "Herr, wie du willt, so schicks mit mir"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "73"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "soprano, tenor, bass, choir (SATB), horn, 2 oboes, 2 violins, viola, basso continuo",
+	"notes": "Composed for the third Sunday after Epiphany. Revised version performed in 1748 or 1749 with organ replacing horn.",
+	"movements": [
+		{
+			"title": "Herr, wie du willt, so schicks mit mir",
+			"type": "chorus and recitative"
+		},
+		{
+			"title": "Ach senke doch den Geist der Freuden",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Ach, unser Wille bleibt verkehrt",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Herr, so du willt",
+			"type": "aria",
+			"soloists": "bass"
+		},
+		{
+			"title": "Das ist des Vaters Wille",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_73"
+	}
+}

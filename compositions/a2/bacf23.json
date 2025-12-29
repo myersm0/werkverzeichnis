@@ -1,0 +1,59 @@
+{
+	"id": "a2bacf23",
+	"title": {
+		"de": "Mein liebster Jesus ist verloren"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "154"}]
+		}
+	],
+	"form": "sacred cantata",
+	"instrumentation": "alto, tenor, bass, four-part choir (chorales only), 2 oboes d'amore, 2 violins, viola, basso continuo",
+	"notes": "Composed for the first Sunday after Epiphany.",
+	"movements": [
+		{
+			"title": "Mein liebster Jesus ist verloren",
+			"type": "aria",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Wo treff ich meinen Jesum an",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Jesu, mein Hort und Erretter",
+			"type": "chorale"
+		},
+		{
+			"title": "Jesu, laß dich finden",
+			"type": "aria",
+			"soloists": "alto"
+		},
+		{
+			"title": "Wisset ihr nicht, daß ich sein muß",
+			"type": "arioso",
+			"soloists": "bass"
+		},
+		{
+			"title": "Dies ist die Stimme meines Freundes",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Wohl mir, Jesus ist gefunden",
+			"type": "aria",
+			"soloists": "alto, tenor"
+		},
+		{
+			"title": "Meinen Jesum laß ich nicht",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_154"
+	}
+}

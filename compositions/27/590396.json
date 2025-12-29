@@ -1,0 +1,56 @@
+{
+	"id": "27590396",
+	"title": {
+		"de": "Halt im Gedächtnis Jesum Christ"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1724},
+			"catalog": [{"scheme": "bwv", "number": "67"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "alto, tenor, bass, choir (SATB), corno da tirarsi, flauto traverso, 2 oboes d'amore, 2 violins, viola, basso continuo",
+	"notes": "Composed for Quasimodogeniti, the first Sunday after Easter.",
+	"movements": [
+		{
+			"title": "Halt im Gedächtnis Jesum Christ",
+			"type": "chorus",
+			"key": "A"
+		},
+		{
+			"title": "Mein Jesus ist erstanden",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "E"
+		},
+		{
+			"title": "Mein Jesu, heißest du des Todes Gift",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Erschienen ist der herrlich Tag",
+			"type": "chorale"
+		},
+		{
+			"title": "Doch scheinet fast",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Friede sei mit euch",
+			"type": "aria e coro",
+			"soloists": "bass",
+			"key": "A"
+		},
+		{
+			"title": "Du Friedefürst, Herr Jesu Christ",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_67"
+	}
+}

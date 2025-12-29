@@ -1,0 +1,51 @@
+{
+	"id": "9a40bfdf",
+	"title": {
+		"de": "Ach Gott, wie manches Herzeleid"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1727},
+			"catalog": [{"scheme": "bwv", "number": "58"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, bass, 2 violins, viola, continuo; oboes and taille added in later version",
+	"notes": "Composed for the Sunday after New Year's Day.",
+	"movements": [
+		{
+			"title": "Ach Gott, wie manches Herzeleid",
+			"type": "chorale fantasia",
+			"soloists": "soprano, bass",
+			"key": "C"
+		},
+		{
+			"title": "Verfolgt dich gleich die arge Welt",
+			"type": "recitative",
+			"soloists": "bass",
+			"key": "a"
+		},
+		{
+			"title": "Ich bin vergnügt in meinem Leiden",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "d"
+		},
+		{
+			"title": "Kann es die Welt nicht lassen",
+			"type": "recitative",
+			"soloists": "soprano",
+			"key": "F"
+		},
+		{
+			"title": "Ich hab für mir ein schwere Reis",
+			"type": "chorale fantasia",
+			"soloists": "soprano, bass",
+			"key": "C"
+		}
+	],
+	"xref": {
+		"wp": "BWV_58"
+	}
+}

@@ -1,0 +1,54 @@
+{
+	"id": "60997745",
+	"title": {
+		"de": "Tue Rechnung! Donnerwort"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "168"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB in final movement), 2 oboes d'amore, 2 violins, viola, continuo",
+	"notes": "Composed for the ninth Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Tue Rechnung! Donnerwort",
+			"type": "aria",
+			"soloists": "bass",
+			"key": "b"
+		},
+		{
+			"title": "Es ist nur fremdes Gut",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Kapital und Interessen",
+			"type": "aria",
+			"soloists": "tenor",
+			"key": "f#"
+		},
+		{
+			"title": "Jedoch, erschrocknes Herz, leb und verzage nicht",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Herz, zerreiß des Mammons Kette",
+			"type": "aria",
+			"soloists": "soprano, alto",
+			"key": "e"
+		},
+		{
+			"title": "Stärk mich mit deinem Freudengeist",
+			"type": "chorale",
+			"key": "b"
+		}
+	],
+	"xref": {
+		"wp": "BWV_168"
+	}
+}

@@ -1,0 +1,48 @@
+{
+	"id": "e3bb2785",
+	"title": {
+		"de": "Ich bin vergnügt mit meinem Glücke"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1727, "premiered": 1727},
+			"catalog": [{"scheme": "bwv", "number": "84"}]
+		}
+	],
+	"form": "solo cantata",
+	"instrumentation": "soprano, SATB choir (chorale only), oboe, 2 violins, viola, continuo",
+	"notes": "Composed for the Sunday Septuagesima.",
+	"movements": [
+		{
+			"title": "Ich bin vergnügt mit meinem Glücke",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "e"
+		},
+		{
+			"title": "Gott ist mir ja nichts schuldig",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Ich esse mit Freuden mein weniges Brot",
+			"type": "aria",
+			"soloists": "soprano",
+			"key": "G"
+		},
+		{
+			"title": "Im Schweiße meines Angesichts",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Ich leb indes in dir vergnüget",
+			"type": "chorale",
+			"key": "e"
+		}
+	],
+	"xref": {
+		"wp": "BWV_84"
+	}
+}

@@ -1,0 +1,60 @@
+{
+	"id": "86d58761",
+	"title": {
+		"de": "Selig ist der Mann"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"composed": 1725, "premiered": 1725},
+			"catalog": [{"scheme": "bwv", "number": "57"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, bass, 2 oboes, oboe da caccia, 2 violins, viola, continuo, choir (SATB)",
+	"notes": "Written for the Second Day of Christmas (Saint Stephen's Day).",
+	"movements": [
+		{
+			"title": "Selig ist der Mann",
+			"type": "aria",
+			"soloists": "bass"
+		},
+		{
+			"title": "Ach! dieser süße Trost",
+			"type": "recitative",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Ich wünschte mir den Tod, den Tod",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Ich reiche dir die Hand",
+			"type": "recitative",
+			"soloists": "soprano, bass"
+		},
+		{
+			"title": "Ja, ja, ich kann die Feinde schlagen",
+			"type": "aria",
+			"soloists": "bass"
+		},
+		{
+			"title": "In meinem Schoß liegt Ruh und Leben",
+			"type": "recitative",
+			"soloists": "soprano, bass"
+		},
+		{
+			"title": "Ich ende behende mein irdisches Leben",
+			"type": "aria",
+			"soloists": "soprano"
+		},
+		{
+			"title": "Richte dich, Liebste, nach meinem Gefallen und gläube",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_57"
+	}
+}

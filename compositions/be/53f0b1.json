@@ -1,0 +1,55 @@
+{
+	"id": "be53f0b1",
+	"title": {
+		"de": "Warum betrübst du dich, mein Herz"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1723},
+			"catalog": [{"scheme": "bwv", "number": "138"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 oboes d'amore, 2 violins, viola, basso continuo",
+	"notes": "Composed for the 15th Sunday after Trinity.",
+	"movements": [
+		{
+			"title": "Warum betrübst du dich, mein Herz",
+			"type": "chorale and recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Ich bin veracht",
+			"type": "recitative",
+			"soloists": "bass"
+		},
+		{
+			"title": "Er kann und will dich lassen nicht",
+			"type": "chorale and recitative",
+			"soloists": "soprano, alto"
+		},
+		{
+			"title": "Ach süßer Trost",
+			"type": "recitative",
+			"soloists": "tenor"
+		},
+		{
+			"title": "Auf Gott steht meine Zuversicht",
+			"type": "aria",
+			"soloists": "bass"
+		},
+		{
+			"title": "Ei nun! So will ich auch recht sanfte ruhn",
+			"type": "recitative",
+			"soloists": "alto"
+		},
+		{
+			"title": "Weil du mein Gott und Vater bist",
+			"type": "chorale"
+		}
+	],
+	"xref": {
+		"wp": "BWV_138"
+	}
+}

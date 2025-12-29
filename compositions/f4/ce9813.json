@@ -1,0 +1,70 @@
+{
+	"id": "f4ce9813",
+	"title": {
+		"de": "Siehe, ich will viel Fischer aussenden"
+	},
+	"attribution": [
+		{
+			"composer": "bach",
+			"dates": {"premiered": 1726},
+			"catalog": [{"scheme": "bwv", "number": "88"}]
+		}
+	],
+	"form": "church cantata",
+	"instrumentation": "soprano, alto, tenor, bass, choir (SATB in chorale only), 2 horns, 2 oboes d'amore, taille, 2 violins, viola, continuo",
+	"notes": "Composed for the fifth Sunday after Trinity.",
+	"sections": [
+		{
+			"title": "Part I",
+			"movements": [
+				{
+					"title": "Siehe, ich will viel Fischer aussenden / Und darnach will ich viel Jäger aussenden",
+					"type": "basso solo",
+					"soloists": "bass",
+					"key": "D"
+				},
+				{
+					"title": "Wie leichtlich könnte doch der Höchste uns entbehren",
+					"type": "recitative",
+					"soloists": "tenor"
+				},
+				{
+					"title": "Nein, Gott ist allezeit geflissen",
+					"type": "aria",
+					"soloists": "tenor",
+					"key": "e"
+				}
+			]
+		},
+		{
+			"title": "Part II",
+			"movements": [
+				{
+					"title": "Jesus sprach zu Simon: Fürchte dich nicht",
+					"type": "arioso",
+					"soloists": "tenor, bass",
+					"key": "G"
+				},
+				{
+					"title": "Beruft Gott selbst, so muss der Segen",
+					"type": "duet aria",
+					"soloists": "soprano, alto",
+					"key": "A"
+				},
+				{
+					"title": "Was kann dich denn in deinem Wandel schrecken",
+					"type": "recitative",
+					"soloists": "soprano"
+				},
+				{
+					"title": "Sing, bet und geh auf Gottes Wegen",
+					"type": "chorale",
+					"key": "b"
+				}
+			]
+		}
+	],
+	"xref": {
+		"wp": "BWV_88"
+	}
+}
