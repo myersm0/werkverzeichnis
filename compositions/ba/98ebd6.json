@@ -1,0 +1,34 @@
+{
+	"id": "ba98ebd6",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1768
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:49"
+				}
+			]
+		}
+	],
+	"key": "f",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Adagio"
+		},
+		{
+			"title": "Allegro di molto"
+		},
+		{
+			"title": "Menuet e Trio",
+			"key": "F"
+		},
+		{
+			"title": "Presto"
+		}
+	]
+}

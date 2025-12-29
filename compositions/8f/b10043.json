@@ -1,0 +1,34 @@
+{
+	"id": "8fb10043",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1765
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:39"
+				}
+			]
+		}
+	],
+	"key": "g",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Allegro assai"
+		},
+		{
+			"title": "Andante",
+			"key": "Eb"
+		},
+		{
+			"title": "Menuet & Trio"
+		},
+		{
+			"title": "Finale: Allegro di molto"
+		}
+	]
+}

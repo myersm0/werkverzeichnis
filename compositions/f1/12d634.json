@@ -1,0 +1,34 @@
+{
+	"id": "f112d634",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1772
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:52"
+				}
+			]
+		}
+	],
+	"key": "c",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Allegro assai con brio"
+		},
+		{
+			"title": "Andante",
+			"key": "C"
+		},
+		{
+			"title": "Menuetto e trio: Allegretto"
+		},
+		{
+			"title": "Finale: Presto"
+		}
+	]
+}

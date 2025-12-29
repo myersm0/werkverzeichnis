@@ -1,0 +1,34 @@
+{
+	"id": "b4f20a9c",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1784,
+				"premiered": 1785
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:80"
+				}
+			]
+		}
+	],
+	"key": "d",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Allegro spiritoso"
+		},
+		{
+			"title": "Adagio"
+		},
+		{
+			"title": "Menuetto"
+		},
+		{
+			"title": "Finale: Presto"
+		}
+	]
+}

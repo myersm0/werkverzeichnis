@@ -1,0 +1,34 @@
+{
+	"id": "1293dd50",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1772
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:47"
+				}
+			]
+		}
+	],
+	"key": "G",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Un poco adagio cantabile",
+			"key": "D"
+		},
+		{
+			"title": "Menuetto e Trio"
+		},
+		{
+			"title": "Presto assai"
+		}
+	]
+}

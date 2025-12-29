@@ -1,0 +1,37 @@
+{
+	"id": "2d8e249e",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1791,
+				"premiered": 1791
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:95"
+				}
+			]
+		}
+	],
+	"key": "c",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Allegro moderato",
+			"key": "c"
+		},
+		{
+			"title": "Andante",
+			"key": "Eb"
+		},
+		{
+			"title": "Menuetto – Trio"
+		},
+		{
+			"title": "Finale: Vivace",
+			"key": "C"
+		}
+	]
+}

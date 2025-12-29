@@ -1,0 +1,32 @@
+{
+	"id": "f2aa443d",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:20"
+				}
+			]
+		}
+	],
+	"key": "C",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Allegro molto"
+		},
+		{
+			"title": "Andante cantabile",
+			"key": "G"
+		},
+		{
+			"title": "Minuetto and Trio",
+			"key": "C"
+		},
+		{
+			"title": "Presto"
+		}
+	]
+}

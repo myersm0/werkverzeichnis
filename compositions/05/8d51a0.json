@@ -1,0 +1,32 @@
+{
+	"id": "058d51a0",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:32"
+				}
+			]
+		}
+	],
+	"key": "C",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Allegro molto"
+		},
+		{
+			"title": "Menuet and Trio",
+			"key": "c"
+		},
+		{
+			"title": "Adagio ma non troppo",
+			"key": "F"
+		},
+		{
+			"title": "Finale: Presto"
+		}
+	]
+}

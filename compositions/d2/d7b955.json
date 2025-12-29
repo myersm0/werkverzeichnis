@@ -1,0 +1,36 @@
+{
+	"id": "d2d7b955",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1794,
+				"premiered": 1795
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:102"
+				}
+			]
+		}
+	],
+	"key": "Bb",
+	"form": "symphony",
+	"instrumentation": "two flutes, two oboes, two bassoons, two horns, two trumpets, timpani, strings",
+	"movements": [
+		{
+			"title": "Largo – Vivace"
+		},
+		{
+			"title": "Adagio",
+			"key": "F"
+		},
+		{
+			"title": "Menuetto: Allegro"
+		},
+		{
+			"title": "Finale: Presto"
+		}
+	]
+}

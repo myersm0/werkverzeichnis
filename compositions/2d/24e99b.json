@@ -1,0 +1,35 @@
+{
+	"id": "2d24e99b",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1761
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:6"
+				}
+			]
+		}
+	],
+	"key": "D",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Adagio – Allegro"
+		},
+		{
+			"title": "Adagio – Andante – Adagio",
+			"key": "G"
+		},
+		{
+			"title": "Menuet e Trio",
+			"key": "D"
+		},
+		{
+			"title": "Finale: Allegro"
+		}
+	]
+}

@@ -1,0 +1,35 @@
+{
+	"id": "b61e392c",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1793,
+				"premiered": 1794
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:99"
+				}
+			]
+		}
+	],
+	"key": "Eb",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Adagio – Vivace assai"
+		},
+		{
+			"title": "Adagio",
+			"key": "G"
+		},
+		{
+			"title": "Menuetto e Trio: Allegretto"
+		},
+		{
+			"title": "Finale: Vivace"
+		}
+	]
+}

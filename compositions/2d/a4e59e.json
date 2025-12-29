@@ -1,0 +1,34 @@
+{
+	"id": "2da4e59e",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1780
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:71"
+				}
+			]
+		}
+	],
+	"key": "Bb",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Adagio – Allegro con brio"
+		},
+		{
+			"title": "Adagio",
+			"key": "F"
+		},
+		{
+			"title": "Menuetto and Trio"
+		},
+		{
+			"title": "Finale: Vivace"
+		}
+	]
+}

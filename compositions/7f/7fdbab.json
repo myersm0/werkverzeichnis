@@ -1,0 +1,36 @@
+{
+	"id": "7f7fdbab",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1785,
+				"published": 1787
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:83"
+				}
+			]
+		}
+	],
+	"key": "g",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Allegro spiritoso"
+		},
+		{
+			"title": "Andante",
+			"key": "Eb"
+		},
+		{
+			"title": "Menuet: Allegretto – Trio",
+			"key": "G"
+		},
+		{
+			"title": "Finale: Vivace"
+		}
+	]
+}

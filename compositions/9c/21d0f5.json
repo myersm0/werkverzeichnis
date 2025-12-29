@@ -1,0 +1,31 @@
+{
+	"id": "9c21d0f5",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1763
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:12"
+				}
+			]
+		}
+	],
+	"key": "E",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Adagio",
+			"key": "e"
+		},
+		{
+			"title": "Presto"
+		}
+	]
+}

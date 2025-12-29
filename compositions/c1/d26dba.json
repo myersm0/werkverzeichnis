@@ -1,0 +1,35 @@
+{
+	"id": "c1d26dba",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1772
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:44"
+				}
+			]
+		}
+	],
+	"key": "e",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Allegro con brio"
+		},
+		{
+			"title": "Menuetto e Trio",
+			"key": "E"
+		},
+		{
+			"title": "Adagio",
+			"key": "E"
+		},
+		{
+			"title": "Finale: Presto"
+		}
+	]
+}

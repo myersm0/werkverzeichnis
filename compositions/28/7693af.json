@@ -1,0 +1,35 @@
+{
+	"id": "287693af",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1769
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:48"
+				}
+			]
+		}
+	],
+	"key": "C",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Adagio",
+			"key": "F"
+		},
+		{
+			"title": "Menuet & Trio: Allegretto",
+			"key": "C"
+		},
+		{
+			"title": "Finale: Allegro"
+		}
+	]
+}

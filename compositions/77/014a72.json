@@ -1,0 +1,35 @@
+{
+	"id": "77014a72",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1792,
+				"premiered": 1792
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:98"
+				}
+			]
+		}
+	],
+	"key": "Bb",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Adagio – Allegro"
+		},
+		{
+			"title": "Adagio",
+			"key": "F"
+		},
+		{
+			"title": "Menuetto. Presto"
+		},
+		{
+			"title": "Finale. Presto"
+		}
+	]
+}

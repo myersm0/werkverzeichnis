@@ -1,0 +1,39 @@
+{
+	"id": "a4852e3d",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1761
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:8"
+				}
+			]
+		}
+	],
+	"key": "G",
+	"form": "symphony",
+	"title": {
+		"fr": "Le soir",
+		"en": "Evening"
+	},
+	"movements": [
+		{
+			"title": "Allegro molto"
+		},
+		{
+			"title": "Andante",
+			"key": "C"
+		},
+		{
+			"title": "Menuetto and Trio",
+			"key": "G"
+		},
+		{
+			"title": "La tempesta: Presto"
+		}
+	]
+}

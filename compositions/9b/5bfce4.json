@@ -1,0 +1,33 @@
+{
+	"id": "9b5bfce4",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1774
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:57"
+				}
+			]
+		}
+	],
+	"key": "D",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Adagio – Allegro"
+		},
+		{
+			"title": "Adagio"
+		},
+		{
+			"title": "Menuet & trio: Allegretto"
+		},
+		{
+			"title": "Finale: Prestissimo"
+		}
+	]
+}

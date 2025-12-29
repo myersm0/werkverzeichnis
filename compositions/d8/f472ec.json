@@ -1,0 +1,34 @@
+{
+	"id": "d8f472ec",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1764
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:21"
+				}
+			]
+		}
+	],
+	"key": "A",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Adagio"
+		},
+		{
+			"title": "Presto"
+		},
+		{
+			"title": "Menuett and Trio",
+			"key": "a"
+		},
+		{
+			"title": "Allegro molto"
+		}
+	]
+}

@@ -1,0 +1,34 @@
+{
+	"id": "2c799a2a",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1795
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:103"
+				}
+			]
+		}
+	],
+	"key": "Eb",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Adagio – Allegro con spirito"
+		},
+		{
+			"title": "Andante più tosto allegretto",
+			"key": "c"
+		},
+		{
+			"title": "Menuetto"
+		},
+		{
+			"title": "Finale: Allegro con spirito"
+		}
+	]
+}

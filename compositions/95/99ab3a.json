@@ -1,0 +1,34 @@
+{
+	"id": "9599ab3a",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1787
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:88"
+				}
+			]
+		}
+	],
+	"key": "G",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Adagio – Allegro"
+		},
+		{
+			"title": "Largo",
+			"key": "D"
+		},
+		{
+			"title": "Menuetto: Allegretto"
+		},
+		{
+			"title": "Finale: Allegro con spirito"
+		}
+	]
+}

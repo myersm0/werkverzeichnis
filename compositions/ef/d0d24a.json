@@ -1,0 +1,34 @@
+{
+	"id": "efd0d24a",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1769
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:41"
+				}
+			]
+		}
+	],
+	"key": "C",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Allegro con spirito"
+		},
+		{
+			"title": "Un poco andante",
+			"key": "F"
+		},
+		{
+			"title": "Menuet and Trio"
+		},
+		{
+			"title": "Presto"
+		}
+	]
+}

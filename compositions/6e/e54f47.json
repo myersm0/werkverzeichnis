@@ -1,0 +1,34 @@
+{
+	"id": "6ee54f47",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1767
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:35"
+				}
+			]
+		}
+	],
+	"key": "Bb",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Andante",
+			"key": "Eb"
+		},
+		{
+			"title": "Menuet – Trio"
+		},
+		{
+			"title": "Presto"
+		}
+	]
+}

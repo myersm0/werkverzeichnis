@@ -1,0 +1,34 @@
+{
+	"id": "b60abcb1",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1764
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:24"
+				}
+			]
+		}
+	],
+	"key": "D",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Adagio",
+			"key": "G"
+		},
+		{
+			"title": "Menuet and Trio"
+		},
+		{
+			"title": "Allegro"
+		}
+	]
+}

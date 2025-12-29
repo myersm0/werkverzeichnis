@@ -1,0 +1,34 @@
+{
+	"id": "f9e38f74",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1786
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:84"
+				}
+			]
+		}
+	],
+	"key": "Eb",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Largo – Allegro"
+		},
+		{
+			"title": "Andante",
+			"key": "Bb"
+		},
+		{
+			"title": "Menuet e Trio"
+		},
+		{
+			"title": "Finale: Vivace"
+		}
+	]
+}

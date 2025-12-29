@@ -1,0 +1,33 @@
+{
+	"id": "4dc5775e",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1769
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:59"
+				}
+			]
+		}
+	],
+	"key": "A",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Presto"
+		},
+		{
+			"title": "Andante di molto più tosto Allegretto"
+		},
+		{
+			"title": "Menuet e Trio"
+		},
+		{
+			"title": "Finale: Allegro"
+		}
+	]
+}

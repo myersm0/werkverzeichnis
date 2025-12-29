@@ -1,0 +1,38 @@
+{
+	"id": "048fc7d1",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:60"
+				}
+			]
+		}
+	],
+	"key": "C",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Adagio – Allegro di molto"
+		},
+		{
+			"title": "Andante",
+			"key": "G"
+		},
+		{
+			"title": "Menuetto – Trio"
+		},
+		{
+			"title": "Presto"
+		},
+		{
+			"title": "Adagio (di Lamentatione)",
+			"key": "F"
+		},
+		{
+			"title": "Finale: Prestissimo"
+		}
+	]
+}

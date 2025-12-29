@@ -1,0 +1,30 @@
+{
+	"id": "cd275b4e",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:66"
+				}
+			]
+		}
+	],
+	"key": "Bb",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Allegro con brio"
+		},
+		{
+			"title": "Adagio"
+		},
+		{
+			"title": "Menuetto & Trio"
+		},
+		{
+			"title": "Finale: Scherzando e presto"
+		}
+	]
+}

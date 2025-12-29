@@ -1,0 +1,31 @@
+{
+	"id": "bda1e7bd",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1765
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:30"
+				}
+			]
+		}
+	],
+	"key": "C",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Andante",
+			"key": "G"
+		},
+		{
+			"title": "Tempo di Menuet, più tosto allegro"
+		}
+	]
+}

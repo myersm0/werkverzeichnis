@@ -1,0 +1,35 @@
+{
+	"id": "e5a67391",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1795,
+				"premiered": 1795
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:104"
+				}
+			]
+		}
+	],
+	"key": "D",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Adagio – Allegro"
+		},
+		{
+			"title": "Andante",
+			"key": "G"
+		},
+		{
+			"title": "Menuetto and Trio: Allegro"
+		},
+		{
+			"title": "Finale: Spiritoso"
+		}
+	]
+}

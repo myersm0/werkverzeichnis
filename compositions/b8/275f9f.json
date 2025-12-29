@@ -1,0 +1,34 @@
+{
+	"id": "b8275f9f",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1789
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:92"
+				}
+			]
+		}
+	],
+	"key": "G",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Adagio – Allegro spiritoso"
+		},
+		{
+			"title": "Adagio cantabile",
+			"key": "E"
+		},
+		{
+			"title": "Menuetto: Allegretto"
+		},
+		{
+			"title": "Presto"
+		}
+	]
+}

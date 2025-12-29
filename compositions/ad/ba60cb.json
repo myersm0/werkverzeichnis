@@ -1,0 +1,35 @@
+{
+	"id": "adba60cb",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1786,
+				"premiered": 1787
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:82"
+				}
+			]
+		}
+	],
+	"key": "C",
+	"form": "symphony",
+	"instrumentation": "orchestra",
+	"movements": [
+		{
+			"title": "Vivace assai"
+		},
+		{
+			"title": "Allegretto"
+		},
+		{
+			"title": "Menuet e Trio"
+		},
+		{
+			"title": "Finale: Vivace"
+		}
+	]
+}

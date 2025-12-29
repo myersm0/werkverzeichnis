@@ -1,0 +1,34 @@
+{
+	"id": "9eebce33",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1781
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:63"
+				}
+			]
+		}
+	],
+	"key": "C",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "La Roxelane: Allegretto"
+		},
+		{
+			"title": "Menuetto and Trio"
+		},
+		{
+			"title": "Finale: Prestissimo"
+		}
+	],
+	"note": "Two versions exist with different instrumentation and finale movements."
+}

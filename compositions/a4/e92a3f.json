@@ -1,0 +1,33 @@
+{
+	"id": "a4e92a3f",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1782
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:78"
+				}
+			]
+		}
+	],
+	"key": "c",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Vivace"
+		},
+		{
+			"title": "Adagio"
+		},
+		{
+			"title": "Menuetto & Trio: Allegretto"
+		},
+		{
+			"title": "Finale: Presto"
+		}
+	]
+}

@@ -1,0 +1,36 @@
+{
+	"id": "8798795d",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"premiered": 1779
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:70"
+				}
+			]
+		}
+	],
+	"key": "D",
+	"form": "symphony",
+	"instrumentation": "flute, two oboes, bassoon, two horns, two trumpets, timpani, strings",
+	"movements": [
+		{
+			"title": "Vivace con brio"
+		},
+		{
+			"title": "Specie d'un canone in contrapunto doppio Andante",
+			"key": "d"
+		},
+		{
+			"title": "Allegretto"
+		},
+		{
+			"title": "Allegro con brio",
+			"key": "d"
+		}
+	]
+}

@@ -1,0 +1,34 @@
+{
+	"id": "4eafad90",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1794
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:100"
+				}
+			]
+		}
+	],
+	"key": "G",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Adagio; Allegro"
+		},
+		{
+			"title": "Allegretto",
+			"key": "C"
+		},
+		{
+			"title": "Menuetto: Moderato"
+		},
+		{
+			"title": "Presto"
+		}
+	]
+}

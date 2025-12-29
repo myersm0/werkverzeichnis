@@ -1,0 +1,34 @@
+{
+	"id": "571b63b0",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1762
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:3"
+				}
+			]
+		}
+	],
+	"key": "G",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Andante moderato",
+			"key": "g"
+		},
+		{
+			"title": "Minuet and Trio"
+		},
+		{
+			"title": "Allegro"
+		}
+	]
+}

@@ -1,0 +1,33 @@
+{
+	"id": "4c285433",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1782
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:77"
+				}
+			]
+		}
+	],
+	"key": "Bb",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Vivace"
+		},
+		{
+			"title": "Andante sostenuto"
+		},
+		{
+			"title": "Menuetto & Trio: Allegro"
+		},
+		{
+			"title": "Finale: Allegro spiritoso"
+		}
+	]
+}

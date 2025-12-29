@@ -1,0 +1,34 @@
+{
+	"id": "f194ec4f",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1779
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:67"
+				}
+			]
+		}
+	],
+	"key": "F",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Presto"
+		},
+		{
+			"title": "Adagio",
+			"key": "Bb"
+		},
+		{
+			"title": "Menuetto and Trio"
+		},
+		{
+			"title": "Finale: Allegro di molto – Adagio e cantabile – Allegro di molto"
+		}
+	]
+}

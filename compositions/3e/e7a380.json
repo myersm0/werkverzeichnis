@@ -1,0 +1,34 @@
+{
+	"id": "3ee7a380",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1765
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:72"
+				}
+			]
+		}
+	],
+	"key": "D",
+	"form": "symphony",
+	"instrumentation": "flute, two oboes, bassoon, four horns, strings",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Andante"
+		},
+		{
+			"title": "Menuet and Trio"
+		},
+		{
+			"title": "Finale: Andante – Presto"
+		}
+	]
+}

@@ -1,0 +1,35 @@
+{
+	"id": "945014e1",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1782
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:73"
+				}
+			]
+		}
+	],
+	"key": "D",
+	"form": "symphony",
+	"instrumentation": "flute, two oboes, bassoon, two horns, strings, with two trumpets and timpani in finale",
+	"movements": [
+		{
+			"title": "Adagio – Allegro"
+		},
+		{
+			"title": "Andante",
+			"key": "G"
+		},
+		{
+			"title": "Menuetto & Trio: Allegretto"
+		},
+		{
+			"title": "La chasse: Presto"
+		}
+	]
+}

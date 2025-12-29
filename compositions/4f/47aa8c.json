@@ -1,0 +1,32 @@
+{
+	"id": "4f47aa8c",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1792,
+				"premiered": 1792
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:105"
+				}
+			]
+		}
+	],
+	"key": "Bb",
+	"form": "sinfonia concertante",
+	"instrumentation": "violin, cello, oboe, bassoon (solo); flute, 2 oboes, 2 bassoons, 2 French horns, 2 trumpets, timpani, and strings",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Andante"
+		},
+		{
+			"title": "Finale: Allegro con spirito"
+		}
+	]
+}

@@ -1,0 +1,33 @@
+{
+	"id": "530abae4",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1762
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:5"
+				}
+			]
+		}
+	],
+	"key": "A",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Adagio ma non troppo"
+		},
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Menuet and Trio"
+		},
+		{
+			"title": "Presto"
+		}
+	]
+}

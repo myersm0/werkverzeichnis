@@ -1,0 +1,35 @@
+{
+	"id": "8756af26",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1765
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "I:36"
+				}
+			]
+		}
+	],
+	"key": "Eb",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Vivace"
+		},
+		{
+			"title": "Adagio",
+			"key": "Bb"
+		},
+		{
+			"title": "Menuet – Trio",
+			"key": "Bb"
+		},
+		{
+			"title": "Allegro"
+		}
+	]
+}
