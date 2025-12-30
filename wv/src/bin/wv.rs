@@ -184,7 +184,7 @@ fn main() {
 			let data_dir = resolve_data_dir(data_dir.as_ref(), &config);
 			let args = commands::get::GetArgs {
 				target: target.map(|x| x.to_lowercase()),
-				scheme: scheme.map(|x| x.to_lowercase()),
+				scheme: scheme.map(|x| x.to_lowercase().trim_end_matches('.').to_string()),
 				number,
 				edition: edition.map(|x| x.to_lowercase()),
 				group,
