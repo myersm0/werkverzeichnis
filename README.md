@@ -80,8 +80,25 @@ $ wv get beethoven op 2/1 --movements
 2. Adagio
 3. Menuetto and Trio (Allegretto)
 4. Prestissimo
-
 ```
+
+### Case insensitivity
+Queries are case-insensitive for convenience. Internally, everything is stored _lowercase_, and then results are prettified with proper capitalization for display. For example:
+```bash
+$ wv get MoZaRt K 331
+Piano Sonata in A major, K. 331
+
+$ wv get haydn hob i:1
+Symphony in D major, Hob. I:1
+
+$ wv get haydn HOB I:1
+Symphony in D major, Hob. I:1
+
+$ wv get bach bwv "anh. iii 141"
+Das ist je gewißlich wahr, BWV Anh. III 141
+```
+
+In the latter example, note that quotes are required around the catalog number because it contains internal spaces.
 
 ### Attribution and catalog disambiguation
 A key feature of our project is that we provide a stable ID for each composition and a way of disambiguating catalogue references. For example, Mozart's famous "Alla Turca" sonata is numbered K. 331 in the original 1862 Köchel catalog, then it changed to  K. 300i in the 1964 sixth edition, and most recently in 2024 it changed back to K. 331 for the ninth edition. Both numbers are commonly used today.
