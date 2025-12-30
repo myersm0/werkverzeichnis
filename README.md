@@ -5,10 +5,10 @@ The name comes from the well-known *Bach-Werke-Verzeichnis* (catalog of Bach's w
 
 This project prioritizes:
 - **Structured data** — JSON files with consistent schemas
-- **Human-readable source files** — Plain text JSON files (like [this one](compositions/27/c3084a.json)) you can open in any text editor, inspect, and understand
+- **Human-readable source files** — Just plain text files (like [this one](compositions/27/c3084a.json)) that you can open in any text editor
 - **Catalog precision and rigor** — Allow disambiguation of multiple numbering systems per composer
 - **Temporal accuracy** — Track attribution and catalog changes over time (reattributions, revised dates)
-- **Practical tooling** — We provide a powerful command-line interface in the Rust language for retrieval, validating, and managing the dataset
+- **Practical tooling** — A command-line interface in the Rust language for retrieval, validation, and management
 - **Configurable output** — Display preferences (language, formatting) can be customized per user
 
 ## Roadmap
@@ -23,8 +23,9 @@ This project is still in an early stage of development. By the end of 2025 the f
 - [x] Schubert complete piano sonatas
 
 Goals for the first quarter of 2026:
-- [ ] local NLP routines for automated accuracy checks and updates
-- [ ] MongoDb server for apps to connect
+- [ ] local routines for automated accuracy checks and updates
+- [ ] MongoDb server for apps to connect to
+- [ ] extend and cross-reference with [OpenOpus](https://openopus.org/) data
 - [ ] Bach complete works
 - [ ] Beethoven complete works
 - [ ] Haydn complete works
