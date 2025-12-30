@@ -59,7 +59,6 @@ pub fn build_index<P: AsRef<Path>>(data_dir: P) -> Index {
 						.or_default()
 						.push(comp.id.clone());
 
-					// Track first entry per scheme for current/superseded
 					let mut seen_schemes: HashMap<String, bool> = HashMap::new();
 
 					for cat in &merged.catalog {
@@ -76,7 +75,13 @@ pub fn build_index<P: AsRef<Path>>(data_dir: P) -> Index {
 	index
 }
 
-fn add_catalog_entry(index: &mut Index, composer: &str, cat: &CatalogEntry, id: &str, is_current: bool) {
+fn add_catalog_entry(
+	index: &mut Index,
+	composer: &str,
+	cat: &CatalogEntry,
+	id: &str,
+	is_current: bool,
+) {
 	let scheme_index = index
 		.catalog
 		.entry(composer.to_string())
@@ -87,7 +92,6 @@ fn add_catalog_entry(index: &mut Index, composer: &str, cat: &CatalogEntry, id: 
 	if is_current {
 		scheme_index.current.insert(cat.number.clone(), id.to_string());
 	} else {
-		// Only add to superseded if not already in current (handles K.331 appearing in both K.1 and K.9)
 		if !scheme_index.current.contains_key(&cat.number) {
 			scheme_index.superseded.insert(cat.number.clone(), id.to_string());
 		}
@@ -103,6 +107,74 @@ fn add_catalog_entry(index: &mut Index, composer: &str, cat: &CatalogEntry, id: 
 			.or_default()
 			.insert(cat.number.clone(), id.to_string());
 	}
+}
+
+pub fn load_index<P: AsRef<Path>>(data_dir: P) -> Option<Index> {
+	let data_dir = data_dir.as_ref();
+	let index_path = data_dir.join(".indexes").join("index.json");
+	let composer_path = data_dir.join(".indexes").join("composer-index.json");
+
+	let catalog_content = fs::read_to_string(&index_path).ok()?;
+	let composer_content = fs::read_to_string(&composer_path).ok()?;
+
+	let catalog = serde_json::from_str(&catalog_content).ok()?;
+	let by_composer = serde_json::from_str(&composer_content).ok()?;
+
+	Some(Index {
+		catalog,
+		by_composer,
+		editions: HashMap::new(),
+	})
+}
+
+pub fn index_is_stale<P: AsRef<Path>>(data_dir: P) -> bool {
+	let data_dir = data_dir.as_ref();
+	let index_path = data_dir.join(".indexes").join("index.json");
+
+	let index_mtime = match fs::metadata(&index_path).and_then(|m| m.modified()) {
+		Ok(t) => t,
+		Err(_) => return true,
+	};
+
+	let compositions_dir = data_dir.join("compositions");
+	is_any_newer(&compositions_dir, index_mtime)
+}
+
+fn is_any_newer(dir: &Path, threshold: std::time::SystemTime) -> bool {
+	let entries = match fs::read_dir(dir) {
+		Ok(e) => e,
+		Err(_) => return true,
+	};
+
+	for entry in entries.flatten() {
+		let path = entry.path();
+		if path.is_dir() {
+			if is_any_newer(&path, threshold) {
+				return true;
+			}
+		} else if path.extension().map_or(false, |e| e == "json") {
+			if let Ok(meta) = fs::metadata(&path) {
+				if let Ok(mtime) = meta.modified() {
+					if mtime > threshold {
+						return true;
+					}
+				}
+			}
+		}
+	}
+	false
+}
+
+pub fn get_or_build_index<P: AsRef<Path>>(data_dir: P) -> Index {
+	let data_dir = data_dir.as_ref();
+
+	if !index_is_stale(data_dir) {
+		if let Some(index) = load_index(data_dir) {
+			return index;
+		}
+	}
+
+	build_index(data_dir)
 }
 
 pub fn write_index<P: AsRef<Path>>(index: &Index, output_path: P) -> std::io::Result<()> {
@@ -151,7 +223,10 @@ mod tests {
 
 		assert!(index.catalog.contains_key("bach"));
 		assert!(index.catalog["bach"].contains_key("bwv"));
-		assert_eq!(index.catalog["bach"]["bwv"].current.get("846"), Some(&"abc12345".to_string()));
+		assert_eq!(
+			index.catalog["bach"]["bwv"].current.get("846"),
+			Some(&"abc12345".to_string())
+		);
 		assert!(index.catalog["bach"]["bwv"].superseded.is_empty());
 	}
 
@@ -167,7 +242,10 @@ mod tests {
 
 		add_catalog_entry(&mut index, "mozart", &cat, "a7a495c0", false);
 
-		assert_eq!(index.catalog["mozart"]["k"].superseded.get("300i"), Some(&"a7a495c0".to_string()));
+		assert_eq!(
+			index.catalog["mozart"]["k"].superseded.get("300i"),
+			Some(&"a7a495c0".to_string())
+		);
 		assert!(index.catalog["mozart"]["k"].current.is_empty());
 	}
 

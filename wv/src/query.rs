@@ -1,6 +1,6 @@
 use std::path::{Path, PathBuf};
 
-use crate::catalog::{load_catalog_def, matches_group, sort_key, sort_numbers};
+use crate::catalog::{load_catalog_def, matches_group, sort_key, sort_numbers, SortValue};
 use crate::index::Index;
 use crate::parse::{load_composition, path_for_id};
 use crate::types::Composition;
@@ -109,12 +109,10 @@ impl<'a> QueryBuilder<'a> {
 		} else {
 			let scheme_index = self.index.catalog.get(composer)?.get(scheme)?;
 
-			// Check current first
 			if let Some(id) = scheme_index.current.get(number) {
 				return Some(id.clone());
 			}
 
-			// Fallback to superseded if not strict
 			if !self.query.strict {
 				if let Some(id) = scheme_index.superseded.get(number) {
 					return Some(id.clone());
@@ -131,7 +129,6 @@ impl<'a> QueryBuilder<'a> {
 				if let Some(result) = self.fetch_one_with_info() {
 					vec![result]
 				} else {
-					// No exact match - try group matching
 					let mut query = self.query.clone();
 					query.number = None;
 					query.group = Some(number.clone());
@@ -143,13 +140,9 @@ impl<'a> QueryBuilder<'a> {
 				}
 			}
 
-			(Some(composer), Some(scheme), None) => {
-				self.fetch_by_scheme(composer, scheme)
-			}
+			(Some(composer), Some(scheme), None) => self.fetch_by_scheme(composer, scheme),
 
-			(Some(composer), None, None) => {
-				self.fetch_by_composer(composer)
-			}
+			(Some(composer), None, None) => self.fetch_by_composer(composer),
 
 			_ => vec![],
 		}
@@ -162,7 +155,8 @@ impl<'a> QueryBuilder<'a> {
 
 		if let Some(edition) = &self.query.edition {
 			let key = format!("{}-{}", composer, scheme);
-			let id = self.index
+			let id = self
+				.index
 				.editions
 				.get(&key)?
 				.get(edition)?
@@ -178,7 +172,6 @@ impl<'a> QueryBuilder<'a> {
 
 		let scheme_index = self.index.catalog.get(composer)?.get(scheme)?;
 
-		// Check current first
 		if let Some(id) = scheme_index.current.get(number) {
 			return Some(QueryResult {
 				id: id.clone(),
@@ -188,11 +181,11 @@ impl<'a> QueryBuilder<'a> {
 			});
 		}
 
-		// Fallback to superseded if not strict
 		if !self.query.strict {
 			if let Some(id) = scheme_index.superseded.get(number) {
-				// Find the current number for this id
-				let current_num = scheme_index.current.iter()
+				let current_num = scheme_index
+					.current
+					.iter()
 					.find(|(_, v)| *v == id)
 					.map(|(k, _)| k.clone());
 
@@ -226,7 +219,6 @@ impl<'a> QueryBuilder<'a> {
 	}
 
 	fn fetch_by_scheme(&self, composer: &str, scheme: &str) -> Vec<QueryResult> {
-		// For ranges and groups, only search current (never superseded)
 		let is_range_or_group = self.query.range_start.is_some() || self.query.group.is_some();
 
 		let numbers: Vec<(String, String, bool)> = if let Some(edition) = &self.query.edition {
@@ -238,13 +230,12 @@ impl<'a> QueryBuilder<'a> {
 		} else {
 			match self.index.catalog.get(composer).and_then(|s| s.get(scheme)) {
 				Some(scheme_index) => {
-					let mut entries: Vec<(String, String, bool)> = scheme_index.current
+					let mut entries: Vec<(String, String, bool)> = scheme_index
+						.current
 						.iter()
 						.map(|(k, v)| (k.clone(), v.clone(), false))
 						.collect();
 
-					// Include superseded only for single-number lookups (not ranges/groups)
-					// and only if not strict
 					if !is_range_or_group && !self.query.strict {
 						for (k, v) in &scheme_index.superseded {
 							entries.push((k.clone(), v.clone(), true));
@@ -259,7 +250,11 @@ impl<'a> QueryBuilder<'a> {
 
 		let mut keys: Vec<String> = numbers.iter().map(|(k, _, _)| k.clone()).collect();
 
-		let defn = self.query.data_dir.as_ref().and_then(|d| load_catalog_def(d, scheme, Some(composer)));
+		let defn = self
+			.query
+			.data_dir
+			.as_ref()
+			.and_then(|d| load_catalog_def(d, scheme, Some(composer)));
 
 		if self.query.sorted || self.query.group.is_some() || self.query.range_start.is_some() {
 			sort_numbers(&mut keys, defn.as_ref());
@@ -274,14 +269,13 @@ impl<'a> QueryBuilder<'a> {
 		if let (Some(start), Some(end)) = (&self.query.range_start, &self.query.range_end) {
 			if let Some(ref d) = defn {
 				let start_key = sort_key(start, d);
-				let end_key = sort_key(end, d);
+				let end_key = make_inclusive_ceiling(sort_key(end, d));
 
 				keys.retain(|k| {
 					let k_key = sort_key(k, d);
 					k_key >= start_key && k_key <= end_key
 				});
 			} else {
-				// No catalog definition - fall back to string comparison
 				keys.retain(|k| k >= start && k <= end);
 			}
 		}
@@ -295,7 +289,8 @@ impl<'a> QueryBuilder<'a> {
 
 				let current_num = if *is_superseded {
 					scheme_index.and_then(|si| {
-						si.current.iter()
+						si.current
+							.iter()
 							.find(|(_, v)| *v == id)
 							.map(|(k, _)| k.clone())
 					})
@@ -340,6 +335,18 @@ impl<'a> QueryBuilder<'a> {
 	}
 }
 
+fn make_inclusive_ceiling(key: Vec<SortValue>) -> Vec<SortValue> {
+	let mut result = key;
+	for i in (0..result.len()).rev() {
+		if result[i] == SortValue::NoneFirst {
+			result[i] = SortValue::NoneLast;
+		} else {
+			break;
+		}
+	}
+	result
+}
+
 #[cfg(test)]
 mod tests {
 	use super::*;
@@ -348,20 +355,30 @@ mod tests {
 	fn make_test_index() -> Index {
 		let mut index = Index::default();
 
-		index.by_composer.insert("bach".into(), vec!["id1".into(), "id2".into()]);
-		index.by_composer.insert("mozart".into(), vec!["id3".into()]);
+		index
+			.by_composer
+			.insert("bach".into(), vec!["id1".into(), "id2".into()]);
+		index
+			.by_composer
+			.insert("mozart".into(), vec!["id3".into()]);
 
-		// Bach BWV entries (no superseded)
 		let mut bach_bwv = SchemeIndex::default();
 		bach_bwv.current.insert("846".into(), "id1".into());
 		bach_bwv.current.insert("847".into(), "id2".into());
-		index.catalog.entry("bach".into()).or_default().insert("bwv".into(), bach_bwv);
+		index
+			.catalog
+			.entry("bach".into())
+			.or_default()
+			.insert("bwv".into(), bach_bwv);
 
-		// Mozart K entries with current and superseded
 		let mut mozart_k = SchemeIndex::default();
 		mozart_k.current.insert("332".into(), "id3".into());
 		mozart_k.superseded.insert("300k".into(), "id3".into());
-		index.catalog.entry("mozart".into()).or_default().insert("k".into(), mozart_k);
+		index
+			.catalog
+			.entry("mozart".into())
+			.or_default()
+			.insert("k".into(), mozart_k);
 
 		let key = "mozart-k".to_string();
 		index
@@ -453,11 +470,8 @@ mod tests {
 	fn test_fetch_by_scheme_current_only() {
 		let index = make_test_index();
 
-		// Without strict, but ranges/groups only search current
 		let results = index.query().composer("mozart").scheme("k").fetch();
 
-		// Should include 332 (current) and 300k (superseded for single lookup)
-		// but ranges would only include current
 		assert!(results.iter().any(|r| r.number == Some("332".into())));
 	}
 
@@ -518,5 +532,31 @@ mod tests {
 			.scheme("bwv")
 			.number("999")
 			.exists());
+	}
+
+	#[test]
+	fn test_make_inclusive_ceiling() {
+		assert_eq!(
+			make_inclusive_ceiling(vec![
+				SortValue::Int(10),
+				SortValue::NoneFirst,
+				SortValue::NoneFirst
+			]),
+			vec![
+				SortValue::Int(10),
+				SortValue::NoneLast,
+				SortValue::NoneLast
+			]
+		);
+
+		assert_eq!(
+			make_inclusive_ceiling(vec![SortValue::Int(10), SortValue::Int(1), SortValue::NoneFirst]),
+			vec![SortValue::Int(10), SortValue::Int(1), SortValue::NoneLast]
+		);
+
+		assert_eq!(
+			make_inclusive_ceiling(vec![SortValue::Int(10), SortValue::Int(1), SortValue::Int(2)]),
+			vec![SortValue::Int(10), SortValue::Int(1), SortValue::Int(2)]
+		);
 	}
 }
