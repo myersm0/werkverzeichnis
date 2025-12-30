@@ -5,6 +5,19 @@ use crate::index::Index;
 use crate::parse::{load_composition, path_for_id};
 use crate::types::Composition;
 
+fn is_fallback_key(key: &[SortValue]) -> bool {
+	matches!(key.first(), Some(SortValue::Int(999999999)))
+}
+
+fn looks_like_group(number: &str, defn: &crate::types::CatalogDefinition) -> bool {
+	let key = sort_key(number, defn);
+	if is_fallback_key(&key) {
+		return false;
+	}
+	// A "group" has trailing NoneFirst values (e.g., "10" not "10/1" or "331a")
+	key.iter().rev().take_while(|v| **v == SortValue::NoneFirst).count() > 0
+}
+
 #[derive(Debug, Clone)]
 pub struct QueryResult {
 	pub id: String,
@@ -129,21 +142,27 @@ impl<'a> QueryBuilder<'a> {
 				if let Some(result) = self.fetch_one_with_info() {
 					vec![result]
 				} else {
-					let mut query = self.query.clone();
-					query.number = None;
-					query.group = Some(number.clone());
-					let builder = QueryBuilder {
-						index: self.index,
-						query,
-					};
-					builder.fetch_by_scheme(composer, scheme)
+					// Only fall back to group if number looks like a group
+					let dominated = self.query.data_dir.as_ref()
+						.and_then(|d| load_catalog_def(d, scheme, Some(composer)))
+						.map(|defn| looks_like_group(number, &defn))
+						.unwrap_or(false);
+					if dominated {
+						let mut query = self.query.clone();
+						query.number = None;
+						query.group = Some(number.clone());
+						let builder = QueryBuilder {
+							index: self.index,
+							query,
+						};
+						builder.fetch_by_scheme(composer, scheme)
+					} else {
+						vec![]
+					}
 				}
 			}
-
 			(Some(composer), Some(scheme), None) => self.fetch_by_scheme(composer, scheme),
-
 			(Some(composer), None, None) => self.fetch_by_composer(composer),
-
 			_ => vec![],
 		}
 	}
@@ -269,7 +288,14 @@ impl<'a> QueryBuilder<'a> {
 		if let (Some(start), Some(end)) = (&self.query.range_start, &self.query.range_end) {
 			if let Some(ref d) = defn {
 				let start_key = sort_key(start, d);
-				let end_key = make_inclusive_ceiling(sort_key(end, d));
+				let end_key_raw = sort_key(end, d);
+
+				if is_fallback_key(&start_key) || is_fallback_key(&end_key_raw) {
+					eprintln!("error: invalid range endpoint for this catalog scheme");
+					return vec![];
+				}
+
+				let end_key = make_inclusive_ceiling(end_key_raw);
 
 				keys.retain(|k| {
 					let k_key = sort_key(k, d);
@@ -279,7 +305,7 @@ impl<'a> QueryBuilder<'a> {
 				keys.retain(|k| k >= start && k <= end);
 			}
 		}
-
+		
 		let scheme_index = self.index.catalog.get(composer).and_then(|s| s.get(scheme));
 
 		keys.into_iter()
