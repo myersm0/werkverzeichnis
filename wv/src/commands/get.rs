@@ -5,7 +5,10 @@ use std::process::Command;
 use crate::catalog::load_catalog_def;
 use crate::config::{resolve_editor, Config};
 use crate::index::get_or_build_index;
-use crate::output::{id_to_path, output_by_ids, output_json, output_movements, output_pretty, output_terse, OutputContext};
+use crate::output::{
+	id_to_path, output_by_ids, output_json, output_movements, output_pretty, output_terse,
+	OutputContext,
+};
 
 pub struct GetArgs {
 	pub target: Option<String>,
@@ -47,12 +50,22 @@ fn is_composition_id(s: &str) -> bool {
 }
 
 fn parse_number_spec(s: &str) -> NumberSpec {
-	if let Some((start, end)) = s.split_once('-') {
+	fn try_split(s: &str) -> Option<(&str, &str)> {
+		s.split_once('-')
+			.or_else(|| s.split_once(".."))
+			.or_else(|| s.split_once(' '))
+	}
+
+	if let Some((start, end)) = try_split(s) {
 		let looks_like_catalog = |s: &str| {
+			let s = s.trim();
 			s.chars().next().map_or(false, |c| c.is_ascii_digit())
 				|| s.contains(':')
 				|| s.chars().next().map_or(false, |c| c.is_ascii_uppercase())
+				|| s.chars().next().map_or(false, |c| c.is_ascii_lowercase())
 		};
+		let start = start.trim();
+		let end = end.trim();
 		if looks_like_catalog(start) && looks_like_catalog(end) && !end.is_empty() {
 			return NumberSpec::Range {
 				start: start.to_string(),

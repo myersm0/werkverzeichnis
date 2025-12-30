@@ -70,8 +70,7 @@ pub fn load_catalog_def<P: AsRef<Path>>(
 	composer: Option<&str>,
 ) -> Option<CatalogDefinition> {
 	let data_dir = data_dir.as_ref();
-	
-	// Check composer-specific catalog first
+
 	let composer_def = if let Some(composer_slug) = composer {
 		let composer_path = data_dir.join("composers").join(format!("{}.json", composer_slug));
 		if let Ok(composer_data) = load_composer(&composer_path) {
@@ -82,8 +81,7 @@ pub fn load_catalog_def<P: AsRef<Path>>(
 	} else {
 		None
 	};
-	
-	// Check global catalog
+
 	let global_path = data_dir.join("catalogs").join(format!("{}.json", scheme));
 	let global_def: Option<CatalogDefinition> = if global_path.exists() {
 		std::fs::read_to_string(&global_path)
@@ -92,8 +90,7 @@ pub fn load_catalog_def<P: AsRef<Path>>(
 	} else {
 		None
 	};
-	
-	// Merge: composer def takes precedence, but fill in missing fields from global
+
 	match (composer_def, global_def) {
 		(Some(mut c), Some(g)) => {
 			if c.pattern.is_none() {
@@ -181,7 +178,7 @@ pub fn sort_key(number: &str, defn: &CatalogDefinition) -> Vec<SortValue> {
 		.as_ref()
 		.map(|sks| sks.iter().map(|sk| sk.group).max().unwrap_or(0))
 		.unwrap_or(0);
-	
+
 	sort_key_with_regex(number, &re, defn, max_group)
 }
 
@@ -207,7 +204,7 @@ pub fn sort_numbers(numbers: &mut [String], defn: Option<&CatalogDefinition>) {
 				.as_ref()
 				.map(|sks| sks.iter().map(|sk| sk.group).max().unwrap_or(0))
 				.unwrap_or(0);
-			
+
 			numbers.sort_by(|a, b| {
 				sort_key_with_regex(a, &re, d, max_group)
 					.cmp(&sort_key_with_regex(b, &re, d, max_group))
@@ -259,11 +256,9 @@ pub fn matches_group(number: &str, group: &str, defn: Option<&CatalogDefinition>
 		None => return number.starts_with(group),
 	};
 
-	// Use group_by if defined, otherwise compare all but last group
 	let groups_to_compare: Vec<usize> = match &defn.group_by {
 		Some(gb) => gb.clone(),
 		None => {
-			// Default: all sort_keys except the last one
 			defn.sort_keys
 				.as_ref()
 				.map(|sks| {
@@ -297,6 +292,42 @@ pub fn matches_group(number: &str, group: &str, defn: Option<&CatalogDefinition>
 	}
 
 	true
+}
+
+pub fn normalize_catalog_number(number: &str, defn: &CatalogDefinition) -> String {
+	let pattern = match &defn.pattern {
+		Some(p) => p,
+		None => return number.to_string(),
+	};
+
+	if pattern.contains("[IVX]") || pattern.contains("([IVX]") {
+		if let Some((prefix, suffix)) = number.split_once(':') {
+			return format!("{}:{}", prefix.to_uppercase(), suffix);
+		}
+		return number.to_uppercase();
+	}
+
+	let mut result = String::new();
+	for c in number.chars() {
+		if c.is_ascii_alphabetic() {
+			result.push(c.to_ascii_lowercase());
+		} else {
+			result.push(c);
+		}
+	}
+	result
+}
+
+pub fn is_fallback_key(key: &[SortValue]) -> bool {
+	matches!(key.first(), Some(SortValue::Int(999999999)))
+}
+
+pub fn looks_like_group(number: &str, defn: &CatalogDefinition) -> bool {
+	let key = sort_key(number, defn);
+	if is_fallback_key(&key) {
+		return false;
+	}
+	key.iter().rev().take_while(|v| **v == SortValue::NoneFirst).count() > 0
 }
 
 #[cfg(test)]
@@ -372,5 +403,40 @@ mod tests {
 
 		sort_numbers(&mut nums, Some(&defn));
 		assert_eq!(nums, vec!["2", "2/1", "2/2", "2/10", "10"]);
+	}
+
+	#[test]
+	fn test_normalize_catalog_number() {
+		let k_defn = CatalogDefinition {
+			name: "K".into(),
+			description: None,
+			canonical_format: None,
+			pattern: Some(r"^(\d+)([a-z])?$".into()),
+			sort_keys: None,
+			group_by: None,
+			aliases: None,
+			editions: None,
+		};
+		assert_eq!(normalize_catalog_number("300K", &k_defn), "300k");
+		assert_eq!(normalize_catalog_number("331A", &k_defn), "331a");
+
+		let hob_defn = CatalogDefinition {
+			name: "Hob".into(),
+			description: None,
+			canonical_format: None,
+			pattern: Some(r"^([IVX]+):(\d+)([a-z])?$".into()),
+			sort_keys: None,
+			group_by: None,
+			aliases: None,
+			editions: None,
+		};
+		assert_eq!(normalize_catalog_number("i:13", &hob_defn), "I:13");
+		assert_eq!(normalize_catalog_number("xvi:52", &hob_defn), "XVI:52");
+	}
+
+	#[test]
+	fn test_is_fallback_key() {
+		assert!(is_fallback_key(&vec![SortValue::Int(999999999), SortValue::Str("x".into())]));
+		assert!(!is_fallback_key(&vec![SortValue::Int(1), SortValue::NoneFirst]));
 	}
 }

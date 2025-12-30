@@ -1,22 +1,12 @@
 use std::path::{Path, PathBuf};
 
-use crate::catalog::{load_catalog_def, matches_group, sort_key, sort_numbers, SortValue};
+use crate::catalog::{
+	is_fallback_key, load_catalog_def, looks_like_group, matches_group,
+	normalize_catalog_number, sort_key, sort_numbers, SortValue,
+};
 use crate::index::Index;
 use crate::parse::{load_composition, path_for_id};
 use crate::types::Composition;
-
-fn is_fallback_key(key: &[SortValue]) -> bool {
-	matches!(key.first(), Some(SortValue::Int(999999999)))
-}
-
-fn looks_like_group(number: &str, defn: &crate::types::CatalogDefinition) -> bool {
-	let key = sort_key(number, defn);
-	if is_fallback_key(&key) {
-		return false;
-	}
-	// A "group" has trailing NoneFirst values (e.g., "10" not "10/1" or "331a")
-	key.iter().rev().take_while(|v| **v == SortValue::NoneFirst).count() > 0
-}
 
 #[derive(Debug, Clone)]
 pub struct QueryResult {
@@ -65,7 +55,7 @@ impl<'a> QueryBuilder<'a> {
 	}
 
 	pub fn scheme(mut self, s: &str) -> Self {
-		self.query.scheme = Some(s.to_string());
+		self.query.scheme = Some(s.to_lowercase());
 		self
 	}
 
@@ -111,23 +101,34 @@ impl<'a> QueryBuilder<'a> {
 		let scheme = self.query.scheme.as_ref()?;
 		let number = self.query.number.as_ref()?;
 
+		let defn = self
+			.query
+			.data_dir
+			.as_ref()
+			.and_then(|d| load_catalog_def(d, scheme, Some(composer)));
+
+		let normalized = defn
+			.as_ref()
+			.map(|d| normalize_catalog_number(number, d))
+			.unwrap_or_else(|| number.clone());
+
 		if let Some(edition) = &self.query.edition {
 			let key = format!("{}-{}", composer, scheme);
 			self.index
 				.editions
 				.get(&key)?
 				.get(edition)?
-				.get(number)
+				.get(&normalized)
 				.cloned()
 		} else {
 			let scheme_index = self.index.catalog.get(composer)?.get(scheme)?;
 
-			if let Some(id) = scheme_index.current.get(number) {
+			if let Some(id) = scheme_index.current.get(&normalized) {
 				return Some(id.clone());
 			}
 
 			if !self.query.strict {
-				if let Some(id) = scheme_index.superseded.get(number) {
+				if let Some(id) = scheme_index.superseded.get(&normalized) {
 					return Some(id.clone());
 				}
 			}
@@ -142,11 +143,14 @@ impl<'a> QueryBuilder<'a> {
 				if let Some(result) = self.fetch_one_with_info() {
 					vec![result]
 				} else {
-					// Only fall back to group if number looks like a group
-					let dominated = self.query.data_dir.as_ref()
+					let dominated = self
+						.query
+						.data_dir
+						.as_ref()
 						.and_then(|d| load_catalog_def(d, scheme, Some(composer)))
 						.map(|defn| looks_like_group(number, &defn))
 						.unwrap_or(false);
+
 					if dominated {
 						let mut query = self.query.clone();
 						query.number = None;
@@ -161,8 +165,11 @@ impl<'a> QueryBuilder<'a> {
 					}
 				}
 			}
+
 			(Some(composer), Some(scheme), None) => self.fetch_by_scheme(composer, scheme),
+
 			(Some(composer), None, None) => self.fetch_by_composer(composer),
+
 			_ => vec![],
 		}
 	}
@@ -172,6 +179,17 @@ impl<'a> QueryBuilder<'a> {
 		let scheme = self.query.scheme.as_ref()?;
 		let number = self.query.number.as_ref()?;
 
+		let defn = self
+			.query
+			.data_dir
+			.as_ref()
+			.and_then(|d| load_catalog_def(d, scheme, Some(composer)));
+
+		let normalized = defn
+			.as_ref()
+			.map(|d| normalize_catalog_number(number, d))
+			.unwrap_or_else(|| number.clone());
+
 		if let Some(edition) = &self.query.edition {
 			let key = format!("{}-{}", composer, scheme);
 			let id = self
@@ -179,11 +197,11 @@ impl<'a> QueryBuilder<'a> {
 				.editions
 				.get(&key)?
 				.get(edition)?
-				.get(number)?
+				.get(&normalized)?
 				.clone();
 			return Some(QueryResult {
 				id,
-				number: Some(number.clone()),
+				number: Some(normalized),
 				superseded: false,
 				current_number: None,
 			});
@@ -191,17 +209,17 @@ impl<'a> QueryBuilder<'a> {
 
 		let scheme_index = self.index.catalog.get(composer)?.get(scheme)?;
 
-		if let Some(id) = scheme_index.current.get(number) {
+		if let Some(id) = scheme_index.current.get(&normalized) {
 			return Some(QueryResult {
 				id: id.clone(),
-				number: Some(number.clone()),
+				number: Some(normalized),
 				superseded: false,
 				current_number: None,
 			});
 		}
 
 		if !self.query.strict {
-			if let Some(id) = scheme_index.superseded.get(number) {
+			if let Some(id) = scheme_index.superseded.get(&normalized) {
 				let current_num = scheme_index
 					.current
 					.iter()
@@ -210,7 +228,7 @@ impl<'a> QueryBuilder<'a> {
 
 				return Some(QueryResult {
 					id: id.clone(),
-					number: Some(number.clone()),
+					number: Some(normalized),
 					superseded: true,
 					current_number: current_num,
 				});
@@ -280,15 +298,23 @@ impl<'a> QueryBuilder<'a> {
 		}
 
 		if let Some(group) = &self.query.group {
+			let normalized_group = defn
+				.as_ref()
+				.map(|d| normalize_catalog_number(group, d))
+				.unwrap_or_else(|| group.clone());
+
 			if let Some(ref d) = defn {
-				keys.retain(|k| matches_group(k, group, Some(d)));
+				keys.retain(|k| matches_group(k, &normalized_group, Some(d)));
 			}
 		}
 
 		if let (Some(start), Some(end)) = (&self.query.range_start, &self.query.range_end) {
 			if let Some(ref d) = defn {
-				let start_key = sort_key(start, d);
-				let end_key_raw = sort_key(end, d);
+				let normalized_start = normalize_catalog_number(start, d);
+				let normalized_end = normalize_catalog_number(end, d);
+
+				let start_key = sort_key(&normalized_start, d);
+				let end_key_raw = sort_key(&normalized_end, d);
 
 				if is_fallback_key(&start_key) || is_fallback_key(&end_key_raw) {
 					eprintln!("error: invalid range endpoint for this catalog scheme");
@@ -305,7 +331,7 @@ impl<'a> QueryBuilder<'a> {
 				keys.retain(|k| k >= start && k <= end);
 			}
 		}
-		
+
 		let scheme_index = self.index.catalog.get(composer).and_then(|s| s.get(scheme));
 
 		keys.into_iter()
