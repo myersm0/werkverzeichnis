@@ -4,7 +4,6 @@ use std::path::Path;
 
 use serde::{Deserialize, Serialize};
 
-use crate::merge::merge_attribution_with_collections;
 use crate::parse::load_composition;
 use crate::types::CatalogEntry;
 
@@ -24,7 +23,6 @@ pub struct Index {
 pub fn build_index<P: AsRef<Path>>(data_dir: P) -> Index {
 	let data_dir = data_dir.as_ref();
 	let compositions_dir = data_dir.join("compositions");
-	let collections_dir = data_dir.join("collections");
 
 	let mut index = Index::default();
 
@@ -50,22 +48,31 @@ pub fn build_index<P: AsRef<Path>>(data_dir: P) -> Index {
 			}
 
 			if let Ok(comp) = load_composition(&path) {
-				let merged = merge_attribution_with_collections(&comp.attribution, &collections_dir);
+				let mut composers_seen: std::collections::HashSet<String> = std::collections::HashSet::new();
+				let mut scheme_first_seen: HashMap<(String, String), bool> = HashMap::new();
 
-				if let Some(composer) = &merged.composer {
-					index
-						.by_composer
-						.entry(composer.clone())
-						.or_default()
-						.push(comp.id.clone());
+				for (attr_idx, attr) in comp.attribution.iter().enumerate() {
+					let is_current_attribution = attr_idx == 0;
 
-					let mut seen_schemes: HashMap<String, bool> = HashMap::new();
+					if let Some(composer) = &attr.composer {
+						if composers_seen.insert(composer.clone()) {
+							index
+								.by_composer
+								.entry(composer.clone())
+								.or_default()
+								.push(comp.id.clone());
+						}
 
-					for cat in &merged.catalog {
-						let is_current = !seen_schemes.contains_key(&cat.scheme);
-						seen_schemes.insert(cat.scheme.clone(), true);
+						if let Some(catalog) = &attr.catalog {
+							for cat in catalog {
+								let key = (composer.clone(), cat.scheme.clone());
+								let is_first_for_scheme = !scheme_first_seen.contains_key(&key);
+								scheme_first_seen.insert(key, true);
 
-						add_catalog_entry(&mut index, composer, cat, &comp.id, is_current);
+								let is_current = is_current_attribution && is_first_for_scheme;
+								add_catalog_entry(&mut index, composer, cat, &comp.id, is_current);
+							}
+						}
 					}
 				}
 			}
@@ -75,13 +82,7 @@ pub fn build_index<P: AsRef<Path>>(data_dir: P) -> Index {
 	index
 }
 
-fn add_catalog_entry(
-	index: &mut Index,
-	composer: &str,
-	cat: &CatalogEntry,
-	id: &str,
-	is_current: bool,
-) {
+fn add_catalog_entry(index: &mut Index, composer: &str, cat: &CatalogEntry, id: &str, is_current: bool) {
 	let scheme_index = index
 		.catalog
 		.entry(composer.to_string())
@@ -92,6 +93,7 @@ fn add_catalog_entry(
 	if is_current {
 		scheme_index.current.insert(cat.number.clone(), id.to_string());
 	} else {
+		// Only add to superseded if not already in current (handles K.331 appearing in both K.1 and K.9)
 		if !scheme_index.current.contains_key(&cat.number) {
 			scheme_index.superseded.insert(cat.number.clone(), id.to_string());
 		}
@@ -223,10 +225,7 @@ mod tests {
 
 		assert!(index.catalog.contains_key("bach"));
 		assert!(index.catalog["bach"].contains_key("bwv"));
-		assert_eq!(
-			index.catalog["bach"]["bwv"].current.get("846"),
-			Some(&"abc12345".to_string())
-		);
+		assert_eq!(index.catalog["bach"]["bwv"].current.get("846"), Some(&"abc12345".to_string()));
 		assert!(index.catalog["bach"]["bwv"].superseded.is_empty());
 	}
 
@@ -242,10 +241,7 @@ mod tests {
 
 		add_catalog_entry(&mut index, "mozart", &cat, "a7a495c0", false);
 
-		assert_eq!(
-			index.catalog["mozart"]["k"].superseded.get("300i"),
-			Some(&"a7a495c0".to_string())
-		);
+		assert_eq!(index.catalog["mozart"]["k"].superseded.get("300i"), Some(&"a7a495c0".to_string()));
 		assert!(index.catalog["mozart"]["k"].current.is_empty());
 	}
 
