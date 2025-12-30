@@ -53,7 +53,6 @@ fn parse_number_spec(s: &str) -> NumberSpec {
 	fn try_split(s: &str) -> Option<(&str, &str)> {
 		s.split_once('-')
 			.or_else(|| s.split_once(".."))
-			.or_else(|| s.split_once(' '))
 	}
 
 	if let Some((start, end)) = try_split(s) {

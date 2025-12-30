@@ -1,15 +1,14 @@
+use regex::RegexBuilder;
 use std::collections::HashMap;
 
 use crate::config::{DisplayConfig, KeySymbols};
 use crate::types::{CatalogDefinition, Collection, Composition};
 
 pub fn expand_key(code: &str, config: &DisplayConfig) -> String {
-	// Check user overrides first
 	if let Some(expanded) = config.keys.get(code) {
 		return expanded.clone();
 	}
 
-	// If already expanded (contains major/minor/Dur/Moll), return as-is
 	let lower = code.to_lowercase();
 	if lower.contains("major") || lower.contains("minor") 
 		|| lower.contains("dur") || lower.contains("moll")
@@ -20,13 +19,11 @@ pub fn expand_key(code: &str, config: &DisplayConfig) -> String {
 		return code.to_string();
 	}
 
-	// Check translation table - returns already-correct format
 	let translations = key_translations(&config.language);
 	if let Some(expanded) = translations.get(code) {
 		return expanded.to_string();
 	}
 
-	// Parse and expand dynamically (only this path needs symbol conversion)
 	expand_key_dynamic(code, config)
 }
 
@@ -52,7 +49,6 @@ fn expand_key_dynamic(code: &str, config: &DisplayConfig) -> String {
 		_ => quality,
 	};
 
-	// For minor keys, lowercase the note in output
 	let final_note = if is_minor && mode_suffix.is_none() {
 		note_str.to_lowercase()
 	} else {
@@ -65,7 +61,6 @@ fn expand_key_dynamic(code: &str, config: &DisplayConfig) -> String {
 fn parse_key_code(code: &str) -> (String, String, Option<String>) {
 	let code = code.trim();
 
-	// Check for mode suffix
 	let (main, mode) = if let Some(idx) = code.find('.') {
 		(code[..idx].to_string(), Some(code[idx + 1..].to_lowercase()))
 	} else {
@@ -109,7 +104,6 @@ fn key_translations(language: &str) -> HashMap<&'static str, &'static str> {
 
 fn english_keys() -> HashMap<&'static str, &'static str> {
 	let mut m = HashMap::new();
-	// Major keys
 	m.insert("C", "C major");
 	m.insert("D", "D major");
 	m.insert("E", "E major");
@@ -125,7 +119,6 @@ fn english_keys() -> HashMap<&'static str, &'static str> {
 	m.insert("Db", "D♭ major");
 	m.insert("Gb", "G♭ major");
 	m.insert("Cb", "C♭ major");
-	// Minor keys
 	m.insert("c", "c minor");
 	m.insert("d", "d minor");
 	m.insert("e", "e minor");
@@ -143,22 +136,20 @@ fn english_keys() -> HashMap<&'static str, &'static str> {
 
 fn german_keys() -> HashMap<&'static str, &'static str> {
 	let mut m = HashMap::new();
-	// Major keys (Dur)
 	m.insert("C", "C-Dur");
 	m.insert("D", "D-Dur");
 	m.insert("E", "E-Dur");
 	m.insert("F", "F-Dur");
 	m.insert("G", "G-Dur");
 	m.insert("A", "A-Dur");
-	m.insert("B", "H-Dur"); // German B = H
+	m.insert("B", "H-Dur");
 	m.insert("F#", "Fis-Dur");
 	m.insert("C#", "Cis-Dur");
-	m.insert("Bb", "B-Dur"); // German Bb = B
+	m.insert("Bb", "B-Dur");
 	m.insert("Eb", "Es-Dur");
 	m.insert("Ab", "As-Dur");
 	m.insert("Db", "Des-Dur");
 	m.insert("Gb", "Ges-Dur");
-	// Minor keys (Moll)
 	m.insert("c", "c-Moll");
 	m.insert("d", "d-Moll");
 	m.insert("e", "e-Moll");
@@ -190,30 +181,105 @@ pub fn format_form(form: &str) -> String {
 		.join(" ")
 }
 
+fn apply_display_transform(s: &str, transform: &str) -> String {
+	match transform {
+		"upper" => s.to_uppercase(),
+		"lower" => s.to_lowercase(),
+		"title" => {
+			let mut chars = s.chars();
+			match chars.next() {
+				None => String::new(),
+				Some(first) => first.to_uppercase().chain(chars).collect(),
+			}
+		}
+		_ => s.to_string(),
+	}
+}
+
+pub fn format_number_for_display(number: &str, defn: Option<&CatalogDefinition>) -> String {
+	let defn = match defn {
+		Some(d) => d,
+		None => return number.to_string(),
+	};
+
+	let pattern = match &defn.pattern {
+		Some(p) => p,
+		None => return number.to_string(),
+	};
+
+	let sort_keys = match &defn.sort_keys {
+		Some(sks) => sks,
+		None => return number.to_string(),
+	};
+
+	let re = match RegexBuilder::new(pattern).case_insensitive(true).build() {
+		Ok(r) => r,
+		Err(_) => return number.to_string(),
+	};
+
+	let caps = match re.captures(number) {
+		Some(c) => c,
+		None => return number.to_string(),
+	};
+
+	let mut transforms: Vec<(usize, usize, &str)> = Vec::new();
+
+	for sk in sort_keys {
+		if let Some(display) = &sk.display {
+			if let Some(m) = caps.get(sk.group) {
+				transforms.push((m.start(), m.end(), display.as_str()));
+			}
+		}
+	}
+
+	if transforms.is_empty() {
+		return number.to_string();
+	}
+
+	transforms.sort_by_key(|(start, _, _)| *start);
+
+	let mut result = String::new();
+	let mut pos = 0;
+
+	for (start, end, transform) in transforms {
+		if start > pos {
+			result.push_str(&number[pos..start]);
+		}
+		result.push_str(&apply_display_transform(&number[start..end], transform));
+		pos = end;
+	}
+
+	if pos < number.len() {
+		result.push_str(&number[pos..]);
+	}
+
+	result
+}
+
 pub fn format_catalog(scheme: &str, number: &str, defn: Option<&CatalogDefinition>) -> String {
-	// Use canonical_format if available, otherwise default format
+	let display_number = format_number_for_display(number, defn);
+
 	let base_format = defn
 		.and_then(|d| d.canonical_format.as_ref())
 		.map(|f| f.replace("{number}", "{}"))
 		.unwrap_or_else(|| {
-			// Default: style per OpenOpus guidelines
 			match scheme.to_lowercase().as_str() {
 				"op" => "op. {}".to_string(),
 				"bwv" => "BWV {}".to_string(),
 				"k" | "kv" => "K. {}".to_string(),
 				"hob" => "Hob. {}".to_string(),
+				"twv" => "TWV {}".to_string(),
 				"d" => "D. {}".to_string(),
 				"woo" => "WoO {}".to_string(),
 				_ => format!("{} {{}}", scheme.to_uppercase()),
 			}
 		});
-	
-	// Handle sub-numbers (e.g., "10/2" → "op. 10 no. 2")
-	if let Some((main, sub)) = number.split_once('/') {
+
+	if let Some((main, sub)) = display_number.split_once('/') {
 		let formatted_main = base_format.replace("{}", main);
 		format!("{} no. {}", formatted_main, sub)
 	} else {
-		base_format.replace("{}", number)
+		base_format.replace("{}", &display_number)
 	}
 }
 
@@ -236,7 +302,6 @@ pub fn expand_title(ctx: &ExpansionContext) -> String {
 	let comp = ctx.composition;
 	let config = ctx.config;
 
-	// 1. Use explicit title if present
 	if let Some(title) = &comp.title {
 		if let Some(t) = title.get(&config.language) {
 			return t.clone();
@@ -249,7 +314,6 @@ pub fn expand_title(ctx: &ExpansionContext) -> String {
 		}
 	}
 
-	// 2. Use collection expansion_pattern if available
 	if let Some(coll) = ctx.collection {
 		if let Some(patterns) = &coll.expansion_pattern {
 			let pattern = patterns
@@ -263,7 +327,6 @@ pub fn expand_title(ctx: &ExpansionContext) -> String {
 		}
 	}
 
-	// 3. Use default patterns from config
 	let pattern = if ctx.position_in_collection.is_some() {
 		&config.patterns.with_number
 	} else {
@@ -370,5 +433,77 @@ mod tests {
 	fn test_format_catalog_with_subnumber() {
 		assert_eq!(format_catalog("op", "10/2", None), "op. 10 no. 2");
 		assert_eq!(format_catalog("op", "2/1", None), "op. 2 no. 1");
+	}
+
+	#[test]
+	fn test_format_number_for_display() {
+		use crate::types::{CatalogDefinition, SortKey};
+
+		let hob_defn = CatalogDefinition {
+			name: "Hoboken".into(),
+			description: None,
+			canonical_format: Some("Hob. {number}".into()),
+			pattern: Some(r"^([ivxlcdm]+):(\d+)$".into()),
+			sort_keys: Some(vec![
+				SortKey { group: 1, sort_type: "roman".into(), display: Some("upper".into()) },
+				SortKey { group: 2, sort_type: "int".into(), display: None },
+			]),
+			group_by: None,
+			aliases: None,
+			editions: None,
+		};
+
+		assert_eq!(format_number_for_display("i:1", Some(&hob_defn)), "I:1");
+		assert_eq!(format_number_for_display("xvi:52", Some(&hob_defn)), "XVI:52");
+		assert_eq!(format_number_for_display("300k", None), "300k");
+	}
+
+	#[test]
+	fn test_format_number_bwv_anhang() {
+		use crate::types::{CatalogDefinition, SortKey};
+
+		let bwv_defn = CatalogDefinition {
+			name: "BWV".into(),
+			description: None,
+			canonical_format: Some("BWV {number}".into()),
+			pattern: Some(r"^(anh\.|app\.)?(\s*)([ivxlcdm]+|[a-d])?(\s*)(\d+)(?:\.(\d+))?([a-z]|r)?$".into()),
+			sort_keys: Some(vec![
+				SortKey { group: 1, sort_type: "str".into(), display: Some("title".into()) },
+				SortKey { group: 3, sort_type: "roman".into(), display: Some("upper".into()) },
+				SortKey { group: 5, sort_type: "int".into(), display: None },
+				SortKey { group: 6, sort_type: "int".into(), display: None },
+				SortKey { group: 7, sort_type: "str".into(), display: None },
+			]),
+			group_by: None,
+			aliases: None,
+			editions: None,
+		};
+
+		assert_eq!(format_number_for_display("anh. iii 141", Some(&bwv_defn)), "Anh. III 141");
+		assert_eq!(format_number_for_display("anh. ii 23", Some(&bwv_defn)), "Anh. II 23");
+		assert_eq!(format_number_for_display("812", Some(&bwv_defn)), "812");
+		assert_eq!(format_number_for_display("1080.1", Some(&bwv_defn)), "1080.1");
+	}
+
+	#[test]
+	fn test_format_catalog_hoboken() {
+		use crate::types::{CatalogDefinition, SortKey};
+
+		let hob_defn = CatalogDefinition {
+			name: "Hoboken".into(),
+			description: None,
+			canonical_format: Some("Hob. {number}".into()),
+			pattern: Some(r"^([ivxlcdm]+):(\d+)$".into()),
+			sort_keys: Some(vec![
+				SortKey { group: 1, sort_type: "roman".into(), display: Some("upper".into()) },
+				SortKey { group: 2, sort_type: "int".into(), display: None },
+			]),
+			group_by: None,
+			aliases: None,
+			editions: None,
+		};
+
+		assert_eq!(format_catalog("hob", "i:1", Some(&hob_defn)), "Hob. I:1");
+		assert_eq!(format_catalog("hob", "xvi:52", Some(&hob_defn)), "Hob. XVI:52");
 	}
 }

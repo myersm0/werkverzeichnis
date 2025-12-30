@@ -12,9 +12,9 @@
 			"name": "Hoboken-Verzeichnis",
 			"description": "Catalog compiled by Anthony van Hoboken, published 1957-1978. Uses Roman numeral categories followed by work number.",
 			"canonical_format": "Hob. {number}",
-			"pattern": "^([IVX]+):(\\d+)([a-z])?$",
+			"pattern": "^([ivxlcdm]+):(\\d+)([a-z])?$",
 			"sort_keys": [
-				{"group": 1, "type": "roman"},
+				{"group": 1, "type": "roman", "display": "upper"},
 				{"group": 2, "type": "int"},
 				{"group": 3, "type": "str"}
 			],

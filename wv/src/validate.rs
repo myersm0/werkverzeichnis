@@ -191,6 +191,27 @@ impl Validator {
 							),
 						});
 					}
+
+					if cat.scheme != cat.scheme.to_lowercase() {
+						errors.push(ValidationError {
+							path: path_str.to_string(),
+							message: format!(
+								"attribution[{}]: catalog scheme '{}' must be lowercase",
+								i, cat.scheme
+							),
+						});
+					}
+
+					if !is_valid_catalog_number_case(&cat.scheme, &cat.number) {
+						errors.push(ValidationError {
+							path: path_str.to_string(),
+							message: format!(
+								"attribution[{}]: catalog number '{}' must be lowercase{}",
+								i, cat.number,
+								if cat.scheme == "bwv" { " (R suffix allowed)" } else { "" }
+							),
+						});
+					}
 				}
 			}
 		}
@@ -229,6 +250,17 @@ impl Validator {
 
 		errors
 	}
+}
+
+fn is_valid_catalog_number_case(scheme: &str, number: &str) -> bool {
+	if scheme == "bwv" {
+		// BWV allows uppercase R suffix (for Reconstruction)
+		if number.ends_with('R') {
+			let prefix = &number[..number.len() - 1];
+			return prefix == prefix.to_lowercase();
+		}
+	}
+	number == number.to_lowercase()
 }
 
 fn extract_id_from_path(path: &Path) -> Option<String> {
@@ -285,25 +317,20 @@ mod tests {
 			catalog_schemes: HashSet::new(),
 		};
 
-		// Valid: matches path
 		let path = Path::new("compositions/ab/cd1234.json");
 		let errors = validator.validate_id("abcd1234", path, "test");
 		assert!(errors.is_empty());
 
-		// Invalid: uppercase hex
 		let errors = validator.validate_id("ABCD1234", path, "test");
 		assert!(!errors.is_empty());
 
-		// Invalid: too short
 		let errors = validator.validate_id("abc1234", path, "test");
 		assert!(!errors.is_empty());
 
-		// Invalid: contains non-hex chars
 		let path = Path::new("compositions/wx/yz5678.json");
 		let errors = validator.validate_id("wxyz5678", path, "test");
 		assert!(!errors.is_empty());
 
-		// Valid: all digits (valid hex), matches path
 		let path = Path::new("compositions/12/345678.json");
 		let errors = validator.validate_id("12345678", path, "test");
 		assert!(errors.is_empty());

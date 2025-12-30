@@ -183,10 +183,10 @@ fn main() {
 		} => {
 			let data_dir = resolve_data_dir(data_dir.as_ref(), &config);
 			let args = commands::get::GetArgs {
-				target,
-				scheme,
+				target: target.map(|x| x.to_lowercase()),
+				scheme: scheme.map(|x| x.to_lowercase()),
 				number,
-				edition,
+				edition: edition.map(|x| x.to_lowercase()),
 				group,
 				sorted,
 				terse,

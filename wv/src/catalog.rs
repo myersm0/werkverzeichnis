@@ -1,4 +1,4 @@
-use regex::Regex;
+use regex::{Regex, RegexBuilder};
 use std::cmp::Ordering;
 use std::collections::HashMap;
 use std::path::Path;
@@ -169,7 +169,7 @@ pub fn sort_key(number: &str, defn: &CatalogDefinition) -> Vec<SortValue> {
 		Some(p) => p,
 		None => return vec![SortValue::Str(number.to_string())],
 	};
-	let re = match Regex::new(pattern) {
+	let re = match RegexBuilder::new(pattern).case_insensitive(true).build() {
 		Ok(r) => r,
 		Err(_) => return vec![SortValue::Int(999999999), SortValue::Str(number.to_string())],
 	};
@@ -192,7 +192,7 @@ pub fn sort_numbers(numbers: &mut [String], defn: Option<&CatalogDefinition>) {
 					return;
 				}
 			};
-			let re = match Regex::new(pattern) {
+			let re = match RegexBuilder::new(pattern).case_insensitive(true).build() {
 				Ok(r) => r,
 				Err(_) => {
 					numbers.sort();
@@ -235,7 +235,7 @@ pub fn matches_group(number: &str, group: &str, defn: Option<&CatalogDefinition>
 		None => return number.starts_with(group),
 	};
 
-	let re = match Regex::new(pattern) {
+	let re = match RegexBuilder::new(pattern).case_insensitive(true).build() {
 		Ok(r) => r,
 		Err(_) => return number.starts_with(group),
 	};
@@ -294,28 +294,8 @@ pub fn matches_group(number: &str, group: &str, defn: Option<&CatalogDefinition>
 	true
 }
 
-pub fn normalize_catalog_number(number: &str, defn: &CatalogDefinition) -> String {
-	let pattern = match &defn.pattern {
-		Some(p) => p,
-		None => return number.to_string(),
-	};
-
-	if pattern.contains("[IVX]") || pattern.contains("([IVX]") {
-		if let Some((prefix, suffix)) = number.split_once(':') {
-			return format!("{}:{}", prefix.to_uppercase(), suffix);
-		}
-		return number.to_uppercase();
-	}
-
-	let mut result = String::new();
-	for c in number.chars() {
-		if c.is_ascii_alphabetic() {
-			result.push(c.to_ascii_lowercase());
-		} else {
-			result.push(c);
-		}
-	}
-	result
+pub fn normalize_catalog_number(number: &str) -> String {
+	number.to_lowercase()
 }
 
 pub fn is_fallback_key(key: &[SortValue]) -> bool {
@@ -364,6 +344,7 @@ mod tests {
 			sort_keys: Some(vec![SortKey {
 				group: 1,
 				sort_type: "int".into(),
+				display: None,
 			}]),
 			group_by: None,
 			aliases: None,
@@ -387,9 +368,9 @@ mod tests {
 			canonical_format: None,
 			pattern: Some(r"^(\d+)(?:/(\d+))?([a-z])?$".into()),
 			sort_keys: Some(vec![
-				SortKey { group: 1, sort_type: "int".into() },
-				SortKey { group: 2, sort_type: "int".into() },
-				SortKey { group: 3, sort_type: "str".into() },
+				SortKey { group: 1, sort_type: "int".into(), display: None },
+				SortKey { group: 2, sort_type: "int".into(), display: None },
+				SortKey { group: 3, sort_type: "str".into(), display: None },
 			]),
 			group_by: None,
 			aliases: None,
@@ -407,31 +388,11 @@ mod tests {
 
 	#[test]
 	fn test_normalize_catalog_number() {
-		let k_defn = CatalogDefinition {
-			name: "K".into(),
-			description: None,
-			canonical_format: None,
-			pattern: Some(r"^(\d+)([a-z])?$".into()),
-			sort_keys: None,
-			group_by: None,
-			aliases: None,
-			editions: None,
-		};
-		assert_eq!(normalize_catalog_number("300K", &k_defn), "300k");
-		assert_eq!(normalize_catalog_number("331A", &k_defn), "331a");
-
-		let hob_defn = CatalogDefinition {
-			name: "Hob".into(),
-			description: None,
-			canonical_format: None,
-			pattern: Some(r"^([IVX]+):(\d+)([a-z])?$".into()),
-			sort_keys: None,
-			group_by: None,
-			aliases: None,
-			editions: None,
-		};
-		assert_eq!(normalize_catalog_number("i:13", &hob_defn), "I:13");
-		assert_eq!(normalize_catalog_number("xvi:52", &hob_defn), "XVI:52");
+		assert_eq!(normalize_catalog_number("300K"), "300k");
+		assert_eq!(normalize_catalog_number("331A"), "331a");
+		assert_eq!(normalize_catalog_number("I:13"), "i:13");
+		assert_eq!(normalize_catalog_number("XVI:52"), "xvi:52");
+		assert_eq!(normalize_catalog_number("BWV 846"), "bwv 846");
 	}
 
 	#[test]

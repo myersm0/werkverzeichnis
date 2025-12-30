@@ -55,7 +55,7 @@ impl<'a> QueryBuilder<'a> {
 	}
 
 	pub fn scheme(mut self, s: &str) -> Self {
-		self.query.scheme = Some(s.to_lowercase());
+		self.query.scheme = Some(s.to_string());
 		self
 	}
 
@@ -101,16 +101,7 @@ impl<'a> QueryBuilder<'a> {
 		let scheme = self.query.scheme.as_ref()?;
 		let number = self.query.number.as_ref()?;
 
-		let defn = self
-			.query
-			.data_dir
-			.as_ref()
-			.and_then(|d| load_catalog_def(d, scheme, Some(composer)));
-
-		let normalized = defn
-			.as_ref()
-			.map(|d| normalize_catalog_number(number, d))
-			.unwrap_or_else(|| number.clone());
+		let normalized = normalize_catalog_number(number);
 
 		if let Some(edition) = &self.query.edition {
 			let key = format!("{}-{}", composer, scheme);
@@ -179,16 +170,7 @@ impl<'a> QueryBuilder<'a> {
 		let scheme = self.query.scheme.as_ref()?;
 		let number = self.query.number.as_ref()?;
 
-		let defn = self
-			.query
-			.data_dir
-			.as_ref()
-			.and_then(|d| load_catalog_def(d, scheme, Some(composer)));
-
-		let normalized = defn
-			.as_ref()
-			.map(|d| normalize_catalog_number(number, d))
-			.unwrap_or_else(|| number.clone());
+		let normalized = normalize_catalog_number(number);
 
 		if let Some(edition) = &self.query.edition {
 			let key = format!("{}-{}", composer, scheme);
@@ -298,10 +280,7 @@ impl<'a> QueryBuilder<'a> {
 		}
 
 		if let Some(group) = &self.query.group {
-			let normalized_group = defn
-				.as_ref()
-				.map(|d| normalize_catalog_number(group, d))
-				.unwrap_or_else(|| group.clone());
+			let normalized_group = normalize_catalog_number(group);
 
 			if let Some(ref d) = defn {
 				keys.retain(|k| matches_group(k, &normalized_group, Some(d)));
@@ -310,8 +289,8 @@ impl<'a> QueryBuilder<'a> {
 
 		if let (Some(start), Some(end)) = (&self.query.range_start, &self.query.range_end) {
 			if let Some(ref d) = defn {
-				let normalized_start = normalize_catalog_number(start, d);
-				let normalized_end = normalize_catalog_number(end, d);
+				let normalized_start = normalize_catalog_number(start);
+				let normalized_end = normalize_catalog_number(end);
 
 				let start_key = sort_key(&normalized_start, d);
 				let end_key_raw = sort_key(&normalized_end, d);

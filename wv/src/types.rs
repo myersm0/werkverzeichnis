@@ -179,6 +179,8 @@ pub struct SortKey {
 	pub group: usize,
 	#[serde(rename = "type")]
 	pub sort_type: String,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub display: Option<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
