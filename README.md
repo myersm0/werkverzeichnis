@@ -23,9 +23,8 @@ This project is still in an early stage of development. By the end of 2025 the f
 - [x] Schubert complete piano sonatas
 
 Goals for the first quarter of 2026:
+- [ ] extend and cross-reference with [MusicBrainz](https://musicbrainz.org) work IDs
 - [ ] local routines for automated accuracy checks and updates
-- [ ] MongoDb server for apps to connect to
-- [ ] extend and cross-reference with [OpenOpus](https://openopus.org/) data
 - [ ] Bach complete works
 - [ ] Beethoven complete works
 - [ ] Haydn complete works
