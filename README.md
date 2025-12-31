@@ -101,7 +101,8 @@ Das ist je gewißlich wahr, BWV Anh. III 141
 
 In the latter example, note that quotes are required around the catalog number because it contains internal spaces.
 
-### Attribution and catalog disambiguation
+### Attribution changes
+#### Catalog disambiguation
 A key feature of our project is that we provide a stable ID for each composition and a way of disambiguating catalogue references. For example, Mozart's famous "Alla Turca" sonata is numbered K. 331 in the original 1862 Köchel catalog, then it changed to  K. 300i in the 1964 sixth edition, and most recently in 2024 it changed back to K. 331 for the ninth edition. Both numbers are commonly used today.
 
 ```
@@ -134,6 +135,25 @@ No results found.
 ```
 
 Note: when retrieving a _range_ of catalog numbers, `--strict` is on by default to prevent returning potenially duplicated results.
+
+#### Composer changes
+The following example shows what happens in the event of a ***change in authorship***. Here are three separate queries for a cantata once thought to be by Bach but which is now attributed to Telemann:
+```
+$ wv get bach bwv 141
+warning: BWV 141 is superseded (current: BWV Anh. III 141)
+Das ist je gewißlich wahr, BWV 141
+
+$ wv get bach bwv "Anh. III 141"
+note: spurious; now attributed to telemann twv 1:183
+Das ist je gewißlich wahr, BWV Anh. III 141
+ 
+$ wv get telemann twv 1:183
+Das ist je gewißlich wahr, TWV 1:183
+```
+
+All three calls return the same _composition_, with the same internal ID (not shown), only displayed a little differently. The same composition is a part of Telemann's works, and at the same time has a place in the appendix of Bach's spurious works and is even reference-able by its old, superseded number BWV 141 (unless you disable this behavior with the `--strict` flag).
+
+This attribution history is straightforwadly represented right in the composition JSON itself, which you can see [here](compositions/78/129abd.json), simply by means of an array of attribution entries, sorted in _reverse_ chronological order such that the top entry is always the most current.
 
 ## Configuration
 The CLI can be customized to match your preferences. Create a config file at `~/.config/wv/config.toml`:
