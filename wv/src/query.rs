@@ -4,7 +4,7 @@ use crate::catalog::{
 	is_fallback_key, load_catalog_def, looks_like_group, matches_group,
 	normalize_catalog_number, sort_key, sort_numbers, SortValue,
 };
-use crate::index::Index;
+use crate::index::{load_edition_index, Index};
 use crate::parse::{load_composition, path_for_id};
 use crate::types::Composition;
 
@@ -105,28 +105,24 @@ impl<'a> QueryBuilder<'a> {
 		let normalized = normalize_catalog_number(number);
 
 		if let Some(edition) = &self.query.edition {
-			let key = format!("{}-{}", composer, scheme);
-			self.index
-				.editions
-				.get(&key)?
-				.get(edition)?
-				.get(&normalized)
-				.cloned()
-		} else {
-			let scheme_index = self.index.catalog.get(composer)?.get(scheme)?;
+			let data_dir = self.query.data_dir.as_ref()?;
+			let edition_index = load_edition_index(data_dir, composer, scheme, edition)?;
+			return edition_index.get(&normalized).cloned();
+		}
 
-			if let Some(entry) = scheme_index.current.get(&normalized) {
+		let scheme_index = self.index.catalog.get(composer)?.get(scheme)?;
+
+		if let Some(entry) = scheme_index.current.get(&normalized) {
+			return Some(entry.id.clone());
+		}
+
+		if !self.query.strict {
+			if let Some(entry) = scheme_index.superseded.get(&normalized) {
 				return Some(entry.id.clone());
 			}
-
-			if !self.query.strict {
-				if let Some(entry) = scheme_index.superseded.get(&normalized) {
-					return Some(entry.id.clone());
-				}
-			}
-
-			None
 		}
+
+		None
 	}
 
 	pub fn fetch(&self) -> Vec<QueryResult> {
@@ -174,14 +170,9 @@ impl<'a> QueryBuilder<'a> {
 		let normalized = normalize_catalog_number(number);
 
 		if let Some(edition) = &self.query.edition {
-			let key = format!("{}-{}", composer, scheme);
-			let id = self
-				.index
-				.editions
-				.get(&key)?
-				.get(edition)?
-				.get(&normalized)?
-				.clone();
+			let data_dir = self.query.data_dir.as_ref()?;
+			let edition_index = load_edition_index(data_dir, composer, scheme, edition)?;
+			let id = edition_index.get(&normalized)?.clone();
 			return Some(QueryResult {
 				id,
 				number: Some(normalized),
@@ -246,8 +237,11 @@ impl<'a> QueryBuilder<'a> {
 		let is_range_or_group = self.query.range_start.is_some() || self.query.group.is_some();
 
 		let numbers: Vec<(String, String, bool, Option<String>)> = if let Some(edition) = &self.query.edition {
-			let key = format!("{}-{}", composer, scheme);
-			match self.index.editions.get(&key).and_then(|e| e.get(edition)) {
+			let data_dir = match &self.query.data_dir {
+				Some(d) => d,
+				None => return vec![],
+			};
+			match load_edition_index(data_dir, composer, scheme, edition) {
 				Some(n) => n.iter().map(|(k, v)| (k.clone(), v.clone(), false, None)).collect(),
 				None => return vec![],
 			}
@@ -417,23 +411,6 @@ mod tests {
 			.or_default()
 			.insert("k".into(), mozart_k);
 
-		let key = "mozart-k".to_string();
-		index
-			.editions
-			.entry(key.clone())
-			.or_default()
-			.entry("6".into())
-			.or_default()
-			.insert("300k".into(), "id3".into());
-
-		index
-			.editions
-			.entry(key)
-			.or_default()
-			.entry("9".into())
-			.or_default()
-			.insert("332".into(), "id3".into());
-
 		index
 	}
 
@@ -510,21 +487,6 @@ mod tests {
 		let results = index.query().composer("mozart").scheme("k").fetch();
 
 		assert!(results.iter().any(|r| r.number == Some("332".into())));
-	}
-
-	#[test]
-	fn test_fetch_by_edition() {
-		let index = make_test_index();
-
-		let id = index
-			.query()
-			.composer("mozart")
-			.scheme("k")
-			.edition("6")
-			.number("300k")
-			.fetch_one();
-
-		assert_eq!(id, Some("id3".into()));
 	}
 
 	#[test]

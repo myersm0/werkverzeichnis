@@ -198,6 +198,18 @@ pub fn load_index<P: AsRef<Path>>(data_dir: P) -> Option<Index> {
 	})
 }
 
+pub fn load_edition_index<P: AsRef<Path>>(
+	data_dir: P,
+	composer: &str,
+	scheme: &str,
+	edition: &str,
+) -> Option<HashMap<String, String>> {
+	let filename = format!("{}-{}-{}.json", composer, scheme, edition);
+	let path = data_dir.as_ref().join(".indexes").join("editions").join(filename);
+	let content = fs::read_to_string(&path).ok()?;
+	serde_json::from_str(&content).ok()
+}
+
 pub fn index_is_stale<P: AsRef<Path>>(data_dir: P) -> bool {
 	let data_dir = data_dir.as_ref();
 	let index_path = data_dir.join(".indexes").join("index.json");
