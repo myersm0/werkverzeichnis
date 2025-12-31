@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1723, "premiered": 1723},
-			"catalog": [{"scheme": "bwv", "number": "119"}]
+			"dates": {
+				"composed": 1723,
+				"premiered": 1723
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "119"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -61,6 +69,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_119"
+		"wp": "BWV_119",
+		"mb": "6da45d53-d256-4b09-88ca-77db7f045fcb"
 	}
 }

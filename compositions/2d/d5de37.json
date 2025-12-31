@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1724},
-			"catalog": [{"scheme": "bwv", "number": "44"}]
+			"dates": {
+				"premiered": 1724
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "44"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -44,6 +51,7 @@
 	],
 	"notes": "Composed for the Sunday after Ascension.",
 	"xref": {
-		"wp": "BWV_44"
+		"wp": "BWV_44",
+		"mb": "74bf5976-6f92-45f1-981c-7375e78e8e01"
 	}
 }

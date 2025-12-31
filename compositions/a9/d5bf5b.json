@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1725, "premiered": 1725},
-			"catalog": [{"scheme": "bwv", "number": "111"}]
+			"dates": {
+				"composed": 1725,
+				"premiered": 1725
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "111"
+				}
+			]
 		}
 	],
 	"form": "chorale cantata",
@@ -49,6 +57,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_111"
+		"wp": "BWV_111",
+		"mb": "8168e0ef-5405-4a1a-8831-010a057c992e"
 	}
 }

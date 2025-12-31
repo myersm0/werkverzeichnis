@@ -6,15 +6,30 @@
 	"attribution": [
 		{
 			"composer": "telemann",
-			"dates": {"composed": 1725},
-			"catalog": [{"scheme": "twv", "number": "1:877"}]
+			"dates": {
+				"composed": 1725
+			},
+			"catalog": [
+				{
+					"scheme": "twv",
+					"number": "1:877"
+				}
+			]
 		},
 		{
 			"composer": "bach",
 			"status": "spurious",
 			"catalog": [
-				{"scheme": "bwv", "number": "anh. iii 160", "note": "spurious; see telemann twv 1:877", "since": "1998"},
-				{"scheme": "bwv", "number": "160"}
+				{
+					"scheme": "bwv",
+					"number": "anh. iii 160",
+					"note": "spurious; see telemann twv 1:877",
+					"since": "1998"
+				},
+				{
+					"scheme": "bwv",
+					"number": "160"
+				}
 			]
 		}
 	],
@@ -48,6 +63,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_160"
+		"wp": "BWV_160",
+		"mb": "e6dd5f63-070d-4eec-bd74-a2d2b5778de8"
 	}
 }

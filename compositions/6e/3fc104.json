@@ -3,8 +3,18 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1784, "published": 1784},
-			"catalog": [{"scheme": "k", "edition": "1", "number": "454", "since": "1862"}]
+			"dates": {
+				"composed": 1784,
+				"published": 1784
+			},
+			"catalog": [
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "454",
+					"since": "1862"
+				}
+			]
 		}
 	],
 	"key": "Bb",
@@ -20,5 +30,8 @@
 		{
 			"title": "Allegretto"
 		}
-	]
+	],
+	"xref": {
+		"mb": "3b768f87-a353-42f8-b379-0e0a0da86454"
+	}
 }

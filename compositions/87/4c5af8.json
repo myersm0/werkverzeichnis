@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1726, "premiered": 1726},
-			"catalog": [{"scheme": "bwv", "number": "35"}]
+			"dates": {
+				"composed": 1726,
+				"premiered": 1726
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "35"
+				}
+			]
 		}
 	],
 	"form": "solo cantata",
@@ -62,6 +70,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_35"
+		"wp": "BWV_35",
+		"mb": "f56ca74c-43c2-42a1-9fe6-3f03079ace69"
 	}
 }

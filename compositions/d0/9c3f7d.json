@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1729},
-			"catalog": [{"scheme": "bwv", "number": "171"}]
+			"dates": {
+				"premiered": 1729
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "171"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -49,6 +56,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_171"
+		"wp": "BWV_171",
+		"mb": "42f7618d-190e-48da-a36d-b2d51aaf3a4f"
 	}
 }

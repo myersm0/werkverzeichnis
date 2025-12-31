@@ -3,8 +3,15 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1801},
-			"catalog": [{"scheme": "op", "number": "14/1"}]
+			"dates": {
+				"composed": 1801
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "14/1"
+				}
+			]
 		}
 	],
 	"key": "E",
@@ -24,6 +31,7 @@
 	],
 	"xref": {
 		"oo": "16202",
-		"wp": "Piano_Sonata_No._9_(Beethoven)"
+		"wp": "Piano_Sonata_No._9_(Beethoven)",
+		"mb": "bab36973-3546-4f24-8bc1-2c7bc3e14e83"
 	}
 }

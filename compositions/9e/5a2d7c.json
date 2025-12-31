@@ -3,7 +3,12 @@
 	"attribution": [
 		{
 			"cf": "bach-wtc-2",
-			"catalog": [{"scheme": "bwv", "number": "877"}]
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "877"
+				}
+			]
 		}
 	],
 	"form": "prelude and fugue",
@@ -19,6 +24,7 @@
 	],
 	"xref": {
 		"oo": "9318",
-		"wp": "BWV_877"
+		"wp": "BWV_877",
+		"mb": "3ba7c2ba-3cde-355d-a23e-85b3363444fe"
 	}
 }

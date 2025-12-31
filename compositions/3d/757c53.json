@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1724},
-			"catalog": [{"scheme": "bwv", "number": "8.1"}]
+			"dates": {
+				"premiered": 1724
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "8.1"
+				}
+			]
 		}
 	],
 	"form": "chorale cantata",
@@ -41,6 +48,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_8.1"
+		"wp": "BWV_8.1",
+		"mb": "20735a17-3cfc-4a08-84d8-3836db50cf25"
 	}
 }

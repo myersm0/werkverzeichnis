@@ -3,8 +3,15 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1798},
-			"catalog": [{"scheme": "op", "number": "10/1"}]
+			"dates": {
+				"composed": 1798
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "10/1"
+				}
+			]
 		}
 	],
 	"key": "c",
@@ -24,6 +31,7 @@
 	],
 	"xref": {
 		"oo": "16164",
-		"wp": "Piano_Sonata_No._5_(Beethoven)"
+		"wp": "Piano_Sonata_No._5_(Beethoven)",
+		"mb": "0aeaff78-1cc6-47e6-b0af-5250ef923974"
 	}
 }

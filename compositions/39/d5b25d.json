@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1726},
-			"catalog": [{"scheme": "bwv", "number": "98"}]
+			"dates": {
+				"premiered": 1726
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "98"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -40,6 +47,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_98"
+		"wp": "BWV_98",
+		"mb": "736655d1-aab5-4683-8f5d-3f93e1e81959"
 	}
 }

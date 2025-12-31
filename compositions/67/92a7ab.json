@@ -3,8 +3,17 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"published": 1764},
-			"catalog": [{"scheme": "k", "edition": "1", "number": "6", "since": "1862"}]
+			"dates": {
+				"published": 1764
+			},
+			"catalog": [
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "6",
+					"since": "1862"
+				}
+			]
 		}
 	],
 	"key": "C",
@@ -25,5 +34,8 @@
 			"title": "Allegro molto"
 		}
 	],
-	"notes": "Composed when Mozart was 6–8 years old; likely written down by his father Leopold. Date and location of composition disputed: possibly Salzburg 1762–1763 or Paris 1763–1764."
+	"notes": "Composed when Mozart was 6–8 years old; likely written down by his father Leopold. Date and location of composition disputed: possibly Salzburg 1762–1763 or Paris 1763–1764.",
+	"xref": {
+		"mb": "44e0195e-963b-4299-b892-4051bb270a59"
+	}
 }

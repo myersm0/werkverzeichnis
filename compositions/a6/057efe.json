@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1727},
-			"catalog": [{"scheme": "bwv", "number": "129"}]
+			"dates": {
+				"premiered": 1727
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "129"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -38,6 +45,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_129"
+		"wp": "BWV_129",
+		"mb": "22cd132d-a063-48fe-8c71-240efbdd451e"
 	}
 }

@@ -3,8 +3,16 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1801, "published": 1802},
-			"catalog": [{"scheme": "op", "number": "27/2"}]
+			"dates": {
+				"composed": 1801,
+				"published": 1802
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "27/2"
+				}
+			]
 		}
 	],
 	"key": "c#",
@@ -24,6 +32,7 @@
 	],
 	"xref": {
 		"oo": "16375",
-		"wp": "Piano_Sonata_No._14_(Beethoven)"
+		"wp": "Piano_Sonata_No._14_(Beethoven)",
+		"mb": "d754d820-2036-39f6-9fd5-636cda85b3b2"
 	}
 }

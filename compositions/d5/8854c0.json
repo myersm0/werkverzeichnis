@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1724},
-			"catalog": [{"scheme": "bwv", "number": "181"}]
+			"dates": {
+				"premiered": 1724
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "181"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -40,6 +47,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_181"
+		"wp": "BWV_181",
+		"mb": "e331c4c5-a63d-41dc-98de-3278463d895a"
 	}
 }

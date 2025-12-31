@@ -3,8 +3,17 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"published": 1788},
-			"catalog": [{"scheme": "k", "edition": "1", "number": "545", "since": "1862"}]
+			"dates": {
+				"published": 1788
+			},
+			"catalog": [
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "545",
+					"since": "1862"
+				}
+			]
 		}
 	],
 	"key": "C",
@@ -24,6 +33,7 @@
 	],
 	"xref": {
 		"oo": "23559",
-		"wp": "Piano_Sonata_No._16_(Mozart)"
+		"wp": "Piano_Sonata_No._16_(Mozart)",
+		"mb": "a2ad223d-d73b-3775-9580-fd25b4d986e1"
 	}
 }

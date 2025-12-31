@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1725},
-			"catalog": [{"scheme": "bwv", "number": "151"}]
+			"dates": {
+				"premiered": 1725
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "151"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -40,6 +47,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_151"
+		"wp": "BWV_151",
+		"mb": "98470e81-032f-4e10-8f6c-9a6744cd1215"
 	}
 }

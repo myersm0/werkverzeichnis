@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1724},
-			"catalog": [{"scheme": "bwv", "number": "73"}]
+			"dates": {
+				"premiered": 1724
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "73"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -39,6 +46,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_73"
+		"wp": "BWV_73",
+		"mb": "98a6c474-9d97-47ce-9536-3e3daf568f5e"
 	}
 }

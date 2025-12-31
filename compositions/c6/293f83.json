@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1724},
-			"catalog": [{"scheme": "bwv", "number": "101"}]
+			"dates": {
+				"premiered": 1724
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "101"
+				}
+			]
 		}
 	],
 	"form": "chorale cantata",
@@ -56,6 +63,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_101"
+		"wp": "BWV_101",
+		"mb": "d9c9f554-e316-4fb5-956d-bf994f00cca5"
 	}
 }

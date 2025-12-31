@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1724},
-			"catalog": [{"scheme": "bwv", "number": "94"}]
+			"dates": {
+				"premiered": 1724
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "94"
+				}
+			]
 		}
 	],
 	"form": "chorale cantata",
@@ -54,6 +61,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_94"
+		"wp": "BWV_94",
+		"mb": "acaa5fbd-0ea1-44d6-a393-468247123e69"
 	}
 }

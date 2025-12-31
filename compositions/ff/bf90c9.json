@@ -3,8 +3,17 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1789},
-			"catalog": [{"scheme": "k", "edition": "1", "number": "570", "since": "1862"}]
+			"dates": {
+				"composed": 1789
+			},
+			"catalog": [
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "570",
+					"since": "1862"
+				}
+			]
 		}
 	],
 	"key": "Bb",
@@ -24,6 +33,7 @@
 	],
 	"xref": {
 		"oo": "23455",
-		"wp": "Piano_Sonata_No._17_(Mozart)"
+		"wp": "Piano_Sonata_No._17_(Mozart)",
+		"mb": "a484f227-9918-4c5e-85fb-1204db0b7af2"
 	}
 }

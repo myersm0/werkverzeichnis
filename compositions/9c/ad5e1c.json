@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1725},
-			"catalog": [{"scheme": "bwv", "number": "92"}]
+			"dates": {
+				"premiered": 1725
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "92"
+				}
+			]
 		}
 	],
 	"form": "chorale cantata",
@@ -65,6 +72,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_92"
+		"wp": "BWV_92",
+		"mb": "9340de87-7bee-4958-b8e1-54db3046863e"
 	}
 }

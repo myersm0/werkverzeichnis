@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1726, "premiered": 1726},
-			"catalog": [{"scheme": "bwv", "number": "52"}]
+			"dates": {
+				"composed": 1726,
+				"premiered": 1726
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "52"
+				}
+			]
 		}
 	],
 	"form": "solo cantata",
@@ -44,6 +52,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_52"
+		"wp": "BWV_52",
+		"mb": "a27e667d-33aa-414a-9e92-c8447ab6f392"
 	}
 }

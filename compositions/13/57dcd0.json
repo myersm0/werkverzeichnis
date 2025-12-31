@@ -3,11 +3,28 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1777},
+			"dates": {
+				"composed": 1777
+			},
 			"catalog": [
-				{"scheme": "k", "edition": "9", "number": "309", "since": "2024"},
-				{"scheme": "k", "edition": "6", "number": "284b", "since": "1964"},
-				{"scheme": "k", "edition": "1", "number": "309", "since": "1862"}
+				{
+					"scheme": "k",
+					"edition": "9",
+					"number": "309",
+					"since": "2024"
+				},
+				{
+					"scheme": "k",
+					"edition": "6",
+					"number": "284b",
+					"since": "1964"
+				},
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "309",
+					"since": "1862"
+				}
 			]
 		}
 	],
@@ -28,6 +45,7 @@
 	],
 	"xref": {
 		"oo": "23712",
-		"wp": "Piano_Sonata_No._7_(Mozart)"
+		"wp": "Piano_Sonata_No._7_(Mozart)",
+		"mb": "645a1b04-b378-4883-91a6-2627553cd365"
 	}
 }

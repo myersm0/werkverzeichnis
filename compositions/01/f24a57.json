@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1734},
-			"catalog": [{"scheme": "bwv", "number": "97"}]
+			"dates": {
+				"composed": 1734
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "97"
+				}
+			]
 		}
 	],
 	"form": "chorale cantata",
@@ -58,6 +65,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_97"
+		"wp": "BWV_97",
+		"mb": "6bf1c73f-ef03-40d3-9c7b-e724dfc7c5ca"
 	}
 }

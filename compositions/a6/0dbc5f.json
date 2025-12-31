@@ -3,8 +3,18 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1778, "published": 1781},
-			"catalog": [{"scheme": "k", "edition": "1", "number": "296", "since": "1862"}]
+			"dates": {
+				"composed": 1778,
+				"published": 1781
+			},
+			"catalog": [
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "296",
+					"since": "1862"
+				}
+			]
 		}
 	],
 	"key": "C",
@@ -21,5 +31,8 @@
 		{
 			"title": "Allegro"
 		}
-	]
+	],
+	"xref": {
+		"mb": "a759654c-21c4-4209-9ab8-34a2d335862a"
+	}
 }

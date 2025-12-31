@@ -6,10 +6,18 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1724},
+			"dates": {
+				"premiered": 1724
+			},
 			"catalog": [
-				{"scheme": "bwv", "number": "173.2"},
-				{"scheme": "bwv", "number": "173"}
+				{
+					"scheme": "bwv",
+					"number": "173.2"
+				},
+				{
+					"scheme": "bwv",
+					"number": "173"
+				}
 			]
 		}
 	],
@@ -48,6 +56,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_173"
+		"wp": "BWV_173",
+		"mb": "f5ac7d69-7e04-49e3-8c0f-d54ad3680fd1"
 	}
 }

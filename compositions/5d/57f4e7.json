@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1732},
-			"catalog": [{"scheme": "bwv", "number": "177"}]
+			"dates": {
+				"premiered": 1732
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "177"
+				}
+			]
 		}
 	],
 	"form": "chorale cantata",
@@ -36,6 +43,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_177"
+		"wp": "BWV_177",
+		"mb": "a9811e9a-0fce-4ec5-9528-9604b50615e1"
 	}
 }

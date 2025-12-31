@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1723},
-			"catalog": [{"scheme": "bwv", "number": "25"}]
+			"dates": {
+				"premiered": 1723
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "25"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -48,6 +55,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_25"
+		"wp": "BWV_25",
+		"mb": "c3fa41d8-e8b8-4a25-a74c-86201c91ae88"
 	}
 }

@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1724},
-			"catalog": [{"scheme": "bwv", "number": "107"}]
+			"dates": {
+				"premiered": 1724
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "107"
+				}
+			]
 		}
 	],
 	"form": "chorale cantata",
@@ -56,6 +63,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_107"
+		"wp": "BWV_107",
+		"mb": "0c289990-ae22-4331-a400-562e3a8fb6f8"
 	}
 }

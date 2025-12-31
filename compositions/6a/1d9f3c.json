@@ -3,7 +3,12 @@
 	"attribution": [
 		{
 			"cf": "bach-six-partitas",
-			"catalog": [{"scheme": "bwv", "number": "828"}]
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "828"
+				}
+			]
 		}
 	],
 	"form": "partita",
@@ -34,6 +39,7 @@
 	],
 	"xref": {
 		"oo": "10090",
-		"wp": "BWV_828"
+		"wp": "BWV_828",
+		"mb": "d8f36fa6-3653-41b6-97f2-5d3378fc5bb1"
 	}
 }

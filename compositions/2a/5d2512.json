@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1723},
-			"catalog": [{"scheme": "bwv", "number": "70"}]
+			"dates": {
+				"composed": 1723
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "70"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -78,6 +85,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_70"
+		"wp": "BWV_70",
+		"mb": "0192cdef-a9d9-4c5a-b1ee-527e277c7c2a"
 	}
 }

@@ -3,8 +3,16 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1820, "published": 1821},
-			"catalog": [{"scheme": "op", "number": "109"}]
+			"dates": {
+				"composed": 1820,
+				"published": 1821
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "109"
+				}
+			]
 		}
 	],
 	"key": "E",
@@ -24,6 +32,7 @@
 	],
 	"xref": {
 		"oo": "16293",
-		"wp": "Piano_Sonata_No._30_(Beethoven)"
+		"wp": "Piano_Sonata_No._30_(Beethoven)",
+		"mb": "7405e6a1-130e-4c22-bc33-bcd43c560a55"
 	}
 }

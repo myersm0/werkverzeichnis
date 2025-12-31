@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1734},
-			"catalog": [{"scheme": "bwv", "number": "9"}]
+			"dates": {
+				"premiered": 1734
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "9"
+				}
+			]
 		}
 	],
 	"form": "chorale cantata",
@@ -52,6 +59,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_9"
+		"wp": "BWV_9",
+		"mb": "3033ed84-72aa-4fcb-841c-739e276778ec"
 	}
 }

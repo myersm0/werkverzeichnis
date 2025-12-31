@@ -3,8 +3,15 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1804},
-			"catalog": [{"scheme": "op", "number": "53"}]
+			"dates": {
+				"composed": 1804
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "53"
+				}
+			]
 		}
 	],
 	"key": "C",
@@ -24,6 +31,7 @@
 	],
 	"xref": {
 		"oo": "16184",
-		"wp": "Piano_Sonata_No._21_(Beethoven)"
+		"wp": "Piano_Sonata_No._21_(Beethoven)",
+		"mb": "a3c9dc10-0f58-3fcd-9b9f-bd455e386941"
 	}
 }

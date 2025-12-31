@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1731, "premiered": 1731},
-			"catalog": [{"scheme": "bwv", "number": "112"}]
+			"dates": {
+				"composed": 1731,
+				"premiered": 1731
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "112"
+				}
+			]
 		}
 	],
 	"form": "chorale cantata",
@@ -42,6 +50,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_112"
+		"wp": "BWV_112",
+		"mb": "83db58d2-3377-4186-ba51-a07cb9efc28c"
 	}
 }

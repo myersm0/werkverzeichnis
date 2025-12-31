@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1714},
-			"catalog": [{"scheme": "bwv", "number": "152"}]
+			"dates": {
+				"premiered": 1714
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "152"
+				}
+			]
 		}
 	],
 	"form": "dialogue cantata",
@@ -44,6 +51,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_152"
+		"wp": "BWV_152",
+		"mb": "01252f42-f481-4b0c-adad-77df23b4dbb7"
 	}
 }

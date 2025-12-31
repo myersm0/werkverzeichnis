@@ -3,11 +3,28 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1778},
+			"dates": {
+				"composed": 1778
+			},
 			"catalog": [
-				{"scheme": "k", "edition": "9", "number": "304", "since": "2024"},
-				{"scheme": "k", "edition": "6", "number": "300c", "since": "1964"},
-				{"scheme": "k", "edition": "1", "number": "304", "since": "1862"}
+				{
+					"scheme": "k",
+					"edition": "9",
+					"number": "304",
+					"since": "2024"
+				},
+				{
+					"scheme": "k",
+					"edition": "6",
+					"number": "300c",
+					"since": "1964"
+				},
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "304",
+					"since": "1862"
+				}
 			]
 		}
 	],
@@ -21,5 +38,8 @@
 		{
 			"title": "Tempo di Menuetto"
 		}
-	]
+	],
+	"xref": {
+		"mb": "499dcac1-0634-4a0d-b359-0a18a90a06b8"
+	}
 }

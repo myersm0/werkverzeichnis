@@ -3,8 +3,15 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1809},
-			"catalog": [{"scheme": "op", "number": "79"}]
+			"dates": {
+				"composed": 1809
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "79"
+				}
+			]
 		}
 	],
 	"key": "G",
@@ -24,6 +31,7 @@
 	],
 	"xref": {
 		"oo": "16456",
-		"wp": "Piano_Sonata_No._25_(Beethoven)"
+		"wp": "Piano_Sonata_No._25_(Beethoven)",
+		"mb": "318b575a-a5f8-3408-8ed5-0c5b85611b86"
 	}
 }

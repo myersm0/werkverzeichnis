@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1724, "premiered": 1724},
-			"catalog": [{"scheme": "bwv", "number": "81"}]
+			"dates": {
+				"composed": 1724,
+				"premiered": 1724
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "81"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -50,6 +58,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_81"
+		"wp": "BWV_81",
+		"mb": "17e3f27a-e049-46ce-8124-708f296c753f"
 	}
 }

@@ -3,8 +3,16 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1817, "published": 1818},
-			"catalog": [{"scheme": "op", "number": "106"}]
+			"dates": {
+				"composed": 1817,
+				"published": 1818
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "106"
+				}
+			]
 		}
 	],
 	"key": "Bb",
@@ -27,6 +35,7 @@
 	],
 	"xref": {
 		"oo": "16264",
-		"wp": "Piano_Sonata_No._29_(Beethoven)"
+		"wp": "Piano_Sonata_No._29_(Beethoven)",
+		"mb": "4a622b0d-b0c0-405e-b49e-05b70c108284"
 	}
 }

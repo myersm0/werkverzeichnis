@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1724},
-			"catalog": [{"scheme": "bwv", "number": "113"}]
+			"dates": {
+				"premiered": 1724
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "113"
+				}
+			]
 		}
 	],
 	"form": "chorale cantata",
@@ -61,6 +68,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_113"
+		"wp": "BWV_113",
+		"mb": "bfc1187c-1fa7-4ca6-9509-a58ac16a6307"
 	}
 }

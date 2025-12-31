@@ -3,7 +3,12 @@
 	"attribution": [
 		{
 			"cf": "bach-wtc-1",
-			"catalog": [{"scheme": "bwv", "number": "861"}]
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "861"
+				}
+			]
 		}
 	],
 	"form": "prelude and fugue",
@@ -19,6 +24,7 @@
 	],
 	"xref": {
 		"oo": "9781",
-		"wp": "BWV_861"
+		"wp": "BWV_861",
+		"mb": "e7427926-1a19-32cf-b27d-1c7de26efa4c"
 	}
 }

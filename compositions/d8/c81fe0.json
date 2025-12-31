@@ -3,8 +3,16 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1796, "published": 1796},
-			"catalog": [{"scheme": "op", "number": "7"}]
+			"dates": {
+				"composed": 1796,
+				"published": 1796
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "7"
+				}
+			]
 		}
 	],
 	"key": "Eb",
@@ -27,6 +35,7 @@
 	],
 	"xref": {
 		"oo": "16447",
-		"wp": "Piano_Sonata_No._4_(Beethoven)"
+		"wp": "Piano_Sonata_No._4_(Beethoven)",
+		"mb": "f99c736a-9e65-4c13-813a-51776987993d"
 	}
 }

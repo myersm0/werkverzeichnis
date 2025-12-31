@@ -3,7 +3,12 @@
 	"attribution": [
 		{
 			"cf": "bach-cello-suites",
-			"catalog": [{"scheme": "bwv", "number": "1012"}]
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "1012"
+				}
+			]
 		}
 	],
 	"form": "suite",
@@ -34,6 +39,7 @@
 	],
 	"xref": {
 		"oo": "9964",
-		"wp": "BWV_1012"
+		"wp": "BWV_1012",
+		"mb": "d2bf3bb3-c898-4c31-bd7d-1c26aace49e4"
 	}
 }

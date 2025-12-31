@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1715, "premiered": 1715},
-			"catalog": [{"scheme": "bwv", "number": "132"}]
+			"dates": {
+				"composed": 1715,
+				"premiered": 1715
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "132"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -48,6 +56,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_132"
+		"wp": "BWV_132",
+		"mb": "038510b7-816d-4326-9f7c-9e11723e71f6"
 	}
 }

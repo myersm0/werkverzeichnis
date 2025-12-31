@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1728},
-			"catalog": [{"scheme": "bwv", "number": "188"}]
+			"dates": {
+				"premiered": 1728
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "188"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -44,6 +51,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_188"
+		"wp": "BWV_188",
+		"mb": "fb6596bd-ea49-4aec-8e15-31cde5c987e6"
 	}
 }

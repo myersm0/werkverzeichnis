@@ -9,7 +9,12 @@
 			"dates": {
 				"premiered": 1729
 			},
-			"catalog": [{"scheme": "bwv", "number": "156"}]
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "156"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -46,6 +51,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV 156"
+		"wp": "BWV 156",
+		"mb": "5f418631-7613-4f47-8b48-4cf09dafc5e7"
 	}
 }

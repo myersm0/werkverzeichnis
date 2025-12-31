@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1724, "premiered": 1724},
-			"catalog": [{"scheme": "bwv", "number": "133"}]
+			"dates": {
+				"composed": 1724,
+				"premiered": 1724
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "133"
+				}
+			]
 		}
 	],
 	"form": "chorale cantata",
@@ -48,6 +56,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_133"
+		"wp": "BWV_133",
+		"mb": "65b8c10c-2d74-4cbf-9fc5-1ee4b5621152"
 	}
 }

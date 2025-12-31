@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1726},
-			"catalog": [{"scheme": "bwv", "number": "56"}]
+			"dates": {
+				"premiered": 1726
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "56"
+				}
+			]
 		}
 	],
 	"form": "solo cantata",
@@ -45,6 +52,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_56"
+		"wp": "BWV_56",
+		"mb": "8bb2d318-d12f-4761-b63b-3b15f5d9f499"
 	}
 }

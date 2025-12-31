@@ -3,8 +3,15 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1799},
-			"catalog": [{"scheme": "op", "number": "14/2"}]
+			"dates": {
+				"composed": 1799
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "14/2"
+				}
+			]
 		}
 	],
 	"key": "G",
@@ -24,6 +31,7 @@
 	],
 	"xref": {
 		"oo": "16387",
-		"wp": "Piano_Sonata_No._10_(Beethoven)"
+		"wp": "Piano_Sonata_No._10_(Beethoven)",
+		"mb": "bab36973-3546-4f24-8bc1-2c7bc3e14e83"
 	}
 }

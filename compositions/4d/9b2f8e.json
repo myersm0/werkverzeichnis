@@ -3,7 +3,12 @@
 	"attribution": [
 		{
 			"cf": "bach-wtc-2",
-			"catalog": [{"scheme": "bwv", "number": "890"}]
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "890"
+				}
+			]
 		}
 	],
 	"form": "prelude and fugue",
@@ -19,6 +24,7 @@
 	],
 	"xref": {
 		"oo": "9318",
-		"wp": "BWV_890"
+		"wp": "BWV_890",
+		"mb": "5b056811-0c81-399e-85d6-1e50e5d3107a"
 	}
 }

@@ -3,8 +3,17 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1788},
-			"catalog": [{"scheme": "k", "edition": "1", "number": "533", "since": "1862"}]
+			"dates": {
+				"composed": 1788
+			},
+			"catalog": [
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "533",
+					"since": "1862"
+				}
+			]
 		}
 	],
 	"key": "F",
@@ -24,6 +33,7 @@
 	],
 	"xref": {
 		"oo": "23366",
-		"wp": "Piano_Sonata_No._15_(Mozart)"
+		"wp": "Piano_Sonata_No._15_(Mozart)",
+		"mb": "11364bbd-1258-4d06-b4f6-3262e4a67000"
 	}
 }

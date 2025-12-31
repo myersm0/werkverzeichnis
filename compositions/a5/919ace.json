@@ -3,11 +3,29 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1783, "published": 1784},
+			"dates": {
+				"composed": 1783,
+				"published": 1784
+			},
 			"catalog": [
-				{"scheme": "k", "edition": "9", "number": "333", "since": "2024"},
-				{"scheme": "k", "edition": "6", "number": "315c", "since": "1964"},
-				{"scheme": "k", "edition": "1", "number": "333", "since": "1862"}
+				{
+					"scheme": "k",
+					"edition": "9",
+					"number": "333",
+					"since": "2024"
+				},
+				{
+					"scheme": "k",
+					"edition": "6",
+					"number": "315c",
+					"since": "1964"
+				},
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "333",
+					"since": "1862"
+				}
 			]
 		}
 	],
@@ -28,6 +46,7 @@
 	],
 	"xref": {
 		"oo": "23443",
-		"wp": "Piano_Sonata_No._13_(Mozart)"
+		"wp": "Piano_Sonata_No._13_(Mozart)",
+		"mb": "5057d730-7733-4753-aa0f-07498a0c37f0"
 	}
 }

@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1723},
-			"catalog": [{"scheme": "bwv", "number": "46"}]
+			"dates": {
+				"premiered": 1723
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "46"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -48,6 +55,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_46"
+		"wp": "BWV_46",
+		"mb": "2b6314d2-8ac6-4d9e-b4d7-8e9668937b38"
 	}
 }

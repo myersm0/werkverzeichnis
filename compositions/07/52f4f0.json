@@ -3,8 +3,17 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1787},
-			"catalog": [{"scheme": "k", "edition": "1", "number": "526", "since": "1862"}]
+			"dates": {
+				"composed": 1787
+			},
+			"catalog": [
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "526",
+					"since": "1862"
+				}
+			]
 		}
 	],
 	"key": "A",
@@ -21,5 +30,8 @@
 		{
 			"title": "Presto"
 		}
-	]
+	],
+	"xref": {
+		"mb": "13d34749-274c-4105-aa00-fb020344c759"
+	}
 }

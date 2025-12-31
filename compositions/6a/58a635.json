@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1725},
-			"catalog": [{"scheme": "bwv", "number": "137"}]
+			"dates": {
+				"premiered": 1725
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "137"
+				}
+			]
 		}
 	],
 	"form": "chorale cantata",
@@ -44,6 +51,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_137"
+		"wp": "BWV_137",
+		"mb": "8a706eef-e87f-4dff-9cae-2a0ef4ff4aaa"
 	}
 }

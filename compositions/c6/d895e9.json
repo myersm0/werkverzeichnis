@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1713},
-			"catalog": [{"scheme": "bwv", "number": "21"}]
+			"dates": {
+				"composed": 1713
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "21"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -85,6 +92,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_21"
+		"wp": "BWV_21",
+		"mb": "139ddaa9-2bb2-43b6-8ad5-1b5faeefa7ee"
 	}
 }

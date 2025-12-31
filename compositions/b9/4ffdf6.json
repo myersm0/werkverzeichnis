@@ -3,8 +3,16 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1802, "published": 1803},
-			"catalog": [{"scheme": "op", "number": "31/1"}]
+			"dates": {
+				"composed": 1802,
+				"published": 1803
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "31/1"
+				}
+			]
 		}
 	],
 	"key": "G",
@@ -24,6 +32,7 @@
 	],
 	"xref": {
 		"oo": "16455",
-		"wp": "Piano_Sonata_No._16_(Beethoven)"
+		"wp": "Piano_Sonata_No._16_(Beethoven)",
+		"mb": "3edecd40-7725-4037-ad2c-b4d34fe903d9"
 	}
 }

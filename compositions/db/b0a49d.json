@@ -3,11 +3,28 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1772},
+			"dates": {
+				"composed": 1772
+			},
 			"catalog": [
-				{"scheme": "k", "edition": "9", "number": "67", "since": "2024"},
-				{"scheme": "k", "edition": "6", "number": "41h", "since": "1964"},
-				{"scheme": "k", "edition": "1", "number": "67", "since": "1862"}
+				{
+					"scheme": "k",
+					"edition": "9",
+					"number": "67",
+					"since": "2024"
+				},
+				{
+					"scheme": "k",
+					"edition": "6",
+					"number": "41h",
+					"since": "1964"
+				},
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "67",
+					"since": "1862"
+				}
 			]
 		}
 	],
@@ -18,5 +35,8 @@
 		{
 			"title": "Andantino"
 		}
-	]
+	],
+	"xref": {
+		"mb": "9a56e9b2-22a6-3802-9e27-547090c59949"
+	}
 }

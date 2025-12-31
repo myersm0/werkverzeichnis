@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1727},
-			"catalog": [{"scheme": "bwv", "number": "146"}]
+			"dates": {
+				"composed": 1727
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "146"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -53,6 +60,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_146"
+		"wp": "BWV_146",
+		"mb": "64f82d03-c1d6-4514-ba3a-40459456db9e"
 	}
 }

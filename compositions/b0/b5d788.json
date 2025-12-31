@@ -3,8 +3,18 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1764, "published": 1765},
-			"catalog": [{"scheme": "k", "edition": "1", "number": "15", "since": "1862"}]
+			"dates": {
+				"composed": 1764,
+				"published": 1765
+			},
+			"catalog": [
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "15",
+					"since": "1862"
+				}
+			]
 		}
 	],
 	"key": "Bb",
@@ -18,5 +28,8 @@
 		{
 			"title": "Allegro grazioso"
 		}
-	]
+	],
+	"xref": {
+		"mb": "9b70a5a7-b1d8-43be-83e6-1d13dc995c86"
+	}
 }

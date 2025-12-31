@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1725, "premiered": 1725},
-			"catalog": [{"scheme": "bwv", "number": "108"}]
+			"dates": {
+				"composed": 1725,
+				"premiered": 1725
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "108"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -49,6 +57,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_108"
+		"wp": "BWV_108",
+		"mb": "f0dec6a5-f56f-4215-8f53-286c2b156695"
 	}
 }

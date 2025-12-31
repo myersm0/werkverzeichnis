@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1726},
-			"catalog": [{"scheme": "bwv", "number": "55"}]
+			"dates": {
+				"premiered": 1726
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "55"
+				}
+			]
 		}
 	],
 	"form": "solo cantata",
@@ -40,6 +47,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_55"
+		"wp": "BWV_55",
+		"mb": "95cc9328-a789-4cf2-b054-339575ec7baf"
 	}
 }

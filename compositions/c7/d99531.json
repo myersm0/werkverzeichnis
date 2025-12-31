@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1723, "premiered": 1723},
-			"catalog": [{"scheme": "bwv", "number": "48"}]
+			"dates": {
+				"composed": 1723,
+				"premiered": 1723
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "48"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -48,6 +56,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_48"
+		"wp": "BWV_48",
+		"mb": "13e1505b-9e76-4efe-8abe-afb6f512069b"
 	}
 }

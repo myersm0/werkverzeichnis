@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1738},
-			"catalog": [{"scheme": "bwv", "number": "30"}]
+			"dates": {
+				"composed": 1738
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "30"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -91,6 +98,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_30"
+		"wp": "BWV_30",
+		"mb": "761944ce-af2e-46c8-9623-e894e9f27522"
 	}
 }

@@ -3,8 +3,15 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1809},
-			"catalog": [{"scheme": "op", "number": "78"}]
+			"dates": {
+				"composed": 1809
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "78"
+				}
+			]
 		}
 	],
 	"key": "F#",
@@ -20,6 +27,7 @@
 	],
 	"xref": {
 		"oo": "16158",
-		"wp": "Piano_Sonata_No._24_(Beethoven)"
+		"wp": "Piano_Sonata_No._24_(Beethoven)",
+		"mb": "47207de2-91f8-3cd3-a029-47ab5f12fd5c"
 	}
 }

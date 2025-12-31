@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1727},
-			"catalog": [{"scheme": "bwv", "number": "58"}]
+			"dates": {
+				"premiered": 1727
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "58"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -46,6 +53,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_58"
+		"wp": "BWV_58",
+		"mb": "0b5aac53-9ddb-4123-9a16-a85b680fd1be"
 	}
 }

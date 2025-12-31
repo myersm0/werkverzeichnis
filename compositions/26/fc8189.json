@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1715, "premiered": 1723},
-			"catalog": [{"scheme": "bwv", "number": "63"}]
+			"dates": {
+				"composed": 1715,
+				"premiered": 1723
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "63"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -49,6 +57,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_63"
+		"wp": "BWV_63",
+		"mb": "5ce8c0ed-44aa-41bc-a2c1-a38f884c36e2"
 	}
 }

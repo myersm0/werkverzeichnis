@@ -11,8 +11,14 @@
 				"revised": 1748
 			},
 			"catalog": [
-				{"scheme": "bwv", "number": "69.2"},
-				{"scheme": "bwv", "number": "69"}
+				{
+					"scheme": "bwv",
+					"number": "69.2"
+				},
+				{
+					"scheme": "bwv",
+					"number": "69"
+				}
 			]
 		}
 	],
@@ -50,6 +56,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_69"
+		"wp": "BWV_69",
+		"mb": "686b633b-6bb6-488b-8814-34cad1abcd6e"
 	}
 }

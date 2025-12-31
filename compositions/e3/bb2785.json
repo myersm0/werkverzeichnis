@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1727, "premiered": 1727},
-			"catalog": [{"scheme": "bwv", "number": "84"}]
+			"dates": {
+				"composed": 1727,
+				"premiered": 1727
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "84"
+				}
+			]
 		}
 	],
 	"form": "solo cantata",
@@ -43,6 +51,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_84"
+		"wp": "BWV_84",
+		"mb": "62fde156-1143-4a97-a0b6-4bb9552ac3fa"
 	}
 }

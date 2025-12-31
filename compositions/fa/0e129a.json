@@ -3,8 +3,15 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1804},
-			"catalog": [{"scheme": "op", "number": "54"}]
+			"dates": {
+				"composed": 1804
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "54"
+				}
+			]
 		}
 	],
 	"key": "F",
@@ -20,6 +27,7 @@
 	],
 	"xref": {
 		"oo": "16141",
-		"wp": "Piano_Sonata_No._22_(Beethoven)"
+		"wp": "Piano_Sonata_No._22_(Beethoven)",
+		"mb": "4b943c15-b04f-4c37-b4e9-bdddc5471bd6"
 	}
 }

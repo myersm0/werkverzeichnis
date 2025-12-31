@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1725},
-			"catalog": [{"scheme": "bwv", "number": "6"}]
+			"dates": {
+				"premiered": 1725
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "6"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -41,6 +48,7 @@
 	],
 	"xref": {
 		"oo": "9590",
-		"wp": "BWV_6"
+		"wp": "BWV_6",
+		"mb": "81d80e6f-38ea-4c74-8f53-6b81f82f66ef"
 	}
 }

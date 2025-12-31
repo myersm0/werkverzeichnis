@@ -10,8 +10,14 @@
 				"premiered": 1724
 			},
 			"catalog": [
-				{"scheme": "bwv", "number": "66.2"},
-				{"scheme": "bwv", "number": "66"}
+				{
+					"scheme": "bwv",
+					"number": "66.2"
+				},
+				{
+					"scheme": "bwv",
+					"number": "66"
+				}
 			]
 		}
 	],
@@ -53,6 +59,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_66"
+		"wp": "BWV_66",
+		"mb": "826a4c3e-e4e1-4972-8e0f-e867a970ce82"
 	}
 }

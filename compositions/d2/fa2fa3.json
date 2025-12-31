@@ -3,8 +3,17 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1776},
-			"catalog": [{"scheme": "k", "edition": "1", "number": "241", "since": "1862"}]
+			"dates": {
+				"composed": 1776
+			},
+			"catalog": [
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "241",
+					"since": "1862"
+				}
+			]
 		}
 	],
 	"key": "G",
@@ -15,5 +24,8 @@
 			"title": "Allegro",
 			"key": "G"
 		}
-	]
+	],
+	"xref": {
+		"mb": "97292d00-fff7-3a27-898d-144005e22f9b"
+	}
 }

@@ -3,8 +3,15 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"published": 1801},
-			"catalog": [{"scheme": "op", "number": "28"}]
+			"dates": {
+				"published": 1801
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "28"
+				}
+			]
 		}
 	],
 	"key": "D",
@@ -27,6 +34,7 @@
 	],
 	"xref": {
 		"oo": "16128",
-		"wp": "Piano_Sonata_No._15_(Beethoven)"
+		"wp": "Piano_Sonata_No._15_(Beethoven)",
+		"mb": "85b66ee4-ada7-3256-8423-a48d849b9b55"
 	}
 }

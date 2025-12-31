@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1714},
-			"catalog": [{"scheme": "bwv", "number": "182"}]
+			"dates": {
+				"premiered": 1714
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "182"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -51,6 +58,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_182"
+		"wp": "BWV_182",
+		"mb": "b37b3609-3871-4637-972f-0a5801a1e73d"
 	}
 }

@@ -3,11 +3,28 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1774},
+			"dates": {
+				"composed": 1774
+			},
 			"catalog": [
-				{"scheme": "k", "edition": "9", "number": "279", "since": "2024"},
-				{"scheme": "k", "edition": "6", "number": "189d", "since": "1964"},
-				{"scheme": "k", "edition": "1", "number": "279", "since": "1862"}
+				{
+					"scheme": "k",
+					"edition": "9",
+					"number": "279",
+					"since": "2024"
+				},
+				{
+					"scheme": "k",
+					"edition": "6",
+					"number": "189d",
+					"since": "1964"
+				},
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "279",
+					"since": "1862"
+				}
 			]
 		}
 	],
@@ -20,7 +37,7 @@
 		},
 		{
 			"title": "Andante",
-		"key": "F"
+			"key": "F"
 		},
 		{
 			"title": "Allegro"
@@ -28,6 +45,7 @@
 	],
 	"xref": {
 		"oo": "23181",
-		"wp": "Piano_Sonata_No._1_(Mozart)"
+		"wp": "Piano_Sonata_No._1_(Mozart)",
+		"mb": "62c0bdd8-46ca-4e17-879c-443ad9fd599e"
 	}
 }

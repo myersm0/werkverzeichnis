@@ -3,8 +3,17 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1766},
-			"catalog": [{"scheme": "k", "edition": "1", "number": "28", "since": "1862"}]
+			"dates": {
+				"composed": 1766
+			},
+			"catalog": [
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "28",
+					"since": "1862"
+				}
+			]
 		}
 	],
 	"key": "C",
@@ -19,6 +28,7 @@
 		}
 	],
 	"xref": {
-		"wp": "Keyboard_and_Violin_Sonatas,_K._26-31_(Mozart)"
+		"wp": "Keyboard_and_Violin_Sonatas,_K._26-31_(Mozart)",
+		"mb": "591d4f06-bc24-4c2d-9019-b084c852a314"
 	}
 }

@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1723},
-			"catalog": [{"scheme": "bwv", "number": "138"}]
+			"dates": {
+				"premiered": 1723
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "138"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -50,6 +57,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_138"
+		"wp": "BWV_138",
+		"mb": "90eb426f-4380-4e8a-b482-951758d20d80"
 	}
 }

@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1724},
-			"catalog": [{"scheme": "bwv", "number": "190"}]
+			"dates": {
+				"premiered": 1724
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "190"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -50,6 +57,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_190"
+		"wp": "BWV_190",
+		"mb": "2b40ed0c-ac3f-4ffe-9e1b-dac2165ed986"
 	}
 }

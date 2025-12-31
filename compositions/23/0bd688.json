@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1727},
-			"catalog": [{"scheme": "bwv", "number": "34"}]
+			"dates": {
+				"premiered": 1727
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "34"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -37,6 +44,7 @@
 	],
 	"xref": {
 		"oo": "9626",
-		"wp": "BWV_34"
+		"wp": "BWV_34",
+		"mb": "66148fbd-c49a-4b86-9f4a-17f7573b78d3"
 	}
 }

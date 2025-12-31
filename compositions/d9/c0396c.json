@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1723, "published": 1821},
-			"catalog": [{"scheme": "bwv", "number": "80"}]
+			"dates": {
+				"composed": 1723,
+				"published": 1821
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "80"
+				}
+			]
 		}
 	],
 	"form": "chorale cantata",
@@ -59,6 +67,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_80"
+		"wp": "BWV_80",
+		"mb": "f49ebe41-22bf-4c4a-8fcb-1849f29f294d"
 	}
 }

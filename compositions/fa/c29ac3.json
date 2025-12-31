@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1726},
-			"catalog": [{"scheme": "bwv", "number": "39"}]
+			"dates": {
+				"premiered": 1726
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "39"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -65,6 +72,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_39"
+		"wp": "BWV_39",
+		"mb": "b46fb668-54b8-475a-8b44-27953e7049e2"
 	}
 }

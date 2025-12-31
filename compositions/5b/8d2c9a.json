@@ -3,7 +3,12 @@
 	"attribution": [
 		{
 			"cf": "bach-wtc-1",
-			"catalog": [{"scheme": "bwv", "number": "854"}]
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "854"
+				}
+			]
 		}
 	],
 	"form": "prelude and fugue",
@@ -19,6 +24,7 @@
 	],
 	"xref": {
 		"oo": "9781",
-		"wp": "BWV_854"
+		"wp": "BWV_854",
+		"mb": "009a158e-3a81-3805-ad22-c6b2ec046294"
 	}
 }

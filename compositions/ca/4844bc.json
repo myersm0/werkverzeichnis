@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1716},
-			"catalog": [{"scheme": "bwv", "number": "186"}]
+			"dates": {
+				"composed": 1716
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "186"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -78,6 +85,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_186"
+		"wp": "BWV_186",
+		"mb": "7b47b958-44a8-4f67-b86d-fc1ad2b8fede"
 	}
 }

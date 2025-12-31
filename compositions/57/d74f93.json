@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1724},
-			"catalog": [{"scheme": "bwv", "number": "144"}]
+			"dates": {
+				"premiered": 1724
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "144"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -43,6 +50,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_144"
+		"wp": "BWV_144",
+		"mb": "16736ba6-4e62-49ff-9594-06058f860844"
 	}
 }

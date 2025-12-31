@@ -7,7 +7,12 @@
 		{
 			"composer": "bach",
 			"dates": {},
-			"catalog": [{"scheme": "bwv", "number": "196"}]
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "196"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -40,6 +45,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_196"
+		"wp": "BWV_196",
+		"mb": "c9553f07-f170-47e8-a2f9-67bbbc669ccc"
 	}
 }

@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1727},
-			"catalog": [{"scheme": "bwv", "number": "198"}]
+			"dates": {
+				"premiered": 1727
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "198"
+				}
+			]
 		}
 	],
 	"form": "secular cantata",
@@ -73,6 +80,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_198"
+		"wp": "BWV_198",
+		"mb": "567a9c8e-169d-4050-9da3-dceb9c8a7cc4"
 	}
 }

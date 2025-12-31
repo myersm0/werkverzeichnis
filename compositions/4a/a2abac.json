@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1726},
-			"catalog": [{"scheme": "bwv", "number": "32"}]
+			"dates": {
+				"premiered": 1726
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "32"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -50,6 +57,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_32"
+		"wp": "BWV_32",
+		"mb": "6906e5f9-4529-4a91-8b40-ef7b247867b0"
 	}
 }

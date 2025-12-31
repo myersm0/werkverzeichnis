@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1725},
-			"catalog": [{"scheme": "bwv", "number": "183"}]
+			"dates": {
+				"premiered": 1725
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "183"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -42,6 +49,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_183"
+		"wp": "BWV_183",
+		"mb": "ddd49600-083e-46eb-82fe-da4dc43bb7db"
 	}
 }

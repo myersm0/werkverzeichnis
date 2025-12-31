@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1713},
-			"catalog": [{"scheme": "bwv", "number": "18"}]
+			"dates": {
+				"composed": 1713
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "18"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -38,6 +45,7 @@
 	],
 	"xref": {
 		"oo": "9230",
-		"wp": "BWV_18"
+		"wp": "BWV_18",
+		"mb": "2d3db44c-769e-4b5b-9a78-c896ccb5b908"
 	}
 }

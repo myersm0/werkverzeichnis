@@ -3,11 +3,28 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1774},
+			"dates": {
+				"composed": 1774
+			},
 			"catalog": [
-				{"scheme": "k", "edition": "9", "number": "283", "since": "2024"},
-				{"scheme": "k", "edition": "6", "number": "189h", "since": "1964"},
-				{"scheme": "k", "edition": "1", "number": "283", "since": "1862"}
+				{
+					"scheme": "k",
+					"edition": "9",
+					"number": "283",
+					"since": "2024"
+				},
+				{
+					"scheme": "k",
+					"edition": "6",
+					"number": "189h",
+					"since": "1964"
+				},
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "283",
+					"since": "1862"
+				}
 			]
 		}
 	],
@@ -28,6 +45,7 @@
 	],
 	"xref": {
 		"oo": "23392",
-		"wp": "Piano_Sonata_No._5_(Mozart)"
+		"wp": "Piano_Sonata_No._5_(Mozart)",
+		"mb": "cb47a22e-9fc6-4ab6-9be2-445113373353"
 	}
 }

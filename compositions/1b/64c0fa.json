@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1731},
-			"catalog": [{"scheme": "bwv", "number": "140"}]
+			"dates": {
+				"premiered": 1731
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "140"
+				}
+			]
 		}
 	],
 	"form": "chorale cantata",
@@ -55,6 +62,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_140"
+		"wp": "BWV_140",
+		"mb": "7e3af618-fadc-46b0-b992-51ea002d8729"
 	}
 }

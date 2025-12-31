@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1713, "premiered": 1714},
-			"catalog": [{"scheme": "bwv", "number": "199"}]
+			"dates": {
+				"composed": 1713,
+				"premiered": 1714
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "199"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -60,6 +68,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_199"
+		"wp": "BWV_199",
+		"mb": "2612a6bc-12a7-4fb6-932c-bdce3a3ac9de"
 	}
 }

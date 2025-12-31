@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1724, "premiered": 1724},
-			"catalog": [{"scheme": "bwv", "number": "38"}]
+			"dates": {
+				"composed": 1724,
+				"premiered": 1724
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "38"
+				}
+			]
 		}
 	],
 	"form": "chorale cantata",
@@ -48,6 +56,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_38"
+		"wp": "BWV_38",
+		"mb": "2cdf8fd5-4069-3048-9e4a-08b5a643693d"
 	}
 }

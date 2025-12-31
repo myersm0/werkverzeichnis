@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1734},
-			"catalog": [{"scheme": "bwv", "number": "100"}]
+			"dates": {
+				"premiered": 1734
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "100"
+				}
+			]
 		}
 	],
 	"form": "chorale cantata",
@@ -49,6 +56,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_100"
+		"wp": "BWV_100",
+		"mb": "563ee27c-e85d-409e-8082-0e1208aad053"
 	}
 }

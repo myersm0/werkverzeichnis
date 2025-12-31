@@ -3,8 +3,16 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1822, "published": 1822},
-			"catalog": [{"scheme": "op", "number": "111"}]
+			"dates": {
+				"composed": 1822,
+				"published": 1822
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "111"
+				}
+			]
 		}
 	],
 	"key": "c",
@@ -21,6 +29,7 @@
 	],
 	"xref": {
 		"oo": "16421",
-		"wp": "Piano_Sonata_No._32_(Beethoven)"
+		"wp": "Piano_Sonata_No._32_(Beethoven)",
+		"mb": "1767f1b8-6374-3ad8-8772-3b5ebd40a53a"
 	}
 }

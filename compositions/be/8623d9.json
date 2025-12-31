@@ -6,10 +6,18 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1737},
+			"dates": {
+				"composed": 1737
+			},
 			"catalog": [
-				{"scheme": "bwv", "number": "197.2"},
-				{"scheme": "bwv", "number": "197"}
+				{
+					"scheme": "bwv",
+					"number": "197.2"
+				},
+				{
+					"scheme": "bwv",
+					"number": "197"
+				}
 			]
 		}
 	],
@@ -75,6 +83,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_197"
+		"wp": "BWV_197",
+		"mb": "1c9c8182-ddfb-4c62-8e0e-14e7c3d28cb0"
 	}
 }

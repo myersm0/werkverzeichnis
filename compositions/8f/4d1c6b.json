@@ -3,7 +3,12 @@
 	"attribution": [
 		{
 			"cf": "bach-wtc-1",
-			"catalog": [{"scheme": "bwv", "number": "859"}]
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "859"
+				}
+			]
 		}
 	],
 	"form": "prelude and fugue",
@@ -19,6 +24,7 @@
 	],
 	"xref": {
 		"oo": "9781",
-		"wp": "BWV_859"
+		"wp": "BWV_859",
+		"mb": "05cf3ea0-7a8f-38ce-b2fc-db5543767003"
 	}
 }

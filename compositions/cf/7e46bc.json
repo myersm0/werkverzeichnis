@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1726},
-			"catalog": [{"scheme": "bwv", "number": "102"}]
+			"dates": {
+				"premiered": 1726
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "102"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -59,6 +66,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_102"
+		"wp": "BWV_102",
+		"mb": "8addc05b-0fb7-4124-ac95-35c61e96a63a"
 	}
 }

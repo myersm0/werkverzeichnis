@@ -3,11 +3,28 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1778},
+			"dates": {
+				"composed": 1778
+			},
 			"catalog": [
-				{"scheme": "k", "edition": "9", "number": "310", "since": "2024"},
-				{"scheme": "k", "edition": "6", "number": "300d", "since": "1964"},
-				{"scheme": "k", "edition": "1", "number": "310", "since": "1862"}
+				{
+					"scheme": "k",
+					"edition": "9",
+					"number": "310",
+					"since": "2024"
+				},
+				{
+					"scheme": "k",
+					"edition": "6",
+					"number": "300d",
+					"since": "1964"
+				},
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "310",
+					"since": "1862"
+				}
 			]
 		}
 	],
@@ -28,6 +45,7 @@
 	],
 	"xref": {
 		"oo": "23805",
-		"wp": "Piano_Sonata_No._8_(Mozart)"
+		"wp": "Piano_Sonata_No._8_(Mozart)",
+		"mb": "53b2287b-e013-4c53-8498-6ab35c5de503"
 	}
 }

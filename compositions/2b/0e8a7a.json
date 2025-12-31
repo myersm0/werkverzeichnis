@@ -3,8 +3,15 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1802},
-			"catalog": [{"scheme": "op", "number": "31/2"}]
+			"dates": {
+				"composed": 1802
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "31/2"
+				}
+			]
 		}
 	],
 	"key": "d",
@@ -24,6 +31,7 @@
 	],
 	"xref": {
 		"oo": "16482",
-		"wp": "Piano_Sonatas_No._17_(Beethoven)"
+		"wp": "Piano_Sonatas_No._17_(Beethoven)",
+		"mb": "3edecd40-7725-4037-ad2c-b4d34fe903d9"
 	}
 }

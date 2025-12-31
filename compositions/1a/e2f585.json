@@ -3,8 +3,16 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1821, "published": 1822},
-			"catalog": [{"scheme": "op", "number": "110"}]
+			"dates": {
+				"composed": 1821,
+				"published": 1822
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "110"
+				}
+			]
 		}
 	],
 	"key": "Ab",
@@ -24,6 +32,7 @@
 	],
 	"xref": {
 		"oo": "16165",
-		"wp": "Piano_Sonata_No._31_(Beethoven)"
+		"wp": "Piano_Sonata_No._31_(Beethoven)",
+		"mb": "1c310018-3a56-400a-a6bb-ec0cbebe0545"
 	}
 }

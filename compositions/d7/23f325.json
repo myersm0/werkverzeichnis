@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1725},
-			"catalog": [{"scheme": "bwv", "number": "128"}]
+			"dates": {
+				"premiered": 1725
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "128"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -43,6 +50,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_128"
+		"wp": "BWV_128",
+		"mb": "a114da75-28b8-4213-bf9c-5b02f088cb3d"
 	}
 }

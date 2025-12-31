@@ -16,5 +16,8 @@
 	],
 	"key": "g",
 	"form": "fantasy",
-	"instrumentation": "piano four-hands"
+	"instrumentation": "piano four-hands",
+	"xref": {
+		"mb": "3c9e85fc-10f2-4f04-b445-1392de2aafe3"
+	}
 }

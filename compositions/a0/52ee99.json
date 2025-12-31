@@ -3,8 +3,18 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1784, "published": 1785},
-			"catalog": [{"scheme": "k", "edition": "1", "number": "457", "since": "1862"}]
+			"dates": {
+				"composed": 1784,
+				"published": 1785
+			},
+			"catalog": [
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "457",
+					"since": "1862"
+				}
+			]
 		}
 	],
 	"key": "c",
@@ -24,6 +34,7 @@
 	],
 	"xref": {
 		"oo": "23604",
-		"wp": "Piano_Sonata_No._14_(Mozart)"
+		"wp": "Piano_Sonata_No._14_(Mozart)",
+		"mb": "c4762043-b408-4991-947e-d5340a9080d6"
 	}
 }

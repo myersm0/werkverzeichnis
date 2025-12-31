@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1714, "premiered": 1714},
-			"catalog": [{"scheme": "bwv", "number": "54"}]
+			"dates": {
+				"composed": 1714,
+				"premiered": 1714
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "54"
+				}
+			]
 		}
 	],
 	"form": "solo cantata",
@@ -29,6 +37,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_54"
+		"wp": "BWV_54",
+		"mb": "582b6710-4858-4b6c-ab04-adeea8e35436"
 	}
 }

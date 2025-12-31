@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1715, "premiered": 1715},
-			"catalog": [{"scheme": "bwv", "number": "31"}]
+			"dates": {
+				"composed": 1715,
+				"premiered": 1715
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "31"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -59,6 +67,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_31"
+		"wp": "BWV_31",
+		"mb": "ed684f7a-648e-4277-8b8d-f4f5778c52b0"
 	}
 }

@@ -7,7 +7,12 @@
 		{
 			"composer": "bach",
 			"status": "doubtful",
-			"catalog": [{"scheme": "bwv","number": "143"}]
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "143"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -54,6 +59,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_143"
+		"wp": "BWV_143",
+		"mb": "ed11e8e2-f4b0-4c2c-820a-39d57f266eee"
 	}
 }

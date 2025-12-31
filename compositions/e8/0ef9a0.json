@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1723},
-			"catalog": [{"scheme": "bwv", "number": "105"}]
+			"dates": {
+				"premiered": 1723
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "105"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -44,6 +51,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_105"
+		"wp": "BWV_105",
+		"mb": "dff0de75-8645-45c9-8cfd-d2330bb8cbca"
 	}
 }

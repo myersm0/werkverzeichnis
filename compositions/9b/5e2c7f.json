@@ -3,7 +3,12 @@
 	"attribution": [
 		{
 			"cf": "bach-six-partitas",
-			"catalog": [{"scheme": "bwv", "number": "827"}]
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "827"
+				}
+			]
 		}
 	],
 	"form": "partita",
@@ -34,6 +39,7 @@
 	],
 	"xref": {
 		"oo": "9582",
-		"wp": "BWV_827"
+		"wp": "BWV_827",
+		"mb": "55ab379b-1a4c-4d31-9ed0-e60b4787a79b"
 	}
 }

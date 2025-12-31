@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1727, "premiered": 1727},
-			"catalog": [{"scheme": "bwv", "number": "193"}]
+			"dates": {
+				"composed": 1727,
+				"premiered": 1727
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "193"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -48,6 +56,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_193"
+		"wp": "BWV_193",
+		"mb": "5b40cba1-13e3-46a3-892d-a48852c3c688"
 	}
 }

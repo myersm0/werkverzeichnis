@@ -7,7 +7,12 @@
 		{
 			"composer": "bach",
 			"dates": {},
-			"catalog": [{"scheme": "bwv", "number": "158"}]
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "158"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -34,6 +39,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_158"
+		"wp": "BWV_158",
+		"mb": "4095c9f3-e768-47bd-afd2-e1e1a0a130f8"
 	}
 }

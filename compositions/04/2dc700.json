@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1737},
-			"catalog": [{"scheme": "bwv", "number": "30.1"}]
+			"dates": {
+				"composed": 1737
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "30.1"
+				}
+			]
 		}
 	],
 	"form": "secular cantata",
@@ -68,6 +75,7 @@
 	],
 	"xref": {
 		"oo": "10241",
-		"wp": "BWV_30.1"
+		"wp": "BWV_30.1",
+		"mb": "f9dc3b83-e6db-4a95-af66-a43b66d6fa16"
 	}
 }

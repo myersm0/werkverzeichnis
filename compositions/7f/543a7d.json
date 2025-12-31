@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1714},
-			"catalog": [{"scheme": "bwv", "number": "12"}]
+			"dates": {
+				"premiered": 1714
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "12"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -55,6 +62,7 @@
 	],
 	"xref": {
 		"oo": "9364",
-		"wp": "BWV_12"
+		"wp": "BWV_12",
+		"mb": "a5058c10-1d60-44a1-921c-e1c6c2a168fb"
 	}
 }

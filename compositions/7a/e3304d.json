@@ -3,11 +3,28 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1781},
+			"dates": {
+				"composed": 1781
+			},
 			"catalog": [
-				{"scheme": "k", "edition": "9", "number": "376", "since": "2024"},
-				{"scheme": "k", "edition": "6", "number": "374d", "since": "1964"},
-				{"scheme": "k", "edition": "1", "number": "376", "since": "1862"}
+				{
+					"scheme": "k",
+					"edition": "9",
+					"number": "376",
+					"since": "2024"
+				},
+				{
+					"scheme": "k",
+					"edition": "6",
+					"number": "374d",
+					"since": "1964"
+				},
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "376",
+					"since": "1862"
+				}
 			]
 		}
 	],
@@ -25,5 +42,8 @@
 		{
 			"title": "Rondò: Allegretto grazioso"
 		}
-	]
+	],
+	"xref": {
+		"mb": "212ac170-73f3-4514-80bd-c07a5bef743e"
+	}
 }

@@ -7,12 +7,21 @@
 				"composed": 1811
 			},
 			"catalog": [
-				{"scheme": "d", "number": "2e"},
-				{"scheme": "d", "number": "993"}
+				{
+					"scheme": "d",
+					"number": "2e"
+				},
+				{
+					"scheme": "d",
+					"number": "993"
+				}
 			]
 		}
 	],
 	"key": "c",
 	"form": "fantasy",
-	"instrumentation": "piano"
+	"instrumentation": "piano",
+	"xref": {
+		"mb": "a35b0c11-98aa-4a27-8105-f7ef33090e47"
+	}
 }

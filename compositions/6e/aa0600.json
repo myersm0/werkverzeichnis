@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1708},
-			"catalog": [{"scheme": "bwv", "number": "71"}]
+			"dates": {
+				"premiered": 1708
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "71"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -54,6 +61,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_71"
+		"wp": "BWV_71",
+		"mb": "523d9701-392e-4e84-aa5f-754dd56fe68b"
 	}
 }

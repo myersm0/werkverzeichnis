@@ -3,11 +3,29 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1778, "published": 1778},
+			"dates": {
+				"composed": 1778,
+				"published": 1778
+			},
 			"catalog": [
-				{"scheme": "k", "edition": "9", "number": "302", "since": "2024"},
-				{"scheme": "k", "edition": "6", "number": "293b", "since": "1964"},
-				{"scheme": "k", "edition": "1", "number": "302", "since": "1862"}
+				{
+					"scheme": "k",
+					"edition": "9",
+					"number": "302",
+					"since": "2024"
+				},
+				{
+					"scheme": "k",
+					"edition": "6",
+					"number": "293b",
+					"since": "1964"
+				},
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "302",
+					"since": "1862"
+				}
 			]
 		}
 	],
@@ -21,5 +39,8 @@
 		{
 			"title": "Andante grazioso"
 		}
-	]
+	],
+	"xref": {
+		"mb": "ed0293cb-6f6d-40bc-9e27-c31764ff8f4e"
+	}
 }

@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1723},
-			"catalog": [{"scheme": "bwv", "number": "90"}]
+			"dates": {
+				"premiered": 1723
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "90"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -40,6 +47,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_90"
+		"wp": "BWV_90",
+		"mb": "7cb6fd6d-021f-4698-974b-0d3153f4d841"
 	}
 }

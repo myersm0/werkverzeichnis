@@ -3,8 +3,16 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1810, "published": 1811},
-			"catalog": [{"scheme": "op", "number": "81a"}]
+			"dates": {
+				"composed": 1810,
+				"published": 1811
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "81a"
+				}
+			]
 		}
 	],
 	"key": "Eb",
@@ -24,6 +32,7 @@
 	],
 	"xref": {
 		"oo": "16459",
-		"wp": "Piano_Sonata_No._26_(Beethoven)"
+		"wp": "Piano_Sonata_No._26_(Beethoven)",
+		"mb": "9406d239-0efc-40e5-be6c-fbb15a3a091f"
 	}
 }

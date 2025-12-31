@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1726},
-			"catalog": [{"scheme": "bwv", "number": "187"}]
+			"dates": {
+				"premiered": 1726
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "187"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -64,6 +71,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_187"
+		"wp": "BWV_187",
+		"mb": "f41e1854-3e56-43a5-8c40-b1dc3b8c204a"
 	}
 }

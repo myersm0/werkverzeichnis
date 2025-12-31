@@ -3,8 +3,16 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1797, "published": 1805},
-			"catalog": [{"scheme": "op", "number": "49/1"}]
+			"dates": {
+				"composed": 1797,
+				"published": 1805
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "49/1"
+				}
+			]
 		}
 	],
 	"key": "g",
@@ -21,6 +29,7 @@
 	],
 	"xref": {
 		"oo": "16363",
-		"wp": "Piano_Sonatas_Nos._19_and_20_(Beethoven)"
+		"wp": "Piano_Sonatas_Nos._19_and_20_(Beethoven)",
+		"mb": "05ffeac8-0648-43b5-9a7b-ebfae308dada"
 	}
 }

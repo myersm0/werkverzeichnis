@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1726},
-			"catalog": [{"scheme": "bwv", "number": "170"}]
+			"dates": {
+				"premiered": 1726
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "170"
+				}
+			]
 		}
 	],
 	"form": "solo cantata",
@@ -45,6 +52,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_170"
+		"wp": "BWV_170",
+		"mb": "944f3102-2c25-4ebe-85aa-8a018275fd97"
 	}
 }

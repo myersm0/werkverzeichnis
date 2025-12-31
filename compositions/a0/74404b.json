@@ -20,5 +20,8 @@
 	],
 	"key": "Bb",
 	"form": "sonata",
-	"instrumentation": "piano four-hands"
+	"instrumentation": "piano four-hands",
+	"xref": {
+		"mb": "364327c9-617f-4cfd-8e7b-738e2502a0c7"
+	}
 }

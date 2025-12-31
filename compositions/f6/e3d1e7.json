@@ -3,8 +3,15 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1801},
-			"catalog": [{"scheme": "op", "number": "27/1"}]
+			"dates": {
+				"composed": 1801
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "27/1"
+				}
+			]
 		}
 	],
 	"key": "Eb",
@@ -27,6 +34,7 @@
 	],
 	"xref": {
 		"oo": "16349",
-		"wp": "Piano_Sonata_No._13_(Beethoven)"
+		"wp": "Piano_Sonata_No._13_(Beethoven)",
+		"mb": "98f63744-cec6-393a-8868-c5a0b6facbfe"
 	}
 }

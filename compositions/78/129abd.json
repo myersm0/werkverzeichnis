@@ -6,16 +6,31 @@
 	"attribution": [
 		{
 			"composer": "telemann",
-			"dates": {"composed": 1720},
-			"catalog": [{"scheme": "twv", "number": "1:183"}],
+			"dates": {
+				"composed": 1720
+			},
+			"catalog": [
+				{
+					"scheme": "twv",
+					"number": "1:183"
+				}
+			],
 			"since": "1990"
 		},
 		{
 			"composer": "bach",
 			"status": "spurious",
 			"catalog": [
-				{"scheme": "bwv", "number": "anh. iii 141", "note": "spurious; now attributed to telemann twv 1:183", "since": "1990"},
-				{"scheme": "bwv", "number": "141"}
+				{
+					"scheme": "bwv",
+					"number": "anh. iii 141",
+					"note": "spurious; now attributed to telemann twv 1:183",
+					"since": "1990"
+				},
+				{
+					"scheme": "bwv",
+					"number": "141"
+				}
 			]
 		}
 	],
@@ -39,6 +54,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_141"
+		"wp": "BWV_141",
+		"mb": "111b2240-ca1d-4695-92f5-c635af537644"
 	}
 }

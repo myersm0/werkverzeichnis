@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1724, "premiered": 1724},
-			"catalog": [{"scheme": "bwv", "number": "62"}]
+			"dates": {
+				"composed": 1724,
+				"premiered": 1724
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "62"
+				}
+			]
 		}
 	],
 	"form": "chorale cantata",
@@ -50,6 +58,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_62"
+		"wp": "BWV_62",
+		"mb": "b622a846-eee0-4d2b-9b54-2a05c736cd48"
 	}
 }

@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1725},
-			"catalog": [{"scheme": "bwv", "number": "125"}]
+			"dates": {
+				"composed": 1725
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "125"
+				}
+			]
 		}
 	],
 	"form": "chorale cantata",
@@ -48,6 +55,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_125"
+		"wp": "BWV_125",
+		"mb": "c6532142-999c-47f3-aa6e-e6e4344cff5c"
 	}
 }

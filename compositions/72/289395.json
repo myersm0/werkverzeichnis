@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1724},
-			"catalog": [{"scheme": "bwv", "number": "5"}]
+			"dates": {
+				"premiered": 1724
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "5"
+				}
+			]
 		}
 	],
 	"form": "chorale cantata",
@@ -51,6 +58,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_5"
+		"wp": "BWV_5",
+		"mb": "030ed1d6-6405-4a60-b414-08c0b8e78500"
 	}
 }

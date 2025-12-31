@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1727, "premiered": 1727},
-			"catalog": [{"scheme": "bwv", "number": "157"}]
+			"dates": {
+				"composed": 1727,
+				"premiered": 1727
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "157"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -43,6 +51,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_157"
+		"wp": "BWV_157",
+		"mb": "cbd51d4d-e7b2-4b87-aecd-4192ee88857d"
 	}
 }

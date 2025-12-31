@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1742},
-			"catalog": [{"scheme": "bwv", "number": "191"}]
+			"dates": {
+				"composed": 1742
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "191"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -29,6 +36,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_191"
+		"wp": "BWV_191",
+		"mb": "8d2b6217-233b-4177-a107-9ea9ce78a976"
 	}
 }

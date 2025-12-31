@@ -3,8 +3,16 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1800, "published": 1802},
-			"catalog": [{"scheme": "op", "number": "22"}]
+			"dates": {
+				"composed": 1800,
+				"published": 1802
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "22"
+				}
+			]
 		}
 	],
 	"key": "Bb",
@@ -27,6 +35,7 @@
 	],
 	"xref": {
 		"oo": "16278",
-		"wp": "Piano_Sonata_No._11_(Beethoven)"
+		"wp": "Piano_Sonata_No._11_(Beethoven)",
+		"mb": "94bc3c50-ea92-421f-b9a7-c9bc2b0b4695"
 	}
 }

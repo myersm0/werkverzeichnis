@@ -3,8 +3,15 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1798},
-			"catalog": [{"scheme": "op", "number": "10/3"}]
+			"dates": {
+				"composed": 1798
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "10/3"
+				}
+			]
 		}
 	],
 	"key": "D",
@@ -27,6 +34,7 @@
 	],
 	"xref": {
 		"oo": "16480",
-		"wp": "Piano_Sonata_No._7_(Beethoven)"
+		"wp": "Piano_Sonata_No._7_(Beethoven)",
+		"mb": "8e093609-d578-4fd6-a919-92962dc9899d"
 	}
 }

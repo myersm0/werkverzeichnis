@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1707, "published": 1851},
-			"catalog": [{"scheme": "bwv", "number": "4"}]
+			"dates": {
+				"premiered": 1707,
+				"published": 1851
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "4"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -47,6 +55,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_4"
+		"wp": "BWV_4",
+		"mb": "95ee25ab-dd51-4d08-8800-3945264e10ea"
 	}
 }

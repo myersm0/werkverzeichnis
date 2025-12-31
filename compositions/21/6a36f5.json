@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1731, "premiered": 1731},
-			"catalog": [{"scheme": "bwv", "number": "36"}]
+			"dates": {
+				"composed": 1731,
+				"premiered": 1731
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "36"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -70,6 +78,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_36"
+		"wp": "BWV_36",
+		"mb": "7e46dbea-f4a6-4567-ab56-45572303e4c1"
 	}
 }

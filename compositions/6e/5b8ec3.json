@@ -3,8 +3,18 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1764, "published": 1765},
-			"catalog": [{"scheme": "k", "edition": "1", "number": "11", "since": "1862"}]
+			"dates": {
+				"composed": 1764,
+				"published": 1765
+			},
+			"catalog": [
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "11",
+					"since": "1862"
+				}
+			]
 		}
 	],
 	"key": "G",
@@ -22,5 +32,8 @@
 		{
 			"title": "Menuetto (da capo Allegro)"
 		}
-	]
+	],
+	"xref": {
+		"mb": "fbb2998c-9bc3-4385-a3e1-a706bc575fdf"
+	}
 }

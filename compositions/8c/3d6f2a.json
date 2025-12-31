@@ -7,8 +7,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1727, "premiered": 1727},
-			"catalog": [{"scheme": "bwv", "number": "244"}]
+			"dates": {
+				"composed": 1727,
+				"premiered": 1727
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "244"
+				}
+			]
 		}
 	],
 	"form": "sacred oratorio",
@@ -565,6 +573,7 @@
 	],
 	"xref": {
 		"oo": "9848",
-		"wp": "BWV_244"
+		"wp": "BWV_244",
+		"mb": "45afb3b2-18ac-4187-bc72-beb1b1c194ba"
 	}
 }

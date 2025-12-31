@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1729},
-			"catalog": [{"scheme": "bwv", "number": "120.1"}]
+			"dates": {
+				"composed": 1729
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "120.1"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -41,6 +48,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_120"
+		"wp": "BWV_120",
+		"mb": "22504c7c-666d-4cf3-8a34-98c9e7773a31"
 	}
 }

@@ -3,7 +3,12 @@
 	"attribution": [
 		{
 			"cf": "bach-six-solo",
-			"catalog": [{"scheme": "bwv", "number": "1004"}]
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "1004"
+				}
+			]
 		}
 	],
 	"form": "suite",
@@ -28,6 +33,7 @@
 	],
 	"xref": {
 		"oo": "9379",
-		"wp": "BWV_1004"
+		"wp": "BWV_1004",
+		"mb": "20a652f5-4b08-42fe-a036-dcd933885460"
 	}
 }

@@ -3,11 +3,28 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1778},
+			"dates": {
+				"composed": 1778
+			},
 			"catalog": [
-				{"scheme": "k", "edition": "9", "number": "305", "since": "2024"},
-				{"scheme": "k", "edition": "6", "number": "293d", "since": "1964"},
-				{"scheme": "k", "edition": "1", "number": "305", "since": "1862"}
+				{
+					"scheme": "k",
+					"edition": "9",
+					"number": "305",
+					"since": "2024"
+				},
+				{
+					"scheme": "k",
+					"edition": "6",
+					"number": "293d",
+					"since": "1964"
+				},
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "305",
+					"since": "1862"
+				}
 			]
 		}
 	],
@@ -21,5 +38,8 @@
 		{
 			"title": "Tema. Andante grazioso — Variations I–V — Variation VI. Allegro"
 		}
-	]
+	],
+	"xref": {
+		"mb": "e1ab3684-3051-42c4-b916-a5a2dd134eaf"
+	}
 }

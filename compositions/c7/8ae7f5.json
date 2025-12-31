@@ -3,7 +3,12 @@
 	"attribution": [
 		{
 			"cf": "bach-six-solo",
-			"catalog": [{"scheme": "bwv", "number": "1001"}]
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "1001"
+				}
+			]
 		}
 	],
 	"form": "sonata",
@@ -25,6 +30,7 @@
 	],
 	"xref": {
 		"oo": "9764",
-		"wp": "BWV_1001"
+		"wp": "BWV_1001",
+		"mb": "1697a1ed-6085-452e-96f7-9305022e04e2"
 	}
 }

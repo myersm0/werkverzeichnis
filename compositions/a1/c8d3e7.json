@@ -3,8 +3,15 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1814},
-			"catalog": [{"scheme": "op", "number": "90"}]
+			"dates": {
+				"composed": 1814
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "90"
+				}
+			]
 		}
 	],
 	"key": "e",
@@ -21,6 +28,7 @@
 	],
 	"xref": {
 		"oo": "16288",
-		"wp": "Piano_Sonata_No._27_(Beethoven)"
+		"wp": "Piano_Sonata_No._27_(Beethoven)",
+		"mb": "fabb904b-bf7f-3698-8c1b-ce2923850e09"
 	}
 }

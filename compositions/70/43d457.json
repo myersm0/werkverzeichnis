@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1725},
-			"catalog": [{"scheme": "bwv", "number": "148"}]
+			"dates": {
+				"composed": 1725
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "148"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -44,6 +51,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_148"
+		"wp": "BWV_148",
+		"mb": "37e710bc-0f47-4961-b2b9-ed49ceef815b"
 	}
 }

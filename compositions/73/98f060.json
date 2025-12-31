@@ -3,8 +3,17 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1766},
-			"catalog": [{"scheme": "k", "edition": "1", "number": "30", "since": "1862"}]
+			"dates": {
+				"composed": 1766
+			},
+			"catalog": [
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "30",
+					"since": "1862"
+				}
+			]
 		}
 	],
 	"key": "F",
@@ -19,6 +28,7 @@
 		}
 	],
 	"xref": {
-		"wp": "Violin_Sonatas,_KV_26–31_(Mozart)"
+		"wp": "Violin_Sonatas,_KV_26–31_(Mozart)",
+		"mb": "cbfac210-8946-48b6-bb05-8b301c3150ca"
 	}
 }

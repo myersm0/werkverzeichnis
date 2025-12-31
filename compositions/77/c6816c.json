@@ -3,8 +3,16 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1798, "published": 1799},
-			"catalog": [{"scheme": "op", "number": "13"}]
+			"dates": {
+				"composed": 1798,
+				"published": 1799
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "13"
+				}
+			]
 		}
 	],
 	"key": "c",
@@ -24,6 +32,7 @@
 	],
 	"xref": {
 		"oo": "16222",
-		"wp": "Piano_Sonata_No._8_(Beethoven)"
+		"wp": "Piano_Sonata_No._8_(Beethoven)",
+		"mb": "c366ec5b-9d61-3057-827c-afd61a237b23"
 	}
 }

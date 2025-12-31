@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1729},
-			"catalog": [{"scheme": "bwv", "number": "145"}]
+			"dates": {
+				"premiered": 1729
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "145"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -39,6 +46,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_145"
+		"wp": "BWV_145",
+		"mb": "9df55303-640f-4f3f-912b-90f1278bb50b"
 	}
 }

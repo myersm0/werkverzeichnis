@@ -7,7 +7,12 @@
 		{
 			"composer": "bach",
 			"dates": {},
-			"catalog": [{"scheme": "bwv", "number": "195"}]
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "195"
+				}
+			]
 		}
 	],
 	"form": "wedding cantata",
@@ -53,6 +58,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_195"
+		"wp": "BWV_195",
+		"mb": "26bab3f1-14d6-4349-bae7-c23c08c3a56f"
 	}
 }

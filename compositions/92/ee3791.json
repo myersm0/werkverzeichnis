@@ -3,8 +3,17 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1789},
-			"catalog": [{"scheme": "k", "edition": "1", "number": "576", "since": "1862"}]
+			"dates": {
+				"composed": 1789
+			},
+			"catalog": [
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "576",
+					"since": "1862"
+				}
+			]
 		}
 	],
 	"key": "D",
@@ -24,6 +33,7 @@
 	],
 	"xref": {
 		"oo": "23226",
-		"wp": "Piano_Sonata_No._18_(Mozart)"
+		"wp": "Piano_Sonata_No._18_(Mozart)",
+		"mb": "99538f90-2ca3-4b34-b6b9-f39ca0937066"
 	}
 }

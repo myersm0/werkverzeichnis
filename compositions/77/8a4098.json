@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1724, "premiered": 1724},
-			"catalog": [{"scheme": "bwv", "number": "104"}]
+			"dates": {
+				"composed": 1724,
+				"premiered": 1724
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "104"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -49,6 +57,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_104"
+		"wp": "BWV_104",
+		"mb": "fd3b6c1a-ba1c-488f-aff1-12cae924ec64"
 	}
 }

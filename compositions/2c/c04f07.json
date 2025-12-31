@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1723},
-			"catalog": [{"scheme": "bwv", "number": "42"}]
+			"dates": {
+				"premiered": 1723
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "42"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -44,6 +51,7 @@
 	],
 	"xref": {
 		"oo": "9147",
-		"wp": "BWV_42"
+		"wp": "BWV_42",
+		"mb": "0de99534-8446-4c61-af46-ad1c50e1b849"
 	}
 }

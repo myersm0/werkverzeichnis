@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1725},
-			"catalog": [{"scheme": "bwv", "number": "3"}]
+			"dates": {
+				"premiered": 1725
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "3"
+				}
+			]
 		}
 	],
 	"form": "chorale cantata",
@@ -46,6 +53,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_3"
+		"wp": "BWV_3",
+		"mb": "3edf4a3f-2b11-4a61-a5cf-e193363ef55c"
 	}
 }

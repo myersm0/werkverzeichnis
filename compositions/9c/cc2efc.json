@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1731},
-			"catalog": [{"scheme": "bwv", "number": "117"}]
+			"dates": {
+				"composed": 1731
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "117"
+				}
+			]
 		}
 	],
 	"form": "chorale cantata",
@@ -57,6 +64,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_117"
+		"wp": "BWV_117",
+		"mb": "c4a1bb5a-447d-4e00-9853-c348e122aca5"
 	}
 }

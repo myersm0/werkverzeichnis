@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1731, "premiered": 1731},
-			"catalog": [{"scheme": "bwv", "number": "29"}]
+			"dates": {
+				"composed": 1731,
+				"premiered": 1731
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "29"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -60,6 +68,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_29"
+		"wp": "BWV_29",
+		"mb": "16d1bf1e-14c7-4fdb-a835-824a358fd9b0"
 	}
 }

@@ -3,11 +3,28 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1775},
+			"dates": {
+				"composed": 1775
+			},
 			"catalog": [
-				{"scheme": "k", "edition": "9", "number": "282", "since": "2024"},
-				{"scheme": "k", "edition": "6", "number": "189g", "since": "1964"},
-				{"scheme": "k", "edition": "1", "number": "282", "since": "1862"}
+				{
+					"scheme": "k",
+					"edition": "9",
+					"number": "282",
+					"since": "2024"
+				},
+				{
+					"scheme": "k",
+					"edition": "6",
+					"number": "189g",
+					"since": "1964"
+				},
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "282",
+					"since": "1862"
+				}
 			]
 		}
 	],
@@ -27,6 +44,7 @@
 	],
 	"xref": {
 		"oo": "23647",
-		"wp": "Piano_Sonata_No._4_(Mozart)"
+		"wp": "Piano_Sonata_No._4_(Mozart)",
+		"mb": "97cc4159-c124-48a6-92ae-d05e8175cb2b"
 	}
 }

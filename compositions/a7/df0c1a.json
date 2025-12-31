@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1729},
-			"catalog": [{"scheme": "bwv", "number": "159"}]
+			"dates": {
+				"premiered": 1729
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "159"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -45,6 +52,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_159"
+		"wp": "BWV_159",
+		"mb": "07d59a49-cb4f-4686-8b25-889e6034e4ce"
 	}
 }

@@ -3,8 +3,15 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1801},
-			"catalog": [{"scheme": "op", "number": "26"}]
+			"dates": {
+				"composed": 1801
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "26"
+				}
+			]
 		}
 	],
 	"key": "Ab",
@@ -27,6 +34,7 @@
 	],
 	"xref": {
 		"oo": "16224",
-		"wp": "Piano_Sonata_No._12_(Beethoven)"
+		"wp": "Piano_Sonata_No._12_(Beethoven)",
+		"mb": "bff859ad-5e24-4a7f-8717-855dfac72925"
 	}
 }

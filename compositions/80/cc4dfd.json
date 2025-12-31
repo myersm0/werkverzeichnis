@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1726},
-			"catalog": [{"scheme": "bwv", "number": "169"}]
+			"dates": {
+				"premiered": 1726
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "169"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -49,6 +56,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_169"
+		"wp": "BWV_169",
+		"mb": "71573891-2929-4b63-bc6d-313bcdb2e44e"
 	}
 }

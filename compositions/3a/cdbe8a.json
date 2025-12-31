@@ -3,8 +3,16 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1805, "published": 1807},
-			"catalog": [{"scheme": "op", "number": "57"}]
+			"dates": {
+				"composed": 1805,
+				"published": 1807
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "57"
+				}
+			]
 		}
 	],
 	"key": "f",
@@ -24,6 +32,7 @@
 	],
 	"xref": {
 		"oo": "16419",
-		"wp": "Piano_Sonata_No._23_(Beethoven)"
+		"wp": "Piano_Sonata_No._23_(Beethoven)",
+		"mb": "88a8eaa9-d07b-3b9b-b284-72289e2eeb43"
 	}
 }

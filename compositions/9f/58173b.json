@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1726},
-			"catalog": [{"scheme": "bwv", "number": "45"}]
+			"dates": {
+				"premiered": 1726
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "45"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -64,6 +71,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_45"
+		"wp": "BWV_45",
+		"mb": "71471c19-89db-47a5-a23f-bac334a69740"
 	}
 }

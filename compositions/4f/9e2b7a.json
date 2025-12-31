@@ -7,8 +7,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1724},
-			"catalog": [{"scheme": "bwv", "number": "245"}]
+			"dates": {
+				"premiered": 1724
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "245"
+				}
+			]
 		}
 	],
 	"form": "passion",
@@ -372,6 +379,7 @@
 	],
 	"xref": {
 		"oo": "9651",
-		"wp": "BWV_245"
+		"wp": "BWV_245",
+		"mb": "b16e5420-5d26-4760-9491-0fdb5ca2bcf2"
 	}
 }

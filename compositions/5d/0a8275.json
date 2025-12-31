@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1730},
-			"catalog": [{"scheme": "bwv", "number": "192"}]
+			"dates": {
+				"composed": 1730
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "192"
+				}
+			]
 		}
 	],
 	"form": "chorale cantata",
@@ -29,6 +36,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_192"
+		"wp": "BWV_192",
+		"mb": "9d964412-4eef-4644-93da-aa9785f425ef"
 	}
 }

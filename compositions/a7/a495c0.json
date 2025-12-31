@@ -3,8 +3,16 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1798, "published": 1798},
-			"catalog": [{"scheme": "op", "number": "10/2"}]
+			"dates": {
+				"composed": 1798,
+				"published": 1798
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "10/2"
+				}
+			]
 		}
 	],
 	"key": "F",
@@ -24,6 +32,7 @@
 	],
 	"xref": {
 		"oo": "16439",
-		"wp": "Piano_Sonata_No._6_(Beethoven)"
+		"wp": "Piano_Sonata_No._6_(Beethoven)",
+		"mb": "5f914810-c6ef-47d1-b7fc-a0e61d5d98f5"
 	}
 }

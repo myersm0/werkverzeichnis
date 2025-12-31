@@ -3,11 +3,28 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1776},
+			"dates": {
+				"composed": 1776
+			},
 			"catalog": [
-				{"scheme": "k", "edition": "9", "number": "225", "since": "2024"},
-				{"scheme": "k", "edition": "6", "number": "241b", "since": "1964"},
-				{"scheme": "k", "edition": "1", "number": "225", "since": "1862"}
+				{
+					"scheme": "k",
+					"edition": "9",
+					"number": "225",
+					"since": "2024"
+				},
+				{
+					"scheme": "k",
+					"edition": "6",
+					"number": "241b",
+					"since": "1964"
+				},
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "225",
+					"since": "1862"
+				}
 			]
 		}
 	],
@@ -18,5 +35,8 @@
 		{
 			"title": "Allegro"
 		}
-	]
+	],
+	"xref": {
+		"mb": "d8da5540-8a8b-30f7-bdec-516d19bd8a1a"
+	}
 }

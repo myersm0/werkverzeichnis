@@ -3,7 +3,12 @@
 	"attribution": [
 		{
 			"cf": "bach-english-suites",
-			"catalog": [{"scheme": "bwv", "number": "809"}]
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "809"
+				}
+			]
 		}
 	],
 	"form": "suite",
@@ -34,6 +39,7 @@
 	],
 	"xref": {
 		"oo": "9928",
-		"wp": "BWV_809"
+		"wp": "BWV_809",
+		"mb": "eb3a7cf5-a796-4d88-acd3-beac6f43b657"
 	}
 }

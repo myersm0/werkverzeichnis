@@ -3,8 +3,16 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1795, "published": 1796},
-			"catalog": [{"scheme": "op", "number": "2/1"}]
+			"dates": {
+				"composed": 1795,
+				"published": 1796
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "2/1"
+				}
+			]
 		}
 	],
 	"key": "f",
@@ -27,6 +35,7 @@
 	],
 	"xref": {
 		"oo": "16342",
-		"wp": "Piano_Sonata_No._1_(Beethoven)"
+		"wp": "Piano_Sonata_No._1_(Beethoven)",
+		"mb": "d99b54dc-9a4c-4b34-ba9c-1223d7e0b1c5"
 	}
 }

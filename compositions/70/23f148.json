@@ -3,8 +3,16 @@
 	"attribution": [
 		{
 			"composer": "beethoven",
-			"dates": {"composed": 1795, "published": 1796},
-			"catalog": [{"scheme": "op", "number": "2/3"}]
+			"dates": {
+				"composed": 1795,
+				"published": 1796
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "2/3"
+				}
+			]
 		}
 	],
 	"key": "C",
@@ -27,6 +35,7 @@
 	],
 	"xref": {
 		"oo": "16171",
-		"wp": "Piano_Sonata_No._3_(Beethoven)"
+		"wp": "Piano_Sonata_No._3_(Beethoven)",
+		"mb": "e4ad988b-b0b2-4c25-863b-e2b8e13c78d3"
 	}
 }

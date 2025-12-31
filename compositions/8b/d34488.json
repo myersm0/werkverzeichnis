@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1723},
-			"catalog": [{"scheme": "bwv", "number": "167"}]
+			"dates": {
+				"premiered": 1723
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "167"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -40,6 +47,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_167"
+		"wp": "BWV_167",
+		"mb": "b9e2ade2-f349-4544-b79b-6cbbf4cc9724"
 	}
 }

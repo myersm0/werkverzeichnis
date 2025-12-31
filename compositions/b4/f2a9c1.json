@@ -7,43 +7,101 @@
 	"attribution": [
 		{
 			"composer": "schubert",
-			"dates": {"composed": 1827, "published": 1828},
+			"dates": {
+				"composed": 1827,
+				"published": 1828
+			},
 			"catalog": [
-				{"scheme": "d", "number": "911"},
-				{"scheme": "op", "number": "89"}
+				{
+					"scheme": "d",
+					"number": "911"
+				},
+				{
+					"scheme": "op",
+					"number": "89"
+				}
 			]
 		}
 	],
 	"form": "song cycle",
 	"instrumentation": "voice, piano",
 	"movements": [
-		{"title": "Gute Nacht"},
-		{"title": "Die Wetterfahne"},
-		{"title": "Gefrorene Thränen"},
-		{"title": "Erstarrung"},
-		{"title": "Der Lindenbaum"},
-		{"title": "Die Post"},
-		{"title": "Wasserfluth"},
-		{"title": "Auf dem Flusse"},
-		{"title": "Rückblick"},
-		{"title": "Der greise Kopf"},
-		{"title": "Die Krähe"},
-		{"title": "Letzte Hoffnung"},
-		{"title": "Im Dorfe"},
-		{"title": "Der stürmische Morgen"},
-		{"title": "Täuschung"},
-		{"title": "Der Wegweiser"},
-		{"title": "Das Wirthshaus"},
-		{"title": "Das Irrlicht"},
-		{"title": "Rast"},
-		{"title": "Die Nebensonnen"},
-		{"title": "Frühlingstraum"},
-		{"title": "Einsamkeit"},
-		{"title": "Muth!"},
-		{"title": "Der Leiermann"}
+		{
+			"title": "Gute Nacht"
+		},
+		{
+			"title": "Die Wetterfahne"
+		},
+		{
+			"title": "Gefrorene Thränen"
+		},
+		{
+			"title": "Erstarrung"
+		},
+		{
+			"title": "Der Lindenbaum"
+		},
+		{
+			"title": "Die Post"
+		},
+		{
+			"title": "Wasserfluth"
+		},
+		{
+			"title": "Auf dem Flusse"
+		},
+		{
+			"title": "Rückblick"
+		},
+		{
+			"title": "Der greise Kopf"
+		},
+		{
+			"title": "Die Krähe"
+		},
+		{
+			"title": "Letzte Hoffnung"
+		},
+		{
+			"title": "Im Dorfe"
+		},
+		{
+			"title": "Der stürmische Morgen"
+		},
+		{
+			"title": "Täuschung"
+		},
+		{
+			"title": "Der Wegweiser"
+		},
+		{
+			"title": "Das Wirthshaus"
+		},
+		{
+			"title": "Das Irrlicht"
+		},
+		{
+			"title": "Rast"
+		},
+		{
+			"title": "Die Nebensonnen"
+		},
+		{
+			"title": "Frühlingstraum"
+		},
+		{
+			"title": "Einsamkeit"
+		},
+		{
+			"title": "Muth!"
+		},
+		{
+			"title": "Der Leiermann"
+		}
 	],
 	"xref": {
 		"oo": "21341",
-		"wp": "Winterreise"
+		"wp": "Winterreise",
+		"mb": "16a894eb-3164-4e69-b2e3-d0b1db71c2a8"
 	}
 }

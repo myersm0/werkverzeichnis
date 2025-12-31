@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1723},
-			"catalog": [{"scheme": "bwv", "number": "28"}]
+			"dates": {
+				"premiered": 1723
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "28"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -41,6 +48,7 @@
 	"notes": "Composed for the Sunday after Christmas",
 	"xref": {
 		"oo": "9200",
-		"wp": "BWV_28"
+		"wp": "BWV_28",
+		"mb": "60cd3ee6-1063-4ed9-9a8b-3f4fd51a205b"
 	}
 }

@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1723},
-			"catalog": [{"scheme": "bwv", "number": "64"}]
+			"dates": {
+				"premiered": 1723
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "64"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -52,6 +59,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_64"
+		"wp": "BWV_64",
+		"mb": "c01040a1-72c7-4290-8a4c-d2c68ad9314d"
 	}
 }

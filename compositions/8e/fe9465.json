@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1708},
-			"catalog": [{"scheme": "bwv", "number": "131"}]
+			"dates": {
+				"composed": 1708
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "131"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -42,6 +49,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_131"
+		"wp": "BWV_131",
+		"mb": "84908ad1-58f3-4c36-9a86-165ea06fe11d"
 	}
 }

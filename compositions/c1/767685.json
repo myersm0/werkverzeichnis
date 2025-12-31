@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1726},
-			"catalog": [{"scheme": "bwv", "number": "49"}]
+			"dates": {
+				"premiered": 1726
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "49"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -54,6 +61,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_49"
+		"wp": "BWV_49",
+		"mb": "e43d7270-7672-4901-a86f-4345a2d21c12"
 	}
 }

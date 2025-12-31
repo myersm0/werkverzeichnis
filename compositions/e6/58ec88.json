@@ -3,7 +3,12 @@
 	"attribution": [
 		{
 			"cf": "bach-french-suites",
-			"catalog": [{"scheme": "bwv", "number": "813"}]
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "813"
+				}
+			]
 		}
 	],
 	"form": "suite",
@@ -34,6 +39,7 @@
 	],
 	"xref": {
 		"oo": "10154",
-		"wp": "BWV_813"
+		"wp": "BWV_813",
+		"mb": "a6e7fc03-32e4-4266-bc00-174b229eb6db"
 	}
 }

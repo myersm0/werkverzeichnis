@@ -3,7 +3,12 @@
 	"attribution": [
 		{
 			"cf": "bach-english-suites",
-			"catalog": [{"scheme": "bwv", "number": "808"}]
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "808"
+				}
+			]
 		}
 	],
 	"form": "suite",
@@ -34,6 +39,7 @@
 	],
 	"xref": {
 		"oo": "10089",
-		"wp": "BWV_808"
+		"wp": "BWV_808",
+		"mb": "afd1a98a-43fb-49fe-b716-01612b98297f"
 	}
 }

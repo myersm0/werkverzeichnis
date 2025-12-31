@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1723},
-			"catalog": [{"scheme": "bwv", "number": "147"}]
+			"dates": {
+				"composed": 1723
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "147"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -81,6 +88,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_147"
+		"wp": "BWV_147",
+		"mb": "b064a388-1c4a-4483-bdb7-e025ad3b963d"
 	}
 }

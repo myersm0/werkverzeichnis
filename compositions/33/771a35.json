@@ -6,8 +6,15 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"premiered": 1729},
-			"catalog": [{"scheme": "bwv", "number": "174"}]
+			"dates": {
+				"premiered": 1729
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "174"
+				}
+			]
 		}
 	],
 	"form": "sacred cantata",
@@ -39,6 +46,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_174"
+		"wp": "BWV_174",
+		"mb": "4382738a-cc91-4b28-8917-48ee51052311"
 	}
 }

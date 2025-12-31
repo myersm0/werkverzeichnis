@@ -3,8 +3,17 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"composed": 1788},
-			"catalog": [{"scheme": "k", "edition": "1", "number": "547", "since": "1862"}]
+			"dates": {
+				"composed": 1788
+			},
+			"catalog": [
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "547",
+					"since": "1862"
+				}
+			]
 		}
 	],
 	"key": "F",
@@ -20,5 +29,8 @@
 		{
 			"title": "Andante con variazioni"
 		}
-	]
+	],
+	"xref": {
+		"mb": "4633e14c-252b-4188-a213-f9370dc29b92"
+	}
 }

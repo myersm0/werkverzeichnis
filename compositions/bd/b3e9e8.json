@@ -3,11 +3,28 @@
 	"attribution": [
 		{
 			"composer": "mozart",
-			"dates": {"published": 1784},
+			"dates": {
+				"published": 1784
+			},
 			"catalog": [
-				{"scheme": "k", "edition": "9", "number": "332", "since": "2024"},
-				{"scheme": "k", "edition": "6", "number": "300k", "since": "1964"},
-				{"scheme": "k", "edition": "1", "number": "332", "since": "1862"}
+				{
+					"scheme": "k",
+					"edition": "9",
+					"number": "332",
+					"since": "2024"
+				},
+				{
+					"scheme": "k",
+					"edition": "6",
+					"number": "300k",
+					"since": "1964"
+				},
+				{
+					"scheme": "k",
+					"edition": "1",
+					"number": "332",
+					"since": "1862"
+				}
 			]
 		}
 	],
@@ -28,6 +45,7 @@
 	],
 	"xref": {
 		"oo": "23239",
-		"wp": "Piano_Sonata_No._12_(Mozart)"
+		"wp": "Piano_Sonata_No._12_(Mozart)",
+		"mb": "5b587196-bd21-410a-999e-881073dea33b"
 	}
 }

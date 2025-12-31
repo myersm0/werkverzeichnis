@@ -6,8 +6,16 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"dates": {"composed": 1714, "premiered": 1714},
-			"catalog": [{"scheme": "bwv", "number": "61"}]
+			"dates": {
+				"composed": 1714,
+				"premiered": 1714
+			},
+			"catalog": [
+				{
+					"scheme": "bwv",
+					"number": "61"
+				}
+			]
 		}
 	],
 	"form": "church cantata",
@@ -49,6 +57,7 @@
 		}
 	],
 	"xref": {
-		"wp": "BWV_61"
+		"wp": "BWV_61",
+		"mb": "0364eb16-76e8-481e-bea1-92c34d20980f"
 	}
 }
