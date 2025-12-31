@@ -4,6 +4,7 @@ use std::process::Command;
 
 use crate::catalog::load_catalog_def;
 use crate::config::{resolve_editor, Config};
+use crate::display::format_catalog;
 use crate::index::get_or_build_index;
 use crate::output::{
 	id_to_path, output_by_ids, output_json, output_movements, output_pretty, output_terse,
@@ -217,12 +218,18 @@ fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Con
 		return;
 	}
 
+	let catalog_defn = query
+		.scheme
+		.as_ref()
+		.and_then(|s| load_catalog_def(data_dir, s, Some(&query.composer)));
+
 	if !args.quiet {
 		for result in &results {
 			if result.superseded {
-				if let (Some(num), Some(current)) = (&result.number, &result.current_number) {
-					let scheme_upper = query.scheme.as_ref().map(|s| s.to_uppercase()).unwrap_or_default();
-					eprintln!("warning: {} {} is superseded (current: {})", scheme_upper, num, current);
+				if let (Some(num), Some(current), Some(scheme)) = (&result.number, &result.current_number, &query.scheme) {
+					let formatted_current = format_catalog(scheme, current, catalog_defn.as_ref());
+					let scheme_upper = scheme.to_uppercase();
+					eprintln!("warning: {} {} is superseded (current: {})", scheme_upper, num, formatted_current);
 				}
 			}
 		}
@@ -233,11 +240,6 @@ fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Con
 		open_in_editor(config, &paths);
 		return;
 	}
-
-	let catalog_defn = query
-		.scheme
-		.as_ref()
-		.and_then(|s| load_catalog_def(data_dir, s, Some(&query.composer)));
 
 	let ctx = OutputContext {
 		data_dir,

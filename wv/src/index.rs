@@ -52,8 +52,6 @@ pub fn build_index<P: AsRef<Path>>(data_dir: P) -> Index {
 				let mut scheme_first_seen: HashMap<(String, String), bool> = HashMap::new();
 
 				for (attr_idx, attr) in comp.attribution.iter().enumerate() {
-					let is_current_attribution = attr_idx == 0;
-
 					if let Some(composer) = &attr.composer {
 						if composers_seen.insert(composer.clone()) {
 							index
