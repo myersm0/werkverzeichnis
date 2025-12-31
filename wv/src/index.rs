@@ -27,11 +27,20 @@ pub struct Index {
 	pub editions: HashMap<String, HashMap<String, HashMap<String, String>>>,
 }
 
+struct EditionEntry {
+	composer: String,
+	scheme: String,
+	edition: String,
+	number: String,
+	id: String,
+}
+
 pub fn build_index<P: AsRef<Path>>(data_dir: P) -> Index {
 	let data_dir = data_dir.as_ref();
 	let compositions_dir = data_dir.join("compositions");
 
 	let mut index = Index::default();
+	let mut edition_entries: Vec<EditionEntry> = Vec::new();
 
 	let entries = match fs::read_dir(&compositions_dir) {
 		Ok(e) => e,
@@ -75,6 +84,16 @@ pub fn build_index<P: AsRef<Path>>(data_dir: P) -> Index {
 								scheme_first_seen.insert(key, true);
 
 								add_catalog_entry(&mut index, composer, cat, &comp.id, is_current);
+
+								if let Some(edition) = &cat.edition {
+									edition_entries.push(EditionEntry {
+										composer: composer.clone(),
+										scheme: cat.scheme.clone(),
+										edition: edition.clone(),
+										number: cat.number.clone(),
+										id: comp.id.clone(),
+									});
+								}
 							}
 						}
 					}
@@ -83,7 +102,60 @@ pub fn build_index<P: AsRef<Path>>(data_dir: P) -> Index {
 		}
 	}
 
+	build_cumulative_editions(&mut index, &edition_entries);
+
 	index
+}
+
+fn build_cumulative_editions(index: &mut Index, entries: &[EditionEntry]) {
+	let mut by_scheme: HashMap<(String, String), Vec<&EditionEntry>> = HashMap::new();
+	for entry in entries {
+		by_scheme
+			.entry((entry.composer.clone(), entry.scheme.clone()))
+			.or_default()
+			.push(entry);
+	}
+
+	for ((composer, scheme), scheme_entries) in by_scheme {
+		let mut editions: Vec<String> = scheme_entries
+			.iter()
+			.map(|e| e.edition.clone())
+			.collect::<std::collections::HashSet<_>>()
+			.into_iter()
+			.collect();
+		editions.sort_by(|a, b| {
+			a.parse::<i32>().unwrap_or(0).cmp(&b.parse::<i32>().unwrap_or(0))
+		});
+
+		let mut by_id: HashMap<String, Vec<&EditionEntry>> = HashMap::new();
+		for entry in &scheme_entries {
+			by_id.entry(entry.id.clone()).or_default().push(entry);
+		}
+
+		let key = format!("{}-{}", composer, scheme);
+
+		for edition in &editions {
+			let edition_num: i32 = edition.parse().unwrap_or(0);
+			let mut edition_map: HashMap<String, String> = HashMap::new();
+
+			for (id, id_entries) in &by_id {
+				let best = id_entries
+					.iter()
+					.filter(|e| e.edition.parse::<i32>().unwrap_or(0) <= edition_num)
+					.max_by_key(|e| e.edition.parse::<i32>().unwrap_or(0));
+
+				if let Some(entry) = best {
+					edition_map.insert(entry.number.clone(), id.clone());
+				}
+			}
+
+			index
+				.editions
+				.entry(key.clone())
+				.or_default()
+				.insert(edition.clone(), edition_map);
+		}
+	}
 }
 
 fn add_catalog_entry(index: &mut Index, composer: &str, cat: &CatalogEntry, id: &str, is_current: bool) {
@@ -102,21 +174,9 @@ fn add_catalog_entry(index: &mut Index, composer: &str, cat: &CatalogEntry, id: 
 	if is_current {
 		scheme_index.current.insert(cat.number.clone(), entry);
 	} else {
-		// Only add to superseded if not already in current (handles K.331 appearing in both K.1 and K.9)
 		if !scheme_index.current.contains_key(&cat.number) {
 			scheme_index.superseded.insert(cat.number.clone(), entry);
 		}
-	}
-
-	if let Some(edition) = &cat.edition {
-		let key = format!("{}-{}", composer, cat.scheme);
-		index
-			.editions
-			.entry(key)
-			.or_default()
-			.entry(edition.clone())
-			.or_default()
-			.insert(cat.number.clone(), id.to_string());
 	}
 }
 
@@ -257,21 +317,43 @@ mod tests {
 	}
 
 	#[test]
-	fn test_add_catalog_entry_with_edition() {
+	fn test_cumulative_editions() {
 		let mut index = Index::default();
-		let cat = CatalogEntry {
-			scheme: "k".into(),
-			number: "332".into(),
-			edition: Some("9".into()),
-			since: None,
-			note: None,
-		};
+		let entries = vec![
+			EditionEntry {
+				composer: "mozart".into(),
+				scheme: "k".into(),
+				edition: "1".into(),
+				number: "300i".into(),
+				id: "id1".into(),
+			},
+			EditionEntry {
+				composer: "mozart".into(),
+				scheme: "k".into(),
+				edition: "9".into(),
+				number: "331".into(),
+				id: "id1".into(),
+			},
+			EditionEntry {
+				composer: "mozart".into(),
+				scheme: "k".into(),
+				edition: "1".into(),
+				number: "545".into(),
+				id: "id2".into(),
+			},
+		];
 
-		add_catalog_entry(&mut index, "mozart", &cat, "bdb3e9e8", true);
+		build_cumulative_editions(&mut index, &entries);
 
-		assert!(index.catalog["mozart"]["k"].current.contains_key("332"));
-		assert!(index.editions.contains_key("mozart-k"));
-		assert!(index.editions["mozart-k"]["9"].contains_key("332"));
+		// Edition 1: 300i and 545
+		assert_eq!(index.editions["mozart-k"]["1"].get("300i"), Some(&"id1".to_string()));
+		assert_eq!(index.editions["mozart-k"]["1"].get("545"), Some(&"id2".to_string()));
+		assert!(!index.editions["mozart-k"]["1"].contains_key("331"));
+
+		// Edition 9: 331 (supersedes 300i) and 545 (inherited from edition 1)
+		assert_eq!(index.editions["mozart-k"]["9"].get("331"), Some(&"id1".to_string()));
+		assert_eq!(index.editions["mozart-k"]["9"].get("545"), Some(&"id2".to_string()));
+		assert!(!index.editions["mozart-k"]["9"].contains_key("300i"));
 	}
 
 	#[test]
