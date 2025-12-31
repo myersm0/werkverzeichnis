@@ -4,8 +4,9 @@ use std::path::Path;
 
 use serde::{Deserialize, Serialize};
 
-use crate::parse::load_composition;
-use crate::types::CatalogEntry;
+use crate::merge::collection_path_from_id;
+use crate::parse::{load_collection, load_composition};
+use crate::types::{AttributionEntry, CatalogEntry};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct IndexEntry {
@@ -35,9 +36,23 @@ struct EditionEntry {
 	id: String,
 }
 
+fn resolve_composer(attr: &AttributionEntry, collections_dir: &Path) -> Option<String> {
+	if let Some(composer) = &attr.composer {
+		return Some(composer.clone());
+	}
+	if let Some(cf) = &attr.cf {
+		let path = collection_path_from_id(collections_dir, cf);
+		if let Ok(collection) = load_collection(&path) {
+			return collection.attribution.first()?.composer.clone();
+		}
+	}
+	None
+}
+
 pub fn build_index<P: AsRef<Path>>(data_dir: P) -> Index {
 	let data_dir = data_dir.as_ref();
 	let compositions_dir = data_dir.join("compositions");
+	let collections_dir = data_dir.join("collections");
 
 	let mut index = Index::default();
 	let mut edition_entries: Vec<EditionEntry> = Vec::new();
@@ -68,7 +83,7 @@ pub fn build_index<P: AsRef<Path>>(data_dir: P) -> Index {
 				let mut scheme_first_seen: HashMap<(String, String), bool> = HashMap::new();
 
 				for attr in comp.attribution.iter() {
-					if let Some(composer) = &attr.composer {
+					if let Some(composer) = resolve_composer(attr, &collections_dir) {
 						if composers_seen.insert(composer.clone()) {
 							index
 								.by_composer
@@ -83,7 +98,7 @@ pub fn build_index<P: AsRef<Path>>(data_dir: P) -> Index {
 								let is_current = !scheme_first_seen.contains_key(&key);
 								scheme_first_seen.insert(key, true);
 
-								add_catalog_entry(&mut index, composer, cat, &comp.id, is_current);
+								add_catalog_entry(&mut index, &composer, cat, &comp.id, is_current);
 
 								if let Some(edition) = &cat.edition {
 									edition_entries.push(EditionEntry {
