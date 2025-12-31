@@ -69,7 +69,7 @@ pub fn build_index<P: AsRef<Path>>(data_dir: P) -> Index {
 								let is_first_for_scheme = !scheme_first_seen.contains_key(&key);
 								scheme_first_seen.insert(key, true);
 
-								let is_current = is_current_attribution && is_first_for_scheme;
+								let is_current = is_first_for_scheme;
 								add_catalog_entry(&mut index, composer, cat, &comp.id, is_current);
 							}
 						}
