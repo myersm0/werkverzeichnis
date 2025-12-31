@@ -151,9 +151,9 @@ $ wv get telemann twv 1:183
 Das ist je gewißlich wahr, TWV 1:183
 ```
 
-All three calls return the same _composition_, with the same internal ID (not shown), only displayed a little differently. The same composition is a part of Telemann's works, and at the same time has a place in the appendix of Bach's spurious works and is even reference-able by its old, superseded number BWV 141 (unless you disable this behavior with the `--strict` flag).
+All three calls return the same _composition_, with the same internal ID (not shown), only displayed a little differently. This same composition is simultaneously a part of Telemann's works _and_ a part of the appendix of the Bach catalog of spurious works. As you can see above, it's even still reference-able by its old, superseded catalog number BWV 141. (You disable this behavior with the `--strict` flag to enforce using only the latest information.)
 
-This attribution history is straightforwadly represented right in the composition JSON itself, which you can see [here](compositions/78/129abd.json), simply by means of an array of attribution entries, sorted in _reverse_ chronological order such that the top entry is always the most current.
+This attribution history is straightforwadly represented right in the composition JSON itself, which you can see [here](https://github.com/myersm0/werkverzeichnis/blob/ccc791bb6e9d173d8fab1464d85e88c4c8a8b512/compositions/78/129abd.json#L6), simply by means of an array of attribution entries, sorted in _reverse_ chronological order such that the top entry is always the most current.
 
 ## Configuration
 The CLI can be customized to match your preferences. Create a config file at `~/.config/wv/config.toml`:
