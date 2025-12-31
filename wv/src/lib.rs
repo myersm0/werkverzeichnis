@@ -23,7 +23,7 @@ pub use display::{
 };
 pub use index::{
 	build_index, get_or_build_index, index_is_stale, load_index, write_composer_index,
-	write_edition_indexes, write_index, Index, SchemeIndex,
+	write_edition_indexes, write_index, Index, IndexEntry, SchemeIndex,
 };
 pub use merge::{
 	all_catalog_entries, collection_path_from_id, current_catalog_number,

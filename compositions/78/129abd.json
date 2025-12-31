@@ -14,7 +14,7 @@
 			"composer": "bach",
 			"status": "spurious",
 			"catalog": [
-				{"scheme": "bwv", "number": "anh. iii 141", "note": "spurious attribution; moved to BWV Anhang III in 1990s second edition", "since": "1990"},
+				{"scheme": "bwv", "number": "anh. iii 141", "note": "spurious; now attributed to telemann twv 1:183", "since": "1990"},
 				{"scheme": "bwv", "number": "141"}
 			]
 		}

@@ -7,10 +7,17 @@ use serde::{Deserialize, Serialize};
 use crate::parse::load_composition;
 use crate::types::CatalogEntry;
 
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct IndexEntry {
+	pub id: String,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub note: Option<String>,
+}
+
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct SchemeIndex {
-	pub current: HashMap<String, String>,
-	pub superseded: HashMap<String, String>,
+	pub current: HashMap<String, IndexEntry>,
+	pub superseded: HashMap<String, IndexEntry>,
 }
 
 #[derive(Debug, Clone, Default)]
@@ -51,7 +58,7 @@ pub fn build_index<P: AsRef<Path>>(data_dir: P) -> Index {
 				let mut composers_seen: std::collections::HashSet<String> = std::collections::HashSet::new();
 				let mut scheme_first_seen: HashMap<(String, String), bool> = HashMap::new();
 
-				for (attr_idx, attr) in comp.attribution.iter().enumerate() {
+				for attr in comp.attribution.iter() {
 					if let Some(composer) = &attr.composer {
 						if composers_seen.insert(composer.clone()) {
 							index
@@ -64,10 +71,9 @@ pub fn build_index<P: AsRef<Path>>(data_dir: P) -> Index {
 						if let Some(catalog) = &attr.catalog {
 							for cat in catalog {
 								let key = (composer.clone(), cat.scheme.clone());
-								let is_first_for_scheme = !scheme_first_seen.contains_key(&key);
+								let is_current = !scheme_first_seen.contains_key(&key);
 								scheme_first_seen.insert(key, true);
 
-								let is_current = is_first_for_scheme;
 								add_catalog_entry(&mut index, composer, cat, &comp.id, is_current);
 							}
 						}
@@ -88,12 +94,17 @@ fn add_catalog_entry(index: &mut Index, composer: &str, cat: &CatalogEntry, id: 
 		.entry(cat.scheme.clone())
 		.or_default();
 
+	let entry = IndexEntry {
+		id: id.to_string(),
+		note: cat.note.clone(),
+	};
+
 	if is_current {
-		scheme_index.current.insert(cat.number.clone(), id.to_string());
+		scheme_index.current.insert(cat.number.clone(), entry);
 	} else {
 		// Only add to superseded if not already in current (handles K.331 appearing in both K.1 and K.9)
 		if !scheme_index.current.contains_key(&cat.number) {
-			scheme_index.superseded.insert(cat.number.clone(), id.to_string());
+			scheme_index.superseded.insert(cat.number.clone(), entry);
 		}
 	}
 
@@ -217,13 +228,14 @@ mod tests {
 			number: "846".into(),
 			edition: None,
 			since: None,
+			note: None,
 		};
 
 		add_catalog_entry(&mut index, "bach", &cat, "abc12345", true);
 
 		assert!(index.catalog.contains_key("bach"));
 		assert!(index.catalog["bach"].contains_key("bwv"));
-		assert_eq!(index.catalog["bach"]["bwv"].current.get("846"), Some(&"abc12345".to_string()));
+		assert_eq!(index.catalog["bach"]["bwv"].current.get("846").map(|e| &e.id), Some(&"abc12345".to_string()));
 		assert!(index.catalog["bach"]["bwv"].superseded.is_empty());
 	}
 
@@ -235,11 +247,12 @@ mod tests {
 			number: "300i".into(),
 			edition: Some("6".into()),
 			since: None,
+			note: None,
 		};
 
 		add_catalog_entry(&mut index, "mozart", &cat, "a7a495c0", false);
 
-		assert_eq!(index.catalog["mozart"]["k"].superseded.get("300i"), Some(&"a7a495c0".to_string()));
+		assert_eq!(index.catalog["mozart"]["k"].superseded.get("300i").map(|e| &e.id), Some(&"a7a495c0".to_string()));
 		assert!(index.catalog["mozart"]["k"].current.is_empty());
 	}
 
@@ -251,6 +264,7 @@ mod tests {
 			number: "332".into(),
 			edition: Some("9".into()),
 			since: None,
+			note: None,
 		};
 
 		add_catalog_entry(&mut index, "mozart", &cat, "bdb3e9e8", true);
@@ -258,5 +272,23 @@ mod tests {
 		assert!(index.catalog["mozart"]["k"].current.contains_key("332"));
 		assert!(index.editions.contains_key("mozart-k"));
 		assert!(index.editions["mozart-k"]["9"].contains_key("332"));
+	}
+
+	#[test]
+	fn test_add_catalog_entry_with_note() {
+		let mut index = Index::default();
+		let cat = CatalogEntry {
+			scheme: "bwv".into(),
+			number: "anh. iii 141".into(),
+			edition: None,
+			since: Some("1990".into()),
+			note: Some("spurious attribution".into()),
+		};
+
+		add_catalog_entry(&mut index, "bach", &cat, "78129abd", true);
+
+		let entry = index.catalog["bach"]["bwv"].current.get("anh. iii 141").unwrap();
+		assert_eq!(entry.id, "78129abd");
+		assert_eq!(entry.note, Some("spurious attribution".to_string()));
 	}
 }

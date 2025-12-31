@@ -14,6 +14,7 @@ pub struct QueryResult {
 	pub number: Option<String>,
 	pub superseded: bool,
 	pub current_number: Option<String>,
+	pub note: Option<String>,
 }
 
 #[derive(Debug, Clone, Default)]
@@ -114,13 +115,13 @@ impl<'a> QueryBuilder<'a> {
 		} else {
 			let scheme_index = self.index.catalog.get(composer)?.get(scheme)?;
 
-			if let Some(id) = scheme_index.current.get(&normalized) {
-				return Some(id.clone());
+			if let Some(entry) = scheme_index.current.get(&normalized) {
+				return Some(entry.id.clone());
 			}
 
 			if !self.query.strict {
-				if let Some(id) = scheme_index.superseded.get(&normalized) {
-					return Some(id.clone());
+				if let Some(entry) = scheme_index.superseded.get(&normalized) {
+					return Some(entry.id.clone());
 				}
 			}
 
@@ -186,33 +187,36 @@ impl<'a> QueryBuilder<'a> {
 				number: Some(normalized),
 				superseded: false,
 				current_number: None,
+				note: None,
 			});
 		}
 
 		let scheme_index = self.index.catalog.get(composer)?.get(scheme)?;
 
-		if let Some(id) = scheme_index.current.get(&normalized) {
+		if let Some(entry) = scheme_index.current.get(&normalized) {
 			return Some(QueryResult {
-				id: id.clone(),
+				id: entry.id.clone(),
 				number: Some(normalized),
 				superseded: false,
 				current_number: None,
+				note: entry.note.clone(),
 			});
 		}
 
 		if !self.query.strict {
-			if let Some(id) = scheme_index.superseded.get(&normalized) {
+			if let Some(entry) = scheme_index.superseded.get(&normalized) {
 				let current_num = scheme_index
 					.current
 					.iter()
-					.find(|(_, v)| *v == id)
+					.find(|(_, v)| v.id == entry.id)
 					.map(|(k, _)| k.clone());
 
 				return Some(QueryResult {
-					id: id.clone(),
+					id: entry.id.clone(),
 					number: Some(normalized),
 					superseded: true,
 					current_number: current_num,
+					note: entry.note.clone(),
 				});
 			}
 		}
@@ -231,6 +235,7 @@ impl<'a> QueryBuilder<'a> {
 						number: None,
 						superseded: false,
 						current_number: None,
+						note: None,
 					})
 					.collect()
 			})
@@ -240,24 +245,24 @@ impl<'a> QueryBuilder<'a> {
 	fn fetch_by_scheme(&self, composer: &str, scheme: &str) -> Vec<QueryResult> {
 		let is_range_or_group = self.query.range_start.is_some() || self.query.group.is_some();
 
-		let numbers: Vec<(String, String, bool)> = if let Some(edition) = &self.query.edition {
+		let numbers: Vec<(String, String, bool, Option<String>)> = if let Some(edition) = &self.query.edition {
 			let key = format!("{}-{}", composer, scheme);
 			match self.index.editions.get(&key).and_then(|e| e.get(edition)) {
-				Some(n) => n.iter().map(|(k, v)| (k.clone(), v.clone(), false)).collect(),
+				Some(n) => n.iter().map(|(k, v)| (k.clone(), v.clone(), false, None)).collect(),
 				None => return vec![],
 			}
 		} else {
 			match self.index.catalog.get(composer).and_then(|s| s.get(scheme)) {
 				Some(scheme_index) => {
-					let mut entries: Vec<(String, String, bool)> = scheme_index
+					let mut entries: Vec<(String, String, bool, Option<String>)> = scheme_index
 						.current
 						.iter()
-						.map(|(k, v)| (k.clone(), v.clone(), false))
+						.map(|(k, v)| (k.clone(), v.id.clone(), false, v.note.clone()))
 						.collect();
 
 					if !is_range_or_group && !self.query.strict {
 						for (k, v) in &scheme_index.superseded {
-							entries.push((k.clone(), v.clone(), true));
+							entries.push((k.clone(), v.id.clone(), true, v.note.clone()));
 						}
 					}
 
@@ -267,7 +272,7 @@ impl<'a> QueryBuilder<'a> {
 			}
 		};
 
-		let mut keys: Vec<String> = numbers.iter().map(|(k, _, _)| k.clone()).collect();
+		let mut keys: Vec<String> = numbers.iter().map(|(k, _, _, _)| k.clone()).collect();
 
 		let defn = self
 			.query
@@ -315,14 +320,14 @@ impl<'a> QueryBuilder<'a> {
 
 		keys.into_iter()
 			.filter_map(|k| {
-				let entry = numbers.iter().find(|(num, _, _)| num == &k)?;
-				let (_, id, is_superseded) = entry;
+				let entry = numbers.iter().find(|(num, _, _, _)| num == &k)?;
+				let (_, id, is_superseded, note) = entry;
 
 				let current_num = if *is_superseded {
 					scheme_index.and_then(|si| {
 						si.current
 							.iter()
-							.find(|(_, v)| *v == id)
+							.find(|(_, v)| v.id == *id)
 							.map(|(k, _)| k.clone())
 					})
 				} else {
@@ -334,6 +339,7 @@ impl<'a> QueryBuilder<'a> {
 					number: Some(k),
 					superseded: *is_superseded,
 					current_number: current_num,
+					note: note.clone(),
 				})
 			})
 			.collect()
@@ -381,7 +387,7 @@ fn make_inclusive_ceiling(key: Vec<SortValue>) -> Vec<SortValue> {
 #[cfg(test)]
 mod tests {
 	use super::*;
-	use crate::index::SchemeIndex;
+	use crate::index::{IndexEntry, SchemeIndex};
 
 	fn make_test_index() -> Index {
 		let mut index = Index::default();
@@ -394,8 +400,8 @@ mod tests {
 			.insert("mozart".into(), vec!["id3".into()]);
 
 		let mut bach_bwv = SchemeIndex::default();
-		bach_bwv.current.insert("846".into(), "id1".into());
-		bach_bwv.current.insert("847".into(), "id2".into());
+		bach_bwv.current.insert("846".into(), IndexEntry { id: "id1".into(), note: None });
+		bach_bwv.current.insert("847".into(), IndexEntry { id: "id2".into(), note: None });
 		index
 			.catalog
 			.entry("bach".into())
@@ -403,8 +409,8 @@ mod tests {
 			.insert("bwv".into(), bach_bwv);
 
 		let mut mozart_k = SchemeIndex::default();
-		mozart_k.current.insert("332".into(), "id3".into());
-		mozart_k.superseded.insert("300k".into(), "id3".into());
+		mozart_k.current.insert("332".into(), IndexEntry { id: "id3".into(), note: None });
+		mozart_k.superseded.insert("300k".into(), IndexEntry { id: "id3".into(), note: None });
 		index
 			.catalog
 			.entry("mozart".into())

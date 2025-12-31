@@ -154,6 +154,7 @@ pub fn output_by_ids(
 			number: None,
 			superseded: false,
 			current_number: None,
+			note: None,
 		})
 		.collect();
 

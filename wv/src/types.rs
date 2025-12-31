@@ -67,6 +67,8 @@ pub struct CatalogEntry {
 	pub edition: Option<String>,
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub since: Option<String>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub note: Option<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

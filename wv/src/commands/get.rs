@@ -232,6 +232,9 @@ fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Con
 					eprintln!("warning: {} {} is superseded (current: {})", scheme_upper, num, formatted_current);
 				}
 			}
+			if let Some(note) = &result.note {
+				eprintln!("note: {}", note);
+			}
 		}
 	}
 
