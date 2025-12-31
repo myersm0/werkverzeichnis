@@ -7,14 +7,8 @@
 				"composed": 1817
 			},
 			"catalog": [
-				{
-					"scheme": "d",
-					"number": "568.2"
-				},
-				{
-					"scheme": "op",
-					"number": "posth. 122"
-				}
+				{"scheme": "d", "number": "568", "note": "see also D 568.1 (original 1817 version)"},
+				{"scheme": "op", "number": "posth. 122"}
 			]
 		}
 	],

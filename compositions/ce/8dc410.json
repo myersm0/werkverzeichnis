@@ -7,12 +7,15 @@
 		{
 			"composer": "telemann",
 			"dates": {"composed": 1725},
-			"catalog": [{"scheme": "twv", "number": "1:877", "of": "telemann"}]
+			"catalog": [{"scheme": "twv", "number": "1:877"}]
 		},
 		{
 			"composer": "bach",
 			"status": "spurious",
-			"catalog": [{"scheme": "bwv", "number": "160"}]
+			"catalog": [
+				{"scheme": "bwv", "number": "anh. iii 160", "note": "spurious; see telemann twv 1:877", "since": "1998"},
+				{"scheme": "bwv", "number": "160"}
+			]
 		}
 	],
 	"form": "solo cantata",

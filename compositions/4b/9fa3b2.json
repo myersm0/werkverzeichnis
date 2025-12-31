@@ -6,9 +6,8 @@
 	"attribution": [
 		{
 			"composer": "bach",
-			"status": "doubtful",
 			"catalog": [
-				{"scheme": "bwv", "number": "anh. ii 23"},
+				{"scheme": "bwv", "number": "anh. ii 23", "since": "1998", "note": "doubtful"},
 				{"scheme": "bwv", "number": "142"}
 			]
 		}
