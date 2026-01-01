@@ -287,14 +287,14 @@ pub fn write_composer_index<P: AsRef<Path>>(index: &Index, output_path: P) -> st
 	Ok(())
 }
 
-pub fn write_edition_indexes<P: AsRef<Path>>(index: &Index, output_dir: P) -> std::io::Result<()> {
-	let output_dir = output_dir.as_ref();
-	fs::create_dir_all(output_dir)?;
+pub fn write_edition_indexes<P: AsRef<Path>>(index: &Index, data_dir: P) -> std::io::Result<()> {
+	let editions_dir = data_dir.as_ref().join(".indexes").join("editions");
+	fs::create_dir_all(&editions_dir)?;
 
 	for (key, editions) in &index.editions {
 		for (edition, numbers) in editions {
 			let filename = format!("{}-{}.json", key, edition);
-			let path = output_dir.join(filename);
+			let path = editions_dir.join(filename);
 			let json = serde_json::to_string_pretty(numbers)?;
 			fs::write(path, json)?;
 		}
