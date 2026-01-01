@@ -280,10 +280,7 @@ impl<'a> QueryBuilder<'a> {
 
 		if let Some(group) = &self.query.group {
 			let normalized_group = normalize_catalog_number(group);
-
-			if let Some(ref d) = defn {
-				keys.retain(|k| matches_group(k, &normalized_group, Some(d)));
-			}
+			keys.retain(|k| matches_group(k, &normalized_group, defn.as_ref()));
 		}
 
 		if let (Some(start), Some(end)) = (&self.query.range_start, &self.query.range_end) {
