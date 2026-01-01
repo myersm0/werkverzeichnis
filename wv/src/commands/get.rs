@@ -10,6 +10,7 @@ use crate::output::{
 	id_to_path, output_by_ids, output_json, output_movements, output_pretty, output_terse,
 	OutputContext,
 };
+use crate::xref::{check_duplicates, MbLookup};
 
 pub struct GetArgs {
 	pub target: Option<String>,
@@ -25,6 +26,7 @@ pub struct GetArgs {
 	pub edit: bool,
 	pub stdin: bool,
 	pub strict: bool,
+	pub xref: Option<String>,
 }
 
 enum Input {
@@ -223,6 +225,16 @@ fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Con
 		.as_ref()
 		.and_then(|s| load_catalog_def(data_dir, s, Some(&query.composer)));
 
+	if let Some(xref_type) = &args.xref {
+		if xref_type == "mb" {
+			run_xref_mb(&results, &query, data_dir, config, catalog_defn.as_ref());
+			return;
+		} else {
+			eprintln!("Unknown xref type: {}", xref_type);
+			std::process::exit(1);
+		}
+	}
+
 	if !args.quiet {
 		for result in &results {
 			if result.superseded {
@@ -260,4 +272,68 @@ fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Con
 	} else {
 		output_pretty(&results, &ctx);
 	}
+}
+
+fn run_xref_mb(
+	results: &[crate::query::QueryResult],
+	query: &ComposerQuery,
+	_data_dir: &Path,
+	config: &Config,
+	catalog_defn: Option<&crate::types::CatalogDefinition>,
+) {
+	let db_path = match &config.xref.mb_database {
+		Some(p) => p,
+		None => {
+			eprintln!("Error: mb_database not configured in config.toml");
+			eprintln!("Add: [xref]");
+			eprintln!("     mb_database = \"/path/to/mb.db\"");
+			std::process::exit(1);
+		}
+	};
+
+	let mb = match MbLookup::new(db_path) {
+		Ok(m) => m,
+		Err(e) => {
+			eprintln!("Error opening MB database: {}", e);
+			std::process::exit(1);
+		}
+	};
+
+	let scheme = match &query.scheme {
+		Some(s) => s,
+		None => {
+			eprintln!("Error: --xref requires a catalog scheme");
+			std::process::exit(1);
+		}
+	};
+
+	let numbers: Vec<String> = results
+		.iter()
+		.filter_map(|r| r.number.clone())
+		.collect();
+
+	let mb_results = mb.lookup_batch(&query.composer, scheme, &numbers, catalog_defn);
+
+	let mut matched = 0;
+	let mut not_found = 0;
+
+	for r in &mb_results {
+		if let Some(mb_id) = &r.mb_id {
+			println!("{}\t{}", r.catalog_number, mb_id);
+			matched += 1;
+		} else {
+			println!("{}\t", r.catalog_number);
+			not_found += 1;
+		}
+	}
+
+	let duplicates = check_duplicates(&mb_results);
+	if !duplicates.is_empty() {
+		eprintln!("\nwarning: duplicate MBIDs found:");
+		for (mb_id, nums) in &duplicates {
+			eprintln!("  {} -> {}", mb_id, nums.join(", "));
+		}
+	}
+
+	eprintln!("\nmatched: {}, not found: {}", matched, not_found);
 }

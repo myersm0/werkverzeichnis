@@ -451,6 +451,7 @@ mod tests {
 			group_by: None,
 			aliases: None,
 			editions: None,
+			..Default::default()
 		};
 
 		assert_eq!(format_number_for_display("i:1", Some(&hob_defn)), "I:1");
@@ -477,6 +478,7 @@ mod tests {
 			group_by: None,
 			aliases: None,
 			editions: None,
+			..Default::default()
 		};
 
 		assert_eq!(format_number_for_display("anh. iii 141", Some(&bwv_defn)), "Anh. III 141");
@@ -501,6 +503,7 @@ mod tests {
 			group_by: None,
 			aliases: None,
 			editions: None,
+			..Default::default()
 		};
 
 		assert_eq!(format_catalog("hob", "i:1", Some(&hob_defn)), "Hob. I:1");

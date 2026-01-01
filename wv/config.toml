@@ -3,6 +3,7 @@
 
 # Path to data repository (optional if running from repo directory)
 # data_dir = "/path/to/werkverzeichnis"
+mb_database = "/Users/m/contents/701701/mb2.db"
 
 # Editor for --edit flag (defaults to $EDITOR, then vi)
 editor = "vim"

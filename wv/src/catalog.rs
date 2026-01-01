@@ -349,6 +349,7 @@ mod tests {
 			group_by: None,
 			aliases: None,
 			editions: None,
+			..Default::default()
 		};
 
 		let mut nums: Vec<String> = vec!["10", "2", "1", "20"]
@@ -375,6 +376,7 @@ mod tests {
 			group_by: None,
 			aliases: None,
 			editions: None,
+			..Default::default()
 		};
 
 		let mut nums: Vec<String> = vec!["2/1", "10", "2", "2/10", "2/2"]

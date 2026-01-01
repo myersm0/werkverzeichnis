@@ -83,6 +83,21 @@ enum Commands {
 		stdin: bool,
 		#[arg(long, help = "Only match current catalog numbers (no superseded)")]
 		strict: bool,
+		#[arg(long, help = "Cross-reference lookup (e.g., mb)")]
+		xref: Option<String>,
+		#[arg(long, value_name = "PATH")]
+		data_dir: Option<PathBuf>,
+	},
+
+	Set {
+		#[arg(help = "Composer slug")]
+		target: String,
+		#[arg(help = "Catalog scheme")]
+		scheme: Option<String>,
+		#[arg(help = "Catalog number or range")]
+		number: Option<String>,
+		#[arg(long, help = "Cross-reference type (e.g., mb)")]
+		xref: Option<String>,
 		#[arg(long, value_name = "PATH")]
 		data_dir: Option<PathBuf>,
 	},
@@ -179,6 +194,7 @@ fn main() {
 			edit,
 			stdin,
 			strict,
+			xref,
 			data_dir,
 		} => {
 			let data_dir = resolve_data_dir(data_dir.as_ref(), &config);
@@ -196,8 +212,25 @@ fn main() {
 				edit,
 				stdin,
 				strict,
+				xref,
 			};
 			commands::get::run(args, data_dir, &config);
+		}
+		Commands::Set {
+			target,
+			scheme,
+			number,
+			xref,
+			data_dir,
+		} => {
+			let data_dir = resolve_data_dir(data_dir.as_ref(), &config);
+			let args = commands::set::SetArgs {
+				target: target.to_lowercase(),
+				scheme: scheme.map(|x| x.to_lowercase().trim_end_matches('.').to_string()),
+				number,
+				xref,
+			};
+			commands::set::run(args, data_dir, &config);
 		}
 		Commands::Format { data_dir } => {
 			let data_dir = resolve_data_dir(data_dir.as_ref(), &config);

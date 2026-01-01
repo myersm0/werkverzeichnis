@@ -6,5 +6,6 @@ pub mod index;
 pub mod merge;
 pub mod new;
 pub mod parse;
+pub mod set;
 pub mod sort;
 pub mod validate;

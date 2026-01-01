@@ -157,7 +157,7 @@ pub struct ComposerName {
 	pub sort: String,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct CatalogDefinition {
 	pub name: String,
 	#[serde(skip_serializing_if = "Option::is_none")]
@@ -174,6 +174,10 @@ pub struct CatalogDefinition {
 	pub aliases: Option<Vec<String>>,
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub editions: Option<HashMap<String, EditionInfo>>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub mb_format: Option<String>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub mb_part_format: Option<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
