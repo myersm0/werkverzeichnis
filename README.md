@@ -35,7 +35,7 @@ This project is still in an early stage of development. By the end of 2025 the f
 - [x] Schubert complete piano sonatas
 
 Goals for the first quarter of 2026:
-- [ ] extend and cross-reference with [MusicBrainz](https://musicbrainz.org) work IDs
+- [x] extend and cross-reference with [MusicBrainz](https://musicbrainz.org) work IDs
 - [ ] local routines for automated accuracy checks and updates
 - [ ] Bach complete works
 - [ ] Beethoven complete works
@@ -63,14 +63,6 @@ source ~/.zshrc
 **Windows:**
 Download from [GitHub Releases](https://github.com/myersm0/werkverzeichnis/releases)
 
-### Build from source
-```bash
-git clone https://github.com/myersm0/werkverzeichnis
-cd werkverzeichnis/wv
-cargo build --release
-alias wv="$(pwd)/target/release/wv"
-```
-
 ## Usage
 ### Basic retrieval patterns
 ```
@@ -92,7 +84,7 @@ $ wv get beethoven op 2 --json
 $ wv get beethoven op 2 --edit
 
 # Get results from a range of opus numbers:
-$ wv get beethoven op 2-11
+$ wv get beethoven op 2-10
 Sonata in f minor, op. 2 no. 1
 Sonata in A major, op. 2 no. 2
 Sonata in C major, op. 2 no. 3
