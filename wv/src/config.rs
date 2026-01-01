@@ -10,6 +10,13 @@ pub struct Config {
 	pub data_dir: Option<PathBuf>,
 	pub editor: Option<String>,
 	pub display: DisplayConfig,
+	pub xref: XrefConfig,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+#[serde(default)]
+pub struct XrefConfig {
+	pub mb_database: Option<PathBuf>,
 }
 
 #[derive(Debug, Clone, Deserialize)]
@@ -42,6 +49,15 @@ impl Default for Config {
 			data_dir: None,
 			editor: None,
 			display: DisplayConfig::default(),
+			xref: XrefConfig::default(),
+		}
+	}
+}
+
+impl Default for XrefConfig {
+	fn default() -> Self {
+		Self {
+			mb_database: None,
 		}
 	}
 }
@@ -94,6 +110,12 @@ impl Config {
 }
 
 fn config_path() -> PathBuf {
+	if let Some(home) = dirs::home_dir() {
+		let unix_path = home.join(".config").join("wv").join("config.toml");
+		if unix_path.exists() {
+			return unix_path;
+		}
+	}
 	if let Some(config_dir) = dirs::config_dir() {
 		config_dir.join("wv").join("config.toml")
 	} else {
