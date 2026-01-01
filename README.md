@@ -1,7 +1,7 @@
 # werkverzeichnis
 **werkverzeichnis** (German: "catalog of works") provides human- and machine-readable data about classical compositions: catalog numbers, keys, instrumentation, movement structures, and attribution history.
 
-The name comes from the well-known *Bach-Werke-Verzeichnis* (catalog of Bach's works), but the scope is broader. Catalogs have accumulated over centuries for each composer — BWV for Bach, Köchel-Verzeichnis for Mozart, opus numbers for most Romantic composers, and dozens more. This project aims to bring all these disparate systems together under one simple, structured, queryable format.
+The name comes from the well-known *Bach-Werke-Verzeichnis* (catalog of Bach's works), but the scope is broader. Catalogs have accumulated over centuries for each composer — BWV for Bach, Köchel-Verzeichnis for Mozart, opus numbers for most Romantic composers, and dozens more. This project aims to bring these disparate systems together under a simple, structured format.
 
 > [!NOTE]
 > ## Overlap in scope with MusicBrainz
@@ -9,7 +9,7 @@ The name comes from the well-known *Bach-Werke-Verzeichnis* (catalog of Bach's w
 > So why continue? I believe the data model in this project is compelling enough that it's still worth moving forward, for a few reasons:
 > - No dependencies. Offline. Transparent.
 >     - You clone the repo and you instantly have everything you need in front of you. 
->     - Content is simply plain text files (like [this one](compositions/27/c3084a.json) that you can open in any text editor and instantly understand.
+>     - Content is simply plain text files (like [this one](compositions/27/c3084a.json)) that you can open in any text editor and instantly understand.
 > - We provide a convenient design for cases where works are looked up primarily by _catalog number_
 > 	- Lookups like these are one-liners in our design, while in MB it would require some non-trivial preprocessing and SQL table joins
 > 	- We even allow edition-aware queries, which I don't belive is possible in MB
