@@ -39,20 +39,35 @@ Goals for the first quarter of 2026:
 - [ ] Schubert complete works
 
 ## Quick start
-A future version will provide compiled binaries so that you don't have to build it yourself and don't even need to have Rust installed on your system. But for now:
-```bash
-# Clone the repository
-git clone https://github.com/myersm0/werkverzeichnis
-cd werkverzeichnis
 
-# Build the CLI tool
-cd wv
+
+
+## Quick start
+### Install (recommended)
+**macOS / Linux:**
+```bash
+curl -fsSL https://raw.githubusercontent.com/myersm0/werkverzeichnis/main/install.sh | sh
+```
+
+The binary installs to `~/.local/bin/`. If not already in your PATH, add it:
+```bash
+echo 'export PATH="$PATH:$HOME/.local/bin"' >> ~/.zshrc  # or ~/.bashrc
+source ~/.zshrc
+```
+
+**Windows:**
+Download from [GitHub Releases](https://github.com/myersm0/werkverzeichnis/releases)
+
+### Build from source
+```bash
+git clone https://github.com/myersm0/werkverzeichnis
+cd werkverzeichnis/wv
 cargo build --release
 alias wv="$(pwd)/target/release/wv"
 ```
 
-### Basic usage
-Here are some common retrieval patterns:
+## Usage
+### Basic retrieval patterns
 ```
 $ wv get beethoven op 2
 Sonata in f minor, op. 2 no. 1
