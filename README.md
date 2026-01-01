@@ -1,4 +1,8 @@
 # werkverzeichnis
+[![Release](https://img.shields.io/github/v/release/myersm0/werkverzeichnis)](https://github.com/myersm0/werkverzeichnis/releases)
+[![Build](https://img.shields.io/github/actions/workflow/status/myersm0/werkverzeichnis/release.yml)](https://github.com/myersm0/werkverzeichnis/actions)
+[![License](https://img.shields.io/badge/license-CC%20BY%204.0-blue)](https://creativecommons.org/licenses/by/4.0/)
+
 **werkverzeichnis** (German: "catalog of works") provides human- and machine-readable data about classical compositions: catalog numbers, keys, instrumentation, movement structures, and attribution history.
 
 The name comes from the well-known *Bach-Werke-Verzeichnis* (catalog of Bach's works), but the scope is broader. Catalogs have accumulated over centuries for each composer — BWV for Bach, Köchel-Verzeichnis for Mozart, opus numbers for most Romantic composers, and dozens more. This project aims to bring these disparate systems together under a simple, structured format.
