@@ -2,10 +2,9 @@ use std::path::Path;
 
 use crate::config::Config;
 use crate::display::{expand_title, format_catalog, ExpansionContext};
-use crate::merge::merge_attribution_with_collections;
 use crate::parse::load_composition;
 use crate::query::QueryResult;
-use crate::types::{AttributionEntry, CatalogDefinition, Composition, Dates};
+use crate::types::{CatalogDefinition, Composition};
 
 pub fn id_to_path(data_dir: &Path, id: &str) -> std::path::PathBuf {
 	data_dir
@@ -36,13 +35,11 @@ pub struct OutputContext<'a> {
 }
 
 pub fn output_json(results: &[QueryResult], ctx: &OutputContext) {
-	let collections_dir = ctx.data_dir.join("collections");
 	let mut output: Vec<serde_json::Value> = Vec::new();
 
 	for result in results {
 		let comp_path = id_to_path(ctx.data_dir, &result.id);
-		if let Ok(mut comp) = load_composition(&comp_path) {
-			comp.attribution = hydrate_attribution(&comp.attribution, &collections_dir);
+		if let Ok(comp) = load_composition(&comp_path) {
 			output.push(serde_json::to_value(&comp).unwrap_or(serde_json::Value::Null));
 		}
 	}
@@ -52,32 +49,6 @@ pub fn output_json(results: &[QueryResult], ctx: &OutputContext) {
 	} else {
 		println!("{}", serde_json::to_string_pretty(&output).unwrap());
 	}
-}
-
-fn hydrate_attribution(entries: &[AttributionEntry], collections_dir: &Path) -> Vec<AttributionEntry> {
-	let merged = merge_attribution_with_collections(entries, collections_dir);
-
-	let dates = if merged.dates == Dates::default() {
-		None
-	} else {
-		Some(merged.dates)
-	};
-
-	let note = if merged.notes.is_empty() {
-		None
-	} else {
-		Some(merged.notes.join("; "))
-	};
-
-	vec![AttributionEntry {
-		composer: merged.composer,
-		cf: None,
-		dates,
-		status: merged.status,
-		catalog: Some(merged.catalog),
-		since: None,
-		note,
-	}]
 }
 
 pub fn output_movements(results: &[QueryResult], ctx: &OutputContext) {

@@ -315,15 +315,15 @@ fn test_multi_composer_attribution() {
 }
 
 // ============================================================================
-// Collection hydration tests
+// Collection membership tests
 // ============================================================================
 
 #[test]
-fn test_collection_hydration() {
+fn test_collection_membership() {
 	let tmp = setup_test_repo();
 	let root = tmp.path();
 
-	// Collection defines the composer
+	// Collection lists compositions
 	write_collection(root, "bach", "wtc-1", r#"{
 		"id": "bach-wtc-1",
 		"title": {"en": "Well-Tempered Clavier, Book 1"},
@@ -332,20 +332,20 @@ fn test_collection_hydration() {
 		"compositions": ["846", "847"]
 	}"#);
 
-	// Composition uses cf reference instead of explicit composer
+	// Composition has explicit attribution (no cf needed)
 	write_composition(root, "ab123456", r#"{
 		"id": "ab123456",
 		"form": "prelude and fugue",
 		"key": "C",
 		"attribution": [{
-			"cf": "bach-wtc-1",
+			"composer": "bach",
 			"catalog": [{"scheme": "bwv", "number": "846"}]
 		}]
 	}"#);
 
 	let index = build_index(root);
 
-	// Should be indexed under bach via hydration
+	// Should be indexed under bach
 	let result = index.query().composer("bach").scheme("bwv").number("846").fetch_one();
 	assert_eq!(result, Some("ab123456".to_string()));
 
@@ -489,4 +489,100 @@ fn test_group_query() {
 	assert!(numbers.contains(&&"2/1".to_string()));
 	assert!(numbers.contains(&&"2/2".to_string()));
 	assert!(numbers.contains(&&"2/3".to_string()));
+}
+
+// ============================================================================
+// Köchel edition mapping tests (based on real catalog data)
+// ============================================================================
+
+#[test]
+fn test_kochel_331_edition_mapping() {
+	// K. 331 (Alla Turca sonata) - famously renumbered
+	// Edition 1 (1862): K. 331
+	// Edition 6 (1964): K. 300i
+	// Edition 9 (2024): K. 331 (reverted)
+	
+	let tmp = setup_test_repo();
+	let root = tmp.path();
+
+	write_composition(root, "ab331331", r#"{
+		"id": "ab331331",
+		"form": "sonata",
+		"key": "A",
+		"attribution": [{
+			"composer": "mozart",
+			"catalog": [
+				{"scheme": "k", "number": "331", "edition": "9"},
+				{"scheme": "k", "number": "300i", "edition": "6"},
+				{"scheme": "k", "number": "331", "edition": "1"}
+			]
+		}]
+	}"#);
+
+	let index = build_index(root);
+	write_edition_indexes(&index, root).unwrap();
+
+	// Current number (ed 9) should work
+	let result = index.query().composer("mozart").scheme("k").number("331").fetch_one();
+	assert_eq!(result, Some("ab331331".to_string()));
+
+	// Edition 6 number should work
+	let result = index.query().composer("mozart").scheme("k").number("300i").fetch_one();
+	assert_eq!(result, Some("ab331331".to_string()));
+
+	// Edition 1 had same number as current
+	let ed1 = load_edition_index(root, "mozart", "k", "1").unwrap();
+	assert!(ed1.contains_key("331"));
+
+	// Edition 6 should have 300i, not 331
+	let ed6 = load_edition_index(root, "mozart", "k", "6").unwrap();
+	assert!(ed6.contains_key("300i"));
+	assert!(!ed6.contains_key("331"));
+
+	// Edition 9 should have 331, not 300i
+	let ed9 = load_edition_index(root, "mozart", "k", "9").unwrap();
+	assert!(ed9.contains_key("331"));
+	assert!(!ed9.contains_key("300i"));
+}
+
+#[test]
+fn test_kochel_anh_reclassification() {
+	// K. 19a was Anh. 223 in edition 1, then 19a in edition 6
+	// This tests works being "promoted" from Anhang to main catalog
+	
+	let tmp = setup_test_repo();
+	let root = tmp.path();
+
+	write_composition(root, "ab19a19a", r#"{
+		"id": "ab19a19a",
+		"form": "symphony",
+		"attribution": [{
+			"composer": "mozart",
+			"catalog": [
+				{"scheme": "k", "number": "19a", "edition": "6"},
+				{"scheme": "k", "number": "anh. 223", "edition": "1"}
+			]
+		}]
+	}"#);
+
+	let index = build_index(root);
+	write_edition_indexes(&index, root).unwrap();
+
+	// Current number should work
+	let result = index.query().composer("mozart").scheme("k").number("19a").fetch_one();
+	assert_eq!(result, Some("ab19a19a".to_string()));
+
+	// Old Anhang number should also work (superseded)
+	let result = index.query().composer("mozart").scheme("k").number("anh. 223").fetch_one();
+	assert_eq!(result, Some("ab19a19a".to_string()));
+
+	// Edition 1 should have anh. 223
+	let ed1 = load_edition_index(root, "mozart", "k", "1").unwrap();
+	assert!(ed1.contains_key("anh. 223"));
+	assert!(!ed1.contains_key("19a"));
+
+	// Edition 6 should have 19a
+	let ed6 = load_edition_index(root, "mozart", "k", "6").unwrap();
+	assert!(ed6.contains_key("19a"));
+	assert!(!ed6.contains_key("anh. 223"));
 }

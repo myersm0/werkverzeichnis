@@ -28,8 +28,8 @@ pub use index::{
 };
 pub use merge::{
 	all_catalog_entries, collection_path_from_id, current_catalog_number,
-	current_catalog_number_for_edition, current_composer, merge_attribution,
-	merge_attribution_with_collections, state_as_of, MergedAttribution,
+	current_catalog_number_for_edition, current_composer, merge_attribution, state_as_of,
+	MergedAttribution,
 };
 pub use parse::{load_collection, load_composer, load_composition, ParseError};
 pub use query::{QueryBuilder, QueryResult};

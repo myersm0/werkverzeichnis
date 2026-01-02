@@ -1,11 +1,9 @@
 use std::path::Path;
 
-use crate::merge::merge_attribution_with_collections;
+use crate::merge::merge_attribution;
 use crate::parse::load_composition;
 
-pub fn run(path: &Path, data_dir: &Path) {
-	let collections_dir = data_dir.join("collections");
-
+pub fn run(path: &Path, _data_dir: &Path) {
 	let comp = match load_composition(path) {
 		Ok(c) => c,
 		Err(e) => {
@@ -14,7 +12,7 @@ pub fn run(path: &Path, data_dir: &Path) {
 		}
 	};
 
-	let merged = merge_attribution_with_collections(&comp.attribution, &collections_dir);
+	let merged = merge_attribution(&comp.attribution);
 
 	println!("ID: {}", comp.id);
 	println!("Form: {}", comp.form);

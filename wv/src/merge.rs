@@ -1,7 +1,6 @@
 use std::path::Path;
 
-use crate::parse::load_collection;
-use crate::types::{AttributionEntry, CatalogEntry, Collection, Dates, Status};
+use crate::types::{AttributionEntry, CatalogEntry, Dates, Status};
 
 #[derive(Debug, Clone, Default)]
 pub struct MergedAttribution {
@@ -56,38 +55,9 @@ pub fn merge_attribution(entries: &[AttributionEntry]) -> MergedAttribution {
 	result
 }
 
-pub fn merge_attribution_with_collections<P: AsRef<Path>>(
-	entries: &[AttributionEntry],
-	collections_dir: P,
-) -> MergedAttribution {
-	let collections_dir = collections_dir.as_ref();
-	let mut expanded: Vec<AttributionEntry> = Vec::new();
-
-	for entry in entries {
-		if let Some(cf) = &entry.cf {
-			if let Some(coll_entry) = load_collection_attribution(collections_dir, cf) {
-				let mut merged_entry = entry.clone();
-				if merged_entry.composer.is_none() {
-					merged_entry.composer = coll_entry.composer;
-				}
-				if merged_entry.dates.is_none() {
-					merged_entry.dates = coll_entry.dates;
-				}
-				expanded.push(merged_entry);
-			} else {
-				expanded.push(entry.clone());
-			}
-		} else {
-			expanded.push(entry.clone());
-		}
-	}
-
-	merge_attribution(&expanded)
-}
-
 pub fn collection_path_from_id<P: AsRef<Path>>(collections_dir: P, id: &str) -> std::path::PathBuf {
 	let collections_dir = collections_dir.as_ref();
-	
+
 	// ID format: "composer-name" -> collections/composer/name.json
 	if let Some((composer, name)) = id.split_once('-') {
 		collections_dir.join(composer).join(format!("{}.json", name))
@@ -95,35 +65,6 @@ pub fn collection_path_from_id<P: AsRef<Path>>(collections_dir: P, id: &str) -> 
 		// Fallback: flat structure
 		collections_dir.join(format!("{}.json", id))
 	}
-}
-
-fn load_collection_attribution<P: AsRef<Path>>(
-	collections_dir: P,
-	collection_id: &str,
-) -> Option<AttributionEntry> {
-	let path = collection_path_from_id(&collections_dir, collection_id);
-	let collection = load_collection(&path).ok()?;
-	merge_collection_attribution(&collection)
-}
-
-fn merge_collection_attribution(collection: &Collection) -> Option<AttributionEntry> {
-	if collection.attribution.is_empty() {
-		return None;
-	}
-	let merged = merge_attribution(&collection.attribution);
-	Some(AttributionEntry {
-		composer: merged.composer,
-		cf: None,
-		dates: Some(merged.dates),
-		status: merged.status,
-		catalog: if merged.catalog.is_empty() {
-			None
-		} else {
-			Some(merged.catalog)
-		},
-		since: None,
-		note: None,
-	})
 }
 
 pub fn current_composer(entries: &[AttributionEntry]) -> Option<&str> {
