@@ -69,15 +69,15 @@ enum Commands {
 		group: Option<String>,
 		#[arg(long)]
 		sorted: bool,
-		#[arg(short, long, help = "Terse output (scheme:number and ID only)")]
+		#[arg(short, long, help = "Terse output (IDs only)", conflicts_with_all = ["movements", "json", "edit"])]
 		terse: bool,
-		#[arg(short, long, help = "Show movement structure")]
+		#[arg(short, long, help = "Show movement structure", conflicts_with_all = ["terse", "json", "edit"])]
 		movements: bool,
-		#[arg(long, help = "Full JSON output")]
+		#[arg(long, help = "Full JSON output", conflicts_with_all = ["terse", "movements", "edit"])]
 		json: bool,
 		#[arg(short, long, help = "Quiet mode (suppress messages)")]
 		quiet: bool,
-		#[arg(short, long, help = "Open in editor")]
+		#[arg(short, long, help = "Open in editor", conflicts_with_all = ["terse", "movements", "json"])]
 		edit: bool,
 		#[arg(long, help = "Read IDs from stdin")]
 		stdin: bool,
