@@ -3,13 +3,15 @@ use std::path::{Path, PathBuf};
 use std::process::Command;
 
 use crate::catalog::load_catalog_def;
+use crate::commands::collection;
 use crate::config::{resolve_editor, Config};
-use crate::display::format_catalog;
+use crate::display::{expand_title, format_catalog, ExpansionContext};
 use crate::index::get_or_build_index;
 use crate::output::{
 	id_to_path, output_by_ids, output_json, output_movements, output_pretty, output_terse,
 	OutputContext,
 };
+use crate::parse::load_composition;
 use crate::xref::{check_duplicates, MbLookup};
 
 pub struct GetArgs {
@@ -27,6 +29,7 @@ pub struct GetArgs {
 	pub stdin: bool,
 	pub strict: bool,
 	pub xref: Option<String>,
+	pub collection: Option<Vec<String>>,
 }
 
 enum Input {
@@ -137,12 +140,18 @@ fn open_in_editor(config: &Config, paths: &[PathBuf]) {
 }
 
 pub fn run(args: GetArgs, data_dir: PathBuf, config: &Config) {
+	if let Some(collection_ids) = &args.collection {
+		run_collections(collection_ids, &args, &data_dir, config);
+		return;
+	}
+
 	let input = match resolve_input(&args) {
 		Some(i) => i,
 		None => {
 			eprintln!("Usage: wv get <composer> [scheme] [number]");
 			eprintln!("       wv get <id> [id...]");
 			eprintln!("       wv get --stdin");
+			eprintln!("       wv get --collection <id>...");
 			std::process::exit(1);
 		}
 	};
@@ -336,4 +345,124 @@ fn run_xref_mb(
 	}
 
 	eprintln!("\nmatched: {}, not found: {}", matched, not_found);
+}
+
+fn run_collections(collection_ids: &[String], args: &GetArgs, data_dir: &Path, config: &Config) {
+	let refs = collection::expand(collection_ids, data_dir);
+
+	if refs.is_empty() {
+		if !args.quiet {
+			eprintln!("No compositions found in specified collection(s).");
+		}
+		return;
+	}
+
+	let index = get_or_build_index(data_dir);
+
+	if args.terse {
+		for r in &refs {
+			let results = index
+				.query()
+				.composer(&r.composer)
+				.scheme(&r.scheme)
+				.number(&r.number)
+				.data_dir(data_dir)
+				.fetch();
+
+			for result in results {
+				println!("{}:{}\t{}", r.scheme, r.number, result.id);
+			}
+		}
+		return;
+	}
+
+	if args.json {
+		let mut all_results = Vec::new();
+		for r in &refs {
+			let results = index
+				.query()
+				.composer(&r.composer)
+				.scheme(&r.scheme)
+				.number(&r.number)
+				.data_dir(data_dir)
+				.fetch();
+			all_results.extend(results);
+		}
+
+		let ctx = OutputContext {
+			data_dir,
+			config,
+			scheme: None,
+			catalog_defn: None,
+		};
+		output_json(&all_results, &ctx);
+		return;
+	}
+
+	if args.edit {
+		let mut paths = Vec::new();
+		for r in &refs {
+			let results = index
+				.query()
+				.composer(&r.composer)
+				.scheme(&r.scheme)
+				.number(&r.number)
+				.data_dir(data_dir)
+				.fetch();
+
+			for result in results {
+				paths.push(id_to_path(data_dir, &result.id));
+			}
+		}
+		open_in_editor(config, &paths);
+		return;
+	}
+
+	for r in &refs {
+		let results = index
+			.query()
+			.composer(&r.composer)
+			.scheme(&r.scheme)
+			.number(&r.number)
+			.data_dir(data_dir)
+			.fetch();
+
+		let catalog_defn = load_catalog_def(data_dir, &r.scheme, Some(&r.composer));
+
+		for result in results {
+			let comp_path = id_to_path(data_dir, &result.id);
+
+			if args.movements {
+				if let Ok(comp) = load_composition(&comp_path) {
+					let formatted_cat = format_catalog(&r.scheme, &r.number, catalog_defn.as_ref());
+					println!("{}:", formatted_cat);
+					if let Some(movements) = &comp.movements {
+						for (i, movement) in movements.iter().enumerate() {
+							let title = movement
+								.title
+								.as_deref()
+								.or(movement.form.as_deref())
+								.unwrap_or("?");
+							println!("  {}. {}", i + 1, title);
+						}
+					}
+				}
+			} else {
+				if let Ok(comp) = load_composition(&comp_path) {
+					let expansion_ctx = ExpansionContext {
+						composition: &comp,
+						collection: None,
+						position_in_collection: None,
+						config: &config.display,
+					};
+					let title = expand_title(&expansion_ctx);
+					let formatted_cat = format_catalog(&r.scheme, &r.number, catalog_defn.as_ref());
+					println!("{}, {}", title, formatted_cat);
+				} else {
+					let formatted_cat = format_catalog(&r.scheme, &r.number, catalog_defn.as_ref());
+					println!("{}", formatted_cat);
+				}
+			}
+		}
+	}
 }

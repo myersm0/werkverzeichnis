@@ -85,6 +85,8 @@ enum Commands {
 		strict: bool,
 		#[arg(long, help = "Cross-reference lookup (e.g., mb)")]
 		xref: Option<String>,
+		#[arg(long, short = 'c', help = "Expand collection(s) as input", num_args = 1..)]
+		collection: Option<Vec<String>>,
 		#[arg(long, value_name = "PATH")]
 		data_dir: Option<PathBuf>,
 	},
@@ -131,22 +133,28 @@ enum Commands {
 	Id,
 
 	Collection {
-		id: String,
-		#[arg(long, help = "Verify all members exist in index")]
-		verify: bool,
-		#[arg(long, help = "Show full composition details")]
-		hydrate: bool,
-		#[arg(short, long, help = "Terse output (scheme:number only)")]
-		terse: bool,
-		#[arg(long, value_name = "PATH")]
+		#[command(subcommand)]
+		action: CollectionAction,
+		#[arg(long, value_name = "PATH", global = true)]
 		data_dir: Option<PathBuf>,
 	},
+}
 
-	Collections {
-		#[arg(help = "Composition ID or catalog number (e.g., bwv:812)")]
+#[derive(Subcommand)]
+enum CollectionAction {
+	List {
+		#[arg(help = "Filter by composer")]
+		composer: Option<String>,
+		#[arg(long, help = "List user collections instead of official")]
+		user: bool,
+	},
+	Show {
+		#[arg(help = "Collection ID")]
+		id: String,
+	},
+	Find {
+		#[arg(help = "Catalog query (e.g., bwv:846)")]
 		query: String,
-		#[arg(long, value_name = "PATH")]
-		data_dir: Option<PathBuf>,
 	},
 }
 
@@ -195,6 +203,7 @@ fn main() {
 			stdin,
 			strict,
 			xref,
+			collection,
 			data_dir,
 		} => {
 			let data_dir = resolve_data_dir(data_dir.as_ref(), &config);
@@ -213,6 +222,7 @@ fn main() {
 				stdin,
 				strict,
 				xref,
+				collection,
 			};
 			commands::get::run(args, data_dir, &config);
 		}
@@ -251,13 +261,19 @@ fn main() {
 		Commands::Id => {
 			println!("{}", generate_id());
 		}
-		Commands::Collection { id, verify, hydrate, terse, data_dir } => {
+		Commands::Collection { action, data_dir } => {
 			let data_dir = resolve_data_dir(data_dir.as_ref(), &config);
-			commands::collection::run_collection(&id, verify, hydrate, terse, &data_dir, &config);
-		}
-		Commands::Collections { query, data_dir } => {
-			let data_dir = resolve_data_dir(data_dir.as_ref(), &config);
-			commands::collection::run_collections(&query, &data_dir);
+			match action {
+				CollectionAction::List { composer, user } => {
+					commands::collection::list(composer.as_deref(), user, &data_dir);
+				}
+				CollectionAction::Show { id } => {
+					commands::collection::show(&id, &data_dir, &config);
+				}
+				CollectionAction::Find { query } => {
+					commands::collection::find(&query, &data_dir);
+				}
+			}
 		}
 	}
 }
