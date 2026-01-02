@@ -12,17 +12,6 @@ pub struct MergedAttribution {
 	pub notes: Vec<String>,
 }
 
-impl Default for Dates {
-	fn default() -> Self {
-		Dates {
-			composed: None,
-			published: None,
-			premiered: None,
-			revised: None,
-		}
-	}
-}
-
 fn merge_dates(base: &mut Dates, overlay: &Dates) {
 	if base.composed.is_none() {
 		base.composed = overlay.composed;

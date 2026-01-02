@@ -47,7 +47,7 @@ pub struct AttributionEntry {
 	pub note: Option<String>,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
 pub struct Dates {
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub composed: Option<i32>,
