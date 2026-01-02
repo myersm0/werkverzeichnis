@@ -2,13 +2,16 @@
 	"id": "6f1d9e3a",
 	"attribution": [
 		{
-			"cf": "bach-cello-suites",
 			"catalog": [
 				{
 					"scheme": "bwv",
 					"number": "1010"
 				}
-			]
+			],
+			"composer": "bach",
+			"dates": {
+				"composed": 1723
+			}
 		}
 	],
 	"form": "suite",

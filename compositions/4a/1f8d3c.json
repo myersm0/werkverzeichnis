@@ -2,13 +2,16 @@
 	"id": "4a1f8d3c",
 	"attribution": [
 		{
-			"cf": "bach-wtc-1",
 			"catalog": [
 				{
 					"scheme": "bwv",
 					"number": "849"
 				}
-			]
+			],
+			"composer": "bach",
+			"dates": {
+				"composed": 1722
+			}
 		}
 	],
 	"form": "prelude and fugue",

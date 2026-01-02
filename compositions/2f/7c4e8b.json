@@ -2,13 +2,16 @@
 	"id": "2f7c4e8b",
 	"attribution": [
 		{
-			"cf": "bach-six-partitas",
 			"catalog": [
 				{
 					"scheme": "bwv",
 					"number": "829"
 				}
-			]
+			],
+			"composer": "bach",
+			"dates": {
+				"published": 1731
+			}
 		}
 	],
 	"form": "partita",

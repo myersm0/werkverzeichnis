@@ -2,13 +2,17 @@
 	"id": "49850ec3",
 	"attribution": [
 		{
-			"cf": "bach-six-solo",
 			"catalog": [
 				{
 					"scheme": "bwv",
 					"number": "1005"
 				}
-			]
+			],
+			"composer": "bach",
+			"dates": {
+				"composed": 1720,
+				"published": 1802
+			}
 		}
 	],
 	"form": "sonata",

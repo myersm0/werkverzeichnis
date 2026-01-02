@@ -2,13 +2,17 @@
 	"id": "9175dd49",
 	"attribution": [
 		{
-			"cf": "bach-six-solo",
 			"catalog": [
 				{
 					"scheme": "bwv",
 					"number": "1006"
 				}
-			]
+			],
+			"composer": "bach",
+			"dates": {
+				"composed": 1720,
+				"published": 1802
+			}
 		}
 	],
 	"form": "suite",

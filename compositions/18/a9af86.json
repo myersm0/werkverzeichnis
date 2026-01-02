@@ -2,13 +2,16 @@
 	"id": "18a9af86",
 	"attribution": [
 		{
-			"cf": "bach-french-suites",
 			"catalog": [
 				{
 					"scheme": "bwv",
 					"number": "817"
 				}
-			]
+			],
+			"composer": "bach",
+			"dates": {
+				"composed": 1725
+			}
 		}
 	],
 	"form": "suite",

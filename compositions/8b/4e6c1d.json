@@ -2,13 +2,16 @@
 	"id": "8b4e6c1d",
 	"attribution": [
 		{
-			"cf": "bach-english-suites",
 			"catalog": [
 				{
 					"scheme": "bwv",
 					"number": "807"
 				}
-			]
+			],
+			"composer": "bach",
+			"dates": {
+				"composed": 1720
+			}
 		}
 	],
 	"form": "suite",
