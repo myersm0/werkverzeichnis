@@ -4,6 +4,10 @@
 		"de": "Das wohltemperierte Klavier, Teil II",
 		"en": "The Well-Tempered Clavier, Book II"
 	},
+	"expansion_pattern": {
+		"de": "Präludium und Fuge Nr. {num} in {key}",
+		"en": "Prelude and Fugue no {num} in {key}"
+	},
 	"attribution": [
 		{
 			"composer": "bach",
