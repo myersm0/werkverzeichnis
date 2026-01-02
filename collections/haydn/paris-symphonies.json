@@ -1,0 +1,18 @@
+{
+	"id": "haydn-paris-symphonies",
+	"title": {
+		"de": "Pariser Sinfonien",
+		"en": "Paris Symphonies"
+	},
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1786
+			},
+			"note": "Commissioned by Concert de la Loge Olympique, 1785-1786"
+		}
+	],
+	"scheme": "hob",
+	"compositions": ["i:82", "i:83", "i:84", "i:85", "i:86", "i:87"]
+}

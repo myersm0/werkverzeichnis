@@ -1,0 +1,18 @@
+{
+	"id": "haydn-london-symphonies",
+	"title": {
+		"de": "Londoner Sinfonien",
+		"en": "London Symphonies"
+	},
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1795
+			},
+			"note": "Commissioned by Johann Peter Salomon for London concerts, 1791-1795"
+		}
+	],
+	"scheme": "hob",
+	"compositions": ["i:93", "i:94", "i:95", "i:96", "i:97", "i:98", "i:99", "i:100", "i:101", "i:102", "i:103", "i:104"]
+}

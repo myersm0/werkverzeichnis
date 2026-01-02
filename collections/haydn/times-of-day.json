@@ -1,0 +1,18 @@
+{
+	"id": "haydn-times-of-day",
+	"title": {
+		"de": "Tageszeiten-Sinfonien",
+		"en": "Times of Day Symphonies"
+	},
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1761
+			},
+			"note": "Composed as a set for Prince Esterházy"
+		}
+	],
+	"scheme": "hob",
+	"compositions": ["i:6", "i:7", "i:8"]
+}
