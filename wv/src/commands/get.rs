@@ -9,7 +9,7 @@ use crate::display::{expand_title, format_catalog, ExpansionContext};
 use crate::index::get_or_build_index;
 use crate::output::{
 	id_to_path, output_by_ids, output_json, output_movements, output_pretty, output_terse,
-	OutputContext,
+	print, OutputContext,
 };
 use crate::parse::load_composition;
 use crate::xref::{check_duplicates, MbLookup};
@@ -277,7 +277,7 @@ fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Con
 	} else if args.movements {
 		output_movements(&results, &ctx);
 	} else if args.terse {
-		output_terse(&results, query.scheme.as_deref());
+		output_terse(&results);
 	} else {
 		output_pretty(&results, &ctx);
 	}
@@ -328,10 +328,10 @@ fn run_xref_mb(
 
 	for r in &mb_results {
 		if let Some(mb_id) = &r.mb_id {
-			println!("{}\t{}", r.catalog_number, mb_id);
+			print(&format!("{}\t{}", r.catalog_number, mb_id));
 			matched += 1;
 		} else {
-			println!("{}\t", r.catalog_number);
+			print(&format!("{}\t", r.catalog_number));
 			not_found += 1;
 		}
 	}
@@ -370,7 +370,7 @@ fn run_collections(collection_ids: &[String], args: &GetArgs, data_dir: &Path, c
 				.fetch();
 
 			for result in results {
-				println!("{}:{}\t{}", r.scheme, r.number, result.id);
+				print(&result.id);
 			}
 		}
 		return;
@@ -435,7 +435,7 @@ fn run_collections(collection_ids: &[String], args: &GetArgs, data_dir: &Path, c
 			if args.movements {
 				if let Ok(comp) = load_composition(&comp_path) {
 					let formatted_cat = format_catalog(&r.scheme, &r.number, catalog_defn.as_ref());
-					println!("{}:", formatted_cat);
+					print(&format!("{}:", formatted_cat));
 					if let Some(movements) = &comp.movements {
 						for (i, movement) in movements.iter().enumerate() {
 							let title = movement
@@ -443,7 +443,7 @@ fn run_collections(collection_ids: &[String], args: &GetArgs, data_dir: &Path, c
 								.as_deref()
 								.or(movement.form.as_deref())
 								.unwrap_or("?");
-							println!("  {}. {}", i + 1, title);
+							print(&format!("  {}. {}", i + 1, title));
 						}
 					}
 				}
@@ -457,10 +457,10 @@ fn run_collections(collection_ids: &[String], args: &GetArgs, data_dir: &Path, c
 					};
 					let title = expand_title(&expansion_ctx);
 					let formatted_cat = format_catalog(&r.scheme, &r.number, catalog_defn.as_ref());
-					println!("{}, {}", title, formatted_cat);
+					print(&format!("{}, {}", title, formatted_cat));
 				} else {
 					let formatted_cat = format_catalog(&r.scheme, &r.number, catalog_defn.as_ref());
-					println!("{}", formatted_cat);
+					print(&formatted_cat);
 				}
 			}
 		}

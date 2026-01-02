@@ -5,6 +5,7 @@ use crate::config::Config;
 use crate::display::{expand_title, format_catalog, ExpansionContext};
 use crate::index::get_or_build_index;
 use crate::merge::collection_path_from_id;
+use crate::output::print;
 use crate::parse::{load_collection, load_composition};
 
 pub fn list(composer: Option<&str>, user: bool, data_dir: &Path) {
@@ -55,7 +56,7 @@ pub fn list(composer: Option<&str>, user: bool, data_dir: &Path) {
 					.map(|s| s.as_str())
 					.unwrap_or("");
 				let count = coll.compositions.len();
-				println!("{}\t{}\t({})", coll.id, title, count);
+				print(&format!("{}\t{}\t({})", coll.id, title, count));
 			}
 		}
 	}
@@ -100,12 +101,12 @@ pub fn show(id: &str, data_dir: &Path, config: &Config) {
 	let catalog_defn = load_catalog_def(data_dir, &collection.scheme, Some(composer));
 
 	if let Some(en) = collection.title.get("en") {
-		println!("{}", en);
+		print(en);
 	} else if let Some(de) = collection.title.get("de") {
-		println!("{}", de);
+		print(de);
 	}
 
-	println!();
+	print("");
 
 	for num in &collection.compositions {
 		let found = index
@@ -131,12 +132,12 @@ pub fn show(id: &str, data_dir: &Path, config: &Config) {
 					config: &config.display,
 				};
 				let title = expand_title(&ctx);
-				println!("{}, {}", title, formatted_cat);
+				print(&format!("{}, {}", title, formatted_cat));
 			} else {
-				println!("{}", formatted_cat);
+				print(&formatted_cat);
 			}
 		} else {
-			println!("{} (not indexed)", formatted_cat);
+			print(&format!("{} (not indexed)", formatted_cat));
 		}
 	}
 }
@@ -179,10 +180,10 @@ pub fn find(query: &str, data_dir: &Path) {
 	}
 
 	if found.is_empty() {
-		println!("No collections contain {}:{}", scheme, number);
+		print(&format!("No collections contain {}:{}", scheme, number));
 	} else {
 		for id in found {
-			println!("{}", id);
+			print(&id);
 		}
 	}
 }
