@@ -7,21 +7,9 @@
 
 The name comes from the well-known *Bach-Werke-Verzeichnis* (catalog of Bach's works), but the scope is broader. Catalogs have accumulated over centuries for each composer — BWV for Bach, Köchel-Verzeichnis for Mozart, opus numbers for most Romantic composers, and dozens more. This project aims to bring these disparate systems together under a simple, structured format.
 
-> [!NOTE]
+> [!UPDATE]
 > ## Overlap in scope with MusicBrainz
-> When I started this project, I had underestimated [MusicBrainz](https://musicbrainz.org/)'s model. Only after developing my data model and an initial dataset as proof-of-concept, I discovered that most works are _already_ indexed in MusicBrainz, queryable by catalog number, and even have a decent handling of catalog revisions and attribution changes for most purposes. I didn't expect this to be the case.
-> 
-> So why continue? I believe the data model in this project is compelling enough that it may still be worth moving forward, for a few reasons:
-> - No dependencies. Offline. Transparent.
-> 	- You clone the repo and you instantly have everything you need in front of you. 
-> 	- Content is simply plain text files (like [this one](compositions/27/c3084a.json)) that you can open in any text editor and instantly understand.
-> - We provide a convenient design for cases where works are looked up primarily by _catalog number_
-> 	- Lookups like these are one-liners in our design, while in MB it would require some non-trivial preprocessing and SQL table joins
-> 	- We even allow edition-aware queries, which I don't believe is possible in MB
-> - MusicBrainz covers millions of works across all genres, but with gaps. We focus on fewer composers but aim for complete representation of their cataloged oeuvre.
-> - Attribution history is first-class data. When a work's authorship changes, we preserve the full history, often with timestamps. This may have applications in musicological research and information retrieval.
-> 
-> We're also exploring whether this project provides a means for contributing back to MB, either by filling gaps or identifying inaccuracies.
+> Development on this project has come to a temporary halt due to lack of outside interest, and due to other urgent projects that have taken priority for me. I will likely come back to it at some point, maybe later this summer.
 
 ## Roadmap
 This project is still in an early stage of development. By the end of 2025 the following are expected to be complete:
