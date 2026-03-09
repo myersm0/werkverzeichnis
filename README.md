@@ -7,8 +7,7 @@
 
 The name comes from the well-known *Bach-Werke-Verzeichnis* (catalog of Bach's works), but the scope is broader. Catalogs have accumulated over centuries for each composer — BWV for Bach, Köchel-Verzeichnis for Mozart, opus numbers for most Romantic composers, and dozens more. This project aims to bring these disparate systems together under a simple, structured format.
 
-> [!UPDATE]
-> ## Overlap in scope with MusicBrainz
+> [!NOTE]
 > Development on this project has come to a temporary halt due to lack of outside interest, and due to other urgent projects that have taken priority for me. I will likely come back to it at some point, maybe later this summer.
 
 ## Roadmap
