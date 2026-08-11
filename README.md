@@ -5,34 +5,17 @@
 
 **werkverzeichnis** (German: "catalog of works") provides human- and machine-readable data about classical compositions: catalog numbers, keys, instrumentation, movement structures, and attribution history.
 
-The name comes from the well-known *Bach-Werke-Verzeichnis* (catalog of Bach's works), but the scope is broader. Catalogs have accumulated over centuries for each composer — BWV for Bach, Köchel-Verzeichnis for Mozart, opus numbers for most Romantic composers, and dozens more. This project aims to bring these disparate systems together under a simple, structured format.
+The name comes from the well-known *Bach-Werke-Verzeichnis* (catalog of Bach's works), but the scope is broader. Catalogs have accumulated over centuries for each composer: BWV for Bach, Köchel-Verzeichnis for Mozart, opus numbers for most Romantic composers, and dozens more. This project aims to bring these disparate systems together under a simple, structured format.
 
-> [!NOTE]
-> Development on this project has come to a temporary halt due to lack of outside interest, and due to other urgent projects that have taken priority for me. I will likely come back to it at some point, maybe later this summer.
+## Scope and coverage
+Current coverage includes:
+- Bach: keyboard suite collections (six keyboard partitas, French & English suites), solo string suites (cello suites, sonatas and partitas for solo violin), Well-Tempered Clavier I & II, Goldberg Variations
+- Beethoven: the 32 piano sonatas
+- Mozart: the 19 piano sonatas
+- Haydn: complete symphonies
+- Schubert: complete piano sonatas
 
-## Roadmap
-This project is still in an early stage of development. By the end of 2025 the following are expected to be complete:
-- [x] Bach keyboard suite collections (six keyboard partitas, French & English suites)
-- [x] Bach solo string suites (cello suites, sonatas and partitas for solo violin)
-- [x] Bach Well-Tempered Clavier I & II, Goldberg Variations
-- [ ] Bach complete cantatas
-- [x] Beethoven: the 32 piano sonatas
-- [x] Mozart: the 19 piano sonatas
-- [x] Haydn complete symphonies
-- [x] Schubert complete piano sonatas
-
-Goals for the first quarter of 2026:
-- [x] extend and cross-reference with [MusicBrainz](https://musicbrainz.org) work IDs
-- [ ] local routines for automated accuracy checks and updates
-- [ ] Bach complete works
-- [ ] Beethoven complete works
-- [ ] Haydn complete works
-- [ ] Mozart complete works
-- [ ] Schubert complete works
-
-## Quick start
-
-
+Contributions of new compositions or corrections are welcome via pull request or issue.
 
 ## Quick start
 ### Install (recommended)
@@ -91,7 +74,7 @@ $ wv get beethoven op 2/1 --movements
 ### Case insensitivity
 Queries are case-insensitive for convenience. Internally, everything is stored _lowercase_, and then results are prettified with proper capitalization for display. For example:
 ```bash
-$ wv get MoZaRt K 331
+$ wv get MoZaRt k 331
 Piano Sonata in A major, K. 331
 
 $ wv get haydn hob i:1
@@ -139,7 +122,7 @@ $ wv get mozart k 300i --strict
 No results found.
 ```
 
-Note: when retrieving a _range_ of catalog numbers, `--strict` is on by default to prevent returning potenially duplicated results.
+Note: when retrieving a _range_ of catalog numbers, `--strict` is on by default to prevent returning potentially duplicated results.
 
 #### Composer changes
 The following example shows what happens in the event of a ***change in authorship***. Here are three separate queries for a cantata once thought to be by Bach but which is now attributed to Telemann:
@@ -158,7 +141,7 @@ Das ist je gewißlich wahr, TWV 1:183
 
 All three calls return the same _composition_, with the same internal ID (not shown), only displayed a little differently. This same composition is simultaneously a part of Telemann's works _and_ a part of the appendix of the Bach catalog of spurious works. As you can see above, it's even still reference-able by its old, superseded catalog number BWV 141. (You disable this behavior with the `--strict` flag to enforce using only the latest information.)
 
-This attribution history is straightforwadly represented right in the composition JSON itself, which you can see [here](https://github.com/myersm0/werkverzeichnis/blob/ccc791bb6e9d173d8fab1464d85e88c4c8a8b512/compositions/78/129abd.json#L6), simply by means of an array of attribution entries, sorted in _reverse_ chronological order such that the top entry is always the most current.
+This attribution history is straightforwardly represented right in the composition JSON itself, which you can see [here](https://github.com/myersm0/werkverzeichnis/blob/ccc791bb6e9d173d8fab1464d85e88c4c8a8b512/compositions/78/129abd.json#L6), simply by means of an array of attribution entries, sorted in _reverse_ chronological order such that the top entry is always the most current.
 
 ## Configuration
 The CLI can be customized to match your preferences. Create a config file at `~/.config/wv/config.toml`:
@@ -175,7 +158,7 @@ Output like key signatures and titles adapts to your language setting:
 | `en` | C major, F♯ minor |
 | `de` | C-Dur, fis-Moll |
 
-Currently English and German are supported; more languages may be added later.
+Currently English and German are supported.
 
 ### Display patterns
 When a composition doesn't have an explicit title, one is generated from its form, key, and position. You can customize the pattern:
@@ -296,8 +279,6 @@ This dataset is compiled using AI large language models (LLMs) to process and st
 
 We aim to maintain a very high standard of accuracy and quality — because if the data isn't reliable, it isn't useful. Still, despite our best efforts, errors are inevitable in any project of this scope, so corrections are welcome via pull request or issue.
 
-On top of that, we're developing a framework for local inference using on-device neural nets and classical natural language processing (NLP) techniques, to do periodic automated reviews of the dataset and for assimilation of new or updated content from the web.
-
 ## CLI tool
 The `wv` command-line tool provides:
 - **get** — Look up compositions by composer, catalog, range
@@ -322,4 +303,3 @@ This project is focused on providing a unified, machine-readable structure to av
 
 ## License
 This project is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). You are free to use, adapt, and redistribute the data with attribution.
-
