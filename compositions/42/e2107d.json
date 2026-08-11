@@ -20,7 +20,7 @@
 	],
 	"form": "chorale cantata",
 	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), cornett, 3 trombones, oboe d'amore, 2 violins, viola, basso continuo",
-	"notes": "Composed for the second day of Christmas.",
+	"note": "Composed for the second day of Christmas.",
 	"movements": [
 		{
 			"title": "Christum wir sollen loben schon",

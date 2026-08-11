@@ -19,7 +19,7 @@
 	],
 	"form": "church cantata",
 	"instrumentation": "soprano, tenor, five-part choir (with dual soprano part), 3 trumpets, timpani, 2 flauto traverso, 2 oboes, 2 violins, viola, basso continuo",
-	"notes": "Composed for a Christmas celebration by the University of Leipzig.",
+	"note": "Composed for a Christmas celebration by the University of Leipzig.",
 	"movements": [
 		{
 			"title": "Gloria in excelsis Deo",

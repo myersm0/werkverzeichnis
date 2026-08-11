@@ -20,7 +20,7 @@
 	],
 	"form": "chorale cantata",
 	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 2 horns, timpani, 3 oboes, 2 violins, viola, continuo",
-	"notes": "Composed for Christmas Day.",
+	"note": "Composed for Christmas Day.",
 	"movements": [
 		{
 			"title": "Gelobet seist du, Jesu Christ",

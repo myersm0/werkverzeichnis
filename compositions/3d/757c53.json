@@ -20,7 +20,7 @@
 	"form": "chorale cantata",
 	"key": "E",
 	"instrumentation": "soprano, alto, tenor, bass, choir, horn, transverse flute, 2 oboes d'amore, 2 violins, viola, continuo",
-	"notes": "Composed for the 16th Sunday after Trinity; first performed 24 September 1724 in Leipzig; based on hymn by Caspar Neumann and melody by Daniel Vetter; Bach transposed it to D major in the late 1740s (BWV 8.2 version).",
+	"note": "Composed for the 16th Sunday after Trinity; first performed 24 September 1724 in Leipzig; based on hymn by Caspar Neumann and melody by Daniel Vetter; Bach transposed it to D major in the late 1740s (BWV 8.2 version).",
 	"movements": [
 		{
 			"title": "Liebster Gott, wenn werd ich sterben? (chorale fantasia)",

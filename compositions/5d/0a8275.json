@@ -19,7 +19,7 @@
 	],
 	"form": "chorale cantata",
 	"instrumentation": "soprano, bass, choir (SATB), 2 flutes, 2 oboes, 2 violins, viola, basso continuo",
-	"notes": "Incomplete cantata; tenor part is missing. Composed for Trinity Sunday.",
+	"note": "Incomplete cantata; tenor part is missing. Composed for Trinity Sunday.",
 	"movements": [
 		{
 			"title": "Nun danket alle Gott",

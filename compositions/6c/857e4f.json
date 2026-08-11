@@ -20,7 +20,7 @@
 	],
 	"form": "church cantata",
 	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), oboe, 2 violins, viola, basso continuo",
-	"notes": "Composed for Cantate Sunday, the fourth Sunday after Easter.",
+	"note": "Composed for Cantate Sunday, the fourth Sunday after Easter.",
 	"movements": [
 		{
 			"title": "Wo gehest du hin",

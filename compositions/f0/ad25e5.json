@@ -21,7 +21,7 @@
 	"form": "chorale cantata",
 	"key": "d",
 	"instrumentation": "soprano, alto, tenor, bass, choir, 2 oboes, 4 trombones, 2 violins, viola, continuo",
-	"notes": "Composed for the Second Sunday after Trinity.",
+	"note": "Composed for the Second Sunday after Trinity.",
 	"movements": [
 		{
 			"title": "Ach Gott, vom Himmel sieh darein (Chorale fantasia)",

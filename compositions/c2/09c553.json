@@ -19,7 +19,7 @@
 	],
 	"form": "sacred cantata",
 	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 3 trumpets, timpani, 2 flauti traversi, 3 oboes, oboe d'amore, oboe da caccia, 2 violins, viola, bassoon, continuo",
-	"notes": "Christmas cantata composed for Christmas Day.",
+	"note": "Christmas cantata composed for Christmas Day.",
 	"movements": [
 		{
 			"title": "Unser Mund sei voll Lachens",

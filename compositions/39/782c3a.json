@@ -20,7 +20,7 @@
 	],
 	"form": "church cantata",
 	"instrumentation": "soprano, tenor, bass, choir (SSATB), 3 trumpets, timpani, 3 oboes, taille, bassoon, 2 violins, 2 violas, 2 cellos, basso continuo",
-	"notes": "Composed for the first day of Easter.",
+	"note": "Composed for the first day of Easter.",
 	"movements": [
 		{
 			"title": "Sonata",

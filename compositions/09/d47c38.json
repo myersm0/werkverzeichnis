@@ -20,7 +20,7 @@
 	"form": "chorale cantata",
 	"key": "A",
 	"instrumentation": "soprano, alto, tenor, bass, choir, trombone, horn, 2 oboes d'amore, 2 violins, viola, continuo",
-	"notes": "Composed for the second Sunday after Epiphany",
+	"note": "Composed for the second Sunday after Epiphany",
 	"movements": [
 		{
 			"title": "Ach Gott, wie manches Herzeleid",

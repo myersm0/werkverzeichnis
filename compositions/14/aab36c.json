@@ -19,7 +19,7 @@
 	],
 	"form": "church cantata",
 	"instrumentation": "alto, tenor, bass, four-part choir, recorder, 2 violins, 2 violas, basso continuo",
-	"notes": "Composed for Palm Sunday.",
+	"note": "Composed for Palm Sunday.",
 	"movements": [
 		{
 			"title": "Sonata"

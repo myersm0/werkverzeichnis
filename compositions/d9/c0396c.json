@@ -20,7 +20,7 @@
 	],
 	"form": "chorale cantata",
 	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 3 oboes, 2 oboes d'amore, oboe da caccia, 2 violins, viola, cello, continuo",
-	"notes": "Reworked from BWV 80a (Weimar version). Later Leipzig version (80.3) features extended chorale fantasia as opening movement.",
+	"note": "Reworked from BWV 80a (Weimar version). Later Leipzig version (80.3) features extended chorale fantasia as opening movement.",
 	"movements": [
 		{
 			"title": "Ein feste Burg ist unser Gott",

@@ -20,7 +20,7 @@
 	],
 	"form": "chorale cantata",
 	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), horn or trombone, flauto traverso, flauto piccolo or violino piccolo, 2 oboes, 2 violins, viola, cello, continuo",
-	"notes": "Composed for the 18th Sunday after Trinity.",
+	"note": "Composed for the 18th Sunday after Trinity.",
 	"movements": [
 		{
 			"title": "Herr Christ, der einge Gottessohn",
