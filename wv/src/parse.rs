@@ -76,4 +76,28 @@ mod tests {
 		let path = path_for_id("compositions", "abcd1234").unwrap();
 		assert_eq!(path, Path::new("compositions/ab/cd1234.json"));
 	}
+
+	#[test]
+	fn test_composition_note_is_accepted() {
+		let json = r#"{
+			"id": "abcd1234",
+			"form": "sonata",
+			"note": "unfinished",
+			"attribution": [{"composer": "schubert"}]
+		}"#;
+		let composition: Composition = serde_json::from_str(json).unwrap();
+		assert_eq!(composition.note.as_deref(), Some("unfinished"));
+	}
+
+	#[test]
+	fn test_unknown_composition_field_is_rejected() {
+		let json = r#"{
+			"id": "abcd1234",
+			"form": "sonata",
+			"notes": "unfinished",
+			"attribution": [{"composer": "schubert"}]
+		}"#;
+		let error = serde_json::from_str::<Composition>(json).unwrap_err();
+		assert!(error.to_string().contains("unknown field `notes`"));
+	}
 }

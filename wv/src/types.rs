@@ -2,6 +2,7 @@ use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct Composition {
 	pub id: String,
 	#[serde(skip_serializing_if = "Option::is_none")]
@@ -11,6 +12,8 @@ pub struct Composition {
 	pub key: Option<String>,
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub instrumentation: Option<String>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub note: Option<String>,
 	pub attribution: Vec<AttributionEntry>,
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub movements: Option<Vec<Movement>>,

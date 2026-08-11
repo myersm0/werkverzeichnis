@@ -1,6 +1,9 @@
 use std::collections::HashSet;
 use std::fs;
-use std::path::Path;
+use std::path::{Path, PathBuf};
+
+use jsonschema::Validator as JsonSchemaValidator;
+use serde_json::Value;
 
 use crate::parse::load_composer;
 use crate::types::Composition;
@@ -20,6 +23,9 @@ impl std::fmt::Display for ValidationError {
 pub struct Validator {
 	composers: HashSet<String>,
 	catalog_schemes: HashSet<String>,
+	composition_schema_path: PathBuf,
+	composition_schema: Option<JsonSchemaValidator>,
+	composition_schema_error: Option<String>,
 }
 
 impl Validator {
@@ -60,9 +66,19 @@ impl Validator {
 			}
 		}
 
+		let composition_schema_path = data_dir.join("schemas").join("composition.schema.json");
+		let (composition_schema, composition_schema_error) =
+			match load_schema_validator(&composition_schema_path) {
+				Ok(validator) => (Some(validator), None),
+				Err(error) => (None, Some(error)),
+			};
+
 		Self {
 			composers,
 			catalog_schemes,
+			composition_schema_path,
+			composition_schema,
+			composition_schema_error,
 		}
 	}
 
@@ -70,6 +86,14 @@ impl Validator {
 		let path = path.as_ref();
 		let path_str = path.display().to_string();
 		let mut errors = Vec::new();
+
+		if let Some(error) = &self.composition_schema_error {
+			errors.push(ValidationError {
+				path: self.composition_schema_path.display().to_string(),
+				message: error.clone(),
+			});
+			return errors;
+		}
 
 		let content = match fs::read_to_string(path) {
 			Ok(c) => c,
@@ -96,12 +120,42 @@ impl Validator {
 			});
 		}
 
-		let comp: Composition = match serde_json::from_str(&content) {
-			Ok(c) => c,
+		let value: Value = match serde_json::from_str(&content) {
+			Ok(value) => value,
 			Err(e) => {
 				errors.push(ValidationError {
 					path: path_str,
 					message: format!("Invalid JSON: {}", e),
+				});
+				return errors;
+			}
+		};
+
+		if let Some(schema) = &self.composition_schema {
+			let schema_errors: Vec<_> = schema.iter_errors(&value).collect();
+			if !schema_errors.is_empty() {
+				for error in schema_errors {
+					let instance_path = error.instance_path().to_string();
+					let location = if instance_path.is_empty() {
+						"$".to_string()
+					} else {
+						format!("${}", instance_path)
+					};
+					errors.push(ValidationError {
+						path: path_str.clone(),
+						message: format!("schema {}: {}", location, error),
+					});
+				}
+				return errors;
+			}
+		}
+
+		let comp: Composition = match serde_json::from_value(value) {
+			Ok(c) => c,
+			Err(e) => {
+				errors.push(ValidationError {
+					path: path_str,
+					message: format!("Schema/model mismatch: {}", e),
 				});
 				return errors;
 			}
@@ -223,6 +277,14 @@ impl Validator {
 		let compositions_dir = compositions_dir.as_ref();
 		let mut errors = Vec::new();
 
+		if let Some(error) = &self.composition_schema_error {
+			errors.push(ValidationError {
+				path: self.composition_schema_path.display().to_string(),
+				message: error.clone(),
+			});
+			return errors;
+		}
+
 		let entries = match fs::read_dir(compositions_dir) {
 			Ok(e) => e,
 			Err(_) => return errors,
@@ -250,6 +312,17 @@ impl Validator {
 
 		errors
 	}
+}
+
+fn load_schema_validator(path: &Path) -> Result<JsonSchemaValidator, String> {
+	let content = fs::read_to_string(path)
+		.map_err(|error| format!("Failed to read schema: {}", error))?;
+	let schema: Value = serde_json::from_str(&content)
+		.map_err(|error| format!("Invalid schema JSON: {}", error))?;
+	jsonschema::meta::validate(&schema)
+		.map_err(|error| format!("Invalid JSON Schema: {}", error))?;
+	jsonschema::validator_for(&schema)
+		.map_err(|error| format!("Failed to compile JSON Schema: {}", error))
 }
 
 fn is_valid_catalog_number_case(scheme: &str, number: &str) -> bool {
@@ -315,6 +388,9 @@ mod tests {
 		let validator = Validator {
 			composers: HashSet::new(),
 			catalog_schemes: HashSet::new(),
+			composition_schema_path: PathBuf::new(),
+			composition_schema: None,
+			composition_schema_error: None,
 		};
 
 		let path = Path::new("compositions/ab/cd1234.json");
