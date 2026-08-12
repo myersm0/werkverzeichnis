@@ -3,20 +3,19 @@
 	"$id": "https://github.com/myersm0/werkverzeichnis/schemas/catalog.schema.json",
 	"title": "Catalog",
 	"type": "object",
+	"additionalProperties": false,
 	"required": ["id", "name", "canonical_format", "pattern", "sort_keys"],
 	"properties": {
 		"id": {
 			"type": "string",
 			"pattern": "^[a-z0-9-]+$",
-			"description": "Identifier used as scheme in catalog_numbers"
+			"description": "Identifier used as scheme in catalog entries"
 		},
 		"name": {
 			"type": "string",
 			"description": "Full name of the catalog"
 		},
-		"description": {
-			"type": "string"
-		},
+		"description": {"type": "string"},
 		"canonical_format": {
 			"type": "string",
 			"description": "Display format with {number} placeholder"
@@ -28,46 +27,66 @@
 		"sort_keys": {
 			"type": "array",
 			"description": "How to sort based on captured groups",
-			"items": {
-				"type": "object",
-				"required": ["group", "type"],
-				"properties": {
-					"group": {
-						"type": "integer",
-						"description": "Regex capture group number (1-indexed)"
-					},
-					"type": {
-						"type": "string",
-						"enum": ["int", "str", "roman"],
-						"description": "How to interpret the captured value for sorting"
-					},
-					"none_last": {
-						"type": "boolean",
-						"default": false,
-						"description": "If true, missing/null values sort last instead of first"
-					}
-				}
-			}
+			"items": {"$ref": "#/$defs/sortKey"}
 		},
 		"group_by": {
 			"type": "array",
-			"items": {"type": "integer"},
+			"items": {"type": "integer", "minimum": 1},
 			"description": "Capture groups that define a work group (for 'show me all of op 2')"
 		},
 		"examples": {
 			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"number": {"type": "string"},
-					"display": {"type": "string"}
-				}
-			}
+			"items": {"$ref": "#/$defs/example"}
 		},
 		"aliases": {
 			"type": "array",
 			"items": {"type": "string"},
 			"description": "Alternative identifiers that resolve to this catalog"
+		},
+		"editions": {
+			"type": "object",
+			"additionalProperties": {"$ref": "#/$defs/edition"}
+		},
+		"categories": {
+			"type": "object",
+			"additionalProperties": {"type": "string"}
+		},
+		"mb_format": {"type": "string"},
+		"mb_part_format": {"type": "string"}
+	},
+	"$defs": {
+		"sortKey": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["group", "type"],
+			"properties": {
+				"group": {"type": "integer", "minimum": 1},
+				"type": {"type": "string", "enum": ["int", "str", "roman"]},
+				"display": {"type": "string", "enum": ["upper", "lower", "title"]},
+				"none_last": {
+					"type": "boolean",
+					"default": false,
+					"description": "If true, missing/null values sort last instead of first"
+				}
+			}
+		},
+		"example": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["number", "display"],
+			"properties": {
+				"number": {"type": "string"},
+				"display": {"type": "string"}
+			}
+		},
+		"edition": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["year", "editor"],
+			"properties": {
+				"year": {"type": "integer"},
+				"editor": {"type": "string"}
+			}
 		}
 	}
 }

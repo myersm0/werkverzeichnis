@@ -121,6 +121,7 @@ pub struct Xref {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct Collection {
 	pub id: String,
 	pub title: HashMap<String, String>,
@@ -137,6 +138,7 @@ pub struct Collection {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct Composer {
 	pub id: String,
 	pub name: ComposerName,
@@ -155,13 +157,17 @@ pub struct Composer {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct ComposerName {
 	pub full: String,
 	pub sort: String,
 }
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct CatalogDefinition {
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub id: Option<String>,
 	pub name: String,
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub description: Option<String>,
@@ -174,9 +180,15 @@ pub struct CatalogDefinition {
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub group_by: Option<Vec<usize>>,
 	#[serde(skip_serializing_if = "Option::is_none")]
+	pub examples: Option<Vec<CatalogExample>>,
+	#[serde(skip_serializing_if = "Option::is_none")]
 	pub aliases: Option<Vec<String>>,
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub editions: Option<HashMap<String, EditionInfo>>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub categories: Option<HashMap<String, String>>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub primary: Option<bool>,
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub mb_format: Option<String>,
 	#[serde(skip_serializing_if = "Option::is_none")]
@@ -184,15 +196,26 @@ pub struct CatalogDefinition {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct SortKey {
 	pub group: usize,
 	#[serde(rename = "type")]
 	pub sort_type: String,
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub display: Option<String>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub none_last: Option<bool>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct CatalogExample {
+	pub number: String,
+	pub display: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct EditionInfo {
 	pub year: i32,
 	pub editor: String,

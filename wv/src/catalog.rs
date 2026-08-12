@@ -138,12 +138,18 @@ fn sort_key_with_regex(number: &str, re: &Regex, defn: &CatalogDefinition, max_g
 		let raw = captures.get(idx).and_then(|o| o.clone());
 		let typ = sk.sort_type.as_str();
 
+		let missing = if sk.none_last.unwrap_or(false) {
+			SortValue::NoneLast
+		} else {
+			SortValue::NoneFirst
+		};
+
 		match raw {
 			None => {
-				key.push(SortValue::NoneFirst);
+				key.push(missing);
 			}
 			Some(s) if s.is_empty() => {
-				key.push(SortValue::NoneFirst);
+				key.push(missing);
 			}
 			Some(s) => match typ {
 				"int" => {
@@ -345,6 +351,7 @@ mod tests {
 				group: 1,
 				sort_type: "int".into(),
 				display: None,
+				none_last: None,
 			}]),
 			group_by: None,
 			aliases: None,
@@ -369,9 +376,9 @@ mod tests {
 			canonical_format: None,
 			pattern: Some(r"^(\d+)(?:/(\d+))?([a-z])?$".into()),
 			sort_keys: Some(vec![
-				SortKey { group: 1, sort_type: "int".into(), display: None },
-				SortKey { group: 2, sort_type: "int".into(), display: None },
-				SortKey { group: 3, sort_type: "str".into(), display: None },
+				SortKey { group: 1, sort_type: "int".into(), display: None, none_last: None },
+				SortKey { group: 2, sort_type: "int".into(), display: None, none_last: None },
+				SortKey { group: 3, sort_type: "str".into(), display: None, none_last: None },
 			]),
 			group_by: None,
 			aliases: None,
@@ -386,6 +393,27 @@ mod tests {
 
 		sort_numbers(&mut nums, Some(&defn));
 		assert_eq!(nums, vec!["2", "2/1", "2/2", "2/10", "10"]);
+	}
+
+	#[test]
+	fn test_none_last_sort() {
+		let defn = CatalogDefinition {
+			name: "Test".into(),
+			pattern: Some(r"^(\d+)(?:/(\d+))?$".into()),
+			sort_keys: Some(vec![
+				SortKey { group: 1, sort_type: "int".into(), display: None, none_last: None },
+				SortKey { group: 2, sort_type: "int".into(), display: None, none_last: Some(true) },
+			]),
+			..Default::default()
+		};
+
+		let mut nums: Vec<String> = vec!["2", "2/2", "2/1"]
+			.into_iter()
+			.map(String::from)
+			.collect();
+
+		sort_numbers(&mut nums, Some(&defn));
+		assert_eq!(nums, vec!["2/1", "2/2", "2"]);
 	}
 
 	#[test]

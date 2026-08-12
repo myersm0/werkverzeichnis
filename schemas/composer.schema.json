@@ -1,8 +1,9 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"$id": "https://github.com/yourname/werkverzeichnis/schemas/composer.schema.json",
+	"$id": "https://github.com/myersm0/werkverzeichnis/schemas/composer.schema.json",
 	"title": "Composer",
 	"type": "object",
+	"additionalProperties": false,
 	"required": ["id", "name"],
 	"properties": {
 		"id": {
@@ -12,11 +13,16 @@
 		},
 		"name": {
 			"type": "object",
+			"additionalProperties": false,
 			"required": ["full", "sort"],
 			"properties": {
 				"full": {"type": "string"},
 				"sort": {"type": "string", "description": "Last, First format"}
 			}
+		},
+		"default_scheme": {
+			"type": "string",
+			"description": "Catalog scheme used when no scheme is supplied"
 		},
 		"born": {
 			"type": ["string", "null"],
@@ -32,26 +38,89 @@
 		"catalogs": {
 			"type": "object",
 			"description": "Catalog schemes for this composer, keyed by short identifier",
-			"additionalProperties": {
-				"type": "object",
-				"required": ["name", "canonical_format"],
-				"properties": {
-					"name": {"type": "string"},
-					"canonical_format": {"type": "string"},
-					"description": {"type": "string"},
-					"primary": {"type": "boolean"}
-				}
-			}
+			"propertyNames": {"pattern": "^[a-z0-9-]+$"},
+			"additionalProperties": {"$ref": "#/$defs/catalogDefinition"}
 		},
 		"xref": {
 			"type": "object",
+			"additionalProperties": false,
 			"description": "External reference IDs",
 			"properties": {
 				"wd": {"type": "string", "description": "Wikidata QID"},
 				"viaf": {"type": "string", "description": "VIAF ID"},
 				"imslp": {"type": "string", "description": "IMSLP composer page"},
+				"wp": {"type": "string", "description": "Wikipedia article name"},
 				"oo": {"type": "string", "description": "OpenOpus composer ID"},
 				"mb": {"type": "string", "description": "MusicBrainz artist MBID"}
+			}
+		}
+	},
+	"$defs": {
+		"catalogDefinition": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["name"],
+			"properties": {
+				"name": {"type": "string"},
+				"description": {"type": "string"},
+				"canonical_format": {"type": "string"},
+				"pattern": {"type": "string"},
+				"sort_keys": {
+					"type": "array",
+					"items": {"$ref": "#/$defs/sortKey"}
+				},
+				"group_by": {
+					"type": "array",
+					"items": {"type": "integer", "minimum": 1}
+				},
+				"examples": {
+					"type": "array",
+					"items": {"$ref": "#/$defs/example"}
+				},
+				"aliases": {
+					"type": "array",
+					"items": {"type": "string"}
+				},
+				"editions": {
+					"type": "object",
+					"additionalProperties": {"$ref": "#/$defs/edition"}
+				},
+				"categories": {
+					"type": "object",
+					"additionalProperties": {"type": "string"}
+				},
+				"primary": {"type": "boolean"},
+				"mb_format": {"type": "string"},
+				"mb_part_format": {"type": "string"}
+			}
+		},
+		"sortKey": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["group", "type"],
+			"properties": {
+				"group": {"type": "integer", "minimum": 1},
+				"type": {"type": "string", "enum": ["int", "str", "roman"]},
+				"display": {"type": "string", "enum": ["upper", "lower", "title"]},
+				"none_last": {"type": "boolean", "default": false}
+			}
+		},
+		"example": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["number", "display"],
+			"properties": {
+				"number": {"type": "string"},
+				"display": {"type": "string"}
+			}
+		},
+		"edition": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["year", "editor"],
+			"properties": {
+				"year": {"type": "integer"},
+				"editor": {"type": "string"}
 			}
 		}
 	}

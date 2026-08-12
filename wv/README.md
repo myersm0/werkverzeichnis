@@ -207,13 +207,13 @@ Collections containing 'bwv:812':
 
 ### validate
 
-Validate composition files against schemas.
+Validate canonical data files against their schemas and run referential checks.
 
 ```bash
-# Validate single file
-$ wv validate path/to/composition.json
+# Validate a single composition, composer, catalog, or collection
+$ wv validate path/to/file.json
 
-# Validate all files in repository
+# Validate compositions/, composers/, catalogs/, and collections/
 $ wv validate
 ```
 

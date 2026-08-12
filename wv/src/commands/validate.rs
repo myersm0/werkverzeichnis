@@ -7,7 +7,7 @@ pub fn run(path: Option<&Path>, data_dir: &Path) {
 	let errors = if let Some(p) = path {
 		validate_file(p, data_dir)
 	} else {
-		print(&format!("Validating all compositions in {:?}...", data_dir));
+		print(&format!("Validating dataset in {:?}...", data_dir));
 		validate_all(data_dir)
 	};
 

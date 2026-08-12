@@ -90,6 +90,42 @@ mod tests {
 	}
 
 	#[test]
+	fn test_composer_catalog_metadata_is_preserved() {
+		let json = r#"{
+			"id": "mozart",
+			"name": {"full": "Wolfgang Amadeus Mozart", "sort": "Mozart, Wolfgang Amadeus"},
+			"default_scheme": "k",
+			"catalogs": {
+				"k": {
+					"name": "Köchel-Verzeichnis",
+					"primary": true,
+					"examples": [{"number": "331", "display": "K. 331"}],
+					"categories": {"anh": "Appendix"},
+					"editions": {"9": {"year": 2024, "editor": "Example"}}
+				}
+			}
+		}"#;
+		let composer: Composer = serde_json::from_str(json).unwrap();
+		let catalog = composer.catalogs.as_ref().unwrap().get("k").unwrap();
+		assert_eq!(composer.default_scheme.as_deref(), Some("k"));
+		assert_eq!(catalog.primary, Some(true));
+		assert_eq!(catalog.examples.as_ref().unwrap()[0].number, "331");
+		assert_eq!(catalog.categories.as_ref().unwrap().get("anh").map(String::as_str), Some("Appendix"));
+		assert_eq!(catalog.editions.as_ref().unwrap().get("9").unwrap().year, 2024);
+	}
+
+	#[test]
+	fn test_unknown_composer_catalog_field_is_rejected() {
+		let json = r#"{
+			"id": "bach",
+			"name": {"full": "Johann Sebastian Bach", "sort": "Bach, Johann Sebastian"},
+			"catalogs": {"bwv": {"name": "Bach-Werke-Verzeichnis", "primray": true}}
+		}"#;
+		let error = serde_json::from_str::<Composer>(json).unwrap_err();
+		assert!(error.to_string().contains("unknown field `primray`"));
+	}
+
+	#[test]
 	fn test_unknown_composition_field_is_rejected() {
 		let json = r#"{
 			"id": "abcd1234",
