@@ -48,7 +48,7 @@ pub fn run(data_dir: &Path) {
 	print(&format!("Wrote {}", composer_path.display()));
 
 	if !index.editions.is_empty() {
-		if let Err(e) = write_edition_indexes(&index, &editions_dir) {
+		if let Err(e) = write_edition_indexes(&index, data_dir) {
 			eprintln!("Error writing edition indexes: {}", e);
 			std::process::exit(1);
 		}

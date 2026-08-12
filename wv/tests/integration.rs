@@ -156,6 +156,26 @@ fn test_cumulative_editions() {
 	assert!(!ed9.contains_key("300i"), "300i should be superseded by 331 in edition 9");
 }
 
+#[test]
+fn test_index_command_writes_edition_indexes_at_expected_path() {
+	let tmp = setup_test_repo();
+	let root = tmp.path();
+
+	write_composition(root, "ab123456", r#"{
+		"id": "ab123456",
+		"form": "sonata",
+		"attribution": [{
+			"composer": "mozart",
+			"catalog": [{"scheme": "k", "number": "545", "edition": "1"}]
+		}]
+	}"#);
+
+	werkverzeichnis::commands::index::run(root);
+
+	assert!(root.join(".indexes/editions/mozart-k-1.json").exists());
+	assert!(!root.join(".indexes/editions/.indexes/editions").exists());
+}
+
 // ============================================================================
 // Case normalization tests
 // ============================================================================
