@@ -6,7 +6,7 @@ use crate::catalog::load_catalog_def;
 use crate::commands::collection;
 use crate::config::{resolve_editor, Config};
 use crate::display::{expand_title, format_catalog, ExpansionContext};
-use crate::index::get_or_build_index;
+use crate::index::{get_or_build_index, mark_index_dirty};
 use crate::output::{
 	id_to_path, output_by_ids, output_json, output_movements, output_pretty, output_terse,
 	print, OutputContext,
@@ -121,7 +121,7 @@ fn resolve_input(args: &GetArgs) -> Option<Input> {
 	}))
 }
 
-fn open_in_editor(config: &Config, paths: &[PathBuf]) {
+fn open_in_editor(config: &Config, paths: &[PathBuf], data_dir: &Path) {
 	let editor = resolve_editor(config);
 	let path_strs: Vec<&str> = paths.iter().filter_map(|p| p.to_str()).collect();
 
@@ -136,6 +136,10 @@ fn open_in_editor(config: &Config, paths: &[PathBuf]) {
 			std::process::exit(1);
 		}
 		_ => {}
+	}
+
+	if let Err(e) = mark_index_dirty(data_dir) {
+		eprintln!("warning: failed to mark index stale after edit: {}", e);
 	}
 }
 
@@ -166,7 +170,7 @@ pub fn run(args: GetArgs, data_dir: PathBuf, config: &Config) {
 			}
 			if args.edit {
 				let paths: Vec<PathBuf> = ids.iter().map(|id| id_to_path(&data_dir, id)).collect();
-				open_in_editor(config, &paths);
+				open_in_editor(config, &paths, &data_dir);
 			} else {
 				output_by_ids(&ids, &data_dir, config, args.terse, args.movements, args.json);
 			}
@@ -261,7 +265,7 @@ fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Con
 
 	if args.edit {
 		let paths: Vec<PathBuf> = results.iter().map(|r| id_to_path(data_dir, &r.id)).collect();
-		open_in_editor(config, &paths);
+		open_in_editor(config, &paths, data_dir);
 		return;
 	}
 
@@ -414,7 +418,7 @@ fn run_collections(collection_ids: &[String], args: &GetArgs, data_dir: &Path, c
 				paths.push(id_to_path(data_dir, &result.id));
 			}
 		}
-		open_in_editor(config, &paths);
+		open_in_editor(config, &paths, data_dir);
 		return;
 	}
 

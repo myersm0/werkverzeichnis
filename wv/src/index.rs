@@ -1,6 +1,7 @@
 use std::collections::HashMap;
 use std::fs;
 use std::path::Path;
+use std::time::{SystemTime, UNIX_EPOCH};
 
 use serde::{Deserialize, Serialize};
 
@@ -26,6 +27,14 @@ pub struct Index {
 	pub catalog: HashMap<String, HashMap<String, SchemeIndex>>,
 	pub editions: HashMap<String, HashMap<String, HashMap<String, String>>>,
 }
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+struct IndexMetadata {
+	built_at: u64,
+	dirty: bool,
+}
+
+const INDEX_TTL_SECS: u64 = 24 * 60 * 60;
 
 struct EditionEntry {
 	composer: String,
@@ -212,40 +221,76 @@ pub fn load_edition_index<P: AsRef<Path>>(
 
 pub fn index_is_stale<P: AsRef<Path>>(data_dir: P) -> bool {
 	let data_dir = data_dir.as_ref();
-	let index_path = data_dir.join(".indexes").join("index.json");
+	let indexes_dir = data_dir.join(".indexes");
 
-	let index_mtime = match fs::metadata(&index_path).and_then(|m| m.modified()) {
-		Ok(t) => t,
-		Err(_) => return true,
+	if !indexes_dir.join("index.json").is_file()
+		|| !indexes_dir.join("composer-index.json").is_file()
+	{
+		return true;
+	}
+
+	let metadata = match load_index_metadata(data_dir) {
+		Some(metadata) => metadata,
+		None => return true,
 	};
 
-	let compositions_dir = data_dir.join("compositions");
-	is_any_newer(&compositions_dir, index_mtime)
+	if metadata.dirty {
+		return true;
+	}
+
+	current_unix_seconds().saturating_sub(metadata.built_at) >= INDEX_TTL_SECS
 }
 
-fn is_any_newer(dir: &Path, threshold: std::time::SystemTime) -> bool {
-	let entries = match fs::read_dir(dir) {
-		Ok(e) => e,
-		Err(_) => return true,
+fn current_unix_seconds() -> u64 {
+	SystemTime::now()
+		.duration_since(UNIX_EPOCH)
+		.unwrap_or_default()
+		.as_secs()
+}
+
+fn load_index_metadata(data_dir: &Path) -> Option<IndexMetadata> {
+	let path = data_dir.join(".indexes").join("metadata.json");
+	let content = fs::read_to_string(path).ok()?;
+	serde_json::from_str(&content).ok()
+}
+
+fn write_index_metadata(data_dir: &Path, metadata: &IndexMetadata) -> std::io::Result<()> {
+	let path = data_dir.join(".indexes").join("metadata.json");
+	let json = serde_json::to_string_pretty(metadata)?;
+	fs::write(path, json + "\n")
+}
+
+pub fn mark_index_dirty<P: AsRef<Path>>(data_dir: P) -> std::io::Result<()> {
+	let data_dir = data_dir.as_ref();
+	fs::create_dir_all(data_dir.join(".indexes"))?;
+
+	let metadata = IndexMetadata {
+		built_at: load_index_metadata(data_dir).map_or(0, |metadata| metadata.built_at),
+		dirty: true,
 	};
 
-	for entry in entries.flatten() {
-		let path = entry.path();
-		if path.is_dir() {
-			if is_any_newer(&path, threshold) {
-				return true;
-			}
-		} else if path.extension().map_or(false, |e| e == "json") {
-			if let Ok(meta) = fs::metadata(&path) {
-				if let Ok(mtime) = meta.modified() {
-					if mtime > threshold {
-						return true;
-					}
-				}
-			}
-		}
+	write_index_metadata(data_dir, &metadata)
+}
+
+pub fn save_index<P: AsRef<Path>>(index: &Index, data_dir: P) -> std::io::Result<()> {
+	let data_dir = data_dir.as_ref();
+	let indexes_dir = data_dir.join(".indexes");
+	fs::create_dir_all(&indexes_dir)?;
+
+	write_index(index, indexes_dir.join("index.json"))?;
+	write_composer_index(index, indexes_dir.join("composer-index.json"))?;
+
+	if !index.editions.is_empty() {
+		write_edition_indexes(index, data_dir)?;
 	}
-	false
+
+	write_index_metadata(
+		data_dir,
+		&IndexMetadata {
+			built_at: current_unix_seconds(),
+			dirty: false,
+		},
+	)
 }
 
 pub fn get_or_build_index<P: AsRef<Path>>(data_dir: P) -> Index {
@@ -257,7 +302,11 @@ pub fn get_or_build_index<P: AsRef<Path>>(data_dir: P) -> Index {
 		}
 	}
 
-	build_index(data_dir)
+	let index = build_index(data_dir);
+	if let Err(error) = save_index(&index, data_dir) {
+		eprintln!("warning: failed to persist rebuilt index: {}", error);
+	}
+	index
 }
 
 pub fn write_index<P: AsRef<Path>>(index: &Index, output_path: P) -> std::io::Result<()> {
@@ -291,6 +340,76 @@ pub fn write_edition_indexes<P: AsRef<Path>>(index: &Index, data_dir: P) -> std:
 #[cfg(test)]
 mod tests {
 	use super::*;
+
+	fn create_index_files(data_dir: &Path) {
+		let indexes_dir = data_dir.join(".indexes");
+		fs::create_dir_all(&indexes_dir).unwrap();
+		fs::write(indexes_dir.join("index.json"), "{}").unwrap();
+		fs::write(indexes_dir.join("composer-index.json"), "{}").unwrap();
+	}
+
+	#[test]
+	fn test_fresh_index_is_not_stale() {
+		let temp = tempfile::tempdir().unwrap();
+		create_index_files(temp.path());
+		write_index_metadata(
+			temp.path(),
+			&IndexMetadata {
+				built_at: current_unix_seconds(),
+				dirty: false,
+			},
+		)
+		.unwrap();
+
+		assert!(!index_is_stale(temp.path()));
+	}
+
+	#[test]
+	fn test_dirty_index_is_stale() {
+		let temp = tempfile::tempdir().unwrap();
+		create_index_files(temp.path());
+		write_index_metadata(
+			temp.path(),
+			&IndexMetadata {
+				built_at: current_unix_seconds(),
+				dirty: false,
+			},
+		)
+		.unwrap();
+
+		mark_index_dirty(temp.path()).unwrap();
+
+		assert!(index_is_stale(temp.path()));
+	}
+
+	#[test]
+	fn test_expired_index_is_stale() {
+		let temp = tempfile::tempdir().unwrap();
+		create_index_files(temp.path());
+		write_index_metadata(
+			temp.path(),
+			&IndexMetadata {
+				built_at: current_unix_seconds().saturating_sub(INDEX_TTL_SECS + 1),
+				dirty: false,
+			},
+		)
+		.unwrap();
+
+		assert!(index_is_stale(temp.path()));
+	}
+
+	#[test]
+	fn test_save_index_marks_index_fresh() {
+		let temp = tempfile::tempdir().unwrap();
+		let index = Index::default();
+
+		save_index(&index, temp.path()).unwrap();
+
+		assert!(temp.path().join(".indexes/index.json").is_file());
+		assert!(temp.path().join(".indexes/composer-index.json").is_file());
+		assert!(temp.path().join(".indexes/metadata.json").is_file());
+		assert!(!index_is_stale(temp.path()));
+	}
 
 	#[test]
 	fn test_add_catalog_entry_current() {

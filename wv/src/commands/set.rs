@@ -3,7 +3,7 @@ use std::path::{Path, PathBuf};
 
 use crate::catalog::load_catalog_def;
 use crate::config::Config;
-use crate::index::get_or_build_index;
+use crate::index::{get_or_build_index, mark_index_dirty};
 use crate::output::{id_to_path, print};
 use crate::xref::{check_duplicates, MbLookup};
 
@@ -111,6 +111,12 @@ pub fn run(args: SetArgs, data_dir: PathBuf, config: &Config) {
 		let num = mb_result.catalog_number.as_str();
 		let mb_id = mb_result.mb_id.as_deref().unwrap_or("");
 		print(&format!("{}\t{}\t{}", num, mb_id, status));
+	}
+
+	if updated > 0 {
+		if let Err(e) = mark_index_dirty(&data_dir) {
+			eprintln!("warning: failed to mark index stale: {}", e);
+		}
 	}
 
 	eprintln!("\nupdated: {}, unchanged: {}, not found: {}", updated, unchanged, not_found);

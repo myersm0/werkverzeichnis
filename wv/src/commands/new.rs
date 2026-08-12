@@ -1,6 +1,7 @@
 use std::path::Path;
 
 use crate::add::{generate_id, scaffold_composition};
+use crate::index::mark_index_dirty;
 use crate::output::print;
 
 pub fn run(form: &str, composer: &str, data_dir: &Path) {
@@ -20,6 +21,10 @@ pub fn run(form: &str, composer: &str, data_dir: &Path) {
 	if let Err(e) = std::fs::write(&dest_path, &json) {
 		eprintln!("Error writing file: {}", e);
 		std::process::exit(1);
+	}
+
+	if let Err(e) = mark_index_dirty(data_dir) {
+		eprintln!("warning: failed to mark index stale: {}", e);
 	}
 
 	print(&format!("Created {}", dest_path.display()));

@@ -219,7 +219,7 @@ $ wv validate
 
 ### index
 
-Build index files for fast lookups.
+Build index files for fast lookups. Indexes are refreshed automatically when they are more than 24 hours old. Commands that modify composition data (`add`, `new`, and `set`), plus `get --edit`, mark the index stale so the next indexed query rebuilds it immediately. Use `wv index` to force an immediate rebuild after manual edits.
 
 ```bash
 $ wv index
@@ -227,6 +227,7 @@ Building index...
 Found 150 compositions
 Wrote .indexes/index.json
 Wrote .indexes/composer-index.json
+Wrote .indexes/metadata.json
 Done.
 ```
 
