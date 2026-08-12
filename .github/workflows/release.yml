@@ -1,5 +1,4 @@
 # This workflow builds and releases binaries when you push a version tag
-# Place at: .github/workflows/release.yml
 #
 # To trigger a release:
 #   git tag v0.1.0
@@ -19,7 +18,23 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Test
+        working-directory: wv
+        run: cargo test
+
+      - name: Validate dataset
+        run: cargo run --manifest-path wv/Cargo.toml -- validate --data-dir .
+
   create-release:
+    needs: verify
     runs-on: ubuntu-latest
     outputs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
@@ -55,8 +70,7 @@ jobs:
           - os: windows-latest
             target: x86_64-pc-windows-msvc
             artifact: wv.exe
-            asset_name: wv-windows-x86_64.exe
-
+            asset_name: wv-windows-x86_64
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -74,16 +88,23 @@ jobs:
       - name: Package (Unix)
         if: matrix.os != 'windows-latest'
         run: |
-          cd wv/target/${{ matrix.target }}/release
-          tar -czvf ${{ matrix.asset_name }}.tar.gz ${{ matrix.artifact }}
-          mv ${{ matrix.asset_name }}.tar.gz ../../../../
+          mkdir -p package/data
+          cp "wv/target/${{ matrix.target }}/release/${{ matrix.artifact }}" package/
+          cp -R catalogs collections composers compositions schemas package/data/
+          cp LICENSE.md package/data/
+          tar -C package -czf "${{ matrix.asset_name }}.tar.gz" "${{ matrix.artifact }}" data
 
       - name: Package (Windows)
         if: matrix.os == 'windows-latest'
+        shell: pwsh
         run: |
-          cd wv/target/${{ matrix.target }}/release
-          7z a ${{ matrix.asset_name }}.zip ${{ matrix.artifact }}
-          mv ${{ matrix.asset_name }}.zip ../../../../
+          New-Item -ItemType Directory -Force -Path package/data | Out-Null
+          Copy-Item "wv/target/${{ matrix.target }}/release/${{ matrix.artifact }}" package/
+          Copy-Item catalogs,collections,composers,compositions,schemas package/data/ -Recurse
+          Copy-Item LICENSE.md package/data/
+          Push-Location package
+          7z a "../${{ matrix.asset_name }}.zip" "${{ matrix.artifact }}" data
+          Pop-Location
 
       - name: Upload Release Asset (Unix)
         if: matrix.os != 'windows-latest'

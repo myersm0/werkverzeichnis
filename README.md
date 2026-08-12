@@ -24,14 +24,14 @@ Contributions of new compositions or corrections are welcome via pull request or
 curl -fsSL https://raw.githubusercontent.com/myersm0/werkverzeichnis/main/install.sh | sh
 ```
 
-The binary installs to `~/.local/bin/`. If not already in your PATH, add it:
+The installer installs both the `wv` executable and the matching werkverzeichnis dataset. No repository clone or `data_dir` configuration is required. The binary installs to `~/.local/bin/`. If that directory is not already in your PATH, add it:
 ```bash
 echo 'export PATH="$PATH:$HOME/.local/bin"' >> ~/.zshrc  # or ~/.bashrc
 source ~/.zshrc
 ```
 
 **Windows:**
-Download from [GitHub Releases](https://github.com/myersm0/werkverzeichnis/releases)
+Download the release archive from [GitHub Releases](https://github.com/myersm0/werkverzeichnis/releases) and keep the bundled `data/` directory beside `wv.exe`.
 
 ## Usage
 ### Basic retrieval patterns
@@ -144,11 +144,18 @@ All three calls return the same _composition_, with the same internal ID (not sh
 This attribution history is straightforwardly represented right in the composition JSON itself, which you can see [here](https://github.com/myersm0/werkverzeichnis/blob/ccc791bb6e9d173d8fab1464d85e88c4c8a8b512/compositions/78/129abd.json#L6), simply by means of an array of attribution entries, sorted in _reverse_ chronological order such that the top entry is always the most current.
 
 ## Configuration
-The CLI can be customized to match your preferences. Create a config file at `~/.config/wv/config.toml`:
+The CLI can be customized to match your preferences. A normal installation does not require configuration: `wv` automatically finds the dataset installed with the program. Create `~/.config/wv/config.toml` only for overrides or display preferences:
 ```toml
 [display]
 language = "en"
 ```
+
+Data-directory overrides are available for development checkouts or alternate datasets:
+```toml
+data_dir = "/path/to/werkverzeichnis"
+```
+
+Data is resolved in this order: `--data-dir`, `WV_DATA_DIR`, `data_dir` in the config file, the nearest ancestor that looks like a werkverzeichnis checkout, a bundled `data/` directory beside the executable, and finally the platform-standard installed data directory. If none contains a complete dataset, `wv` exits with an error rather than silently searching the current directory.
 
 ### Language
 Output like key signatures and titles adapts to your language setting:
