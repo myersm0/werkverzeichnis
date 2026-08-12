@@ -17,7 +17,10 @@ pub use catalog::{
 	is_fallback_key, load_catalog_def, looks_like_group, matches_group,
 	normalize_catalog_number, sort_key, sort_numbers, sort_numbers_by_scheme, SortValue,
 };
-pub use config::{resolve_data_dir, resolve_editor, Config, DisplayConfig, KeySymbols, PatternConfig, XrefConfig};
+pub use config::{
+	is_data_dir, resolve_data_dir, resolve_editor, Config, DataDirError, DisplayConfig, KeySymbols,
+	PatternConfig, XrefConfig,
+};
 pub use display::{
 	expand_key, expand_title, format_catalog, format_form, truncate_instrumentation,
 	ExpansionContext,

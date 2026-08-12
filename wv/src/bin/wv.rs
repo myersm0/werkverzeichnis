@@ -159,6 +159,16 @@ enum CollectionAction {
 	},
 }
 
+fn data_dir_or_exit(cli_arg: Option<&PathBuf>, config: &Config) -> PathBuf {
+	match resolve_data_dir(cli_arg, config) {
+		Ok(path) => path,
+		Err(error) => {
+			eprintln!("Error: {}", error);
+			std::process::exit(1);
+		}
+	}
+}
+
 fn main() {
 	let cli = Cli::parse();
 	let config = Config::load();
@@ -174,19 +184,19 @@ fn main() {
 			commands::parse::run_collection(&path);
 		}
 		Commands::Sort { scheme, composer, data_dir } => {
-			let data_dir = resolve_data_dir(data_dir.as_ref(), &config);
+			let data_dir = data_dir_or_exit(data_dir.as_ref(), &config);
 			commands::sort::run_sort(&scheme, composer.as_deref(), &data_dir);
 		}
 		Commands::SortKey { scheme, number, composer, data_dir } => {
-			let data_dir = resolve_data_dir(data_dir.as_ref(), &config);
+			let data_dir = data_dir_or_exit(data_dir.as_ref(), &config);
 			commands::sort::run_sort_key(&scheme, &number, composer.as_deref(), &data_dir);
 		}
 		Commands::Merge { path, data_dir } => {
-			let data_dir = resolve_data_dir(data_dir.as_ref(), &config);
+			let data_dir = data_dir_or_exit(data_dir.as_ref(), &config);
 			commands::merge::run(&path, &data_dir);
 		}
 		Commands::Index { data_dir } => {
-			let data_dir = resolve_data_dir(data_dir.as_ref(), &config);
+			let data_dir = data_dir_or_exit(data_dir.as_ref(), &config);
 			commands::index::run(&data_dir);
 		}
 		Commands::Get {
@@ -207,7 +217,7 @@ fn main() {
 			collection,
 			data_dir,
 		} => {
-			let data_dir = resolve_data_dir(data_dir.as_ref(), &config);
+			let data_dir = data_dir_or_exit(data_dir.as_ref(), &config);
 			let args = commands::get::GetArgs {
 				target: target.map(|x| x.to_lowercase()),
 				scheme: scheme.map(|x| x.to_lowercase().trim_end_matches('.').to_string()),
@@ -234,7 +244,7 @@ fn main() {
 			xref,
 			data_dir,
 		} => {
-			let data_dir = resolve_data_dir(data_dir.as_ref(), &config);
+			let data_dir = data_dir_or_exit(data_dir.as_ref(), &config);
 			let args = commands::set::SetArgs {
 				target: target.to_lowercase(),
 				scheme: scheme.map(|x| x.to_lowercase().trim_end_matches('.').to_string()),
@@ -244,26 +254,26 @@ fn main() {
 			commands::set::run(args, data_dir, &config);
 		}
 		Commands::Format { data_dir } => {
-			let data_dir = resolve_data_dir(data_dir.as_ref(), &config);
+			let data_dir = data_dir_or_exit(data_dir.as_ref(), &config);
 			commands::format::run(&data_dir, &config);
 		}
 		Commands::Validate { path, data_dir } => {
-			let data_dir = resolve_data_dir(data_dir.as_ref(), &config);
+			let data_dir = data_dir_or_exit(data_dir.as_ref(), &config);
 			commands::validate::run(path.as_deref(), &data_dir);
 		}
 		Commands::Add { path, force, data_dir } => {
-			let data_dir = resolve_data_dir(data_dir.as_ref(), &config);
+			let data_dir = data_dir_or_exit(data_dir.as_ref(), &config);
 			commands::add::run(&path, force, &data_dir);
 		}
 		Commands::New { form, composer, data_dir } => {
-			let data_dir = resolve_data_dir(data_dir.as_ref(), &config);
+			let data_dir = data_dir_or_exit(data_dir.as_ref(), &config);
 			commands::new::run(&form, &composer, &data_dir);
 		}
 		Commands::Id => {
 			print(&generate_id());
 		}
 		Commands::Collection { action, data_dir } => {
-			let data_dir = resolve_data_dir(data_dir.as_ref(), &config);
+			let data_dir = data_dir_or_exit(data_dir.as_ref(), &config);
 			match action {
 				CollectionAction::List { composer, user } => {
 					commands::collection::list(composer.as_deref(), user, &data_dir);

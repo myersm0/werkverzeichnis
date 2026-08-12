@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 use std::fs;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 use serde::Deserialize;
 
@@ -123,37 +123,95 @@ fn config_path() -> PathBuf {
 	}
 }
 
+#[derive(Debug, thiserror::Error)]
+pub enum DataDirError {
+	#[error("{origin} data directory is not a werkverzeichnis dataset: {path}")]
+	Invalid {
+		origin: &'static str,
+		path: PathBuf,
+	},
+	#[error(
+		"could not locate werkverzeichnis data (searched ancestors of {current}, bundled data beside the executable, and {installed}); use --data-dir, WV_DATA_DIR, or data_dir in config.toml"
+	)]
+	NotFound {
+		current: PathBuf,
+		installed: String,
+	},
+}
+
+const DATA_SUBDIRS: [&str; 5] = [
+	"catalogs",
+	"collections",
+	"composers",
+	"compositions",
+	"schemas",
+];
+
+pub fn is_data_dir(path: &Path) -> bool {
+	DATA_SUBDIRS.iter().all(|name| path.join(name).is_dir())
+}
+
+fn require_data_dir(path: PathBuf, origin: &'static str) -> Result<PathBuf, DataDirError> {
+	if is_data_dir(&path) {
+		Ok(path)
+	} else {
+		Err(DataDirError::Invalid { origin, path })
+	}
+}
+
+fn find_data_dir_from(start: &Path) -> Option<PathBuf> {
+	start
+		.ancestors()
+		.find(|path| is_data_dir(path))
+		.map(Path::to_path_buf)
+}
+
+fn bundled_data_dir() -> Option<PathBuf> {
+	std::env::current_exe()
+		.ok()
+		.and_then(|path| path.parent().map(|parent| parent.join("data")))
+}
+
+fn installed_data_dir() -> Option<PathBuf> {
+	dirs::data_dir().map(|path| path.join("werkverzeichnis"))
+}
+
 pub fn resolve_data_dir(
 	cli_arg: Option<&PathBuf>,
 	config: &Config,
-) -> PathBuf {
-	// 1. CLI flag
+) -> Result<PathBuf, DataDirError> {
 	if let Some(dir) = cli_arg {
-		return dir.clone();
+		return require_data_dir(dir.clone(), "--data-dir");
 	}
 
-	// 2. Environment variable
 	if let Ok(dir) = std::env::var("WV_DATA_DIR") {
-		return PathBuf::from(dir);
+		return require_data_dir(PathBuf::from(dir), "WV_DATA_DIR");
 	}
 
-	// 3. Config file
 	if let Some(dir) = &config.data_dir {
-		return dir.clone();
+		return require_data_dir(dir.clone(), "config.toml");
 	}
 
-	// 4. Current/parent directory
 	let current = std::env::current_dir().unwrap_or_default();
-	if current.join("composers").exists() {
-		return current;
+	if let Some(dir) = find_data_dir_from(&current) {
+		return Ok(dir);
 	}
 
-	let parent = current.parent().map(|p| p.to_path_buf()).unwrap_or(current.clone());
-	if parent.join("composers").exists() {
-		return parent;
+	if let Some(dir) = bundled_data_dir().filter(|path| is_data_dir(path)) {
+		return Ok(dir);
 	}
 
-	current
+	let installed = installed_data_dir();
+	if let Some(dir) = installed.as_ref().filter(|path| is_data_dir(path)) {
+		return Ok(dir.clone());
+	}
+
+	Err(DataDirError::NotFound {
+		current,
+		installed: installed
+			.map(|path| path.display().to_string())
+			.unwrap_or_else(|| "<platform data directory unavailable>".into()),
+	})
 }
 
 pub fn resolve_editor(config: &Config) -> String {
@@ -169,4 +227,36 @@ pub fn resolve_editor(config: &Config) -> String {
 
 	// 3. Fallback
 	"vi".into()
+}
+
+#[cfg(test)]
+mod tests {
+	use super::*;
+	use tempfile::tempdir;
+
+	fn create_data_dir(path: &Path) {
+		for name in DATA_SUBDIRS {
+			std::fs::create_dir_all(path.join(name)).unwrap();
+		}
+	}
+
+	#[test]
+	fn data_dir_requires_all_canonical_subdirectories() {
+		let temp = tempdir().unwrap();
+		create_data_dir(temp.path());
+		assert!(is_data_dir(temp.path()));
+
+		std::fs::remove_dir(temp.path().join("schemas")).unwrap();
+		assert!(!is_data_dir(temp.path()));
+	}
+
+	#[test]
+	fn finds_checkout_from_nested_directory() {
+		let temp = tempdir().unwrap();
+		create_data_dir(temp.path());
+		let nested = temp.path().join("wv").join("src").join("bin");
+		std::fs::create_dir_all(&nested).unwrap();
+
+		assert_eq!(find_data_dir_from(&nested), Some(temp.path().to_path_buf()));
+	}
 }

@@ -4,23 +4,23 @@ Command-line tool for querying and managing the werkverzeichnis dataset.
 
 ## Installation
 
+For a normal installation, use the repository-level installer described in the main README. Release archives contain both the executable and a matching `data/` directory, so no separate repository clone is required.
+
+For development:
+
 ```bash
 cd wv
 cargo build --release
 ```
 
-Binary will be at `target/release/wv`. Add to PATH or create an alias:
-
-```bash
-alias wv="$(pwd)/target/release/wv"
-```
+The binary will be at `target/release/wv`. When run anywhere inside the repository tree, it automatically finds the repository data.
 
 ## Configuration
 
 Optional config file at `~/.config/wv/config.toml`:
 
 ```toml
-# Path to data repository (if not running from repo directory)
+# Optional override for a development checkout or alternate dataset
 data_dir = "/path/to/werkverzeichnis"
 
 # Editor for --edit flag (defaults to $EDITOR, then vi)
@@ -35,11 +35,15 @@ generic = "{form} in {key}"
 with_number = "{form} no. {num} in {key}"
 ```
 
-Data directory resolution order:
+A normal installation does not need `data_dir`. Data directory resolution order:
 1. `--data-dir` flag
 2. `WV_DATA_DIR` environment variable
 3. Config file
-4. Current or parent directory (if `composers/` exists)
+4. Nearest ancestor containing the werkverzeichnis data directories
+5. A bundled `data/` directory beside the executable
+6. Platform-standard application data (`~/Library/Application Support/werkverzeichnis` on macOS; `$XDG_DATA_HOME/werkverzeichnis` or `~/.local/share/werkverzeichnis` on Linux)
+
+An explicit override that is not a complete werkverzeichnis dataset is an error. If no dataset can be found, `wv` exits with a diagnostic instead of falling back to the current directory.
 
 ## Commands
 
