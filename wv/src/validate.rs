@@ -1,4 +1,4 @@
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
 use std::fs;
 use std::path::{Path, PathBuf};
 
@@ -6,6 +6,7 @@ use jsonschema::Validator as JsonSchemaValidator;
 use serde::de::DeserializeOwned;
 use serde_json::Value;
 
+use crate::catalog::load_catalog_def;
 use crate::types::{AttributionEntry, CatalogDefinition, Collection, Composer, Composition};
 
 #[derive(Debug, Clone)]
@@ -81,9 +82,12 @@ impl SchemaCheck {
 }
 
 pub struct Validator {
+	data_dir: PathBuf,
 	composers: HashSet<String>,
 	catalog_schemes: HashSet<String>,
 	global_catalog_schemes: HashSet<String>,
+	composer_catalog_schemes: HashMap<String, HashSet<String>>,
+	current_catalog_targets: HashMap<(String, String, String), Vec<String>>,
 	composition_schema: SchemaCheck,
 	composer_schema: SchemaCheck,
 	catalog_schema: SchemaCheck,
@@ -96,6 +100,7 @@ impl Validator {
 		let mut composers = HashSet::new();
 		let mut catalog_schemes = HashSet::new();
 		let mut global_catalog_schemes = HashSet::new();
+		let mut composer_catalog_schemes = HashMap::new();
 
 		let composers_dir = data_dir.join("composers");
 		if let Ok(entries) = fs::read_dir(&composers_dir) {
@@ -109,7 +114,11 @@ impl Validator {
 					if let Ok(content) = fs::read_to_string(&path) {
 						if let Ok(value) = serde_json::from_str::<Value>(&content) {
 							if let Some(catalogs) = value.get("catalogs").and_then(Value::as_object) {
-								catalog_schemes.extend(catalogs.keys().cloned());
+								let schemes: HashSet<String> = catalogs.keys().cloned().collect();
+								catalog_schemes.extend(schemes.iter().cloned());
+								if let Some(stem) = path.file_stem().and_then(|s| s.to_str()) {
+									composer_catalog_schemes.insert(stem.to_string(), schemes);
+								}
 							}
 						}
 					}
@@ -130,12 +139,41 @@ impl Validator {
 			}
 		}
 
+		let mut current_catalog_targets = HashMap::new();
+		let mut composition_paths = Vec::new();
+		collect_json_files(&data_dir.join("compositions"), &mut composition_paths);
+		for path in composition_paths {
+			let Ok(content) = fs::read_to_string(path) else {
+				continue;
+			};
+			let Ok(composition) = serde_json::from_str::<Composition>(&content) else {
+				continue;
+			};
+			let mut schemes_seen = HashSet::new();
+			for attribution in &composition.attribution {
+				let (Some(composer), Some(catalog)) = (&attribution.composer, &attribution.catalog) else {
+					continue;
+				};
+				for entry in catalog {
+					if schemes_seen.insert((composer.clone(), entry.scheme.clone())) {
+						current_catalog_targets
+							.entry((composer.clone(), entry.scheme.clone(), entry.number.clone()))
+							.or_insert_with(Vec::new)
+							.push(composition.id.clone());
+					}
+				}
+			}
+		}
+
 		let schemas_dir = data_dir.join("schemas");
 
 		Self {
+			data_dir: data_dir.to_path_buf(),
 			composers,
 			catalog_schemes,
 			global_catalog_schemes,
+			composer_catalog_schemes,
+			current_catalog_targets,
 			composition_schema: SchemaCheck::load(schemas_dir.join("composition.schema.json")),
 			composer_schema: SchemaCheck::load(schemas_dir.join("composer.schema.json")),
 			catalog_schema: SchemaCheck::load(schemas_dir.join("catalog.schema.json")),
@@ -157,6 +195,100 @@ impl Validator {
 		}
 	}
 
+	fn catalog_is_allowed_for_composer(&self, composer: &str, scheme: &str) -> bool {
+		self.global_catalog_schemes.contains(scheme)
+			|| self
+				.composer_catalog_schemes
+				.get(composer)
+				.map_or(false, |schemes| schemes.contains(scheme))
+	}
+
+	fn validate_catalog_reference(
+		&self,
+		composer: &str,
+		scheme: &str,
+		number: &str,
+		edition: Option<&str>,
+		path_str: &str,
+		location: &str,
+	) -> Vec<ValidationError> {
+		let mut errors = Vec::new();
+		let Some(definition) = load_catalog_def(&self.data_dir, scheme, Some(composer)) else {
+			return errors;
+		};
+
+		if let Some(pattern) = &definition.pattern {
+			match regex::Regex::new(pattern) {
+				Ok(regex) if !regex.is_match(number) => errors.push(ValidationError {
+					path: path_str.to_string(),
+					message: format!(
+						"{}: catalog number '{}' does not match '{}' pattern",
+						location, number, scheme
+					),
+				}),
+				Err(error) => errors.push(ValidationError {
+					path: path_str.to_string(),
+					message: format!("{}: invalid '{}' catalog pattern: {}", location, scheme, error),
+				}),
+				_ => {}
+			}
+		}
+
+		if let Some(edition) = edition {
+			let defined = definition
+				.editions
+				.as_ref()
+				.map_or(false, |editions| editions.contains_key(edition));
+			if !defined {
+				errors.push(ValidationError {
+					path: path_str.to_string(),
+					message: format!(
+						"{}: edition '{}' is not defined for {}:{}",
+						location, edition, composer, scheme
+					),
+				});
+			}
+		}
+
+		errors
+	}
+
+	fn validate_current_catalog_uniqueness(
+		&self,
+		composition: &Composition,
+		path_str: &str,
+	) -> Vec<ValidationError> {
+		let mut errors = Vec::new();
+		let mut schemes_seen = HashSet::new();
+
+		for attribution in &composition.attribution {
+			let (Some(composer), Some(catalog)) = (&attribution.composer, &attribution.catalog) else {
+				continue;
+			};
+			for entry in catalog {
+				if !schemes_seen.insert((composer.clone(), entry.scheme.clone())) {
+					continue;
+				}
+				let key = (composer.clone(), entry.scheme.clone(), entry.number.clone());
+				if let Some(ids) = self.current_catalog_targets.get(&key) {
+					let mut unique: Vec<_> = ids.iter().cloned().collect::<HashSet<_>>().into_iter().collect();
+					if unique.len() > 1 {
+						unique.sort();
+						errors.push(ValidationError {
+							path: path_str.to_string(),
+							message: format!(
+								"current catalog identifier {}:{}:{} is shared by compositions {}",
+								composer, entry.scheme, entry.number, unique.join(", ")
+							),
+						});
+					}
+				}
+			}
+		}
+
+		errors
+	}
+
 	fn validate_composition_file(&self, path: &Path) -> Vec<ValidationError> {
 		let (value, mut errors) = match self.read_and_validate(path, &self.composition_schema, true) {
 			Ok(result) => result,
@@ -170,6 +302,7 @@ impl Validator {
 		errors.extend(self.validate_id(&comp.id, path, &path_str));
 		errors.extend(self.validate_key(&comp.key, &path_str));
 		errors.extend(self.validate_attribution(&comp.attribution, &path_str, true));
+		errors.extend(self.validate_current_catalog_uniqueness(&comp, &path_str));
 		errors
 	}
 
@@ -261,14 +394,81 @@ impl Validator {
 			}
 		}
 
-		if !self.catalog_schemes.contains(&collection.scheme) {
+		errors.extend(self.validate_attribution(&collection.attribution, &path_str, false));
+
+		let composer = collection
+			.attribution
+			.first()
+			.and_then(|entry| entry.composer.as_deref())
+			.or(collection.composer.as_deref())
+			.or_else(|| collection.id.split_once('-').map(|(composer, _)| composer));
+
+		let Some(composer) = composer else {
+			errors.push(ValidationError {
+				path: path_str,
+				message: "cannot determine collection composer".into(),
+			});
+			return errors;
+		};
+
+		if !self.composers.contains(composer) {
 			errors.push(ValidationError {
 				path: path_str.clone(),
-				message: format!("catalog scheme '{}' not defined", collection.scheme),
+				message: format!("collection composer '{}' not found in composers/", composer),
 			});
 		}
 
-		errors.extend(self.validate_attribution(&collection.attribution, &path_str, false));
+		if !self.catalog_is_allowed_for_composer(composer, &collection.scheme) {
+			errors.push(ValidationError {
+				path: path_str.clone(),
+				message: format!(
+					"catalog scheme '{}' is not defined for composer '{}' or globally",
+					collection.scheme, composer
+				),
+			});
+			return errors;
+		}
+
+		let mut seen = HashSet::new();
+		for (i, number) in collection.compositions.iter().enumerate() {
+			let location = format!("compositions[{}]", i);
+			if !seen.insert(number) {
+				errors.push(ValidationError {
+					path: path_str.clone(),
+					message: format!("{}: duplicate collection member '{}'", location, number),
+				});
+			}
+
+			errors.extend(self.validate_catalog_reference(
+				composer,
+				&collection.scheme,
+				number,
+				None,
+				&path_str,
+				&location,
+			));
+
+			let key = (composer.to_string(), collection.scheme.clone(), number.clone());
+			match self.current_catalog_targets.get(&key) {
+				None => errors.push(ValidationError {
+					path: path_str.clone(),
+					message: format!(
+						"{}: {}:{}:{} does not resolve to a current composition",
+						location, composer, collection.scheme, number
+					),
+				}),
+				Some(ids) => {
+					let unique: HashSet<_> = ids.iter().collect();
+					if unique.len() > 1 {
+						errors.push(ValidationError {
+							path: path_str.clone(),
+							message: format!("{}: catalog identifier resolves ambiguously", location),
+						});
+					}
+				}
+			}
+		}
+
 		errors
 	}
 
@@ -389,24 +589,32 @@ impl Validator {
 			}
 
 			if let Some(catalog) = &entry.catalog {
-				for cat in catalog {
-					if !self.catalog_schemes.contains(&cat.scheme) {
+				for (j, cat) in catalog.iter().enumerate() {
+					let location = format!("attribution[{}].catalog[{}]", i, j);
+					let scheme_defined = if let Some(composer) = &entry.composer {
+						self.catalog_is_allowed_for_composer(composer, &cat.scheme)
+					} else {
+						self.catalog_schemes.contains(&cat.scheme)
+					};
+
+					if !scheme_defined {
 						errors.push(ValidationError {
 							path: path_str.to_string(),
-							message: format!(
-								"attribution[{}]: catalog scheme '{}' not defined",
-								i, cat.scheme
-							),
+							message: if let Some(composer) = &entry.composer {
+								format!(
+									"{}: catalog scheme '{}' is not defined for composer '{}' or globally",
+									location, cat.scheme, composer
+								)
+							} else {
+								format!("{}: catalog scheme '{}' not defined", location, cat.scheme)
+							},
 						});
 					}
 
 					if cat.scheme != cat.scheme.to_lowercase() {
 						errors.push(ValidationError {
 							path: path_str.to_string(),
-							message: format!(
-								"attribution[{}]: catalog scheme '{}' must be lowercase",
-								i, cat.scheme
-							),
+							message: format!("{}: catalog scheme '{}' must be lowercase", location, cat.scheme),
 						});
 					}
 
@@ -414,12 +622,25 @@ impl Validator {
 						errors.push(ValidationError {
 							path: path_str.to_string(),
 							message: format!(
-								"attribution[{}]: catalog number '{}' must be lowercase{}",
-								i,
+								"{}: catalog number '{}' must be lowercase{}",
+								location,
 								cat.number,
 								if cat.scheme == "bwv" { " (R suffix allowed)" } else { "" }
 							),
 						});
+					}
+
+					if scheme_defined {
+						if let Some(composer) = &entry.composer {
+							errors.extend(self.validate_catalog_reference(
+								composer,
+								&cat.scheme,
+								&cat.number,
+								cat.edition.as_deref(),
+								path_str,
+								&location,
+							));
+						}
 					}
 				}
 			}
@@ -579,9 +800,12 @@ mod tests {
 
 	fn test_validator() -> Validator {
 		Validator {
+			data_dir: PathBuf::new(),
 			composers: HashSet::new(),
 			catalog_schemes: HashSet::new(),
 			global_catalog_schemes: HashSet::new(),
+			composer_catalog_schemes: HashMap::new(),
+			current_catalog_targets: HashMap::new(),
 			composition_schema: empty_schema(),
 			composer_schema: empty_schema(),
 			catalog_schema: empty_schema(),
@@ -636,5 +860,87 @@ mod tests {
 		let path = Path::new("compositions/12/345678.json");
 		let errors = validator.validate_id("12345678", path, "test");
 		assert!(errors.is_empty());
+	}
+
+	#[test]
+	fn test_catalog_scheme_scope() {
+		let mut validator = test_validator();
+		validator.global_catalog_schemes.insert("op".into());
+		validator
+			.composer_catalog_schemes
+			.insert("bach".into(), HashSet::from(["bwv".into()]));
+
+		assert!(validator.catalog_is_allowed_for_composer("bach", "bwv"));
+		assert!(validator.catalog_is_allowed_for_composer("bach", "op"));
+		assert!(!validator.catalog_is_allowed_for_composer("mozart", "bwv"));
+	}
+
+	#[test]
+	fn test_current_catalog_collision() {
+		let mut validator = test_validator();
+		validator.current_catalog_targets.insert(
+			("bach".into(), "bwv".into(), "812".into()),
+			vec!["11111111".into(), "22222222".into()],
+		);
+		let composition: Composition = serde_json::from_str(r#"{
+			"id": "11111111",
+			"form": "suite",
+			"attribution": [{
+				"composer": "bach",
+				"catalog": [{"scheme": "bwv", "number": "812"}]
+			}]
+		}"#).unwrap();
+
+		let errors = validator.validate_current_catalog_uniqueness(&composition, "test");
+		assert_eq!(errors.len(), 1);
+	}
+
+	#[test]
+	fn test_catalog_pattern_edition_and_collection_resolution() {
+		let tmp = tempfile::tempdir().unwrap();
+		fs::create_dir_all(tmp.path().join("composers")).unwrap();
+		fs::create_dir_all(tmp.path().join("collections/mozart")).unwrap();
+		fs::write(tmp.path().join("composers/mozart.json"), r#"{
+			"id": "mozart",
+			"name": {"full": "Wolfgang Amadeus Mozart", "sort": "Mozart, Wolfgang Amadeus"},
+			"catalogs": {
+				"k": {
+					"name": "Köchel-Verzeichnis",
+					"pattern": "^\\d+$",
+					"editions": {"9": {"year": 2024, "editor": "Neal Zaslaw"}}
+				}
+			}
+		}"#).unwrap();
+
+		let mut validator = test_validator();
+		validator.data_dir = tmp.path().to_path_buf();
+		validator.composers.insert("mozart".into());
+		validator
+			.composer_catalog_schemes
+			.insert("mozart".into(), HashSet::from(["k".into()]));
+		validator.current_catalog_targets.insert(
+			("mozart".into(), "k".into(), "331".into()),
+			vec!["11111111".into()],
+		);
+
+		assert!(validator
+			.validate_catalog_reference("mozart", "k", "331", Some("9"), "test", "catalog")
+			.is_empty());
+		assert_eq!(
+			validator
+				.validate_catalog_reference("mozart", "k", "331a", Some("6"), "test", "catalog")
+				.len(),
+			2
+		);
+
+		let path = tmp.path().join("collections/mozart/test.json");
+		fs::write(&path, r#"{
+			"id": "mozart-test",
+			"title": {"en": "Test"},
+			"attribution": [{"composer": "mozart"}],
+			"scheme": "k",
+			"compositions": ["331"]
+		}"#).unwrap();
+		assert!(validator.validate_collection_file(&path).is_empty());
 	}
 }
