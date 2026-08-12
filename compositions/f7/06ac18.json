@@ -20,6 +20,7 @@
 	],
 	"form": "sacred cantata",
 	"instrumentation": "soprano, alto, tenor, bass, choir (SATB), 3 trumpets, timpani, 2 oboes, 2 violins, viola, organ obbligato, basso continuo",
+	"note": "Ratswechselkantate",
 	"movements": [
 		{
 			"title": "Sinfonia",
@@ -68,6 +69,7 @@
 		}
 	],
 	"xref": {
+		"oo": "9444",
 		"wp": "BWV_29",
 		"mb": "16d1bf1e-14c7-4fdb-a835-824a358fd9b0"
 	}
