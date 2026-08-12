@@ -4,7 +4,7 @@ use std::path::{Path, PathBuf};
 use crate::catalog::load_catalog_def;
 use crate::config::Config;
 use crate::index::get_or_build_index;
-use crate::output::id_to_path;
+use crate::output::{id_to_path, print};
 use crate::xref::{check_duplicates, MbLookup};
 
 pub struct SetArgs {
@@ -110,7 +110,7 @@ pub fn run(args: SetArgs, data_dir: PathBuf, config: &Config) {
 
 		let num = mb_result.catalog_number.as_str();
 		let mb_id = mb_result.mb_id.as_deref().unwrap_or("");
-		println!("{}\t{}\t{}", num, mb_id, status);
+		print(&format!("{}\t{}\t{}", num, mb_id, status));
 	}
 
 	eprintln!("\nupdated: {}, unchanged: {}, not found: {}", updated, unchanged, not_found);

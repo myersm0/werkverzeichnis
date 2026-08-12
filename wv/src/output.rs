@@ -9,8 +9,13 @@ use crate::query::QueryResult;
 use crate::types::{CatalogDefinition, Composition};
 
 pub fn print(s: &str) {
-	if writeln!(io::stdout(), "{}", s).is_err() {
-		std::process::exit(0);
+	if let Err(error) = writeln!(io::stdout(), "{}", s) {
+		if error.kind() == io::ErrorKind::BrokenPipe {
+			std::process::exit(0);
+		}
+
+		eprintln!("Error writing to stdout: {}", error);
+		std::process::exit(1);
 	}
 }
 

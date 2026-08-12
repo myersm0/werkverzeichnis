@@ -1,6 +1,7 @@
 use std::path::Path;
 
 use crate::add::{generate_id, scaffold_composition};
+use crate::output::print;
 
 pub fn run(form: &str, composer: &str, data_dir: &Path) {
 	let id = generate_id();
@@ -21,6 +22,6 @@ pub fn run(form: &str, composer: &str, data_dir: &Path) {
 		std::process::exit(1);
 	}
 
-	println!("Created {}", dest_path.display());
-	println!("ID: {}", id);
+	print(&format!("Created {}", dest_path.display()));
+	print(&format!("ID: {}", id));
 }

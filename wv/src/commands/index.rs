@@ -2,9 +2,10 @@
 use std::path::Path;
 
 use crate::index::{build_index, write_composer_index, write_edition_indexes, write_index};
+use crate::output::print;
 
 pub fn run(data_dir: &Path) {
-	println!("Building index from {:?}...", data_dir);
+	print(&format!("Building index from {:?}...", data_dir));
 
 	let index = build_index(data_dir);
 
@@ -21,8 +22,8 @@ pub fn run(data_dir: &Path) {
 		}
 	}
 
-	println!("Found {} compositions", total_compositions);
-	println!("Found {} catalog entries", total_catalog_entries);
+	print(&format!("Found {} compositions", total_compositions));
+	print(&format!("Found {} catalog entries", total_catalog_entries));
 
 	let indexes_dir = data_dir.join(".indexes");
 	if let Err(e) = std::fs::create_dir_all(&indexes_dir) {
@@ -38,21 +39,21 @@ pub fn run(data_dir: &Path) {
 		eprintln!("Error writing index: {}", e);
 		std::process::exit(1);
 	}
-	println!("Wrote {}", index_path.display());
+	print(&format!("Wrote {}", index_path.display()));
 
 	if let Err(e) = write_composer_index(&index, &composer_path) {
 		eprintln!("Error writing composer index: {}", e);
 		std::process::exit(1);
 	}
-	println!("Wrote {}", composer_path.display());
+	print(&format!("Wrote {}", composer_path.display()));
 
 	if !index.editions.is_empty() {
 		if let Err(e) = write_edition_indexes(&index, &editions_dir) {
 			eprintln!("Error writing edition indexes: {}", e);
 			std::process::exit(1);
 		}
-		println!("Wrote edition indexes to {}", editions_dir.display());
+		print(&format!("Wrote edition indexes to {}", editions_dir.display()));
 	}
 
-	println!("Done.");
+	print("Done.");
 }

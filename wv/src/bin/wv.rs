@@ -3,6 +3,7 @@ use std::path::PathBuf;
 use clap::{Parser, Subcommand};
 use werkverzeichnis::commands;
 use werkverzeichnis::config::{resolve_data_dir, Config};
+use werkverzeichnis::output::print;
 use werkverzeichnis::add::generate_id;
 
 #[derive(Parser)]
@@ -259,7 +260,7 @@ fn main() {
 			commands::new::run(&form, &composer, &data_dir);
 		}
 		Commands::Id => {
-			println!("{}", generate_id());
+			print(&generate_id());
 		}
 		Commands::Collection { action, data_dir } => {
 			let data_dir = resolve_data_dir(data_dir.as_ref(), &config);

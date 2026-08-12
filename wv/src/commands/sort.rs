@@ -2,6 +2,7 @@ use std::io::{self, BufRead};
 use std::path::Path;
 
 use crate::catalog::{load_catalog_def, sort_key, sort_numbers};
+use crate::output::print;
 
 pub fn run_sort(scheme: &str, composer: Option<&str>, data_dir: &Path) {
 	let defn = load_catalog_def(data_dir, scheme, composer);
@@ -17,7 +18,7 @@ pub fn run_sort(scheme: &str, composer: Option<&str>, data_dir: &Path) {
 	sort_numbers(&mut numbers, defn.as_ref());
 
 	for n in numbers {
-		println!("{}", n);
+		print(&n);
 	}
 }
 
@@ -31,5 +32,5 @@ pub fn run_sort_key(scheme: &str, number: &str, composer: Option<&str>, data_dir
 	};
 
 	let key = sort_key(number, &defn);
-	println!("{:?}", key);
+	print(&format!("{:?}", key));
 }

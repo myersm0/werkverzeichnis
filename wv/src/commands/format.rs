@@ -4,6 +4,7 @@ use std::path::Path;
 use crate::catalog::load_catalog_def;
 use crate::config::Config;
 use crate::display::{expand_title, format_catalog, ExpansionContext};
+use crate::output::print;
 use crate::types::Composition;
 
 pub fn run(data_dir: &Path, config: &Config) {
@@ -41,10 +42,10 @@ pub fn run(data_dir: &Path, config: &Config) {
 			if let Some(cat) = attr.catalog.as_ref().and_then(|c| c.first()) {
 				let catalog_defn = load_catalog_def(data_dir, &cat.scheme, attr.composer.as_deref());
 				let formatted = format_catalog(&cat.scheme, &cat.number, catalog_defn.as_ref());
-				println!("{}, {}", title, formatted);
+				print(&format!("{}, {}", title, formatted));
 				continue;
 			}
 		}
-		println!("{} [{}]", title, comp.id);
+		print(&format!("{} [{}]", title, comp.id));
 	}
 }
