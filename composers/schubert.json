@@ -14,9 +14,11 @@
 			"description": "Thematic catalog by Otto Erich Deutsch, first published 1951.",
 			"canonical_format": "D. {number}",
 			"pattern": "^(\\d+)([a-z])?$",
+			"pattern": "^(\\d+)([a-z])?(\\.\\d+)?$",
 			"sort_keys": [
 				{"group": 1, "type": "int"},
-				{"group": 2, "type": "str"}
+				{"group": 2, "type": "str"},
+				{"group": 3, "type": "int"}
 			],
 			"primary": true
 		},
