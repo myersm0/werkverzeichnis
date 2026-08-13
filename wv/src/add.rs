@@ -48,7 +48,7 @@ pub fn add_composition<P: AsRef<Path>, Q: AsRef<Path>>(
 	let comp = load_composition(source).map_err(|e| AddError::ParseError(e.to_string()))?;
 
 	let validator = Validator::new(data_dir);
-	let errors = validator.validate_file(source);
+	let errors = validator.validate_composition_file(source);
 
 	let non_path_errors: Vec<_> = errors
 		.iter()

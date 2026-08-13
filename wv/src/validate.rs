@@ -289,7 +289,7 @@ impl Validator {
 		errors
 	}
 
-	fn validate_composition_file(&self, path: &Path) -> Vec<ValidationError> {
+	pub fn validate_composition_file(&self, path: &Path) -> Vec<ValidationError> {
 		let (value, mut errors) = match self.read_and_validate(path, &self.composition_schema, true) {
 			Ok(result) => result,
 			Err(errors) => return errors,
