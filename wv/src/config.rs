@@ -185,7 +185,9 @@ pub fn resolve_data_dir(
 	}
 
 	if let Ok(dir) = std::env::var("WV_DATA_DIR") {
-		return require_data_dir(PathBuf::from(dir), "WV_DATA_DIR");
+		if !dir.trim().is_empty() {
+			return require_data_dir(PathBuf::from(dir), "WV_DATA_DIR");
+		}
 	}
 
 	if let Some(dir) = &config.data_dir {
