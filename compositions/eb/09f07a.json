@@ -1,0 +1,38 @@
+{
+	"id": "eb09f07a",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1772
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "iii:35"
+				},
+				{
+					"scheme": "op",
+					"number": "20/5"
+				}
+			]
+		}
+	],
+	"key": "f",
+	"form": "string quartet",
+	"movements": [
+		{
+			"title": "Allegro moderato"
+		},
+		{
+			"title": "Minuetto"
+		},
+		{
+			"title": "Adagio",
+			"key": "F"
+		},
+		{
+			"title": "Finale: Fuga a due soggetti"
+		}
+	]
+}

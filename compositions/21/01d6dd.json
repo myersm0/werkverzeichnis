@@ -1,0 +1,38 @@
+{
+	"id": "2101d6dd",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1772
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "iii:34"
+				},
+				{
+					"scheme": "op",
+					"number": "20/4"
+				}
+			]
+		}
+	],
+	"key": "D",
+	"form": "string quartet",
+	"movements": [
+		{
+			"title": "Allegro di molto"
+		},
+		{
+			"title": "Un poco adagio e affettuoso",
+			"key": "d"
+		},
+		{
+			"title": "Allegretto alla zingarese"
+		},
+		{
+			"title": "Presto scherzando"
+		}
+	]
+}

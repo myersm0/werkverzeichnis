@@ -1,0 +1,38 @@
+{
+	"id": "34506b06",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1772
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "iii:32"
+				},
+				{
+					"scheme": "op",
+					"number": "20/2"
+				}
+			]
+		}
+	],
+	"key": "C",
+	"form": "string quartet",
+	"movements": [
+		{
+			"title": "Moderato"
+		},
+		{
+			"title": "Adagio",
+			"key": "c"
+		},
+		{
+			"title": "Minuetto: Allegretto"
+		},
+		{
+			"title": "Fuga a quattro soggetti"
+		}
+	]
+}

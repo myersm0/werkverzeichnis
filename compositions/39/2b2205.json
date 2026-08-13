@@ -1,0 +1,38 @@
+{
+	"id": "392b2205",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1772
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "iii:36"
+				},
+				{
+					"scheme": "op",
+					"number": "20/6"
+				}
+			]
+		}
+	],
+	"key": "A",
+	"form": "string quartet",
+	"movements": [
+		{
+			"title": "Allegro di molto e scherzando"
+		},
+		{
+			"title": "Adagio, cantabile",
+			"key": "E"
+		},
+		{
+			"title": "Minuetto: Allegretto"
+		},
+		{
+			"title": "Fuga a tre soggetti: Allegro"
+		}
+	]
+}

@@ -1,0 +1,38 @@
+{
+	"id": "b4fd8094",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1781
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "iii:42"
+				},
+				{
+					"scheme": "op",
+					"number": "33/6"
+				}
+			]
+		}
+	],
+	"key": "D",
+	"form": "string quartet",
+	"movements": [
+		{
+			"title": "Vivace assai"
+		},
+		{
+			"title": "Andante",
+			"key": "d"
+		},
+		{
+			"title": "Scherzo: Allegretto"
+		},
+		{
+			"title": "Finale: Allegretto"
+		}
+	]
+}

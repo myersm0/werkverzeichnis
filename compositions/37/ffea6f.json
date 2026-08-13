@@ -1,0 +1,38 @@
+{
+	"id": "37ffea6f",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1781
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "iii:38"
+				},
+				{
+					"scheme": "op",
+					"number": "33/2"
+				}
+			]
+		}
+	],
+	"key": "Eb",
+	"form": "string quartet",
+	"movements": [
+		{
+			"title": "Allegro moderato"
+		},
+		{
+			"title": "Scherzo: Allegro"
+		},
+		{
+			"title": "Largo",
+			"key": "Bb"
+		},
+		{
+			"title": "Presto"
+		}
+	]
+}

@@ -1,0 +1,38 @@
+{
+	"id": "97841a97",
+	"attribution": [
+		{
+			"composer": "haydn",
+			"dates": {
+				"composed": 1772
+			},
+			"catalog": [
+				{
+					"scheme": "hob",
+					"number": "iii:31"
+				},
+				{
+					"scheme": "op",
+					"number": "20/1"
+				}
+			]
+		}
+	],
+	"key": "Eb",
+	"form": "string quartet",
+	"movements": [
+		{
+			"title": "Allegro moderato"
+		},
+		{
+			"title": "Minuetto: Allegretto"
+		},
+		{
+			"title": "Affettuoso e sostenuto",
+			"key": "Ab"
+		},
+		{
+			"title": "Finale: Presto"
+		}
+	]
+}
