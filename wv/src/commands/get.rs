@@ -6,18 +6,19 @@ use crate::catalog::load_catalog_def;
 use crate::commands::collection;
 use crate::config::{resolve_editor, Config};
 use crate::display::{expand_title, format_catalog, ExpansionContext};
-use crate::index::{get_or_build_index, mark_index_dirty};
+use crate::index::{get_or_build_index, mark_index_dirty, Index};
 use crate::output::{
 	id_to_path, output_by_ids, output_json, output_movements, output_pretty, output_terse,
 	print, OutputContext,
 };
 use crate::parse::load_composition;
+use crate::types::CatalogDefinition;
 use crate::xref::{check_duplicates, MbLookup};
 
 pub struct GetArgs {
 	pub target: Option<String>,
 	pub scheme: Option<String>,
-	pub number: Option<String>,
+	pub number: Vec<String>,
 	pub edition: Option<String>,
 	pub group: Option<String>,
 	pub sorted: bool,
@@ -37,7 +38,6 @@ enum Input {
 	Ids(Vec<String>),
 	Query(ComposerQuery),
 }
-
 struct ComposerQuery {
 	composer: String,
 	scheme: Option<String>,
@@ -46,6 +46,7 @@ struct ComposerQuery {
 	group: Option<String>,
 }
 
+#[derive(Debug, Clone, PartialEq, Eq)]
 enum NumberSpec {
 	Single(String),
 	Range { start: String, end: String },
@@ -57,10 +58,8 @@ fn is_composition_id(s: &str) -> bool {
 
 fn parse_number_spec(s: &str) -> NumberSpec {
 	fn try_split(s: &str) -> Option<(&str, &str)> {
-		s.split_once('-')
-			.or_else(|| s.split_once(".."))
+		s.split_once('-').or_else(|| s.split_once(".."))
 	}
-
 	if let Some((start, end)) = try_split(s) {
 		let looks_like_catalog = |s: &str| {
 			let s = s.trim();
@@ -81,6 +80,65 @@ fn parse_number_spec(s: &str) -> NumberSpec {
 	NumberSpec::Single(s.to_string())
 }
 
+fn find_category<'a>(value: &str, defn: &'a CatalogDefinition) -> Option<&'a str> {
+	defn.categories
+		.as_ref()?
+		.keys()
+		.find(|category| category.eq_ignore_ascii_case(value))
+		.map(String::as_str)
+}
+
+fn normalize_number_piece(value: &str, defn: Option<&CatalogDefinition>) -> String {
+	let normalized = value.trim().to_lowercase();
+	let Some(defn) = defn else {
+		return normalized;
+	};
+
+	let mut parts = normalized.split_whitespace();
+	let Some(first) = parts.next() else {
+		return normalized;
+	};
+	let rest: Vec<&str> = parts.collect();
+
+	if let Some(category) = find_category(first, defn) {
+		let category = category.to_lowercase();
+		if rest.is_empty() {
+			category
+		} else {
+			format!("{}:{}", category, rest.join(" "))
+		}
+	} else {
+		normalized
+	}
+}
+
+fn normalize_number_spec(spec: &NumberSpec, defn: Option<&CatalogDefinition>) -> NumberSpec {
+	match spec {
+		NumberSpec::Single(number) => NumberSpec::Single(normalize_number_piece(number, defn)),
+		NumberSpec::Range { start, end } => {
+			let start = normalize_number_piece(start, defn);
+			let mut end = normalize_number_piece(end, defn);
+			if !end.contains(':') {
+				if let (Some(defn), Some((prefix, _))) = (defn, start.rsplit_once(':')) {
+					if find_category(prefix, defn).is_some() {
+						end = format!("{}:{}", prefix, end);
+					}
+				}
+			}
+			NumberSpec::Range { start, end }
+		}
+	}
+}
+
+fn category_for_spec(spec: &NumberSpec, defn: &CatalogDefinition) -> Option<String> {
+	let value = match spec {
+		NumberSpec::Single(number) => number,
+		NumberSpec::Range { start, .. } => start,
+	};
+	let prefix = value.split_once(':').map_or(value.as_str(), |(prefix, _)| prefix);
+	find_category(prefix, defn).map(str::to_lowercase)
+}
+
 fn resolve_input(args: &GetArgs) -> Option<Input> {
 	if args.stdin {
 		let ids: Vec<String> = io::stdin()
@@ -94,7 +152,6 @@ fn resolve_input(args: &GetArgs) -> Option<Input> {
 	}
 
 	let target = args.target.as_ref()?;
-
 	if is_composition_id(target) {
 		let mut ids = vec![target.clone()];
 		if let Some(s) = &args.scheme {
@@ -102,7 +159,7 @@ fn resolve_input(args: &GetArgs) -> Option<Input> {
 				ids.push(s.clone());
 			}
 		}
-		if let Some(n) = &args.number {
+		for n in &args.number {
 			if is_composition_id(n) {
 				ids.push(n.clone());
 			}
@@ -110,8 +167,11 @@ fn resolve_input(args: &GetArgs) -> Option<Input> {
 		return Some(Input::Ids(ids));
 	}
 
-	let number_spec = args.number.as_ref().map(|n| parse_number_spec(n));
-
+	let number_spec = if args.number.is_empty() {
+		None
+	} else {
+		Some(parse_number_spec(&args.number.join(" ")))
+	};
 	Some(Input::Query(ComposerQuery {
 		composer: target.clone(),
 		scheme: args.scheme.clone(),
@@ -126,7 +186,6 @@ fn open_in_editor(config: &Config, paths: &[PathBuf], data_dir: &Path) {
 	let path_strs: Vec<&str> = paths.iter().filter_map(|p| p.to_str()).collect();
 
 	let status = Command::new(&editor).args(&path_strs).status();
-
 	match status {
 		Ok(s) if !s.success() => {
 			eprintln!("Editor exited with status: {}", s);
@@ -152,14 +211,13 @@ pub fn run(args: GetArgs, data_dir: PathBuf, config: &Config) {
 	let input = match resolve_input(&args) {
 		Some(i) => i,
 		None => {
-			eprintln!("Usage: wv get <composer> [scheme] [number]");
+			eprintln!("Usage: wv get <composer> [scheme] [number...]");
 			eprintln!("       wv get <id> [id...]");
 			eprintln!("       wv get --stdin");
 			eprintln!("       wv get --collection <id>...");
 			std::process::exit(1);
 		}
 	};
-
 	match input {
 		Input::Stdin(ids) | Input::Ids(ids) => {
 			if ids.is_empty() {
@@ -181,6 +239,83 @@ pub fn run(args: GetArgs, data_dir: PathBuf, config: &Config) {
 	}
 }
 
+fn print_query_examples(
+	query: &ComposerQuery,
+	number_spec: Option<&NumberSpec>,
+	index: &Index,
+	data_dir: &Path,
+	defn: Option<&CatalogDefinition>,
+) {
+	let Some(scheme) = query.scheme.as_deref() else {
+		return;
+	};
+
+	eprintln!();
+	if let Some(defn) = defn {
+		eprintln!("Examples for {} / {}:", query.composer, defn.name);
+	} else {
+		eprintln!("Examples for {} / {}:", query.composer, scheme);
+	}
+	eprintln!("  wv get {} {}", query.composer, scheme);
+
+	let requested_category = number_spec
+		.and_then(|spec| defn.and_then(|defn| category_for_spec(spec, defn)));
+
+	let samples = index
+		.query()
+		.composer(&query.composer)
+		.scheme(scheme)
+		.data_dir(data_dir)
+		.strict(true)
+		.sorted(data_dir)
+		.fetch();
+
+	if let Some(category) = requested_category {
+		eprintln!("  wv get {} {} {}", query.composer, scheme, category);
+		let prefix = format!("{}:", category);
+		let numbers: Vec<String> = samples
+			.into_iter()
+			.filter_map(|result| result.number)
+			.filter(|number| number.starts_with(&prefix))
+			.take(3)
+			.collect();
+		if let Some(first) = numbers.first() {
+			if let Some((_, number)) = first.split_once(':') {
+				eprintln!("  wv get {} {} {} {}", query.composer, scheme, category, number);
+			}
+		}
+		if numbers.len() >= 2 {
+			let start = numbers[0].split_once(':').map(|(_, number)| number);
+			let end = numbers[numbers.len() - 1].split_once(':').map(|(_, number)| number);
+			if let (Some(start), Some(end)) = (start, end) {
+				eprintln!(
+					"  wv get {} {} {} {}-{}",
+					query.composer, scheme, category, start, end
+				);
+			}
+		}
+		return;
+	}
+
+	if let Some(defn) = defn {
+		if let Some(examples) = &defn.examples {
+			for example in examples.iter().take(3) {
+				eprintln!(
+					"  wv get {} {} {}",
+					query.composer,
+					scheme,
+					example.number.to_lowercase()
+				);
+			}
+			return;
+		}
+	}
+
+	for number in samples.into_iter().filter_map(|result| result.number).take(3) {
+		eprintln!("  wv get {} {} {}", query.composer, scheme, number);
+	}
+}
+
 fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Config) {
 	if (matches!(&query.number, Some(NumberSpec::Range { .. })) || query.group.is_some())
 		&& query.scheme.is_none()
@@ -191,16 +326,36 @@ fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Con
 	}
 
 	let index = get_or_build_index(data_dir);
+	let catalog_defn = query
+		.scheme
+		.as_ref()
+		.and_then(|s| load_catalog_def(data_dir, s, Some(&query.composer)));
+	let number_spec = query
+		.number
+		.as_ref()
+		.map(|spec| normalize_number_spec(spec, catalog_defn.as_ref()));
+	let category_query = number_spec.as_ref().and_then(|spec| {
+		let NumberSpec::Single(number) = spec else {
+			return None;
+		};
+		catalog_defn
+			.as_ref()
+			.and_then(|defn| find_category(number, defn))
+			.map(str::to_lowercase)
+	});
 
 	let mut builder = index.query().composer(&query.composer).data_dir(data_dir);
-
 	if let Some(s) = &query.scheme {
 		builder = builder.scheme(s);
 	}
 
-	match &query.number {
+	match &number_spec {
 		Some(NumberSpec::Single(n)) => {
-			builder = builder.number(n);
+			if category_query.is_some() {
+				builder = builder.group(n);
+			} else {
+				builder = builder.number(n);
+			}
 		}
 		Some(NumberSpec::Range { start, end }) => {
 			builder = builder.range(start, end);
@@ -215,9 +370,10 @@ fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Con
 	if let Some(g) = &query.group {
 		builder = builder.group(g);
 	}
-
-	let needs_sort =
-		args.sorted || query.group.is_some() || matches!(&query.number, Some(NumberSpec::Range { .. }));
+	let needs_sort = args.sorted
+		|| query.group.is_some()
+		|| category_query.is_some()
+		|| matches!(&number_spec, Some(NumberSpec::Range { .. }));
 	if needs_sort {
 		builder = builder.sorted(data_dir);
 	}
@@ -229,14 +385,16 @@ fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Con
 	if results.is_empty() {
 		if !args.quiet {
 			eprintln!("No results found.");
+			print_query_examples(
+				&query,
+				number_spec.as_ref(),
+				&index,
+				data_dir,
+				catalog_defn.as_ref(),
+			);
 		}
 		return;
 	}
-
-	let catalog_defn = query
-		.scheme
-		.as_ref()
-		.and_then(|s| load_catalog_def(data_dir, s, Some(&query.composer)));
 
 	if let Some(xref_type) = &args.xref {
 		if xref_type == "mb" {
@@ -247,14 +405,19 @@ fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Con
 			std::process::exit(1);
 		}
 	}
-
 	if !args.quiet {
 		for result in &results {
 			if result.superseded {
-				if let (Some(num), Some(current), Some(scheme)) = (&result.number, &result.current_number, &query.scheme) {
-					let formatted_current = format_catalog(scheme, current, catalog_defn.as_ref());
+				if let (Some(num), Some(current), Some(scheme)) =
+					(&result.number, &result.current_number, &query.scheme)
+				{
+					let formatted_current =
+						format_catalog(scheme, current, catalog_defn.as_ref());
 					let scheme_upper = scheme.to_uppercase();
-					eprintln!("warning: {} {} is superseded (current: {})", scheme_upper, num, formatted_current);
+					eprintln!(
+						"warning: {} {} is superseded (current: {})",
+						scheme_upper, num, formatted_current
+					);
 				}
 			}
 			if let Some(note) = &result.note {
@@ -262,7 +425,6 @@ fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Con
 			}
 		}
 	}
-
 	if args.edit {
 		let paths: Vec<PathBuf> = results.iter().map(|r| id_to_path(data_dir, &r.id)).collect();
 		open_in_editor(config, &paths, data_dir);
@@ -303,7 +465,6 @@ fn run_xref_mb(
 			std::process::exit(1);
 		}
 	};
-
 	let mb = match MbLookup::new(db_path) {
 		Ok(m) => m,
 		Err(e) => {
@@ -326,7 +487,6 @@ fn run_xref_mb(
 		.collect();
 
 	let mb_results = mb.lookup_batch(&query.composer, scheme, &numbers, catalog_defn);
-
 	let mut matched = 0;
 	let mut not_found = 0;
 
@@ -347,7 +507,6 @@ fn run_xref_mb(
 			eprintln!("  {} -> {}", mb_id, nums.join(", "));
 		}
 	}
-
 	eprintln!("\nmatched: {}, not found: {}", matched, not_found);
 }
 
@@ -362,7 +521,6 @@ fn run_collections(collection_ids: &[String], args: &GetArgs, data_dir: &Path, c
 	}
 
 	let index = get_or_build_index(data_dir);
-
 	if args.terse {
 		for r in &refs {
 			let results = index
@@ -392,7 +550,6 @@ fn run_collections(collection_ids: &[String], args: &GetArgs, data_dir: &Path, c
 				.fetch();
 			all_results.extend(results);
 		}
-
 		let ctx = OutputContext {
 			data_dir,
 			config,
@@ -421,7 +578,6 @@ fn run_collections(collection_ids: &[String], args: &GetArgs, data_dir: &Path, c
 		open_in_editor(config, &paths, data_dir);
 		return;
 	}
-
 	for r in &refs {
 		let results = index
 			.query()
@@ -435,7 +591,6 @@ fn run_collections(collection_ids: &[String], args: &GetArgs, data_dir: &Path, c
 
 		for result in results {
 			let comp_path = id_to_path(data_dir, &result.id);
-
 			if args.movements {
 				if let Ok(comp) = load_composition(&comp_path) {
 					let formatted_cat = format_catalog(&r.scheme, &r.number, catalog_defn.as_ref());
@@ -468,5 +623,93 @@ fn run_collections(collection_ids: &[String], args: &GetArgs, data_dir: &Path, c
 				}
 			}
 		}
+	}
+}
+
+#[cfg(test)]
+mod tests {
+	use std::collections::HashMap;
+
+	use super::*;
+
+	fn test_args(number: &[&str]) -> GetArgs {
+		GetArgs {
+			target: Some("bach".into()),
+			scheme: Some("bwv".into()),
+			number: number.iter().map(|value| value.to_string()).collect(),
+			edition: None,
+			group: None,
+			sorted: false,
+			terse: false,
+			movements: false,
+			json: false,
+			quiet: false,
+			edit: false,
+			stdin: false,
+			strict: false,
+			xref: None,
+			collection: None,
+		}
+	}
+
+	fn hoboken_defn() -> CatalogDefinition {
+		let mut categories = HashMap::new();
+		categories.insert("III".into(), "string quartets".into());
+		CatalogDefinition {
+			name: "Hoboken-Verzeichnis".into(),
+			categories: Some(categories),
+			..Default::default()
+		}
+	}
+
+	#[test]
+	fn resolves_unquoted_multi_part_number() {
+		let input = resolve_input(&test_args(&["anh.", "iii", "141"])).unwrap();
+		match input {
+			Input::Query(query) => {
+				assert_eq!(query.number, Some(NumberSpec::Single("anh. iii 141".into())))
+			}
+			_ => panic!("expected query input"),
+		}
+	}
+
+	#[test]
+	fn normalizes_split_hoboken_number() {
+		let defn = hoboken_defn();
+		let spec = normalize_number_spec(&parse_number_spec("iii 32"), Some(&defn));
+		assert_eq!(spec, NumberSpec::Single("iii:32".into()));
+	}
+
+	#[test]
+	fn recognizes_hoboken_category() {
+		let defn = hoboken_defn();
+		let spec = normalize_number_spec(&parse_number_spec("iii"), Some(&defn));
+		assert_eq!(category_for_spec(&spec, &defn).as_deref(), Some("iii"));
+	}
+
+	#[test]
+	fn normalizes_split_hoboken_range() {
+		let defn = hoboken_defn();
+		let spec = normalize_number_spec(&parse_number_spec("iii 31-33"), Some(&defn));
+		assert_eq!(
+			spec,
+			NumberSpec::Range {
+				start: "iii:31".into(),
+				end: "iii:33".into()
+			}
+		);
+	}
+
+	#[test]
+	fn normalizes_abbreviated_hoboken_range() {
+		let defn = hoboken_defn();
+		let spec = normalize_number_spec(&parse_number_spec("iii:31-33"), Some(&defn));
+		assert_eq!(
+			spec,
+			NumberSpec::Range {
+				start: "iii:31".into(),
+				end: "iii:33".into()
+			}
+		);
 	}
 }

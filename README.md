@@ -83,11 +83,10 @@ Symphony in D major, Hob. I:1
 $ wv get haydn HOB I:1
 Symphony in D major, Hob. I:1
 
-$ wv get bach bwv "anh. iii 141"
+$ wv get bach bwv anh. iii 141
 Das ist je gewißlich wahr, BWV Anh. III 141
 ```
 
-In the latter example, note that quotes are required around the catalog number because it contains internal spaces.
 
 ### Attribution changes
 #### Catalog disambiguation

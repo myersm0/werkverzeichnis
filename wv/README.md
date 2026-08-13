@@ -112,6 +112,22 @@ Suite in c minor, BWV 813
 ...
 ```
 
+Catalog numbers with multiple parts do not need shell quoting:
+
+```
+$ wv get bach bwv anh. iii 141
+Das ist je gewißlich wahr, BWV Anh. III 141
+```
+
+Catalog categories and abbreviated ranges can be written naturally when the catalog defines them:
+
+```
+$ wv get haydn hob iii
+$ wv get haydn hob iii 32
+$ wv get haydn hob iii 31-33
+$ wv get haydn hob iii:31-33
+```
+
 Query all indexed works for a composer:
 
 ```bash

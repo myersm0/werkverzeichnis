@@ -14,7 +14,6 @@ struct Cli {
 	#[command(subcommand)]
 	command: Commands,
 }
-
 #[derive(Subcommand)]
 enum Commands {
 	ParseComposition {
@@ -45,7 +44,6 @@ enum Commands {
 		#[arg(long, value_name = "PATH")]
 		data_dir: Option<PathBuf>,
 	},
-
 	Merge {
 		path: PathBuf,
 		#[arg(long, value_name = "PATH")]
@@ -56,14 +54,13 @@ enum Commands {
 		#[arg(long, value_name = "PATH")]
 		data_dir: Option<PathBuf>,
 	},
-
 	Get {
 		#[arg(help = "Composer slug, or composition ID(s)")]
 		target: Option<String>,
 		#[arg(help = "Catalog scheme (e.g., bwv, op)")]
 		scheme: Option<String>,
-		#[arg(help = "Catalog number or range (e.g., 812, 2-10)")]
-		number: Option<String>,
+		#[arg(help = "Catalog number or range; multi-part numbers need not be quoted", num_args = 0..)]
+		number: Vec<String>,
 		#[arg(long)]
 		edition: Option<String>,
 		#[arg(long, help = "Filter to a group (e.g., op 2 includes 2, 2/1, 2/2)")]
@@ -91,7 +88,6 @@ enum Commands {
 		#[arg(long, value_name = "PATH")]
 		data_dir: Option<PathBuf>,
 	},
-
 	Set {
 		#[arg(help = "Composer slug")]
 		target: String,
@@ -109,7 +105,6 @@ enum Commands {
 		#[arg(long, value_name = "PATH")]
 		data_dir: Option<PathBuf>,
 	},
-
 	Validate {
 		path: Option<PathBuf>,
 		#[arg(long, value_name = "PATH")]
@@ -140,7 +135,6 @@ enum Commands {
 		data_dir: Option<PathBuf>,
 	},
 }
-
 #[derive(Subcommand)]
 enum CollectionAction {
 	List {
@@ -158,7 +152,6 @@ enum CollectionAction {
 		query: String,
 	},
 }
-
 fn data_dir_or_exit(cli_arg: Option<&PathBuf>, config: &Config) -> PathBuf {
 	match resolve_data_dir(cli_arg, config) {
 		Ok(path) => path,
@@ -172,7 +165,6 @@ fn data_dir_or_exit(cli_arg: Option<&PathBuf>, config: &Config) -> PathBuf {
 fn main() {
 	let cli = Cli::parse();
 	let config = Config::load();
-
 	match cli.command {
 		Commands::ParseComposition { path } => {
 			commands::parse::run_composition(&path);
@@ -285,6 +277,38 @@ fn main() {
 					commands::collection::find(&query, &data_dir);
 				}
 			}
+		}
+	}
+}
+
+#[cfg(test)]
+mod tests {
+	use super::*;
+	use clap::Parser;
+
+	#[test]
+	fn get_accepts_multi_part_catalog_number() {
+		let cli = Cli::try_parse_from(["wv", "get", "bach", "bwv", "anh.", "iii", "141"]).unwrap();
+		match cli.command {
+			Commands::Get { target, scheme, number, .. } => {
+				assert_eq!(target.as_deref(), Some("bach"));
+				assert_eq!(scheme.as_deref(), Some("bwv"));
+				assert_eq!(number, vec!["anh.", "iii", "141"]);
+			}
+			_ => panic!("expected get command"),
+		}
+	}
+
+	#[test]
+	fn get_accepts_split_hoboken_number() {
+		let cli = Cli::try_parse_from(["wv", "get", "haydn", "hob", "iii", "32"]).unwrap();
+		match cli.command {
+			Commands::Get { target, scheme, number, .. } => {
+				assert_eq!(target.as_deref(), Some("haydn"));
+				assert_eq!(scheme.as_deref(), Some("hob"));
+				assert_eq!(number, vec!["iii", "32"]);
+			}
+			_ => panic!("expected get command"),
 		}
 	}
 }
