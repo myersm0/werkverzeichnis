@@ -290,7 +290,7 @@ We aim to maintain a very high standard of accuracy and quality — because if t
 The `wv` command-line tool provides:
 - **get** — Look up compositions by composer, catalog, range
 - **collection** — List and verify collections
-- **validate** — Check files against schemas
+- **validate** — Check schemas and cross-file consistency
 - **index** — Build search indexes
 - **add** / **new** — Create new composition entries
 
@@ -302,6 +302,8 @@ JSON schemas in `schemas/` define the structure of all data files:
 - `composer.schema.json`
 - `collection.schema.json`
 - `catalog.schema.json`
+
+Beyond the JSON Schema, `wv validate` also checks referential/semantic invariants: composer/catalog references, catalog-number syntax and editions, uniqueness of current catalog identifiers, and collection membership.
 
 ## References and acknowledgments
 This project is focused on providing a unified, machine-readable structure to available information, _not_ on inventing any new information or applying any new research or insights. Therefore, we're indebted to a number of existing resources on the web, including:
