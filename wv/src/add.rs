@@ -2,6 +2,7 @@ use std::fs;
 use std::path::{Path, PathBuf};
 
 use crate::parse::load_composition;
+use crate::types::Composition;
 use crate::validate::Validator;
 
 #[derive(Debug)]
@@ -37,11 +38,21 @@ pub struct AddResult {
 	pub destination: PathBuf,
 }
 
-pub fn add_composition<P: AsRef<Path>, Q: AsRef<Path>>(
+#[derive(Debug)]
+pub struct PreparedAdd {
+	pub id: String,
+	pub source: PathBuf,
+	pub destination: PathBuf,
+	pub composition: Composition,
+	pub overwrites: bool,
+	content: String,
+}
+
+pub fn prepare_composition<P: AsRef<Path>, Q: AsRef<Path>>(
 	source: P,
 	data_dir: Q,
 	force: bool,
-) -> Result<AddResult, AddError> {
+) -> Result<PreparedAdd, AddError> {
 	let source = source.as_ref();
 	let data_dir = data_dir.as_ref();
 
@@ -49,7 +60,6 @@ pub fn add_composition<P: AsRef<Path>, Q: AsRef<Path>>(
 
 	let validator = Validator::new(data_dir);
 	let errors = validator.validate_composition_file(source);
-
 	let non_path_errors: Vec<_> = errors
 		.iter()
 		.filter(|e| !e.message.contains("doesn't match path"))
@@ -68,27 +78,50 @@ pub fn add_composition<P: AsRef<Path>, Q: AsRef<Path>>(
 			id.len()
 		)));
 	}
-
 	let prefix = &id[..2];
 	let suffix = &id[2..];
 	let dest_dir = data_dir.join("compositions").join(prefix);
 	let dest_path = dest_dir.join(format!("{}.json", suffix));
+	let overwrites = dest_path.exists();
 
-	if dest_path.exists() && !force {
+	if overwrites && !force {
 		return Err(AddError::AlreadyExists(dest_path.display().to_string()));
 	}
 
-	fs::create_dir_all(&dest_dir).map_err(|e| AddError::WriteError(e.to_string()))?;
-
 	let content = fs::read_to_string(source).map_err(|e| AddError::ReadError(e.to_string()))?;
 
-	fs::write(&dest_path, content).map_err(|e| AddError::WriteError(e.to_string()))?;
-
-	Ok(AddResult {
+	Ok(PreparedAdd {
 		id: id.clone(),
 		source: source.to_path_buf(),
 		destination: dest_path,
+		composition: comp,
+		overwrites,
+		content,
 	})
+}
+
+pub fn commit_composition(prepared: PreparedAdd) -> Result<AddResult, AddError> {
+	let dest_dir = prepared
+		.destination
+		.parent()
+		.ok_or_else(|| AddError::WriteError("Destination has no parent directory".into()))?;
+	fs::create_dir_all(dest_dir).map_err(|e| AddError::WriteError(e.to_string()))?;
+	fs::write(&prepared.destination, prepared.content).map_err(|e| AddError::WriteError(e.to_string()))?;
+
+	Ok(AddResult {
+		id: prepared.id,
+		source: prepared.source,
+		destination: prepared.destination,
+	})
+}
+
+pub fn add_composition<P: AsRef<Path>, Q: AsRef<Path>>(
+	source: P,
+	data_dir: Q,
+	force: bool,
+) -> Result<AddResult, AddError> {
+	let prepared = prepare_composition(source, data_dir, force)?;
+	commit_composition(prepared)
 }
 
 pub fn generate_id() -> String {
@@ -122,6 +155,29 @@ pub fn scaffold_composition(id: &str, form: &str, composer: &str) -> String {
 #[cfg(test)]
 mod tests {
 	use super::*;
+	use tempfile::TempDir;
+
+	fn setup_data_dir() -> TempDir {
+		let tmp = TempDir::new().unwrap();
+		fs::create_dir_all(tmp.path().join("schemas")).unwrap();
+		fs::create_dir_all(tmp.path().join("composers")).unwrap();
+		fs::write(tmp.path().join("schemas/composition.schema.json"), "{}").unwrap();
+		fs::write(tmp.path().join("composers/mozart.json"), "{}").unwrap();
+		tmp
+	}
+
+	fn write_source(root: &Path, name: &str, id: &str) -> PathBuf {
+		let path = root.join(name);
+		fs::write(
+			&path,
+			format!(
+				r#"{{"id":"{}","form":"sonata","attribution":[{{"composer":"mozart"}}]}}"#,
+				id
+			),
+		)
+		.unwrap();
+		path
+	}
 
 	#[test]
 	fn test_generate_id() {
@@ -141,5 +197,23 @@ mod tests {
 		assert!(json.contains("\"id\": \"abcd1234\""));
 		assert!(json.contains("\"form\": \"sonata\""));
 		assert!(json.contains("\"composer\": \"beethoven\""));
+	}
+
+	#[test]
+	fn prepare_does_not_write_destination() {
+		let tmp = setup_data_dir();
+		let source = write_source(tmp.path(), "incoming.json", "ab123456");
+		let prepared = prepare_composition(&source, tmp.path(), false).unwrap();
+		assert_eq!(prepared.id, "ab123456");
+		assert!(!prepared.destination.exists());
+	}
+
+	#[test]
+	fn add_composition_still_writes_single_file() {
+		let tmp = setup_data_dir();
+		let source = write_source(tmp.path(), "incoming.json", "ab123456");
+		let result = add_composition(&source, tmp.path(), false).unwrap();
+		assert!(result.destination.exists());
+		assert_eq!(fs::read_to_string(result.destination).unwrap(), fs::read_to_string(source).unwrap());
 	}
 }

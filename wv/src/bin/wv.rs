@@ -115,6 +115,10 @@ enum Commands {
 		path: PathBuf,
 		#[arg(short, long)]
 		force: bool,
+		#[arg(short = 'i', long, help = "Review and confirm before adding", conflicts_with = "dry_run")]
+		interactive: bool,
+		#[arg(long, help = "Validate and show what would be added without writing")]
+		dry_run: bool,
 		#[arg(long, value_name = "PATH")]
 		data_dir: Option<PathBuf>,
 	},
@@ -253,9 +257,15 @@ fn main() {
 			let data_dir = data_dir_or_exit(data_dir.as_ref(), &config);
 			commands::validate::run(path.as_deref(), &data_dir);
 		}
-		Commands::Add { path, force, data_dir } => {
+		Commands::Add {
+			path,
+			force,
+			interactive,
+			dry_run,
+			data_dir,
+		} => {
 			let data_dir = data_dir_or_exit(data_dir.as_ref(), &config);
-			commands::add::run(&path, force, &data_dir);
+			commands::add::run(&path, force, interactive, dry_run, &data_dir, &config);
 		}
 		Commands::New { form, composer, data_dir } => {
 			let data_dir = data_dir_or_exit(data_dir.as_ref(), &config);
@@ -309,6 +319,27 @@ mod tests {
 				assert_eq!(number, vec!["iii", "32"]);
 			}
 			_ => panic!("expected get command"),
+		}
+	}
+
+	#[test]
+	fn add_accepts_interactive_and_dry_run_flags() {
+		let interactive = Cli::try_parse_from(["wv", "add", "incoming", "-i"]).unwrap();
+		match interactive.command {
+			Commands::Add { interactive, dry_run, .. } => {
+				assert!(interactive);
+				assert!(!dry_run);
+			}
+			_ => panic!("expected add command"),
+		}
+
+		let dry_run = Cli::try_parse_from(["wv", "add", "incoming", "--dry-run"]).unwrap();
+		match dry_run.command {
+			Commands::Add { interactive, dry_run, .. } => {
+				assert!(!interactive);
+				assert!(dry_run);
+			}
+			_ => panic!("expected add command"),
 		}
 	}
 }
