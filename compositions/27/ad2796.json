@@ -1,0 +1,34 @@
+{
+	"id": "27ad2796",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {
+				"composed": 1809
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "74"
+				}
+			]
+		}
+	],
+	"key": "Eb",
+	"form": "string quartet",
+	"movements": [
+		{
+			"title": "Poco adagio – Allegro"
+		},
+		{
+			"title": "Adagio ma non troppo"
+		},
+		{
+			"title": "Presto - Più presto quasi Prestissimo",
+			"key": "c"
+		},
+		{
+			"title": "Allegretto con variazioni"
+		}
+	]
+}

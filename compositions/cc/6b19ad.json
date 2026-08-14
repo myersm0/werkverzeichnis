@@ -1,0 +1,35 @@
+{
+	"id": "cc6b19ad",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {
+				"composed": 1800,
+				"published": 1801
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "18/2"
+				}
+			]
+		}
+	],
+	"key": "G",
+	"form": "string quartet",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Adagio cantabile – Allegro – Tempo I",
+			"key": "C"
+		},
+		{
+			"title": "Scherzo: Allegro – Trio"
+		},
+		{
+			"title": "Allegro molto, quasi presto"
+		}
+	]
+}

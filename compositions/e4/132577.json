@@ -1,0 +1,37 @@
+{
+	"id": "e4132577",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {
+				"composed": 1812,
+				"published": 1816
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "96"
+				}
+			]
+		}
+	],
+	"key": "G",
+	"form": "sonata",
+	"instrumentation": "violin and piano",
+	"movements": [
+		{
+			"title": "Allegro moderato"
+		},
+		{
+			"title": "Adagio espressivo",
+			"key": "Eb"
+		},
+		{
+			"title": "Scherzo: Allegro – Trio",
+			"key": "g"
+		},
+		{
+			"title": "Poco allegretto"
+		}
+	]
+}

@@ -1,0 +1,35 @@
+{
+	"id": "04c14203",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {
+				"composed": 1800,
+				"published": 1801
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "18/3"
+				}
+			]
+		}
+	],
+	"key": "D",
+	"form": "string quartet",
+	"movements": [
+		{
+			"title": "Allegro"
+		},
+		{
+			"title": "Andante con moto",
+			"key": "Bb"
+		},
+		{
+			"title": "Scherzo Allegro – Trio"
+		},
+		{
+			"title": "Presto"
+		}
+	]
+}

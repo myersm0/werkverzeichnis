@@ -1,0 +1,31 @@
+{
+	"id": "6b869a32",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {
+				"composed": 1798
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "12/1"
+				}
+			]
+		}
+	],
+	"key": "D",
+	"form": "sonata",
+	"instrumentation": "violin and piano",
+	"movements": [
+		{
+			"title": "Allegro con brio"
+		},
+		{
+			"title": "Tema con variazioni: Andante con moto"
+		},
+		{
+			"title": "Rondo: Allegro"
+		}
+	]
+}

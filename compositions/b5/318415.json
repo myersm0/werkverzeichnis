@@ -1,0 +1,36 @@
+{
+	"id": "b5318415",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {
+				"composed": 1810,
+				"premiered": 1814,
+				"published": 1816
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "95"
+				}
+			]
+		}
+	],
+	"key": "f",
+	"form": "string quartet",
+	"movements": [
+		{
+			"title": "Allegro con brio"
+		},
+		{
+			"title": "Allegretto ma non troppo",
+			"key": "D"
+		},
+		{
+			"title": "Allegro assai vivace ma serioso – Più allegro - Trio"
+		},
+		{
+			"title": "Larghetto espressivo – Allegretto agitato – Allegro"
+		}
+	]
+}

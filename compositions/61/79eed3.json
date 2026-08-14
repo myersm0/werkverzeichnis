@@ -1,0 +1,35 @@
+{
+	"id": "6179eed3",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {
+				"composed": 1800,
+				"published": 1801
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "18/6"
+				}
+			]
+		}
+	],
+	"key": "Bb",
+	"form": "string quartet",
+	"movements": [
+		{
+			"title": "Allegro con brio"
+		},
+		{
+			"title": "Adagio ma non troppo",
+			"key": "Eb"
+		},
+		{
+			"title": "Scherzo: Allegro - Trio"
+		},
+		{
+			"title": "La Malinconia: Adagio - Allegretto quasi Allegro - Adagio - Allegretto - Un poco Adagio - Prestissimo"
+		}
+	]
+}

@@ -1,0 +1,46 @@
+{
+	"id": "fcd31289",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {
+				"composed": 1826,
+				"premiered": 1826,
+				"published": 1827
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "130"
+				}
+			]
+		}
+	],
+	"key": "Bb",
+	"form": "string quartet",
+	"note": "There is an alternate final movement replacing the Große Fuge: \"Finale: Allegro in B♭ major\"",
+	"movements": [
+		{
+			"title": "Adagio, ma non troppo – Allegro"
+		},
+		{
+			"title": "Presto",
+			"key": "bb"
+		},
+		{
+			"title": "Andante con moto, ma non troppo. Un Poco scherzoso",
+			"key": "Db"
+		},
+		{
+			"title": "Alla danza tedesca. Allegro assai",
+			"key": "G"
+		},
+		{
+			"title": "Cavatina. Adagio molto espressivo",
+			"key": "Eb"
+		},
+		{
+			"title": "Große Fuge: Ouverture. Allegro – Meno mosso e moderato – Allegretto – Fuga. [Allegro] – Meno Mosso e moderato – Allegro molto e con brio – Allegro"
+		}
+	]
+}

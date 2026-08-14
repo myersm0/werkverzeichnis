@@ -1,0 +1,42 @@
+{
+	"id": "579cf855",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {
+				"composed": 1825,
+				"premiered": 1825
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "132"
+				}
+			]
+		}
+	],
+	"key": "a",
+	"form": "string quartet",
+	"movements": [
+		{
+			"title": "Assai sostenuto – Allegro",
+			"key": "a"
+		},
+		{
+			"title": "Allegro ma non tanto",
+			"key": "A"
+		},
+		{
+			"title": "Heiliger Dankgesang eines Genesenen an die Gottheit, in der Lydischen Tonart. Molto adagio – Andante",
+			"key": "F"
+		},
+		{
+			"title": "Alla marcia, assai vivace",
+			"key": "A"
+		},
+		{
+			"title": "Allegro appassionato",
+			"key": "a"
+		}
+	]
+}

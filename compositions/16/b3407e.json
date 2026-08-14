@@ -1,0 +1,34 @@
+{
+	"id": "16b3407e",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {
+				"composed": 1825
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "127"
+				}
+			]
+		}
+	],
+	"key": "Eb",
+	"form": "string quartet",
+	"movements": [
+		{
+			"title": "Maestoso – Allegro"
+		},
+		{
+			"title": "Adagio, ma non troppo e molto cantabile – Andante con moto – Adagio molto espressivo – Tempo I",
+			"key": "Ab"
+		},
+		{
+			"title": "Scherzando vivace – Trio"
+		},
+		{
+			"title": "Allegro"
+		}
+	]
+}
