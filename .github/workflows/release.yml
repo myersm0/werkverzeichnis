@@ -90,7 +90,7 @@ jobs:
         run: |
           mkdir -p package/data
           cp "wv/target/${{ matrix.target }}/release/${{ matrix.artifact }}" package/
-          cp -R catalogs collections composers compositions schemas package/data/
+          cp -R catalogs collections composers compositions inventories schemas package/data/
           cp LICENSE.md package/data/
           tar -C package -czf "${{ matrix.asset_name }}.tar.gz" "${{ matrix.artifact }}" data
 
@@ -100,7 +100,7 @@ jobs:
         run: |
           New-Item -ItemType Directory -Force -Path package/data | Out-Null
           Copy-Item "wv/target/${{ matrix.target }}/release/${{ matrix.artifact }}" package/
-          Copy-Item catalogs,collections,composers,compositions,schemas package/data/ -Recurse
+          Copy-Item catalogs,collections,composers,compositions,inventories,schemas package/data/ -Recurse
           Copy-Item LICENSE.md package/data/
           Push-Location package
           7z a "../${{ matrix.asset_name }}.zip" "${{ matrix.artifact }}" data

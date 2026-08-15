@@ -26,6 +26,7 @@
 				{"number": "anh. a 54", "display": "K. Anh. A 54"}
 			],
 			"aliases": ["kv", "köchel"],
+			"current_edition": "9",
 			"editions": {
 				"1": {"year": 1862, "editor": "Ludwig von Köchel"},
 				"6": {"year": 1964, "editor": "Giegling, Weinmann, Sievers"},

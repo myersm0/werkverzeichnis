@@ -7,6 +7,7 @@ use crate::commands::collection;
 use crate::config::{resolve_editor, Config};
 use crate::display::{expand_title, format_catalog, ExpansionContext};
 use crate::index::{get_or_build_index, mark_index_dirty, Index};
+use crate::inventory::InventoryLookup;
 use crate::output::{
 	id_to_path, output_by_ids, output_json, output_movements, output_pretty, output_terse,
 	print, OutputContext,
@@ -316,6 +317,146 @@ fn print_query_examples(
 	}
 }
 
+fn capitalize_first(value: &str) -> String {
+	let mut chars = value.chars();
+	match chars.next() {
+		Some(first) => first.to_uppercase().collect::<String>() + chars.as_str(),
+		None => String::new(),
+	}
+}
+
+fn output_inventory_stub(
+	query: &ComposerQuery,
+	number: &str,
+	label: Option<&str>,
+	args: &GetArgs,
+	defn: Option<&CatalogDefinition>,
+) {
+	let scheme = query.scheme.as_deref().unwrap_or_default();
+	if args.json {
+		let value = serde_json::json!({
+			"composer": query.composer.as_str(),
+			"scheme": scheme,
+			"edition": query.edition.as_deref(),
+			"number": number,
+			"label": label,
+			"catalogued": true,
+			"populated": false
+		});
+		print(&serde_json::to_string_pretty(&value).unwrap());
+		return;
+	}
+
+	let formatted = format_catalog(scheme, number, defn);
+	if let Some(label) = label {
+		print(&format!("{}, {}", capitalize_first(label), formatted));
+	} else {
+		print(&formatted);
+	}
+}
+
+fn handle_inventory_miss(
+	query: &ComposerQuery,
+	number: &str,
+	args: &GetArgs,
+	index: &Index,
+	defn: Option<&CatalogDefinition>,
+) -> bool {
+	let Some(scheme) = query.scheme.as_deref() else {
+		return false;
+	};
+
+	if let Some(defn) = defn {
+		if find_category(number, defn).is_none()
+			&& crate::catalog::is_fallback_key(&crate::catalog::sort_key(number, defn))
+		{
+			if !args.quiet {
+				eprintln!(
+					"Invalid catalog number for {} / {}: \"{}\"",
+					query.composer, defn.name, number
+				);
+			}
+			return true;
+		}
+	}
+
+	match index.inventory.lookup(
+		&query.composer,
+		scheme,
+		query.edition.as_deref(),
+		number,
+		defn,
+	) {
+		InventoryLookup::Known(entry) => {
+			if args.terse {
+				if !args.quiet {
+					eprintln!("Catalog entry is known, but no composition ID is available.");
+				}
+				return true;
+			}
+			if args.edit || args.movements || args.xref.is_some() {
+				eprintln!("Catalog entry is known, but no detailed composition record is available.");
+				return true;
+			}
+			output_inventory_stub(query, number, entry.label.as_deref(), args, defn);
+			if !args.quiet && !args.json {
+				eprintln!("catalog entry known; detailed record not yet available");
+			}
+			true
+		}
+		InventoryLookup::KnownGroup(members) => {
+			if args.terse {
+				if !args.quiet {
+					eprintln!("Catalog group is known, but no composition IDs are available.");
+				}
+				return true;
+			}
+			if args.edit || args.movements || args.xref.is_some() {
+				eprintln!("Catalog group is known, but no detailed composition records are available.");
+				return true;
+			}
+			let catalog = index
+				.inventory
+				.catalog(&query.composer, scheme, query.edition.as_deref(), defn);
+			if args.json {
+				let values: Vec<_> = members
+					.iter()
+					.map(|member| {
+						let label = catalog
+							.and_then(|catalog| catalog.entries.get(member))
+							.and_then(|entry| entry.label.as_deref());
+						serde_json::json!({
+							"composer": query.composer.as_str(),
+							"scheme": scheme,
+							"edition": query.edition.as_deref(),
+							"number": member,
+							"label": label,
+							"catalogued": true,
+							"populated": false
+						})
+					})
+					.collect();
+				print(&serde_json::to_string_pretty(&values).unwrap());
+			} else {
+				for member in members {
+					let label = catalog
+						.and_then(|catalog| catalog.entries.get(&member))
+						.and_then(|entry| entry.label.as_deref());
+					output_inventory_stub(query, &member, label, args, defn);
+				}
+			}
+			true
+		}
+		InventoryLookup::Absent => {
+			if !args.quiet {
+				eprintln!("No such catalog entry: {}", format_catalog(scheme, number, defn));
+			}
+			true
+		}
+		InventoryLookup::Unknown => false,
+	}
+}
+
 fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Config) {
 	if (matches!(&query.number, Some(NumberSpec::Range { .. })) || query.group.is_some())
 		&& query.scheme.is_none()
@@ -383,6 +524,17 @@ fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Con
 	let results = builder.fetch();
 
 	if results.is_empty() {
+		if let Some(NumberSpec::Single(number)) = number_spec.as_ref() {
+			if handle_inventory_miss(
+				&query,
+				number,
+				args,
+				&index,
+				catalog_defn.as_ref(),
+			) {
+				return;
+			}
+		}
 		if !args.quiet {
 			eprintln!("No results found.");
 			print_query_examples(

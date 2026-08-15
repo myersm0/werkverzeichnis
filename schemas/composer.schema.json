@@ -73,6 +73,10 @@
 					"type": "array",
 					"items": {"type": "integer", "minimum": 1}
 				},
+				"member_format": {
+					"type": "string",
+					"description": "Format for expanding inventory member ranges; supports {number} and {member}"
+				},
 				"examples": {
 					"type": "array",
 					"items": {"$ref": "#/$defs/example"}
@@ -84,6 +88,10 @@
 				"editions": {
 					"type": "object",
 					"additionalProperties": {"$ref": "#/$defs/edition"}
+				},
+				"current_edition": {
+					"type": "string",
+					"description": "Edition used when no edition is specified"
 				},
 				"categories": {
 					"type": "object",

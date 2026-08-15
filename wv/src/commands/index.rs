@@ -25,6 +25,18 @@ pub fn run(data_dir: &Path) {
 	print(&format!("Found {} compositions", total_compositions));
 	print(&format!("Found {} catalog entries", total_catalog_entries));
 
+	let total_inventory_entries: usize = index
+		.inventory
+		.catalogs
+		.values()
+		.flat_map(|schemes| schemes.values())
+		.map(|scheme| {
+			scheme.default.as_ref().map_or(0, |catalog| catalog.entries.len())
+				+ scheme.editions.values().map(|catalog| catalog.entries.len()).sum::<usize>()
+		})
+		.sum();
+	print(&format!("Found {} inventory entries", total_inventory_entries));
+
 	if let Err(e) = save_index(&index, data_dir) {
 		eprintln!("Error writing index: {}", e);
 		std::process::exit(1);
@@ -35,6 +47,10 @@ pub fn run(data_dir: &Path) {
 	print(&format!(
 		"Wrote {}",
 		indexes_dir.join("composer-index.json").display()
+	));
+	print(&format!(
+		"Wrote {}",
+		indexes_dir.join("inventory-index.json").display()
 	));
 	if !index.editions.is_empty() {
 		print(&format!(

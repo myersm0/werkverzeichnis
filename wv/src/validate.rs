@@ -7,7 +7,8 @@ use serde::de::DeserializeOwned;
 use serde_json::Value;
 
 use crate::catalog::load_catalog_def;
-use crate::types::{AttributionEntry, CatalogDefinition, Collection, Composer, Composition};
+use crate::inventory::{build_inventory_index, normalize_inventory, InventoryIndex, InventoryLookup};
+use crate::types::{AttributionEntry, CatalogDefinition, Collection, Composer, Composition, Inventory};
 
 #[derive(Debug, Clone)]
 pub struct ValidationError {
@@ -27,6 +28,7 @@ enum DataKind {
 	Composer,
 	Catalog,
 	Collection,
+	Inventory,
 }
 
 struct SchemaCheck {
@@ -92,6 +94,8 @@ pub struct Validator {
 	composer_schema: SchemaCheck,
 	catalog_schema: SchemaCheck,
 	collection_schema: SchemaCheck,
+	inventory_schema: SchemaCheck,
+	inventory_index: InventoryIndex,
 }
 
 impl Validator {
@@ -178,6 +182,8 @@ impl Validator {
 			composer_schema: SchemaCheck::load(schemas_dir.join("composer.schema.json")),
 			catalog_schema: SchemaCheck::load(schemas_dir.join("catalog.schema.json")),
 			collection_schema: SchemaCheck::load(schemas_dir.join("collection.schema.json")),
+			inventory_schema: SchemaCheck::load(schemas_dir.join("inventory.schema.json")),
+			inventory_index: build_inventory_index(data_dir),
 		}
 	}
 
@@ -188,9 +194,10 @@ impl Validator {
 			Some(DataKind::Composer) => self.validate_composer_file(path),
 			Some(DataKind::Catalog) => self.validate_catalog_file(path),
 			Some(DataKind::Collection) => self.validate_collection_file(path),
+			Some(DataKind::Inventory) => self.validate_inventory_file(path),
 			None => vec![ValidationError {
 				path: path.display().to_string(),
-				message: "Cannot determine data type; path must be under compositions/, composers/, catalogs/, or collections/".into(),
+				message: "Cannot determine data type; path must be under compositions/, composers/, catalogs/, collections/, or inventories/".into(),
 			}],
 		}
 	}
@@ -217,19 +224,26 @@ impl Validator {
 			return errors;
 		};
 
+		let mut pattern_valid = true;
 		if let Some(pattern) = &definition.pattern {
-			match regex::Regex::new(pattern) {
-				Ok(regex) if !regex.is_match(number) => errors.push(ValidationError {
-					path: path_str.to_string(),
-					message: format!(
-						"{}: catalog number '{}' does not match '{}' pattern",
-						location, number, scheme
-					),
-				}),
-				Err(error) => errors.push(ValidationError {
-					path: path_str.to_string(),
-					message: format!("{}: invalid '{}' catalog pattern: {}", location, scheme, error),
-				}),
+			match regex::RegexBuilder::new(pattern).case_insensitive(true).build() {
+				Ok(regex) if !regex.is_match(number) => {
+					pattern_valid = false;
+					errors.push(ValidationError {
+						path: path_str.to_string(),
+						message: format!(
+							"{}: catalog number '{}' does not match '{}' pattern",
+							location, number, scheme
+						),
+					});
+				}
+				Err(error) => {
+					pattern_valid = false;
+					errors.push(ValidationError {
+						path: path_str.to_string(),
+						message: format!("{}: invalid '{}' catalog pattern: {}", location, scheme, error),
+					});
+				}
 				_ => {}
 			}
 		}
@@ -247,6 +261,26 @@ impl Validator {
 						location, edition, composer, scheme
 					),
 				});
+			}
+		}
+
+		if pattern_valid {
+			match self.inventory_index.lookup(composer, scheme, edition, number, Some(&definition)) {
+				InventoryLookup::Absent => errors.push(ValidationError {
+					path: path_str.to_string(),
+					message: format!(
+						"{}: {}:{}:{} is not present in the complete catalog inventory",
+						location, composer, scheme, number
+					),
+				}),
+				InventoryLookup::KnownGroup(_) => errors.push(ValidationError {
+					path: path_str.to_string(),
+					message: format!(
+						"{}: {}:{}:{} is an inventory group, not a leaf catalog entry",
+						location, composer, scheme, number
+					),
+				}),
+				_ => {}
 			}
 		}
 
@@ -332,9 +366,29 @@ impl Validator {
 				.map_or(false, |catalogs| catalogs.contains_key(default_scheme));
 			if !defined_locally && !self.global_catalog_schemes.contains(default_scheme) {
 				errors.push(ValidationError {
-					path: path_str,
+					path: path_str.clone(),
 					message: format!("default_scheme '{}' is not defined for this composer or globally", default_scheme),
 				});
+			}
+		}
+
+		if let Some(catalogs) = &composer.catalogs {
+			for (scheme, definition) in catalogs {
+				if let Some(current_edition) = &definition.current_edition {
+					let defined = definition
+						.editions
+						.as_ref()
+						.map_or(false, |editions| editions.contains_key(current_edition));
+					if !defined {
+						errors.push(ValidationError {
+							path: path_str.clone(),
+							message: format!(
+								"catalog '{}': current_edition '{}' is not defined in editions",
+								scheme, current_edition
+							),
+						});
+					}
+				}
 			}
 		}
 
@@ -467,6 +521,96 @@ impl Validator {
 					}
 				}
 			}
+		}
+
+		errors
+	}
+
+	fn validate_inventory_file(&self, path: &Path) -> Vec<ValidationError> {
+		let (value, mut errors) = match self.read_and_validate(path, &self.inventory_schema, false) {
+			Ok(result) => result,
+			Err(errors) => return errors,
+		};
+		let path_str = path.display().to_string();
+		let Some(inventory) = deserialize_model::<Inventory>(&value, &path_str, &mut errors) else {
+			return errors;
+		};
+
+		if !self.composers.contains(&inventory.composer) {
+			errors.push(ValidationError {
+				path: path_str.clone(),
+				message: format!("composer '{}' not found in composers/", inventory.composer),
+			});
+			return errors;
+		}
+		if !self.catalog_is_allowed_for_composer(&inventory.composer, &inventory.scheme) {
+			errors.push(ValidationError {
+				path: path_str.clone(),
+				message: format!(
+					"catalog scheme '{}' is not defined for composer '{}' or globally",
+					inventory.scheme, inventory.composer
+				),
+			});
+			return errors;
+		}
+
+		if let Some(path_composer) = inventory_composer_from_path(path) {
+			if path_composer != inventory.composer {
+				errors.push(ValidationError {
+					path: path_str.clone(),
+					message: format!(
+						"inventory composer '{}' does not match path composer '{}'",
+						inventory.composer, path_composer
+					),
+				});
+			}
+		}
+
+		let definition = load_catalog_def(&self.data_dir, &inventory.scheme, Some(&inventory.composer));
+		if let Some(edition) = inventory.edition.as_deref() {
+			let defined = definition
+				.as_ref()
+				.and_then(|definition| definition.editions.as_ref())
+				.map_or(false, |editions| editions.contains_key(edition));
+			if !defined {
+				errors.push(ValidationError {
+					path: path_str.clone(),
+					message: format!(
+						"edition '{}' is not defined for {}:{}",
+						edition, inventory.composer, inventory.scheme
+					),
+				});
+			}
+		}
+
+		if let Some(definition) = definition.as_ref() {
+			if let Some(member_format) = definition.member_format.as_deref() {
+				if !member_format.contains("{number}") || !member_format.contains("{member}") {
+					errors.push(ValidationError {
+						path: path_str.clone(),
+						message: "catalog member_format must contain {number} and {member}".into(),
+					});
+				}
+			}
+		}
+
+		match normalize_inventory(&inventory, definition.as_ref()) {
+			Ok(normalized) => {
+				for number in normalized.entries.keys() {
+					errors.extend(self.validate_catalog_reference(
+						&inventory.composer,
+						&inventory.scheme,
+						number,
+						inventory.edition.as_deref(),
+						&path_str,
+						"entries",
+					));
+				}
+			}
+			Err(message) => errors.push(ValidationError {
+				path: path_str,
+				message,
+			}),
 		}
 
 		errors
@@ -656,6 +800,7 @@ impl Validator {
 			&self.composer_schema,
 			&self.catalog_schema,
 			&self.collection_schema,
+			&self.inventory_schema,
 		]
 		.into_iter()
 		.filter_map(|schema| schema.schema_error())
@@ -665,7 +810,7 @@ impl Validator {
 		}
 
 		let mut paths = Vec::new();
-		for directory in ["composers", "catalogs", "collections", "compositions"] {
+		for directory in ["composers", "catalogs", "collections", "compositions", "inventories"] {
 			collect_json_files(&data_dir.join(directory), &mut paths);
 		}
 		paths.sort();
@@ -674,6 +819,37 @@ impl Validator {
 		for path in paths {
 			errors.extend(self.validate_file(path));
 		}
+
+		let mut inventory_identities: HashMap<(String, String, Option<String>), Vec<String>> = HashMap::new();
+		let mut inventory_paths = Vec::new();
+		collect_json_files(&data_dir.join("inventories"), &mut inventory_paths);
+		for path in inventory_paths {
+			let Ok(content) = fs::read_to_string(&path) else {
+				continue;
+			};
+			let Ok(inventory) = serde_json::from_str::<Inventory>(&content) else {
+				continue;
+			};
+			inventory_identities
+				.entry((inventory.composer, inventory.scheme, inventory.edition))
+				.or_default()
+				.push(path.display().to_string());
+		}
+		for ((composer, scheme, edition), mut duplicate_paths) in inventory_identities {
+			if duplicate_paths.len() < 2 {
+				continue;
+			}
+			duplicate_paths.sort();
+			let identity = edition.map_or_else(
+				|| format!("{}:{}", composer, scheme),
+				|edition| format!("{}:{} edition {}", composer, scheme, edition),
+			);
+			errors.push(ValidationError {
+				path: duplicate_paths.join(", "),
+				message: format!("duplicate inventory identity {}", identity),
+			});
+		}
+
 		errors
 	}
 }
@@ -713,6 +889,7 @@ fn data_kind(path: &Path) -> Option<DataKind> {
 			Some("composers") => return Some(DataKind::Composer),
 			Some("catalogs") => return Some(DataKind::Catalog),
 			Some("collections") => return Some(DataKind::Collection),
+			Some("inventories") => return Some(DataKind::Inventory),
 			_ => {}
 		}
 	}
@@ -775,6 +952,16 @@ fn collection_id_from_path(path: &Path) -> Option<String> {
 	}
 }
 
+fn inventory_composer_from_path(path: &Path) -> Option<&str> {
+	let mut components = path.components();
+	while let Some(component) = components.next() {
+		if component.as_os_str().to_str() == Some("inventories") {
+			return components.next()?.as_os_str().to_str();
+		}
+	}
+	None
+}
+
 pub fn validate_file<P: AsRef<Path>>(path: P, data_dir: &Path) -> Vec<ValidationError> {
 	let validator = Validator::new(data_dir);
 	validator.validate_file(path)
@@ -810,6 +997,8 @@ mod tests {
 			composer_schema: empty_schema(),
 			catalog_schema: empty_schema(),
 			collection_schema: empty_schema(),
+			inventory_schema: empty_schema(),
+			inventory_index: InventoryIndex::default(),
 		}
 	}
 
@@ -837,6 +1026,7 @@ mod tests {
 		assert_eq!(data_kind(Path::new("composers/bach.json")), Some(DataKind::Composer));
 		assert_eq!(data_kind(Path::new("catalogs/op.json")), Some(DataKind::Catalog));
 		assert_eq!(data_kind(Path::new("collections/bach/wtc-1.json")), Some(DataKind::Collection));
+		assert_eq!(data_kind(Path::new("inventories/beethoven/op.json")), Some(DataKind::Inventory));
 	}
 
 	#[test]

@@ -1,5 +1,6 @@
 pub mod add;
 pub mod collection;
+pub mod coverage;
 pub mod format;
 pub mod get;
 pub mod index;

@@ -56,7 +56,7 @@ echo "Downloading $URL..."
 curl -fsSL "$URL" -o "$TARGET.$EXT"
 tar -xzf "$TARGET.$EXT"
 
-if [ ! -x "$BINARY" ] || [ ! -d data/compositions ]; then
+if [ ! -x "$BINARY" ] || [ ! -d data/compositions ] || [ ! -d data/inventories ]; then
 	echo "Release archive is missing the binary or dataset"
 	exit 1
 fi
@@ -65,7 +65,7 @@ mkdir -p "$INSTALL_DIR" "$DATA_DIR"
 mv "$BINARY" "$INSTALL_DIR/$BINARY"
 chmod +x "$INSTALL_DIR/$BINARY"
 
-for dir in catalogs collections composers compositions schemas; do
+for dir in catalogs collections composers compositions inventories schemas; do
 	rm -rf "$DATA_DIR/$dir"
 	mv "data/$dir" "$DATA_DIR/$dir"
 done

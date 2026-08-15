@@ -88,6 +88,19 @@ enum Commands {
 		#[arg(long, value_name = "PATH")]
 		data_dir: Option<PathBuf>,
 	},
+	Coverage {
+		#[arg(help = "Composer slug")]
+		composer: String,
+		#[arg(help = "Catalog scheme")]
+		scheme: Option<String>,
+		#[arg(long)]
+		edition: Option<String>,
+		#[arg(long, help = "List inventory entries without detailed composition records")]
+		missing: bool,
+		#[arg(long, value_name = "PATH")]
+		data_dir: Option<PathBuf>,
+	},
+
 	Set {
 		#[arg(help = "Composer slug")]
 		target: String,
@@ -233,6 +246,20 @@ fn main() {
 			};
 			commands::get::run(args, data_dir, &config);
 		}
+		Commands::Coverage { composer, scheme, edition, missing, data_dir } => {
+			let data_dir = data_dir_or_exit(data_dir.as_ref(), &config);
+			let composer = composer.to_lowercase();
+			let scheme = scheme.map(|value| value.to_lowercase().trim_end_matches('.').to_string());
+			let edition = edition.map(|value| value.to_lowercase());
+			commands::coverage::run(
+				&composer,
+				scheme.as_deref(),
+				edition.as_deref(),
+				missing,
+				&data_dir,
+			);
+		}
+
 		Commands::Set {
 			target,
 			scheme,

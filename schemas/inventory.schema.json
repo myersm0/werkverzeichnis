@@ -1,0 +1,80 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://github.com/myersm0/werkverzeichnis/schemas/inventory.schema.json",
+	"title": "Catalog inventory",
+	"type": "object",
+	"additionalProperties": false,
+	"required": [
+		"composer",
+		"scheme",
+		"complete",
+		"entries"
+	],
+	"properties": {
+		"composer": {
+			"type": "string",
+			"pattern": "^[a-z]+(-[a-z]+)?$"
+		},
+		"scheme": {
+			"type": "string",
+			"pattern": "^[a-z0-9-]+$"
+		},
+		"edition": {
+			"type": "string"
+		},
+		"complete": {
+			"type": "boolean"
+		},
+		"sources": {
+			"type": "array",
+			"items": {
+				"$ref": "#/$defs/source"
+			}
+		},
+		"entries": {
+			"type": "array",
+			"items": {
+				"$ref": "#/$defs/entry"
+			}
+		}
+	},
+	"$defs": {
+		"entry": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": [
+				"number"
+			],
+			"properties": {
+				"number": {
+					"type": "string"
+				},
+				"member_range": {
+					"type": "integer",
+					"minimum": 1
+				},
+				"label": {
+					"type": "string"
+				}
+			}
+		},
+		"source": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": [
+				"title"
+			],
+			"properties": {
+				"title": {
+					"type": "string"
+				},
+				"url": {
+					"type": "string"
+				},
+				"note": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}

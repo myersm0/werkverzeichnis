@@ -5,6 +5,7 @@ use std::time::{SystemTime, UNIX_EPOCH};
 
 use serde::{Deserialize, Serialize};
 
+use crate::inventory::{build_inventory_index, InventoryIndex};
 use crate::parse::load_composition;
 use crate::types::CatalogEntry;
 
@@ -26,6 +27,7 @@ pub struct Index {
 	pub by_composer: HashMap<String, Vec<String>>,
 	pub catalog: HashMap<String, HashMap<String, SchemeIndex>>,
 	pub editions: HashMap<String, HashMap<String, HashMap<String, String>>>,
+	pub inventory: InventoryIndex,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -53,7 +55,10 @@ pub fn build_index<P: AsRef<Path>>(data_dir: P) -> Index {
 
 	let entries = match fs::read_dir(&compositions_dir) {
 		Ok(e) => e,
-		Err(_) => return index,
+		Err(_) => {
+			index.inventory = build_inventory_index(data_dir);
+			return index;
+		}
 	};
 
 	for prefix_entry in entries.flatten() {
@@ -112,6 +117,7 @@ pub fn build_index<P: AsRef<Path>>(data_dir: P) -> Index {
 	}
 
 	build_cumulative_editions(&mut index, &edition_entries);
+	index.inventory = build_inventory_index(data_dir);
 
 	index
 }
@@ -193,17 +199,22 @@ pub fn load_index<P: AsRef<Path>>(data_dir: P) -> Option<Index> {
 	let data_dir = data_dir.as_ref();
 	let index_path = data_dir.join(".indexes").join("index.json");
 	let composer_path = data_dir.join(".indexes").join("composer-index.json");
+	let inventory_path = data_dir.join(".indexes").join("inventory-index.json");
 
 	let catalog_content = fs::read_to_string(&index_path).ok()?;
 	let composer_content = fs::read_to_string(&composer_path).ok()?;
-
 	let catalog = serde_json::from_str(&catalog_content).ok()?;
 	let by_composer = serde_json::from_str(&composer_content).ok()?;
+	let inventory = fs::read_to_string(&inventory_path)
+		.ok()
+		.and_then(|content| serde_json::from_str(&content).ok())
+		.unwrap_or_default();
 
 	Some(Index {
 		catalog,
 		by_composer,
 		editions: HashMap::new(),
+		inventory,
 	})
 }
 
@@ -225,6 +236,7 @@ pub fn index_is_stale<P: AsRef<Path>>(data_dir: P) -> bool {
 
 	if !indexes_dir.join("index.json").is_file()
 		|| !indexes_dir.join("composer-index.json").is_file()
+		|| !indexes_dir.join("inventory-index.json").is_file()
 	{
 		return true;
 	}
@@ -238,7 +250,39 @@ pub fn index_is_stale<P: AsRef<Path>>(data_dir: P) -> bool {
 		return true;
 	}
 
+	if tree_has_newer_json(&data_dir.join("inventories"), metadata.built_at) {
+		return true;
+	}
+
 	current_unix_seconds().saturating_sub(metadata.built_at) >= INDEX_TTL_SECS
+}
+
+fn tree_has_newer_json(dir: &Path, built_at: u64) -> bool {
+	let Ok(entries) = fs::read_dir(dir) else {
+		return false;
+	};
+	for entry in entries.flatten() {
+		let path = entry.path();
+		if path.is_dir() {
+			if tree_has_newer_json(&path, built_at) {
+				return true;
+			}
+			continue;
+		}
+		if path.extension().map_or(true, |ext| ext != "json") {
+			continue;
+		}
+		let modified = entry
+			.metadata()
+			.ok()
+			.and_then(|metadata| metadata.modified().ok())
+			.and_then(|modified| modified.duration_since(UNIX_EPOCH).ok())
+			.map(|duration| duration.as_secs());
+		if modified.map_or(false, |modified| modified > built_at) {
+			return true;
+		}
+	}
+	false
 }
 
 fn current_unix_seconds() -> u64 {
@@ -279,6 +323,7 @@ pub fn save_index<P: AsRef<Path>>(index: &Index, data_dir: P) -> std::io::Result
 
 	write_index(index, indexes_dir.join("index.json"))?;
 	write_composer_index(index, indexes_dir.join("composer-index.json"))?;
+	write_inventory_index(index, indexes_dir.join("inventory-index.json"))?;
 
 	if !index.editions.is_empty() {
 		write_edition_indexes(index, data_dir)?;
@@ -321,6 +366,12 @@ pub fn write_composer_index<P: AsRef<Path>>(index: &Index, output_path: P) -> st
 	Ok(())
 }
 
+pub fn write_inventory_index<P: AsRef<Path>>(index: &Index, output_path: P) -> std::io::Result<()> {
+	let json = serde_json::to_string_pretty(&index.inventory)?;
+	fs::write(output_path, json)?;
+	Ok(())
+}
+
 pub fn write_edition_indexes<P: AsRef<Path>>(index: &Index, data_dir: P) -> std::io::Result<()> {
 	let editions_dir = data_dir.as_ref().join(".indexes").join("editions");
 	fs::create_dir_all(&editions_dir)?;
@@ -346,6 +397,7 @@ mod tests {
 		fs::create_dir_all(&indexes_dir).unwrap();
 		fs::write(indexes_dir.join("index.json"), "{}").unwrap();
 		fs::write(indexes_dir.join("composer-index.json"), "{}").unwrap();
+		fs::write(indexes_dir.join("inventory-index.json"), "{\"catalogs\":{}}").unwrap();
 	}
 
 	#[test]

@@ -11,6 +11,7 @@
 		{"group": 4, "type": "int"}
 	],
 	"group_by": [1, 2, 3],
+	"member_format": "{number}/{member}",
 	"examples": [
 		{"number": "2", "display": "op. 2"},
 		{"number": "2/1", "display": "op. 2 no. 1"},

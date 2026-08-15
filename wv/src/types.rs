@@ -120,6 +120,40 @@ pub struct Xref {
 	pub viaf: Option<String>,
 }
 
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct Inventory {
+	pub composer: String,
+	pub scheme: String,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub edition: Option<String>,
+	pub complete: bool,
+	#[serde(default, skip_serializing_if = "Vec::is_empty")]
+	pub sources: Vec<InventorySource>,
+	pub entries: Vec<InventoryEntry>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct InventoryEntry {
+	pub number: String,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub member_range: Option<u32>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub label: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct InventorySource {
+	pub title: String,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub url: Option<String>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub note: Option<String>,
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct Collection {
@@ -180,11 +214,15 @@ pub struct CatalogDefinition {
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub group_by: Option<Vec<usize>>,
 	#[serde(skip_serializing_if = "Option::is_none")]
+	pub member_format: Option<String>,
+	#[serde(skip_serializing_if = "Option::is_none")]
 	pub examples: Option<Vec<CatalogExample>>,
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub aliases: Option<Vec<String>>,
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub editions: Option<HashMap<String, EditionInfo>>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub current_edition: Option<String>,
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub categories: Option<HashMap<String, String>>,
 	#[serde(skip_serializing_if = "Option::is_none")]

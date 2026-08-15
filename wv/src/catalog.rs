@@ -102,6 +102,12 @@ pub fn load_catalog_def<P: AsRef<Path>>(
 			if c.canonical_format.is_none() {
 				c.canonical_format = g.canonical_format;
 			}
+			if c.group_by.is_none() {
+				c.group_by = g.group_by;
+			}
+			if c.member_format.is_none() {
+				c.member_format = g.member_format;
+			}
 			Some(c)
 		}
 		(Some(c), None) => Some(c),
