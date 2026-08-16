@@ -1,19 +1,28 @@
 use std::path::Path;
 
-use crate::add::{generate_id, scaffold_composition};
+use crate::add::{generate_unique_id, scaffold_composition};
+use crate::parse::path_for_id;
 use crate::index::mark_index_dirty;
 use crate::output::print;
 
 pub fn run(form: &str, composer: &str, data_dir: &Path) {
-	let id = generate_id();
+	let id = generate_unique_id(data_dir);
 	let json = scaffold_composition(&id, form, composer);
 
-	let prefix = &id[..2];
-	let suffix = &id[2..];
-	let dest_dir = data_dir.join("compositions").join(prefix);
-	let dest_path = dest_dir.join(format!("{}.json", suffix));
+	let dest_path = match path_for_id(data_dir.join("compositions"), &id) {
+		Ok(path) => path,
+		Err(e) => {
+			eprintln!("Error building destination path: {}", e);
+			std::process::exit(1);
+		}
+	};
 
-	if let Err(e) = std::fs::create_dir_all(&dest_dir) {
+	if dest_path.exists() {
+		eprintln!("Error: {} already exists; refusing to overwrite", dest_path.display());
+		std::process::exit(1);
+	}
+
+	if let Err(e) = std::fs::create_dir_all(dest_path.parent().unwrap_or(data_dir)) {
 		eprintln!("Error creating directory: {}", e);
 		std::process::exit(1);
 	}

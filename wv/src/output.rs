@@ -4,7 +4,7 @@ use std::path::Path;
 use crate::catalog::load_catalog_def;
 use crate::config::Config;
 use crate::display::{expand_title, format_catalog, ExpansionContext};
-use crate::parse::load_composition;
+use crate::parse::{load_composition, path_for_id};
 use crate::query::QueryResult;
 use crate::types::{CatalogDefinition, Composition};
 
@@ -20,10 +20,11 @@ pub fn print(s: &str) {
 }
 
 pub fn id_to_path(data_dir: &Path, id: &str) -> std::path::PathBuf {
-	data_dir
-		.join("compositions")
-		.join(&id[..2])
-		.join(format!("{}.json", &id[2..]))
+	let compositions = data_dir.join("compositions");
+	path_for_id(&compositions, id).unwrap_or_else(|_| {
+		let sanitized = id.replace(|c: char| c == '/' || c == '\\', "_");
+		compositions.join(format!("{}.json", sanitized))
+	})
 }
 
 fn first_catalog(comp: &Composition) -> Option<(&str, &str)> {
@@ -221,5 +222,30 @@ pub fn output_by_ids(
 				print(id);
 			}
 		}
+	}
+}
+
+#[cfg(test)]
+mod tests {
+	use super::*;
+
+	#[test]
+	fn id_to_path_builds_sharded_path() {
+		let path = id_to_path(Path::new("/data"), "abcd1234");
+		assert_eq!(path, Path::new("/data/compositions/ab/cd1234.json"));
+	}
+
+	#[test]
+	fn id_to_path_does_not_panic_on_malformed_ids() {
+		for id in ["", "a", "ab", "a\u{e9}aaaaa", "much-too-long-to-be-an-id"] {
+			let path = id_to_path(Path::new("/data"), id);
+			assert!(path.starts_with("/data/compositions"));
+		}
+	}
+
+	#[test]
+	fn id_to_path_does_not_escape_the_compositions_directory() {
+		let path = id_to_path(Path::new("/data"), "../../etc/passwd");
+		assert_eq!(path.parent(), Some(Path::new("/data/compositions")));
 	}
 }

@@ -34,24 +34,35 @@ pub fn load_composer<P: AsRef<Path>>(path: P) -> Result<Composer, ParseError> {
 
 pub fn extract_id_from_path<P: AsRef<Path>>(path: P) -> Result<String, ParseError> {
 	let path = path.as_ref();
-	let file_stem = path
-		.file_stem()
-		.and_then(|s| s.to_str())
-		.ok_or_else(|| ParseError::InvalidPath(path.display().to_string()))?;
+	let invalid = || ParseError::InvalidPath(path.display().to_string());
 
-	let parent = path
+	let file_stem = path.file_stem().and_then(|s| s.to_str()).ok_or_else(invalid)?;
+
+	let suffix = match file_stem.rsplit_once('-') {
+		Some((_, suffix)) => suffix,
+		None => match file_stem.rsplit_once('_') {
+			Some((_, suffix)) => suffix,
+			None => file_stem,
+		},
+	};
+
+	let prefix = path
 		.parent()
 		.and_then(|p| p.file_name())
 		.and_then(|s| s.to_str())
-		.ok_or_else(|| ParseError::InvalidPath(path.display().to_string()))?;
+		.ok_or_else(invalid)?;
 
-	Ok(format!("{}{}", parent, file_stem))
+	if prefix.len() != 2 || suffix.len() != 6 {
+		return Err(invalid());
+	}
+
+	Ok(format!("{}{}", prefix, suffix))
 }
 
 pub fn path_for_id<P: AsRef<Path>>(base_dir: P, id: &str) -> Result<std::path::PathBuf, ParseError> {
-	if id.len() != 8 {
+	if id.len() != 8 || !id.is_ascii() {
 		return Err(ParseError::InvalidPath(format!(
-			"ID must be 8 characters: {}",
+			"ID must be 8 ASCII characters: {}",
 			id
 		)));
 	}
@@ -75,6 +86,37 @@ mod tests {
 	fn test_path_for_id() {
 		let path = path_for_id("compositions", "abcd1234").unwrap();
 		assert_eq!(path, Path::new("compositions/ab/cd1234.json"));
+	}
+
+	#[test]
+	fn path_for_id_rejects_non_ascii_ids_without_panicking() {
+		let id = "a\u{e9}aaaaa";
+		assert_eq!(id.len(), 8);
+		assert!(path_for_id("compositions", id).is_err());
+	}
+
+	#[test]
+	fn path_for_id_rejects_short_ids() {
+		assert!(path_for_id("compositions", "a").is_err());
+		assert!(path_for_id("compositions", "").is_err());
+	}
+
+	#[test]
+	fn extract_id_accepts_prefixed_filenames() {
+		assert_eq!(
+			extract_id_from_path(Path::new("compositions/ab/foo-bar-cd1234.json")).unwrap(),
+			"abcd1234"
+		);
+		assert_eq!(
+			extract_id_from_path(Path::new("compositions/ab/foo_cd1234.json")).unwrap(),
+			"abcd1234"
+		);
+	}
+
+	#[test]
+	fn extract_id_rejects_wrong_component_lengths() {
+		assert!(extract_id_from_path(Path::new("compositions/abc/cd1234.json")).is_err());
+		assert!(extract_id_from_path(Path::new("compositions/ab/cd12345.json")).is_err());
 	}
 
 	#[test]

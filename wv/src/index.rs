@@ -5,6 +5,7 @@ use std::time::{SystemTime, UNIX_EPOCH};
 
 use serde::{Deserialize, Serialize};
 
+use crate::catalog::normalize_catalog_number;
 use crate::inventory::{build_inventory_index, InventoryIndex};
 use crate::parse::load_composition;
 use crate::types::CatalogEntry;
@@ -37,6 +38,14 @@ struct IndexMetadata {
 }
 
 const INDEX_TTL_SECS: u64 = 24 * 60 * 60;
+
+/// Directories whose contents feed the index, with the extension that matters.
+const INDEX_SOURCES: [(&str, &str); 4] = [
+	("compositions", "json"),
+	("composers", "json"),
+	("catalogs", "json"),
+	("inventories", "toml"),
+];
 
 struct EditionEntry {
 	composer: String,
@@ -104,7 +113,7 @@ pub fn build_index<P: AsRef<Path>>(data_dir: P) -> Index {
 										composer: composer.clone(),
 										scheme: cat.scheme.clone(),
 										edition: edition.clone(),
-										number: cat.number.clone(),
+										number: normalize_catalog_number(&cat.number),
 										id: comp.id.clone(),
 									});
 								}
@@ -186,12 +195,14 @@ fn add_catalog_entry(index: &mut Index, composer: &str, cat: &CatalogEntry, id: 
 		note: cat.note.clone(),
 	};
 
+	// Every lookup path normalizes, so normalize on the way in too rather than
+	// relying on the dataset happening to be lowercase.
+	let number = normalize_catalog_number(&cat.number);
+
 	if is_current {
-		scheme_index.current.insert(cat.number.clone(), entry);
-	} else {
-		if !scheme_index.current.contains_key(&cat.number) {
-			scheme_index.superseded.insert(cat.number.clone(), entry);
-		}
+		scheme_index.current.insert(number, entry);
+	} else if !scheme_index.current.contains_key(&number) {
+		scheme_index.superseded.insert(number, entry);
 	}
 }
 
@@ -250,8 +261,12 @@ pub fn index_is_stale<P: AsRef<Path>>(data_dir: P) -> bool {
 		return true;
 	}
 
-	if tree_has_newer_files(&data_dir.join("inventories"), metadata.built_at, "toml") {
-		return true;
+	// Everything build_index reads, not just inventories: a git pull or a plain
+	// editor save has to invalidate the index too.
+	for (directory, extension) in INDEX_SOURCES {
+		if tree_has_newer_files(&data_dir.join(directory), metadata.built_at, extension) {
+			return true;
+		}
 	}
 
 	current_unix_seconds().saturating_sub(metadata.built_at) >= INDEX_TTL_SECS
@@ -278,7 +293,7 @@ fn tree_has_newer_files(dir: &Path, built_at: u64, extension: &str) -> bool {
 			.and_then(|metadata| metadata.modified().ok())
 			.and_then(|modified| modified.duration_since(UNIX_EPOCH).ok())
 			.map(|duration| duration.as_secs());
-		if modified.map_or(false, |modified| modified > built_at) {
+		if modified.map_or(false, |modified| modified >= built_at) {
 			return true;
 		}
 	}
@@ -301,7 +316,33 @@ fn load_index_metadata(data_dir: &Path) -> Option<IndexMetadata> {
 fn write_index_metadata(data_dir: &Path, metadata: &IndexMetadata) -> std::io::Result<()> {
 	let path = data_dir.join(".indexes").join("metadata.json");
 	let json = serde_json::to_string_pretty(metadata)?;
-	fs::write(path, json + "\n")
+	write_atomic(&path, &(json + "\n"))
+}
+
+/// Write via a temporary file and rename, so an interrupted or concurrent run
+/// cannot leave a half-written index behind.
+fn write_atomic(path: &Path, contents: &str) -> std::io::Result<()> {
+	let parent = path.parent().unwrap_or_else(|| Path::new("."));
+	fs::create_dir_all(parent)?;
+
+	let name = path
+		.file_name()
+		.and_then(|name| name.to_str())
+		.unwrap_or("index");
+	let temp = parent.join(format!(".{}.{}.tmp", name, std::process::id()));
+
+	if let Err(error) = fs::write(&temp, contents) {
+		let _ = fs::remove_file(&temp);
+		return Err(error);
+	}
+
+	match fs::rename(&temp, path) {
+		Ok(()) => Ok(()),
+		Err(error) => {
+			let _ = fs::remove_file(&temp);
+			Err(error)
+		}
+	}
 }
 
 pub fn mark_index_dirty<P: AsRef<Path>>(data_dir: P) -> std::io::Result<()> {
@@ -356,20 +397,17 @@ pub fn get_or_build_index<P: AsRef<Path>>(data_dir: P) -> Index {
 
 pub fn write_index<P: AsRef<Path>>(index: &Index, output_path: P) -> std::io::Result<()> {
 	let json = serde_json::to_string_pretty(&index.catalog)?;
-	fs::write(output_path, json)?;
-	Ok(())
+	write_atomic(output_path.as_ref(), &json)
 }
 
 pub fn write_composer_index<P: AsRef<Path>>(index: &Index, output_path: P) -> std::io::Result<()> {
 	let json = serde_json::to_string_pretty(&index.by_composer)?;
-	fs::write(output_path, json)?;
-	Ok(())
+	write_atomic(output_path.as_ref(), &json)
 }
 
 pub fn write_inventory_index<P: AsRef<Path>>(index: &Index, output_path: P) -> std::io::Result<()> {
 	let json = serde_json::to_string_pretty(&index.inventory)?;
-	fs::write(output_path, json)?;
-	Ok(())
+	write_atomic(output_path.as_ref(), &json)
 }
 
 pub fn write_edition_indexes<P: AsRef<Path>>(index: &Index, data_dir: P) -> std::io::Result<()> {
@@ -381,7 +419,7 @@ pub fn write_edition_indexes<P: AsRef<Path>>(index: &Index, data_dir: P) -> std:
 			let filename = format!("{}-{}.json", key, edition);
 			let path = editions_dir.join(filename);
 			let json = serde_json::to_string_pretty(numbers)?;
-			fs::write(path, json)?;
+			write_atomic(&path, &json)?;
 		}
 	}
 
@@ -461,6 +499,59 @@ mod tests {
 		assert!(temp.path().join(".indexes/composer-index.json").is_file());
 		assert!(temp.path().join(".indexes/metadata.json").is_file());
 		assert!(!index_is_stale(temp.path()));
+	}
+
+	#[test]
+	fn test_edited_composition_makes_index_stale() {
+		let temp = tempfile::tempdir().unwrap();
+		create_index_files(temp.path());
+		write_index_metadata(
+			temp.path(),
+			&IndexMetadata {
+				built_at: current_unix_seconds().saturating_sub(600),
+				dirty: false,
+			},
+		)
+		.unwrap();
+		assert!(!index_is_stale(temp.path()));
+
+		let dir = temp.path().join("compositions").join("ab");
+		fs::create_dir_all(&dir).unwrap();
+		fs::write(dir.join("cd1234.json"), "{}").unwrap();
+
+		assert!(index_is_stale(temp.path()));
+	}
+
+	#[test]
+	fn test_save_index_leaves_no_temporary_files() {
+		let temp = tempfile::tempdir().unwrap();
+		save_index(&Index::default(), temp.path()).unwrap();
+
+		let leftovers: Vec<_> = fs::read_dir(temp.path().join(".indexes"))
+			.unwrap()
+			.flatten()
+			.map(|entry| entry.file_name().to_string_lossy().into_owned())
+			.filter(|name| name.ends_with(".tmp"))
+			.collect();
+		assert!(leftovers.is_empty(), "left behind: {:?}", leftovers);
+	}
+
+	#[test]
+	fn test_catalog_numbers_are_normalized_on_insert() {
+		let mut index = Index::default();
+		let cat = CatalogEntry {
+			scheme: "bwv".into(),
+			number: "Anh. III 141".into(),
+			edition: None,
+			since: None,
+			note: None,
+		};
+
+		add_catalog_entry(&mut index, "bach", &cat, "78129abd", true);
+
+		let scheme_index = &index.catalog["bach"]["bwv"];
+		assert!(scheme_index.current.contains_key("anh. iii 141"));
+		assert!(!scheme_index.current.contains_key("Anh. III 141"));
 	}
 
 	#[test]

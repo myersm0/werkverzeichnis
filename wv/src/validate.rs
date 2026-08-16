@@ -8,6 +8,7 @@ use serde_json::Value;
 
 use crate::catalog::{load_catalog_def, normalize_catalog_number, validate_catalog_domain};
 use crate::inventory::{build_inventory_index, normalize_inventory, InventoryIndex};
+use crate::parse::extract_id_from_path;
 use crate::types::{AttributionEntry, CatalogDefinition, Collection, Composer, Composition};
 
 #[derive(Debug, Clone)]
@@ -735,7 +736,7 @@ impl Validator {
 			return errors;
 		}
 
-		let expected_id = extract_id_from_path(path);
+		let expected_id = extract_id_from_path(path).ok();
 		if let Some(expected) = expected_id {
 			if expected != id {
 				errors.push(ValidationError {
@@ -998,26 +999,6 @@ fn is_valid_catalog_number_case(scheme: &str, number: &str) -> bool {
 	number == number.to_lowercase()
 }
 
-fn extract_id_from_path(path: &Path) -> Option<String> {
-	let file_stem = path.file_stem()?.to_str()?;
-
-	let id_part = if let Some(pos) = file_stem.rfind('-') {
-		&file_stem[pos + 1..]
-	} else if let Some(pos) = file_stem.rfind('_') {
-		&file_stem[pos + 1..]
-	} else {
-		file_stem
-	};
-
-	let parent = path.parent()?.file_name()?.to_str()?;
-
-	if parent.len() == 2 && id_part.len() == 6 {
-		Some(format!("{}{}", parent, id_part))
-	} else {
-		None
-	}
-}
-
 fn collection_id_from_path(path: &Path) -> Option<String> {
 	let stem = path.file_stem()?.to_str()?;
 	let parent = path.parent()?.file_name()?.to_str()?;
@@ -1076,18 +1057,6 @@ mod tests {
 			collection_schema: empty_schema(),
 			inventory_index: InventoryIndex::default(),
 		}
-	}
-
-	#[test]
-	fn test_extract_id_from_path() {
-		let path = Path::new("compositions/ab/cd1234.json");
-		assert_eq!(extract_id_from_path(path), Some("abcd1234".into()));
-
-		let path = Path::new("compositions/ab/foo_bar_cd1234.json");
-		assert_eq!(extract_id_from_path(path), Some("abcd1234".into()));
-
-		let path = Path::new("compositions/ab/foo-bar-cd1234.json");
-		assert_eq!(extract_id_from_path(path), Some("abcd1234".into()));
 	}
 
 	#[test]

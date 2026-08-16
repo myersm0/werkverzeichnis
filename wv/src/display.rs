@@ -284,11 +284,11 @@ pub fn format_catalog(scheme: &str, number: &str, defn: Option<&CatalogDefinitio
 }
 
 pub fn truncate_instrumentation(inst: &str, max_chars: usize) -> String {
-	if inst.len() <= max_chars {
-		inst.to_string()
-	} else {
-		format!("{}…", &inst[..max_chars.saturating_sub(1)])
+	if inst.chars().count() <= max_chars {
+		return inst.to_string();
 	}
+	let kept: String = inst.chars().take(max_chars.saturating_sub(1)).collect();
+	format!("{}…", kept)
 }
 
 pub struct ExpansionContext<'a> {
@@ -374,6 +374,24 @@ fn expand_pattern(pattern: &str, ctx: &ExpansionContext) -> String {
 #[cfg(test)]
 mod tests {
 	use super::*;
+
+	#[test]
+	fn truncate_instrumentation_counts_characters_not_bytes() {
+		let inst = "violoncello e cembalo obbligato";
+		assert_eq!(truncate_instrumentation(inst, 100), inst);
+		assert_eq!(truncate_instrumentation("abcdef", 4), "abc…");
+		assert_eq!(truncate_instrumentation("abcdef", 6), "abcdef");
+	}
+
+	#[test]
+	fn truncate_instrumentation_does_not_split_multibyte_characters() {
+		// each of these is multiple bytes but one char
+		let inst = "flûte à bec, viole de gambe, clavecin, théorbe";
+		assert!(inst.len() > inst.chars().count());
+		let truncated = truncate_instrumentation(inst, 10);
+		assert_eq!(truncated.chars().count(), 10);
+		assert!(truncated.ends_with('…'));
+	}
 
 	#[test]
 	fn test_expand_key_major() {

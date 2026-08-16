@@ -142,13 +142,21 @@ fn category_for_spec(spec: &NumberSpec, defn: &CatalogDefinition) -> Option<Stri
 
 fn resolve_input(args: &GetArgs) -> Option<Input> {
 	if args.stdin {
-		let ids: Vec<String> = io::stdin()
-			.lock()
-			.lines()
-			.filter_map(|l| l.ok())
-			.map(|l| l.trim().to_string())
-			.filter(|l| !l.is_empty())
-			.collect();
+		let mut ids = Vec::new();
+		for line in io::stdin().lock().lines() {
+			let Ok(line) = line else {
+				continue;
+			};
+			let line = line.trim();
+			if line.is_empty() {
+				continue;
+			}
+			if is_composition_id(line) {
+				ids.push(line.to_string());
+			} else if !args.quiet {
+				eprintln!("warning: ignoring malformed composition ID: {}", line);
+			}
+		}
 		return Some(Input::Stdin(ids));
 	}
 

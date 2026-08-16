@@ -4,7 +4,7 @@ use clap::{Parser, Subcommand};
 use werkverzeichnis::commands;
 use werkverzeichnis::config::{resolve_data_dir, Config};
 use werkverzeichnis::output::print;
-use werkverzeichnis::add::generate_id;
+use werkverzeichnis::add::{generate_id, generate_unique_id};
 
 #[derive(Parser)]
 #[command(name = "wv")]
@@ -143,7 +143,10 @@ enum Commands {
 		data_dir: Option<PathBuf>,
 	},
 
-	Id,
+	Id {
+		#[arg(long, value_name = "PATH")]
+		data_dir: Option<PathBuf>,
+	},
 
 	Collection {
 		#[command(subcommand)]
@@ -298,8 +301,12 @@ fn main() {
 			let data_dir = data_dir_or_exit(data_dir.as_ref(), &config);
 			commands::new::run(&form, &composer, &data_dir);
 		}
-		Commands::Id => {
-			print(&generate_id());
+		Commands::Id { data_dir } => {
+			// Usable outside a dataset; falls back to an unchecked ID in that case.
+			match resolve_data_dir(data_dir.as_ref(), &config) {
+				Ok(dir) => print(&generate_unique_id(&dir)),
+				Err(_) => print(&generate_id()),
+			}
 		}
 		Commands::Collection { action, data_dir } => {
 			let data_dir = data_dir_or_exit(data_dir.as_ref(), &config);

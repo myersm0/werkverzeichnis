@@ -1,7 +1,7 @@
 use std::fs;
 use std::path::{Path, PathBuf};
 
-use crate::parse::load_composition;
+use crate::parse::{load_composition, path_for_id};
 use crate::types::Composition;
 use crate::validate::Validator;
 
@@ -72,16 +72,8 @@ pub fn prepare_composition<P: AsRef<Path>, Q: AsRef<Path>>(
 	}
 
 	let id = &comp.id;
-	if id.len() != 8 {
-		return Err(AddError::ParseError(format!(
-			"ID must be 8 characters, got {}",
-			id.len()
-		)));
-	}
-	let prefix = &id[..2];
-	let suffix = &id[2..];
-	let dest_dir = data_dir.join("compositions").join(prefix);
-	let dest_path = dest_dir.join(format!("{}.json", suffix));
+	let dest_path = path_for_id(data_dir.join("compositions"), id)
+		.map_err(|error| AddError::ParseError(error.to_string()))?;
 	let overwrites = dest_path.exists();
 
 	if overwrites && !force {
@@ -125,16 +117,31 @@ pub fn add_composition<P: AsRef<Path>, Q: AsRef<Path>>(
 }
 
 pub fn generate_id() -> String {
-	use std::time::{SystemTime, UNIX_EPOCH};
+	let mut bytes = [0u8; 4];
+	if getrandom::fill(&mut bytes).is_err() {
+		use std::time::{SystemTime, UNIX_EPOCH};
+		let nanos = SystemTime::now()
+			.duration_since(UNIX_EPOCH)
+			.unwrap_or_default()
+			.as_nanos();
+		bytes = (nanos as u32).to_ne_bytes();
+	}
+	format!("{:08x}", u32::from_ne_bytes(bytes))
+}
 
-	let duration = SystemTime::now()
-		.duration_since(UNIX_EPOCH)
-		.unwrap_or_default();
-
-	let nanos = duration.as_nanos();
-	let hash = (nanos ^ (nanos >> 32) ^ (nanos >> 64) ^ (nanos >> 96)) as u64;
-
-	format!("{:08x}", hash as u32)
+/// An ID with no existing composition file, so callers cannot silently overwrite.
+/// The 32-bit ID space makes collisions plausible well before exhaustion, so
+/// every generation path should route through here when a dataset is available.
+pub fn generate_unique_id<P: AsRef<Path>>(data_dir: P) -> String {
+	let compositions = data_dir.as_ref().join("compositions");
+	for _ in 0..64 {
+		let id = generate_id();
+		match path_for_id(&compositions, &id) {
+			Ok(path) if path.exists() => continue,
+			_ => return id,
+		}
+	}
+	generate_id()
 }
 
 pub fn scaffold_composition(id: &str, form: &str, composer: &str) -> String {
@@ -155,6 +162,7 @@ pub fn scaffold_composition(id: &str, form: &str, composer: &str) -> String {
 #[cfg(test)]
 mod tests {
 	use super::*;
+	use std::collections::HashSet;
 	use tempfile::TempDir;
 
 	fn setup_data_dir() -> TempDir {
@@ -186,9 +194,37 @@ mod tests {
 		assert_eq!(id1.len(), 8);
 		assert!(id1.chars().all(|c| c.is_ascii_hexdigit()));
 
-		std::thread::sleep(std::time::Duration::from_millis(1));
 		let id2 = generate_id();
 		assert_ne!(id1, id2);
+	}
+
+	#[test]
+	fn generate_id_is_lowercase_hex() {
+		for _ in 0..1000 {
+			let id = generate_id();
+			assert_eq!(id.len(), 8);
+			assert!(id.chars().all(|c| c.is_ascii_digit() || ('a'..='f').contains(&c)));
+		}
+	}
+
+	#[test]
+	fn generate_id_does_not_repeat_in_a_tight_loop() {
+		// the previous time-derived implementation returned duplicates here
+		let ids: HashSet<String> = (0..5000).map(|_| generate_id()).collect();
+		assert!(ids.len() > 4990, "only {} distinct ids from 5000", ids.len());
+	}
+
+	#[test]
+	fn generate_unique_id_avoids_existing_files() {
+		let tmp = TempDir::new().unwrap();
+		let taken = generate_id();
+		let path = path_for_id(tmp.path().join("compositions"), &taken).unwrap();
+		fs::create_dir_all(path.parent().unwrap()).unwrap();
+		fs::write(&path, "{}").unwrap();
+
+		for _ in 0..50 {
+			assert_ne!(generate_unique_id(tmp.path()), taken);
+		}
 	}
 
 	#[test]
@@ -197,6 +233,14 @@ mod tests {
 		assert!(json.contains("\"id\": \"abcd1234\""));
 		assert!(json.contains("\"form\": \"sonata\""));
 		assert!(json.contains("\"composer\": \"beethoven\""));
+	}
+
+	#[test]
+	fn prepare_rejects_malformed_ids_without_panicking() {
+		let tmp = setup_data_dir();
+		let source = write_source(tmp.path(), "incoming.json", "a\u{e9}aaaaa");
+		// rejected (by validation, before the path is ever built) rather than panicking
+		assert!(prepare_composition(&source, tmp.path(), false).is_err());
 	}
 
 	#[test]
