@@ -41,6 +41,22 @@ All catalog identifiers are quoted strings. Comments are for maintainer orientat
 
 Structural validity is defined separately in catalog metadata. Catalog constraints can reject impossible components before inventory lookup, such as Beethoven opus numbers above 138, subordinate number 0, an undefined Hoboken category, or a Telemann genre outside the catalog's genre domain. Inventories answer whether an in-domain identifier was actually assigned.
 
+## Structural domains
+
+Inventories enumerate assigned identifiers. They do not define the grammar or numerical domain of a catalog. Those rules live in the catalog definition and are checked before inventory membership.
+
+For example, the shared opus definition can require subordinate numbers to begin at 1:
+
+```json
+"constraints": [
+    {"group": 4, "name": "sub-number", "min": 1}
+]
+```
+
+A composer can add a narrower constraint to the same scheme. Beethoven's opus definition, for example, limits the main opus-number capture group to 1 through 138. Constraints may also use multiple allowed integer ranges for discontinuous domains, and Roman-numeral capture groups use the same mechanism through a `roman` sort key.
+
+The distinction is deliberate: a structurally impossible identifier is rejected even without an inventory, while an in-domain identifier is known not to exist only when it is absent from an applicable complete inventory.
+
 For catalogs with editions, add `edition`:
 
 ```toml

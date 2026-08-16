@@ -220,6 +220,38 @@ $ wv get beethoven op --group 2
 
 Use `--sorted` to request catalog sorting explicitly.
 
+### Catalog knowledge and inventories
+
+A catalog query can fail for different reasons, and `wv` keeps those reasons separate:
+
+```bash
+$ wv get beethoven op 2/e
+Invalid catalog number for beethoven / Opus: "2/e"
+
+$ wv get beethoven op 2/0
+Catalog number out of range for beethoven / Opus: "2/0" (sub-number 0 is below the minimum 1)
+
+$ wv get beethoven op 2/4
+No such catalog entry: op. 2 no. 4
+
+$ wv get beethoven op 138
+op. 138
+catalog entry known; detailed record not yet available
+```
+
+The first two results come from the catalog definition: its parser decides whether an identifier is well formed, and its structural constraints define allowed component domains. The latter two use catalog inventories under `inventories/`, which enumerate identifiers assigned by the catalog independently of the rich composition records.
+
+An inventory marked `complete = true` makes absence authoritative. An incomplete inventory makes positive assertions only: an unlisted identifier remains unknown. Inventory files are TOML and may use comments freely; comments are ignored by `wv`. See the repository-level `inventories/README.md` for the source format.
+
+Use `coverage` to compare a catalog inventory with the detailed records currently loaded:
+
+```bash
+$ wv coverage beethoven op
+$ wv coverage beethoven op --missing
+```
+
+The report gives inventory size, populated count, missing count, and percentage coverage. Omit the scheme to report every inventory available for the composer. `--missing` turns the inventory into a work queue by listing catalogued identifiers that do not yet have detailed composition records.
+
 ### Collections as query input
 
 One or more collections can be expanded as input to `get`:
@@ -329,6 +361,9 @@ Full-dataset validation includes:
 - references to existing composers and applicable catalog schemes;
 - validation of composer `default_scheme` values;
 - catalog numbers matching the declared catalog regex;
+- catalog numbers satisfying declared structural-domain constraints;
+- inventory TOML parsing, identity, uniqueness, and catalog-number validity;
+- composition references belonging to an applicable complete inventory;
 - edition labels existing in the corresponding catalog definition;
 - uniqueness of each current `(composer, scheme, number)` identifier;
 - canonical collection members resolving to current compositions;
@@ -344,6 +379,7 @@ Composer/catalog queries use generated files under `.indexes/`:
 .indexes/
 ├── index.json
 ├── composer-index.json
+├── inventory-index.json
 ├── editions/
 └── metadata.json
 ```
@@ -355,8 +391,10 @@ $ wv index
 Building index from "/path/to/werkverzeichnis"...
 Found 533 compositions
 Found 596 catalog entries
+Found ... inventory entries
 Wrote .../.indexes/index.json
 Wrote .../.indexes/composer-index.json
+Wrote .../.indexes/inventory-index.json
 Wrote edition indexes to .../.indexes/editions
 Wrote .../.indexes/metadata.json
 Done.
@@ -373,7 +411,7 @@ Index policy:
 - `add`, `new`, `set`, and `get --edit` mark the index dirty;
 - `wv index` forces an immediate rebuild.
 
-The 24-hour check is a safety net for changes made outside `wv`, such as manual JSON edits, Git operations, or copying/restoring the dataset. After a manual edit, run `wv index` when an immediate refresh is important.
+The 24-hour check is a safety net for changes made outside `wv`, such as manual JSON/TOML edits, Git operations, or copying/restoring the dataset. After a manual edit, run `wv index` when an immediate refresh is important.
 
 ## Maintaining composition data
 

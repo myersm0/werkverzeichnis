@@ -131,11 +131,11 @@ warning: BWV 141 is superseded (current: BWV Anh. III 141)
 Das ist je gewißlich wahr, BWV 141
 
 $ wv get bach bwv "Anh. III 141"
-note: spurious; now attributed to telemann twv 1:183
+note: spurious; now attributed to telemann tvwv 1:183
 Das ist je gewißlich wahr, BWV Anh. III 141
  
-$ wv get telemann twv 1:183
-Das ist je gewißlich wahr, TWV 1:183
+$ wv get telemann tvwv 1:183
+Das ist je gewißlich wahr, TVWV 1:183
 ```
 
 All three calls return the same _composition_, with the same internal ID (not shown), only displayed a little differently. This same composition is simultaneously a part of Telemann's works _and_ a part of the appendix of the Bach catalog of spurious works. As you can see above, it's even still reference-able by its old, superseded catalog number BWV 141. (You disable this behavior with the `--strict` flag to enforce using only the latest information.)
@@ -196,6 +196,7 @@ werkverzeichnis/
 ├── composers/          # Composer metadata and catalog definitions
 ├── catalogs/           # Shared catalog schemes (op, k, etc.)
 ├── collections/        # Curated groupings (by composer)
+├── inventories/        # Complete/partial catalog authority lists (TOML)
 │   ├── bach/
 │   ├── beethoven/
 │   └── ...
@@ -263,6 +264,38 @@ Ordered groupings like "French Suites" or "Well-Tempered Clavier, Book 1":
 }
 ```
 
+### Catalog inventories
+Catalog inventories record which identifiers are actually assigned in a catalog, independently of the richer composition records. They are hand-maintained TOML files under `inventories/`, normally one per composer and scheme (and one per edition where needed).
+
+```toml
+composer = "beethoven"
+scheme = "op"
+complete = true
+
+entries = [
+    "1/1", "1/2", "1/3",
+    "2/1", "2/2", "2/3",
+    "3",
+]
+```
+
+Comments may organize or annotate the list, but carry no semantics. `complete = true` means absence is authoritative; in an incomplete inventory, absence means only that the inventory does not yet answer the question. Parent queries such as `op 2` are derived from the catalog scheme's grouping rules rather than being stored as separate inventory entries.
+
+This lets `wv` distinguish several cases that ordinary record lookup cannot:
+
+```text
+wv get beethoven op 2/e   -> malformed identifier
+wv get beethoven op 2/0   -> structurally out of range
+wv get beethoven op 2/4   -> well formed, but no such catalog entry
+wv get beethoven op 138   -> catalog entry known; detailed record not yet available
+```
+
+Structural constraints live in catalog definitions, not inventories. For example, a composer-specific opus definition can bound the main opus component, while the shared opus scheme can require subordinate numbers to begin at 1. Inventories then answer the separate question of whether an in-domain identifier was actually assigned.
+
+`wv coverage <composer> [scheme]` compares these authority lists with the rich composition records. `--missing` lists catalogued works that still need detailed records.
+
+See [`inventories/README.md`](inventories/README.md) for the inventory format.
+
 ### Catalog schemes
 Catalog definitions specify parsing, sorting, and display rules. For example, here's a simplified definition for BWV:
 ```json
@@ -290,6 +323,7 @@ The `wv` command-line tool provides:
 - **get** — Look up compositions by composer, catalog, range
 - **collection** — List and verify collections
 - **validate** — Check schemas and cross-file consistency
+- **coverage** — Measure inventory coverage and list missing detailed records
 - **index** — Build search indexes
 - **add** / **new** — Create new composition entries
 
@@ -302,7 +336,7 @@ JSON schemas in `schemas/` define the structure of all data files:
 - `collection.schema.json`
 - `catalog.schema.json`
 
-Beyond the JSON Schema, `wv validate` also checks referential/semantic invariants: composer/catalog references, catalog-number syntax and editions, uniqueness of current catalog identifiers, and collection membership.
+Beyond the JSON Schema, `wv validate` also checks referential/semantic invariants: composer/catalog references, catalog-number syntax and structural domains, editions, complete-inventory membership, uniqueness of current catalog identifiers, and collection membership. Inventory TOML is validated separately from the JSON schemas.
 
 ## References and acknowledgments
 This project is focused on providing a unified, machine-readable structure to available information, _not_ on inventing any new information or applying any new research or insights. Therefore, we're indebted to a number of existing resources on the web, including:
