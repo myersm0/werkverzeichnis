@@ -6,8 +6,8 @@ use std::cmp::Ordering;
 use std::collections::{HashMap, HashSet};
 use std::path::{Path, PathBuf};
 
-use crate::parse::load_composer;
-use crate::types::{CatalogConstraint, CatalogDefinition};
+use crate::types::{CatalogConstraint, CatalogDefinition, Composer};
+use thiserror::Error;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum SortValue {
@@ -69,8 +69,16 @@ fn parse_roman(s: &str) -> i64 {
 
 type CatalogCacheKey = (PathBuf, String, Option<String>);
 
+#[derive(Error, Debug, Clone, PartialEq, Eq)]
+pub enum CatalogLoadError {
+	#[error("failed to read catalog metadata {path}: {message}")]
+	Io { path: PathBuf, message: String },
+	#[error("invalid catalog metadata {path}: {message}")]
+	Invalid { path: PathBuf, message: String },
+}
+
 thread_local! {
-	static CATALOG_CACHE: RefCell<HashMap<CatalogCacheKey, Option<CatalogDefinition>>> =
+	static CATALOG_CACHE: RefCell<HashMap<CatalogCacheKey, Result<Option<CatalogDefinition>, CatalogLoadError>>> =
 		RefCell::new(HashMap::new());
 }
 
@@ -84,7 +92,7 @@ pub fn load_catalog_def<P: AsRef<Path>>(
 	data_dir: P,
 	scheme: &str,
 	composer: Option<&str>,
-) -> Option<CatalogDefinition> {
+) -> Result<Option<CatalogDefinition>, CatalogLoadError> {
 	let data_dir = data_dir.as_ref();
 	let key: CatalogCacheKey = (
 		data_dir.to_path_buf(),
@@ -136,32 +144,52 @@ pub fn clear_catalog_cache() {
 	REGEX_CACHE.with(|cache| cache.borrow_mut().clear());
 }
 
+fn read_optional_json<T: serde::de::DeserializeOwned>(
+	path: &Path,
+) -> Result<Option<T>, CatalogLoadError> {
+	let content = match std::fs::read_to_string(path) {
+		Ok(content) => content,
+		Err(error) if error.kind() == std::io::ErrorKind::NotFound => return Ok(None),
+		Err(error) => {
+			return Err(CatalogLoadError::Io {
+				path: path.to_path_buf(),
+				message: error.to_string(),
+			})
+		}
+	};
+	serde_json::from_str(&content)
+		.map(Some)
+		.map_err(|error| CatalogLoadError::Invalid {
+			path: path.to_path_buf(),
+			message: error.to_string(),
+		})
+}
+
 fn read_catalog_def(
 	data_dir: &Path,
 	scheme: &str,
 	composer: Option<&str>,
-) -> Option<CatalogDefinition> {
-	let composer_def = composer.and_then(|composer_slug| {
+) -> Result<Option<CatalogDefinition>, CatalogLoadError> {
+	let composer_def = if let Some(composer_slug) = composer {
 		let composer_path = data_dir.join("composers").join(format!("{}.json", composer_slug));
-		load_composer(&composer_path)
-			.ok()
+		read_optional_json::<Composer>(&composer_path)?
 			.and_then(|composer_data| composer_data.catalogs)
 			.and_then(|catalogs| catalogs.get(scheme).cloned())
-	});
+	} else {
+		None
+	};
 
 	let global_path = data_dir.join("catalogs").join(format!("{}.json", scheme));
-	let global_def: Option<CatalogDefinition> = std::fs::read_to_string(&global_path)
-		.ok()
-		.and_then(|content| serde_json::from_str(&content).ok());
+	let global_def = read_optional_json::<CatalogDefinition>(&global_path)?;
 
-	match (composer_def, global_def) {
+	Ok(match (composer_def, global_def) {
 		(Some(composer_def), Some(global_def)) => {
 			Some(merge_catalog_definitions(&global_def, &composer_def))
 		}
 		(Some(composer_def), None) => Some(composer_def),
 		(None, Some(global_def)) => Some(global_def),
 		(None, None) => None,
-	}
+	})
 }
 
 /// Overlay a composer-specific definition onto the shared one.
@@ -310,9 +338,10 @@ pub fn sort_numbers_by_scheme<P: AsRef<Path>>(
 	data_dir: P,
 	scheme: &str,
 	composer: Option<&str>,
-) {
-	let defn = load_catalog_def(data_dir, scheme, composer);
+) -> Result<(), CatalogLoadError> {
+	let defn = load_catalog_def(data_dir, scheme, composer)?;
 	sort_numbers(numbers, defn.as_ref());
+	Ok(())
 }
 
 pub fn matches_group(number: &str, group: &str, defn: Option<&CatalogDefinition>) -> bool {
@@ -826,15 +855,15 @@ mod tests {
 		std::fs::write(&path, r#"{"id":"op","name":"Opus number"}"#).unwrap();
 
 		clear_catalog_cache();
-		let first = load_catalog_def(tmp.path(), "op", None).unwrap();
+		let first = load_catalog_def(tmp.path(), "op", None).unwrap().unwrap();
 		assert_eq!(first.name, "Opus number");
 
 		std::fs::write(&path, r#"{"id":"op","name":"Changed"}"#).unwrap();
-		let cached = load_catalog_def(tmp.path(), "op", None).unwrap();
+		let cached = load_catalog_def(tmp.path(), "op", None).unwrap().unwrap();
 		assert_eq!(cached.name, "Opus number", "expected the memoized definition");
 
 		clear_catalog_cache();
-		let refreshed = load_catalog_def(tmp.path(), "op", None).unwrap();
+		let refreshed = load_catalog_def(tmp.path(), "op", None).unwrap().unwrap();
 		assert_eq!(refreshed.name, "Changed");
 	}
 
@@ -861,8 +890,28 @@ mod tests {
 	fn missing_definitions_are_cached_as_absent() {
 		let tmp = tempfile::tempdir().unwrap();
 		clear_catalog_cache();
-		assert!(load_catalog_def(tmp.path(), "nonexistent", None).is_none());
-		assert!(load_catalog_def(tmp.path(), "nonexistent", None).is_none());
+		assert!(load_catalog_def(tmp.path(), "nonexistent", None).unwrap().is_none());
+		assert!(load_catalog_def(tmp.path(), "nonexistent", None).unwrap().is_none());
+	}
+
+	#[test]
+	fn invalid_existing_catalog_definition_is_an_error() {
+		let tmp = tempfile::tempdir().unwrap();
+		std::fs::create_dir_all(tmp.path().join("catalogs")).unwrap();
+		std::fs::write(tmp.path().join("catalogs/op.json"), "{").unwrap();
+		clear_catalog_cache();
+		let error = load_catalog_def(tmp.path(), "op", None).unwrap_err();
+		assert!(error.to_string().contains("op.json"));
+	}
+
+	#[test]
+	fn invalid_existing_composer_definition_is_an_error() {
+		let tmp = tempfile::tempdir().unwrap();
+		std::fs::create_dir_all(tmp.path().join("composers")).unwrap();
+		std::fs::write(tmp.path().join("composers/beethoven.json"), "{").unwrap();
+		clear_catalog_cache();
+		let error = load_catalog_def(tmp.path(), "op", Some("beethoven")).unwrap_err();
+		assert!(error.to_string().contains("beethoven.json"));
 	}
 
 	#[test]

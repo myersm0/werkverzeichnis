@@ -3,11 +3,24 @@ use std::path::{Path, PathBuf};
 
 use crate::catalog::{
 	is_fallback_key, load_catalog_def, looks_like_group, matches_group,
-	normalize_catalog_number, sort_key, sort_numbers, SortValue,
+	normalize_catalog_number, sort_key, sort_numbers, CatalogLoadError, SortValue,
 };
 use crate::index::{load_edition_index, Index};
-use crate::parse::{load_composer, load_composition, path_for_id};
+use crate::parse::{load_composer, load_composition, path_for_id, ParseError};
 use crate::types::Composition;
+use thiserror::Error;
+
+#[derive(Error, Debug)]
+pub enum QueryError {
+	#[error(transparent)]
+	Catalog(#[from] CatalogLoadError),
+	#[error("failed to load composer metadata {path}: {source}")]
+	Composer { path: PathBuf, #[source] source: ParseError },
+	#[error("failed to load composition {path}: {source}")]
+	Composition { path: PathBuf, #[source] source: ParseError },
+	#[error("invalid range endpoint for catalog scheme '{scheme}'")]
+	InvalidRangeEndpoint { scheme: String },
+}
 
 #[derive(Debug, Clone)]
 pub struct QueryResult {
@@ -126,19 +139,20 @@ impl<'a> QueryBuilder<'a> {
 		None
 	}
 
-	pub fn fetch(&self) -> Vec<QueryResult> {
+	pub fn fetch(&self) -> Result<Vec<QueryResult>, QueryError> {
 		match (&self.query.composer, &self.query.scheme, &self.query.number) {
 			(Some(composer), Some(scheme), Some(number)) => {
 				if let Some(result) = self.fetch_one_with_info() {
-					vec![result]
+					Ok(vec![result])
 				} else {
-					let dominated = self
-						.query
-						.data_dir
-						.as_ref()
-						.and_then(|d| load_catalog_def(d, scheme, Some(composer)))
-						.map(|defn| looks_like_group(number, &defn))
-						.unwrap_or(false);
+					let dominated = if let Some(data_dir) = self.query.data_dir.as_ref() {
+						load_catalog_def(data_dir, scheme, Some(composer))?
+							.as_ref()
+							.map(|defn| looks_like_group(number, defn))
+							.unwrap_or(false)
+					} else {
+						false
+					};
 
 					if dominated {
 						let mut query = self.query.clone();
@@ -150,7 +164,7 @@ impl<'a> QueryBuilder<'a> {
 						};
 						builder.fetch_by_scheme(composer, scheme)
 					} else {
-						vec![]
+						Ok(vec![])
 					}
 				}
 			}
@@ -159,7 +173,7 @@ impl<'a> QueryBuilder<'a> {
 
 			(Some(composer), None, None) => self.fetch_by_composer(composer),
 
-			_ => vec![],
+			_ => Ok(vec![]),
 		}
 	}
 
@@ -216,18 +230,18 @@ impl<'a> QueryBuilder<'a> {
 		None
 	}
 
-	fn fetch_by_composer(&self, composer: &str) -> Vec<QueryResult> {
+	fn fetch_by_composer(&self, composer: &str) -> Result<Vec<QueryResult>, QueryError> {
 		let Some(ids) = self.index.by_composer.get(composer) else {
-			return vec![];
+			return Ok(vec![]);
 		};
 
 		let ordered_ids = if self.query.sorted {
-			self.sort_composer_ids(composer, ids)
+			self.sort_composer_ids(composer, ids)?
 		} else {
 			ids.clone()
 		};
 
-		ordered_ids
+		Ok(ordered_ids
 			.into_iter()
 			.map(|id| QueryResult {
 				id,
@@ -236,29 +250,37 @@ impl<'a> QueryBuilder<'a> {
 				current_number: None,
 				note: None,
 			})
-			.collect()
+			.collect())
 	}
 
-	fn sort_composer_ids(&self, composer: &str, ids: &[String]) -> Vec<String> {
+	fn sort_composer_ids(&self, composer: &str, ids: &[String]) -> Result<Vec<String>, QueryError> {
 		let Some(scheme_indexes) = self.index.catalog.get(composer) else {
 			let mut sorted = ids.to_vec();
 			sorted.sort();
-			return sorted;
+			return Ok(sorted);
 		};
 
 		let data_dir = self.query.data_dir.as_deref();
-		let default_scheme = data_dir.and_then(|dir| {
+		let default_scheme = if let Some(dir) = data_dir {
 			let path = dir.join("composers").join(format!("{}.json", composer));
-			load_composer(path).ok().and_then(|composer| composer.default_scheme)
-		});
+			match load_composer(&path) {
+				Ok(composer) => composer.default_scheme,
+				Err(ParseError::Io(error)) if error.kind() == std::io::ErrorKind::NotFound => None,
+				Err(source) => return Err(QueryError::Composer { path, source }),
+			}
+		} else {
+			None
+		};
 
-		let mut schemes: Vec<(String, Option<crate::types::CatalogDefinition>)> = scheme_indexes
-			.keys()
-			.map(|scheme| {
-				let defn = data_dir.and_then(|dir| load_catalog_def(dir, scheme, Some(composer)));
-				(scheme.clone(), defn)
-			})
-			.collect();
+		let mut schemes: Vec<(String, Option<crate::types::CatalogDefinition>)> = Vec::new();
+		for scheme in scheme_indexes.keys() {
+			let defn = if let Some(dir) = data_dir {
+				load_catalog_def(dir, scheme, Some(composer))?
+			} else {
+				None
+			};
+			schemes.push((scheme.clone(), defn));
+		}
 
 		schemes.sort_by(|(scheme_a, defn_a), (scheme_b, defn_b)| {
 			let rank_a = (
@@ -297,20 +319,20 @@ impl<'a> QueryBuilder<'a> {
 		let mut uncatalogued: Vec<String> = remaining.into_iter().collect();
 		uncatalogued.sort();
 		sorted.extend(uncatalogued);
-		sorted
+		Ok(sorted)
 	}
 
-	fn fetch_by_scheme(&self, composer: &str, scheme: &str) -> Vec<QueryResult> {
+	fn fetch_by_scheme(&self, composer: &str, scheme: &str) -> Result<Vec<QueryResult>, QueryError> {
 		let is_range_or_group = self.query.range_start.is_some() || self.query.group.is_some();
 
 		let numbers: Vec<(String, String, bool, Option<String>)> = if let Some(edition) = &self.query.edition {
 			let data_dir = match &self.query.data_dir {
 				Some(d) => d,
-				None => return vec![],
+				None => return Ok(vec![]),
 			};
 			match load_edition_index(data_dir, composer, scheme, edition) {
 				Some(n) => n.iter().map(|(k, v)| (k.clone(), v.clone(), false, None)).collect(),
-				None => return vec![],
+				None => return Ok(vec![]),
 			}
 		} else {
 			match self.index.catalog.get(composer).and_then(|s| s.get(scheme)) {
@@ -329,7 +351,7 @@ impl<'a> QueryBuilder<'a> {
 
 					entries
 				}
-				None => return vec![],
+				None => return Ok(vec![]),
 			}
 		};
 
@@ -346,11 +368,11 @@ impl<'a> QueryBuilder<'a> {
 			}
 		}
 
-		let defn = self
-			.query
-			.data_dir
-			.as_ref()
-			.and_then(|d| load_catalog_def(d, scheme, Some(composer)));
+		let defn = if let Some(data_dir) = self.query.data_dir.as_ref() {
+			load_catalog_def(data_dir, scheme, Some(composer))?
+		} else {
+			None
+		};
 
 		if self.query.sorted || self.query.group.is_some() || self.query.range_start.is_some() {
 			sort_numbers(&mut keys, defn.as_ref());
@@ -370,8 +392,9 @@ impl<'a> QueryBuilder<'a> {
 				let end_key_raw = sort_key(&normalized_end, d);
 
 				if is_fallback_key(&start_key) || is_fallback_key(&end_key_raw) {
-					eprintln!("error: invalid range endpoint for this catalog scheme");
-					return vec![];
+					return Err(QueryError::InvalidRangeEndpoint {
+						scheme: scheme.to_string(),
+					});
 				}
 
 				let end_key = make_inclusive_ceiling(end_key_raw);
@@ -398,7 +421,7 @@ impl<'a> QueryBuilder<'a> {
 			})
 			.unwrap_or_default();
 
-		keys.into_iter()
+		Ok(keys.into_iter()
 			.filter_map(|k| {
 				let (id, is_superseded, note) = entries_by_number.get(&k)?;
 
@@ -418,29 +441,36 @@ impl<'a> QueryBuilder<'a> {
 					note: note.clone(),
 				})
 			})
-			.collect()
+			.collect())
 	}
 
-	pub fn fetch_compositions(&self) -> Vec<Composition> {
+	pub fn fetch_compositions(&self) -> Result<Vec<Composition>, QueryError> {
 		let data_dir = match &self.query.data_dir {
 			Some(d) => d,
-			None => return vec![],
+			None => return Ok(vec![]),
 		};
 
-		let results = self.fetch();
+		let results = self.fetch()?;
 		let compositions_dir = data_dir.join("compositions");
-
-		results
-			.into_iter()
-			.filter_map(|r| {
-				let path = path_for_id(&compositions_dir, &r.id).ok()?;
-				load_composition(&path).ok()
-			})
-			.collect()
+		let mut compositions = Vec::with_capacity(results.len());
+		for result in results {
+			let path = path_for_id(&compositions_dir, &result.id).map_err(|source| {
+				QueryError::Composition {
+					path: compositions_dir.join(format!("{}.json", result.id)),
+					source,
+				}
+			})?;
+			let composition = load_composition(&path).map_err(|source| QueryError::Composition {
+				path: path.clone(),
+				source,
+			})?;
+			compositions.push(composition);
+		}
+		Ok(compositions)
 	}
 
-	pub fn count(&self) -> usize {
-		self.fetch().len()
+	pub fn count(&self) -> Result<usize, QueryError> {
+		Ok(self.fetch()?.len())
 	}
 
 	pub fn exists(&self) -> bool {
@@ -558,7 +588,7 @@ mod tests {
 	fn test_fetch_by_composer() {
 		let index = make_test_index();
 
-		let results = index.query().composer("bach").fetch();
+		let results = index.query().composer("bach").fetch().unwrap();
 
 		assert_eq!(results.len(), 2);
 	}
@@ -567,7 +597,7 @@ mod tests {
 	fn test_fetch_by_scheme_current_only() {
 		let index = make_test_index();
 
-		let results = index.query().composer("mozart").scheme("k").fetch();
+		let results = index.query().composer("mozart").scheme("k").fetch().unwrap();
 
 		assert!(results.iter().any(|r| r.number == Some("332".into())));
 	}
@@ -581,7 +611,7 @@ mod tests {
 			.composer("mozart")
 			.scheme("k")
 			.number("300k")
-			.fetch();
+			.fetch().unwrap();
 
 		assert_eq!(results.len(), 1);
 		assert!(results[0].superseded);
@@ -592,7 +622,7 @@ mod tests {
 	fn fetch_by_scheme_resolves_each_number_once() {
 		let index = make_test_index();
 
-		let results = index.query().composer("bach").scheme("bwv").fetch();
+		let results = index.query().composer("bach").scheme("bwv").fetch().unwrap();
 
 		assert_eq!(results.len(), 2);
 		let numbers: HashSet<Option<String>> =
@@ -604,7 +634,7 @@ mod tests {
 	fn test_count() {
 		let index = make_test_index();
 
-		let count = index.query().composer("bach").scheme("bwv").count();
+		let count = index.query().composer("bach").scheme("bwv").count().unwrap();
 
 		assert_eq!(count, 2);
 	}

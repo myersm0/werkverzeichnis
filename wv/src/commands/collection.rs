@@ -48,16 +48,21 @@ pub fn list(composer: Option<&str>, user: bool, data_dir: &Path) {
 				continue;
 			}
 
-			if let Ok(coll) = load_collection(&path) {
-				let title = coll
-					.title
-					.get("en")
-					.or_else(|| coll.title.get("de"))
-					.map(|s| s.as_str())
-					.unwrap_or("");
-				let count = coll.compositions.len();
-				print(&format!("{}\t{}\t({})", coll.id, title, count));
-			}
+			let coll = match load_collection(&path) {
+				Ok(coll) => coll,
+				Err(error) => {
+					eprintln!("Error loading collection {}: {}", path.display(), error);
+					std::process::exit(1);
+				}
+			};
+			let title = coll
+				.title
+				.get("en")
+				.or_else(|| coll.title.get("de"))
+				.map(|s| s.as_str())
+				.unwrap_or("");
+			let count = coll.compositions.len();
+			print(&format!("{}\t{}\t({})", coll.id, title, count));
 		}
 	}
 }
@@ -104,7 +109,13 @@ pub fn show(id: &str, data_dir: &Path, config: &Config) {
 		.or(collection.composer.as_deref())
 		.unwrap_or_else(|| id.split_once('-').map(|(c, _)| c).unwrap_or(id));
 
-	let catalog_defn = load_catalog_def(data_dir, &collection.scheme, Some(composer));
+	let catalog_defn = match load_catalog_def(data_dir, &collection.scheme, Some(composer)) {
+		Ok(definition) => definition,
+		Err(error) => {
+			eprintln!("Error loading catalog metadata: {}", error);
+			std::process::exit(1);
+		}
+	};
 
 	if let Some(en) = collection.title.get("en") {
 		print(en);
@@ -130,18 +141,21 @@ pub fn show(id: &str, data_dir: &Path, config: &Config) {
 				.join(&comp_id[..2])
 				.join(format!("{}.json", &comp_id[2..]));
 
-			if let Ok(comp) = load_composition(&comp_path) {
-				let ctx = ExpansionContext {
-					composition: &comp,
-					collection: None,
-					position_in_collection: None,
-					config: &config.display,
-				};
-				let title = expand_title(&ctx);
-				print(&format!("{}, {}", title, formatted_cat));
-			} else {
-				print(&formatted_cat);
-			}
+			let comp = match load_composition(&comp_path) {
+				Ok(comp) => comp,
+				Err(error) => {
+					eprintln!("Error loading composition {}: {}", comp_path.display(), error);
+					std::process::exit(1);
+				}
+			};
+			let ctx = ExpansionContext {
+				composition: &comp,
+				collection: None,
+				position_in_collection: None,
+				config: &config.display,
+			};
+			let title = expand_title(&ctx);
+			print(&format!("{}, {}", title, formatted_cat));
 		} else {
 			print(&format!("{} (not indexed)", formatted_cat));
 		}
@@ -174,11 +188,15 @@ pub fn find(query: &str, data_dir: &Path) {
 						continue;
 					}
 
-					if let Ok(coll) = load_collection(&path) {
-						if coll.scheme == scheme && coll.compositions.contains(&number.to_string())
-						{
-							found.push(coll.id.clone());
+					let coll = match load_collection(&path) {
+						Ok(coll) => coll,
+						Err(error) => {
+							eprintln!("Error loading collection {}: {}", path.display(), error);
+							std::process::exit(1);
 						}
+					};
+					if coll.scheme == scheme && coll.compositions.contains(&number.to_string()) {
+						found.push(coll.id.clone());
 					}
 				}
 			}
@@ -226,7 +244,7 @@ pub fn expand(ids: &[String], data_dir: &Path) -> Vec<ExpandedRef> {
 			Ok(c) => c,
 			Err(e) => {
 				eprintln!("Error loading collection {}: {}", id, e);
-				continue;
+				std::process::exit(1);
 			}
 		};
 

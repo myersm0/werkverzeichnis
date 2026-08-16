@@ -40,7 +40,13 @@ pub fn run(data_dir: &Path, config: &Config) {
 
 		if let Some(attr) = comp.attribution.first() {
 			if let Some(cat) = attr.catalog.as_ref().and_then(|c| c.first()) {
-				let catalog_defn = load_catalog_def(data_dir, &cat.scheme, attr.composer.as_deref());
+				let catalog_defn = match load_catalog_def(data_dir, &cat.scheme, attr.composer.as_deref()) {
+					Ok(definition) => definition,
+					Err(error) => {
+						eprintln!("Error loading catalog metadata: {}", error);
+						std::process::exit(1);
+					}
+				};
 				let formatted = format_catalog(&cat.scheme, &cat.number, catalog_defn.as_ref());
 				print(&format!("{}, {}", title, formatted));
 				continue;

@@ -58,7 +58,13 @@ pub fn run(args: SetArgs, data_dir: PathBuf, config: &Config) {
 	};
 	let composer = &args.target;
 
-	let catalog_defn = load_catalog_def(&data_dir, scheme, Some(composer));
+	let catalog_defn = match load_catalog_def(&data_dir, scheme, Some(composer)) {
+		Ok(definition) => definition,
+		Err(error) => {
+			eprintln!("Error loading catalog metadata: {}", error);
+			std::process::exit(1);
+		}
+	};
 
 	let mut builder = index.query().composer(composer).scheme(scheme).data_dir(&data_dir);
 
@@ -70,7 +76,13 @@ pub fn run(args: SetArgs, data_dir: PathBuf, config: &Config) {
 		}
 	}
 
-	let results = builder.fetch();
+	let results = match builder.fetch() {
+		Ok(results) => results,
+		Err(error) => {
+			eprintln!("Error querying dataset: {}", error);
+			std::process::exit(1);
+		}
+	};
 
 	if results.is_empty() {
 		eprintln!("No results found.");

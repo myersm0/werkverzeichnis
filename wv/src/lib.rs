@@ -19,7 +19,7 @@ pub use add::{
 pub use catalog::{
 	clear_catalog_cache, is_fallback_key, load_catalog_def, looks_like_group, matches_group,
 	merge_catalog_definitions, normalize_catalog_number, sort_key, sort_numbers,
-	sort_numbers_by_scheme, SortValue,
+	sort_numbers_by_scheme, CatalogLoadError, SortValue,
 };
 pub use config::{
 	is_data_dir, resolve_data_dir, resolve_editor, Config, DataDirError, DisplayConfig, KeySymbols,
@@ -41,7 +41,7 @@ pub use merge::{
 	MergedAttribution,
 };
 pub use parse::{load_collection, load_composer, load_composition, ParseError};
-pub use query::{QueryBuilder, QueryResult};
+pub use query::{QueryBuilder, QueryError, QueryResult};
 pub use types::*;
 pub use validate::{validate_all, validate_file, ValidationError, Validator};
 pub use xref::{check_duplicates, MbLookup, MbLookupResult, XrefStats};

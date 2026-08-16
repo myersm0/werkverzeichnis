@@ -2,7 +2,7 @@ use std::io::{self, BufRead};
 use std::path::{Path, PathBuf};
 use std::process::Command;
 
-use crate::catalog::{load_catalog_def, validate_catalog_domain};
+use crate::catalog::{load_catalog_def, validate_catalog_domain, CatalogLoadError};
 use crate::commands::collection;
 use crate::config::{resolve_editor, Config};
 use crate::display::{expand_title, format_catalog, ExpansionContext};
@@ -10,9 +10,10 @@ use crate::index::{get_or_build_index, mark_index_dirty, Index};
 use crate::inventory::InventoryLookup;
 use crate::output::{
 	id_to_path, output_by_ids, output_json, output_movements, output_pretty, output_terse,
-	print, OutputContext,
+	print, OutputContext, OutputError,
 };
 use crate::parse::load_composition;
+use crate::query::QueryError;
 use crate::types::CatalogDefinition;
 use crate::xref::{check_duplicates, MbLookup};
 
@@ -21,6 +22,45 @@ fn get_index_or_exit(data_dir: &Path) -> Index {
 		Ok(index) => index,
 		Err(error) => {
 			eprintln!("Error loading dataset: {}", error);
+			std::process::exit(1);
+		}
+	}
+}
+
+fn query_or_exit<T>(result: Result<T, QueryError>) -> T {
+	match result {
+		Ok(value) => value,
+		Err(error) => {
+			eprintln!("Error querying dataset: {}", error);
+			std::process::exit(1);
+		}
+	}
+}
+
+fn catalog_or_exit(
+	result: Result<Option<CatalogDefinition>, CatalogLoadError>,
+) -> Option<CatalogDefinition> {
+	match result {
+		Ok(definition) => definition,
+		Err(error) => {
+			eprintln!("Error loading catalog metadata: {}", error);
+			std::process::exit(1);
+		}
+	}
+}
+
+fn output_or_exit(result: Result<(), OutputError>) {
+	if let Err(error) = result {
+		eprintln!("Error producing output: {}", error);
+		std::process::exit(1);
+	}
+}
+
+fn composition_or_exit(path: &Path) -> crate::types::Composition {
+	match load_composition(path) {
+		Ok(composition) => composition,
+		Err(error) => {
+			eprintln!("Error loading composition {}: {}", path.display(), error);
 			std::process::exit(1);
 		}
 	}
@@ -260,7 +300,7 @@ pub fn run(args: GetArgs, data_dir: PathBuf, config: &Config) {
 				let paths: Vec<PathBuf> = ids.iter().map(|id| id_to_path(&data_dir, id)).collect();
 				open_in_editor(config, &paths, &data_dir);
 			} else {
-				output_by_ids(&ids, &data_dir, config, args.terse, args.movements, args.json);
+				output_or_exit(output_by_ids(&ids, &data_dir, config, args.terse, args.movements, args.json));
 			}
 		}
 		Input::Query(query) => {
@@ -291,14 +331,14 @@ fn print_query_examples(
 	let requested_category = number_spec
 		.and_then(|spec| defn.and_then(|defn| category_for_spec(spec, defn)));
 
-	let samples = index
+	let samples = query_or_exit(index
 		.query()
 		.composer(&query.composer)
 		.scheme(scheme)
 		.data_dir(data_dir)
 		.strict(true)
 		.sorted(data_dir)
-		.fetch();
+		.fetch());
 
 	if let Some(category) = requested_category {
 		eprintln!("  wv get {} {} {}", query.composer, scheme, category);
@@ -419,9 +459,8 @@ fn output_inventory_group_overlay(
 		for member in members {
 			if let Some(result) = populated.get(member.as_str()) {
 				let path = id_to_path(ctx.data_dir, &result.id);
-				if let Ok(comp) = load_composition(&path) {
-					values.push(serde_json::to_value(&comp).unwrap_or(serde_json::Value::Null));
-				}
+				let comp = composition_or_exit(&path);
+				values.push(serde_json::to_value(&comp).unwrap_or(serde_json::Value::Null));
 			} else {
 				values.push(inventory_stub_value(query, member));
 			}
@@ -436,7 +475,7 @@ fn output_inventory_group_overlay(
 
 	for member in members {
 		if let Some(result) = populated.get(member.as_str()) {
-			output_pretty(std::slice::from_ref(*result), ctx);
+			output_or_exit(output_pretty(std::slice::from_ref(*result), ctx));
 		} else {
 			output_inventory_stub(query, member, args, ctx.catalog_defn);
 		}
@@ -572,10 +611,10 @@ fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Con
 	}
 
 	let index = get_index_or_exit(data_dir);
-	let catalog_defn = query
-		.scheme
-		.as_ref()
-		.and_then(|s| load_catalog_def(data_dir, s, Some(&query.composer)));
+	let catalog_defn = match query.scheme.as_ref() {
+		Some(scheme) => catalog_or_exit(load_catalog_def(data_dir, scheme, Some(&query.composer))),
+		None => None,
+	};
 	let number_spec = query
 		.number
 		.as_ref()
@@ -643,7 +682,7 @@ fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Con
 
 	builder = builder.strict(args.strict);
 
-	let results = builder.fetch();
+	let results = query_or_exit(builder.fetch());
 
 	if results.is_empty() {
 		if let Some(NumberSpec::Single(number)) = number_spec.as_ref() {
@@ -736,7 +775,7 @@ fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Con
 		if args.json {
 			output_inventory_group_overlay(&query, members, &results, args, &ctx);
 		} else if args.movements {
-			output_movements(&results, &ctx);
+			output_or_exit(output_movements(&results, &ctx));
 			warn_inventory_only_entries(inventory_only_count, args);
 		} else if args.terse {
 			output_terse(&results);
@@ -746,13 +785,13 @@ fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Con
 			warn_inventory_only_entries(missing, args);
 		}
 	} else if args.json {
-		output_json(&results, &ctx);
+		output_or_exit(output_json(&results, &ctx));
 	} else if args.movements {
-		output_movements(&results, &ctx);
+		output_or_exit(output_movements(&results, &ctx));
 	} else if args.terse {
 		output_terse(&results);
 	} else {
-		output_pretty(&results, &ctx);
+		output_or_exit(output_pretty(&results, &ctx));
 	}
 }
 
@@ -830,13 +869,13 @@ fn run_collections(collection_ids: &[String], args: &GetArgs, data_dir: &Path, c
 	let index = get_index_or_exit(data_dir);
 	if args.terse {
 		for r in &refs {
-			let results = index
+			let results = query_or_exit(index
 				.query()
 				.composer(&r.composer)
 				.scheme(&r.scheme)
 				.number(&r.number)
 				.data_dir(data_dir)
-				.fetch();
+				.fetch());
 
 			for result in results {
 				print(&result.id);
@@ -848,13 +887,13 @@ fn run_collections(collection_ids: &[String], args: &GetArgs, data_dir: &Path, c
 	if args.json {
 		let mut all_results = Vec::new();
 		for r in &refs {
-			let results = index
+			let results = query_or_exit(index
 				.query()
 				.composer(&r.composer)
 				.scheme(&r.scheme)
 				.number(&r.number)
 				.data_dir(data_dir)
-				.fetch();
+				.fetch());
 			all_results.extend(results);
 		}
 		let ctx = OutputContext {
@@ -863,20 +902,20 @@ fn run_collections(collection_ids: &[String], args: &GetArgs, data_dir: &Path, c
 			scheme: None,
 			catalog_defn: None,
 		};
-		output_json(&all_results, &ctx);
+		output_or_exit(output_json(&all_results, &ctx));
 		return;
 	}
 
 	if args.edit {
 		let mut paths = Vec::new();
 		for r in &refs {
-			let results = index
+			let results = query_or_exit(index
 				.query()
 				.composer(&r.composer)
 				.scheme(&r.scheme)
 				.number(&r.number)
 				.data_dir(data_dir)
-				.fetch();
+				.fetch());
 
 			for result in results {
 				paths.push(id_to_path(data_dir, &result.id));
@@ -886,48 +925,46 @@ fn run_collections(collection_ids: &[String], args: &GetArgs, data_dir: &Path, c
 		return;
 	}
 	for r in &refs {
-		let results = index
+		let results = query_or_exit(index
 			.query()
 			.composer(&r.composer)
 			.scheme(&r.scheme)
 			.number(&r.number)
 			.data_dir(data_dir)
-			.fetch();
+			.fetch());
 
-		let catalog_defn = load_catalog_def(data_dir, &r.scheme, Some(&r.composer));
+		let catalog_defn = catalog_or_exit(load_catalog_def(
+			data_dir,
+			&r.scheme,
+			Some(&r.composer),
+		));
 
 		for result in results {
 			let comp_path = id_to_path(data_dir, &result.id);
+			let comp = composition_or_exit(&comp_path);
 			if args.movements {
-				if let Ok(comp) = load_composition(&comp_path) {
-					let formatted_cat = format_catalog(&r.scheme, &r.number, catalog_defn.as_ref());
-					print(&format!("{}:", formatted_cat));
-					if let Some(movements) = &comp.movements {
-						for (i, movement) in movements.iter().enumerate() {
-							let title = movement
-								.title
-								.as_deref()
-								.or(movement.form.as_deref())
-								.unwrap_or("?");
-							print(&format!("  {}. {}", i + 1, title));
-						}
+				let formatted_cat = format_catalog(&r.scheme, &r.number, catalog_defn.as_ref());
+				print(&format!("{}:", formatted_cat));
+				if let Some(movements) = &comp.movements {
+					for (i, movement) in movements.iter().enumerate() {
+						let title = movement
+							.title
+							.as_deref()
+							.or(movement.form.as_deref())
+							.unwrap_or("?");
+						print(&format!("  {}. {}", i + 1, title));
 					}
 				}
 			} else {
-				if let Ok(comp) = load_composition(&comp_path) {
-					let expansion_ctx = ExpansionContext {
-						composition: &comp,
-						collection: None,
-						position_in_collection: None,
-						config: &config.display,
-					};
-					let title = expand_title(&expansion_ctx);
-					let formatted_cat = format_catalog(&r.scheme, &r.number, catalog_defn.as_ref());
-					print(&format!("{}, {}", title, formatted_cat));
-				} else {
-					let formatted_cat = format_catalog(&r.scheme, &r.number, catalog_defn.as_ref());
-					print(&formatted_cat);
-				}
+				let expansion_ctx = ExpansionContext {
+					composition: &comp,
+					collection: None,
+					position_in_collection: None,
+					config: &config.display,
+				};
+				let title = expand_title(&expansion_ctx);
+				let formatted_cat = format_catalog(&r.scheme, &r.number, catalog_defn.as_ref());
+				print(&format!("{}, {}", title, formatted_cat));
 			}
 		}
 	}

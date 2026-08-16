@@ -29,7 +29,13 @@ pub fn run(composer: &str, scheme: Option<&str>, edition: Option<&str>, missing:
 
 	let mut found = false;
 	for scheme in schemes {
-		let defn = load_catalog_def(data_dir, &scheme, Some(composer));
+		let defn = match load_catalog_def(data_dir, &scheme, Some(composer)) {
+			Ok(definition) => definition,
+			Err(error) => {
+				eprintln!("Error loading catalog metadata: {}", error);
+				std::process::exit(1);
+			}
+		};
 		let Some(scheme_index) = index.inventory.catalogs.get(composer).and_then(|s| s.get(&scheme)) else {
 			eprintln!("No catalog inventory found for {} / {}.", composer, scheme);
 			continue;

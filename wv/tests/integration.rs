@@ -162,6 +162,48 @@ fn test_index_fails_on_invalid_inventory() {
 }
 
 #[test]
+fn test_get_fails_on_invalid_catalog_metadata() {
+	let tmp = setup_test_repo();
+	let root = tmp.path();
+	write_composition(root, "ab123456", r#"{
+		"id": "ab123456",
+		"form": "sonata",
+		"attribution": [{
+			"composer": "beethoven",
+			"catalog": [{"scheme": "op", "number": "2/1"}]
+		}]
+	}"#);
+	fs::write(root.join("catalogs/op.json"), "{").unwrap();
+
+	let output = run_wv(root, &["get", "beethoven", "op"]);
+	assert!(!output.status.success());
+	let stderr = String::from_utf8_lossy(&output.stderr);
+	assert!(stderr.contains("Error loading catalog metadata"));
+	assert!(stderr.contains("op.json"));
+}
+
+#[test]
+fn test_broad_get_fails_on_invalid_composer_metadata() {
+	let tmp = setup_test_repo();
+	let root = tmp.path();
+	write_composition(root, "ab123456", r#"{
+		"id": "ab123456",
+		"form": "sonata",
+		"attribution": [{
+			"composer": "beethoven",
+			"catalog": [{"scheme": "op", "number": "2/1"}]
+		}]
+	}"#);
+	fs::write(root.join("composers/beethoven.json"), "{").unwrap();
+
+	let output = run_wv(root, &["get", "beethoven"]);
+	assert!(!output.status.success());
+	let stderr = String::from_utf8_lossy(&output.stderr);
+	assert!(stderr.contains("Error querying dataset"));
+	assert!(stderr.contains("beethoven.json"));
+}
+
+#[test]
 fn test_single_json_result_is_array() {
 	let tmp = setup_test_repo();
 	let root = tmp.path();
@@ -564,7 +606,7 @@ fn test_superseded_has_current_number() {
 		.scheme("k")
 		.number("300i")
 		.data_dir(root)
-		.fetch();
+		.fetch().unwrap();
 
 	assert_eq!(results.len(), 1);
 	assert!(results[0].superseded);
@@ -689,7 +731,7 @@ fn test_note_in_index() {
 		.scheme("bwv")
 		.number("anh. iii 141")
 		.data_dir(root)
-		.fetch();
+		.fetch().unwrap();
 
 	assert_eq!(results.len(), 1);
 	assert_eq!(results[0].note, Some("spurious; now attributed to Telemann".to_string()));
@@ -725,7 +767,7 @@ fn test_range_query() {
 		.range("i:2", "i:4")
 		.data_dir(root)
 		.sorted(root)
-		.fetch();
+		.fetch().unwrap();
 
 	assert_eq!(results.len(), 3);
 }
@@ -784,7 +826,7 @@ fn test_group_query() {
 		.group("2")
 		.data_dir(root)
 		.sorted(root)
-		.fetch();
+		.fetch().unwrap();
 
 	// Group "2" should match 2/1, 2/2, 2/3 but not 7
 	assert_eq!(results.len(), 3);

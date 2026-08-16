@@ -5,7 +5,13 @@ use crate::catalog::{load_catalog_def, sort_key, sort_numbers};
 use crate::output::print;
 
 pub fn run_sort(scheme: &str, composer: Option<&str>, data_dir: &Path) {
-	let defn = load_catalog_def(data_dir, scheme, composer);
+	let defn = match load_catalog_def(data_dir, scheme, composer) {
+		Ok(definition) => definition,
+		Err(error) => {
+			eprintln!("Error loading catalog metadata: {}", error);
+			std::process::exit(1);
+		}
+	};
 
 	let mut numbers: Vec<String> = io::stdin()
 		.lock()
@@ -24,9 +30,13 @@ pub fn run_sort(scheme: &str, composer: Option<&str>, data_dir: &Path) {
 
 pub fn run_sort_key(scheme: &str, number: &str, composer: Option<&str>, data_dir: &Path) {
 	let defn = match load_catalog_def(data_dir, scheme, composer) {
-		Some(d) => d,
-		None => {
+		Ok(Some(d)) => d,
+		Ok(None) => {
 			eprintln!("Unknown catalog: {}", scheme);
+			std::process::exit(1);
+		}
+		Err(error) => {
+			eprintln!("Error loading catalog metadata: {}", error);
 			std::process::exit(1);
 		}
 	};

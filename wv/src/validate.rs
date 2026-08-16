@@ -260,8 +260,16 @@ impl Validator {
 		location: &str,
 	) -> Vec<ValidationError> {
 		let mut errors = Vec::new();
-		let Some(definition) = load_catalog_def(&self.data_dir, scheme, Some(composer)) else {
-			return errors;
+		let definition = match load_catalog_def(&self.data_dir, scheme, Some(composer)) {
+			Ok(Some(definition)) => definition,
+			Ok(None) => return errors,
+			Err(error) => {
+				errors.push(ValidationError {
+					path: path_str.to_string(),
+					message: format!("{}: {}", location, error),
+				});
+				return errors;
+			}
 		};
 
 		let mut pattern_valid = true;
@@ -538,12 +546,17 @@ impl Validator {
 
 		if let Some(catalogs) = &composer.catalogs {
 			for (scheme, definition) in catalogs {
-				if let Some(effective) = load_catalog_def(&self.data_dir, scheme, Some(&composer.id)) {
-					errors.extend(self.validate_catalog_definition_domain(
+				match load_catalog_def(&self.data_dir, scheme, Some(&composer.id)) {
+					Ok(Some(effective)) => errors.extend(self.validate_catalog_definition_domain(
 						&effective,
 						&path_str,
 						&format!("catalog '{}'", scheme),
-					));
+					)),
+					Ok(None) => {}
+					Err(error) => errors.push(ValidationError {
+						path: path_str.clone(),
+						message: format!("catalog '{}': {}", scheme, error),
+					}),
 				}
 				if let Some(current_edition) = &definition.current_edition {
 					let defined = definition
@@ -741,7 +754,20 @@ impl Validator {
 			}
 		}
 
-		let definition = load_catalog_def(&self.data_dir, &inventory.scheme, Some(&inventory.composer));
+		let definition = match load_catalog_def(
+			&self.data_dir,
+			&inventory.scheme,
+			Some(&inventory.composer),
+		) {
+			Ok(definition) => definition,
+			Err(error) => {
+				errors.push(ValidationError {
+					path: path_str,
+					message: error.to_string(),
+				});
+				return errors;
+			}
+		};
 		if let Some(edition) = inventory.edition.as_deref() {
 			let defined = definition
 				.as_ref()

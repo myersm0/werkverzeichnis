@@ -6,6 +6,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::catalog::{
 	group_key, group_member_key, load_catalog_def, normalize_catalog_number, sort_numbers,
+	CatalogLoadError,
 };
 use crate::types::{CatalogDefinition, Inventory};
 
@@ -42,6 +43,8 @@ pub enum InventoryError {
 		path: PathBuf,
 		message: String,
 	},
+	#[error(transparent)]
+	Catalog(#[from] CatalogLoadError),
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -73,7 +76,7 @@ pub fn build_inventory_index<P: AsRef<Path>>(data_dir: P) -> Result<InventoryInd
 
 	for path in paths {
 		let inventory = load_inventory(&path)?;
-		let defn = load_catalog_def(data_dir, &inventory.scheme, Some(&inventory.composer));
+		let defn = load_catalog_def(data_dir, &inventory.scheme, Some(&inventory.composer))?;
 		let catalog_index = normalize_inventory(&inventory, defn.as_ref()).map_err(|message| {
 			InventoryError::Invalid {
 				path: path.clone(),

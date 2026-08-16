@@ -153,7 +153,13 @@ fn summary_rows(prepared: &[PreparedAdd], data_dir: &Path, config: &Config) -> V
 				config: &config.display,
 			};
 			let title = expand_title(&ctx);
-			let catalog = format_id_header(&plan.composition, &plan.id, data_dir);
+			let catalog = match format_id_header(&plan.composition, &plan.id, data_dir) {
+				Ok(catalog) => catalog,
+				Err(error) => {
+					eprintln!("Error loading catalog metadata: {}", error);
+					std::process::exit(1);
+				}
+			};
 			(catalog, title, plan.id.clone(), plan.overwrites)
 		})
 		.collect();
