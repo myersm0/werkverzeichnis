@@ -2,10 +2,9 @@
 use std::path::Path;
 
 use crate::index::{build_index, save_index};
-use crate::output::print;
 
 pub fn run(data_dir: &Path) {
-	print(&format!("Building index from {:?}...", data_dir));
+	eprintln!("Building index from {:?}...", data_dir);
 
 	let index = build_index(data_dir);
 
@@ -22,8 +21,8 @@ pub fn run(data_dir: &Path) {
 		}
 	}
 
-	print(&format!("Found {} compositions", total_compositions));
-	print(&format!("Found {} catalog entries", total_catalog_entries));
+	eprintln!("Found {} compositions", total_compositions);
+	eprintln!("Found {} catalog entries", total_catalog_entries);
 
 	let total_inventory_entries: usize = index
 		.inventory
@@ -35,7 +34,7 @@ pub fn run(data_dir: &Path) {
 				+ scheme.editions.values().map(|catalog| catalog.entries.len()).sum::<usize>()
 		})
 		.sum();
-	print(&format!("Found {} inventory entries", total_inventory_entries));
+	eprintln!("Found {} inventory entries", total_inventory_entries);
 
 	if let Err(e) = save_index(&index, data_dir) {
 		eprintln!("Error writing index: {}", e);
@@ -43,25 +42,25 @@ pub fn run(data_dir: &Path) {
 	}
 
 	let indexes_dir = data_dir.join(".indexes");
-	print(&format!("Wrote {}", indexes_dir.join("index.json").display()));
-	print(&format!(
+	eprintln!("Wrote {}", indexes_dir.join("index.json").display());
+	eprintln!(
 		"Wrote {}",
 		indexes_dir.join("composer-index.json").display()
-	));
-	print(&format!(
+	);
+	eprintln!(
 		"Wrote {}",
 		indexes_dir.join("inventory-index.json").display()
-	));
+	);
 	if !index.editions.is_empty() {
-		print(&format!(
-		"Wrote edition indexes to {}",
-		indexes_dir.join("editions").display()
-		));
+		eprintln!(
+			"Wrote edition indexes to {}",
+			indexes_dir.join("editions").display()
+		);
 	}
-	print(&format!(
+	eprintln!(
 		"Wrote {}",
 		indexes_dir.join("metadata.json").display()
-	));
+	);
 
-	print("Done.");
+	eprintln!("Done.");
 }

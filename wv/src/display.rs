@@ -326,7 +326,9 @@ pub fn expand_title(ctx: &ExpansionContext) -> String {
 		}
 	}
 
-	let pattern = if ctx.position_in_collection.is_some() {
+	let pattern = if comp.key.is_none() {
+		&config.patterns.generic_no_key
+	} else if ctx.position_in_collection.is_some() {
 		&config.patterns.with_number
 	} else {
 		&config.patterns.generic
@@ -373,6 +375,31 @@ fn expand_pattern(pattern: &str, ctx: &ExpansionContext) -> String {
 #[cfg(test)]
 mod tests {
 	use super::*;
+
+	#[test]
+	fn expand_title_without_key_uses_no_key_pattern() {
+		let comp = Composition {
+			id: "12345678".into(),
+			title: None,
+			form: "variations".into(),
+			key: None,
+			instrumentation: None,
+			note: None,
+			attribution: Vec::new(),
+			movements: None,
+			sections: None,
+			xref: None,
+		};
+		let config = DisplayConfig::default();
+		let ctx = ExpansionContext {
+			composition: &comp,
+			collection: None,
+			position_in_collection: None,
+			config: &config,
+		};
+
+		assert_eq!(expand_title(&ctx), "Variations");
+	}
 
 	#[test]
 	fn truncate_instrumentation_counts_characters_not_bytes() {

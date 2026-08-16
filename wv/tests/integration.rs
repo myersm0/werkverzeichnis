@@ -121,6 +121,52 @@ entries = ["2/1", "2/2", "2/3", "138"]
 	tmp
 }
 
+#[test]
+fn test_single_json_result_is_array() {
+	let tmp = setup_test_repo();
+	let root = tmp.path();
+
+	write_composition(root, "ab123456", r#"{
+		"id": "ab123456",
+		"form": "suite",
+		"attribution": []
+	}"#);
+
+	let output = run_wv(root, &["get", "ab123456", "--json"]);
+	assert!(output.status.success(), "{}", String::from_utf8_lossy(&output.stderr));
+	let value: serde_json::Value = serde_json::from_slice(&output.stdout).unwrap();
+	let results = value.as_array().expect("--json output should always be an array");
+	assert_eq!(results.len(), 1);
+	assert_eq!(results[0]["id"], "ab123456");
+}
+
+#[test]
+fn test_inventory_only_json_result_is_array() {
+	let tmp = setup_inventory_cli_repo();
+	let root = tmp.path();
+
+	let output = run_wv(root, &["get", "beethoven", "op", "138", "--json"]);
+	assert!(output.status.success(), "{}", String::from_utf8_lossy(&output.stderr));
+	let value: serde_json::Value = serde_json::from_slice(&output.stdout).unwrap();
+	let results = value.as_array().expect("--json output should always be an array");
+	assert_eq!(results.len(), 1);
+	assert_eq!(results[0]["number"], "138");
+	assert_eq!(results[0]["populated"], false);
+}
+
+#[test]
+fn test_index_status_uses_stderr() {
+	let tmp = setup_test_repo();
+	let root = tmp.path();
+
+	let output = run_wv(root, &["index"]);
+	assert!(output.status.success(), "{}", String::from_utf8_lossy(&output.stderr));
+	assert!(output.stdout.is_empty());
+	let stderr = String::from_utf8_lossy(&output.stderr);
+	assert!(stderr.contains("Building index"));
+	assert!(stderr.contains("Done."));
+}
+
 // ============================================================================
 // Index round-trip tests
 // ============================================================================

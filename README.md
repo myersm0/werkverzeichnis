@@ -41,11 +41,11 @@ Sonata in f minor, op. 2 no. 1
 Sonata in A major, op. 2 no. 2
 Sonata in C major, op. 2 no. 3
 
-# Or use the --terse flag to get just the catalog and id numbers:
+# Or use the --terse flag to get just the stable composition IDs:
 $ wv get beethoven op 2 --terse
-op:2/1  fba99784
-op:2/2  edfa8309
-op:2/3  7023f148
+fba99784
+edfa8309
+7023f148
 
 # Output results as JSON (not shown here for brevity):
 $ wv get beethoven op 2 --json
@@ -171,6 +171,7 @@ When a composition doesn't have an explicit title, one is generated from its for
 ```toml
 [display.patterns]
 generic = "{form} in {key}"
+generic_no_key = "{form}"
 with_number = "{form} no. {num} in {key}"
 ```
 

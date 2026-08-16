@@ -344,7 +344,8 @@ fn output_inventory_stub(
 ) {
 	let scheme = query.scheme.as_deref().unwrap_or_default();
 	if args.json {
-		print(&serde_json::to_string_pretty(&inventory_stub_value(query, number)).unwrap());
+		let values = vec![inventory_stub_value(query, number)];
+		print(&serde_json::to_string_pretty(&values).unwrap());
 		return;
 	}
 

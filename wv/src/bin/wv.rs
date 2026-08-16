@@ -114,7 +114,7 @@ enum Commands {
 		data_dir: Option<PathBuf>,
 	},
 
-	Format {
+	Render {
 		#[arg(long, value_name = "PATH")]
 		data_dir: Option<PathBuf>,
 	},
@@ -279,9 +279,9 @@ fn main() {
 			};
 			commands::set::run(args, data_dir, &config);
 		}
-		Commands::Format { data_dir } => {
+		Commands::Render { data_dir } => {
 			let data_dir = data_dir_or_exit(data_dir.as_ref(), &config);
-			commands::format::run(&data_dir, &config);
+			commands::render::run(&data_dir, &config);
 		}
 		Commands::Validate { path, data_dir } => {
 			let data_dir = data_dir_or_exit(data_dir.as_ref(), &config);

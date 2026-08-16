@@ -31,6 +31,7 @@ key_symbols = "unicode"
 
 [display.patterns]
 generic = "{form} in {key}"
+generic_no_key = "{form}"
 with_number = "{form} no. {num} in {key}"
 instrumentation_max_chars = 40
 
@@ -175,14 +176,16 @@ $ wv get bach bwv 812 --movements
 ...
 ```
 
-`--json` emits the complete composition object:
+`--json` emits a JSON array, including for a single result:
 
 ```bash
 $ wv get bach bwv 812 --json
-{
-  "id": "2e0c3f46",
-  ...
-}
+[
+  {
+    "id": "2e0c3f46",
+    ...
+  }
+]
 ```
 
 `--edit` opens the matching JSON file or files in the configured editor:
@@ -472,10 +475,10 @@ This modifies matching composition JSON files and marks the index dirty.
 
 ## JSON pipelines
 
-`wv get --json` can be combined with `jq`, and `wv format` converts composition JSON back to normal human-readable output.
+`wv get --json` can be combined with `jq`, and `wv render` converts composition JSON back to normal human-readable output.
 
 ```bash
-$ wv get bach bwv 812 --json | jq '.movements[].title'
+$ wv get bach bwv 812 --json | jq '.[0].movements[].title'
 "Allemande"
 "Courante"
 ...
@@ -484,10 +487,10 @@ $ wv get bach bwv 812 --json | jq '.movements[].title'
 ```bash
 $ wv get beethoven op 2-20 --json \
   | jq '.[] | select(.attribution[0].dates.composed < 1800)' \
-  | wv format
+  | wv render
 ```
 
-`wv format` accepts either one composition object or an array of composition objects on standard input.
+`wv render` accepts either one composition object or an array of composition objects on standard input.
 
 ## Catalog utilities
 

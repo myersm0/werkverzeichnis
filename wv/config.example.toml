@@ -17,6 +17,7 @@ key_symbols = "unicode"
 [display.patterns]
 # Default title patterns when no explicit title exists
 generic = "{form} in {key}"
+generic_no_key = "{form}"
 with_number = "{form} no. {num} in {key}"
 
 # Max characters for instrumentation in expanded titles

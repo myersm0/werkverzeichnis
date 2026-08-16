@@ -62,11 +62,7 @@ pub fn output_json(results: &[QueryResult], ctx: &OutputContext) {
 		}
 	}
 
-	let json_str = if output.len() == 1 {
-		serde_json::to_string_pretty(&output[0]).unwrap()
-	} else {
-		serde_json::to_string_pretty(&output).unwrap()
-	};
+	let json_str = serde_json::to_string_pretty(&output).unwrap();
 	print(&json_str);
 }
 

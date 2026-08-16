@@ -39,6 +39,7 @@ pub enum KeySymbols {
 #[serde(default)]
 pub struct PatternConfig {
 	pub generic: String,
+	pub generic_no_key: String,
 	pub with_number: String,
 	pub instrumentation_max_chars: usize,
 }
@@ -83,6 +84,7 @@ impl Default for PatternConfig {
 	fn default() -> Self {
 		Self {
 			generic: "{form} in {key}".into(),
+			generic_no_key: "{form}".into(),
 			with_number: "{form} no. {num} in {key}".into(),
 			instrumentation_max_chars: 40,
 		}
