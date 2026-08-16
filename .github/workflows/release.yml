@@ -23,6 +23,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Check tag matches crate version
+        run: |
+          crate_version=$(sed -n 's/^version = "\(.*\)"/\1/p' wv/Cargo.toml | head -1)
+          tag_version="${GITHUB_REF_NAME#v}"
+          if [ "$crate_version" != "$tag_version" ]; then
+            echo "Tag $GITHUB_REF_NAME does not match wv/Cargo.toml version $crate_version" >&2
+            exit 1
+          fi
+
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
 
