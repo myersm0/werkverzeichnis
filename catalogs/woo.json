@@ -10,6 +10,9 @@
 		{"group": 3, "type": "int"}
 	],
 	"group_by": [1, 2],
+	"constraints": [
+		{"group": 3, "name": "sub-number", "min": 1}
+	],
 	"examples": [
 		{"number": "32", "display": "WoO 32"},
 		{"number": "32/1", "display": "WoO 32 No. 1"},

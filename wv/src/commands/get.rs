@@ -2,7 +2,7 @@ use std::io::{self, BufRead};
 use std::path::{Path, PathBuf};
 use std::process::Command;
 
-use crate::catalog::load_catalog_def;
+use crate::catalog::{load_catalog_def, validate_catalog_domain};
 use crate::commands::collection;
 use crate::config::{resolve_editor, Config};
 use crate::display::{expand_title, format_catalog, ExpansionContext};
@@ -340,6 +340,40 @@ fn output_inventory_stub(
 	print(&format_catalog(scheme, number, defn));
 }
 
+
+fn reject_structural_domain(
+	query: &ComposerQuery,
+	number: &str,
+	args: &GetArgs,
+	defn: Option<&CatalogDefinition>,
+) -> bool {
+	let Some(defn) = defn else {
+		return false;
+	};
+
+	if defn.categories.is_some() && !number.contains(':') && find_category(number, defn).is_none() {
+		if !args.quiet {
+			eprintln!(
+				"Invalid catalog category for {} / {}: \"{}\"",
+				query.composer, defn.name, number
+			);
+		}
+		return true;
+	}
+
+	if let Err(error) = validate_catalog_domain(number, defn) {
+		if !args.quiet {
+			eprintln!(
+				"Catalog number out of range for {} / {}: \"{}\" ({})",
+				query.composer, defn.name, number, error
+			);
+		}
+		return true;
+	}
+
+	false
+}
+
 fn handle_inventory_miss(
 	query: &ComposerQuery,
 	number: &str,
@@ -459,6 +493,22 @@ fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Con
 			.and_then(|defn| find_category(number, defn))
 			.map(str::to_lowercase)
 	});
+
+	match &number_spec {
+		Some(NumberSpec::Single(number)) => {
+			if reject_structural_domain(&query, number, args, catalog_defn.as_ref()) {
+				return;
+			}
+		}
+		Some(NumberSpec::Range { start, end }) => {
+			if reject_structural_domain(&query, start, args, catalog_defn.as_ref())
+				|| reject_structural_domain(&query, end, args, catalog_defn.as_ref())
+			{
+				return;
+			}
+		}
+		None => {}
+	}
 
 	let mut builder = index.query().composer(&query.composer).data_dir(data_dir);
 	if let Some(s) = &query.scheme {

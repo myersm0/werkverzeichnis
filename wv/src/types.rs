@@ -202,11 +202,34 @@ pub struct CatalogDefinition {
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub categories: Option<HashMap<String, String>>,
 	#[serde(skip_serializing_if = "Option::is_none")]
+	pub constraints: Option<Vec<CatalogConstraint>>,
+	#[serde(skip_serializing_if = "Option::is_none")]
 	pub primary: Option<bool>,
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub mb_format: Option<String>,
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub mb_part_format: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct CatalogConstraint {
+	pub group: usize,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub name: Option<String>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub min: Option<i64>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub max: Option<i64>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub ranges: Option<Vec<CatalogIntRange>>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct CatalogIntRange {
+	pub min: i64,
+	pub max: i64,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

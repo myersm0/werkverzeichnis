@@ -12,7 +12,10 @@
 		"op": {
 			"name": "Opus",
 			"canonical_format": "op. {number}",
-			"primary": true
+			"primary": true,
+			"constraints": [
+				{"group": 2, "name": "opus number", "min": 1, "max": 138}
+			]
 		},
 		"woo": {
 			"name": "Werke ohne Opuszahl",

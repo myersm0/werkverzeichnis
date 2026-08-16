@@ -39,6 +39,8 @@ All catalog identifiers are quoted strings. Comments are for maintainer orientat
 
 `complete = true` means every identifier assigned by that catalog or catalog edition is listed. Absence from a complete inventory is therefore a confident negative. Absence from an incomplete inventory is unknown.
 
+Structural validity is defined separately in catalog metadata. Catalog constraints can reject impossible components before inventory lookup, such as Beethoven opus numbers above 138, subordinate number 0, an undefined Hoboken category, or a Telemann genre outside the catalog's genre domain. Inventories answer whether an in-domain identifier was actually assigned.
+
 For catalogs with editions, add `edition`:
 
 ```toml
@@ -74,6 +76,7 @@ A bare identifier and subordinate identifiers are allowed to coexist if a catalo
 - an edition, if supplied, is defined for the catalog;
 - every entry is unique after normalization;
 - every entry is well-formed under the catalog's parser;
-- no composition record refers to an identifier absent from an applicable complete inventory.
+- every entry satisfies the catalog's structural-domain constraints;
+- no composition record refers to an identifier outside the structural domain or absent from an applicable complete inventory.
 
 `wv coverage <composer> [scheme]` compares the inventory with the rich composition records. Add `--missing` to list catalogued entries that do not yet have detailed records.

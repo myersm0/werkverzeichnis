@@ -6,7 +6,7 @@ use jsonschema::Validator as JsonSchemaValidator;
 use serde::de::DeserializeOwned;
 use serde_json::Value;
 
-use crate::catalog::{load_catalog_def, normalize_catalog_number};
+use crate::catalog::{load_catalog_def, normalize_catalog_number, validate_catalog_domain};
 use crate::inventory::{build_inventory_index, normalize_inventory, InventoryIndex};
 use crate::types::{AttributionEntry, CatalogDefinition, Collection, Composer, Composition};
 
@@ -262,7 +262,21 @@ impl Validator {
 			}
 		}
 
+		let mut domain_valid = pattern_valid;
 		if pattern_valid {
+			if let Err(error) = validate_catalog_domain(number, &definition) {
+				domain_valid = false;
+				errors.push(ValidationError {
+					path: path_str.to_string(),
+					message: format!(
+						"{}: catalog number '{}' is outside the structural domain for '{}': {}",
+						location, number, scheme, error
+					),
+				});
+			}
+		}
+
+		if domain_valid {
 			if let Some(catalog) = self
 				.inventory_index
 				.catalog(composer, scheme, edition, Some(&definition))
@@ -336,6 +350,58 @@ impl Validator {
 		errors
 	}
 
+	fn validate_catalog_definition_domain(
+		&self,
+		definition: &CatalogDefinition,
+		path_str: &str,
+		location: &str,
+	) -> Vec<ValidationError> {
+		let mut errors = Vec::new();
+		let capture_count = definition.pattern.as_ref().and_then(|pattern| {
+			regex::RegexBuilder::new(pattern)
+				.case_insensitive(true)
+				.build()
+				.ok()
+				.map(|regex| regex.captures_len().saturating_sub(1))
+		});
+
+		if let Some(constraints) = &definition.constraints {
+			for constraint in constraints {
+				if let Some(count) = capture_count {
+					if constraint.group > count {
+						errors.push(ValidationError {
+							path: path_str.to_string(),
+							message: format!(
+								"{}: constraint group {} exceeds pattern capture count {}",
+								location, constraint.group, count
+							),
+						});
+					}
+				}
+				if let (Some(min), Some(max)) = (constraint.min, constraint.max) {
+					if min > max {
+						errors.push(ValidationError {
+							path: path_str.to_string(),
+							message: format!("{}: constraint group {} has min {} greater than max {}", location, constraint.group, min, max),
+						});
+					}
+				}
+				if let Some(ranges) = &constraint.ranges {
+					for range in ranges {
+						if range.min > range.max {
+							errors.push(ValidationError {
+								path: path_str.to_string(),
+								message: format!("{}: constraint group {} has range {}..{}", location, constraint.group, range.min, range.max),
+							});
+						}
+					}
+				}
+			}
+		}
+
+		errors
+	}
+
 	fn validate_composer_file(&self, path: &Path) -> Vec<ValidationError> {
 		let (value, mut errors) = match self.read_and_validate(path, &self.composer_schema, false) {
 			Ok(result) => result,
@@ -370,6 +436,13 @@ impl Validator {
 
 		if let Some(catalogs) = &composer.catalogs {
 			for (scheme, definition) in catalogs {
+				if let Some(effective) = load_catalog_def(&self.data_dir, scheme, Some(&composer.id)) {
+					errors.extend(self.validate_catalog_definition_domain(
+						&effective,
+						&path_str,
+						&format!("catalog '{}'", scheme),
+					));
+				}
 				if let Some(current_edition) = &definition.current_edition {
 					let defined = definition
 						.editions
@@ -407,12 +480,13 @@ impl Validator {
 		) {
 			if id != stem {
 				errors.push(ValidationError {
-					path: path_str,
+					path: path_str.clone(),
 					message: format!("Catalog ID '{}' doesn't match filename '{}'", id, stem),
 				});
 			}
 		}
 
+		errors.extend(self.validate_catalog_definition_domain(&catalog, &path_str, "catalog"));
 		errors
 	}
 

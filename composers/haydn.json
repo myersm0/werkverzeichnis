@@ -18,6 +18,9 @@
 				{"group": 2, "type": "int"},
 				{"group": 3, "type": "str"}
 			],
+			"constraints": [
+				{"group": 1, "name": "category", "min": 1, "max": 32}
+			],
 			"categories": {
 				"I": "symphonies",
 				"II": "divertimenti for four or more instruments",

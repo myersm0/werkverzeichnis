@@ -4,7 +4,7 @@ use std::collections::{HashMap, HashSet};
 use std::path::Path;
 
 use crate::parse::load_composer;
-use crate::types::CatalogDefinition;
+use crate::types::{CatalogConstraint, CatalogDefinition};
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum SortValue {
@@ -93,6 +93,7 @@ pub fn load_catalog_def<P: AsRef<Path>>(
 
 	match (composer_def, global_def) {
 		(Some(mut c), Some(g)) => {
+			let global_constraints = g.constraints.clone();
 			if c.pattern.is_none() {
 				c.pattern = g.pattern;
 			}
@@ -104,6 +105,12 @@ pub fn load_catalog_def<P: AsRef<Path>>(
 			}
 			if c.group_by.is_none() {
 				c.group_by = g.group_by;
+			}
+			if let Some(mut global) = global_constraints {
+				if let Some(local) = c.constraints.take() {
+					global.extend(local);
+				}
+				c.constraints = Some(global);
 			}
 			Some(c)
 		}
@@ -303,6 +310,87 @@ pub fn matches_group(number: &str, group: &str, defn: Option<&CatalogDefinition>
 	true
 }
 
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum CatalogDomainError {
+	BelowMinimum { group: usize, name: Option<String>, value: i64, min: i64 },
+	AboveMaximum { group: usize, name: Option<String>, value: i64, max: i64 },
+	OutsideRanges { group: usize, name: Option<String>, value: i64 },
+}
+
+impl std::fmt::Display for CatalogDomainError {
+	fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+		match self {
+			Self::BelowMinimum { group, name, value, min } => {
+				let name = name.clone().unwrap_or_else(|| format!("component {}", group));
+				write!(f, "{} {} is below the minimum {}", name, value, min)
+			}
+			Self::AboveMaximum { group, name, value, max } => {
+				let name = name.clone().unwrap_or_else(|| format!("component {}", group));
+				write!(f, "{} {} is above the maximum {}", name, value, max)
+			}
+			Self::OutsideRanges { group, name, value } => {
+				let name = name.clone().unwrap_or_else(|| format!("component {}", group));
+				write!(f, "{} {} is outside the allowed ranges", name, value)
+			}
+		}
+	}
+}
+
+fn constraint_accepts(value: i64, constraint: &CatalogConstraint) -> Result<(), CatalogDomainError> {
+	if let Some(min) = constraint.min {
+		if value < min {
+			return Err(CatalogDomainError::BelowMinimum { group: constraint.group, name: constraint.name.clone(), value, min });
+		}
+	}
+	if let Some(max) = constraint.max {
+		if value > max {
+			return Err(CatalogDomainError::AboveMaximum { group: constraint.group, name: constraint.name.clone(), value, max });
+		}
+	}
+	if let Some(ranges) = &constraint.ranges {
+		if !ranges.iter().any(|range| value >= range.min && value <= range.max) {
+			return Err(CatalogDomainError::OutsideRanges { group: constraint.group, name: constraint.name.clone(), value });
+		}
+	}
+	Ok(())
+}
+
+pub fn validate_catalog_domain(number: &str, defn: &CatalogDefinition) -> Result<(), CatalogDomainError> {
+	let Some(pattern) = &defn.pattern else {
+		return Ok(());
+	};
+	let Ok(re) = RegexBuilder::new(pattern).case_insensitive(true).build() else {
+		return Ok(());
+	};
+	let Some(captures) = re.captures(number) else {
+		return Ok(());
+	};
+
+	if let Some(constraints) = &defn.constraints {
+		for constraint in constraints {
+			let Some(value) = captures.get(constraint.group) else {
+				continue;
+			};
+			let sort_type = defn
+				.sort_keys
+				.as_ref()
+				.and_then(|keys| keys.iter().find(|key| key.group == constraint.group))
+				.map(|key| key.sort_type.as_str())
+				.unwrap_or("int");
+			let value = match sort_type {
+				"roman" => parse_roman(value.as_str()),
+				_ => match value.as_str().parse::<i64>() {
+					Ok(value) => value,
+					Err(_) => continue,
+				},
+			};
+			constraint_accepts(value, constraint)?;
+		}
+	}
+
+	Ok(())
+}
+
 pub fn normalize_catalog_number(number: &str) -> String {
 	number.to_lowercase()
 }
@@ -473,6 +561,60 @@ mod tests {
 		assert_eq!(normalize_catalog_number("I:13"), "i:13");
 		assert_eq!(normalize_catalog_number("XVI:52"), "xvi:52");
 		assert_eq!(normalize_catalog_number("BWV 846"), "bwv 846");
+	}
+
+	#[test]
+	fn structural_constraints_reject_out_of_range_components() {
+		let defn: CatalogDefinition = serde_json::from_str(r#"{
+			"name":"Opus",
+			"pattern":"^(\\d+)(?:/(\\d+))?$",
+			"constraints":[
+				{"group":1,"name":"opus number","min":1,"max":138},
+				{"group":2,"name":"sub-number","min":1}
+			]
+		}"#).unwrap();
+
+		assert!(validate_catalog_domain("2/1", &defn).is_ok());
+		assert!(matches!(
+			validate_catalog_domain("2/0", &defn),
+			Err(CatalogDomainError::BelowMinimum { .. })
+		));
+		assert!(matches!(
+			validate_catalog_domain("139", &defn),
+			Err(CatalogDomainError::AboveMaximum { .. })
+		));
+	}
+
+	#[test]
+	fn structural_constraints_support_discontinuous_ranges() {
+		let defn: CatalogDefinition = serde_json::from_str(r#"{
+			"name":"TVWV",
+			"pattern":"^(\\d+):(\\d+)$",
+			"constraints":[{"group":1,"name":"genre","ranges":[{"min":1,"max":15},{"min":20,"max":25}]}]
+		}"#).unwrap();
+
+		assert!(validate_catalog_domain("15:1", &defn).is_ok());
+		assert!(validate_catalog_domain("20:1", &defn).is_ok());
+		assert!(matches!(
+			validate_catalog_domain("16:1", &defn),
+			Err(CatalogDomainError::OutsideRanges { .. })
+		));
+	}
+
+	#[test]
+	fn structural_constraints_support_roman_components() {
+		let defn: CatalogDefinition = serde_json::from_str(r#"{
+			"name":"Hoboken",
+			"pattern":"^([ivxlcdm]+):(\\d+)$",
+			"sort_keys":[{"group":1,"type":"roman"},{"group":2,"type":"int"}],
+			"constraints":[{"group":1,"name":"category","min":1,"max":32}]
+		}"#).unwrap();
+
+		assert!(validate_catalog_domain("iii:32", &defn).is_ok());
+		assert!(matches!(
+			validate_catalog_domain("lvi:1", &defn),
+			Err(CatalogDomainError::AboveMaximum { .. })
+		));
 	}
 
 	#[test]
