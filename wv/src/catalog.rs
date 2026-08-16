@@ -1,7 +1,9 @@
 use regex::{Regex, RegexBuilder};
+use serde_json::Value;
+use std::cell::RefCell;
 use std::cmp::Ordering;
 use std::collections::{HashMap, HashSet};
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 use crate::parse::load_composer;
 use crate::types::{CatalogConstraint, CatalogDefinition};
@@ -64,60 +66,107 @@ fn parse_roman(s: &str) -> i64 {
 	total
 }
 
+type CatalogCacheKey = (PathBuf, String, Option<String>);
+
+thread_local! {
+	static CATALOG_CACHE: RefCell<HashMap<CatalogCacheKey, Option<CatalogDefinition>>> =
+		RefCell::new(HashMap::new());
+}
+
+/// Catalog definitions are read from disk on nearly every result row and every
+/// validated catalog reference. They cannot change during a single run, so they
+/// are memoized for the life of the process (per thread).
+///
+/// Call [`clear_catalog_cache`] if you rewrite composer or catalog files and
+/// need subsequent reads to see them.
 pub fn load_catalog_def<P: AsRef<Path>>(
 	data_dir: P,
 	scheme: &str,
 	composer: Option<&str>,
 ) -> Option<CatalogDefinition> {
 	let data_dir = data_dir.as_ref();
+	let key: CatalogCacheKey = (
+		data_dir.to_path_buf(),
+		scheme.to_string(),
+		composer.map(str::to_string),
+	);
 
-	let composer_def = if let Some(composer_slug) = composer {
+	if let Some(cached) = CATALOG_CACHE.with(|cache| cache.borrow().get(&key).cloned()) {
+		return cached;
+	}
+
+	let definition = read_catalog_def(data_dir, scheme, composer);
+	CATALOG_CACHE.with(|cache| {
+		cache.borrow_mut().insert(key, definition.clone());
+	});
+	definition
+}
+
+pub fn clear_catalog_cache() {
+	CATALOG_CACHE.with(|cache| cache.borrow_mut().clear());
+}
+
+fn read_catalog_def(
+	data_dir: &Path,
+	scheme: &str,
+	composer: Option<&str>,
+) -> Option<CatalogDefinition> {
+	let composer_def = composer.and_then(|composer_slug| {
 		let composer_path = data_dir.join("composers").join(format!("{}.json", composer_slug));
-		if let Ok(composer_data) = load_composer(&composer_path) {
-			composer_data.catalogs.and_then(|c| c.get(scheme).cloned())
-		} else {
-			None
-		}
-	} else {
-		None
-	};
+		load_composer(&composer_path)
+			.ok()
+			.and_then(|composer_data| composer_data.catalogs)
+			.and_then(|catalogs| catalogs.get(scheme).cloned())
+	});
 
 	let global_path = data_dir.join("catalogs").join(format!("{}.json", scheme));
-	let global_def: Option<CatalogDefinition> = if global_path.exists() {
-		std::fs::read_to_string(&global_path)
-			.ok()
-			.and_then(|content| serde_json::from_str(&content).ok())
-	} else {
-		None
-	};
+	let global_def: Option<CatalogDefinition> = std::fs::read_to_string(&global_path)
+		.ok()
+		.and_then(|content| serde_json::from_str(&content).ok());
 
 	match (composer_def, global_def) {
-		(Some(mut c), Some(g)) => {
-			let global_constraints = g.constraints.clone();
-			if c.pattern.is_none() {
-				c.pattern = g.pattern;
-			}
-			if c.sort_keys.is_none() {
-				c.sort_keys = g.sort_keys;
-			}
-			if c.canonical_format.is_none() {
-				c.canonical_format = g.canonical_format;
-			}
-			if c.group_by.is_none() {
-				c.group_by = g.group_by;
-			}
-			if let Some(mut global) = global_constraints {
-				if let Some(local) = c.constraints.take() {
-					global.extend(local);
-				}
-				c.constraints = Some(global);
-			}
-			Some(c)
+		(Some(composer_def), Some(global_def)) => {
+			Some(merge_catalog_definitions(&global_def, &composer_def))
 		}
-		(Some(c), None) => Some(c),
-		(None, Some(g)) => Some(g),
+		(Some(composer_def), None) => Some(composer_def),
+		(None, Some(global_def)) => Some(global_def),
 		(None, None) => None,
 	}
+}
+
+/// Overlay a composer-specific definition onto the shared one.
+///
+/// Done through serde rather than field by field so that adding a field to
+/// [`CatalogDefinition`] cannot silently stop it being inherited. Every field
+/// present on the composer definition wins; everything else falls back to the
+/// global definition. Constraints are the one exception: they accumulate, so a
+/// shared scheme can state structural rules that a composer then narrows.
+pub fn merge_catalog_definitions(
+	global: &CatalogDefinition,
+	composer: &CatalogDefinition,
+) -> CatalogDefinition {
+	let constraints = match (global.constraints.clone(), composer.constraints.clone()) {
+		(Some(mut shared), Some(local)) => {
+			shared.extend(local);
+			Some(shared)
+		}
+		(Some(shared), None) => Some(shared),
+		(None, local) => local,
+	};
+
+	let merged = match (serde_json::to_value(global), serde_json::to_value(composer)) {
+		(Ok(Value::Object(mut base)), Ok(Value::Object(overlay))) => {
+			for (field, value) in overlay {
+				base.insert(field, value);
+			}
+			serde_json::from_value(Value::Object(base)).ok()
+		}
+		_ => None,
+	};
+
+	let mut definition = merged.unwrap_or_else(|| composer.clone());
+	definition.constraints = constraints;
+	definition
 }
 
 fn parse_number_with_regex(number: &str, re: &Regex, max_group: usize) -> Option<Vec<Option<String>>> {
@@ -615,6 +664,135 @@ mod tests {
 			validate_catalog_domain("lvi:1", &defn),
 			Err(CatalogDomainError::AboveMaximum { .. })
 		));
+	}
+
+	fn fully_populated_global() -> CatalogDefinition {
+		serde_json::from_str(r#"{
+			"id": "op",
+			"name": "Opus number",
+			"description": "shared description",
+			"canonical_format": "op. {number}",
+			"pattern": "^(\\d+)(?:/(\\d+))?$",
+			"sort_keys": [{"group": 1, "type": "int"}, {"group": 2, "type": "int"}],
+			"group_by": [1],
+			"examples": [{"number": "2/1", "display": "op. 2 no. 1"}],
+			"aliases": ["opus"],
+			"editions": {"1": {"year": 1850, "editor": "Shared"}},
+			"current_edition": "1",
+			"categories": {"posth": "Posthumous"},
+			"constraints": [{"group": 2, "name": "sub-number", "min": 1}],
+			"primary": true,
+			"mb_format": "op. {number}",
+			"mb_part_format": "no. {part}"
+		}"#).unwrap()
+	}
+
+	#[test]
+	fn merge_inherits_every_global_field() {
+		let global = fully_populated_global();
+		let composer = CatalogDefinition {
+			name: "Opus number (Beethoven)".into(),
+			..Default::default()
+		};
+
+		// Exhaustive destructuring on purpose: adding a field to CatalogDefinition
+		// stops this compiling, which forces a decision about how it merges.
+		let CatalogDefinition {
+			id,
+			name,
+			description,
+			canonical_format,
+			pattern,
+			sort_keys,
+			group_by,
+			examples,
+			aliases,
+			editions,
+			current_edition,
+			categories,
+			constraints,
+			primary,
+			mb_format,
+			mb_part_format,
+		} = merge_catalog_definitions(&global, &composer);
+
+		assert_eq!(name, "Opus number (Beethoven)");
+
+		assert_eq!(id.as_deref(), Some("op"));
+		assert_eq!(description.as_deref(), Some("shared description"));
+		assert_eq!(canonical_format.as_deref(), Some("op. {number}"));
+		assert_eq!(pattern.as_deref(), Some(r"^(\d+)(?:/(\d+))?$"));
+		assert_eq!(sort_keys.map(|keys| keys.len()), Some(2));
+		assert_eq!(group_by, Some(vec![1]));
+		assert_eq!(examples.map(|e| e.len()), Some(1));
+		assert_eq!(aliases, Some(vec!["opus".to_string()]));
+		assert_eq!(editions.map(|e| e.len()), Some(1));
+		assert_eq!(current_edition.as_deref(), Some("1"));
+		assert_eq!(categories.map(|c| c.len()), Some(1));
+		assert_eq!(constraints.map(|c| c.len()), Some(1));
+		assert_eq!(primary, Some(true));
+		assert_eq!(mb_format.as_deref(), Some("op. {number}"));
+		assert_eq!(mb_part_format.as_deref(), Some("no. {part}"));
+	}
+
+	#[test]
+	fn merge_prefers_composer_fields() {
+		let global = fully_populated_global();
+		let composer: CatalogDefinition = serde_json::from_str(r#"{
+			"name": "Beethoven opus",
+			"canonical_format": "Op. {number}",
+			"primary": false
+		}"#).unwrap();
+
+		let merged = merge_catalog_definitions(&global, &composer);
+
+		assert_eq!(merged.canonical_format.as_deref(), Some("Op. {number}"));
+		assert_eq!(merged.primary, Some(false));
+		assert_eq!(merged.description.as_deref(), Some("shared description"));
+	}
+
+	#[test]
+	fn merge_accumulates_constraints_from_both_levels() {
+		let global = fully_populated_global();
+		let composer: CatalogDefinition = serde_json::from_str(r#"{
+			"name": "Beethoven opus",
+			"constraints": [{"group": 1, "name": "opus number", "min": 1, "max": 138}]
+		}"#).unwrap();
+
+		let merged = merge_catalog_definitions(&global, &composer);
+		let constraints = merged.constraints.unwrap();
+
+		assert_eq!(constraints.len(), 2);
+		assert!(constraints.iter().any(|c| c.group == 2 && c.min == Some(1)));
+		assert!(constraints.iter().any(|c| c.group == 1 && c.max == Some(138)));
+	}
+
+	#[test]
+	fn catalog_definitions_are_cached_until_cleared() {
+		let tmp = tempfile::tempdir().unwrap();
+		std::fs::create_dir_all(tmp.path().join("catalogs")).unwrap();
+		let path = tmp.path().join("catalogs").join("op.json");
+		std::fs::write(&path, r#"{"id":"op","name":"Opus number"}"#).unwrap();
+
+		clear_catalog_cache();
+		let first = load_catalog_def(tmp.path(), "op", None).unwrap();
+		assert_eq!(first.name, "Opus number");
+
+		std::fs::write(&path, r#"{"id":"op","name":"Changed"}"#).unwrap();
+		let cached = load_catalog_def(tmp.path(), "op", None).unwrap();
+		assert_eq!(cached.name, "Opus number", "expected the memoized definition");
+
+		clear_catalog_cache();
+		let refreshed = load_catalog_def(tmp.path(), "op", None).unwrap();
+		assert_eq!(refreshed.name, "Changed");
+	}
+
+	#[test]
+	fn missing_definitions_are_cached_as_absent() {
+		let tmp = tempfile::tempdir().unwrap();
+		clear_catalog_cache();
+		assert!(load_catalog_def(tmp.path(), "nonexistent", None).is_none());
+		assert!(load_catalog_def(tmp.path(), "nonexistent", None).is_none());
 	}
 
 	#[test]

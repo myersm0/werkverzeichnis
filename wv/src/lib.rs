@@ -17,8 +17,9 @@ pub use add::{
 	add_composition, generate_id, generate_unique_id, scaffold_composition, AddError, AddResult,
 };
 pub use catalog::{
-	is_fallback_key, load_catalog_def, looks_like_group, matches_group,
-	normalize_catalog_number, sort_key, sort_numbers, sort_numbers_by_scheme, SortValue,
+	clear_catalog_cache, is_fallback_key, load_catalog_def, looks_like_group, matches_group,
+	merge_catalog_definitions, normalize_catalog_number, sort_key, sort_numbers,
+	sort_numbers_by_scheme, SortValue,
 };
 pub use config::{
 	is_data_dir, resolve_data_dir, resolve_editor, Config, DataDirError, DisplayConfig, KeySymbols,
