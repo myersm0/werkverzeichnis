@@ -186,6 +186,8 @@ pub struct CatalogDefinition {
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub part_format: Option<String>,
 	#[serde(skip_serializing_if = "Option::is_none")]
+	pub allowed_uppercase_suffixes: Option<Vec<String>>,
+	#[serde(skip_serializing_if = "Option::is_none")]
 	pub pattern: Option<String>,
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub sort_keys: Option<Vec<SortKey>>,

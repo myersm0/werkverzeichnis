@@ -313,6 +313,7 @@ Catalog definitions specify parsing, sorting, and display rules. For example, he
 ```
 
 (The actual definition is more complex, to allow for records like "BWV Anh. III 135".) `canonical_format` controls the catalog label and number placement. Slash-delimited subordinate numbers have no built-in meaning; schemes such as `op` and `woo` opt into their display convention with `part_format`, for example `"{main} no. {part}"`.
+Catalog numbers are otherwise expected to be lowercase. A scheme with a conventional uppercase suffix can declare it with `allowed_uppercase_suffixes`; BWV uses `["R"]`.
 
 ## Data generation and maintenance
 This dataset is compiled using AI large language models (LLMs) to process and structure information from public sources (Wikipedia, musicological references). Specifically, I select reference texts myself, and then use an efficient voice-driven workflow for coordinating several independent `claude-haiku-4-5` instances to do a multi-stage generation and review based on those materials. Any questionable or conflicting results are flagged for human review. Generated materials are then validated against our schema and styleguide before acceptance into the database. This has resulted in the best balance of human labor, LLM cost (often less than one cent per composition), and accuracy of the final product.

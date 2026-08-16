@@ -24,6 +24,12 @@
 			"type": "string",
 			"description": "Display format for slash-delimited subordinate numbers, with {main} and {part} placeholders"
 		},
+		"allowed_uppercase_suffixes": {
+			"type": "array",
+			"items": {"type": "string", "minLength": 1, "pattern": "^[A-Z]+$"},
+			"uniqueItems": true,
+			"description": "Suffixes that may remain uppercase even though catalog numbers are otherwise lowercase"
+		},
 		"pattern": {
 			"type": "string",
 			"description": "Regex pattern for parsing numbers. Use capture groups for sortable components."

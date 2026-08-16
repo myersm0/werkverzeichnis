@@ -79,6 +79,8 @@ pub enum CatalogLoadError {
 	InvalidPattern { catalog: String, message: String },
 	#[error("invalid catalog display format for {catalog}: {message}")]
 	InvalidFormat { catalog: String, message: String },
+	#[error("invalid catalog case rule for {catalog}: {message}")]
+	InvalidCaseRule { catalog: String, message: String },
 }
 
 thread_local! {
@@ -218,6 +220,10 @@ fn read_catalog_def(
 			catalog: composer.map_or_else(|| scheme.to_string(), |composer| format!("{}/{}", composer, scheme)),
 			message,
 		})?;
+		validate_catalog_case_rules(definition).map_err(|message| CatalogLoadError::InvalidCaseRule {
+			catalog: composer.map_or_else(|| scheme.to_string(), |composer| format!("{}/{}", composer, scheme)),
+			message,
+		})?;
 	}
 
 	Ok(definition)
@@ -232,6 +238,23 @@ pub(crate) fn validate_catalog_formats(definition: &CatalogDefinition) -> Result
 	if let Some(format) = definition.part_format.as_deref() {
 		if !format.contains("{main}") || !format.contains("{part}") {
 			return Err("part_format must contain both {main} and {part}".into());
+		}
+	}
+	Ok(())
+}
+
+pub(crate) fn validate_catalog_case_rules(definition: &CatalogDefinition) -> Result<(), String> {
+	if let Some(suffixes) = definition.allowed_uppercase_suffixes.as_ref() {
+		for suffix in suffixes {
+			if suffix.is_empty() {
+				return Err("allowed_uppercase_suffixes entries must not be empty".into());
+			}
+			if suffix != &suffix.to_uppercase() {
+				return Err(format!(
+					"allowed_uppercase_suffixes entry '{}' must be uppercase",
+					suffix
+				));
+			}
 		}
 	}
 	Ok(())
@@ -798,6 +821,7 @@ mod tests {
 			"description": "shared description",
 			"canonical_format": "op. {number}",
 			"part_format": "{main} no. {part}",
+			"allowed_uppercase_suffixes": ["R"],
 			"pattern": "^(\\d+)(?:/(\\d+))?$",
 			"sort_keys": [{"group": 1, "type": "int"}, {"group": 2, "type": "int"}],
 			"group_by": [1],
@@ -829,6 +853,7 @@ mod tests {
 			description,
 			canonical_format,
 			part_format,
+			allowed_uppercase_suffixes,
 			pattern,
 			sort_keys,
 			group_by,
@@ -849,6 +874,7 @@ mod tests {
 		assert_eq!(description.as_deref(), Some("shared description"));
 		assert_eq!(canonical_format.as_deref(), Some("op. {number}"));
 		assert_eq!(part_format.as_deref(), Some("{main} no. {part}"));
+		assert_eq!(allowed_uppercase_suffixes, Some(vec!["R".to_string()]));
 		assert_eq!(pattern.as_deref(), Some(r"^(\d+)(?:/(\d+))?$"));
 		assert_eq!(sort_keys.map(|keys| keys.len()), Some(2));
 		assert_eq!(group_by, Some(vec![1]));
@@ -893,6 +919,17 @@ mod tests {
 		assert_eq!(constraints.len(), 2);
 		assert!(constraints.iter().any(|c| c.group == 2 && c.min == Some(1)));
 		assert!(constraints.iter().any(|c| c.group == 1 && c.max == Some(138)));
+	}
+
+	#[test]
+	fn catalog_case_rules_reject_non_uppercase_suffixes() {
+		let definition = CatalogDefinition {
+			name: "Broken".into(),
+			allowed_uppercase_suffixes: Some(vec!["r".into()]),
+			..Default::default()
+		};
+
+		assert!(validate_catalog_case_rules(&definition).is_err());
 	}
 
 	#[test]

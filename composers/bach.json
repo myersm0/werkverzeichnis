@@ -12,7 +12,8 @@
 			"name": "Bach-Werke-Verzeichnis",
 			"description": "Thematic catalog by Wolfgang Schmieder. First edition 1950, second 1990, third 2022. Numbers 1-1126 in main catalog; Anh. (Anhang) for doubtful/spurious; App. A-D for lost works and special cases.",
 			"canonical_format": "BWV {number}",
-			"pattern": "^(anh\\.|app\\.)?\\s*([ivxlcdm]+|[a-d])?\\s*(\\d+)(?:\\.(\\d+))?([a-zR])?$",
+			"allowed_uppercase_suffixes": ["R"],
+			"pattern": "^(anh\\.|app\\.)?\\s*([ivxlcdm]+|[a-d])?\\s*(\\d+)(?:\\.(\\d+))?([a-z])?$",
 			"sort_keys": [
 				{"group": 1, "type": "str", "display": "title"},
 				{"group": 2, "type": "roman", "display": "upper"},

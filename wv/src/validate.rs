@@ -10,7 +10,7 @@ use std::sync::OnceLock;
 
 use crate::catalog::{
 	cached_regex_result, load_catalog_def, normalize_catalog_number,
-	validate_catalog_domain, validate_catalog_formats,
+	validate_catalog_case_rules, validate_catalog_domain, validate_catalog_formats,
 };
 use crate::inventory::{build_inventory_index, normalize_inventory, InventoryIndex};
 use crate::parse::extract_id_from_path;
@@ -335,6 +335,18 @@ impl Validator {
 			}
 		};
 
+		if !is_valid_catalog_number_case(number, &definition) {
+			errors.push(ValidationError {
+				path: path_str.to_string(),
+				message: format!(
+					"{}: catalog number '{}' {}",
+					location,
+					number,
+					catalog_number_case_requirement(&definition)
+				),
+			});
+		}
+
 		let mut pattern_valid = true;
 		if let Some(pattern) = &definition.pattern {
 			match cached_regex_result(pattern) {
@@ -536,6 +548,12 @@ impl Validator {
 	) -> Vec<ValidationError> {
 		let mut errors = Vec::new();
 		if let Err(message) = validate_catalog_formats(definition) {
+			errors.push(ValidationError {
+				path: path_str.to_string(),
+				message: format!("{}: {}", location, message),
+			});
+		}
+		if let Err(message) = validate_catalog_case_rules(definition) {
 			errors.push(ValidationError {
 				path: path_str.to_string(),
 				message: format!("{}: {}", location, message),
@@ -1029,17 +1047,6 @@ impl Validator {
 						});
 					}
 
-					if !is_valid_catalog_number_case(&cat.scheme, &cat.number) {
-						errors.push(ValidationError {
-							path: path_str.to_string(),
-							message: format!(
-								"{}: catalog number '{}' must be lowercase{}",
-								location,
-								cat.number,
-								if cat.scheme == "bwv" { " (R suffix allowed)" } else { "" }
-							),
-						});
-					}
 
 					if scheme_defined {
 						if let Some(composer) = &entry.composer {
@@ -1241,14 +1248,26 @@ fn collect_inventory_files(
 	}
 }
 
-fn is_valid_catalog_number_case(scheme: &str, number: &str) -> bool {
-	if scheme == "bwv" {
-		if number.ends_with('R') {
-			let prefix = &number[..number.len() - 1];
-			return prefix == prefix.to_lowercase();
+fn is_valid_catalog_number_case(number: &str, definition: &CatalogDefinition) -> bool {
+	if let Some(suffixes) = definition.allowed_uppercase_suffixes.as_ref() {
+		for suffix in suffixes {
+			if let Some(prefix) = number.strip_suffix(suffix) {
+				return prefix == prefix.to_lowercase();
+			}
 		}
 	}
 	number == number.to_lowercase()
+}
+
+fn catalog_number_case_requirement(definition: &CatalogDefinition) -> String {
+	match definition.allowed_uppercase_suffixes.as_deref() {
+		Some(suffixes) if !suffixes.is_empty() => format!(
+			"must be lowercase (uppercase suffix{} {} allowed)",
+			if suffixes.len() == 1 { "" } else { "es" },
+			suffixes.join(", ")
+		),
+		_ => "must be lowercase".into(),
+	}
 }
 
 fn collection_id_from_path(path: &Path) -> Option<String> {
@@ -1328,6 +1347,24 @@ mod tests {
 			"catalog",
 		);
 		assert!(errors.iter().any(|error| error.message.contains("invalid catalog pattern")));
+	}
+
+	#[test]
+	fn catalog_number_case_exceptions_are_metadata_driven() {
+		let bwv = CatalogDefinition {
+			name: "BWV".into(),
+			allowed_uppercase_suffixes: Some(vec!["R".into()]),
+			..Default::default()
+		};
+		let plain = CatalogDefinition {
+			name: "Plain".into(),
+			..Default::default()
+		};
+
+		assert!(is_valid_catalog_number_case("1060R", &bwv));
+		assert!(is_valid_catalog_number_case("1060r", &bwv));
+		assert!(!is_valid_catalog_number_case("1060A", &bwv));
+		assert!(!is_valid_catalog_number_case("1060R", &plain));
 	}
 
 	#[test]
