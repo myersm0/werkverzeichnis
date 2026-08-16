@@ -10,7 +10,7 @@
 	"catalogs": {
 		"twv": {
 			"name": "Telemann-Werke-Verzeichnis",
-			"description": "Thematic-systematic catalog of instrumental works by Martin Ruhnke (Bärenreiter, 1984–1999). Organized by genre (1–55), with key and sequential number.",
+			"description": "Thematic-systematic catalog of instrumental works by Martin Ruhnke (Bärenreiter, 1984–1999). Organized by work group: keyboard/lute (30–37, 39), chamber music (40–45), and orchestral music (50–55).",
 			"canonical_format": "TWV {number}",
 			"pattern": "^(\\d{1,2}):([A-Ha-h](?:is|es|s)?)?(\\d+)$",
 			"sort_keys": [
@@ -25,6 +25,13 @@
 				{"number": "43:B3", "display": "TWV 43:B3"},
 				{"number": "40:14", "display": "TWV 40:14"}
 			],
+			"constraints": [
+				{"group": 1, "name": "work group", "ranges": [
+					{"min": 30, "max": 37},
+					{"min": 39, "max": 45},
+					{"min": 50, "max": 55}
+				]}
+			],
 			"primary": true
 		},
 		"tvwv": {
@@ -36,6 +43,12 @@
 				{"group": 1, "type": "int"},
 				{"group": 2, "type": "int"},
 				{"group": 3, "type": "str"}
+			],
+			"constraints": [
+				{"group": 1, "name": "work group", "ranges": [
+					{"min": 1, "max": 15},
+					{"min": 20, "max": 25}
+				]}
 			]
 		}
 	}

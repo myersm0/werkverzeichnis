@@ -11,7 +11,7 @@
 			},
 			"catalog": [
 				{
-					"scheme": "twv",
+					"scheme": "tvwv",
 					"number": "1:183"
 				}
 			],
@@ -24,7 +24,7 @@
 				{
 					"scheme": "bwv",
 					"number": "anh. iii 141",
-					"note": "spurious; now attributed to telemann twv 1:183",
+					"note": "spurious; now attributed to telemann tvwv 1:183",
 					"since": "1990"
 				},
 				{

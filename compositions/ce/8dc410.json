@@ -11,7 +11,7 @@
 			},
 			"catalog": [
 				{
-					"scheme": "twv",
+					"scheme": "tvwv",
 					"number": "1:877"
 				}
 			]
@@ -23,7 +23,7 @@
 				{
 					"scheme": "bwv",
 					"number": "anh. iii 160",
-					"note": "spurious; see telemann twv 1:877",
+					"note": "spurious; see telemann tvwv 1:877",
 					"since": "1998"
 				},
 				{
