@@ -77,6 +77,8 @@ pub enum CatalogLoadError {
 	Invalid { path: PathBuf, message: String },
 	#[error("invalid catalog pattern for {catalog}: {message}")]
 	InvalidPattern { catalog: String, message: String },
+	#[error("invalid catalog display format for {catalog}: {message}")]
+	InvalidFormat { catalog: String, message: String },
 }
 
 thread_local! {
@@ -205,14 +207,34 @@ fn read_catalog_def(
 		(None, None) => None,
 	};
 
-	if let Some(pattern) = definition.as_ref().and_then(|definition| definition.pattern.as_deref()) {
-		cached_regex_result(pattern).map_err(|error| CatalogLoadError::InvalidPattern {
+	if let Some(definition) = definition.as_ref() {
+		if let Some(pattern) = definition.pattern.as_deref() {
+			cached_regex_result(pattern).map_err(|error| CatalogLoadError::InvalidPattern {
+				catalog: composer.map_or_else(|| scheme.to_string(), |composer| format!("{}/{}", composer, scheme)),
+				message: error.to_string(),
+			})?;
+		}
+		validate_catalog_formats(definition).map_err(|message| CatalogLoadError::InvalidFormat {
 			catalog: composer.map_or_else(|| scheme.to_string(), |composer| format!("{}/{}", composer, scheme)),
-			message: error.to_string(),
+			message,
 		})?;
 	}
 
 	Ok(definition)
+}
+
+pub(crate) fn validate_catalog_formats(definition: &CatalogDefinition) -> Result<(), String> {
+	if let Some(format) = definition.canonical_format.as_deref() {
+		if !format.contains("{number}") {
+			return Err("canonical_format must contain {number}".into());
+		}
+	}
+	if let Some(format) = definition.part_format.as_deref() {
+		if !format.contains("{main}") || !format.contains("{part}") {
+			return Err("part_format must contain both {main} and {part}".into());
+		}
+	}
+	Ok(())
 }
 
 /// Overlay a composer-specific definition onto the shared one.
@@ -775,6 +797,7 @@ mod tests {
 			"name": "Opus number",
 			"description": "shared description",
 			"canonical_format": "op. {number}",
+			"part_format": "{main} no. {part}",
 			"pattern": "^(\\d+)(?:/(\\d+))?$",
 			"sort_keys": [{"group": 1, "type": "int"}, {"group": 2, "type": "int"}],
 			"group_by": [1],
@@ -805,6 +828,7 @@ mod tests {
 			name,
 			description,
 			canonical_format,
+			part_format,
 			pattern,
 			sort_keys,
 			group_by,
@@ -824,6 +848,7 @@ mod tests {
 		assert_eq!(id.as_deref(), Some("op"));
 		assert_eq!(description.as_deref(), Some("shared description"));
 		assert_eq!(canonical_format.as_deref(), Some("op. {number}"));
+		assert_eq!(part_format.as_deref(), Some("{main} no. {part}"));
 		assert_eq!(pattern.as_deref(), Some(r"^(\d+)(?:/(\d+))?$"));
 		assert_eq!(sort_keys.map(|keys| keys.len()), Some(2));
 		assert_eq!(group_by, Some(vec![1]));
@@ -936,6 +961,29 @@ mod tests {
 		clear_catalog_cache();
 		let error = load_catalog_def(tmp.path(), "op", None).unwrap_err();
 		assert!(error.to_string().contains("invalid catalog pattern for op"));
+	}
+
+	#[test]
+	fn invalid_catalog_display_formats_are_load_errors() {
+		let tmp = tempfile::tempdir().unwrap();
+		std::fs::create_dir_all(tmp.path().join("catalogs")).unwrap();
+		std::fs::write(
+			tmp.path().join("catalogs/op.json"),
+			r#"{"id":"op","name":"Opus number","canonical_format":"op. number"}"#,
+		)
+		.unwrap();
+		clear_catalog_cache();
+		let error = load_catalog_def(tmp.path(), "op", None).unwrap_err();
+		assert!(error.to_string().contains("canonical_format must contain {number}"));
+
+		std::fs::write(
+			tmp.path().join("catalogs/op.json"),
+			r#"{"id":"op","name":"Opus number","canonical_format":"op. {number}","part_format":"no. {part}"}"#,
+		)
+		.unwrap();
+		clear_catalog_cache();
+		let error = load_catalog_def(tmp.path(), "op", None).unwrap_err();
+		assert!(error.to_string().contains("part_format must contain both {main} and {part}"));
 	}
 
 	#[test]

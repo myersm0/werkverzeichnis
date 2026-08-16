@@ -257,29 +257,22 @@ pub fn format_number_for_display(number: &str, defn: Option<&CatalogDefinition>)
 
 pub fn format_catalog(scheme: &str, number: &str, defn: Option<&CatalogDefinition>) -> String {
 	let display_number = format_number_for_display(number, defn);
+	let display_number = match (
+		display_number.split_once('/'),
+		defn.and_then(|definition| definition.part_format.as_deref()),
+	) {
+		(Some((main, part)), Some(part_format)) => part_format
+			.replace("{main}", main)
+			.replace("{part}", part),
+		_ => display_number,
+	};
 
-	let base_format = defn
-		.and_then(|d| d.canonical_format.as_ref())
-		.map(|f| f.replace("{number}", "{}"))
-		.unwrap_or_else(|| {
-			match scheme.to_lowercase().as_str() {
-				"op" => "op. {}".to_string(),
-				"bwv" => "BWV {}".to_string(),
-				"k" | "kv" => "K. {}".to_string(),
-				"hob" => "Hob. {}".to_string(),
-				"twv" => "TWV {}".to_string(),
-				"d" => "D. {}".to_string(),
-				"woo" => "WoO {}".to_string(),
-				_ => format!("{} {{}}", scheme.to_uppercase()),
-			}
-		});
+	let format = defn
+		.and_then(|definition| definition.canonical_format.as_deref())
+		.map(str::to_string)
+		.unwrap_or_else(|| format!("{} {{number}}", scheme.to_uppercase()));
 
-	if let Some((main, sub)) = display_number.split_once('/') {
-		let formatted_main = base_format.replace("{}", main);
-		format!("{} no. {}", formatted_main, sub)
-	} else {
-		base_format.replace("{}", &display_number)
-	}
+	format.replace("{number}", &display_number)
 }
 
 pub fn truncate_instrumentation(inst: &str, max_chars: usize) -> String {
@@ -468,15 +461,26 @@ mod tests {
 	}
 
 	#[test]
-	fn test_format_catalog_simple() {
-		assert_eq!(format_catalog("bwv", "812", None), "BWV 812");
-		assert_eq!(format_catalog("op", "27", None), "op. 27");
+	fn test_format_catalog_uses_definition() {
+		let defn = CatalogDefinition {
+			name: "Opus".into(),
+			canonical_format: Some("op. {number}".into()),
+			part_format: Some("{main} no. {part}".into()),
+			..Default::default()
+		};
+		assert_eq!(format_catalog("op", "27", Some(&defn)), "op. 27");
+		assert_eq!(format_catalog("op", "10/2", Some(&defn)), "op. 10 no. 2");
 	}
 
 	#[test]
-	fn test_format_catalog_with_subnumber() {
-		assert_eq!(format_catalog("op", "10/2", None), "op. 10 no. 2");
-		assert_eq!(format_catalog("op", "2/1", None), "op. 2 no. 1");
+	fn test_format_catalog_does_not_assign_slash_semantics_without_metadata() {
+		let defn = CatalogDefinition {
+			name: "Example".into(),
+			canonical_format: Some("Ex. {number}".into()),
+			..Default::default()
+		};
+		assert_eq!(format_catalog("ex", "10/2", Some(&defn)), "Ex. 10/2");
+		assert_eq!(format_catalog("ex", "10/2", None), "EX 10/2");
 	}
 
 	#[test]

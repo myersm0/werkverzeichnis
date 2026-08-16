@@ -66,6 +66,7 @@ fn setup_inventory_cli_repo() -> TempDir {
 			"id": "op",
 			"name": "Opus number",
 			"canonical_format": "op. {number}",
+			"part_format": "{main} no. {part}",
 			"pattern": "^(\\d+)(?:/(\\d+))?$",
 			"sort_keys": [
 				{"group": 1, "type": "int"},

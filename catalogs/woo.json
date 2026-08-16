@@ -3,6 +3,7 @@
 	"name": "Werk ohne Opuszahl",
 	"description": "Work without opus number. Used primarily for Beethoven but applicable to other composers. Supports sub-numbers and letter suffixes.",
 	"canonical_format": "WoO {number}",
+	"part_format": "{main} No. {part}",
 	"pattern": "^(\\d+)([a-z])?(?:/(\\d+))?$",
 	"sort_keys": [
 		{"group": 1, "type": "int"},

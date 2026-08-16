@@ -64,6 +64,7 @@
 				"name": {"type": "string"},
 				"description": {"type": "string"},
 				"canonical_format": {"type": "string"},
+				"part_format": {"type": "string", "description": "Display format for slash-delimited subordinate numbers, with {main} and {part} placeholders"},
 				"pattern": {"type": "string"},
 				"sort_keys": {
 					"type": "array",

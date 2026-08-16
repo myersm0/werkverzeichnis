@@ -20,6 +20,10 @@
 			"type": "string",
 			"description": "Display format with {number} placeholder"
 		},
+		"part_format": {
+			"type": "string",
+			"description": "Display format for slash-delimited subordinate numbers, with {main} and {part} placeholders"
+		},
 		"pattern": {
 			"type": "string",
 			"description": "Regex pattern for parsing numbers. Use capture groups for sortable components."

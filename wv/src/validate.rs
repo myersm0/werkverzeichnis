@@ -10,7 +10,7 @@ use std::sync::OnceLock;
 
 use crate::catalog::{
 	cached_regex_result, load_catalog_def, normalize_catalog_number,
-	validate_catalog_domain,
+	validate_catalog_domain, validate_catalog_formats,
 };
 use crate::inventory::{build_inventory_index, normalize_inventory, InventoryIndex};
 use crate::parse::extract_id_from_path;
@@ -535,6 +535,12 @@ impl Validator {
 		location: &str,
 	) -> Vec<ValidationError> {
 		let mut errors = Vec::new();
+		if let Err(message) = validate_catalog_formats(definition) {
+			errors.push(ValidationError {
+				path: path_str.to_string(),
+				message: format!("{}: {}", location, message),
+			});
+		}
 		let capture_count = match definition.pattern.as_deref() {
 			Some(pattern) => match cached_regex_result(pattern) {
 				Ok(regex) => Some(regex.captures_len().saturating_sub(1)),
