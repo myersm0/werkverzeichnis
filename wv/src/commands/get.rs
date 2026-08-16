@@ -612,6 +612,7 @@ fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Con
 		builder = builder.group(g);
 	}
 	let needs_sort = args.sorted
+		|| number_spec.is_none()
 		|| query.group.is_some()
 		|| category_query.is_some()
 		|| matches!(&number_spec, Some(NumberSpec::Range { .. }));

@@ -214,14 +214,16 @@ $ wv get mozart k 300i --edition 6
 $ wv get mozart k 331 --edition 9
 ```
 
-Ranges and grouped queries are sorted according to the catalog definition:
+Catalog listings, composer-wide listings, ranges, and grouped queries are sorted according to the catalog definition:
 
 ```bash
+$ wv get beethoven
+$ wv get beethoven op
 $ wv get beethoven op 2-10
 $ wv get beethoven op --group 2
 ```
 
-Use `--sorted` to request catalog sorting explicitly.
+For composer-wide listings, the default catalog comes first, followed by catalogs marked primary and then any remaining schemes. `--sorted` is retained for compatibility.
 
 ### Catalog knowledge and inventories
 

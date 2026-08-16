@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std::path::{Path, PathBuf};
 
 use crate::catalog::{
@@ -6,7 +6,7 @@ use crate::catalog::{
 	normalize_catalog_number, sort_key, sort_numbers, SortValue,
 };
 use crate::index::{load_edition_index, Index};
-use crate::parse::{load_composition, path_for_id};
+use crate::parse::{load_composer, load_composition, path_for_id};
 use crate::types::Composition;
 
 #[derive(Debug, Clone)]
@@ -217,21 +217,87 @@ impl<'a> QueryBuilder<'a> {
 	}
 
 	fn fetch_by_composer(&self, composer: &str) -> Vec<QueryResult> {
-		self.index
-			.by_composer
-			.get(composer)
-			.map(|ids| {
-				ids.iter()
-					.map(|id| QueryResult {
-						id: id.clone(),
-						number: None,
-						superseded: false,
-						current_number: None,
-						note: None,
-					})
-					.collect()
+		let Some(ids) = self.index.by_composer.get(composer) else {
+			return vec![];
+		};
+
+		let ordered_ids = if self.query.sorted {
+			self.sort_composer_ids(composer, ids)
+		} else {
+			ids.clone()
+		};
+
+		ordered_ids
+			.into_iter()
+			.map(|id| QueryResult {
+				id,
+				number: None,
+				superseded: false,
+				current_number: None,
+				note: None,
 			})
-			.unwrap_or_default()
+			.collect()
+	}
+
+	fn sort_composer_ids(&self, composer: &str, ids: &[String]) -> Vec<String> {
+		let Some(scheme_indexes) = self.index.catalog.get(composer) else {
+			let mut sorted = ids.to_vec();
+			sorted.sort();
+			return sorted;
+		};
+
+		let data_dir = self.query.data_dir.as_deref();
+		let default_scheme = data_dir.and_then(|dir| {
+			let path = dir.join("composers").join(format!("{}.json", composer));
+			load_composer(path).ok().and_then(|composer| composer.default_scheme)
+		});
+
+		let mut schemes: Vec<(String, Option<crate::types::CatalogDefinition>)> = scheme_indexes
+			.keys()
+			.map(|scheme| {
+				let defn = data_dir.and_then(|dir| load_catalog_def(dir, scheme, Some(composer)));
+				(scheme.clone(), defn)
+			})
+			.collect();
+
+		schemes.sort_by(|(scheme_a, defn_a), (scheme_b, defn_b)| {
+			let rank_a = (
+				default_scheme.as_deref() != Some(scheme_a.as_str()),
+				!defn_a.as_ref().and_then(|defn| defn.primary).unwrap_or(false),
+				scheme_a.as_str(),
+			);
+			let rank_b = (
+				default_scheme.as_deref() != Some(scheme_b.as_str()),
+				!defn_b.as_ref().and_then(|defn| defn.primary).unwrap_or(false),
+				scheme_b.as_str(),
+			);
+			rank_a.cmp(&rank_b)
+		});
+
+		let mut remaining: HashSet<String> = ids.iter().cloned().collect();
+		let mut sorted = Vec::with_capacity(ids.len());
+
+		for (scheme, defn) in schemes {
+			let Some(scheme_index) = scheme_indexes.get(&scheme) else {
+				continue;
+			};
+			let mut numbers: Vec<String> = scheme_index.current.keys().cloned().collect();
+			sort_numbers(&mut numbers, defn.as_ref());
+
+			for number in numbers {
+				let Some(entry) = scheme_index.current.get(&number) else {
+					continue;
+				};
+				if remaining.remove(&entry.id) {
+					sorted.push(entry.id.clone());
+				}
+			}
+		}
+
+		let mut uncatalogued: Vec<String> = remaining.into_iter().collect();
+		uncatalogued.sort();
+		sorted.extend(uncatalogued);
+		sorted
 	}
 
 	fn fetch_by_scheme(&self, composer: &str, scheme: &str) -> Vec<QueryResult> {

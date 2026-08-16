@@ -321,6 +321,18 @@ pub fn matches_group(number: &str, group: &str, defn: Option<&CatalogDefinition>
 		None => return number.starts_with(group),
 	};
 
+	if let Some(categories) = &defn.categories {
+		if let Some(category) = categories
+			.keys()
+			.find(|category| category.eq_ignore_ascii_case(group))
+		{
+			let number_category = number
+				.split_once(':')
+				.map_or(number, |(category, _)| category);
+			return number_category.eq_ignore_ascii_case(category);
+		}
+	}
+
 	let pattern = match &defn.pattern {
 		Some(p) => p,
 		None => return number.starts_with(group),
@@ -635,6 +647,20 @@ mod tests {
 		assert_eq!(normalize_catalog_number("I:13"), "i:13");
 		assert_eq!(normalize_catalog_number("XVI:52"), "xvi:52");
 		assert_eq!(normalize_catalog_number("BWV 846"), "bwv 846");
+	}
+
+	#[test]
+	fn category_group_matching_uses_exact_category_prefix() {
+		let defn: CatalogDefinition = serde_json::from_str(r#"{
+			"name":"Hoboken",
+			"pattern":"^([ivxlcdm]+):(\\d+)$",
+			"sort_keys":[{"group":1,"type":"roman"},{"group":2,"type":"int"}],
+			"categories":{"I":"symphonies","III":"string quartets"}
+		}"#).unwrap();
+
+		assert!(matches_group("i:104", "i", Some(&defn)));
+		assert!(!matches_group("iii:31", "i", Some(&defn)));
+		assert!(matches_group("iii:31", "iii", Some(&defn)));
 	}
 
 	#[test]

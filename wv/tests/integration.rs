@@ -167,6 +167,121 @@ fn test_index_status_uses_stderr() {
 	assert!(stderr.contains("Done."));
 }
 
+#[test]
+fn test_hoboken_category_query_does_not_match_longer_roman_category() {
+	let tmp = setup_test_repo();
+	let root = tmp.path();
+
+	fs::write(
+		root.join("composers/haydn.json"),
+		r#"{
+			"id": "haydn",
+			"name": {"full": "Franz Joseph Haydn", "sort": "Haydn, Joseph"},
+			"catalogs": {
+				"hob": {
+					"name": "Hoboken-Verzeichnis",
+					"pattern": "^([ivxlcdm]+):(\\d+)$",
+					"sort_keys": [
+						{"group": 1, "type": "roman"},
+						{"group": 2, "type": "int"}
+					],
+					"categories": {"I": "symphonies", "III": "string quartets"}
+				}
+			}
+		}"#,
+	)
+	.unwrap();
+
+	write_composition(root, "ab000001", r#"{
+		"id": "ab000001",
+		"form": "symphony",
+		"attribution": [{
+			"composer": "haydn",
+			"catalog": [{"scheme": "hob", "number": "i:104"}]
+		}]
+	}"#);
+	write_composition(root, "cd000002", r#"{
+		"id": "cd000002",
+		"form": "string quartet",
+		"attribution": [{
+			"composer": "haydn",
+			"catalog": [{"scheme": "hob", "number": "iii:31"}]
+		}]
+	}"#);
+
+	let output = run_wv(root, &["get", "haydn", "hob", "i", "--terse"]);
+	assert!(output.status.success(), "{}", String::from_utf8_lossy(&output.stderr));
+	assert_eq!(String::from_utf8_lossy(&output.stdout).trim(), "ab000001");
+}
+
+#[test]
+fn test_broad_get_queries_are_sorted_by_catalog_order() {
+	let tmp = setup_test_repo();
+	let root = tmp.path();
+
+	fs::write(
+		root.join("composers/beethoven.json"),
+		r#"{
+			"id": "beethoven",
+			"name": {"full": "Ludwig van Beethoven", "sort": "Beethoven, Ludwig van"},
+			"default_scheme": "op",
+			"catalogs": {
+				"op": {
+					"name": "Opus",
+					"pattern": "^(\\d+)$",
+					"sort_keys": [{"group": 1, "type": "int"}],
+					"primary": true
+				},
+				"woo": {
+					"name": "WoO",
+					"pattern": "^(\\d+)$",
+					"sort_keys": [{"group": 1, "type": "int"}]
+				}
+			}
+		}"#,
+	)
+	.unwrap();
+
+	write_composition(root, "ab000010", r#"{
+		"id": "ab000010",
+		"form": "sonata",
+		"attribution": [{
+			"composer": "beethoven",
+			"catalog": [{"scheme": "op", "number": "10"}]
+		}]
+	}"#);
+	write_composition(root, "cd000002", r#"{
+		"id": "cd000002",
+		"form": "sonata",
+		"attribution": [{
+			"composer": "beethoven",
+			"catalog": [{"scheme": "op", "number": "2"}]
+		}]
+	}"#);
+	write_composition(root, "ef000001", r#"{
+		"id": "ef000001",
+		"form": "piece",
+		"attribution": [{
+			"composer": "beethoven",
+			"catalog": [{"scheme": "woo", "number": "1"}]
+		}]
+	}"#);
+
+	let output = run_wv(root, &["get", "beethoven", "op", "--terse"]);
+	assert!(output.status.success(), "{}", String::from_utf8_lossy(&output.stderr));
+	assert_eq!(
+		String::from_utf8_lossy(&output.stdout).trim(),
+		"cd000002\nab000010"
+	);
+
+	let output = run_wv(root, &["get", "beethoven", "--terse"]);
+	assert!(output.status.success(), "{}", String::from_utf8_lossy(&output.stderr));
+	assert_eq!(
+		String::from_utf8_lossy(&output.stdout).trim(),
+		"cd000002\nab000010\nef000001"
+	);
+}
+
 // ============================================================================
 // Index round-trip tests
 // ============================================================================
