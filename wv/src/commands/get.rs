@@ -317,18 +317,9 @@ fn print_query_examples(
 	}
 }
 
-fn capitalize_first(value: &str) -> String {
-	let mut chars = value.chars();
-	match chars.next() {
-		Some(first) => first.to_uppercase().collect::<String>() + chars.as_str(),
-		None => String::new(),
-	}
-}
-
 fn output_inventory_stub(
 	query: &ComposerQuery,
 	number: &str,
-	label: Option<&str>,
 	args: &GetArgs,
 	defn: Option<&CatalogDefinition>,
 ) {
@@ -339,7 +330,6 @@ fn output_inventory_stub(
 			"scheme": scheme,
 			"edition": query.edition.as_deref(),
 			"number": number,
-			"label": label,
 			"catalogued": true,
 			"populated": false
 		});
@@ -347,12 +337,7 @@ fn output_inventory_stub(
 		return;
 	}
 
-	let formatted = format_catalog(scheme, number, defn);
-	if let Some(label) = label {
-		print(&format!("{}, {}", capitalize_first(label), formatted));
-	} else {
-		print(&formatted);
-	}
+	print(&format_catalog(scheme, number, defn));
 }
 
 fn handle_inventory_miss(
@@ -387,7 +372,7 @@ fn handle_inventory_miss(
 		number,
 		defn,
 	) {
-		InventoryLookup::Known(entry) => {
+		InventoryLookup::Known => {
 			if args.terse {
 				if !args.quiet {
 					eprintln!("Catalog entry is known, but no composition ID is available.");
@@ -398,7 +383,7 @@ fn handle_inventory_miss(
 				eprintln!("Catalog entry is known, but no detailed composition record is available.");
 				return true;
 			}
-			output_inventory_stub(query, number, entry.label.as_deref(), args, defn);
+			output_inventory_stub(query, number, args, defn);
 			if !args.quiet && !args.json {
 				eprintln!("catalog entry known; detailed record not yet available");
 			}
@@ -415,22 +400,15 @@ fn handle_inventory_miss(
 				eprintln!("Catalog group is known, but no detailed composition records are available.");
 				return true;
 			}
-			let catalog = index
-				.inventory
-				.catalog(&query.composer, scheme, query.edition.as_deref(), defn);
 			if args.json {
 				let values: Vec<_> = members
 					.iter()
 					.map(|member| {
-						let label = catalog
-							.and_then(|catalog| catalog.entries.get(member))
-							.and_then(|entry| entry.label.as_deref());
 						serde_json::json!({
 							"composer": query.composer.as_str(),
 							"scheme": scheme,
 							"edition": query.edition.as_deref(),
 							"number": member,
-							"label": label,
 							"catalogued": true,
 							"populated": false
 						})
@@ -439,10 +417,7 @@ fn handle_inventory_miss(
 				print(&serde_json::to_string_pretty(&values).unwrap());
 			} else {
 				for member in members {
-					let label = catalog
-						.and_then(|catalog| catalog.entries.get(&member))
-						.and_then(|entry| entry.label.as_deref());
-					output_inventory_stub(query, &member, label, args, defn);
+					output_inventory_stub(query, &member, args, defn);
 				}
 			}
 			true

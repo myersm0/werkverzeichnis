@@ -34,10 +34,6 @@
 			"items": {"type": "integer", "minimum": 1},
 			"description": "Capture groups that define a work group (for 'show me all of op 2')"
 		},
-		"member_format": {
-			"type": "string",
-			"description": "Format for expanding inventory member ranges; supports {number} and {member}"
-		},
 		"examples": {
 			"type": "array",
 			"items": {"$ref": "#/$defs/example"}

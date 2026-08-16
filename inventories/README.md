@@ -2,49 +2,78 @@
 
 Inventories record which identifiers actually exist in a catalog independently of the richer records in `compositions/`.
 
+They are hand-maintained TOML files, normally one per composer and catalog scheme, and one per edition where a catalog has editions.
+
+```text
+inventories/
+    beethoven/
+        op.toml
+        woo.toml
+        hess.toml
+    mozart/
+        k-1.toml
+        k-6.toml
+        k-9.toml
+```
+
 A basic inventory looks like this:
 
-```json
-{
-  "composer": "beethoven",
-  "scheme": "op",
-  "complete": false,
-  "sources": [
-    {
-      "title": "Source title",
-      "url": "https://example.org/"
-    }
-  ],
-  "entries": [
-    {
-      "number": "2",
-      "member_range": 3,
-      "label": "piano sonatas"
-    },
-    {
-      "number": "7",
-      "label": "septet"
-    }
-  ]
-}
+```toml
+composer = "beethoven"
+scheme = "op"
+complete = false
+
+entries = [
+    # Piano trios
+    "1/1", "1/2", "1/3",
+
+    # Piano sonatas
+    "2/1", "2/2", "2/3",
+
+    "3", # string trio
+    "4", # string quintet
+]
 ```
 
-`member_range: 3` means that the group contains members 1 through 3. The catalog definition supplies the formatting rule; for opus numbers, `2` expands to `2/1`, `2/2`, and `2/3`. The parent `2` is a group, not an additional leaf entry.
+All catalog identifiers are quoted strings. Comments are for maintainer orientation only and carry no semantics.
 
-`label` is optional free text. It is only a brief description for human or machine readers, not a controlled classification field.
+`complete = true` means every identifier assigned by that catalog or catalog edition is listed. Absence from a complete inventory is therefore a confident negative. Absence from an incomplete inventory is unknown.
 
-Set `complete` to `true` only when every entry in that catalog or catalog edition is represented. Absence from a complete inventory means that the requested catalog entry does not exist; absence from an incomplete inventory makes no such claim.
+For catalogs with editions, add `edition`:
 
-For catalogs with editions, add an edition field:
-
-```json
-{
-  "composer": "mozart",
-  "scheme": "k",
-  "edition": "9",
-  "complete": false,
-  "entries": []
-}
+```toml
+composer = "mozart"
+scheme = "k"
+edition = "9"
+complete = false
+entries = []
 ```
 
-Inventory files may be organized beneath the composer directory as convenient. Their identity comes from the `composer`, `scheme`, and optional `edition` fields rather than the filename.
+## Groups
+
+Inventories list actual catalog identifiers only. Parent/group queries are derived from the catalog definition's `group_by` rule.
+
+For example, if an opus inventory contains:
+
+```toml
+entries = ["2/1", "2/2", "2/3"]
+```
+
+then `wv get beethoven op 2` can enumerate those three entries even though `"2"` is not itself listed. `"2/4"` is known not to exist only when the inventory is complete.
+
+Letter suffixes remain part of the identifier according to the catalog parser. For example, WoO `2a` does not imply a parent WoO `2` merely because it begins with the same characters.
+
+A bare identifier and subordinate identifiers are allowed to coexist if a catalog genuinely assigns both. Exact membership and derived grouping are separate facts.
+
+## Validation
+
+`wv validate` checks that:
+
+- the TOML parses into the inventory format;
+- the composer and scheme exist;
+- an edition, if supplied, is defined for the catalog;
+- every entry is unique after normalization;
+- every entry is well-formed under the catalog's parser;
+- no composition record refers to an identifier absent from an applicable complete inventory.
+
+`wv coverage <composer> [scheme]` compares the inventory with the rich composition records. Add `--missing` to list catalogued entries that do not yet have detailed records.

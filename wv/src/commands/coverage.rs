@@ -57,7 +57,7 @@ pub fn run(composer: &str, scheme: Option<&str>, edition: Option<&str>, missing:
 		};
 
 		let total = catalog.entries.len();
-		let populated_count = catalog.entries.keys().filter(|number| populated.contains(*number)).count();
+		let populated_count = catalog.entries.iter().filter(|number| populated.contains(*number)).count();
 		let missing_count = total.saturating_sub(populated_count);
 		let percent = if total == 0 {
 			0.0
@@ -76,19 +76,13 @@ pub fn run(composer: &str, scheme: Option<&str>, edition: Option<&str>, missing:
 		if missing {
 			let mut numbers: Vec<String> = catalog
 				.entries
-				.keys()
+				.iter()
 				.filter(|number| !populated.contains(*number))
 				.cloned()
 				.collect();
 			sort_numbers(&mut numbers, defn.as_ref());
 			for number in numbers {
-				let formatted = format_catalog(&scheme, &number, defn.as_ref());
-				let label = catalog.entries.get(&number).and_then(|entry| entry.label.as_deref());
-				if let Some(label) = label {
-					print(&format!("{}\t{}", formatted, label));
-				} else {
-					print(&formatted);
-				}
+				print(&format_catalog(&scheme, &number, defn.as_ref()));
 			}
 		}
 	}

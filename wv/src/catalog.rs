@@ -1,6 +1,6 @@
 use regex::{Regex, RegexBuilder};
 use std::cmp::Ordering;
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std::path::Path;
 
 use crate::parse::load_composer;
@@ -104,9 +104,6 @@ pub fn load_catalog_def<P: AsRef<Path>>(
 			}
 			if c.group_by.is_none() {
 				c.group_by = g.group_by;
-			}
-			if c.member_format.is_none() {
-				c.member_format = g.member_format;
 			}
 			Some(c)
 		}
@@ -308,6 +305,53 @@ pub fn matches_group(number: &str, group: &str, defn: Option<&CatalogDefinition>
 
 pub fn normalize_catalog_number(number: &str) -> String {
 	number.to_lowercase()
+}
+
+pub(crate) fn group_key(number: &str, defn: &CatalogDefinition) -> Option<String> {
+	group_key_inner(number, defn).map(|(key, _)| key)
+}
+
+pub(crate) fn group_member_key(number: &str, defn: &CatalogDefinition) -> Option<String> {
+	let (key, has_detail) = group_key_inner(number, defn)?;
+	if has_detail {
+		Some(key)
+	} else {
+		None
+	}
+}
+
+fn group_key_inner(number: &str, defn: &CatalogDefinition) -> Option<(String, bool)> {
+	let group_by = defn.group_by.as_ref()?;
+	if group_by.is_empty() {
+		return None;
+	}
+	let pattern = defn.pattern.as_ref()?;
+	let re = RegexBuilder::new(pattern).case_insensitive(true).build().ok()?;
+	let captures = re.captures(number)?;
+	let grouped: HashSet<usize> = group_by.iter().copied().collect();
+	let mut parts = Vec::with_capacity(group_by.len());
+
+	for &index in group_by {
+		if index == 0 || index >= captures.len() {
+			return None;
+		}
+		match captures.get(index) {
+			Some(value) => {
+				let value = normalize_catalog_number(value.as_str());
+				parts.push(format!("{}:{}", value.len(), value));
+			}
+			None => parts.push("-".into()),
+		}
+	}
+
+	let has_detail = (1..captures.len()).any(|index| {
+		!grouped.contains(&index)
+			&& captures
+				.get(index)
+				.map_or(false, |value| !value.as_str().is_empty())
+	});
+
+	Some((parts.join("|"), has_detail))
 }
 
 pub fn is_fallback_key(key: &[SortValue]) -> bool {

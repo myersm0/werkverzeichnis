@@ -250,26 +250,26 @@ pub fn index_is_stale<P: AsRef<Path>>(data_dir: P) -> bool {
 		return true;
 	}
 
-	if tree_has_newer_json(&data_dir.join("inventories"), metadata.built_at) {
+	if tree_has_newer_files(&data_dir.join("inventories"), metadata.built_at, "toml") {
 		return true;
 	}
 
 	current_unix_seconds().saturating_sub(metadata.built_at) >= INDEX_TTL_SECS
 }
 
-fn tree_has_newer_json(dir: &Path, built_at: u64) -> bool {
+fn tree_has_newer_files(dir: &Path, built_at: u64, extension: &str) -> bool {
 	let Ok(entries) = fs::read_dir(dir) else {
 		return false;
 	};
 	for entry in entries.flatten() {
 		let path = entry.path();
 		if path.is_dir() {
-			if tree_has_newer_json(&path, built_at) {
+			if tree_has_newer_files(&path, built_at, extension) {
 				return true;
 			}
 			continue;
 		}
-		if path.extension().map_or(true, |ext| ext != "json") {
+		if path.extension().map_or(true, |ext| ext != extension) {
 			continue;
 		}
 		let modified = entry

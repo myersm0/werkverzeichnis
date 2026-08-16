@@ -6,9 +6,9 @@ use jsonschema::Validator as JsonSchemaValidator;
 use serde::de::DeserializeOwned;
 use serde_json::Value;
 
-use crate::catalog::load_catalog_def;
-use crate::inventory::{build_inventory_index, normalize_inventory, InventoryIndex, InventoryLookup};
-use crate::types::{AttributionEntry, CatalogDefinition, Collection, Composer, Composition, Inventory};
+use crate::catalog::{load_catalog_def, normalize_catalog_number};
+use crate::inventory::{build_inventory_index, normalize_inventory, InventoryIndex};
+use crate::types::{AttributionEntry, CatalogDefinition, Collection, Composer, Composition};
 
 #[derive(Debug, Clone)]
 pub struct ValidationError {
@@ -94,7 +94,6 @@ pub struct Validator {
 	composer_schema: SchemaCheck,
 	catalog_schema: SchemaCheck,
 	collection_schema: SchemaCheck,
-	inventory_schema: SchemaCheck,
 	inventory_index: InventoryIndex,
 }
 
@@ -182,7 +181,6 @@ impl Validator {
 			composer_schema: SchemaCheck::load(schemas_dir.join("composer.schema.json")),
 			catalog_schema: SchemaCheck::load(schemas_dir.join("catalog.schema.json")),
 			collection_schema: SchemaCheck::load(schemas_dir.join("collection.schema.json")),
-			inventory_schema: SchemaCheck::load(schemas_dir.join("inventory.schema.json")),
 			inventory_index: build_inventory_index(data_dir),
 		}
 	}
@@ -265,22 +263,20 @@ impl Validator {
 		}
 
 		if pattern_valid {
-			match self.inventory_index.lookup(composer, scheme, edition, number, Some(&definition)) {
-				InventoryLookup::Absent => errors.push(ValidationError {
-					path: path_str.to_string(),
-					message: format!(
-						"{}: {}:{}:{} is not present in the complete catalog inventory",
-						location, composer, scheme, number
-					),
-				}),
-				InventoryLookup::KnownGroup(_) => errors.push(ValidationError {
-					path: path_str.to_string(),
-					message: format!(
-						"{}: {}:{}:{} is an inventory group, not a leaf catalog entry",
-						location, composer, scheme, number
-					),
-				}),
-				_ => {}
+			if let Some(catalog) = self
+				.inventory_index
+				.catalog(composer, scheme, edition, Some(&definition))
+			{
+				let normalized = normalize_catalog_number(number);
+				if catalog.complete && !catalog.entries.contains(&normalized) {
+					errors.push(ValidationError {
+						path: path_str.to_string(),
+						message: format!(
+							"{}: {}:{}:{} is not present in the complete catalog inventory",
+							location, composer, scheme, number
+						),
+					});
+				}
 			}
 		}
 
@@ -527,14 +523,17 @@ impl Validator {
 	}
 
 	fn validate_inventory_file(&self, path: &Path) -> Vec<ValidationError> {
-		let (value, mut errors) = match self.read_and_validate(path, &self.inventory_schema, false) {
-			Ok(result) => result,
-			Err(errors) => return errors,
-		};
 		let path_str = path.display().to_string();
-		let Some(inventory) = deserialize_model::<Inventory>(&value, &path_str, &mut errors) else {
-			return errors;
+		let inventory = match crate::inventory::load_inventory(path) {
+			Ok(inventory) => inventory,
+			Err(error) => {
+				return vec![ValidationError {
+					path: path_str,
+					message: format!("Invalid inventory TOML: {}", error),
+				}];
+			}
 		};
+		let mut errors = Vec::new();
 
 		if !self.composers.contains(&inventory.composer) {
 			errors.push(ValidationError {
@@ -583,20 +582,9 @@ impl Validator {
 			}
 		}
 
-		if let Some(definition) = definition.as_ref() {
-			if let Some(member_format) = definition.member_format.as_deref() {
-				if !member_format.contains("{number}") || !member_format.contains("{member}") {
-					errors.push(ValidationError {
-						path: path_str.clone(),
-						message: "catalog member_format must contain {number} and {member}".into(),
-					});
-				}
-			}
-		}
-
 		match normalize_inventory(&inventory, definition.as_ref()) {
 			Ok(normalized) => {
-				for number in normalized.entries.keys() {
+				for number in &normalized.entries {
 					errors.extend(self.validate_catalog_reference(
 						&inventory.composer,
 						&inventory.scheme,
@@ -800,7 +788,6 @@ impl Validator {
 			&self.composer_schema,
 			&self.catalog_schema,
 			&self.collection_schema,
-			&self.inventory_schema,
 		]
 		.into_iter()
 		.filter_map(|schema| schema.schema_error())
@@ -810,9 +797,10 @@ impl Validator {
 		}
 
 		let mut paths = Vec::new();
-		for directory in ["composers", "catalogs", "collections", "compositions", "inventories"] {
+		for directory in ["composers", "catalogs", "collections", "compositions"] {
 			collect_json_files(&data_dir.join(directory), &mut paths);
 		}
+		collect_inventory_files(&data_dir.join("inventories"), &mut paths);
 		paths.sort();
 
 		let mut errors = Vec::new();
@@ -822,12 +810,9 @@ impl Validator {
 
 		let mut inventory_identities: HashMap<(String, String, Option<String>), Vec<String>> = HashMap::new();
 		let mut inventory_paths = Vec::new();
-		collect_json_files(&data_dir.join("inventories"), &mut inventory_paths);
+		collect_inventory_files(&data_dir.join("inventories"), &mut inventory_paths);
 		for path in inventory_paths {
-			let Ok(content) = fs::read_to_string(&path) else {
-				continue;
-			};
-			let Ok(inventory) = serde_json::from_str::<Inventory>(&content) else {
+			let Ok(inventory) = crate::inventory::load_inventory(&path) else {
 				continue;
 			};
 			inventory_identities
@@ -906,6 +891,24 @@ fn collect_json_files(dir: &Path, paths: &mut Vec<PathBuf>) {
 		if path.is_dir() {
 			collect_json_files(&path, paths);
 		} else if path.extension().map_or(false, |ext| ext == "json") {
+			paths.push(path);
+		}
+	}
+}
+
+fn collect_inventory_files(dir: &Path, paths: &mut Vec<PathBuf>) {
+	let Ok(entries) = fs::read_dir(dir) else {
+		return;
+	};
+
+	for entry in entries.flatten() {
+		let path = entry.path();
+		if path.is_dir() {
+			collect_inventory_files(&path, paths);
+		} else if path
+			.extension()
+			.map_or(false, |ext| ext == "toml" || ext == "json")
+		{
 			paths.push(path);
 		}
 	}
@@ -997,7 +1000,6 @@ mod tests {
 			composer_schema: empty_schema(),
 			catalog_schema: empty_schema(),
 			collection_schema: empty_schema(),
-			inventory_schema: empty_schema(),
 			inventory_index: InventoryIndex::default(),
 		}
 	}
@@ -1026,7 +1028,7 @@ mod tests {
 		assert_eq!(data_kind(Path::new("composers/bach.json")), Some(DataKind::Composer));
 		assert_eq!(data_kind(Path::new("catalogs/op.json")), Some(DataKind::Catalog));
 		assert_eq!(data_kind(Path::new("collections/bach/wtc-1.json")), Some(DataKind::Collection));
-		assert_eq!(data_kind(Path::new("inventories/beethoven/op.json")), Some(DataKind::Inventory));
+		assert_eq!(data_kind(Path::new("inventories/beethoven/op.toml")), Some(DataKind::Inventory));
 	}
 
 	#[test]
