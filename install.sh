@@ -54,6 +54,27 @@ cd "$TMPDIR"
 
 echo "Downloading $URL..."
 curl -fsSL "$URL" -o "$TARGET.$EXT"
+curl -fsSL "$URL.sha256" -o "$TARGET.$EXT.sha256"
+
+if command -v sha256sum >/dev/null 2>&1; then
+	ACTUAL=$(sha256sum "$TARGET.$EXT" | cut -d' ' -f1)
+elif command -v shasum >/dev/null 2>&1; then
+	ACTUAL=$(shasum -a 256 "$TARGET.$EXT" | cut -d' ' -f1)
+else
+	echo "Neither sha256sum nor shasum is available; cannot verify download"
+	exit 1
+fi
+
+EXPECTED=$(cut -d' ' -f1 < "$TARGET.$EXT.sha256")
+
+if [ -z "$EXPECTED" ] || [ "$EXPECTED" != "$ACTUAL" ]; then
+	echo "Checksum verification failed for $TARGET.$EXT"
+	echo "  expected: $EXPECTED"
+	echo "  actual:   $ACTUAL"
+	exit 1
+fi
+
+echo "Checksum verified."
 tar -xzf "$TARGET.$EXT"
 
 if [ ! -x "$BINARY" ] || [ ! -d data/compositions ] || [ ! -d data/inventories ]; then

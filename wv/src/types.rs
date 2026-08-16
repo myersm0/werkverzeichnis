@@ -37,8 +37,6 @@ pub struct AttributionEntry {
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub composer: Option<String>,
 	#[serde(skip_serializing_if = "Option::is_none")]
-	pub cf: Option<String>,
-	#[serde(skip_serializing_if = "Option::is_none")]
 	pub dates: Option<Dates>,
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub status: Option<Status>,
