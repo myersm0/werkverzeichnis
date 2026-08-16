@@ -42,6 +42,40 @@ struct SchemaCheck {
 	error: Option<String>,
 }
 
+#[derive(Debug, Clone)]
+enum CachedComposition {
+	Parsed {
+		value: Value,
+		has_multiple_spaces: bool,
+	},
+	ReadError(String),
+	InvalidJson {
+		message: String,
+		has_multiple_spaces: bool,
+	},
+}
+
+impl CachedComposition {
+	fn load(path: &Path) -> Self {
+		let content = match fs::read_to_string(path) {
+			Ok(content) => content,
+			Err(error) => return Self::ReadError(error.to_string()),
+		};
+		let has_multiple_spaces = content.contains("  ");
+
+		match serde_json::from_str(&content) {
+			Ok(value) => Self::Parsed {
+				value,
+				has_multiple_spaces,
+			},
+			Err(error) => Self::InvalidJson {
+				message: error.to_string(),
+				has_multiple_spaces,
+			},
+		}
+	}
+}
+
 impl SchemaCheck {
 	fn load(path: PathBuf) -> Self {
 		match load_schema_validator(&path) {
@@ -95,6 +129,7 @@ pub struct Validator {
 	global_catalog_schemes: HashSet<String>,
 	composer_catalog_schemes: HashMap<String, HashSet<String>>,
 	current_catalog_targets: HashMap<(String, String, String), Vec<String>>,
+	composition_cache: HashMap<PathBuf, CachedComposition>,
 	composition_schema: SchemaCheck,
 	composer_schema: SchemaCheck,
 	catalog_schema: SchemaCheck,
@@ -148,29 +183,30 @@ impl Validator {
 		}
 
 		let mut current_catalog_targets = HashMap::new();
+		let mut composition_cache = HashMap::new();
 		let mut composition_paths = Vec::new();
 		collect_json_files(&data_dir.join("compositions"), &mut composition_paths);
 		for path in composition_paths {
-			let Ok(content) = fs::read_to_string(path) else {
-				continue;
-			};
-			let Ok(composition) = serde_json::from_str::<Composition>(&content) else {
-				continue;
-			};
-			let mut schemes_seen = HashSet::new();
-			for attribution in &composition.attribution {
-				let (Some(composer), Some(catalog)) = (&attribution.composer, &attribution.catalog) else {
-					continue;
-				};
-				for entry in catalog {
-					if schemes_seen.insert((composer.clone(), entry.scheme.clone())) {
-						current_catalog_targets
-							.entry((composer.clone(), entry.scheme.clone(), entry.number.clone()))
-							.or_insert_with(Vec::new)
-							.push(composition.id.clone());
+			let cached = CachedComposition::load(&path);
+			if let CachedComposition::Parsed { value, .. } = &cached {
+				if let Ok(composition) = serde_json::from_value::<Composition>(value.clone()) {
+					let mut schemes_seen = HashSet::new();
+					for attribution in &composition.attribution {
+						let (Some(composer), Some(catalog)) = (&attribution.composer, &attribution.catalog) else {
+							continue;
+						};
+						for entry in catalog {
+							if schemes_seen.insert((composer.clone(), entry.scheme.clone())) {
+								current_catalog_targets
+									.entry((composer.clone(), entry.scheme.clone(), entry.number.clone()))
+									.or_insert_with(Vec::new)
+									.push(composition.id.clone());
+							}
+						}
 					}
 				}
 			}
+			composition_cache.insert(path, cached);
 		}
 
 		let schemas_dir = data_dir.join("schemas");
@@ -182,6 +218,7 @@ impl Validator {
 			global_catalog_schemes,
 			composer_catalog_schemes,
 			current_catalog_targets,
+			composition_cache,
 			composition_schema: SchemaCheck::load(schemas_dir.join("composition.schema.json")),
 			composer_schema: SchemaCheck::load(schemas_dir.join("composer.schema.json")),
 			catalog_schema: SchemaCheck::load(schemas_dir.join("catalog.schema.json")),
@@ -339,12 +376,74 @@ impl Validator {
 	}
 
 	pub fn validate_composition_file(&self, path: &Path) -> Vec<ValidationError> {
-		let (value, mut errors) = match self.read_and_validate(path, &self.composition_schema, true) {
+		if let Some(cached) = self.composition_cache.get(path) {
+			return self.validate_cached_composition(path, cached);
+		}
+
+		let (value, errors) = match self.read_and_validate(path, &self.composition_schema, true) {
 			Ok(result) => result,
 			Err(errors) => return errors,
 		};
+		self.validate_composition_value(path, &value, errors)
+	}
+
+	fn validate_cached_composition(
+		&self,
+		path: &Path,
+		cached: &CachedComposition,
+	) -> Vec<ValidationError> {
 		let path_str = path.display().to_string();
-		let Some(comp) = deserialize_model::<Composition>(&value, &path_str, &mut errors) else {
+		match cached {
+			CachedComposition::ReadError(message) => vec![ValidationError {
+				path: path_str,
+				message: format!("Failed to read file: {}", message),
+			}],
+			CachedComposition::InvalidJson {
+				message,
+				has_multiple_spaces,
+			} => {
+				let mut errors = Vec::new();
+				if *has_multiple_spaces {
+					errors.push(ValidationError {
+						path: path_str.clone(),
+						message: "Contains multiple consecutive spaces".into(),
+					});
+				}
+				errors.push(ValidationError {
+					path: path_str,
+					message: format!("Invalid JSON: {}", message),
+				});
+				errors
+			}
+			CachedComposition::Parsed {
+				value,
+				has_multiple_spaces,
+			} => {
+				let mut errors = Vec::new();
+				if *has_multiple_spaces {
+					errors.push(ValidationError {
+						path: path_str.clone(),
+						message: "Contains multiple consecutive spaces".into(),
+					});
+				}
+				let schema_errors = self.composition_schema.validate(value, &path_str);
+				if !schema_errors.is_empty() {
+					errors.extend(schema_errors);
+					return errors;
+				}
+				self.validate_composition_value(path, value, errors)
+			}
+		}
+	}
+
+	fn validate_composition_value(
+		&self,
+		path: &Path,
+		value: &Value,
+		mut errors: Vec<ValidationError>,
+	) -> Vec<ValidationError> {
+		let path_str = path.display().to_string();
+		let Some(comp) = deserialize_model::<Composition>(value, &path_str, &mut errors) else {
 			return errors;
 		};
 
@@ -606,7 +705,7 @@ impl Validator {
 			Err(error) => {
 				return vec![ValidationError {
 					path: path_str,
-					message: format!("Invalid inventory TOML: {}", error),
+					message: error.to_string(),
 				}];
 			}
 		};
@@ -1063,12 +1162,37 @@ mod tests {
 			global_catalog_schemes: HashSet::new(),
 			composer_catalog_schemes: HashMap::new(),
 			current_catalog_targets: HashMap::new(),
+			composition_cache: HashMap::new(),
 			composition_schema: empty_schema(),
 			composer_schema: empty_schema(),
 			catalog_schema: empty_schema(),
 			collection_schema: empty_schema(),
 			inventory_index: InventoryIndex::default(),
 		}
+	}
+
+	#[test]
+	fn cached_dataset_composition_is_not_reread() {
+		let temp = tempfile::tempdir().unwrap();
+		let dir = temp.path().join("compositions").join("ab");
+		fs::create_dir_all(&dir).unwrap();
+		let path = dir.join("cd1234.json");
+		fs::write(
+			&path,
+			r#"{"id":"abcd1234","form":"sonata","attribution":[{"composer":"bach"}]}"#,
+		)
+		.unwrap();
+
+		let mut validator = test_validator();
+		validator.composers.insert("bach".into());
+		validator
+			.composition_cache
+			.insert(path.clone(), CachedComposition::load(&path));
+
+		fs::write(&path, "{").unwrap();
+		let errors = validator.validate_composition_file(&path);
+
+		assert!(!errors.iter().any(|error| error.message.contains("Invalid JSON")));
 	}
 
 	#[test]
