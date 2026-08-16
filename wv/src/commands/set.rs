@@ -49,7 +49,13 @@ pub fn run(args: SetArgs, data_dir: PathBuf, config: &Config) {
 		}
 	};
 
-	let index = get_or_build_index(&data_dir);
+	let index = match get_or_build_index(&data_dir) {
+		Ok(index) => index,
+		Err(error) => {
+			eprintln!("Error loading dataset: {}", error);
+			std::process::exit(1);
+		}
+	};
 	let composer = &args.target;
 
 	let catalog_defn = load_catalog_def(&data_dir, scheme, Some(composer));

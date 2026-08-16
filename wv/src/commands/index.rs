@@ -6,7 +6,13 @@ use crate::index::{build_index, save_index};
 pub fn run(data_dir: &Path) {
 	eprintln!("Building index from {:?}...", data_dir);
 
-	let index = build_index(data_dir);
+	let index = match build_index(data_dir) {
+		Ok(index) => index,
+		Err(error) => {
+			eprintln!("Error building index: {}", error);
+			std::process::exit(1);
+		}
+	};
 
 	let mut total_compositions = 0;
 	let mut total_catalog_entries = 0;

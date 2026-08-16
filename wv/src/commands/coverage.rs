@@ -7,7 +7,13 @@ use crate::index::{get_or_build_index, load_edition_index};
 use crate::output::print;
 
 pub fn run(composer: &str, scheme: Option<&str>, edition: Option<&str>, missing: bool, data_dir: &Path) {
-	let index = get_or_build_index(data_dir);
+	let index = match get_or_build_index(data_dir) {
+		Ok(index) => index,
+		Err(error) => {
+			eprintln!("Error loading dataset: {}", error);
+			std::process::exit(1);
+		}
+	};
 	let schemes: Vec<String> = match scheme {
 		Some(scheme) => vec![scheme.to_string()],
 		None => {

@@ -16,6 +16,16 @@ use crate::parse::load_composition;
 use crate::types::CatalogDefinition;
 use crate::xref::{check_duplicates, MbLookup};
 
+fn get_index_or_exit(data_dir: &Path) -> Index {
+	match get_or_build_index(data_dir) {
+		Ok(index) => index,
+		Err(error) => {
+			eprintln!("Error loading dataset: {}", error);
+			std::process::exit(1);
+		}
+	}
+}
+
 pub struct GetArgs {
 	pub target: Option<String>,
 	pub scheme: Option<String>,
@@ -234,6 +244,17 @@ pub fn run(args: GetArgs, data_dir: PathBuf, config: &Config) {
 					eprintln!("No IDs provided.");
 				}
 				return;
+			}
+			if !args.edit {
+				for id in &ids {
+					let path = id_to_path(&data_dir, id);
+					if path.exists() {
+						if let Err(error) = load_composition(&path) {
+							eprintln!("Error loading composition {}: {}", path.display(), error);
+							std::process::exit(1);
+						}
+					}
+				}
 			}
 			if args.edit {
 				let paths: Vec<PathBuf> = ids.iter().map(|id| id_to_path(&data_dir, id)).collect();
@@ -550,7 +571,7 @@ fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Con
 		std::process::exit(1);
 	}
 
-	let index = get_or_build_index(data_dir);
+	let index = get_index_or_exit(data_dir);
 	let catalog_defn = query
 		.scheme
 		.as_ref()
@@ -806,7 +827,7 @@ fn run_collections(collection_ids: &[String], args: &GetArgs, data_dir: &Path, c
 		return;
 	}
 
-	let index = get_or_build_index(data_dir);
+	let index = get_index_or_exit(data_dir);
 	if args.terse {
 		for r in &refs {
 			let results = index

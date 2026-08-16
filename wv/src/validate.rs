@@ -223,7 +223,7 @@ impl Validator {
 			composer_schema: SchemaCheck::load(schemas_dir.join("composer.schema.json")),
 			catalog_schema: SchemaCheck::load(schemas_dir.join("catalog.schema.json")),
 			collection_schema: SchemaCheck::load(schemas_dir.join("collection.schema.json")),
-			inventory_index: build_inventory_index(data_dir),
+			inventory_index: build_inventory_index(data_dir).unwrap_or_default(),
 		}
 	}
 

@@ -89,7 +89,13 @@ pub fn show(id: &str, data_dir: &Path, config: &Config) {
 		}
 	};
 
-	let index = get_or_build_index(data_dir);
+	let index = match get_or_build_index(data_dir) {
+		Ok(index) => index,
+		Err(error) => {
+			eprintln!("Error loading dataset: {}", error);
+			std::process::exit(1);
+		}
+	};
 
 	let composer = collection
 		.attribution

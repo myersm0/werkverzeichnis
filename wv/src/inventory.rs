@@ -29,6 +29,21 @@ pub struct InventoryIndex {
 	pub catalogs: HashMap<String, HashMap<String, InventorySchemeIndex>>,
 }
 
+#[derive(Debug, thiserror::Error)]
+pub enum InventoryError {
+	#[error("failed to read {path}: {source}")]
+	Io {
+		path: PathBuf,
+		#[source]
+		source: std::io::Error,
+	},
+	#[error("invalid inventory {path}: {message}")]
+	Invalid {
+		path: PathBuf,
+		message: String,
+	},
+}
+
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum InventoryLookup {
 	Known,
@@ -37,26 +52,34 @@ pub enum InventoryLookup {
 	Unknown,
 }
 
-pub fn load_inventory<P: AsRef<Path>>(path: P) -> Result<Inventory, String> {
-	let content = fs::read_to_string(path).map_err(|error| error.to_string())?;
-	toml::from_str(&content).map_err(|error| error.to_string())
+pub fn load_inventory<P: AsRef<Path>>(path: P) -> Result<Inventory, InventoryError> {
+	let path = path.as_ref();
+	let content = fs::read_to_string(path).map_err(|source| InventoryError::Io {
+		path: path.to_path_buf(),
+		source,
+	})?;
+	toml::from_str(&content).map_err(|error| InventoryError::Invalid {
+		path: path.to_path_buf(),
+		message: error.to_string(),
+	})
 }
 
-pub fn build_inventory_index<P: AsRef<Path>>(data_dir: P) -> InventoryIndex {
+pub fn build_inventory_index<P: AsRef<Path>>(data_dir: P) -> Result<InventoryIndex, InventoryError> {
 	let data_dir = data_dir.as_ref();
 	let mut index = InventoryIndex::default();
 	let mut paths = Vec::new();
-	collect_toml_files(&data_dir.join("inventories"), &mut paths);
+	collect_toml_files(&data_dir.join("inventories"), &mut paths)?;
 	paths.sort();
 
 	for path in paths {
-		let Ok(inventory) = load_inventory(&path) else {
-			continue;
-		};
+		let inventory = load_inventory(&path)?;
 		let defn = load_catalog_def(data_dir, &inventory.scheme, Some(&inventory.composer));
-		let Ok(catalog_index) = normalize_inventory(&inventory, defn.as_ref()) else {
-			continue;
-		};
+		let catalog_index = normalize_inventory(&inventory, defn.as_ref()).map_err(|message| {
+			InventoryError::Invalid {
+				path: path.clone(),
+				message,
+			}
+		})?;
 		let scheme_index = index
 			.catalogs
 			.entry(inventory.composer.clone())
@@ -70,7 +93,7 @@ pub fn build_inventory_index<P: AsRef<Path>>(data_dir: P) -> InventoryIndex {
 		}
 	}
 
-	index
+	Ok(index)
 }
 
 pub fn normalize_inventory(
@@ -158,18 +181,27 @@ impl InventoryIndex {
 	}
 }
 
-fn collect_toml_files(dir: &Path, paths: &mut Vec<PathBuf>) {
-	let Ok(entries) = fs::read_dir(dir) else {
-		return;
-	};
-	for entry in entries.flatten() {
+fn collect_toml_files(dir: &Path, paths: &mut Vec<PathBuf>) -> Result<(), InventoryError> {
+	if !dir.exists() {
+		return Ok(());
+	}
+	let entries = fs::read_dir(dir).map_err(|source| InventoryError::Io {
+		path: dir.to_path_buf(),
+		source,
+	})?;
+	for entry in entries {
+		let entry = entry.map_err(|source| InventoryError::Io {
+			path: dir.to_path_buf(),
+			source,
+		})?;
 		let path = entry.path();
 		if path.is_dir() {
-			collect_toml_files(&path, paths);
+			collect_toml_files(&path, paths)?;
 		} else if path.extension().map_or(false, |ext| ext == "toml") {
 			paths.push(path);
 		}
 	}
+	Ok(())
 }
 
 #[cfg(test)]

@@ -122,6 +122,46 @@ entries = ["2/1", "2/2", "2/3", "138"]
 }
 
 #[test]
+fn test_get_fails_on_corrupt_dataset_composition() {
+	let tmp = setup_test_repo();
+	let root = tmp.path();
+	fs::write(root.join("compositions/ab/123456.json"), "{").unwrap();
+
+	let output = run_wv(root, &["get", "beethoven"]);
+	assert!(!output.status.success());
+	let stderr = String::from_utf8_lossy(&output.stderr);
+	assert!(stderr.contains("Error loading dataset"));
+	assert!(stderr.contains("123456.json"));
+}
+
+#[test]
+fn test_get_by_id_fails_on_corrupt_existing_composition() {
+	let tmp = setup_test_repo();
+	let root = tmp.path();
+	fs::write(root.join("compositions/ab/123456.json"), "{").unwrap();
+
+	let output = run_wv(root, &["get", "ab123456"]);
+	assert!(!output.status.success());
+	let stderr = String::from_utf8_lossy(&output.stderr);
+	assert!(stderr.contains("Error loading composition"));
+	assert!(stderr.contains("123456.json"));
+}
+
+#[test]
+fn test_index_fails_on_invalid_inventory() {
+	let tmp = setup_test_repo();
+	let root = tmp.path();
+	fs::create_dir_all(root.join("inventories/beethoven")).unwrap();
+	fs::write(root.join("inventories/beethoven/op.toml"), "not = [valid").unwrap();
+
+	let output = run_wv(root, &["index"]);
+	assert!(!output.status.success());
+	let stderr = String::from_utf8_lossy(&output.stderr);
+	assert!(stderr.contains("Error building index"));
+	assert!(stderr.contains("op.toml"));
+}
+
+#[test]
 fn test_single_json_result_is_array() {
 	let tmp = setup_test_repo();
 	let root = tmp.path();
@@ -311,7 +351,7 @@ fn test_index_roundtrip() {
 		}]
 	}"#);
 
-	let index = build_index(root);
+	let index = build_index(root).unwrap();
 
 	// Verify lookups work
 	let result = index.query().composer("mozart").scheme("k").number("545").fetch_one();
@@ -339,7 +379,7 @@ fn test_index_persists_and_reloads() {
 		}]
 	}"#);
 
-	let index = build_index(root);
+	let index = build_index(root).unwrap();
 	let index_path = root.join(".indexes").join("index.json");
 	let composer_path = root.join(".indexes").join("composer-index.json");
 	write_index(&index, &index_path).unwrap();
@@ -384,7 +424,7 @@ fn test_cumulative_editions() {
 		}]
 	}"#);
 
-	let index = build_index(root);
+	let index = build_index(root).unwrap();
 	write_edition_indexes(&index, root).unwrap();
 
 	// Edition 1 should have: 545, 300i (not 331)
@@ -447,7 +487,7 @@ fn test_case_insensitive_query() {
 		}]
 	}"#);
 
-	let index = build_index(root);
+	let index = build_index(root).unwrap();
 
 	// Query with various case combinations - number is normalized by library
 	let result = index.query().composer("haydn").scheme("hob").number("i:104").fetch_one();
@@ -484,7 +524,7 @@ fn test_superseded_lookup() {
 		}]
 	}"#);
 
-	let index = build_index(root);
+	let index = build_index(root).unwrap();
 
 	// Current number works
 	let result = index.query().composer("mozart").scheme("k").number("331").fetch_one();
@@ -516,7 +556,7 @@ fn test_superseded_has_current_number() {
 		}]
 	}"#);
 
-	let index = build_index(root);
+	let index = build_index(root).unwrap();
 
 	let results = index
 		.query()
@@ -559,7 +599,7 @@ fn test_multi_composer_attribution() {
 		]
 	}"#);
 
-	let index = build_index(root);
+	let index = build_index(root).unwrap();
 
 	// Telemann lookup
 	let result = index.query().composer("telemann").scheme("twv").number("1:183").fetch_one();
@@ -607,7 +647,7 @@ fn test_collection_membership() {
 		}]
 	}"#);
 
-	let index = build_index(root);
+	let index = build_index(root).unwrap();
 
 	// Should be indexed under bach
 	let result = index.query().composer("bach").scheme("bwv").number("846").fetch_one();
@@ -641,7 +681,7 @@ fn test_note_in_index() {
 		}]
 	}"#);
 
-	let index = build_index(root);
+	let index = build_index(root).unwrap();
 
 	let results = index
 		.query()
@@ -676,7 +716,7 @@ fn test_range_query() {
 		}}"#, id, num));
 	}
 
-	let index = build_index(root);
+	let index = build_index(root).unwrap();
 
 	let results = index
 		.query()
@@ -735,7 +775,7 @@ fn test_group_query() {
 		}]
 	}"#);
 
-	let index = build_index(root);
+	let index = build_index(root).unwrap();
 
 	let results = index
 		.query()
@@ -783,7 +823,7 @@ fn test_kochel_331_edition_mapping() {
 		}]
 	}"#);
 
-	let index = build_index(root);
+	let index = build_index(root).unwrap();
 	write_edition_indexes(&index, root).unwrap();
 
 	// Current number (ed 9) should work
@@ -829,7 +869,7 @@ fn test_kochel_anh_reclassification() {
 		}]
 	}"#);
 
-	let index = build_index(root);
+	let index = build_index(root).unwrap();
 	write_edition_indexes(&index, root).unwrap();
 
 	// Current number should work

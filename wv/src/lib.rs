@@ -29,11 +29,11 @@ pub use display::{
 	expand_key, expand_title, format_catalog, format_form, truncate_instrumentation,
 	ExpansionContext,
 };
-pub use inventory::{build_inventory_index, load_inventory, normalize_inventory, InventoryCatalogIndex, InventoryIndex, InventoryLookup, InventorySchemeIndex};
+pub use inventory::{build_inventory_index, load_inventory, normalize_inventory, InventoryCatalogIndex, InventoryError, InventoryIndex, InventoryLookup, InventorySchemeIndex};
 pub use index::{
 	build_index, get_or_build_index, index_is_stale, load_edition_index, load_index,
 	mark_index_dirty, save_index, write_composer_index, write_edition_indexes, write_index, write_inventory_index, Index,
-	IndexEntry, SchemeIndex,
+	IndexEntry, IndexError, SchemeIndex,
 };
 pub use merge::{
 	all_catalog_entries, collection_path_from_id, current_catalog_number,
