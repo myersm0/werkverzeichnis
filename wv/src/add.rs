@@ -53,12 +53,26 @@ pub fn prepare_composition<P: AsRef<Path>, Q: AsRef<Path>>(
 	data_dir: Q,
 	force: bool,
 ) -> Result<PreparedAdd, AddError> {
+	let data_dir = data_dir.as_ref();
+	let validator = Validator::new(data_dir);
+	prepare_composition_with(source, data_dir, force, &validator)
+}
+
+/// As [`prepare_composition`], but reusing a validator the caller already built.
+///
+/// `Validator::new` reads every composition in the dataset, so constructing one
+/// per incoming file makes a batch add quadratic.
+pub fn prepare_composition_with<P: AsRef<Path>, Q: AsRef<Path>>(
+	source: P,
+	data_dir: Q,
+	force: bool,
+	validator: &Validator,
+) -> Result<PreparedAdd, AddError> {
 	let source = source.as_ref();
 	let data_dir = data_dir.as_ref();
 
 	let comp = load_composition(source).map_err(|e| AddError::ParseError(e.to_string()))?;
 
-	let validator = Validator::new(data_dir);
 	let errors = validator.validate_composition_file(source);
 	let non_path_errors: Vec<_> = errors
 		.iter()

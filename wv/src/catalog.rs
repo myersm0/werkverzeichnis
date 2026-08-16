@@ -1,6 +1,7 @@
 use regex::{Regex, RegexBuilder};
 use serde_json::Value;
 use std::cell::RefCell;
+use std::rc::Rc;
 use std::cmp::Ordering;
 use std::collections::{HashMap, HashSet};
 use std::path::{Path, PathBuf};
@@ -102,8 +103,37 @@ pub fn load_catalog_def<P: AsRef<Path>>(
 	definition
 }
 
+thread_local! {
+	static REGEX_CACHE: RefCell<HashMap<String, Option<Rc<Regex>>>> =
+		RefCell::new(HashMap::new());
+}
+
+/// Catalog patterns are compiled per number in sorting, grouping, range
+/// filtering and validation. Compilation dominates those loops, so patterns are
+/// memoized by source text.
+///
+/// Returns an `Rc` rather than lending from the cache so the borrow is released
+/// before the caller runs: some callers compile a second pattern while holding
+/// the first.
+pub(crate) fn cached_regex(pattern: &str) -> Option<Rc<Regex>> {
+	REGEX_CACHE.with(|cache| {
+		let mut cache = cache.borrow_mut();
+		if let Some(compiled) = cache.get(pattern) {
+			return compiled.clone();
+		}
+		let compiled = RegexBuilder::new(pattern)
+			.case_insensitive(true)
+			.build()
+			.ok()
+			.map(Rc::new);
+		cache.insert(pattern.to_string(), compiled.clone());
+		compiled
+	})
+}
+
 pub fn clear_catalog_cache() {
 	CATALOG_CACHE.with(|cache| cache.borrow_mut().clear());
+	REGEX_CACHE.with(|cache| cache.borrow_mut().clear());
 }
 
 fn read_catalog_def(
@@ -234,9 +264,8 @@ pub fn sort_key(number: &str, defn: &CatalogDefinition) -> Vec<SortValue> {
 		Some(p) => p,
 		None => return vec![SortValue::Str(number.to_string())],
 	};
-	let re = match RegexBuilder::new(pattern).case_insensitive(true).build() {
-		Ok(r) => r,
-		Err(_) => return vec![SortValue::Int(999999999), SortValue::Str(number.to_string())],
+	let Some(re) = cached_regex(pattern) else {
+		return vec![SortValue::Int(999999999), SortValue::Str(number.to_string())];
 	};
 	let max_group = defn
 		.sort_keys
@@ -257,12 +286,9 @@ pub fn sort_numbers(numbers: &mut [String], defn: Option<&CatalogDefinition>) {
 					return;
 				}
 			};
-			let re = match RegexBuilder::new(pattern).case_insensitive(true).build() {
-				Ok(r) => r,
-				Err(_) => {
-					numbers.sort();
-					return;
-				}
+			let Some(re) = cached_regex(pattern) else {
+				numbers.sort();
+				return;
 			};
 			let max_group = d
 				.sort_keys
@@ -300,9 +326,8 @@ pub fn matches_group(number: &str, group: &str, defn: Option<&CatalogDefinition>
 		None => return number.starts_with(group),
 	};
 
-	let re = match RegexBuilder::new(pattern).case_insensitive(true).build() {
-		Ok(r) => r,
-		Err(_) => return number.starts_with(group),
+	let Some(re) = cached_regex(pattern) else {
+		return number.starts_with(group);
 	};
 
 	let max_group = defn
@@ -408,7 +433,7 @@ pub fn validate_catalog_domain(number: &str, defn: &CatalogDefinition) -> Result
 	let Some(pattern) = &defn.pattern else {
 		return Ok(());
 	};
-	let Ok(re) = RegexBuilder::new(pattern).case_insensitive(true).build() else {
+	let Some(re) = cached_regex(pattern) else {
 		return Ok(());
 	};
 	let Some(captures) = re.captures(number) else {
@@ -463,7 +488,7 @@ fn group_key_inner(number: &str, defn: &CatalogDefinition) -> Option<(String, bo
 		return None;
 	}
 	let pattern = defn.pattern.as_ref()?;
-	let re = RegexBuilder::new(pattern).case_insensitive(true).build().ok()?;
+	let re = cached_regex(pattern)?;
 	let captures = re.captures(number)?;
 	let grouped: HashSet<usize> = group_by.iter().copied().collect();
 	let mut parts = Vec::with_capacity(group_by.len());
@@ -785,6 +810,25 @@ mod tests {
 		clear_catalog_cache();
 		let refreshed = load_catalog_def(tmp.path(), "op", None).unwrap();
 		assert_eq!(refreshed.name, "Changed");
+	}
+
+	#[test]
+	fn patterns_are_compiled_once_per_source_text() {
+		clear_catalog_cache();
+		let first = cached_regex(r"^(\d+)$").unwrap();
+		let second = cached_regex(r"^(\d+)$").unwrap();
+		assert!(Rc::ptr_eq(&first, &second), "expected the memoized regex");
+
+		clear_catalog_cache();
+		let refreshed = cached_regex(r"^(\d+)$").unwrap();
+		assert!(!Rc::ptr_eq(&first, &refreshed));
+	}
+
+	#[test]
+	fn invalid_patterns_are_cached_as_absent() {
+		clear_catalog_cache();
+		assert!(cached_regex("^(unclosed").is_none());
+		assert!(cached_regex("^(unclosed").is_none());
 	}
 
 	#[test]

@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 
 use crate::catalog::{
@@ -266,7 +267,18 @@ impl<'a> QueryBuilder<'a> {
 			}
 		};
 
-		let mut keys: Vec<String> = numbers.iter().map(|(k, _, _, _)| k.clone()).collect();
+		// One pass into a map, so the result stage is a lookup rather than a scan
+		// per key. First entry wins, matching the previous `find` behaviour where
+		// current entries precede superseded ones.
+		let mut entries_by_number: HashMap<String, (String, bool, Option<String>)> =
+			HashMap::with_capacity(numbers.len());
+		let mut keys: Vec<String> = Vec::with_capacity(numbers.len());
+		for (number, id, is_superseded, note) in numbers {
+			if !entries_by_number.contains_key(&number) {
+				keys.push(number.clone());
+				entries_by_number.insert(number, (id, is_superseded, note));
+			}
+		}
 
 		let defn = self
 			.query
@@ -309,18 +321,25 @@ impl<'a> QueryBuilder<'a> {
 
 		let scheme_index = self.index.catalog.get(composer).and_then(|s| s.get(scheme));
 
+		// Reverse index built once instead of scanning `current` per superseded hit.
+		let current_number_by_id: HashMap<&str, &str> = scheme_index
+			.map(|index| {
+				index
+					.current
+					.iter()
+					.map(|(number, entry)| (entry.id.as_str(), number.as_str()))
+					.collect()
+			})
+			.unwrap_or_default();
+
 		keys.into_iter()
 			.filter_map(|k| {
-				let entry = numbers.iter().find(|(num, _, _, _)| num == &k)?;
-				let (_, id, is_superseded, note) = entry;
+				let (id, is_superseded, note) = entries_by_number.get(&k)?;
 
 				let current_num = if *is_superseded {
-					scheme_index.and_then(|si| {
-						si.current
-							.iter()
-							.find(|(_, v)| v.id == *id)
-							.map(|(k, _)| k.clone())
-					})
+					current_number_by_id
+						.get(id.as_str())
+						.map(|number| (*number).to_string())
 				} else {
 					None
 				};
@@ -379,6 +398,7 @@ fn make_inclusive_ceiling(key: Vec<SortValue>) -> Vec<SortValue> {
 mod tests {
 	use super::*;
 	use crate::index::{IndexEntry, SchemeIndex};
+	use std::collections::HashSet;
 
 	fn make_test_index() -> Index {
 		let mut index = Index::default();
@@ -500,6 +520,18 @@ mod tests {
 		assert_eq!(results.len(), 1);
 		assert!(results[0].superseded);
 		assert_eq!(results[0].current_number, Some("332".into()));
+	}
+
+	#[test]
+	fn fetch_by_scheme_resolves_each_number_once() {
+		let index = make_test_index();
+
+		let results = index.query().composer("bach").scheme("bwv").fetch();
+
+		assert_eq!(results.len(), 2);
+		let numbers: HashSet<Option<String>> =
+			results.iter().map(|result| result.number.clone()).collect();
+		assert_eq!(numbers.len(), 2);
 	}
 
 	#[test]

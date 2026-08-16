@@ -1,6 +1,6 @@
-use regex::RegexBuilder;
 use std::collections::HashMap;
 
+use crate::catalog::cached_regex;
 use crate::config::{DisplayConfig, KeySymbols};
 use crate::types::{CatalogDefinition, Collection, Composition};
 
@@ -212,9 +212,8 @@ pub fn format_number_for_display(number: &str, defn: Option<&CatalogDefinition>)
 		None => return number.to_string(),
 	};
 
-	let re = match RegexBuilder::new(pattern).case_insensitive(true).build() {
-		Ok(r) => r,
-		Err(_) => return number.to_string(),
+	let Some(re) = cached_regex(pattern) else {
+		return number.to_string();
 	};
 
 	let caps = match re.captures(number) {

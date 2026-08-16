@@ -3,7 +3,8 @@ use std::fs;
 use std::io::{self, BufRead, Write};
 use std::path::{Path, PathBuf};
 
-use crate::add::{commit_composition, prepare_composition, AddError, PreparedAdd};
+use crate::add::{commit_composition, prepare_composition_with, AddError, PreparedAdd};
+use crate::validate::Validator;
 use crate::config::Config;
 use crate::display::{expand_title, ExpansionContext};
 use crate::index::mark_index_dirty;
@@ -71,13 +72,16 @@ fn current_catalog_keys(prepared: &PreparedAdd) -> Vec<(String, String, String)>
 }
 
 fn preflight(sources: &[PathBuf], force: bool, data_dir: &Path) -> BatchPlan {
+	// Nothing is committed until the whole plan is approved, so the dataset does
+	// not change underneath a single shared validator.
+	let validator = Validator::new(data_dir);
 	let mut prepared = Vec::new();
 	let mut failures = Vec::new();
 	let mut destinations: HashMap<PathBuf, PathBuf> = HashMap::new();
 	let mut catalog_keys: HashMap<(String, String, String), (String, PathBuf)> = HashMap::new();
 
 	for source in sources {
-		match prepare_composition(source, data_dir, force) {
+		match prepare_composition_with(source, data_dir, force, &validator) {
 			Ok(plan) => {
 				if let Some(first_source) = destinations.get(&plan.destination) {
 					failures.push(PreflightFailure {

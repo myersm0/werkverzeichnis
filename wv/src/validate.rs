@@ -3,10 +3,14 @@ use std::fs;
 use std::path::{Path, PathBuf};
 
 use jsonschema::Validator as JsonSchemaValidator;
+use regex::Regex;
 use serde::de::DeserializeOwned;
 use serde_json::Value;
+use std::sync::OnceLock;
 
-use crate::catalog::{load_catalog_def, normalize_catalog_number, validate_catalog_domain};
+use crate::catalog::{
+	cached_regex, load_catalog_def, normalize_catalog_number, validate_catalog_domain,
+};
 use crate::inventory::{build_inventory_index, normalize_inventory, InventoryIndex};
 use crate::parse::extract_id_from_path;
 use crate::types::{AttributionEntry, CatalogDefinition, Collection, Composer, Composition};
@@ -225,8 +229,8 @@ impl Validator {
 
 		let mut pattern_valid = true;
 		if let Some(pattern) = &definition.pattern {
-			match regex::RegexBuilder::new(pattern).case_insensitive(true).build() {
-				Ok(regex) if !regex.is_match(number) => {
+			match cached_regex(pattern) {
+				Some(regex) if !regex.is_match(number) => {
 					pattern_valid = false;
 					errors.push(ValidationError {
 						path: path_str.to_string(),
@@ -236,11 +240,11 @@ impl Validator {
 						),
 					});
 				}
-				Err(error) => {
+				None => {
 					pattern_valid = false;
 					errors.push(ValidationError {
 						path: path_str.to_string(),
-						message: format!("{}: invalid '{}' catalog pattern: {}", location, scheme, error),
+						message: format!("{}: invalid '{}' catalog pattern", location, scheme),
 					});
 				}
 				_ => {}
@@ -358,13 +362,11 @@ impl Validator {
 		location: &str,
 	) -> Vec<ValidationError> {
 		let mut errors = Vec::new();
-		let capture_count = definition.pattern.as_ref().and_then(|pattern| {
-			regex::RegexBuilder::new(pattern)
-				.case_insensitive(true)
-				.build()
-				.ok()
-				.map(|regex| regex.captures_len().saturating_sub(1))
-		});
+		let capture_count = definition
+			.pattern
+			.as_ref()
+			.and_then(|pattern| cached_regex(pattern))
+			.map(|regex| regex.captures_len().saturating_sub(1));
 
 		if let Some(constraints) = &definition.constraints {
 			for constraint in constraints {
@@ -727,8 +729,7 @@ impl Validator {
 	fn validate_id(&self, id: &str, path: &Path, path_str: &str) -> Vec<ValidationError> {
 		let mut errors = Vec::new();
 
-		let hex_pattern = regex::Regex::new(r"^[a-f0-9]{8}$").unwrap();
-		if !hex_pattern.is_match(id) {
+		if !id_pattern().is_match(id) {
 			errors.push(ValidationError {
 				path: path_str.to_string(),
 				message: format!("ID '{}' is not 8 lowercase hex characters", id),
@@ -753,9 +754,7 @@ impl Validator {
 		let mut errors = Vec::new();
 
 		if let Some(k) = key {
-			let key_pattern =
-				regex::Regex::new(r"^[A-Ga-g][#b]?(\.(dor|phr|lyd|mix|loc))?$").unwrap();
-			if !key_pattern.is_match(k) {
+			if !key_pattern().is_match(k) {
 				errors.push(ValidationError {
 					path: path_str.to_string(),
 					message: format!("Invalid key format: '{}'", k),
@@ -912,6 +911,19 @@ impl Validator {
 
 		errors
 	}
+}
+
+/// Case-sensitive, so these stay outside the shared case-insensitive regex cache.
+fn id_pattern() -> &'static Regex {
+	static PATTERN: OnceLock<Regex> = OnceLock::new();
+	PATTERN.get_or_init(|| Regex::new(r"^[a-f0-9]{8}$").expect("valid composition id pattern"))
+}
+
+fn key_pattern() -> &'static Regex {
+	static PATTERN: OnceLock<Regex> = OnceLock::new();
+	PATTERN.get_or_init(|| {
+		Regex::new(r"^[A-Ga-g][#b]?(\.(dor|phr|lyd|mix|loc))?$").expect("valid key pattern")
+	})
 }
 
 fn deserialize_model<T: DeserializeOwned>(
