@@ -18,3 +18,5 @@ Thumbs.db
 # local dev
 .env
 *.local
+
+wv/Cargo.lock

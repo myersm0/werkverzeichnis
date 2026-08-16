@@ -113,7 +113,6 @@ mod tests {
 	fn test_simple_merge() {
 		let entries = vec![AttributionEntry {
 			composer: Some("mozart".into()),
-			cf: None,
 			dates: Some(Dates {
 				composed: Some(1783),
 				published: None,
@@ -144,7 +143,6 @@ mod tests {
 		let entries = vec![
 			AttributionEntry {
 				composer: Some("telemann".into()),
-				cf: None,
 				dates: Some(Dates {
 					composed: Some(1725),
 					published: None,
@@ -164,7 +162,6 @@ mod tests {
 			},
 			AttributionEntry {
 				composer: Some("bach".into()),
-				cf: None,
 				dates: None,
 				status: Some(Status::Spurious),
 				catalog: Some(vec![CatalogEntry {
@@ -190,7 +187,6 @@ mod tests {
 		let entries = vec![
 			AttributionEntry {
 				composer: None,
-				cf: None,
 				dates: Some(Dates {
 					composed: Some(1725),
 					..Default::default()
@@ -202,7 +198,6 @@ mod tests {
 			},
 			AttributionEntry {
 				composer: Some("bach".into()),
-				cf: None,
 				dates: None,
 				status: None,
 				catalog: None,
@@ -219,7 +214,6 @@ mod tests {
 		let entries = vec![
 			AttributionEntry {
 				composer: Some("telemann".into()),
-				cf: None,
 				dates: None,
 				status: None,
 				catalog: None,
@@ -228,7 +222,6 @@ mod tests {
 			},
 			AttributionEntry {
 				composer: Some("bach".into()),
-				cf: None,
 				dates: None,
 				status: None,
 				catalog: None,
