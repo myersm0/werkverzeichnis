@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 use std::fs;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 use std::time::{SystemTime, UNIX_EPOCH};
 
 use serde::{Deserialize, Serialize};
@@ -55,6 +55,22 @@ pub enum IndexError {
 	},
 	#[error(transparent)]
 	Inventory(#[from] InventoryError),
+}
+
+#[derive(Debug, thiserror::Error)]
+pub enum EditionIndexError {
+	#[error("failed to read edition index {path}: {source}")]
+	Io {
+		path: PathBuf,
+		#[source]
+		source: std::io::Error,
+	},
+	#[error("invalid edition index {path}: {source}")]
+	Invalid {
+		path: PathBuf,
+		#[source]
+		source: serde_json::Error,
+	},
 }
 
 const INDEX_FORMAT_VERSION: u32 = 2;
@@ -264,14 +280,22 @@ pub fn load_edition_index<P: AsRef<Path>>(
 	composer: &str,
 	scheme: &str,
 	edition: &str,
-) -> Option<HashMap<String, String>> {
+) -> Result<Option<HashMap<String, String>>, EditionIndexError> {
 	let filename = format!("{}-{}-{}.json", composer, scheme, edition);
 	let path = data_dir.as_ref().join(".indexes").join("editions").join(filename);
-	let content = fs::read_to_string(&path).ok()?;
-	serde_json::from_str(&content).ok()
+	let content = match fs::read_to_string(&path) {
+		Ok(content) => content,
+		Err(source) if source.kind() == std::io::ErrorKind::NotFound => return Ok(None),
+		Err(source) => return Err(EditionIndexError::Io { path, source }),
+	};
+	let index = serde_json::from_str(&content).map_err(|source| EditionIndexError::Invalid {
+		path,
+		source,
+	})?;
+	Ok(Some(index))
 }
 
-pub fn index_is_stale<P: AsRef<Path>>(data_dir: P) -> bool {
+pub fn index_is_stale<P: AsRef<Path>>(data_dir: P) -> Result<bool, IndexError> {
 	let data_dir = data_dir.as_ref();
 	let indexes_dir = data_dir.join(".indexes");
 
@@ -279,55 +303,88 @@ pub fn index_is_stale<P: AsRef<Path>>(data_dir: P) -> bool {
 		|| !indexes_dir.join("composer-index.json").is_file()
 		|| !indexes_dir.join("inventory-index.json").is_file()
 	{
-		return true;
+		return Ok(true);
 	}
 
 	let metadata = match load_index_metadata(data_dir) {
 		Some(metadata) => metadata,
-		None => return true,
+		None => return Ok(true),
 	};
 
 	if metadata.format_version != INDEX_FORMAT_VERSION || metadata.dirty {
-		return true;
+		return Ok(true);
 	}
 
-	// Everything build_index reads, not just inventories: a git pull or a plain
-	// editor save has to invalidate the index too.
 	for (directory, extension) in INDEX_SOURCES {
-		if tree_has_newer_files(&data_dir.join(directory), metadata.built_at, extension) {
-			return true;
+		let source_dir = data_dir.join(directory);
+		if directory == "compositions" {
+			match fs::metadata(&source_dir) {
+				Ok(metadata) if metadata.is_dir() => {}
+				Ok(_) => return Ok(true),
+				Err(source) if source.kind() == std::io::ErrorKind::NotFound => return Ok(true),
+				Err(source) => {
+					return Err(IndexError::Io {
+						path: source_dir,
+						source,
+					});
+				}
+			}
+		}
+		if tree_has_newer_files(&source_dir, metadata.built_at, extension)? {
+			return Ok(true);
 		}
 	}
 
-	current_unix_seconds().saturating_sub(metadata.built_at) >= INDEX_TTL_SECS
+	Ok(current_unix_seconds().saturating_sub(metadata.built_at) >= INDEX_TTL_SECS)
 }
 
-fn tree_has_newer_files(dir: &Path, built_at: u64, extension: &str) -> bool {
-	let Ok(entries) = fs::read_dir(dir) else {
-		return false;
+fn tree_has_newer_files(
+	dir: &Path,
+	built_at: u64,
+	extension: &str,
+) -> Result<bool, IndexError> {
+	let entries = match fs::read_dir(dir) {
+		Ok(entries) => entries,
+		Err(source) if source.kind() == std::io::ErrorKind::NotFound => return Ok(false),
+		Err(source) => {
+			return Err(IndexError::Io {
+				path: dir.to_path_buf(),
+				source,
+			});
+		}
 	};
-	for entry in entries.flatten() {
+	for entry in entries {
+		let entry = entry.map_err(|source| IndexError::Io {
+			path: dir.to_path_buf(),
+			source,
+		})?;
 		let path = entry.path();
 		if path.is_dir() {
-			if tree_has_newer_files(&path, built_at, extension) {
-				return true;
+			if tree_has_newer_files(&path, built_at, extension)? {
+				return Ok(true);
 			}
 			continue;
 		}
 		if path.extension().map_or(true, |ext| ext != extension) {
 			continue;
 		}
-		let modified = entry
-			.metadata()
-			.ok()
-			.and_then(|metadata| metadata.modified().ok())
-			.and_then(|modified| modified.duration_since(UNIX_EPOCH).ok())
-			.map(|duration| duration.as_secs());
-		if modified.map_or(false, |modified| modified >= built_at) {
-			return true;
+		let metadata = entry.metadata().map_err(|source| IndexError::Io {
+			path: path.clone(),
+			source,
+		})?;
+		let modified = metadata.modified().map_err(|source| IndexError::Io {
+			path: path.clone(),
+			source,
+		})?;
+		let modified = match modified.duration_since(UNIX_EPOCH) {
+			Ok(duration) => duration.as_secs(),
+			Err(_) => return Ok(true),
+		};
+		if modified >= built_at {
+			return Ok(true);
 		}
 	}
-	false
+	Ok(false)
 }
 
 fn current_unix_seconds() -> u64 {
@@ -414,7 +471,7 @@ pub fn save_index<P: AsRef<Path>>(index: &Index, data_dir: P) -> std::io::Result
 pub fn get_or_build_index<P: AsRef<Path>>(data_dir: P) -> Result<Index, IndexError> {
 	let data_dir = data_dir.as_ref();
 
-	if !index_is_stale(data_dir) {
+	if !index_is_stale(data_dir)? {
 		if let Some(index) = load_index(data_dir) {
 			return Ok(index);
 		}
@@ -463,6 +520,7 @@ mod tests {
 	use super::*;
 
 	fn create_index_files(data_dir: &Path) {
+		fs::create_dir_all(data_dir.join("compositions")).unwrap();
 		let indexes_dir = data_dir.join(".indexes");
 		fs::create_dir_all(&indexes_dir).unwrap();
 		fs::write(indexes_dir.join("index.json"), "{}").unwrap();
@@ -480,7 +538,7 @@ mod tests {
 		)
 		.unwrap();
 
-		assert!(index_is_stale(temp.path()));
+		assert!(index_is_stale(temp.path()).unwrap());
 	}
 
 	#[test]
@@ -520,7 +578,26 @@ mod tests {
 		)
 		.unwrap();
 
-		assert!(!index_is_stale(temp.path()));
+		assert!(!index_is_stale(temp.path()).unwrap());
+	}
+
+	#[test]
+	fn unreadable_source_tree_is_an_index_error() {
+		let temp = tempfile::tempdir().unwrap();
+		create_index_files(temp.path());
+		fs::write(temp.path().join("catalogs"), "not a directory").unwrap();
+		write_index_metadata(
+			temp.path(),
+			&IndexMetadata {
+				format_version: INDEX_FORMAT_VERSION,
+				built_at: current_unix_seconds(),
+				dirty: false,
+			},
+		)
+		.unwrap();
+
+		let error = index_is_stale(temp.path()).unwrap_err();
+		assert!(error.to_string().contains("catalogs"));
 	}
 
 	#[test]
@@ -539,7 +616,7 @@ mod tests {
 
 		mark_index_dirty(temp.path()).unwrap();
 
-		assert!(index_is_stale(temp.path()));
+		assert!(index_is_stale(temp.path()).unwrap());
 	}
 
 	#[test]
@@ -556,20 +633,21 @@ mod tests {
 		)
 		.unwrap();
 
-		assert!(index_is_stale(temp.path()));
+		assert!(index_is_stale(temp.path()).unwrap());
 	}
 
 	#[test]
 	fn test_save_index_marks_index_fresh() {
 		let temp = tempfile::tempdir().unwrap();
 		let index = Index::default();
+		fs::create_dir_all(temp.path().join("compositions")).unwrap();
 
 		save_index(&index, temp.path()).unwrap();
 
 		assert!(temp.path().join(".indexes/index.json").is_file());
 		assert!(temp.path().join(".indexes/composer-index.json").is_file());
 		assert!(temp.path().join(".indexes/metadata.json").is_file());
-		assert!(!index_is_stale(temp.path()));
+		assert!(!index_is_stale(temp.path()).unwrap());
 	}
 
 	#[test]
@@ -585,13 +663,13 @@ mod tests {
 			},
 		)
 		.unwrap();
-		assert!(!index_is_stale(temp.path()));
+		assert!(!index_is_stale(temp.path()).unwrap());
 
 		let dir = temp.path().join("compositions").join("ab");
 		fs::create_dir_all(&dir).unwrap();
 		fs::write(dir.join("cd1234.json"), "{}").unwrap();
 
-		assert!(index_is_stale(temp.path()));
+		assert!(index_is_stale(temp.path()).unwrap());
 	}
 
 	#[test]

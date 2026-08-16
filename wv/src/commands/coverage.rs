@@ -55,10 +55,14 @@ pub fn run(composer: &str, scheme: Option<&str>, edition: Option<&str>, missing:
 		found = true;
 
 		let populated: HashSet<String> = if let Some(edition) = resolved_edition {
-			load_edition_index(data_dir, composer, &scheme, edition)
-				.unwrap_or_default()
-				.into_keys()
-				.collect()
+			match load_edition_index(data_dir, composer, &scheme, edition) {
+				Ok(Some(index)) => index.into_keys().collect(),
+				Ok(None) => HashSet::new(),
+				Err(error) => {
+					eprintln!("Error loading edition index: {}", error);
+					std::process::exit(1);
+				}
+			}
 		} else {
 			index
 				.catalog

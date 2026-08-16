@@ -194,8 +194,12 @@ fn resolve_input(args: &GetArgs) -> Option<Input> {
 	if args.stdin {
 		let mut ids = Vec::new();
 		for line in io::stdin().lock().lines() {
-			let Ok(line) = line else {
-				continue;
+			let line = match line {
+				Ok(line) => line,
+				Err(error) => {
+					eprintln!("Error reading stdin: {}", error);
+					std::process::exit(1);
+				}
 			};
 			let line = line.trim();
 			if line.is_empty() {

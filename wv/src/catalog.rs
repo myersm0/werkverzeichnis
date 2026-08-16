@@ -75,6 +75,8 @@ pub enum CatalogLoadError {
 	Io { path: PathBuf, message: String },
 	#[error("invalid catalog metadata {path}: {message}")]
 	Invalid { path: PathBuf, message: String },
+	#[error("invalid catalog pattern for {catalog}: {message}")]
+	InvalidPattern { catalog: String, message: String },
 }
 
 thread_local! {
@@ -111,8 +113,14 @@ pub fn load_catalog_def<P: AsRef<Path>>(
 	definition
 }
 
+#[derive(Error, Debug, Clone, PartialEq, Eq)]
+#[error("{message}")]
+pub(crate) struct CatalogPatternError {
+	message: String,
+}
+
 thread_local! {
-	static REGEX_CACHE: RefCell<HashMap<String, Option<Rc<Regex>>>> =
+	static REGEX_CACHE: RefCell<HashMap<String, Result<Rc<Regex>, CatalogPatternError>>> =
 		RefCell::new(HashMap::new());
 }
 
@@ -123,7 +131,7 @@ thread_local! {
 /// Returns an `Rc` rather than lending from the cache so the borrow is released
 /// before the caller runs: some callers compile a second pattern while holding
 /// the first.
-pub(crate) fn cached_regex(pattern: &str) -> Option<Rc<Regex>> {
+pub(crate) fn cached_regex_result(pattern: &str) -> Result<Rc<Regex>, CatalogPatternError> {
 	REGEX_CACHE.with(|cache| {
 		let mut cache = cache.borrow_mut();
 		if let Some(compiled) = cache.get(pattern) {
@@ -132,11 +140,17 @@ pub(crate) fn cached_regex(pattern: &str) -> Option<Rc<Regex>> {
 		let compiled = RegexBuilder::new(pattern)
 			.case_insensitive(true)
 			.build()
-			.ok()
-			.map(Rc::new);
+			.map(Rc::new)
+			.map_err(|error| CatalogPatternError {
+				message: error.to_string(),
+			});
 		cache.insert(pattern.to_string(), compiled.clone());
 		compiled
 	})
+}
+
+pub(crate) fn cached_regex(pattern: &str) -> Option<Rc<Regex>> {
+	cached_regex_result(pattern).ok()
 }
 
 pub fn clear_catalog_cache() {
@@ -182,14 +196,23 @@ fn read_catalog_def(
 	let global_path = data_dir.join("catalogs").join(format!("{}.json", scheme));
 	let global_def = read_optional_json::<CatalogDefinition>(&global_path)?;
 
-	Ok(match (composer_def, global_def) {
+	let definition = match (composer_def, global_def) {
 		(Some(composer_def), Some(global_def)) => {
 			Some(merge_catalog_definitions(&global_def, &composer_def))
 		}
 		(Some(composer_def), None) => Some(composer_def),
 		(None, Some(global_def)) => Some(global_def),
 		(None, None) => None,
-	})
+	};
+
+	if let Some(pattern) = definition.as_ref().and_then(|definition| definition.pattern.as_deref()) {
+		cached_regex_result(pattern).map_err(|error| CatalogLoadError::InvalidPattern {
+			catalog: composer.map_or_else(|| scheme.to_string(), |composer| format!("{}/{}", composer, scheme)),
+			message: error.to_string(),
+		})?;
+	}
+
+	Ok(definition)
 }
 
 /// Overlay a composer-specific definition onto the shared one.
@@ -887,11 +910,32 @@ mod tests {
 	}
 
 	#[test]
+	fn invalid_pattern_cache_preserves_error_detail() {
+		clear_catalog_cache();
+		let error = cached_regex_result("^(unclosed").unwrap_err();
+		assert!(!error.to_string().is_empty());
+	}
+
+	#[test]
 	fn missing_definitions_are_cached_as_absent() {
 		let tmp = tempfile::tempdir().unwrap();
 		clear_catalog_cache();
 		assert!(load_catalog_def(tmp.path(), "nonexistent", None).unwrap().is_none());
 		assert!(load_catalog_def(tmp.path(), "nonexistent", None).unwrap().is_none());
+	}
+
+	#[test]
+	fn invalid_catalog_pattern_is_a_load_error() {
+		let tmp = tempfile::tempdir().unwrap();
+		std::fs::create_dir_all(tmp.path().join("catalogs")).unwrap();
+		std::fs::write(
+			tmp.path().join("catalogs/op.json"),
+			r#"{"id":"op","name":"Opus number","pattern":"^(unclosed"}"#,
+		)
+		.unwrap();
+		clear_catalog_cache();
+		let error = load_catalog_def(tmp.path(), "op", None).unwrap_err();
+		assert!(error.to_string().contains("invalid catalog pattern for op"));
 	}
 
 	#[test]

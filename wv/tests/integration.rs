@@ -396,10 +396,10 @@ fn test_index_roundtrip() {
 	let index = build_index(root).unwrap();
 
 	// Verify lookups work
-	let result = index.query().composer("mozart").scheme("k").number("545").fetch_one();
+	let result = index.query().composer("mozart").scheme("k").number("545").fetch_one().unwrap();
 	assert_eq!(result, Some("ab123456".to_string()));
 
-	let result = index.query().composer("mozart").scheme("k").number("331").fetch_one();
+	let result = index.query().composer("mozart").scheme("k").number("331").fetch_one().unwrap();
 	assert_eq!(result, Some("cd789012".to_string()));
 
 	// Verify composer index
@@ -429,7 +429,7 @@ fn test_index_persists_and_reloads() {
 
 	let loaded = werkverzeichnis::load_index(root).unwrap();
 
-	let result = loaded.query().composer("bach").scheme("bwv").number("812").fetch_one();
+	let result = loaded.query().composer("bach").scheme("bwv").number("812").fetch_one().unwrap();
 	assert_eq!(result, Some("ab123456".to_string()));
 }
 
@@ -470,16 +470,46 @@ fn test_cumulative_editions() {
 	write_edition_indexes(&index, root).unwrap();
 
 	// Edition 1 should have: 545, 300i (not 331)
-	let ed1 = load_edition_index(root, "mozart", "k", "1").unwrap();
+	let ed1 = load_edition_index(root, "mozart", "k", "1").unwrap().unwrap();
 	assert!(ed1.contains_key("545"));
 	assert!(ed1.contains_key("300i"));
 	assert!(!ed1.contains_key("331"));
 
 	// Edition 9 should have: 545 (inherited), 331 (not 300i)
-	let ed9 = load_edition_index(root, "mozart", "k", "9").unwrap();
+	let ed9 = load_edition_index(root, "mozart", "k", "9").unwrap().unwrap();
 	assert!(ed9.contains_key("545"), "545 should be inherited into edition 9");
 	assert!(ed9.contains_key("331"), "331 should be in edition 9");
 	assert!(!ed9.contains_key("300i"), "300i should be superseded by 331 in edition 9");
+}
+
+#[test]
+fn test_corrupt_edition_index_is_an_error_but_missing_is_not() {
+	let tmp = setup_test_repo();
+	let root = tmp.path();
+	let index = build_index(root).unwrap();
+
+	fs::write(root.join(".indexes/editions/mozart-k-1.json"), "{").unwrap();
+	let error = index
+		.query()
+		.composer("mozart")
+		.scheme("k")
+		.edition("1")
+		.number("545")
+		.data_dir(root)
+		.fetch_one()
+		.unwrap_err();
+	assert!(error.to_string().contains("invalid edition index"));
+
+	let missing = index
+		.query()
+		.composer("mozart")
+		.scheme("k")
+		.edition("2")
+		.number("545")
+		.data_dir(root)
+		.fetch_one()
+		.unwrap();
+	assert_eq!(missing, None);
 }
 
 #[test]
@@ -532,16 +562,16 @@ fn test_case_insensitive_query() {
 	let index = build_index(root).unwrap();
 
 	// Query with various case combinations - number is normalized by library
-	let result = index.query().composer("haydn").scheme("hob").number("i:104").fetch_one();
+	let result = index.query().composer("haydn").scheme("hob").number("i:104").fetch_one().unwrap();
 	assert_eq!(result, Some("ab123456".to_string()));
 
 	// Uppercase number gets normalized
-	let result = index.query().composer("haydn").scheme("hob").number("I:104").fetch_one();
+	let result = index.query().composer("haydn").scheme("hob").number("I:104").fetch_one().unwrap();
 	assert_eq!(result, Some("ab123456".to_string()));
 
 	// Composer/scheme normalization happens at CLI layer, so these need lowercase
 	// This matches real usage: wv.rs does .to_lowercase() before calling query
-	let result = index.query().composer("haydn").scheme("hob").number("I:104").fetch_one();
+	let result = index.query().composer("haydn").scheme("hob").number("I:104").fetch_one().unwrap();
 	assert_eq!(result, Some("ab123456".to_string()));
 }
 
@@ -569,15 +599,15 @@ fn test_superseded_lookup() {
 	let index = build_index(root).unwrap();
 
 	// Current number works
-	let result = index.query().composer("mozart").scheme("k").number("331").fetch_one();
+	let result = index.query().composer("mozart").scheme("k").number("331").fetch_one().unwrap();
 	assert_eq!(result, Some("ab123456".to_string()));
 
 	// Superseded number also works (non-strict mode)
-	let result = index.query().composer("mozart").scheme("k").number("300i").fetch_one();
+	let result = index.query().composer("mozart").scheme("k").number("300i").fetch_one().unwrap();
 	assert_eq!(result, Some("ab123456".to_string()));
 
 	// Strict mode rejects superseded
-	let result = index.query().composer("mozart").scheme("k").number("300i").strict(true).fetch_one();
+	let result = index.query().composer("mozart").scheme("k").number("300i").strict(true).fetch_one().unwrap();
 	assert_eq!(result, None);
 }
 
@@ -644,19 +674,19 @@ fn test_multi_composer_attribution() {
 	let index = build_index(root).unwrap();
 
 	// Telemann lookup
-	let result = index.query().composer("telemann").scheme("twv").number("1:183").fetch_one();
+	let result = index.query().composer("telemann").scheme("twv").number("1:183").fetch_one().unwrap();
 	assert_eq!(result, Some("ab123456".to_string()));
 
 	// Bach current (Anhang)
-	let result = index.query().composer("bach").scheme("bwv").number("anh. iii 141").fetch_one();
+	let result = index.query().composer("bach").scheme("bwv").number("anh. iii 141").fetch_one().unwrap();
 	assert_eq!(result, Some("ab123456".to_string()));
 
 	// Bach superseded
-	let result = index.query().composer("bach").scheme("bwv").number("141").fetch_one();
+	let result = index.query().composer("bach").scheme("bwv").number("141").fetch_one().unwrap();
 	assert_eq!(result, Some("ab123456".to_string()));
 
 	// Bach superseded in strict mode
-	let result = index.query().composer("bach").scheme("bwv").number("141").strict(true).fetch_one();
+	let result = index.query().composer("bach").scheme("bwv").number("141").strict(true).fetch_one().unwrap();
 	assert_eq!(result, None);
 }
 
@@ -692,7 +722,7 @@ fn test_collection_membership() {
 	let index = build_index(root).unwrap();
 
 	// Should be indexed under bach
-	let result = index.query().composer("bach").scheme("bwv").number("846").fetch_one();
+	let result = index.query().composer("bach").scheme("bwv").number("846").fetch_one().unwrap();
 	assert_eq!(result, Some("ab123456".to_string()));
 
 	// Should appear in composer index
@@ -869,24 +899,24 @@ fn test_kochel_331_edition_mapping() {
 	write_edition_indexes(&index, root).unwrap();
 
 	// Current number (ed 9) should work
-	let result = index.query().composer("mozart").scheme("k").number("331").fetch_one();
+	let result = index.query().composer("mozart").scheme("k").number("331").fetch_one().unwrap();
 	assert_eq!(result, Some("ab331331".to_string()));
 
 	// Edition 6 number should work
-	let result = index.query().composer("mozart").scheme("k").number("300i").fetch_one();
+	let result = index.query().composer("mozart").scheme("k").number("300i").fetch_one().unwrap();
 	assert_eq!(result, Some("ab331331".to_string()));
 
 	// Edition 1 had same number as current
-	let ed1 = load_edition_index(root, "mozart", "k", "1").unwrap();
+	let ed1 = load_edition_index(root, "mozart", "k", "1").unwrap().unwrap();
 	assert!(ed1.contains_key("331"));
 
 	// Edition 6 should have 300i, not 331
-	let ed6 = load_edition_index(root, "mozart", "k", "6").unwrap();
+	let ed6 = load_edition_index(root, "mozart", "k", "6").unwrap().unwrap();
 	assert!(ed6.contains_key("300i"));
 	assert!(!ed6.contains_key("331"));
 
 	// Edition 9 should have 331, not 300i
-	let ed9 = load_edition_index(root, "mozart", "k", "9").unwrap();
+	let ed9 = load_edition_index(root, "mozart", "k", "9").unwrap().unwrap();
 	assert!(ed9.contains_key("331"));
 	assert!(!ed9.contains_key("300i"));
 }
@@ -915,20 +945,20 @@ fn test_kochel_anh_reclassification() {
 	write_edition_indexes(&index, root).unwrap();
 
 	// Current number should work
-	let result = index.query().composer("mozart").scheme("k").number("19a").fetch_one();
+	let result = index.query().composer("mozart").scheme("k").number("19a").fetch_one().unwrap();
 	assert_eq!(result, Some("ab19a19a".to_string()));
 
 	// Old Anhang number should also work (superseded)
-	let result = index.query().composer("mozart").scheme("k").number("anh. 223").fetch_one();
+	let result = index.query().composer("mozart").scheme("k").number("anh. 223").fetch_one().unwrap();
 	assert_eq!(result, Some("ab19a19a".to_string()));
 
 	// Edition 1 should have anh. 223
-	let ed1 = load_edition_index(root, "mozart", "k", "1").unwrap();
+	let ed1 = load_edition_index(root, "mozart", "k", "1").unwrap().unwrap();
 	assert!(ed1.contains_key("anh. 223"));
 	assert!(!ed1.contains_key("19a"));
 
 	// Edition 6 should have 19a
-	let ed6 = load_edition_index(root, "mozart", "k", "6").unwrap();
+	let ed6 = load_edition_index(root, "mozart", "k", "6").unwrap().unwrap();
 	assert!(ed6.contains_key("19a"));
 	assert!(!ed6.contains_key("anh. 223"));
 }

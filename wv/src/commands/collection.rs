@@ -8,6 +8,36 @@ use crate::merge::collection_path_from_id;
 use crate::output::print;
 use crate::parse::{load_collection, load_composition};
 
+fn read_dir_or_exit(path: &Path) -> Vec<std::fs::DirEntry> {
+	let entries = match std::fs::read_dir(path) {
+		Ok(entries) => entries,
+		Err(error) if error.kind() == std::io::ErrorKind::NotFound => return Vec::new(),
+		Err(error) => {
+			eprintln!("Error reading directory {}: {}", path.display(), error);
+			std::process::exit(1);
+		}
+	};
+	entries
+		.map(|entry| match entry {
+			Ok(entry) => entry,
+			Err(error) => {
+				eprintln!("Error reading directory entry in {}: {}", path.display(), error);
+				std::process::exit(1);
+			}
+		})
+		.collect()
+}
+
+fn entry_is_dir_or_exit(entry: &std::fs::DirEntry) -> bool {
+	match entry.file_type() {
+		Ok(file_type) => file_type.is_dir(),
+		Err(error) => {
+			eprintln!("Error reading metadata for {}: {}", entry.path().display(), error);
+			std::process::exit(1);
+		}
+	}
+}
+
 pub fn list(composer: Option<&str>, user: bool, data_dir: &Path) {
 	let base_dir = if user {
 		data_dir.join("user-collections")
@@ -15,34 +45,18 @@ pub fn list(composer: Option<&str>, user: bool, data_dir: &Path) {
 		data_dir.join("collections")
 	};
 
-	if !base_dir.exists() {
-		return;
-	}
-
 	let dirs_to_scan: Vec<_> = if let Some(c) = composer {
 		vec![base_dir.join(c)]
 	} else {
-		match std::fs::read_dir(&base_dir) {
-			Ok(entries) => entries
-				.flatten()
-				.filter(|e| e.path().is_dir())
-				.map(|e| e.path())
-				.collect(),
-			Err(_) => return,
-		}
+		read_dir_or_exit(&base_dir)
+			.into_iter()
+			.filter(entry_is_dir_or_exit)
+			.map(|entry| entry.path())
+			.collect()
 	};
 
 	for dir in dirs_to_scan {
-		if !dir.is_dir() {
-			continue;
-		}
-
-		let files = match std::fs::read_dir(&dir) {
-			Ok(f) => f,
-			Err(_) => continue,
-		};
-
-		for entry in files.flatten() {
+		for entry in read_dir_or_exit(&dir) {
 			let path = entry.path();
 			if path.extension().map_or(true, |e| e != "json") {
 				continue;
@@ -126,12 +140,19 @@ pub fn show(id: &str, data_dir: &Path, config: &Config) {
 	print("");
 
 	for num in &collection.compositions {
-		let found = index
+		let found = match index
 			.query()
 			.composer(composer)
 			.scheme(&collection.scheme)
 			.number(num)
-			.fetch_one();
+			.fetch_one()
+		{
+			Ok(found) => found,
+			Err(error) => {
+				eprintln!("Error querying dataset: {}", error);
+				std::process::exit(1);
+			}
+		};
 
 		let formatted_cat = format_catalog(&collection.scheme, num, catalog_defn.as_ref());
 
@@ -175,30 +196,26 @@ pub fn find(query: &str, data_dir: &Path) {
 
 	let mut found = Vec::new();
 
-	if let Ok(composer_dirs) = std::fs::read_dir(&collections_dir) {
-		for composer_entry in composer_dirs.flatten() {
-			if !composer_entry.path().is_dir() {
+	for composer_entry in read_dir_or_exit(&collections_dir) {
+		if !entry_is_dir_or_exit(&composer_entry) {
+			continue;
+		}
+
+		for file_entry in read_dir_or_exit(&composer_entry.path()) {
+			let path = file_entry.path();
+			if path.extension().map_or(true, |e| e != "json") {
 				continue;
 			}
 
-			if let Ok(coll_files) = std::fs::read_dir(composer_entry.path()) {
-				for file_entry in coll_files.flatten() {
-					let path = file_entry.path();
-					if path.extension().map_or(true, |e| e != "json") {
-						continue;
-					}
-
-					let coll = match load_collection(&path) {
-						Ok(coll) => coll,
-						Err(error) => {
-							eprintln!("Error loading collection {}: {}", path.display(), error);
-							std::process::exit(1);
-						}
-					};
-					if coll.scheme == scheme && coll.compositions.contains(&number.to_string()) {
-						found.push(coll.id.clone());
-					}
+			let coll = match load_collection(&path) {
+				Ok(coll) => coll,
+				Err(error) => {
+					eprintln!("Error loading collection {}: {}", path.display(), error);
+					std::process::exit(1);
 				}
+			};
+			if coll.scheme == scheme && coll.compositions.contains(&number.to_string()) {
+				found.push(coll.id.clone());
 			}
 		}
 	}

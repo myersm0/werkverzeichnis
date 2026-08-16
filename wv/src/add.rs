@@ -10,6 +10,7 @@ pub enum AddError {
 	ReadError(String),
 	ParseError(String),
 	ValidationError(Vec<String>),
+	DatasetIntegrity(Vec<String>),
 	WriteError(String),
 	AlreadyExists(String),
 }
@@ -21,6 +22,13 @@ impl std::fmt::Display for AddError {
 			AddError::ParseError(e) => write!(f, "Failed to parse: {}", e),
 			AddError::ValidationError(errs) => {
 				writeln!(f, "Validation errors:")?;
+				for e in errs {
+					writeln!(f, "  {}", e)?;
+				}
+				Ok(())
+			}
+			AddError::DatasetIntegrity(errs) => {
+				writeln!(f, "Dataset integrity errors:")?;
 				for e in errs {
 					writeln!(f, "  {}", e)?;
 				}
@@ -70,6 +78,11 @@ pub fn prepare_composition_with<P: AsRef<Path>, Q: AsRef<Path>>(
 ) -> Result<PreparedAdd, AddError> {
 	let source = source.as_ref();
 	let data_dir = data_dir.as_ref();
+
+	let integrity_errors = validator.integrity_errors();
+	if !integrity_errors.is_empty() {
+		return Err(AddError::DatasetIntegrity(integrity_errors));
+	}
 
 	let comp = load_composition(source).map_err(|e| AddError::ParseError(e.to_string()))?;
 
@@ -181,8 +194,9 @@ mod tests {
 
 	fn setup_data_dir() -> TempDir {
 		let tmp = TempDir::new().unwrap();
-		fs::create_dir_all(tmp.path().join("schemas")).unwrap();
-		fs::create_dir_all(tmp.path().join("composers")).unwrap();
+		for directory in ["schemas", "composers", "catalogs", "collections", "compositions", "inventories"] {
+			fs::create_dir_all(tmp.path().join(directory)).unwrap();
+		}
 		fs::write(tmp.path().join("schemas/composition.schema.json"), "{}").unwrap();
 		fs::write(tmp.path().join("composers/mozart.json"), "{}").unwrap();
 		tmp
@@ -255,6 +269,27 @@ mod tests {
 		let source = write_source(tmp.path(), "incoming.json", "a\u{e9}aaaaa");
 		// rejected (by validation, before the path is ever built) rather than panicking
 		assert!(prepare_composition(&source, tmp.path(), false).is_err());
+	}
+
+	#[test]
+	fn prepare_fails_when_existing_composition_is_corrupt() {
+		let tmp = setup_data_dir();
+		fs::create_dir_all(tmp.path().join("compositions/cd")).unwrap();
+		fs::write(tmp.path().join("compositions/cd/123456.json"), "{").unwrap();
+		let source = write_source(tmp.path(), "incoming.json", "ab123456");
+
+		let error = prepare_composition(&source, tmp.path(), false).unwrap_err();
+		assert!(matches!(error, AddError::DatasetIntegrity(_)));
+	}
+
+	#[test]
+	fn prepare_fails_when_inventory_index_cannot_be_built() {
+		let tmp = setup_data_dir();
+		fs::write(tmp.path().join("inventories/bad.toml"), "not = [valid").unwrap();
+		let source = write_source(tmp.path(), "incoming.json", "ab123456");
+
+		let error = prepare_composition(&source, tmp.path(), false).unwrap_err();
+		assert!(matches!(error, AddError::DatasetIntegrity(_)));
 	}
 
 	#[test]

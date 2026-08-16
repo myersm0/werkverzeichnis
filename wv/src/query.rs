@@ -5,7 +5,7 @@ use crate::catalog::{
 	is_fallback_key, load_catalog_def, looks_like_group, matches_group,
 	normalize_catalog_number, sort_key, sort_numbers, CatalogLoadError, SortValue,
 };
-use crate::index::{load_edition_index, Index};
+use crate::index::{load_edition_index, EditionIndexError, Index};
 use crate::parse::{load_composer, load_composition, path_for_id, ParseError};
 use crate::types::Composition;
 use thiserror::Error;
@@ -14,6 +14,8 @@ use thiserror::Error;
 pub enum QueryError {
 	#[error(transparent)]
 	Catalog(#[from] CatalogLoadError),
+	#[error(transparent)]
+	EditionIndex(#[from] EditionIndexError),
 	#[error("failed to load composer metadata {path}: {source}")]
 	Composer { path: PathBuf, #[source] source: ParseError },
 	#[error("failed to load composition {path}: {source}")]
@@ -111,38 +113,50 @@ impl<'a> QueryBuilder<'a> {
 		self
 	}
 
-	pub fn fetch_one(&self) -> Option<String> {
-		let composer = self.query.composer.as_ref()?;
-		let scheme = self.query.scheme.as_ref()?;
-		let number = self.query.number.as_ref()?;
+	pub fn fetch_one(&self) -> Result<Option<String>, QueryError> {
+		let Some(composer) = self.query.composer.as_ref() else {
+			return Ok(None);
+		};
+		let Some(scheme) = self.query.scheme.as_ref() else {
+			return Ok(None);
+		};
+		let Some(number) = self.query.number.as_ref() else {
+			return Ok(None);
+		};
 
 		let normalized = normalize_catalog_number(number);
 
 		if let Some(edition) = &self.query.edition {
-			let data_dir = self.query.data_dir.as_ref()?;
-			let edition_index = load_edition_index(data_dir, composer, scheme, edition)?;
-			return edition_index.get(&normalized).cloned();
+			let Some(data_dir) = self.query.data_dir.as_ref() else {
+				return Ok(None);
+			};
+			let Some(edition_index) = load_edition_index(data_dir, composer, scheme, edition)? else {
+				return Ok(None);
+			};
+			return Ok(edition_index.get(&normalized).cloned());
 		}
 
-		let scheme_index = self.index.catalog.get(composer)?.get(scheme)?;
+		let Some(scheme_index) = self.index.catalog.get(composer).and_then(|schemes| schemes.get(scheme)) else {
+			return Ok(None);
+		};
 
 		if let Some(entry) = scheme_index.current.get(&normalized) {
-			return Some(entry.id.clone());
+			return Ok(Some(entry.id.clone()));
 		}
 
 		if !self.query.strict {
 			if let Some(entry) = scheme_index.superseded.get(&normalized) {
-				return Some(entry.id.clone());
+				return Ok(Some(entry.id.clone()));
 			}
 		}
 
-		None
+		Ok(None)
 	}
 
 	pub fn fetch(&self) -> Result<Vec<QueryResult>, QueryError> {
 		match (&self.query.composer, &self.query.scheme, &self.query.number) {
 			(Some(composer), Some(scheme), Some(number)) => {
-				if let Some(result) = self.fetch_one_with_info() {
+				if let Some(result) = self.fetch_one_with_info()? {
 					Ok(vec![result])
 				} else {
 					let dominated = if let Some(data_dir) = self.query.data_dir.as_ref() {
@@ -177,36 +191,50 @@ impl<'a> QueryBuilder<'a> {
 		}
 	}
 
-	fn fetch_one_with_info(&self) -> Option<QueryResult> {
-		let composer = self.query.composer.as_ref()?;
-		let scheme = self.query.scheme.as_ref()?;
-		let number = self.query.number.as_ref()?;
+	fn fetch_one_with_info(&self) -> Result<Option<QueryResult>, QueryError> {
+		let Some(composer) = self.query.composer.as_ref() else {
+			return Ok(None);
+		};
+		let Some(scheme) = self.query.scheme.as_ref() else {
+			return Ok(None);
+		};
+		let Some(number) = self.query.number.as_ref() else {
+			return Ok(None);
+		};
 
 		let normalized = normalize_catalog_number(number);
 
 		if let Some(edition) = &self.query.edition {
-			let data_dir = self.query.data_dir.as_ref()?;
-			let edition_index = load_edition_index(data_dir, composer, scheme, edition)?;
-			let id = edition_index.get(&normalized)?.clone();
-			return Some(QueryResult {
+			let Some(data_dir) = self.query.data_dir.as_ref() else {
+				return Ok(None);
+			};
+			let Some(edition_index) = load_edition_index(data_dir, composer, scheme, edition)? else {
+				return Ok(None);
+			};
+			let Some(id) = edition_index.get(&normalized).cloned() else {
+				return Ok(None);
+			};
+			return Ok(Some(QueryResult {
 				id,
 				number: Some(normalized),
 				superseded: false,
 				current_number: None,
 				note: None,
-			});
+			}));
 		}
 
-		let scheme_index = self.index.catalog.get(composer)?.get(scheme)?;
+		let Some(scheme_index) = self.index.catalog.get(composer).and_then(|schemes| schemes.get(scheme)) else {
+			return Ok(None);
+		};
 
 		if let Some(entry) = scheme_index.current.get(&normalized) {
-			return Some(QueryResult {
+			return Ok(Some(QueryResult {
 				id: entry.id.clone(),
 				number: Some(normalized),
 				superseded: false,
 				current_number: None,
 				note: entry.note.clone(),
-			});
+			}));
 		}
 
 		if !self.query.strict {
@@ -217,17 +245,17 @@ impl<'a> QueryBuilder<'a> {
 					.find(|(_, v)| v.id == entry.id)
 					.map(|(k, _)| k.clone());
 
-				return Some(QueryResult {
+				return Ok(Some(QueryResult {
 					id: entry.id.clone(),
 					number: Some(normalized),
 					superseded: true,
 					current_number: current_num,
 					note: entry.note.clone(),
-				});
+				}));
 			}
 		}
 
-		None
+		Ok(None)
 	}
 
 	fn fetch_by_composer(&self, composer: &str) -> Result<Vec<QueryResult>, QueryError> {
@@ -330,8 +358,8 @@ impl<'a> QueryBuilder<'a> {
 				Some(d) => d,
 				None => return Ok(vec![]),
 			};
-			match load_edition_index(data_dir, composer, scheme, edition) {
-				Some(n) => n.iter().map(|(k, v)| (k.clone(), v.clone(), false, None)).collect(),
+			match load_edition_index(data_dir, composer, scheme, edition)? {
+				Some(n) => n.into_iter().map(|(k, v)| (k, v, false, None)).collect(),
 				None => return Ok(vec![]),
 			}
 		} else {
@@ -473,8 +501,8 @@ impl<'a> QueryBuilder<'a> {
 		Ok(self.fetch()?.len())
 	}
 
-	pub fn exists(&self) -> bool {
-		self.fetch_one().is_some()
+	pub fn exists(&self) -> Result<bool, QueryError> {
+		Ok(self.fetch_one()?.is_some())
 	}
 }
 
@@ -536,7 +564,7 @@ mod tests {
 			.composer("bach")
 			.scheme("bwv")
 			.number("846")
-			.fetch_one();
+			.fetch_one().unwrap();
 
 		assert_eq!(id, Some("id1".into()));
 	}
@@ -550,7 +578,7 @@ mod tests {
 			.composer("mozart")
 			.scheme("k")
 			.number("300k")
-			.fetch_one();
+			.fetch_one().unwrap();
 
 		assert_eq!(id, Some("id3".into()));
 	}
@@ -565,7 +593,7 @@ mod tests {
 			.scheme("k")
 			.number("300k")
 			.strict(true)
-			.fetch_one();
+			.fetch_one().unwrap();
 
 		assert_eq!(id, None);
 	}
@@ -579,7 +607,7 @@ mod tests {
 			.composer("bach")
 			.scheme("bwv")
 			.number("999")
-			.fetch_one();
+			.fetch_one().unwrap();
 
 		assert_eq!(id, None);
 	}
@@ -648,14 +676,16 @@ mod tests {
 			.composer("bach")
 			.scheme("bwv")
 			.number("846")
-			.exists());
+			.exists()
+			.unwrap());
 
 		assert!(!index
 			.query()
 			.composer("bach")
 			.scheme("bwv")
 			.number("999")
-			.exists());
+			.exists()
+			.unwrap());
 	}
 
 	#[test]

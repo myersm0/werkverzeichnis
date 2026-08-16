@@ -75,6 +75,18 @@ fn preflight(sources: &[PathBuf], force: bool, data_dir: &Path) -> BatchPlan {
 	// Nothing is committed until the whole plan is approved, so the dataset does
 	// not change underneath a single shared validator.
 	let validator = Validator::new(data_dir);
+	let integrity_errors = validator.integrity_errors();
+	if !integrity_errors.is_empty() {
+		return BatchPlan {
+			prepared: Vec::new(),
+			failures: vec![PreflightFailure {
+				source: data_dir.to_path_buf(),
+				message: format!("Dataset integrity errors:\n  {}", integrity_errors.join("\n  ")),
+				already_exists: false,
+			}],
+			total: sources.len(),
+		};
+	}
 	let mut prepared = Vec::new();
 	let mut failures = Vec::new();
 	let mut destinations: HashMap<PathBuf, PathBuf> = HashMap::new();
@@ -324,8 +336,9 @@ mod tests {
 
 	fn setup_data_dir() -> TempDir {
 		let tmp = TempDir::new().unwrap();
-		fs::create_dir_all(tmp.path().join("schemas")).unwrap();
-		fs::create_dir_all(tmp.path().join("composers")).unwrap();
+		for directory in ["schemas", "composers", "catalogs", "collections", "compositions", "inventories"] {
+			fs::create_dir_all(tmp.path().join(directory)).unwrap();
+		}
 		fs::write(tmp.path().join("schemas/composition.schema.json"), "{}").unwrap();
 		fs::write(tmp.path().join("composers/mozart.json"), "{}").unwrap();
 		tmp

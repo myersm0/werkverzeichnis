@@ -1,4 +1,4 @@
-use std::io::{self, BufRead};
+use std::io::{self, Read};
 use std::path::Path;
 
 use crate::catalog::load_catalog_def;
@@ -8,12 +8,11 @@ use crate::output::print;
 use crate::types::Composition;
 
 pub fn run(data_dir: &Path, config: &Config) {
-	let input: String = io::stdin()
-		.lock()
-		.lines()
-		.filter_map(|l| l.ok())
-		.collect::<Vec<_>>()
-		.join("\n");
+	let mut input = String::new();
+	if let Err(error) = io::stdin().lock().read_to_string(&mut input) {
+		eprintln!("Error reading stdin: {}", error);
+		std::process::exit(1);
+	}
 
 	if input.trim().is_empty() {
 		return;

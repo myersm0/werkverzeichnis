@@ -9,7 +9,8 @@ use serde_json::Value;
 use std::sync::OnceLock;
 
 use crate::catalog::{
-	cached_regex, load_catalog_def, normalize_catalog_number, validate_catalog_domain,
+	cached_regex_result, load_catalog_def, normalize_catalog_number,
+	validate_catalog_domain,
 };
 use crate::inventory::{build_inventory_index, normalize_inventory, InventoryIndex};
 use crate::parse::extract_id_from_path;
@@ -130,6 +131,9 @@ pub struct Validator {
 	composer_catalog_schemes: HashMap<String, HashSet<String>>,
 	current_catalog_targets: HashMap<(String, String, String), Vec<String>>,
 	composition_cache: HashMap<PathBuf, CachedComposition>,
+	validation_paths: Vec<PathBuf>,
+	discovery_errors: Vec<ValidationError>,
+	inventory_index_error: Option<String>,
 	composition_schema: SchemaCheck,
 	composer_schema: SchemaCheck,
 	catalog_schema: SchemaCheck,
@@ -144,50 +148,66 @@ impl Validator {
 		let mut catalog_schemes = HashSet::new();
 		let mut global_catalog_schemes = HashSet::new();
 		let mut composer_catalog_schemes = HashMap::new();
+		let mut validation_paths = Vec::new();
+		let mut discovery_errors = Vec::new();
 
-		let composers_dir = data_dir.join("composers");
-		if let Ok(entries) = fs::read_dir(&composers_dir) {
-			for entry in entries.flatten() {
-				let path = entry.path();
-				if path.extension().map_or(false, |e| e == "json") {
-					if let Some(stem) = path.file_stem().and_then(|s| s.to_str()) {
-						composers.insert(stem.to_string());
-					}
+		let mut composer_paths = Vec::new();
+		collect_json_files(
+			&data_dir.join("composers"),
+			&mut composer_paths,
+			&mut discovery_errors,
+		);
+		for path in &composer_paths {
+			if let Some(stem) = path.file_stem().and_then(|s| s.to_str()) {
+				composers.insert(stem.to_string());
+			}
 
-					if let Ok(content) = fs::read_to_string(&path) {
-						if let Ok(value) = serde_json::from_str::<Value>(&content) {
-							if let Some(catalogs) = value.get("catalogs").and_then(Value::as_object) {
-								let schemes: HashSet<String> = catalogs.keys().cloned().collect();
-								catalog_schemes.extend(schemes.iter().cloned());
-								if let Some(stem) = path.file_stem().and_then(|s| s.to_str()) {
-									composer_catalog_schemes.insert(stem.to_string(), schemes);
-								}
-							}
+			if let Ok(content) = fs::read_to_string(path) {
+				if let Ok(value) = serde_json::from_str::<Value>(&content) {
+					if let Some(catalogs) = value.get("catalogs").and_then(Value::as_object) {
+						let schemes: HashSet<String> = catalogs.keys().cloned().collect();
+						catalog_schemes.extend(schemes.iter().cloned());
+						if let Some(stem) = path.file_stem().and_then(|s| s.to_str()) {
+							composer_catalog_schemes.insert(stem.to_string(), schemes);
 						}
 					}
 				}
 			}
 		}
+		validation_paths.extend(composer_paths);
 
-		let catalogs_dir = data_dir.join("catalogs");
-		if let Ok(entries) = fs::read_dir(&catalogs_dir) {
-			for entry in entries.flatten() {
-				let path = entry.path();
-				if path.extension().map_or(false, |e| e == "json") {
-					if let Some(stem) = path.file_stem().and_then(|s| s.to_str()) {
-						catalog_schemes.insert(stem.to_string());
-						global_catalog_schemes.insert(stem.to_string());
-					}
-				}
+		let mut catalog_paths = Vec::new();
+		collect_json_files(
+			&data_dir.join("catalogs"),
+			&mut catalog_paths,
+			&mut discovery_errors,
+		);
+		for path in &catalog_paths {
+			if let Some(stem) = path.file_stem().and_then(|s| s.to_str()) {
+				catalog_schemes.insert(stem.to_string());
+				global_catalog_schemes.insert(stem.to_string());
 			}
 		}
+		validation_paths.extend(catalog_paths);
+
+		let mut collection_paths = Vec::new();
+		collect_json_files(
+			&data_dir.join("collections"),
+			&mut collection_paths,
+			&mut discovery_errors,
+		);
+		validation_paths.extend(collection_paths);
 
 		let mut current_catalog_targets = HashMap::new();
 		let mut composition_cache = HashMap::new();
 		let mut composition_paths = Vec::new();
-		collect_json_files(&data_dir.join("compositions"), &mut composition_paths);
-		for path in composition_paths {
-			let cached = CachedComposition::load(&path);
+		collect_json_files(
+			&data_dir.join("compositions"),
+			&mut composition_paths,
+			&mut discovery_errors,
+		);
+		for path in &composition_paths {
+			let cached = CachedComposition::load(path);
 			if let CachedComposition::Parsed { value, .. } = &cached {
 				if let Ok(composition) = serde_json::from_value::<Composition>(value.clone()) {
 					let mut schemes_seen = HashSet::new();
@@ -206,8 +226,22 @@ impl Validator {
 					}
 				}
 			}
-			composition_cache.insert(path, cached);
+			composition_cache.insert(path.clone(), cached);
 		}
+		validation_paths.extend(composition_paths);
+
+		let mut inventory_paths = Vec::new();
+		collect_inventory_files(
+			&data_dir.join("inventories"),
+			&mut inventory_paths,
+			&mut discovery_errors,
+		);
+		validation_paths.extend(inventory_paths);
+
+		let (inventory_index, inventory_index_error) = match build_inventory_index(data_dir) {
+			Ok(index) => (index, None),
+			Err(error) => (InventoryIndex::default(), Some(error.to_string())),
+		};
 
 		let schemas_dir = data_dir.join("schemas");
 
@@ -219,12 +253,41 @@ impl Validator {
 			composer_catalog_schemes,
 			current_catalog_targets,
 			composition_cache,
+			validation_paths,
+			discovery_errors,
+			inventory_index_error,
 			composition_schema: SchemaCheck::load(schemas_dir.join("composition.schema.json")),
 			composer_schema: SchemaCheck::load(schemas_dir.join("composer.schema.json")),
 			catalog_schema: SchemaCheck::load(schemas_dir.join("catalog.schema.json")),
 			collection_schema: SchemaCheck::load(schemas_dir.join("collection.schema.json")),
-			inventory_index: build_inventory_index(data_dir).unwrap_or_default(),
+			inventory_index,
 		}
+	}
+
+	pub fn integrity_errors(&self) -> Vec<String> {
+		let mut errors: Vec<String> = self
+			.discovery_errors
+			.iter()
+			.map(ToString::to_string)
+			.collect();
+		for (path, cached) in &self.composition_cache {
+			match cached {
+				CachedComposition::ReadError(message) => errors.push(format!(
+					"{}: failed to read composition: {}",
+					path.display(), message
+				)),
+				CachedComposition::InvalidJson { message, .. } => errors.push(format!(
+					"{}: invalid composition JSON: {}",
+					path.display(), message
+				)),
+				CachedComposition::Parsed { .. } => {}
+			}
+		}
+		if let Some(error) = &self.inventory_index_error {
+			errors.push(error.clone());
+		}
+		errors.sort();
+		errors
 	}
 
 	pub fn validate_file<P: AsRef<Path>>(&self, path: P) -> Vec<ValidationError> {
@@ -274,8 +337,8 @@ impl Validator {
 
 		let mut pattern_valid = true;
 		if let Some(pattern) = &definition.pattern {
-			match cached_regex(pattern) {
-				Some(regex) if !regex.is_match(number) => {
+			match cached_regex_result(pattern) {
+				Ok(regex) if !regex.is_match(number) => {
 					pattern_valid = false;
 					errors.push(ValidationError {
 						path: path_str.to_string(),
@@ -285,11 +348,14 @@ impl Validator {
 						),
 					});
 				}
-				None => {
+				Err(error) => {
 					pattern_valid = false;
 					errors.push(ValidationError {
 						path: path_str.to_string(),
-						message: format!("{}: invalid '{}' catalog pattern", location, scheme),
+						message: format!(
+							"{}: invalid '{}' catalog pattern: {}",
+							location, scheme, error
+						),
 					});
 				}
 				_ => {}
@@ -469,11 +535,19 @@ impl Validator {
 		location: &str,
 	) -> Vec<ValidationError> {
 		let mut errors = Vec::new();
-		let capture_count = definition
-			.pattern
-			.as_ref()
-			.and_then(|pattern| cached_regex(pattern))
-			.map(|regex| regex.captures_len().saturating_sub(1));
+		let capture_count = match definition.pattern.as_deref() {
+			Some(pattern) => match cached_regex_result(pattern) {
+				Ok(regex) => Some(regex.captures_len().saturating_sub(1)),
+				Err(error) => {
+					errors.push(ValidationError {
+						path: path_str.to_string(),
+						message: format!("{}: invalid catalog pattern: {}", location, error),
+					});
+					None
+				}
+			},
+			None => None,
+		};
 
 		if let Some(constraints) = &definition.constraints {
 			for constraint in constraints {
@@ -980,8 +1054,7 @@ impl Validator {
 		errors
 	}
 
-	pub fn validate_all<P: AsRef<Path>>(&self, data_dir: P) -> Vec<ValidationError> {
-		let data_dir = data_dir.as_ref();
+	pub fn validate_all<P: AsRef<Path>>(&self, _data_dir: P) -> Vec<ValidationError> {
 		let schema_errors: Vec<_> = [
 			&self.composition_schema,
 			&self.composer_schema,
@@ -995,22 +1068,16 @@ impl Validator {
 			return schema_errors;
 		}
 
-		let mut paths = Vec::new();
-		for directory in ["composers", "catalogs", "collections", "compositions"] {
-			collect_json_files(&data_dir.join(directory), &mut paths);
-		}
-		collect_inventory_files(&data_dir.join("inventories"), &mut paths);
+		let mut paths = self.validation_paths.clone();
 		paths.sort();
 
-		let mut errors = Vec::new();
-		for path in paths {
+		let mut errors = self.discovery_errors.clone();
+		for path in &paths {
 			errors.extend(self.validate_file(path));
 		}
 
 		let mut inventory_identities: HashMap<(String, String, Option<String>), Vec<String>> = HashMap::new();
-		let mut inventory_paths = Vec::new();
-		collect_inventory_files(&data_dir.join("inventories"), &mut inventory_paths);
-		for path in inventory_paths {
+		for path in paths.iter().filter(|path| data_kind(path) == Some(DataKind::Inventory)) {
 			let Ok(inventory) = crate::inventory::load_inventory(&path) else {
 				continue;
 			};
@@ -1093,30 +1160,72 @@ fn data_kind(path: &Path) -> Option<DataKind> {
 	None
 }
 
-fn collect_json_files(dir: &Path, paths: &mut Vec<PathBuf>) {
-	let Ok(entries) = fs::read_dir(dir) else {
-		return;
+fn collect_json_files(
+	dir: &Path,
+	paths: &mut Vec<PathBuf>,
+	errors: &mut Vec<ValidationError>,
+) {
+	let entries = match fs::read_dir(dir) {
+		Ok(entries) => entries,
+		Err(error) => {
+			errors.push(ValidationError {
+				path: dir.display().to_string(),
+				message: format!("failed to read directory: {}", error),
+			});
+			return;
+		}
 	};
 
-	for entry in entries.flatten() {
+	for entry in entries {
+		let entry = match entry {
+			Ok(entry) => entry,
+			Err(error) => {
+				errors.push(ValidationError {
+					path: dir.display().to_string(),
+					message: format!("failed to read directory entry: {}", error),
+				});
+				continue;
+			}
+		};
 		let path = entry.path();
 		if path.is_dir() {
-			collect_json_files(&path, paths);
+			collect_json_files(&path, paths, errors);
 		} else if path.extension().map_or(false, |ext| ext == "json") {
 			paths.push(path);
 		}
 	}
 }
 
-fn collect_inventory_files(dir: &Path, paths: &mut Vec<PathBuf>) {
-	let Ok(entries) = fs::read_dir(dir) else {
-		return;
+fn collect_inventory_files(
+	dir: &Path,
+	paths: &mut Vec<PathBuf>,
+	errors: &mut Vec<ValidationError>,
+) {
+	let entries = match fs::read_dir(dir) {
+		Ok(entries) => entries,
+		Err(error) => {
+			errors.push(ValidationError {
+				path: dir.display().to_string(),
+				message: format!("failed to read directory: {}", error),
+			});
+			return;
+		}
 	};
 
-	for entry in entries.flatten() {
+	for entry in entries {
+		let entry = match entry {
+			Ok(entry) => entry,
+			Err(error) => {
+				errors.push(ValidationError {
+					path: dir.display().to_string(),
+					message: format!("failed to read directory entry: {}", error),
+				});
+				continue;
+			}
+		};
 		let path = entry.path();
 		if path.is_dir() {
-			collect_inventory_files(&path, paths);
+			collect_inventory_files(&path, paths, errors);
 		} else if path
 			.extension()
 			.map_or(false, |ext| ext == "toml" || ext == "json")
@@ -1189,12 +1298,30 @@ mod tests {
 			composer_catalog_schemes: HashMap::new(),
 			current_catalog_targets: HashMap::new(),
 			composition_cache: HashMap::new(),
+			validation_paths: Vec::new(),
+			discovery_errors: Vec::new(),
+			inventory_index_error: None,
 			composition_schema: empty_schema(),
 			composer_schema: empty_schema(),
 			catalog_schema: empty_schema(),
 			collection_schema: empty_schema(),
 			inventory_index: InventoryIndex::default(),
 		}
+	}
+
+	#[test]
+	fn invalid_catalog_pattern_is_reported() {
+		let definition = CatalogDefinition {
+			name: "Broken".into(),
+			pattern: Some("^(unclosed".into()),
+			..Default::default()
+		};
+		let errors = test_validator().validate_catalog_definition_domain(
+			&definition,
+			"catalogs/broken.json",
+			"catalog",
+		);
+		assert!(errors.iter().any(|error| error.message.contains("invalid catalog pattern")));
 	}
 
 	#[test]
@@ -1219,6 +1346,19 @@ mod tests {
 		let errors = validator.validate_composition_file(&path);
 
 		assert!(!errors.iter().any(|error| error.message.contains("Invalid JSON")));
+	}
+
+	#[test]
+	fn file_discovery_reports_unreadable_directory() {
+		let temp = tempfile::tempdir().unwrap();
+		let mut paths = Vec::new();
+		let mut errors = Vec::new();
+
+		collect_json_files(&temp.path().join("missing"), &mut paths, &mut errors);
+
+		assert!(paths.is_empty());
+		assert_eq!(errors.len(), 1);
+		assert!(errors[0].message.contains("failed to read directory"));
 	}
 
 	#[test]

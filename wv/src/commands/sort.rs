@@ -13,13 +13,20 @@ pub fn run_sort(scheme: &str, composer: Option<&str>, data_dir: &Path) {
 		}
 	};
 
-	let mut numbers: Vec<String> = io::stdin()
-		.lock()
-		.lines()
-		.map_while(Result::ok)
-		.filter(|s| !s.trim().is_empty())
-		.map(|s| s.trim().to_string())
-		.collect();
+	let mut numbers = Vec::new();
+	for line in io::stdin().lock().lines() {
+		let line = match line {
+			Ok(line) => line,
+			Err(error) => {
+				eprintln!("Error reading stdin: {}", error);
+				std::process::exit(1);
+			}
+		};
+		let number = line.trim();
+		if !number.is_empty() {
+			numbers.push(number.to_string());
+		}
+	}
 
 	sort_numbers(&mut numbers, defn.as_ref());
 
