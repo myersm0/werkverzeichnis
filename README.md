@@ -164,7 +164,7 @@ Output like key signatures and titles adapts to your language setting:
 | `en` | C major, F♯ minor |
 | `de` | C-Dur, fis-Moll |
 
-Currently English and German are supported.
+Currently English and German are supported. Key parsing is language-independent; display vocabulary, modal names, templates, and language-specific note spellings are defined in `wv/key-languages.toml`. Exact per-key overrides remain available through `[display.keys]` in `config.toml`.
 
 ### Display patterns
 When a composition doesn't have an explicit title, one is generated from its form, key, and position. You can customize the pattern:

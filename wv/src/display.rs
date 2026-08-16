@@ -1,168 +1,129 @@
 use std::collections::HashMap;
+use std::sync::OnceLock;
+
+use serde::Deserialize;
 
 use crate::catalog::cached_regex;
 use crate::config::{DisplayConfig, KeySymbols};
 use crate::types::{CatalogDefinition, Collection, Composition};
+
+#[derive(Debug, Deserialize)]
+struct KeyLanguageProfile {
+	major: String,
+	minor: String,
+	mode: String,
+	#[serde(default)]
+	modes: HashMap<String, String>,
+	#[serde(default)]
+	notes: HashMap<String, String>,
+}
+
+fn key_language_profiles() -> &'static HashMap<String, KeyLanguageProfile> {
+	static PROFILES: OnceLock<HashMap<String, KeyLanguageProfile>> = OnceLock::new();
+	PROFILES.get_or_init(|| {
+		toml::from_str(include_str!("../key-languages.toml"))
+			.expect("bundled key-language profiles must be valid TOML")
+	})
+}
+
+fn key_language_profile(language: &str) -> &'static KeyLanguageProfile {
+	let profiles = key_language_profiles();
+	profiles
+		.get(language)
+		.or_else(|| profiles.get("en"))
+		.expect("bundled key-language profiles must define 'en'")
+}
 
 pub fn expand_key(code: &str, config: &DisplayConfig) -> String {
 	if let Some(expanded) = config.keys.get(code) {
 		return expanded.clone();
 	}
 
-	let lower = code.to_lowercase();
-	if lower.contains("major") || lower.contains("minor") 
-		|| lower.contains("dur") || lower.contains("moll")
-		|| lower.contains("dorian") || lower.contains("phrygian")
-		|| lower.contains("lydian") || lower.contains("mixolydian")
-		|| lower.contains("locrian")
-	{
+	let Some((is_minor, note, accidental, mode_suffix)) = parse_key_code(code) else {
 		return code.to_string();
+	};
+	let profile = key_language_profile(&config.language);
+	let canonical_note = format!("{}{}", note, accidental);
+	let note_str = profile
+		.notes
+		.get(&canonical_note)
+		.cloned()
+		.unwrap_or_else(|| match config.key_symbols {
+			KeySymbols::Unicode => format_note_unicode(&note, &accidental),
+			KeySymbols::Ascii => format_note_ascii(&note, &accidental),
+		});
+
+	if let Some(mode_suffix) = mode_suffix {
+		let Some(mode) = profile.modes.get(&mode_suffix) else {
+			return code.to_string();
+		};
+		return apply_key_template(&profile.mode, &note_str, Some(mode));
 	}
 
-	let translations = key_translations(&config.language);
-	if let Some(expanded) = translations.get(code) {
-		return expanded.to_string();
+	let template = if is_minor { &profile.minor } else { &profile.major };
+	apply_key_template(template, &note_str, None)
+}
+
+fn apply_key_template(template: &str, note: &str, mode: Option<&str>) -> String {
+	let mut result = template
+		.replace("{note}", note)
+		.replace("{note_lower}", &note.to_lowercase());
+	if let Some(mode) = mode {
+		result = result.replace("{mode}", mode);
 	}
-
-	expand_key_dynamic(code, config)
+	result
 }
 
-fn expand_key_dynamic(code: &str, config: &DisplayConfig) -> String {
-	let is_minor = code.chars().next().map_or(false, |c| c.is_lowercase());
-	let base = code.to_uppercase();
-
-	let (note, accidental, mode_suffix) = parse_key_code(&base);
-
-	let note_str = match config.key_symbols {
-		KeySymbols::Unicode => format_note_unicode(&note, &accidental),
-		KeySymbols::Ascii => format_note_ascii(&note, &accidental),
-	};
-
-	let quality = if is_minor { "minor" } else { "major" };
-
-	let mode = match mode_suffix.as_deref() {
-		Some("dor") => "Dorian",
-		Some("phr") => "Phrygian",
-		Some("lyd") => "Lydian",
-		Some("mix") => "Mixolydian",
-		Some("loc") => "Locrian",
-		_ => quality,
-	};
-
-	let final_note = if is_minor && mode_suffix.is_none() {
-		note_str.to_lowercase()
-	} else {
-		note_str
-	};
-
-	format!("{} {}", final_note, mode)
-}
-
-fn parse_key_code(code: &str) -> (String, String, Option<String>) {
+fn parse_key_code(code: &str) -> Option<(bool, String, String, Option<String>)> {
 	let code = code.trim();
-
-	let (main, mode) = if let Some(idx) = code.find('.') {
-		(code[..idx].to_string(), Some(code[idx + 1..].to_lowercase()))
-	} else {
-		(code.to_string(), None)
+	let (main, mode) = match code.split_once('.') {
+		Some((main, mode)) if !mode.is_empty() && !mode.contains('.') => {
+			(main, Some(mode.to_lowercase()))
+		}
+		Some(_) => return None,
+		None => (code, None),
 	};
 
-	let note = main.chars().next().unwrap_or('C').to_string();
-	let accidental = main.chars().skip(1).collect::<String>();
+	let mut chars = main.chars();
+	let first = chars.next()?;
+	if !matches!(first.to_ascii_uppercase(), 'A'..='G') {
+		return None;
+	}
+	let accidental = chars.collect::<String>();
+	let accidental = match accidental.as_str() {
+		"" | "#" | "b" | "bb" | "##" | "x" => accidental,
+		"X" => "x".to_string(),
+		_ => return None,
+	};
 
-	(note, accidental, mode)
+	Some((
+		first.is_ascii_lowercase(),
+		first.to_ascii_uppercase().to_string(),
+		accidental,
+		mode,
+	))
 }
 
 fn format_note_unicode(note: &str, accidental: &str) -> String {
-	let acc = match accidental.to_uppercase().as_str() {
+	let acc = match accidental {
 		"#" => "♯",
-		"B" => "♭",
-		"BB" => "𝄫",
-		"##" | "X" => "𝄪",
+		"b" => "♭",
+		"bb" => "𝄫",
+		"##" | "x" => "𝄪",
 		_ => "",
 	};
 	format!("{}{}", note, acc)
 }
 
 fn format_note_ascii(note: &str, accidental: &str) -> String {
-	let acc = match accidental.to_uppercase().as_str() {
+	let acc = match accidental {
 		"#" => "#",
-		"B" => "b",
-		"BB" => "bb",
-		"##" | "X" => "##",
+		"b" => "b",
+		"bb" => "bb",
+		"##" | "x" => "##",
 		_ => "",
 	};
 	format!("{}{}", note, acc)
-}
-
-fn key_translations(language: &str) -> HashMap<&'static str, &'static str> {
-	match language {
-		"de" => german_keys(),
-		_ => english_keys(),
-	}
-}
-
-fn english_keys() -> HashMap<&'static str, &'static str> {
-	let mut m = HashMap::new();
-	m.insert("C", "C major");
-	m.insert("D", "D major");
-	m.insert("E", "E major");
-	m.insert("F", "F major");
-	m.insert("G", "G major");
-	m.insert("A", "A major");
-	m.insert("B", "B major");
-	m.insert("F#", "F♯ major");
-	m.insert("C#", "C♯ major");
-	m.insert("Bb", "B♭ major");
-	m.insert("Eb", "E♭ major");
-	m.insert("Ab", "A♭ major");
-	m.insert("Db", "D♭ major");
-	m.insert("Gb", "G♭ major");
-	m.insert("Cb", "C♭ major");
-	m.insert("c", "c minor");
-	m.insert("d", "d minor");
-	m.insert("e", "e minor");
-	m.insert("f", "f minor");
-	m.insert("g", "g minor");
-	m.insert("a", "a minor");
-	m.insert("b", "b minor");
-	m.insert("f#", "f♯ minor");
-	m.insert("c#", "c♯ minor");
-	m.insert("g#", "g♯ minor");
-	m.insert("bb", "b♭ minor");
-	m.insert("eb", "e♭ minor");
-	m
-}
-
-fn german_keys() -> HashMap<&'static str, &'static str> {
-	let mut m = HashMap::new();
-	m.insert("C", "C-Dur");
-	m.insert("D", "D-Dur");
-	m.insert("E", "E-Dur");
-	m.insert("F", "F-Dur");
-	m.insert("G", "G-Dur");
-	m.insert("A", "A-Dur");
-	m.insert("B", "H-Dur");
-	m.insert("F#", "Fis-Dur");
-	m.insert("C#", "Cis-Dur");
-	m.insert("Bb", "B-Dur");
-	m.insert("Eb", "Es-Dur");
-	m.insert("Ab", "As-Dur");
-	m.insert("Db", "Des-Dur");
-	m.insert("Gb", "Ges-Dur");
-	m.insert("c", "c-Moll");
-	m.insert("d", "d-Moll");
-	m.insert("e", "e-Moll");
-	m.insert("f", "f-Moll");
-	m.insert("g", "g-Moll");
-	m.insert("a", "a-Moll");
-	m.insert("b", "h-Moll");
-	m.insert("f#", "fis-Moll");
-	m.insert("c#", "cis-Moll");
-	m.insert("g#", "gis-Moll");
-	m.insert("bb", "b-Moll");
-	m.insert("eb", "es-Moll");
-	m
 }
 
 pub fn format_form(form: &str) -> String {
@@ -436,6 +397,40 @@ mod tests {
 		assert_eq!(expand_key("C", &config), "C-Dur");
 		assert_eq!(expand_key("c", &config), "c-Moll");
 		assert_eq!(expand_key("Bb", &config), "B-Dur");
+		assert_eq!(expand_key("F#", &config), "Fis-Dur");
+		assert_eq!(expand_key("eb", &config), "es-Moll");
+	}
+
+	#[test]
+	fn test_expand_key_modes_use_language_profile() {
+		let english = DisplayConfig::default();
+		assert_eq!(expand_key("e.phr", &english), "E Phrygian");
+
+		let german = DisplayConfig {
+			language: "de".into(),
+			..Default::default()
+		};
+		assert_eq!(expand_key("e.phr", &german), "E-Phrygisch");
+	}
+
+	#[test]
+	fn test_expand_key_ascii_symbols() {
+		let config = DisplayConfig {
+			key_symbols: KeySymbols::Ascii,
+			..Default::default()
+		};
+		assert_eq!(expand_key("F#", &config), "F# major");
+		assert_eq!(expand_key("bb", &config), "bb minor");
+	}
+
+	#[test]
+	fn test_expand_key_unknown_language_falls_back_to_english_profile() {
+		let config = DisplayConfig {
+			language: "xx".into(),
+			..Default::default()
+		};
+		assert_eq!(expand_key("F#", &config), "F♯ major");
+		assert_eq!(expand_key("d.dor", &config), "D Dorian");
 	}
 
 	#[test]

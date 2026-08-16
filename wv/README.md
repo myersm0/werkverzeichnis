@@ -29,6 +29,9 @@ editor = "nvim"
 language = "en"
 key_symbols = "unicode"
 
+[display.keys]
+# "F#" = "F-sharp major"
+
 [display.patterns]
 generic = "{form} in {key}"
 generic_no_key = "{form}"
@@ -38,6 +41,8 @@ instrumentation_max_chars = 40
 [xref]
 mb_database = "/path/to/mb.db"
 ```
+
+Key parsing is language-independent. Built-in language vocabulary, modal names, templates, and note-spelling overrides live in `key-languages.toml`; `language = "en"` and `language = "de"` select those profiles. Exact entries under `[display.keys]` override the selected profile.
 
 `data_dir` is normally unnecessary. It is useful for development checkouts or alternate datasets.
 
