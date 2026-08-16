@@ -4,6 +4,7 @@
 //! and verify end-to-end behavior of indexing and querying.
 
 use std::fs;
+use std::process::{Command, Output};
 use tempfile::TempDir;
 
 use werkverzeichnis::{
@@ -21,6 +22,9 @@ fn setup_test_repo() -> TempDir {
 	fs::create_dir_all(root.join("compositions/ef")).unwrap();
 	fs::create_dir_all(root.join("collections/bach")).unwrap();
 	fs::create_dir_all(root.join("composers")).unwrap();
+	fs::create_dir_all(root.join("catalogs")).unwrap();
+	fs::create_dir_all(root.join("inventories")).unwrap();
+	fs::create_dir_all(root.join("schemas")).unwrap();
 	fs::create_dir_all(root.join(".indexes/editions")).unwrap();
 
 	tmp
@@ -36,6 +40,85 @@ fn write_composition(root: &std::path::Path, id: &str, json: &str) {
 fn write_collection(root: &std::path::Path, composer: &str, name: &str, json: &str) {
 	let path = root.join("collections").join(composer).join(format!("{}.json", name));
 	fs::write(path, json).unwrap();
+}
+
+fn run_wv(root: &std::path::Path, args: &[&str]) -> Output {
+	let home = root.join("test-home");
+	let config_home = root.join("test-config");
+	fs::create_dir_all(&home).unwrap();
+	fs::create_dir_all(&config_home).unwrap();
+	let mut command = Command::new(env!("CARGO_BIN_EXE_wv"));
+	command.args(args);
+	command.arg("--data-dir").arg(root);
+	command.env("HOME", home);
+	command.env("XDG_CONFIG_HOME", config_home);
+	command.output().unwrap()
+}
+
+fn setup_inventory_cli_repo() -> TempDir {
+	let tmp = setup_test_repo();
+	let root = tmp.path();
+	fs::create_dir_all(root.join("inventories/beethoven")).unwrap();
+
+	fs::write(
+		root.join("catalogs/op.json"),
+		r#"{
+			"id": "op",
+			"name": "Opus number",
+			"canonical_format": "op. {number}",
+			"pattern": "^(\\d+)(?:/(\\d+))?$",
+			"sort_keys": [
+				{"group": 1, "type": "int"},
+				{"group": 2, "type": "int"}
+			],
+			"group_by": [1],
+			"constraints": [
+				{"group": 2, "name": "sub-number", "min": 1}
+			]
+		}"#,
+	)
+	.unwrap();
+
+	fs::write(
+		root.join("composers/beethoven.json"),
+		r#"{
+			"id": "beethoven",
+			"name": {"full": "Ludwig van Beethoven", "sort": "Beethoven, Ludwig van"},
+			"default_scheme": "op",
+			"catalogs": {
+				"op": {
+					"name": "Opus",
+					"canonical_format": "op. {number}",
+					"constraints": [
+						{"group": 1, "name": "opus number", "min": 1, "max": 138}
+					]
+				}
+			}
+		}"#,
+	)
+	.unwrap();
+
+	fs::write(
+		root.join("inventories/beethoven/op.toml"),
+		r#"composer = "beethoven"
+scheme = "op"
+complete = true
+entries = ["2/1", "2/2", "2/3", "138"]
+"#,
+	)
+	.unwrap();
+
+	write_composition(root, "ab123456", r#"{
+		"id": "ab123456",
+		"form": "sonata",
+		"key": "C",
+		"attribution": [{
+			"composer": "beethoven",
+			"catalog": [{"scheme": "op", "number": "2/3"}]
+		}]
+	}"#);
+
+	tmp
 }
 
 // ============================================================================
@@ -605,4 +688,68 @@ fn test_kochel_anh_reclassification() {
 	let ed6 = load_edition_index(root, "mozart", "k", "6").unwrap();
 	assert!(ed6.contains_key("19a"));
 	assert!(!ed6.contains_key("anh. 223"));
+}
+
+
+#[test]
+fn test_cli_distinguishes_catalog_failure_modes() {
+	let tmp = setup_inventory_cli_repo();
+	let root = tmp.path();
+
+	let output = run_wv(root, &["get", "beethoven", "op", "2/3"]);
+	assert!(output.status.success());
+	assert_eq!(String::from_utf8_lossy(&output.stdout).trim(), "Sonata in C major, op. 2 no. 3");
+
+	let output = run_wv(root, &["get", "beethoven", "op", "2/4"]);
+	assert!(output.status.success());
+	assert_eq!(String::from_utf8_lossy(&output.stderr).trim(), "No such catalog entry: op. 2 no. 4");
+
+	let output = run_wv(root, &["get", "beethoven", "op", "2/e"]);
+	assert!(output.status.success());
+	assert_eq!(
+		String::from_utf8_lossy(&output.stderr).trim(),
+		"Invalid catalog number for beethoven / Opus: \"2/e\""
+	);
+
+	let output = run_wv(root, &["get", "beethoven", "op", "2/0"]);
+	assert!(output.status.success());
+	assert_eq!(
+		String::from_utf8_lossy(&output.stderr).trim(),
+		"Catalog number out of range for beethoven / Opus: \"2/0\" (sub-number 0 is below the minimum 1)"
+	);
+
+	let output = run_wv(root, &["get", "beethoven", "op", "138"]);
+	assert!(output.status.success());
+	assert_eq!(String::from_utf8_lossy(&output.stdout).trim(), "op. 138");
+	assert_eq!(
+		String::from_utf8_lossy(&output.stderr).trim(),
+		"catalog entry known; detailed record not yet available"
+	);
+
+	let output = run_wv(root, &["get", "beethoven", "op", "139"]);
+	assert!(output.status.success());
+	assert_eq!(
+		String::from_utf8_lossy(&output.stderr).trim(),
+		"Catalog number out of range for beethoven / Opus: \"139\" (opus number 139 is above the maximum 138)"
+	);
+}
+
+#[test]
+fn test_cli_coverage_uses_inventory_as_denominator() {
+	let tmp = setup_inventory_cli_repo();
+	let root = tmp.path();
+
+	let output = run_wv(root, &["coverage", "beethoven", "op"]);
+	assert!(output.status.success());
+	assert_eq!(
+		String::from_utf8_lossy(&output.stdout).trim(),
+		"beethoven / op\nInventory: complete\nInventory entries: 4\nPopulated: 1\nMissing: 3\nCoverage: 25.0%"
+	);
+
+	let output = run_wv(root, &["coverage", "beethoven", "op", "--missing"]);
+	assert!(output.status.success());
+	assert_eq!(
+		String::from_utf8_lossy(&output.stdout).trim(),
+		"beethoven / op\nInventory: complete\nInventory entries: 4\nPopulated: 1\nMissing: 3\nCoverage: 25.0%\nop. 2 no. 1\nop. 2 no. 2\nop. 138"
+	);
 }
