@@ -317,6 +317,17 @@ fn print_query_examples(
 	}
 }
 
+fn inventory_stub_value(query: &ComposerQuery, number: &str) -> serde_json::Value {
+	serde_json::json!({
+		"composer": query.composer.as_str(),
+		"scheme": query.scheme.as_deref().unwrap_or_default(),
+		"edition": query.edition.as_deref(),
+		"number": number,
+		"catalogued": true,
+		"populated": false
+	})
+}
+
 fn output_inventory_stub(
 	query: &ComposerQuery,
 	number: &str,
@@ -325,19 +336,82 @@ fn output_inventory_stub(
 ) {
 	let scheme = query.scheme.as_deref().unwrap_or_default();
 	if args.json {
-		let value = serde_json::json!({
-			"composer": query.composer.as_str(),
-			"scheme": scheme,
-			"edition": query.edition.as_deref(),
-			"number": number,
-			"catalogued": true,
-			"populated": false
-		});
-		print(&serde_json::to_string_pretty(&value).unwrap());
+		print(&serde_json::to_string_pretty(&inventory_stub_value(query, number)).unwrap());
 		return;
 	}
 
 	print(&format_catalog(scheme, number, defn));
+}
+
+fn warn_inventory_only_entries(count: usize, args: &GetArgs) {
+	if args.quiet || count == 0 {
+		return;
+	}
+	if count == 1 {
+		eprintln!("catalog entry known; detailed record not yet available");
+	} else {
+		eprintln!(
+			"{} catalog entries known; detailed records not yet available",
+			count
+		);
+	}
+}
+
+fn count_inventory_only_members(
+	members: &[String],
+	results: &[crate::query::QueryResult],
+) -> usize {
+	let populated: std::collections::HashSet<&str> = results
+		.iter()
+		.filter_map(|result| result.number.as_deref())
+		.collect();
+	members
+		.iter()
+		.filter(|member| !populated.contains(member.as_str()))
+		.count()
+}
+
+fn output_inventory_group_overlay(
+	query: &ComposerQuery,
+	members: &[String],
+	results: &[crate::query::QueryResult],
+	args: &GetArgs,
+	ctx: &OutputContext,
+) -> usize {
+	let populated: std::collections::HashMap<&str, &crate::query::QueryResult> = results
+		.iter()
+		.filter_map(|result| result.number.as_deref().map(|number| (number, result)))
+		.collect();
+	let missing = count_inventory_only_members(members, results);
+
+	if args.json {
+		let mut values = Vec::with_capacity(members.len());
+		for member in members {
+			if let Some(result) = populated.get(member.as_str()) {
+				let path = id_to_path(ctx.data_dir, &result.id);
+				if let Ok(comp) = load_composition(&path) {
+					values.push(serde_json::to_value(&comp).unwrap_or(serde_json::Value::Null));
+				}
+			} else {
+				values.push(inventory_stub_value(query, member));
+			}
+		}
+		print(&serde_json::to_string_pretty(&values).unwrap());
+		return missing;
+	}
+
+	if args.terse || args.movements {
+		return missing;
+	}
+
+	for member in members {
+		if let Some(result) = populated.get(member.as_str()) {
+			output_pretty(std::slice::from_ref(*result), ctx);
+		} else {
+			output_inventory_stub(query, member, args, ctx.catalog_defn);
+		}
+	}
+	missing
 }
 
 
@@ -437,22 +511,14 @@ fn handle_inventory_miss(
 			if args.json {
 				let values: Vec<_> = members
 					.iter()
-					.map(|member| {
-						serde_json::json!({
-							"composer": query.composer.as_str(),
-							"scheme": scheme,
-							"edition": query.edition.as_deref(),
-							"number": member,
-							"catalogued": true,
-							"populated": false
-						})
-					})
+					.map(|member| inventory_stub_value(query, member))
 					.collect();
 				print(&serde_json::to_string_pretty(&values).unwrap());
 			} else {
-				for member in members {
-					output_inventory_stub(query, &member, args, defn);
+				for member in &members {
+					output_inventory_stub(query, member, args, defn);
 				}
+				warn_inventory_only_entries(members.len(), args);
 			}
 			true
 		}
@@ -573,9 +639,28 @@ fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Con
 		return;
 	}
 
+	let inventory_group_members = match (query.scheme.as_deref(), number_spec.as_ref()) {
+		(Some(scheme), Some(NumberSpec::Single(number))) => match index.inventory.lookup(
+			&query.composer,
+			scheme,
+			query.edition.as_deref(),
+			number,
+			catalog_defn.as_ref(),
+		) {
+			InventoryLookup::KnownGroup(members) => Some(members),
+			_ => None,
+		},
+		_ => None,
+	};
+	let inventory_only_count = inventory_group_members
+		.as_ref()
+		.map(|members| count_inventory_only_members(members, &results))
+		.unwrap_or(0);
+
 	if let Some(xref_type) = &args.xref {
 		if xref_type == "mb" {
 			run_xref_mb(&results, &query, data_dir, config, catalog_defn.as_ref());
+			warn_inventory_only_entries(inventory_only_count, args);
 			return;
 		} else {
 			eprintln!("Unknown xref type: {}", xref_type);
@@ -604,6 +689,7 @@ fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Con
 	}
 	if args.edit {
 		let paths: Vec<PathBuf> = results.iter().map(|r| id_to_path(data_dir, &r.id)).collect();
+		warn_inventory_only_entries(inventory_only_count, args);
 		open_in_editor(config, &paths, data_dir);
 		return;
 	}
@@ -615,7 +701,20 @@ fn run_query(query: ComposerQuery, args: &GetArgs, data_dir: &Path, config: &Con
 		catalog_defn: catalog_defn.as_ref(),
 	};
 
-	if args.json {
+	if let Some(members) = inventory_group_members.as_ref() {
+		if args.json {
+			output_inventory_group_overlay(&query, members, &results, args, &ctx);
+		} else if args.movements {
+			output_movements(&results, &ctx);
+			warn_inventory_only_entries(inventory_only_count, args);
+		} else if args.terse {
+			output_terse(&results);
+			warn_inventory_only_entries(inventory_only_count, args);
+		} else {
+			let missing = output_inventory_group_overlay(&query, members, &results, args, &ctx);
+			warn_inventory_only_entries(missing, args);
+		}
+	} else if args.json {
 		output_json(&results, &ctx);
 	} else if args.movements {
 		output_movements(&results, &ctx);

@@ -753,3 +753,64 @@ fn test_cli_coverage_uses_inventory_as_denominator() {
 		"beethoven / op\nInventory: complete\nInventory entries: 4\nPopulated: 1\nMissing: 3\nCoverage: 25.0%\nop. 2 no. 1\nop. 2 no. 2\nop. 138"
 	);
 }
+
+#[test]
+fn test_cli_inventory_only_group_reports_missing_detail() {
+	let tmp = setup_inventory_cli_repo();
+	let root = tmp.path();
+	fs::write(
+		root.join("inventories/beethoven/op.toml"),
+		r#"composer = "beethoven"
+scheme = "op"
+complete = true
+entries = ["2/1", "2/2", "2/3", "9/1", "9/2", "9/3", "138"]
+"#,
+	)
+	.unwrap();
+
+	let output = run_wv(root, &["get", "beethoven", "op", "9"]);
+	assert!(output.status.success());
+	assert_eq!(
+		String::from_utf8_lossy(&output.stdout).trim(),
+		"op. 9 no. 1\nop. 9 no. 2\nop. 9 no. 3"
+	);
+	assert_eq!(
+		String::from_utf8_lossy(&output.stderr).trim(),
+		"3 catalog entries known; detailed records not yet available"
+	);
+}
+
+#[test]
+fn test_cli_partially_populated_group_overlays_inventory_members() {
+	let tmp = setup_inventory_cli_repo();
+	let root = tmp.path();
+	fs::write(
+		root.join("inventories/beethoven/op.toml"),
+		r#"composer = "beethoven"
+scheme = "op"
+complete = true
+entries = ["2/1", "2/2", "2/3", "9/1", "9/2", "9/3", "138"]
+"#,
+	)
+	.unwrap();
+	write_composition(root, "cd123456", r#"{
+		"id": "cd123456",
+		"form": "sonata",
+		"key": "G",
+		"attribution": [{
+			"composer": "beethoven",
+			"catalog": [{"scheme": "op", "number": "9/2"}]
+		}]
+	}"#);
+
+	let output = run_wv(root, &["get", "beethoven", "op", "9"]);
+	assert!(output.status.success());
+	assert_eq!(
+		String::from_utf8_lossy(&output.stdout).trim(),
+		"op. 9 no. 1\nSonata in G major, op. 9 no. 2\nop. 9 no. 3"
+	);
+	assert_eq!(
+		String::from_utf8_lossy(&output.stderr).trim(),
+		"2 catalog entries known; detailed records not yet available"
+	);
+}
