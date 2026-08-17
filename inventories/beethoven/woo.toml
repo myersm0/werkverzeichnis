@@ -1,0 +1,546 @@
+composer = "beethoven"
+scheme = "woo"
+complete = true
+
+# adapted from http://www.lvbeethoven.fr/Oeuvres/ListWoO.html
+
+entries = [
+	"1",  # Ballet Music: "Ritterballet"
+	"2a", # Triumphal March for Orchestra, "Tarpeja"
+	"2b", # Entr’acte: "Tarpeja" (now thought to be from the opening of Act II from Leonore 1805)
+	"3",  # Minuet for Orchestra: "Gratulations - Menuett"
+	"4",  # Concerto for Piano & Orchestra [reconstruction]
+	"5",  # Concerto for Violin & Orchestra (fragment of first movement; three completions made) [unfinished]
+	"6",  # Rondo for Piano & Orchestra: fragment, completed by Carl Czerny
+
+	# 12 Minuets for Orchestra
+	"7/1",
+	"7/2",
+	"7/3",
+	"7/4",
+	"7/5",
+	"7/6",
+	"7/7",
+	"7/8",
+	"7/9",
+	"7/10",
+	"7/11",
+	"7/12",
+
+	# 12 German Dances
+	"8/1",
+	"8/2",
+	"8/3",
+	"8/4",
+	"8/5",
+	"8/6",
+	"8/7",
+	"8/8",
+	"8/9",
+	"8/10",
+	"8/11",
+	"8/12",
+
+	# 6 Minuets
+	"9/1",
+	"9/2",
+	"9/3",
+	"9/4",
+	"9/5",
+	"9/6",
+
+	# 6 Minuets
+	"10/1",
+	"10/2",
+	"10/3",
+	"10/4",
+	"10/5",
+	"10/6",
+
+	"11",  # 7 Ländler for Violins & Cello, surviving piano version
+	"12",  # 12 Minuets [not certain]
+
+	# 12 German Dances
+	"13/1",
+	"13/2",
+	"13/3",
+	"13/4",
+	"13/5",
+	"13/6",
+	"13/7",
+	"13/8",
+	"13/9",
+	"13/10",
+	"13/11",
+	"13/12",
+
+	# 12 Contredanses
+	"14/1",
+	"14/2",
+	"14/3",
+	"14/4",
+	"14/5",
+	"14/6",
+	"14/7",
+	"14/8",
+	"14/9",
+	"14/10",
+	"14/11",
+	"14/12",
+
+	# 6 ländlerische Tänze
+	"15/1",
+	"15/2",
+	"15/3",
+	"15/4",
+	"15/5",
+	"15/6",
+
+	"16",  # 12 Ecossaises for Piano [fraudulent]
+
+	# 11 Mödlinger Tänze (probably spurious)
+	"17/1",
+	"17/2",
+	"17/3",
+	"17/4",
+	"17/5",
+	"17/6",
+	"17/7",
+	"17/8",
+	"17/9",
+	"17/10",
+	"17/11",
+
+	# Marches, Trios, etc for Wind Band
+	"18",
+	"19",
+	"20",
+	"21",
+	"22",
+	"23",
+	"24",
+
+	"25",  # Rondino for Oboes, Clarinets, Horns & Bassoons
+	"26",  # Duo for Flutes: Allegro and Minuet
+	
+	# Duos for Clarinet & Bassoon [doubtful]
+	"27a",
+	"27b",
+	"27c",
+
+	"28",  # Variations for Oboes & English Horn: on "Là ci darem la mano"
+	"29",  # March for Clarinets, Horns & Bassoons: "Grenadiermarsch"
+
+	# Equali for Trombones
+	"30a",
+	"30b",
+	"30c",
+
+	"31",  # Fugue for Organ
+	"32",  # Duo for Viola & Cello: "mit zwei obligaten Augengläsern" (with 2 obbligato eyeglasses)
+
+	# Pieces for Musical Clock or flute
+	"33/1",
+	"33/2",
+	"33/3",
+	"33/4",
+	"33/5",
+
+	"34",  # Duo for Violins: for Alexandre Boucher
+	"35",  # Canon: for 2 violins or for 2 cellos; for Samson de Boer
+
+	# Piano Quartets
+	"36a",
+	"36b",
+	"36c",
+
+	"37",  # Trio for Piano, Flute & Bassoon
+	"38",  # Piano Trio No. 8
+	"39",  # Allegretto for Piano Trio
+	"40",  # 12 Variations for Piano & Violin: on the theme "Se vuol ballare"
+	"41",  # Rondo for Piano & Violin
+	"42",  # 6 German Dances for Piano & Violin
+	"43a", # Sonatina for Mandolin & Harpsichord
+	"43b", # Adagio for Mandolin & Harpsichord
+	"44a", # Sonatina for Mandolin & Harpsichord
+	"44b", # Andante con Variazioni for Mandolin & Harpsichord
+
+	# Variations for Piano & Cello
+	"45",  # on "See the conquering hero comes"
+	"46",  # on the duet "Bei Männern, welche Liebe fühlen"
+
+	# Piano Sonatas ("Kurfürstensonaten")
+	"47a",
+	"47b",
+	"47c",
+
+	# Rondos for Piano
+	"48",
+	"49",
+
+	"50",  # 2 Sonata Movements for Piano
+	"51",  # Easy Piano Sonata
+	"52",  # Bagatelle for Piano: presto
+	"53",  # Allegretto for Piano
+	"54",  # Piece for Piano: "Lustig - traurig" (Merry - Sad)
+	"55",  # Prelude for Piano
+	"56",  # Bagatelle for Piano: Allegretto
+	"57",  # Andante for Piano: "Andante favori"
+	"58a", # Cadenza for Piano: for Mozart’s K 466 1st mvmt
+	"58b", # Cadenza for Piano & Orchestra: for Mozart’s K 466 3rd mvmt
+	"59",  # Bagatelle for Piano: "Für Elise"
+	"60",  # Bagatelle for Piano: "Zeimlich lebhaft"
+	"61",  # Allegretto for Piano
+	"61a", # Bagatelle for Piano
+	"62",  # String Quintet: "Letzter musikalischer Gedanke" [unfinished at death]
+
+	# Variations for Piano
+	"63",  # on a march by Ernst Christoph Dressler
+	"64",  # on a Swiss air
+	"65",  # on Vincenzo Righini’s arietta "Venni Amore"
+	"66",  # on Dittersdorf’s arietta "Es war einmal ein alter Mann"
+	"67",  # on a theme by Count Ferdinand von Waldstein (4 hands)
+	"68",  # on the "Menuett à la Viganò"
+	"69",  # on Giovanni Paisello’s air "Quant’ è più bello"
+	"70",  # on the duet "Nel cor più non mi sento"
+	"71",  # on a Russian dance from Paul Wranitsky’s ballet "Das Waldmädchen"
+	"72",  # on the Romance "Une fièvre brûlante"
+	"73",  # on Salieri’s duet "La stessa la stessissima"
+	"75",  # on the Quartet "Kind, willst du ruhig schlafen?"
+	"76",  # on the Trio "Tändeln und Scherzen"
+	"77",  # on an original theme
+	"78",  # on the English folk song "God Save the King"
+	"79",  # on the English song "Rule Britannia"
+	"80",  # on an original theme
+
+	"74",  # Song: "Ich denke dein"
+
+	"81",  # Allemande for Piano
+	"82",  # Minuet for Piano
+	"83",  # 6 Ecossaises for Piano
+	"84",  # Waltz for Piano
+	"85",  # Waltz for Piano
+	"86",  # Ecossaise for Piano
+	"87",  # Cantata: "Trauerkantate auf den Tod Joseph II"
+	"88",  # Cantata: "Kantate auf die Erhebung Leopold II zur Kaiserwürde"
+	"89",  # Aria: "Prüfung des Küssens"
+	"90",  # Aria: "Mit Mädeln sich vertragen"; for bass & orchestra
+	"91a", # Aria: "O welch ein Leben!"
+	"91b", # Aria: "Soll ein Schuh nicht drücken?"
+	"92",  # Scene & Aria: "Primo amore"; for soprano w/ orchestra
+	"92a", # Scene & Aria: "No, non turbarti"; for soprano w/ string orchestra
+	"93",  # Duo for Solo Voice(s) & Orchestra: "Ne’ giorni tuoi felici"; for soprano & tenor w/ orchestra
+	"94",  # Music for a drama for Orchestra, Chorus & Solo Voice(s): "Germania"
+	"95",  # Chorus for Orchestra & Chorus: "Chor auf die verbündeten Fürsten"
+	"96",  # Music for a drama for Orchestra, Chorus & Solo Voice(s): "Leonore Prohaska"
+	"97",  # Chorus for Orchestra, Chorus & Solo Voice(s): "Es ist vollbracht"
+	"98",  # Chorus for Orchestra, Chorus & Solo Voice(s): "Wo sich die Pulse jugendlich jagen"
+
+	# TODO: sort this one out
+	"99a",  # Duet: "Bei labbri, che Amore"
+	"99b",  # Trio for Solo Voice(s): "Chi mai di questo core"
+	"99/3a",  # Duet: "Fra tutte le pene" 1 of 3 settings
+	"99/3b",  # Trio for Solo Voice(s): "Fra tutte le pene"; 2 of 3 settings
+	"99/3c",  # Quartet for Solo Voice(s): "Fra tutte le pene" 3 of 3 settings
+	"99/4a",  # Quartet for Solo Voice(s): "Già la notte s’avvicina" 1 of 2 settings
+	"99/4b",  # Trio for Solo Voice(s): "Già la notte s’avvicina" 2 of 2 settings
+	"99/5a",  # Quartet for Solo Voice(s): "Giura il nocchier" 1 of 2 settings
+	"99/5b",  # Trio for Solo Voice(s): "Giura il nocchier" 2 of 2 settings
+	"99f",  # Trio for Solo Voice(s): "Ma tu tremi"
+	"99/7a",  # Quartet for Solo Voice(s): "Nei campi e nelle selve" 1 of 2 settings
+	"99/7b",  # Quartet for Solo Voice(s): "Nei campi e nelle selve" 2 of 2 settings
+	"99h",  # Song: "O care selve", with unison chorus
+	"99i",  # Trio for Solo Voice(s): "Per te d’amico aprile"
+	"99/10a",  # Quartet for Solo Voice(s): "Quella cetra ah pur tu sei" 1 of 3 settings
+	"99/10b",  # Trio for Solo Voice(s): "Quella cetra ah pur tu sei" 2 of 3 settings
+	"99/10c",  # Quartet for Solo Voice(s): "Quella cetra ah pur tu sei" 3 of 3 settings
+	"99k",  # Duet: "Scrivo in te"
+	"99l",  # Quartet for Solo Voice(s): "Silvio, amante disperato"
+
+	"100",  # Joke: "Lob auf den Dicken"
+	"101",  # Joke: "Graf, liebster Graf, liebstes Schaf"
+	"102",  # Song: "Abschiedsgesang" (Song of Farewell)
+	"103",  # Cantata: "Un lieto brindisi: Cantata campestre"
+	"104",  # Song: "Gesang der Mönche"
+	"105",  # Song: "Hochzeitslied"
+	"106",  # Cantata: "Lobkowitz-Kantate" for soprano, chorus & piano
+
+	# Songs
+	"107",  # "Schilderung eines Mädchens"
+	"108",  # "An einen Säugling"
+	"109",  # "Trinklied (beim Abschied zu singen)"
+	"110",  # "Elegie auf den Tod eines Pudels"
+	"111",  # "Punschlied"
+	"112",  # "An Laura"
+	"113",  # "Klage"
+	"114",  # "Ein Selbstgespräch"
+	"115",  # "An Minna"
+	"116",  # "Que le temps me dure" 1st version
+	"117",  # "Der freie Mann"
+	"118",  # "Seufzer eines Ungeliebten"
+	"119",  # "O care selve", with unison chorus
+	"120",  # "Man strebt, die Flamme zu verhehlen"
+	"121",  # "Abschiedsgesang an Wiens Bürger"
+	"122",  # "Kriegslied der Osterreicher"
+	"123",  # "Zärtliche Liebe"
+	"124",  # "La partenza" (Der Abschied)
+	"125",  # "La tiranna"
+	"126",  # "Opferlied"
+	"127",  # "Neue Liebe, neues Leben" (1st setting)
+	"128",  # "Plaisir d’aimer"
+	"129",  # "Der Wachtelschlag"
+	"130",  # "Gedenke mein"
+	"132",  # "Als die Geliebte sich trennen wollte"
+	"133",  # "In questa tomba oscura", Arietta
+	"134a", # "Sehnsucht" (1st setting)
+	"134b", # "Sehnsucht" (2nd setting)
+	"134c", # "Sehnsucht" (3rd setting)
+	"134d", # "Sehnsucht" (4th setting)
+	"135",  # "Die laute Klage"
+	"136",  # "Andenken" (Memories)
+	"137",  # "Gesang aus der Ferne" (2nd setting)
+	"138",  # "Der Jüngling in der Fremde"
+	"139",  # "Der Liebende"
+	"140a", # "An die Geliebte" (1st setting)
+	"140b", # "An die Geliebte" (2nd setting)
+	"141",  # "Der Gesang der Nachtigall"
+	"142",  # "Der Bardengeist"
+	"143",  # "Des Kriegers Abschied"
+	"144",  # "Merkenstein" (1st setting)
+	"145",  # "Das Geheimnis (Liebe and Wahrheit)"
+	"146",  # "Sehnsucht"
+	"147",  # "Ruf vom Berge"
+	"148",  # "So oder so"
+	"149",  # "Resignation"
+	"150",  # "Abendlied unter’m gestirnten Himmel"
+	"151",  # "Der edle Mensch sei hülfreich und gut"
+
+	"131",  # Sketch for Solo Voice(s) & Instrument(s): "Erlkönig" [unfinished]
+
+	# 25 Irish Songs
+	"152/1",  # "The Return to Ulster"
+	"152/2",  # "Sweet Power of Song!"
+	"152/3",  # "Once more I hail thee"
+	"152/4",  # "The morning air plays on my face"
+	"152/5",  # "On the massacre of Glencoe"
+	"152/6",  # "What shall I do to shew how much I love her?"
+	"152/7",  # "His boat comes on the sunny tide",
+	"152/8",  # "Come draw we round a cheerful ring",
+	"152/9",  # "The Soldier’s Dream",
+	"152/10", # "The Deserter" (The evening previous to his execution)
+	"152/11", # "Thou emblem of faith" (Upon returning a ring)
+	"152/12", # "English Bulls, or The Irishman in London"
+	"152/13", # "Musing on the roaring ocean"
+	"152/14", # "Dermot and Shelah"
+	"152/15", # "Let brainspinning swains"
+	"152/16", # "Hide not thy anguish"
+	"152/17", # "In vain to this desert my fate I deplore"
+	"152/18", # "They bid me slight my Dermot dear"
+	"152/19", # "Wife, Children and Friends"
+	"152/20", # "Farewell bliss and farewell Nancy"
+	"152/21", # "Morning a cruel turmoiler is"
+	"152/22", # "From Garyone, my happy home"
+	"152/23", # "A wand’ring gypsey, Sirs, am I"
+	"152/24", # "The Traugh Welcome"
+	"152/25", # "O harp of Erin"
+
+	# 20 Irish Songs
+	"153/1",  # "When eve’s last rays in twilight die"
+	"153/2",  # "No riches from his scanty store"
+	"153/3",  # "The British Light Dragoons, or The Plain of Badajos"
+	"153/4",  # "Since greybeards inform us that youth will decay"
+	"153/5",  # "I dream’d I lay where flow’rs were springing"
+	"153/6",  # "Sad and luckless was the season"
+	"153/7",  # "O soothe me, my lyre"
+	"153/8",  # "Norah of Balamagairy"
+	"153/9",  # "The kiss, dear maid, thy lip has left"
+	"153/10", # "Oh, thou hapless soldier"
+	"153/11", # "When far from the home"
+	"153/12", # "I’ll praise the saints with early song"
+	"153/13", # ‘"Tis sunshine at last"
+	"153/14", # "Paddy O’Rafferty"
+	"153/15", # "‘Tis but in vain, for nothing thrives"
+	"153/16", # "O might I but my Patrick love!" (English)
+	"153/17", # "Come, Darby dear! easy, be easy"
+	"153/18", # "No more, my Mary, I sigh for splendour"
+	"153/19", # "Judy, lovely, matchless creature"
+	"153/20", # "Thy ship must sail, my Henry dear"
+
+	# 12 Irish Songs
+	"154/1",  # "The Elfin Fairies"
+	"154/2",  # "O harp of Erin"
+	"154/3",  # "The Farewell Song"
+	"154/4",  # "The pulse of a Irishman"
+	"154/5",  # "O who, my dear Dermot"
+	"154/6",  # "Put round the bright wine"
+	"154/7",  # "From Garyone, my happy home"
+	"154/8",  # "Save me from the grave and wise"
+	"154/9",  # "O would I were but that sweet linnet!"
+	"154/10", # "The hero may perish"
+	"154/11", # "The Soldier in a Foreign Land"
+	"154/12", # "He promis’d me at parting"
+
+	# 26 Welsh Songs
+	"155/1",  # "Chase of the Wolf"
+	"155/2",  # "The Monks of Bangor’s March"
+	"155/3",  # "The Cottage Maid"
+	"155/4",  # "Love without Hope"
+	"155/5",  # "The Golden Robe"
+	"155/6",  # "The Fair Maid of Mona"
+	"155/7",  # "O let the night my blushes hide"
+	"155/8",  # "Farewell, thou noisy town"
+	"155/9",  # "To the Aeolian Harp"
+	"155/10", # "Ned Pugh’s Farewell"
+	"155/11", # "Merch Megan, or Peggy’s Daughter"
+	"155/12", # "Waken, lords and ladies gay"
+	"155/13", # "Helpless Woman"
+	"155/14", # "The Dream"
+	"155/15", # "When mortals all to rest retire" (English)
+	"155/16", # "The Damsels of Cardigan"
+	"155/17", # "The Dairy House"
+	"155/18", # "Sweet Richard"
+	"155/19", # "The Vale of Clwyd"
+	"155/20", # "To the Blackbird"
+	"155/21", # "Cupid’s Kindness"
+	"155/22", # "Constancy"
+	"155/23", # "The Old Strain"
+	"155/24", # "Three Hundred Pounds"
+	"155/25", # "The Parting Kiss"
+	"155/26", # "Good Night"
+
+	# 12 Scottish Songs
+	"156/1",  # "The Banner of Buccleuch"
+	"156/2",  # "Duncan Gray"
+	"156/3",  # "Up! quit thy bower"
+	"156/4",  # "Ye shepherds of this pleasant vale"
+	"156/5",  # "Cease your funning"
+	"156/6",  # "Highland Harry"
+	"156/7",  # "Polly Stewart"
+	"156/8",  # "Womankind"
+	"156/9",  # "Lochnagar"
+	"156/10", # "Glencoe"
+	"156/11", # "Auld Lang Syne"
+	"156/12", # "The Quaker’s Wife"
+	
+	# 12 assorted folk songs
+	"157/1",  # "God Save the King"
+	"157/2",  # "The Soldier"
+	"157/3",  # "Charlie is my darling" (Scottish)
+	"157/4",  # "O sanctissima" (Sicilian)
+	"157/5",  # "The Miller of Dee"
+	"157/6",  # "A health to the brave" (Irish)
+	"157/7",  # "Robin Adair"
+	"157/8",  # "By the side of the Shannon" (Irish)
+	"157/9",  # "Highlander’s Lament"
+	"157/10", # "Sir Johnnie Cope" (Scottish)
+	"157/11", # "The Wandering Minstrel"
+	"157/12", # "La gondoletta"
+
+	# 23 continental folk songs
+	"158a/1",  # "Ridder Stigs Runer" (Danish),
+	"158a/2",  # "Horch auf, mein Liebchen" (German)
+	"158a/3",  # "Wegen meiner blieb d’Fräula" (German)
+	"158a/4",  # "Wann i in der Früh aufsteh" (Tyrolean)
+	"158a/5",  # "Teppichkrämer-Lied"
+	"158a/6",  # "A Madel, ja a Madel" (Tyrolean)
+	"158a/7",  # "Wer solche Buema afipackt" (Tyrolean)
+	"158a/8",  # "Ih mag di nit nehma, du töppeter Hecht" (Tyrolean)
+	"158a/9",  # "Oj, oj upilem sie w karczmie" (Polish)
+	"158a/10", # "Poszla baba po popiol" (Polish)
+	"158a/11", # "Yo no quiero embarcarme" (Iberian)
+	"158a/12", # "Seus lindos olhos" (Portuguese)
+	"158a/13", # "Vo lesocke komarockov mnogo urodilos" (Russian)
+	"158a/14", # "Akh, recen’ki, recen’ki" (Russian)
+	"158a/15", # "Kak Posli nasi podruzki" (Russian)
+	"158a/16", # "Schöne Minka, ich muß scheiden" (Ukrainian-Cossack)
+	"158a/17", # "Lilla Carl", Vaggvisa (Swedish lullaby)
+	"158a/18", # "An ä Bergli bin i gesässe" (Swiss)
+	"158a/19", # "Una paloma blanca" (Spanish Bolero a Solo)
+	"158a/20", # "Como la mariposa soy" (Spanish Bolero a due)
+	"158a/21", # "Tiranilla Española" (Spanish)
+	"158a/22", # "Édes kinos emlékezet"
+	"158a/23", # "Da brava, Catina" (Venetian)
+
+	# 7 British folk songs
+	"158b/1",  # "Adieu, my lov’d harp" (Irish)
+	"158b/2",  # "Castle O’Neill" (Irish), without words
+	"158b/3",  # "Oh ono chri!" (Scottish)
+	"158b/4",  # "Red gleams the sun on yon hill tap" (Scottish)
+	"158b/5",  # "Erin! O Erin!" (Scottish-Irish)
+	"158b/6",  # "O Mary ye’s be clad in silk" (Scottish)
+	"158b/7",  # "Lament for Owen Roe O’Neill" (Irish) without words
+
+	# 6 assorted folk songs
+	"158c/1",  # "When my Hero in court appears"
+	"158c/2",  # "Air de Colin"
+	"158c/3",  # "Mark yonder pomp of costly fashion" (Scottish)
+	"158c/4",  # "Bonnie wee thing" (Scottish) for 3 voices and piano
+	"158c/5",  # "From thee, Eliza, I must go" (Scottish) for 3 voices and piano trio
+	"158c/6",  # Untitled (Scottish) without words
+
+	"158d",  # Folksong Setting: "Air Français" (French)
+
+	# Canons, Riddles, etc
+	"159",  # "Im Arm der Liebe ruht sich’s wohl"
+	"160a", # for Three Unison Voices (Allegretto) without Text
+	"160b", # for Four Unison Voices (Moderato) without Text
+	"161",  # "Ewig dein!"
+	"162",  # "Ta ta ta, lieber Mälzel" [spurious]
+	"163",  # "Kurz ist der Schmerz, und ewig ist die Freude" (1st setting)
+	"164",  # "Freundschaft ist die Quelle wahrer Glückseligkeit"
+	"165",  # "Glück zum neuen Jahr!" (1st setting)
+	"166",  # "Kurz ist der Schmerz, und ewig ist die Freude" (2nd setting)
+	"167",  # "Brauchle, Linke"
+	"168a", # "Das Schweigen"
+	"168b", # "Das Reden"
+	"169",  # "Ich küße Sie, drücke Sie an mein Herz"
+	"170",  # "Ars longa, vita brevis" (first version)
+	"171",  # "Glück fehl’ dir vor allem!" [spurious]
+	"172",  # "Ich bitt’ dich, schreib’ mir die Es-Scala auf"
+	"173",  # "Hol’ euch der Teufel! B’hüt euch Gott!"
+	"174",  # "Glaube und hoffe"
+	"175",  # "Sankt Petrus war ein Fels/ Bernardus war ein Sankt"
+	"176",  # "Glück zum neuen Jahr!" (2nd setting)
+	"177",  # "Bester Magistrat, Ihr friert"; canon for 2 male voices & 2 double-basses
+	"178",  # "Signor Abate"
+	"179",  # "Seiner Kaiserlichen Hoheit...alles Gute, alles Schöne"
+	"180",  # "Auf einen, welcher Hoffmann geheißen"
+	"181a", # "Gedenket heute an Baden"
+	"181b", # "Gehabt euch wohl"
+	"181c", # "Tugend ist kein leerer Name"
+	"182",  # "O Tobias!"
+	"183",  # "Bester Herr Graf, Sie sind ein Schaf"
+	"184",  # "Falstafferel, lass dich sehen!"
+	"185",  # "Edel sei der Mensch, hülfreich und gut"
+	"186",  # "Te solo adoro"
+	"187",  # "Auf einen, welcher Schwenke geheißen"
+	"188",  # "Gott ist eine feste Burg"
+	"189",  # "Doktor, sperrt das Tor dem Tod"
+	"190",  # "Ich war hier, Doktor, ich war hier"
+	"191",  # "Kühl, nicht lau"
+	"192",  # "Ars longa, vita brevis" (second version)
+	"193",  # "Ars longa, vita brevis" (third version)
+	"194",  # "Si non per portas, per muros"
+	"195",  # "Freu dich des Lebens"
+	"196",  # "Es muß sein!"
+	"197",  # "Das ist das Werk, sorgt um das Geld!"
+	"198",  # "Wir irren allesamt"
+	"199",  # "Ich bin der Herr von zu"
+	"200",  # "O Hoffnung!"
+	"201",  # "Ich bin bereit! Amen", beginning of a double fugue
+	"202",  # "Das Schöne zum Guten!", musical motto (1st version)
+	"203",  # "Das Schöne zu dem Guten!", musical motto (2nd version)
+	"204",  # "Holz, Holz, geigt die Quartette so"
+
+	# 10 musical greetings
+	"205/1", # "Baron, Baron, Baron"
+	"205/2", # "Allein, allein, allein, jedoch. Silentium!!"
+	"205/3", # "O Adjutant"
+	"205/4", # "Wo? Wo?"
+	"205/5", # "Erfüllung, Erfüllung"
+	"205/6", # "Scheut euch nicht"
+	"205/7", # "Tobias! Paternostergäßler. [...]"
+	"205/8", # "Tobias Tobias"
+	"205/9", # "Bester To----(bias)"
+	"205/10",# "Erster aller Tobiasse"
+]

@@ -1,0 +1,417 @@
+composer = "beethoven"
+scheme = "hess"
+complete = true
+
+# adapted from http://www.lvbeethoven.fr/Oeuvres/ListHess.html
+
+entries = [
+	"1",  # Fragment in F major
+	"2",  # 12 Minuets for Orchestra [not certain] = WoO 12
+
+	# Ecossaise for Piano: or orchestra
+	"3/1", "3/2", "3/3", "3/4", "3/5", "3/6",
+	"3/7", "3/8", "3/9", "3/10", "3/11", "3/12",
+
+	"4",  # Ecossaise for Wind Band in G major [reconstruction] = WoO 23
+
+	# Dance for Orchestra in D major: #1 of 12 German Dances; surviving piano version [12 items under one number] = WoO 13 #1–WoO 13 #12
+	"5/1", "5/2", "5/3", "5/4", "5/5", "5/6",
+	"5/7", "5/8", "5/9", "5/10", "5/11", "5/12",
+
+	"6",  # March for Wind Band in F major: "York’scher March für die bohmische Landwehr" (Yorck March)
+	"7",  # March & Trio for Wind Band in F major: "York’scher March für die bohmische Landwehr" (Yorck March) = WoO 18
+	"8",  # March for Wind Band in F major
+	"9",  # March & Trio for Wind Band in F major = WoO 19
+	"10",  # Fragment for Violin & Orchestra in C major [unfinished] = WoO 5
+	"11",  # Romance No. 3 for Violin & Orchestra
+	"12",  # Concerto for Oboe & Orchestra in F major: fragments
+	"13",  # Romance for Piano, Flute, Bassoon & Orchestra in E minor [reconstruction]
+	"14",  # Fragment No. 2 for Piano & Orchestra in B flat major [unfinished]
+	"15",  # Fragment for Piano & Orchestra in D major [unfinished]
+	"16",  # Fantasia for Piano, Chorus & Orchestra
+	"17",  # Duo for Flutes in G major: Allegro and Minuet = WoO 26
+	"18",  # Variations for Oboes & English Horn in C major: on "Là ci darem la mano" from Mozart’s opera "Don Giovanni" = WoO 28
+	"19",  # Fragment for Horns, Oboe & Bassoon in E flat major: fragment of a Quintet [reconstruction]
+
+	# Waltz for Instrument(s) in E flat major: #1 of 11 Mödlinger Tänze for 7 String & Wind Instruments [11 items under one number] [probably spurious] = WoO 17 #1–WoO 17 #11
+	"20/1", "20/2", "20/3", "20/4", "20/5", "20/6",
+	"20/7", "20/8", "20/9", "20/10", "20/11",
+
+	"21",  # Andante con Variazioni for Wind Band [not certain]
+	"22",  # Duo for Viola & Cello in E flat major: "mit zwei obligaten Augengläsern" (with 2 obbligato eyeglasses)
+	"23",  # Minuet for Viola & Cello in E flat major: "mit zwei obligaten Augengläsern" (with 2 obbligato eyeglasses), 3rd movement
+	"24",  # Fragment for Viola & Cello
+	"25",  # String Trio
+
+	# Minuet for Violins & Cello in E flat major: #1 of 6 Minuets [6 items under one number] = WoO 9 #1–WoO 9 #6
+	"26/1", "26/2", "26/3", "26/4", "26/5", "26/6",
+
+	# 7 Ländler for Violins & Cello in D major: surviving piano version = WoO 11
+	"27/1", "27/2", "27/3", "27/4", "27/5", "27/6", "27/7",
+
+	"28",  # String Trio
+	"29",  # Prelude & Fugue for Violins & Cello in E minor
+	"30",  # Prelude & Fugue for String Quartet in F major
+	"31",  # Prelude & Fugue for String Quartet in C major
+	"32",  # String Quartet in F major
+	"33",  # Minuet for String Quartet in A flat major
+	"34",  # String Quartet in F major
+	"35",  # Fragment for String Quartet in B minor [reconstruction]
+	"36",  # Fugue for String Quartet: from Handel’s "Solomon" overture, arranged for string quartet by Beethoven
+	"37",  # Fugue for Piano Four Hands in C minor: by W A Mozart, KV 426, as revised by Beethoven
+	"38",  # Fugue for String Quintet in B flat minor
+	"39",  # String Quintet in F Major
+	"40",  # String Quintet in D minor: movement [unfinished]
+	"41",  # String Quintet in C major: "Letzter musikalischer Gedanke" (last musical thought) [unfinished at death] = WoO 62
+	"42",  # Duo for Violins in A major: for Alexandre Boucher = WoO 34
+	"43",  # Sonatina for Mandolin & Harpsichord in C major: called WoO 44a = WoO 44 #1
+	"44",  # Adagio ma non troppo for Mandolin & Harpsichord in E flat major
+	"45",  # Andante con Variazioni for Mandolin & Harpsichord in D major: called WoO 44b = WoO 44 #2
+	"46",  # Sonata for Piano & Violin in A major [unfinished]
+	"47",  # Piano Trio
+	"48",  # Allegretto for Piano Trio in E flat major
+	"49",  # Piano Trio in E Flat Major
+	"50",  # Piano Trio in B Flat Major
+	"51",  # Rondo for Piano in C major = WoO 48
+	"52",  # Piano Sonata in C Major
+	"53",  # 2 Sonata Movements for Piano in F major = WoO 50
+	"54",  # Variations for Piano: on Amenda’s theme "Freudvoll und Liedvoll"
+	"55",  # Variations for Piano: on "Venni, Amore" by Vincenzo Righini (first version)
+	"56",  # Bagatelle for Piano in G minor: called WoO 61a = WoO 61 #1
+	"57",  # Sketch for Piano in C major [unfinished]
+	"58",  # Exercise for Piano in B flat major
+	"59",  # Exercise for Piano in C major
+	"60",  # Draft for Piano in A major [unfinished]
+	"61",  # Anglaise for Piano in D major
+	"62",  # Allegretto for Piano in B minor = WoO 61
+	"63",  # Piece for Piano: arrangement of Christian Friedrich Daniel Schubart's "Kaplied" by Beethoven
+	"64",  # 3-part Fugue for Piano in C major
+	"65",  # Piece for Piano in C major: Little Concert Finale
+	"66",  # Allegretto for Piano in C minor
+	"67",  # 2 German Dances for Piano: in F major and F minor
+	"68",  # Ländler for Piano in C minor
+	"69",  # Allegretto for Piano in C minor
+	"70",  # Adagio for Piano in G major
+	"71",  # Movement for Piano in G major: molto adagio
+	"72",  # Variations for Piano in A major: theme with one variation
+	"73",  # Bagatelle for Piano in C major
+	"74",  # Bagatelle for Piano in E flat major
+	"75",  # Piece for Piano in G major: "O Hoffnung, du stählst die Herzen, du milderst die Schmerzen" = WoO 200
+
+	# Cadenzas for Piano
+	"76",  # in C major [unfinished]
+	"77",  # in C major
+	"78",  # in C major
+	"79",  # [unfinished]
+	"80",  # [spurious]
+	"81",
+	"82",
+	"83",
+	"85",
+
+	"84",  # Rondo for Piano
+	"86",  # Fugue for Piano Four Hands: Große Fuge for Piano Four Hands = Op. 134
+	"87",  # March for Piano: "Grenadiermarsch"
+	"88",  # Minuet for Piano in A flat major
+
+	# Ballet Music for Piano
+	"89",  # "Ritterballet"
+	"90",  # "Die Geschöpfe des Prometheus" (The Creatures of Prometheus)
+
+	# Songs
+	"91",  # "Opferlied"; "Die Flamme lodert"
+	"92",  # "Bundeslied"
+	"93",  # in A major: "Freudvoll und Leidvoll"
+	"94",  # in G major: "Freudvoll und Leidvoll"
+	"95",  # in F major: "Freudvoll und Leidvoll"
+
+	"96",  # Fragment for Piano [unfinished]
+	"97",  # Piece for Piano: "Wellingtons Sieg, oder die Schlacht bei Vittoria" (Wellington’s Victory, or the Battle of Vittoria)
+	"98",  # Scherzo for Piano [unfinished]
+	"99",  # March for Piano in F major: Military march "Yorck’cher Marsch" "für die böhmische landwehr"
+	"100",  # 12 German Dances for Piano
+	"101",  # 12 Minuets for Piano
+	"102",  # 9 Contredanses for Piano
+
+	# Pieces for Musical Clock; or for flute
+	"103",  # Adagio assai; #1 of 5 pieces = WoO 33 #1
+	"104",  # Scherzo-Allegro; #2 of 5 pieces = WoO 33 #2
+	"105",  # Allegro; #3 of 5 pieces = WoO 33 #3
+	"106",  # Allegro non piu molto; #4 of 5 pieces [2 items under one number] = WoO 33 #4–WoO 33 #5
+	"107",  # Grenadier March in F major: "Grenadiermarsch"
+
+	"108",  # Piece for Panharmonikon: "Wellingtons Sieg, oder die Schlacht bei Vittoria" (Wellington’s Victory, or the Battle of Vittoria)
+	"109",  # Opera: "Leonore, oder Der Triumph der ehelichen Liebe" (Leonore, or The Triumph of Married Love); 1805 version of "Fidelio" with overture "Leonore II" = Op. 72
+
+	# TODO: sort this out
+	"110",  # Opera: "Leonore, oder Der Triumph der ehelichen Liebe" (Leonore, or The Triumph of Married Love); 1806 version of "Fidelio" with overture "Leonore III" = Op. 72
+	"110/4",  # Trio for Solo Voice(s) & Orchestra: "Gut, söhnchen, gut"
+	"110/8",  # Recitative & Aria for Solo Voice(s) & Orchestra: "Ach, brich noch nicht - Komm, Hoffnung"
+	"110/12",  # Finale for Solo Voice(s) & Orchestra
+
+	"111",  # Duet: "Nur hurtig fort, nur frisch gegraben"
+	"112",  # Aria: Rocco’s Gold Aria
+	"113",  # Aria: Marcellina’s aria "O wär ich schon mit dir vereint"
+	"114",  # Recitative for Solo Voice(s) & Orchestra
+	"115",  # Music for a drama for Orchestra, Chorus & Solo Voice(s): "Vesta’s Feuer" [unfinished]
+	"116",  # Fragment for Solo Voice(s): "Ritterblatt" [unfinished]
+
+	# Triumphal March for Orchestra in C major: "Tarpeja"
+	"117/1", # WoO 2 #1
+	"117/2", # WoO 2 #2
+
+	# Overture: "Die Ruinen von Athen" (The Ruins of Athens) = Op. 113; WoO 98
+	"118/1", "118/2", "118/3", "118/4", "118/5",
+
+	"119",  # Scene & Aria: "No, non turbarti"; for soprano w/ string orchestra, WoO 92a = WoO 92 #1
+	"120",  # Duo for Solo Voice(s) & Orchestra: "Ne’ giorni tuoi felici"; for soprano & tenor w/ orchestra = WoO 93
+	"121",  # Aria in C major: Marcellina’s aria "O wär ich schon mit dir vereint"
+	"122",  # Aria in C minor: Marcellina’s aria "O wär ich schon mit dir vereint"
+	"127",  # Cantata in B flat major: "Un lieto brindisi: Cantata campestre" for 4 voices & piano acc "Johannisfeier begehn wir heute" = WoO 103
+
+	# Songs
+	"123",
+	"124",  # WoO 105
+	"125",  # WoO 105
+	"126",  # WoO 111
+	"128",  # WoO 112
+	"129",  # WoO 116 #1
+	"130",  # WoO 116 #2
+	"131",  # WoO 128
+	"132",  # WoO 151
+	"133",  # "Das liebe Kätzchen" (Austrian); "Unsa Kaz had Kazln g’habt"
+	"134",  # "Der Knabe auf dem Berge" (Austrian); "Duart ob’n af’m Beargerl gu gu"
+	"135",  # WoO 125
+	"136",  # WoO 127
+	"137",  # "Ich wiege dich in meinem Arm"
+	"138",  # "Odorata - o Nice"
+	"139",  # "Minnesold von Burger, in Tönen an Amenda ausbezahlt"
+	"140",  # "Dimmi, ben mio, che m’ami"
+	"141",  # "Bußlied"
+	"142",  # "Wonne der Wehmut"
+	"143",  # "An die Freude"
+	"144",  # "Feuerfarb’"
+	"145",  # "Opferlied"; "Die Flamme lodert"
+	"146",  # "Der freie Mann"
+	"147",  # "Der Kuss"
+
+	# Sketches for Solo Voice(s) & Instrument(s)
+	"148",  # "Erlkönig" "Wer reitet so spat durch Nacht und Wind?" [unfinished] = WoO 131
+	"149",  # sketches for a Song "Rastlose Liebe" [unfinished]
+	"150",  # sketch for a Song "Heidenröslein" [unfinished]
+	"151",  # sketch for a Song "Traute Henriette" [unfinished]
+
+	# Folksong Settings (TODO: these need 'a' and 'b' designations)
+	"152",  # WoO 158 #1
+	"153",  # WoO 158 #2
+	"154",  # WoO 158 #3
+	"155",  # WoO 158 #4
+	"156",  # WoO 158 #1
+	"157",  # WoO 158 #5
+	"158",  # WoO 158 #11
+	"159",  # WoO 158 #12
+	"160",  # WoO 158 #13
+	"161",  # WoO 158 #14
+	"162",  # WoO 158 #15
+	"163",  # WoO 158 #19
+	"164",  # WoO 158 #20
+	"165",  # WoO 158 #21
+	"166",  # WoO 158 #1
+	"167",  # WoO 158 #2
+	"168",  # WoO 158
+	"169",  # WoO 158 #3
+	"170",  # WoO 158 #6
+	"171",  # WoO 158 #18
+	"172",  # WoO 158 #2
+	"173",  # WoO 158 #3
+	"174",  # WoO 158 #4
+	"175",  # WoO 158 #4
+	"176",  # WoO 158 #5
+	"177",  # WoO 158 #16
+	"178",  # "Tis sunshine at last" (Irish)
+	"179",  # WoO 158 #6
+	"180",  # WoO 158 #7
+	"181",  # WoO 158 #23
+	"182",  # WoO 158 #5
+	"183",  # WoO 158 #6
+	"184",  # WoO 158 #9
+	"185",  # WoO 158 #10
+	"186",  # WoO 158 #17
+	"187",  # WoO 158 #7
+	"188",  # WoO 158 #22
+	"189",  # WoO 158 #8
+	"190",  # TODO: the site lists two distinct compositions for 190
+	"191",  # "The Vale of Clwyd" (Welsh) "Think not I’ll leave"
+	"192",  # "On the massacre of Glencoe" (Irish) "O! tell me, harper"
+	"193",  # "Farewell bliss and farewell Nancy" (Irish)
+	"194",  # "I dream’d I lay where flow’rs were springing" (Irish)
+	"195",  # "When far from the home" (Irish)
+	"196",  # "I’ll praise the saints with early song" (Irish)
+	"197",  # "‘Tis but in vain, for nothing thrives" (Irish)
+	"198",  # "O would I were but that sweet linnet!"; air: "The pretty girl milking the cows" (Irish)
+	"199",  # "The Soldier in a Foreign Land", "The piper who sat on his low mossy seat", air: "The Brown Maid" (Irish)
+	"200",  # "The Maid of Isla" (Scottish)
+	"201",  # "Bonnie Laddie, Highland Laddie" (Scottish)
+	"202",  # "O! thou art the lad of my heart, Willy" (Scottish)
+	"203",  # "Faithfu’ Johnie" (Scottish) "When will you come again"
+	"204",  # "O let the night my blushes hide" (Welsh)
+	"205",  # "The Dream" (Welsh)
+	"206",  # "To the Blackbird" (Welsh) "Sweet warbler of a strain divine"
+	"207",  # "Como la mariposa soy" (Spanish Bolero a due)
+
+	# Duets, Trios, Quatets for Solo Voice(s)
+	"208",  # WoO 99 #3.1
+	"209",  # WoO 99 #3.2
+	"210",  # WoO 99 #3.3
+	"211",  # WoO 99 #1
+	"212",  # WoO 99 #6
+	"213",  # WoO 99 #10.1
+	"214",  # WoO 99 #2
+	"215",  # WoO 99 #11
+	"216",  # WoO 99 #9
+	"217",  # WoO 99 #7.1
+	"218",  # WoO 99 #10.2
+	"219",  # WoO 99 #10.3
+	"220",  # WoO 99 #7.2
+	"221",  # WoO 99 #5.1
+	"222",  # WoO 99 #4.1
+	"223",  # WoO 99 #4.2
+	"224",  # WoO 99 #3.3
+	"225",  # WoO 99 #3.2
+	"226",  # WoO 99 #12
+	"227",  # WoO 99 #5.2
+
+	"228",  # Duet in C major: "Salvo tu vuoi lo sposo?"
+	"229",  # 2-part Canon: "Languisco e moro"
+	"230",  # Quartet for Solo Voice(s) in C major: "Giura il nocchier"
+	"231",  # Duet in C major: "Sei mio ben"
+	"232",  # Song in E flat major: "E pur fra le tempeste"; tenor melody
+
+	"233",  # 300 Exercises for Study: simple counterpoint (2, 3 & 4 part)
+	"234",  # 125 Exercises for Study: strict counterpoint (2, 3 & 4 part)
+	"235",  # 26 Exercises for Study: free counterpoint (2, 3 & 4 part)
+
+	# 2-part Simple Fugues
+	"236/1", "236/2", "236/3", "236/4", "236/5", "236/6",
+	"236/7", "236/8", "236/9", "236/10", "236/11", "236/12",
+
+	# 3-part Simple Fugues
+	"237/1", "237/2", "237/3", "237/4", "237/5",
+
+	# 4-part Simple Fugues
+	"238/1", "238/2", "238/3", "238/4", "238/5", "238/6",
+
+	# 4-part Chorale Fugues
+	"239/1", "239/2", "239/3",
+
+	# TODO
+	"240",  # 4 Exercises for Study: double counterpoint of the octave (2-voice)
+	"241",  # 24 Exercises for Study: double counterpoint of the octave and a third
+	"242",  # 6 Exercises for Study: double counterpoint of the octave plus a fifth
+
+	# 4-part Double Fugues
+	"243/1", "243/2", "243/3", "243/4", "243/5",
+
+	# 4-part Triple Fugues
+	"244/1", "244/2",
+
+	"245",  # Fragment for String Quartet in D minor [unfinished]
+
+	# Canons, etc
+	"246",  # 4-part Double Fugue for Chorus in F major: "Kyrie eleison" [unfinished]
+	"247",  # WoO 160 #1
+	"248",  # WoO 160 #2
+	"249",  # WoO 167
+	"250",  # WoO 169
+	"251",  # WoO 170
+	"252",  # WoO 171
+	"253",  # WoO 173
+	"254",  # Canon in G major: "Hol dich der Teufel" [unfinished]
+	"255",  # WoO 175
+	"256",  # Joke in A major: "Sankt Petrus ist ein Fels"
+	"257",  # WoO 177
+	"258",  # WoO 181 #2
+	"259",  # WoO 181 #3
+	"260",  # Canon: "Fettlümerl und Bankert haben triumphirt"
+	"261",  # WoO 183
+	"262",  # WoO 184
+	"263",  # 2-part Canon in E flat major: "Te solo adoro"
+	"264",  # 2-part Canon: "Te solo adoro"
+	"265",  # WoO 188
+	"266",  # WoO 189
+	"267",  # WoO 190
+	"268",  # WoO 192
+	"269",  # WoO 193
+	"270",  # WoO 196
+	"271",  # WoO 197
+	"272",  # WoO 203
+	"273",  # WoO 35
+	"274",  # 2-part Canon in G major: without text
+	"275",  # 2-part Canon in A flat major: without text
+	"276",  # 3-part Canon: "Herr Graf, ich komme zu fragen"
+	"277",  # 2-part Canon in F major: "Esel aller Esel, hi ha"; 2-part canon w/ free additional part
+	"278",  # WoO 100
+	"279",  # WoO 101
+	"280",  # WoO 198
+	"281",  # WoO 199
+	"282",  # WoO 201
+	"283",  # WoO 202
+	"284",  # WoO 204
+	"285",  # Joke in E flat major: "Tobias"
+
+	# Musical greetings for Solo Voice(s)
+	"286",  # WoO 205 #1
+	"287",  # WoO 205 #2
+	"288",  # WoO 205 #3
+	"289",  # WoO 205 #4
+	"290",  # WoO 205 #5
+	"291",  # WoO 205 #6
+	"292",  # WoO 205 #7
+	"293",  # WoO 205 #8
+	"294",  # WoO 205 #9
+	"295",  # WoO 205 #10
+
+	"296",  # Little Cadenza for Instrument(s)
+	"297",  # Adagio for Horns in F major
+	"298",  # Sketch in C minor: sketch for a movement of a Symphony [unfinished]
+
+	# Sketch for Instrument(s)
+	"299",  # in A major: sketch for a Canon "Bester Magistrat" [unfinished]
+	"300",  # sketch for a Canon "Liebe mich, werter Weissenbach" [reconstruction]
+	"301",  # sketch for a Canon "Wähner, es ist kein Wahn" [unfinished]
+	"302",  # sketch for a Canon "Uns geht es kannibalisch wohl als wie fünfhundert Säuen" [unfinished]
+	"303",  # sketch for a Canon "Großen Dank für solche Gnade" [unfinished]
+	"304",  # in C major: sketch for a Canon "Ich blase das Fagott" [unfinished]
+	"305",  # in D major: sketch for a Canon "Geschlagen ist der Feind" [unfinished]
+
+	"306",  # Canon: "Wie Silber die Rede"
+	"307",  # Canon: "Ewig dein"
+	"308",  # Canon
+	"309",  # Canon
+	"310",  # Prelude for Organ in C Major
+	"311",  # Canon: "Grasmücke"
+	"312",  # 4-part Canon: "Singen ist des Lebens Freude"
+	"313",  # Song: "Te solo adoro"
+	"314",  # Funeral Cantata
+	"315",  # Fugue for Instrument(s)
+	"316",  # Quintet for Instrument(s)
+	"317",  # Cantata: "Europens Befreyungsstunde"
+	"318",  # String Quintet [unfinished]
+	"319",  # String Quintet
+	"320",  # Andante for String Quartet in G major: sketches [unfinished]
+	"321",  # Little Instrumental Melody for Piano & Violin in B flat major
+	"322",  # Melody for Solo Voice(s) in E flat major: "Gott allein ist unser Herr, er allein"
+	"323",  # Melody for Solo Voice(s) in C major: "Leb wohl, schöne Abendsonne"
+	"324",  # Melody for Instrument(s) in C minor [unfinished]
+	"325",  # Piece for Piano in D major
+	"326",  # 4-part Fugue for Piano in C major [unfinished]
+	"327",  # 2 Little Melodies for Instrument(s) in A minor: in A minor and C major
+	"328",  # 2-part Canon in A flat major
+	"329",  # Sketch for Unknown: sketch for "Tibi gratulor"; beginning of a composition for many voices [unfinished]
+	"330",  # Sketch for Piano in C minor: sketches for a March [unfinished]
+	"331",  # Minuet for Piano in B flat major [unfinished]
+	"332",  # Pastorella for String Quartet in D major
+	"333",  # Minuet-Scherzo for String Quartet in A major
+	"334",  # Draft for String Quartet in A major: of a Presto (Allegro) [unfinished]
+	"335",  # 2 Exercises for Instrument(s): on the Song "Gedenke Mein"
+]
