@@ -1,0 +1,35 @@
+{
+	"id": "dfe877db",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {
+				"composed": 1802,
+				"premiered": 1803
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "36"
+				}
+			]
+		}
+	],
+	"key": "D",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Adagio molto – Allegro con brio"
+		},
+		{
+			"title": "Larghetto",
+			"key": "A"
+		},
+		{
+			"title": "Scherzo: Allegro – Trio"
+		},
+		{
+			"title": "Allegro molto"
+		}
+	]
+}

@@ -1,0 +1,35 @@
+{
+	"id": "b6d18b9d",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {
+				"premiered": 1800,
+				"published": 1801
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "21"
+				}
+			]
+		}
+	],
+	"key": "C",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Adagio molto – Allegro con brio"
+		},
+		{
+			"title": "Andante cantabile con moto",
+			"key": "F"
+		},
+		{
+			"title": "Menuetto: Allegro molto e vivace"
+		},
+		{
+			"title": "Adagio – Allegro molto e vivace"
+		}
+	]
+}

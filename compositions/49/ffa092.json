@@ -1,0 +1,59 @@
+{
+	"id": "49ffa092",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {
+				"composed": 1808,
+				"premiered": 1808
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "68"
+				}
+			]
+		}
+	],
+	"key": "F",
+	"form": "symphony",
+	"movements": [
+		{
+			"program": {
+				"de": "Erwachen heiterer Empfindungen bei der Ankunft auf dem Lande",
+				"en": "Awakening of cheerful feelings on arrival in the countryside"
+			},
+			"title": "Allegro ma non troppo"
+		},
+		{
+			"program": {
+				"de": "Szene am Bach",
+				"en": "Scene by the brook"
+			},
+			"title": "Andante molto mosso",
+			"key": "Bb"
+		},
+		{
+			"program": {
+				"de": "Lustiges Zusammensein der Landleute",
+				"en": "Merry gathering of country folk"
+			},
+			"title": "Scherzo Allegro – Trio – Tempo I – Presto"
+		},
+		{
+			"program": {
+				"de": "Gewitter, Sturm",
+				"en": "Thunder, Storm"
+			},
+			"title": "Allegro",
+			"key": "f"
+		},
+		{
+			"program": {
+				"de": "Hirtengesang. Frohe und dankbare Gefühle nach dem Sturm",
+				"en": "Shepherd's song. Cheerful and thankful feelings after the storm"
+			},
+			"title": "Allegretto"
+		}
+	]
+}

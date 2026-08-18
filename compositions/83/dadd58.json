@@ -1,0 +1,36 @@
+{
+	"id": "83dadd58",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {
+				"composed": 1812,
+				"premiered": 1813
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "92"
+				}
+			]
+		}
+	],
+	"key": "A",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Poco sostenuto – Vivace"
+		},
+		{
+			"title": "Allegretto",
+			"key": "a"
+		},
+		{
+			"title": "Presto – Assai meno presto",
+			"key": "F"
+		},
+		{
+			"title": "Allegro con brio"
+		}
+	]
+}

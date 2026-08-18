@@ -1,0 +1,35 @@
+{
+	"id": "660a8104",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {
+				"composed": 1812,
+				"premiered": 1814
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "93"
+				}
+			]
+		}
+	],
+	"key": "F",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Allegro vivace e con brio"
+		},
+		{
+			"title": "Allegretto scherzando",
+			"key": "Bb"
+		},
+		{
+			"title": "Tempo di menuetto"
+		},
+		{
+			"title": "Allegro vivace"
+		}
+	]
+}

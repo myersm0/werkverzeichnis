@@ -1,0 +1,35 @@
+{
+	"id": "b7979aef",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {
+				"composed": 1804,
+				"premiered": 1805
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "55"
+				}
+			]
+		}
+	],
+	"key": "Eb",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Allegro con brio"
+		},
+		{
+			"title": "Marcia funebre: Adagio assai",
+			"key": "c"
+		},
+		{
+			"title": "Scherzo: Allegro vivace"
+		},
+		{
+			"title": "Finale: Allegro molto"
+		}
+	]
+}

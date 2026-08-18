@@ -1,0 +1,37 @@
+{
+	"id": "8b9179d4",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {
+				"composed": 1824,
+				"premiered": 1824
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "125"
+				}
+			]
+		}
+	],
+	"key": "d",
+	"form": "symphony",
+	"instrumentation": "orchestra with vocal soloists and choir",
+	"movements": [
+		{
+			"title": "Allegro ma non troppo, un poco maestoso"
+		},
+		{
+			"title": "Molto vivace"
+		},
+		{
+			"title": "Adagio molto e cantabile",
+			"key": "Bb"
+		},
+		{
+			"title": "Finale",
+			"key": "D"
+		}
+	]
+}

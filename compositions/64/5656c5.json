@@ -1,0 +1,35 @@
+{
+	"id": "645656c5",
+	"attribution": [
+		{
+			"composer": "beethoven",
+			"dates": {
+				"composed": 1806,
+				"premiered": 1807
+			},
+			"catalog": [
+				{
+					"scheme": "op",
+					"number": "60"
+				}
+			]
+		}
+	],
+	"key": "Bb",
+	"form": "symphony",
+	"movements": [
+		{
+			"title": "Adagio – Allegro vivace"
+		},
+		{
+			"title": "Adagio",
+			"key": "Eb"
+		},
+		{
+			"title": "Scherzo: Allegro vivace"
+		},
+		{
+			"title": "Allegro ma non troppo"
+		}
+	]
+}
